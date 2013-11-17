@@ -94,11 +94,19 @@ elseif ( stripos($last_modified, 'TZ') ) {
   $vcard->AddProperty('REV',$last_modified);
 }
 elseif( preg_match('{^(\d{8})(\d{6})Z?}', $last_modified, $matches) ) {
+  // 'T' missing
   $last_modified = $matches[1] . 'T' . $matches[2] . 'Z';
   $vcard->ClearProperties('REV');
   $vcard->AddProperty('REV',$last_modified);
 }
+elseif( preg_match('{([0-9]{4})-([0-9]{2})-([0-9]{2}T)([0-9]{2}):([0-9]{2}):([0-9]{2})Z?}', $last_modified, $matches) ){
+  // iOS sends these, see http://tools.ietf.org/html/rfc2426#section-3.6.4
+  $last_modified = $matches[1] . $matches[2] .$matches[3]  .$matches[4] .$matches[5]. $matches[6] . 'Z';
+  $vcard->ClearProperties('REV');
+  $vcard->AddProperty('REV', $last_modified);
+}
 elseif( !preg_match('{^\d{8}T\d{6}Z$}', $last_modified) ) {
+  // reset to timestamp format, see https://tools.ietf.org/html/rfc6350#section-6.7.4
   $last_modified = gmdate( 'Ymd\THis\Z' );
   $vcard->ClearProperties('REV');
   $vcard->AddProperty('REV',$last_modified);
