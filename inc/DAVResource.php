@@ -186,7 +186,7 @@ class DAVResource
   * @param object $row The row from the DB.
   */
   function FromRow($row) {
-    global $c;
+    global $c, $session;
 
     if ( $row == null ) return;
 
@@ -283,17 +283,24 @@ class DAVResource
             $this->resource->location = null;
             $this->resource->url = null;
           }
-          else if ( isset($c->hide_alarm) && $c->hide_alarm && !$this->HavePrivilegeTo('write') ) {
-            $vcal1 = new iCalComponent($this->resource->caldav_data);
-            $comps = $vcal1->GetComponents();
-            $vcal2 = new iCalComponent();
-            $vcal2->VCalendar();
-            foreach( $comps AS $comp ) {
-              $comp->ClearComponents('VALARM');
-              $vcal2->AddComponent($comp);
+          else {
+            if ( strtoupper($this->resource->class)=='CONFIDENTIAL' && !$this->HavePrivilegeTo('all') && $session->user_no != $this->resource->user_no ) {
+              $vcal = new iCalComponent($this->resource->caldav_data);
+              $confidential = $vcal->CloneConfidential();
+              $this->resource->caldav_data = $confidential->Render();
             }
-            $this->resource->displayname = $this->resource->summary = $vcal2->GetPValue('SUMMARY');
-            $this->resource->caldav_data = $vcal2->Render();
+            if ( isset($c->hide_alarm) && $c->hide_alarm && !$this->HavePrivilegeTo('write') ) {
+              $vcal1 = new iCalComponent($this->resource->caldav_data);
+              $comps = $vcal1->GetComponents();
+              $vcal2 = new iCalComponent();
+              $vcal2->VCalendar();
+              foreach( $comps AS $comp ) {
+                $comp->ClearComponents('VALARM');
+                $vcal2->AddComponent($comp);
+              }
+              $this->resource->displayname = $this->resource->summary = $vcal2->GetPValue('SUMMARY');
+              $this->resource->caldav_data = $vcal2->Render();
+            }
           }
         }
         else if ( strtoupper(substr($this->resource->caldav_data,0,11)) == 'BEGIN:VCARD' ) {
