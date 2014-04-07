@@ -348,8 +348,8 @@ require_once('Multipart.php');
 function doImipMessage($method, $to_email, vCalendar $itip) {
   global $c, $request;
 
+/*
   header( 'Debug: Sending iMIP '.$method.' message to '.$to_email);
-  
   $mime = new MultiPart();
   $mime->addPart( $itip->Render(), 'text/calendar; charset=UTF-8; method='.$method );
 
@@ -403,4 +403,5 @@ EOTEMPLATE;
   else {
     $email->Send($mime->getMimeHeaders());
   }
+*/
 }
