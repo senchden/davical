@@ -157,7 +157,7 @@ class WritableCollection extends DAVResource {
         * So we're looking for 'VALUE=DATE', to identify the duration, effectively.
         *
         */
-        $value_type = $first->GetPParamValue('DTSTART','VALUE');
+        $value_type = $first->GetProperty('DTSTART')->GetParameterValue('VALUE');
         dbg_error_log('PUT','DTSTART without DTEND. DTSTART value type is %s', $value_type );
         if ( isset($value_type) && $value_type == 'DATE' )
           $dtend = '(:dtstart::timestamp with time zone::date + \'1 day\'::interval)';
