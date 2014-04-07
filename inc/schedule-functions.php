@@ -197,7 +197,9 @@ function GetItip( VCalendar $vcal, $method, $attendee_value ) {
         case 'DTEND':
         case 'DUE':
           $when = new RepeatRuleDateTime($property);
-          $properties[] = new vProperty( $property->Name() . ":" . $when->UTC() );
+          $new_prop = new vProperty($property->Name());
+          $new_prop->Value($when->UTC());
+          $properties[] = $new_prop;
           break;
         default:
           $properties[] = $property;
@@ -205,7 +207,6 @@ function GetItip( VCalendar $vcal, $method, $attendee_value ) {
     }
     $comp->SetProperties($properties);
   }
-  
   return $iTIP;
 }
 
