@@ -1681,6 +1681,7 @@ EOQRY;
         if ( isset($c->disable_caldav_proxy) && $c->disable_caldav_proxy ) return false;
         if ( !isset($proxy_type) ) $proxy_type = 'write';
         // ProxyFor is an already constructed URL
+		$this->FetchPrincipal();
         $reply->CalendarserverElement($prop, 'calendar-proxy-'.$proxy_type.'-for', $reply->href( $this->principal->ProxyFor($proxy_type) ) );
         break;
 
