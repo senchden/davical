@@ -116,8 +116,8 @@ function doItipAttendeeReply( vCalendar $resource, $partstat ) {
   $organizer_calendar = new WritableCollection(array('path' => $collection_path));
   $organizer_inbox = new WritableCollection(array('path' => $organizer_principal->internal_url('schedule-inbox')));
 
-  $schedule_reply = GetItip(new vCalendar($row->caldav_data),'REPLY',$attendee->Value());
-  $schedule_request = GetItip(new vCalendar($row->caldav_data),'REQUEST',null);
+  $schedule_reply = GetItip(new vCalendar($vcal->Render(null, true)), 'REPLY', $attendee->Value(), array('CUTYPE'=>true, 'SCHEDULE-STATUS'=>true));
+  $schedule_request = GetItip(new vCalendar($row->caldav_data), 'REQUEST', null);
   
   dbg_error_log( 'schedule', 'Writing ATTENDEE scheduling REPLY from %s to %s', $request->principal->email(), $organizer_principal->email() );
 
@@ -184,12 +184,11 @@ function doItipAttendeeReply( vCalendar $resource, $partstat ) {
   return true;
 }
 
-function GetItip( VCalendar $vcal, $method, $attendee_value ) {
-
-  $iTIP = $vcal->GetItip($method, $attendee_value );
-  $iTIP->AddProperty('REQUEST-STATUS','2.0');
+function GetItip( VCalendar $vcal, $method, $attendee_value, $clear_attendee_parameters = null ) {
+  $iTIP = $vcal->GetItip($method, $attendee_value, $clear_attendee_parameters );
   $components = $iTIP->GetComponents(); 
   foreach( $components AS $comp ) {
+    $comp->AddProperty('REQUEST-STATUS','2.0');
     $properties = array();
     foreach( $comp->GetProperties() AS $k=> $property ) {
       switch( $property->Name() ) {
