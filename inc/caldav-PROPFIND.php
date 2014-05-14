@@ -104,6 +104,9 @@ function add_proxy_response( $which, $parent_path ) {
 function get_collection_contents( $depth, $collection, $parent_path = null ) {
   global $c, $session, $request, $reply, $property_list;
 
+  // for http header comparison
+  function compare_val_with_re($val, $re){ return preg_match($re, $val)===1 ? 0 : 1; }
+
   $bound_from = $collection->bound_from();
   $bound_to   = $collection->dav_name();
   if ( !isset($parent_path) ) $parent_path = $collection->dav_name();
