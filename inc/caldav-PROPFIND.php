@@ -132,6 +132,13 @@ function get_collection_contents( $depth, $collection, $parent_path = null ) {
       $sql .= 'ORDER BY usr.user_no';
     }
     else {
+      if ( !( isset($c->hide_bound) && ( 
+              ((is_bool($c->hide_bound) || is_numeric($c->hide_bound)) && $c->hide_bound != false) ||
+              (is_string($c->hide_bound) && preg_match($c->hide_bound, $_SERVER['HTTP_USER_AGENT'])) ||
+              (is_array($c->hide_bound) && count(array_uintersect_assoc(
+                array_change_key_case(apache_request_headers(), CASE_LOWER),
+                array_change_key_case($c->hide_bound, CASE_LOWER),
+                'compare_val_with_re'))) ) ) ) {
       $qry = new AwlQuery('SELECT * FROM dav_binding WHERE dav_binding.parent_container = :this_dav_name ORDER BY bind_id',
                            array(':this_dav_name' => $bound_from));
       if( $qry->Exec('PROPFIND',__LINE__,__FILE__) && $qry->rows() > 0 ) {
@@ -149,6 +156,7 @@ function get_collection_contents( $depth, $collection, $parent_path = null ) {
             }
           }
         }
+      }
       }
 
       $sql = 'SELECT principal.*, collection.*, \'collection\' AS type ';
