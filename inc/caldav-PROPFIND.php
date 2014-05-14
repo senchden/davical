@@ -139,24 +139,24 @@ function get_collection_contents( $depth, $collection, $parent_path = null ) {
                 array_change_key_case(apache_request_headers(), CASE_LOWER),
                 array_change_key_case($c->hide_bound, CASE_LOWER),
                 'compare_val_with_re'))) ) ) ) {
-      $qry = new AwlQuery('SELECT * FROM dav_binding WHERE dav_binding.parent_container = :this_dav_name ORDER BY bind_id',
-                           array(':this_dav_name' => $bound_from));
-      if( $qry->Exec('PROPFIND',__LINE__,__FILE__) && $qry->rows() > 0 ) {
-        while( $binding = $qry->Fetch() ) {
-          $resource = new DAVResource($binding->dav_name);
-					if ( $resource->IsExternal() ) {
-						require_once("external-fetch.php");
-						update_external ( $resource );
-					}
-          if ( $resource->HavePrivilegeTo('DAV::read', false) ) {
-            $resource->set_bind_location( str_replace($bound_from,$bound_to,$binding->dav_name));
-            $responses[] = $resource->RenderAsXML($property_list, $reply);
-            if ( $depth > 0 ) {
-              $responses = array_merge($responses, get_collection_contents( $depth - 1, $resource, $binding->dav_name ) );
+        $qry = new AwlQuery('SELECT * FROM dav_binding WHERE dav_binding.parent_container = :this_dav_name ORDER BY bind_id',
+                             array(':this_dav_name' => $bound_from));
+        if( $qry->Exec('PROPFIND',__LINE__,__FILE__) && $qry->rows() > 0 ) {
+          while( $binding = $qry->Fetch() ) {
+            $resource = new DAVResource($binding->dav_name);
+            if ( $resource->IsExternal() ) {
+              require_once("external-fetch.php");
+              update_external ( $resource );
+            }
+            if ( $resource->HavePrivilegeTo('DAV::read', false) ) {
+              $resource->set_bind_location( str_replace($bound_from,$bound_to,$binding->dav_name));
+              $responses[] = $resource->RenderAsXML($property_list, $reply);
+              if ( $depth > 0 ) {
+                $responses = array_merge($responses, get_collection_contents( $depth - 1, $resource, $binding->dav_name ) );
+              }
             }
           }
         }
-      }
       }
 
       $sql = 'SELECT principal.*, collection.*, \'collection\' AS type ';
@@ -182,7 +182,14 @@ function get_collection_contents( $depth, $collection, $parent_path = null ) {
       }
     }
 
-    if ( (!isset($c->disable_caldav_proxy) || $c->disable_caldav_proxy == false) && $collection->IsPrincipal() ) {
+    if ( !( (isset($c->disable_caldav_proxy) && $c->disable_caldav_proxy != false) ||
+            (isset($c->disable_caldav_proxy_propfind_collections) && (
+              ((is_bool($c->disable_caldav_proxy_propfind_collections) || is_numeric($c->disable_caldav_proxy_propfind_collections)) && $c->disable_caldav_proxy_propfind_collections != false) ||
+              (is_string($c->disable_caldav_proxy_propfind_collections) && preg_match($c->disable_caldav_proxy_propfind_collections, $_SERVER['HTTP_USER_AGENT'])) ||
+              (is_array($c->disable_caldav_proxy_propfind_collections) && count(array_uintersect_assoc(
+                array_change_key_case(apache_request_headers(), CASE_LOWER),
+                array_change_key_case($c->disable_caldav_proxy_propfind_collections, CASE_LOWER),
+                'compare_val_with_re')))) ) ) && $collection->IsPrincipal() ) {
       // Caldav Proxy: 5.1 par. 2: Add child resources calendar-proxy-(read|write)
       dbg_error_log('PROPFIND','Adding calendar-proxy-read and write. Path: %s', $bound_from );
       $response = add_proxy_response('read', $bound_from );
