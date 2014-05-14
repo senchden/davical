@@ -71,7 +71,9 @@ function expand_properties( $urls, $ptree, &$reply, $recurse_again = true ) {
             $paths = array();
             foreach( $hrefs AS $k => $v ) {
               $content = $v->GetContent();
-              $paths[] = $content;
+              // prevent infinite recursion and recursion to the object itself (non-recursive getting request URL properties)
+              if($content[0]=='/' && $content!='/caldav.php'.str_replace( '%2F', '/', rawurlencode($url)))
+                $paths[] = $content;
             }
             //            dbg_error_log('REPORT',' Found property "%s" contains hrefs "%s"', $pname, implode(', ',$paths) );
             $property->SetContent( expand_properties($paths, $subtrees[$pname], $reply, false) );
