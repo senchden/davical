@@ -19,6 +19,7 @@ require_once('AwlCache.php');
 require_once('vComponent.php');
 require_once('vCalendar.php');
 require_once('WritableCollection.php');
+require_once('schedule-functions.php');
 include_once('iSchedule.php');
 include_once('RRule-v2.php');
 
@@ -356,6 +357,7 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
     return false;
   }
   $schedule_original = new vCalendar($row->caldav_data);
+  $attendee->SetParameterValue('SCHEDULE-STATUS', '2.0');
   $schedule_original->UpdateAttendeeStatus($request->principal->email(), clone($attendee) );
 
   $collection_path = preg_replace('{/[^/]+$}', '/', $row->dav_name );
@@ -363,8 +365,7 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
   $organizer_calendar = new WritableCollection(array('path' => $collection_path));
   $organizer_inbox = new WritableCollection(array('path' => $organizer_principal->internal_url('schedule-inbox')));
 
-  $schedule_reply = clone($schedule_original);
-  $schedule_reply->AddProperty('METHOD', 'REPLY');
+  $schedule_reply = GetItip(new vCalendar($schedule_original->Render(null, true)), 'REPLY', $attendee->Value(), array('CUTYPE'=>true, 'SCHEDULE-STATUS'=>true));
 
   dbg_error_log( 'PUT', 'Writing scheduling REPLY from %s to %s', $request->principal->email(), $organizer_principal->email() );
   
@@ -498,11 +499,17 @@ function do_scheduling_requests( vCalendar $resource, $create, $old_data = null 
   }
   $organizer_email = preg_replace( '/^mailto:/i', '', $organizer->Value() );
 
+  // force re-render the object (to get the same representation for all attendiees)
+  $resource->Render(null, true);
+
   if ( $request->principal->email() != $organizer_email ) {
     return do_scheduling_reply($resource,$organizer);
   }
-  
-  $schedule_request = clone($resource);
+
+  // required because we set the schedule status on the original object (why clone() not works here?)
+  $orig_resource = new vCalendar($resource->Render(null, true));
+
+  $schedule_request = new vCalendar($resource->Render(null, true));
   $schedule_request->AddProperty('METHOD', 'REQUEST');
 
   $old_attendees = array();
@@ -588,7 +595,7 @@ function do_scheduling_requests( vCalendar $resource, $create, $old_data = null 
         }
         else if ( $attendee_inbox->WriteCalendarMember($schedule_request, $attendee_is_new) !== false ) {
           $response = '1.2';  // Scheduling invitation delivered successfully
-          if ( $attendee_calendar->WriteCalendarMember($resource, $attendee_is_new) === false ) {
+          if ( $attendee_calendar->WriteCalendarMember($orig_resource, $attendee_is_new) === false ) {
                 dbg_error_log('ERROR','Could not write %s calendar member to %s', ($attendee_is_new?'new':'updated'),
                         $attendee_calendar->dav_name(), $attendee_calendar->dav_name(), $schedule_target->username());
                 trace_bug('Failed to write scheduling resource.');
@@ -1398,6 +1405,9 @@ function write_resource( DAVResource $resource, $caldav_data, DAVResource $colle
   $calitem_params[':priority'] = $first->GetPValue('PRIORITY');
   $calitem_params[':percent_complete'] = $first->GetPValue('PERCENT-COMPLETE');
   $calitem_params[':status'] = $first->GetPValue('STATUS');
+
+  // force re-render the object (to get the same representation for all attendiees)
+  $vcal->Render(null, true);
 
   if ( !$collection->IsSchedulingCollection() ) {
     if ( do_scheduling_requests($vcal, ($put_action_type == 'INSERT'), $old_dav_data ) ) {
