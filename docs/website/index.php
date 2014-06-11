@@ -6,26 +6,26 @@
 <p>DAViCal is a server for calendar sharing.  It is an implementation of the CalDAV protocol which is designed
 for storing calendaring resources (in iCalendar format) on a remote shared server. </p>
 <p>An increasing number of calendar clients support
-the maintenance of shared remote calendars through CalDAV including Mozilla Calendar
+the maintenance of shared remote calendars through CalDAV, including Mozilla Calendar
 (Sunbird/Lightning), Evolution, Mulberry, Chandler, and various other closed-source products
-such as Apple's iCal and iPhone. </p>
+such as Apple's iCal and iOS. </p>
 <h2>Features</h2>
-DAViCal:<ul>
+<p>DAViCal:<ul>
 <li>is <a href="http://www.gnu.org/philosophy/open-source-misses-the-point.html">Free Software</a> licensed under the <a href="http://www.gnu.org/licenses/gpl.html">General Public License</a>.</li>
 <li>uses an SQL database for storage of event data</li>
 <li>supports backward-compatible access via WebDAV in read-only or read-write mode (not recommended)</li>
 <li>is committed to inter-operation with the widest possible CalDAV client software.</li>
-</ul>
+</ul></p>
 
 <p>DAViCal supports basic delegation of read/write access among calendar users, multiple users or clients reading
 and writing the same calendar entries over time, and scheduling of meetings with free/busy time displayed. </p>
 
 <h1>Overview of Installation and Use</h1>
 <h2>Prerequisites</h2>
-To install and use DAViCal you will need:<ul>
+<p>To install and use DAViCal you will need:<ul>
 <li>a PostgreSQL database server</li>
 <li>a web server which can run PHP version 5</li>
-</ul>
+</ul></p>
 <p>We use <a href="http://www.debian.org/">Debian GNU/Linux</a> for this, but other people use various different
 versions of Linux, FreeBSD, Mac OSX and even Microsoft Windows.  We definitely do not recommend using Windows
 for this unless you are completely hobbled by silly internal IT policies and have to do so.</p>
@@ -47,15 +47,9 @@ a page on the wiki which will sometimes have newer information.</p>
 <p>If you can't find your answer there, then the IRC channel #davical on <a href="irc://irc.oftc.net/#davical">irc.oftc.net</a> is
 a great next port of call.  Many problems can be solved quickly with a short on-line chat.</p>
 <p>Almost as good as the IRC channel is the <a href="https://lists.sourceforge.net/mailman/listinfo/davical-general">DAViCal General Mailing List</a>.</p>
-Other places to try include:<ul>
-<li>The sourceforge forums.</li>
-<li>Googling your problem.</li>
-</ul>
-<p>As a last resort, or in case your organisation likes that sort of thing, paid commercial support is available
-through the author's company <a href="http://www.morphoss.com/products/davical/support">Morphoss</a>.</p>
 
 <h1>Credits</h1>
-<p>DAViCal CalDAV Server was conceived and written by <a href="http://andrew.mcmillan.net.nz/">Andrew McMillan</a>.</p>
+<p>The DAViCal CalDAV Server was conceived and written by <a href="http://andrew.mcmillan.net.nz/">Andrew McMillan</a>.</p>
 <p>Many people have contributed to DAViCal, through providing translations of the interface, reporting bugs and
 sending patches for things here and there.  Some more notable contributors include:</p><ul>
 <li>Maxime Delorme (CSS, LDAP, French translations)</li>
@@ -65,12 +59,12 @@ sending patches for things here and there.  Some more notable contributors inclu
 </ul>
 
 <h1>Contributing to DAViCal</h1>
-<p><img src="images/larger.png" alt="DAViCal Logo" height="160" width="160" align="right" class="gone">We welcome contributions from interested people.  You don't need to be able to write code - there are lots of
+<p><img src="images/larger.png" alt="DAViCal Logo" height="160" width="160" align="right" class="gone">As of Spring, 2014, DAViCal has transitioned to a <a href="http://wiki.davical.org/w/Community_Support">community support model</a>. We welcome contributions from interested people.  You don't need to be able to write code - there are lots of
 small tasks around the project that can be done.
 CalDAV server:</p>
 <p>Here are some things you could do that will help us to concentrate on making DAViCal better:<ul>
 <li>writing documentation</li>
-<li>helping people on IRC, on the mailing list or sf.net forums</li>
+<li>helping people on IRC or on the mailing list</li>
 <li>translating the DAViCal interface to another language</li>
 <li>managing the release process</li>
 <li>reviewing and tidying the Wiki updates</li>
