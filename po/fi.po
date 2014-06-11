@@ -1,0 +1,1450 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: DAViCal\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-26 14:17+0200\n"
+"PO-Revision-Date: 2013-11-20 09:36+0000\n"
+"Last-Translator: lkraav <leho@kraav.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/projects/p/davical/language/fi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Translators: this is the formatting of a date with time. See
+#. http://php.net/manual/en/function.strftime.php
+msgid "%F %T"
+msgstr "%F %T"
+
+#. Translators: his is the formatting of just the time. See
+#. http://php.net/manual/en/function.strftime.php
+msgid "%T"
+msgstr "%T"
+
+msgid "*** Default Locale ***"
+msgstr "*** Oletuskieli ***"
+
+msgid "*** Unknown ***"
+msgstr "*** Tuntematon ***"
+
+#, php-format
+msgid "- adding %s to group : %s"
+msgstr "– lisätään %s ryhmään: %s"
+
+#, php-format
+msgid "- adding users %s to group : %s"
+msgstr "– lisätään käyttäjät %s ryhmään: %s"
+
+#, php-format
+msgid "- creating groups : %s"
+msgstr "– luodaan ryhmät: %s"
+
+#, php-format
+msgid "- creating record for users :  %s"
+msgstr "– luodaan tietueet käyttäjille: %s"
+
+#, php-format
+msgid "- deactivate groups : %s"
+msgstr "– poistetaan käytöstä ryhmät: %s"
+
+#, php-format
+msgid "- deactivating users : %s"
+msgstr "– poistetaan käytöstä käyttäjät: %s"
+
+#, php-format
+msgid "- nothing done on : %s"
+msgstr "– mitään ei tehty: %s"
+
+#, php-format
+msgid "- removing %s from group : %s"
+msgstr "– poistetaan %s ryhmästä: %s"
+
+#, php-format
+msgid "- updating groups : %s"
+msgstr "– päivitetään ryhmiä: %s"
+
+#, php-format
+msgid "- updating user records : %s"
+msgstr "– päivitetään käyttäjätietueita: %s"
+
+msgid ""
+"<b>WARNING: all events in this path will be deleted before inserting allof "
+"the ics file</b>"
+msgstr "<b>VAROITUS: kaikki tapahtumat tässä polussa poistetaan ennen kaikkien ics-tiedostossa olevien tuontia</b>"
+
+#, php-format
+msgid ""
+"<h1>Help</h1>\n"
+"<p>For initial help you should visit the <a href=\"http://www.davical.org/\" target=\"_blank\">DAViCal Home Page</a> or take\n"
+"a look at the <a href=\"http://wiki.davical.org/%s\" target=\"_blank\">DAViCal Wiki</a>.</p>\n"
+"<p>If you can't find the answers there, visit us on <a href=\"http://wikipedia.org/wiki/Internet_Relay_Chat\" target=\"_blank\">IRC</a> in\n"
+"the <b>#davical</b> channel on <a href=\"http://www.oftc.net/\" target=\"_blank\">irc.oftc.net</a>,\n"
+"or send a question to the <a href=\"http://lists.sourceforge.net/mailman/listinfo/davical-general\" target=\"_blank\">DAViCal Users mailing list</a>.</p>\n"
+"<p>The <a href=\"http://sourceforge.net/mailarchive/forum.php?forum_id=8348\" title=\"DAViCal Users Mailing List\" target=\"_blank\">mailing list\n"
+"archives can be helpful too.</p>"
+msgstr ""
+
+#, php-format
+msgid ""
+"<h1>Log On Please</h1><p>For access to the %s you should log on withthe "
+"username and password that have been issued to you.</p><p>If you would like "
+"to request access, please e-mail %s.</p>"
+msgstr "<h1>Kirjaudu sisään</h1><p>Päästäksesi sivulle %s, kirjaudu sisään tunnuksella ja salasanalla jotka on annettu sinulle.</p><p>Jos haluat pyytää pääsyä, lähetä sähköpostia osoitteeseen %s.</p>"
+
+msgid "A DAViCal principal collection may only contain collections"
+msgstr ""
+
+msgid "A collection already exists at that location."
+msgstr "Antamassasi sijainnissa on jo kokoelma."
+
+msgid "A collection may not be both a calendar and an addressbook."
+msgstr "Kokoelma ei voi olla sekä kalenteri että osoitekirja."
+
+msgid "A resource already exists at the destination."
+msgstr "Antamassasi sijainnissa on jo resurssi."
+
+msgid "AWL Library version "
+msgstr "AWL-kirjaston versio"
+
+msgid "Access Tickets"
+msgstr "Pääsytiketit"
+
+msgid "Access ticket deleted"
+msgstr "Pääsytiketti poistettu"
+
+msgid "Action"
+msgstr "Toiminto"
+
+msgid "Active"
+msgstr "Aktiivinen"
+
+msgid "Adding new member to this Group Principal"
+msgstr "Lisätään uusi jäsen tähän ryhmään"
+
+#. Translators: in the sense of 'systems admin'
+msgid "Admin"
+msgstr "Ylläpitäjä"
+
+msgid "Administration"
+msgstr "Ylläpito"
+
+msgid "Administrator"
+msgstr "Ylläpitäjä"
+
+msgid "All"
+msgstr "Kaikki"
+
+msgid "All collection data will be unrecoverably deleted."
+msgstr "Kaikki kokoelmatiedot poistetaan peruuttamattomasti."
+
+#, php-format
+msgid "All events of user \"%s\" were deleted and replaced by those from file %s"
+msgstr "Kaikki käyttäjän ”%s” tapahtumat on poistettu ja korvattu tiedoston %s tapahtumilla"
+
+msgid ""
+"All of the principal's calendars and events will be unrecoverably deleted."
+msgstr ""
+
+msgid "All privileges"
+msgstr "Kaikki oikeudet"
+
+msgid "All requested changes were made."
+msgstr "Kaikki pyydetyt muutokset tehtiin."
+
+msgid ""
+"Allow free/busy enquiries targeted at the owner of this scheduling inbox"
+msgstr ""
+
+msgid "An \"Administrator\" user has full rights to the whole DAViCal System"
+msgstr "Ylläpitäjä-käyttäjällä on täydet oikeudet koko DAViCal-järjestelmään"
+
+msgid "Anonymous users are not allowed to modify calendars"
+msgstr "Tunnistamattomilla käyttäjillä ei ole oikeutta muokata kalentereita"
+
+msgid "Anonymous users may only access public calendars"
+msgstr "Tunnistamattomat käyttäjät voivat käyttää vain julkisia kalentereita"
+
+msgid "Append"
+msgstr "Liitä"
+
+msgid "Application DB User"
+msgstr "Sovelluksen tietokantakäyttäjä"
+
+msgid "Apply Changes"
+msgstr "Käytä"
+
+msgid "Apply DB Patches"
+msgstr "Tee tietokantapäivitykset"
+
+msgid "Attachment"
+msgstr "Liite"
+
+msgid "Authentication server unavailable."
+msgstr "Tunnistuspalvelin saavuttamattomissa."
+
+msgid "Binding deleted"
+msgstr "Liitos poistettu"
+
+msgid "Bindings to other collections"
+msgstr "Liitokset muihin kokoelmiin"
+
+msgid "Bindings to this Collection"
+msgstr "Liitokset tähän kokoelmaan"
+
+msgid "Bindings to this Principal's Collections"
+msgstr "Liitokset tämän omistajan kokoelmiin"
+
+msgid "Body contains no XML data!"
+msgstr "Runko ei sisällä XML-tietoa!"
+
+msgid "Bound As"
+msgstr ""
+
+msgid "Browse all users"
+msgstr "Selaa kaikkia käyttäjiä"
+
+msgid "Busy"
+msgstr "Varattu"
+
+#, php-format
+msgid "Calendar \"%s\" was loaded from file."
+msgstr "Kalenteri ”%s” ladattiin tiedostosta."
+
+msgid "Calendar Principals"
+msgstr ""
+
+msgid "Calendar Timezone"
+msgstr "Kalenterin aikavyöhyke"
+
+msgid "Can only add tickets for existing collection paths which you own"
+msgstr "Voit lisätä tikettejä vain omistamiisi olemassaoleviin kokoelmapolkuihin"
+
+msgid "Categories"
+msgstr "Luokat"
+
+msgid "Change Password"
+msgstr "Salasanan vaihto"
+
+msgid "Click to display user details"
+msgstr "Klikkaa nähdäksesi käyttäjätiedot"
+
+msgid "Click to edit principal details"
+msgstr ""
+
+msgid "Collection"
+msgstr "Kokoelma"
+
+msgid "Collection Grants"
+msgstr "Kokoelman oikeudet"
+
+msgid "Collection ID"
+msgstr "Kokoelman tunniste"
+
+msgid "Collection deleted"
+msgstr "Kokoelma poistettu"
+
+msgid ""
+"Collections may not be both CalDAV calendars and CardDAV addressbooks at the"
+" same time"
+msgstr "Kokoelmat eivät voi olla samaan aikaan CalDAV-kalentereita jaCardDAV-osoitekirjoja."
+
+msgid "Configuring Calendar Clients for DAViCal"
+msgstr "Kalenteriasiakasohjelmien asetus käyttämään DAViCalia"
+
+msgid "Configuring DAViCal"
+msgstr "DAViCalin asetukset"
+
+msgid "Confirm"
+msgstr "Vahvista"
+
+msgid "Confirm Deletion of the Binding"
+msgstr "Vahvista liitoksen poistaminen"
+
+msgid "Confirm Deletion of the Collection"
+msgstr "Vahvista kokoelman poistaminen"
+
+msgid "Confirm Deletion of the Principal"
+msgstr ""
+
+msgid "Confirm Deletion of the Ticket"
+msgstr "Vahvista tiketin poistaminen"
+
+msgid "Confirm Password"
+msgstr "Vahvista salasana"
+
+msgid "Confirm the new password."
+msgstr "Vahvista uusi salasana."
+
+msgid "Could not retrieve"
+msgstr "Ei voitu hakea"
+
+msgid "Create"
+msgstr "Luo uusi"
+
+msgid "Create Collection"
+msgstr "Luo kokoelma"
+
+msgid "Create Events/Collections"
+msgstr "Luo tapahtumia/kokoelmia"
+
+msgid "Create New Collection"
+msgstr "Luo uusi kokoelma"
+
+msgid "Create New Principal"
+msgstr ""
+
+msgid "Create Principal"
+msgstr ""
+
+msgid "Create a new principal (i.e. a new user, resource or group)"
+msgstr ""
+
+msgid "Create a resource or collection"
+msgstr "Luo resurssi tai kokoelma"
+
+msgid "Creating new Collection."
+msgstr "Luo uusi kokoelma"
+
+msgid "Creating new Principal record."
+msgstr ""
+
+msgid "Creating new ticket granting privileges to this Principal"
+msgstr ""
+
+msgid "Current DAViCal version "
+msgstr "Nykyinen DAViCalin versio "
+
+msgid "DAV Path"
+msgstr "DAV-polku"
+
+msgid ""
+"DAV::resourcetype may only be set to a new value, it may not be removed."
+msgstr "DAV::resourcetypeen voi asettaa vain uuden arvon, sitä ei voi poistaa."
+
+msgid "DAViCal CalDAV Server"
+msgstr "DAViCal-CalDAV-palvelin"
+
+msgid "DAViCal DB Schema version "
+msgstr "DAViCal tietokantaskeeman versio "
+
+msgid "DAViCal Homepage"
+msgstr "DAViCalin Internet-sivusto"
+
+msgid "DAViCal Wiki"
+msgstr "DAViCal-wiki"
+
+msgid "DAViCal only allows BIND requests for collections at present."
+msgstr "DAViCal sallii tällä hetkellä vain BIND-pyynnöt kokoelmille."
+
+msgid "DKIM signature missing"
+msgstr "DKIM-allekirjoitus puuttuu"
+
+msgid "DKIM signature validation failed(DNS ERROR)"
+msgstr "DKIM-allekirjoituksen tarkistus epäonnistui (DNS-virhe)"
+
+msgid "DKIM signature validation failed(KEY Parse ERROR)"
+msgstr "DKIM-allekirjoituksen tarkistus epäonnistui (avaimen jäsentämisvirhe)"
+
+msgid "DKIM signature validation failed(KEY Validation ERROR)"
+msgstr "DKIM-allekirjoituksen tarkistus epäonnistui (avaimen tarkistusvirhe)"
+
+msgid "DKIM signature validation failed(Signature verification ERROR)"
+msgstr "DKIM-allekirjoituksen tarkistus epäonnistui (allekirjoituksen tarkistusvirhe)"
+
+msgid "Database Error"
+msgstr "Tietokantavirhe"
+
+msgid "Database Host"
+msgstr "Tietokantapalvelin"
+
+msgid "Database Name"
+msgstr "Tietokannan nimi"
+
+msgid "Database Owner"
+msgstr "Tietokannan omistaja"
+
+msgid "Database Password"
+msgstr "Tietokannan salasana"
+
+msgid "Database Port"
+msgstr "Tietokantapalvelimen portti"
+
+msgid "Database Username"
+msgstr "Tietokannan käyttäjätunnus"
+
+msgid "Database error"
+msgstr "Tietokantavirhe"
+
+msgid "Database is Connected"
+msgstr "Yhdistetty tietokantaan"
+
+msgid "Date Format Style"
+msgstr "Päivämäärän muotoilutyyli"
+
+msgid "Date Style"
+msgstr "Päivämäärätyyli"
+
+msgid "Default Privileges"
+msgstr "Oletusoikeudet"
+
+msgid "Default relationships added."
+msgstr "Oletussuhteet lisätty."
+
+msgid "Delete"
+msgstr "Poista"
+
+msgid "Delete Events/Collections"
+msgstr "Poista tapahtumia/kokoelmia"
+
+msgid "Delete Principal"
+msgstr ""
+
+msgid "Delete a resource or collection"
+msgstr "Poista resurssi tai kokoelma"
+
+msgid "Deleted a grant from this Principal"
+msgstr ""
+
+msgid "Deleting Binding:"
+msgstr "Poistetaan liitos:"
+
+msgid "Deleting Collection:"
+msgstr "Poistetaan kokoelma:"
+
+msgid "Deleting Principal:"
+msgstr ""
+
+msgid "Deleting Ticket:"
+msgstr "Poistetaan tiketti:"
+
+msgid ""
+"Deliver scheduling invitations from an organiser to this scheduling inbox"
+msgstr ""
+
+msgid "Deliver scheduling replies from an attendee to this scheduling inbox"
+msgstr ""
+
+msgid "Dependencies"
+msgstr "Riippuvuudet"
+
+msgid "Dependency"
+msgstr "Riippuvuus"
+
+msgid "Description"
+msgstr "Kuvaus"
+
+msgid "Destination collection does not exist"
+msgstr "Kohdekokoelmaa ei ole olemassa"
+
+msgid "Directory on the server"
+msgstr "Hakemisto palvelimella"
+
+msgid "Display Name"
+msgstr "Näyttönimi"
+
+msgid "Displayname"
+msgstr "Näyttönimi"
+
+msgid "Does the user have the right to perform this role?"
+msgstr ""
+
+msgid "Domain"
+msgstr "Toimialue"
+
+msgid "EMail"
+msgstr "Sähköposti"
+
+msgid "EMail OK"
+msgstr "Sähköposti OK"
+
+msgid "ERROR: The full name may not be blank."
+msgstr "VIRHE: Koko nimi ei voi olla tyhjä."
+
+msgid "ERROR: The new password must match the confirmed password."
+msgstr "VIRHE: Uuden salasanan täytyy olla sama kuin vahvistettu salasana."
+
+msgid "ERROR: There was a database error writing the roles information!"
+msgstr "VIRHE: Roolitietojen tallentamisessa tapahtui tietokantavirhe!"
+
+msgid "Edit"
+msgstr "Muokkaa"
+
+msgid "Edit this user record"
+msgstr "Muokkaa tätä käyttäjätietuetta"
+
+msgid "Email Address"
+msgstr "Sähköpostiosoite"
+
+msgid ""
+"Enter a username, if you know it, and click here, to be e-mailed a temporary"
+" password."
+msgstr "Syötä käyttäjänimesi (jos tiedät sen) ja klikkaa tästä saadaksesi sähköpostilla väliaikaisen salasanan."
+
+msgid "Enter your username and password then click here to log in."
+msgstr "Syötä käyttäjätunnus ja salasana, klikkaa sitten tästä kirjautuaksesi sisään."
+
+#, php-format
+msgid "Error NoGroupFound with filter >%s<, attributes >%s< , dn >%s<"
+msgstr "Virhe ryhmää ei löytynyt (NoGroupFound) suodattimella >%s<, attribuutit >%s<, DN >%s<"
+
+#, php-format
+msgid "Error NoUserFound with filter >%s<, attributes >%s< , dn >%s<"
+msgstr "Virhe käyttäjää ei löytynyt (NoUserFound) suodattimella >%s<, attribuutit >%s<, DN >%s<"
+
+msgid "Error querying database."
+msgstr "Virhe kysellessä tietokannasta."
+
+msgid "Error writing calendar details to database."
+msgstr "Virhe tallennettaessa kalenterin yksityiskohtia tietokantaan."
+
+msgid "Error writing calendar properties to database."
+msgstr "Virhe tallennettaessa kalenterin ominaisuuksia tietokantaan."
+
+msgid "European"
+msgstr "Eurooppalainen"
+
+msgid "European (d/m/y)"
+msgstr "Eurooppalainen (d/m/y)"
+
+msgid "Existing resource does not match \"If-Match\" header - not accepted."
+msgstr "Olemassaoleva resurssi ei täsmää ”If-Match”-otsakkeen kanssa – ei hyväksytty."
+
+msgid "Existing resource matches \"If-None-Match\" header - not accepted."
+msgstr "Olemassaoleva resurssi täsmää ”If-Match”-otsakkeen kanssa – ei hyväksytty."
+
+msgid "Expires"
+msgstr "Vanhenee"
+
+msgid "External Calendars"
+msgstr "Ulkoiset kalenterit"
+
+msgid "External Url"
+msgstr "Ulkoinen URL"
+
+msgid "Fail"
+msgstr ""
+
+msgid "Failed to write collection."
+msgstr "Kokoelman kirjoittaminen epäonnistui."
+
+msgid "Feeds are only supported for calendars at present."
+msgstr "Tällä hetkellä vain kalenterit tukevat syötteitä."
+
+msgid "For access to the"
+msgstr ""
+
+msgid "Forbidden"
+msgstr "Kielletty"
+
+msgid "Free/Busy"
+msgstr "Vapaa/Varattu"
+
+msgid "Full Name"
+msgstr "Koko nimi"
+
+msgid "Fullname"
+msgstr "Koko nimi"
+
+msgid "GET requests on collections are only supported for calendars."
+msgstr "GET-pyyntöjä kokoelmille tuetaan vain kalentereissa."
+
+msgid "GNU gettext support"
+msgstr "GNU gettext -tuki"
+
+msgid "GO!"
+msgstr ""
+
+msgid "Go to the DAViCal Feature Requests"
+msgstr "Siirry DAViCalin ominaisuuspyyntöihin"
+
+msgid "Grant"
+msgstr ""
+
+msgid "Granting new privileges from this Principal"
+msgstr ""
+
+#. Translators: in the sense of a group of people
+msgid "Group"
+msgstr "Ryhmä"
+
+msgid "Group Members"
+msgstr "Ryhmän jäsenet"
+
+msgid "Group Memberships"
+msgstr "Ryhmän jäsenyydet"
+
+msgid "Group Principals"
+msgstr ""
+
+msgid "Has Members"
+msgstr "On jäseniä"
+
+msgid "Help"
+msgstr "Ohje"
+
+msgid "Help on the current screen"
+msgstr "Ohje nykyiselle näkymälle"
+
+msgid "Help! I've forgotten my password!"
+msgstr "Unohdin salasanani!"
+
+msgid "Home"
+msgstr "Koti"
+
+msgid "Home "
+msgstr "Koti"
+
+msgid "Home Page"
+msgstr "Kotisivu"
+
+msgid "ID"
+msgstr "Tunniste"
+
+msgid "ISO Format"
+msgstr "ISO-muoto"
+
+msgid "ISO Format (YYYY-MM-DD)"
+msgstr "ISO-muoto (YYYY-MM-DD)"
+
+#. Translators: short for 'Identifier'
+msgid "Id"
+msgstr "ID"
+
+msgid "If you have forgotten your password then"
+msgstr "Jos unohdit salasanasi, "
+
+msgid "If you would like to request access, please e-mail"
+msgstr "Jos haluat pyytää pääsyä, lähetä sähköpostia osoitteella"
+
+msgid "Import all .ics files of a directory"
+msgstr "Tuo kaikki hakemiston .ics-tiedostot"
+
+msgid "Import calendars and Synchronise LDAP."
+msgstr "Tuo kalenterit ja synkronoi LDAP."
+
+msgid "Inactive Principals"
+msgstr ""
+
+msgid "Incorrect content type for addressbook: "
+msgstr "Virheellinen sisältötyyppi osoitekirjalle: "
+
+msgid "Incorrect content type for calendar: "
+msgstr "Virheellinen sisältötyyppi kalenterille: "
+
+msgid "Invalid user name or password."
+msgstr "Väärä käyttäjätunnus tai salasana."
+
+msgid "Invalid username or password."
+msgstr "Väärä käyttäjätunnus tai salasana."
+
+msgid "Is Member of"
+msgstr "On jäsen"
+
+msgid "Is a Calendar"
+msgstr "On kalenteri"
+
+msgid "Is an Addressbook"
+msgstr "On osoitekirja"
+
+msgid "Is this user active?"
+msgstr "Onko käyttäjä aktiivinen?"
+
+msgid "Items in Collection"
+msgstr "Kohteet kokoelmassa"
+
+msgid "Joined"
+msgstr "Liittynyt"
+
+msgid "Language"
+msgstr "Kieli"
+
+msgid "Last used"
+msgstr "Viimeksi käytetty"
+
+msgid "List External Calendars"
+msgstr "Listaa ulkoiset kalenterit"
+
+msgid "List Groups"
+msgstr "Listaa ryhmät"
+
+msgid "List Resources"
+msgstr "Listaa resurssit"
+
+msgid "List Users"
+msgstr "Listaa käyttäjät"
+
+msgid "Load From File"
+msgstr "Lataa tiedostosta"
+
+msgid "Locale"
+msgstr ""
+
+msgid "Location"
+msgstr "Sijainti"
+
+msgid "Log On Please"
+msgstr "Kirjaudu sisään"
+
+msgid "Log out of DAViCal"
+msgstr "Kirjaudu ulos DAViCalista"
+
+msgid "Logout"
+msgstr "Kirjaudu ulos"
+
+msgid "Member deleted from this Group Principal"
+msgstr ""
+
+msgid ""
+"Most of DAViCal will work but upgrading to PHP 5.2 or later is strongly "
+"recommended."
+msgstr "Suurin osa DAViCalista toimii, mutta päivittäminen PHP 5.2:een tai uudempaan on suositeltavaa."
+
+msgid "Name"
+msgstr "Nimi"
+
+msgid "New Collection"
+msgstr "Uusi kokoelma"
+
+msgid "New Password"
+msgstr "Uusi salasana"
+
+msgid "New Principal"
+msgstr ""
+
+#. Translators: not 'Yes'
+msgid "No"
+msgstr "Ei"
+
+msgid "No calendar content"
+msgstr "Ei kalenterisisältöä"
+
+msgid "No collection found at that location."
+msgstr "Annetusta sijainnista ei löytynyt kokoelmaa."
+
+msgid "No resource exists at the destination."
+msgstr "Annetussa sijainnissa ei ole resurssia."
+
+msgid "No summary"
+msgstr "Ei yhteenvetoa"
+
+#. Translators: short for 'Number'
+msgid "No."
+msgstr "Nro."
+
+msgid "No. of Collections"
+msgstr "Kokoelmien määrä"
+
+msgid "No. of Principals"
+msgstr ""
+
+msgid "No. of Resources"
+msgstr "Resurssien määrä"
+
+msgid "Not overwriting existing destination resource"
+msgstr "Olemassaolevaa kohderesurssia ei ylikirjoiteta"
+
+msgid "Opaque"
+msgstr ""
+
+msgid "Organizer Missing"
+msgstr "Järjestäjä puuttuu"
+
+msgid "Override a Lock"
+msgstr "Yliaja lukitus"
+
+msgid "PDO PostgreSQL drivers"
+msgstr "PDO PostgreSQL -ajurit"
+
+msgid "PHP DateTime class"
+msgstr "PHP DateTime-luokka"
+
+msgid "PHP LDAP module available"
+msgstr "PHP LDAP-moduli käytettävissä"
+
+msgid "PHP Magic Quotes GPC off"
+msgstr "PHP Magic Quotes GPC pois päältä"
+
+msgid "PHP Magic Quotes runtime off"
+msgstr "PHP ajonaikainen Magic Quotes pois päältä"
+
+msgid "PHP PDO module available"
+msgstr "PHP PDO-moduli käytettävissä"
+
+msgid "PHP calendar extension available"
+msgstr "PHP kalenteriliitännäinen käytettävissä"
+
+msgid "PHP curl support"
+msgstr "PHP curl-tuki"
+
+msgid "PHP iconv support"
+msgstr "PHP iconv-tuki"
+
+msgid "PHP not using Apache Filter mode"
+msgstr "PHP ei käytä Apache Filter -tilaa"
+
+msgid "PHP5 curl support is required for external binds"
+msgstr "PHP5 curl-tuki vaaditaan ulkoisiin liitoksiin"
+
+msgid ""
+"PUT on a collection is only allowed for text/calendar content against a "
+"calendar collection"
+msgstr ""
+
+msgid ""
+"PUT on a collection is only allowed for text/vcard content against an "
+"addressbook collection"
+msgstr ""
+
+msgid "Passed"
+msgstr ""
+
+msgid "Password"
+msgstr "Salasana"
+
+msgid "Path"
+msgstr "Polku"
+
+msgid "Person"
+msgstr "Henkilö"
+
+msgid "Please confirm deletion of access ticket - see below"
+msgstr "Vahvista pääsytiketin poistaminen – lisätietoja alla"
+
+msgid "Please confirm deletion of binding - see below"
+msgstr "Vahvista liitoksen poistaminen – lisätietoja alla"
+
+msgid "Please confirm deletion of collection - see below"
+msgstr "Vahvista kokoelman poistaminen – lisätietoja alla"
+
+msgid "Please confirm deletion of the principal"
+msgstr ""
+
+msgid "Please note the time and advise the administrator of your system."
+msgstr "Ota ylös ajankohta ja ilmoita asiasta järjestelmän ylläpitäjälle."
+
+msgid "Principal"
+msgstr ""
+
+msgid "Principal Collections"
+msgstr ""
+
+msgid "Principal Grants"
+msgstr ""
+
+msgid "Principal ID"
+msgstr ""
+
+msgid "Principal Type"
+msgstr ""
+
+msgid "Principal deleted"
+msgstr ""
+
+msgid "Privileges"
+msgstr ""
+
+msgid "Privileges granted to All Users"
+msgstr ""
+
+msgid "Privileges to allow delivery of scheduling messages"
+msgstr ""
+
+msgid "Privileges to delegate scheduling decisions"
+msgstr ""
+
+msgid "Property is read-only"
+msgstr "Ominaisuus on vain luettavaksi"
+
+#. Translators: in the sense of being available to all users
+msgid "Public"
+msgstr "Julkinen"
+
+msgid "Publicly Readable"
+msgstr "Julkisesti luettava"
+
+msgid "REPORT body contains no XML data!"
+msgstr "REPORT vartalo ei sisällä XML-tietoa!"
+
+msgid "REPORT body is not valid XML data!"
+msgstr "REPORT vartalo ei ole kelvollista XML-tietoa!"
+
+msgid "Read"
+msgstr "Näytä"
+
+msgid "Read ACLs for a resource or collection"
+msgstr "Näytä pääsyoikeudet resurssille tai kokoelmalle"
+
+msgid "Read Access Controls"
+msgstr "Näytä pääsyoikeudet"
+
+msgid "Read Current User's Access"
+msgstr "Näytä nykyisen käyttäjän pääsy"
+
+msgid "Read Free/Busy Information"
+msgstr "Näytä vapaa/varattu-tieto"
+
+msgid "Read the content of a resource or collection"
+msgstr "Näytä resurssin tai kokoelman sisältö"
+
+msgid ""
+"Read the details of the current user's access control to this resource."
+msgstr "Näytä yksityiskohdat nykyisen käyttäjän pääsyoikeuksista tähän resurssiin."
+
+msgid "Read the free/busy information for a calendar collection"
+msgstr "Näytä vapaa/varattu-tieto kalenterikokoelmalle"
+
+msgid "Read/Write"
+msgstr "Lue/Kirjoita"
+
+msgid "References"
+msgstr "Viittaukset"
+
+msgid "Remove"
+msgstr "Poista"
+
+msgid "Remove a lock"
+msgstr "Poista lukko"
+
+msgid "Remove dangling external calendars"
+msgstr "Poista orvot ulkoiset kalenterit"
+
+msgid "Report Bug"
+msgstr "Ilmoita virheestä"
+
+msgid "Report a bug in the system"
+msgstr "Ilmoita virheestä järjestelmässä"
+
+msgid "Request Feature"
+msgstr "Pyydä ominaisuutta"
+
+msgid "Request body is not valid XML data!"
+msgstr "Pyynnön vartalo ei ole kelvollista XML-tietoa!"
+
+#. Translators a thing which might be booked: a room, a carpark, a
+#. projector...
+msgid "Resource"
+msgstr "Resurssi"
+
+msgid "Resource Calendar Principals"
+msgstr ""
+
+msgid "Resource Not Found."
+msgstr "Resurssia ei löytynyt."
+
+msgid "Resource has changed on server - not deleted"
+msgstr "Resurssia on muutettu palvelimella – ei poistettu"
+
+msgid "Resources may not be changed to / from collections."
+msgstr "Resurssia ei voi siirtää kokoelmaan / kokoelmasta."
+
+msgid "Revoke"
+msgstr ""
+
+msgid "SRV Record"
+msgstr "SRV-tietue"
+
+msgid "Schedule Deliver"
+msgstr ""
+
+msgid "Schedule Send"
+msgstr ""
+
+msgid "Schedule Transparency"
+msgstr ""
+
+msgid "Scheduling: Deliver a Reply"
+msgstr ""
+
+msgid "Scheduling: Deliver an Invitation"
+msgstr ""
+
+msgid "Scheduling: Delivery"
+msgstr ""
+
+msgid "Scheduling: Query free/busy"
+msgstr ""
+
+msgid "Scheduling: Send a Reply"
+msgstr ""
+
+msgid "Scheduling: Send an Invitation"
+msgstr ""
+
+msgid "Scheduling: Send free/busy"
+msgstr ""
+
+msgid "Scheduling: Sending"
+msgstr ""
+
+msgid "Send free/busy enquiries"
+msgstr "Lähetä vapaa/varattu-kyselyjä"
+
+msgid ""
+"Send scheduling invitations as an organiser from the owner of this "
+"scheduling outbox."
+msgstr ""
+
+msgid ""
+"Send scheduling replies as an attendee from the owner of this scheduling "
+"outbox."
+msgstr ""
+
+msgid "Set free/busy privileges"
+msgstr ""
+
+msgid "Set read privileges"
+msgstr ""
+
+msgid "Set read+write privileges"
+msgstr ""
+
+msgid ""
+"Set the path to store your ics e.g. 'calendar' will be referenced as "
+"/caldav.php/username/calendar/"
+msgstr ""
+
+msgid "Setup"
+msgstr "Asennus"
+
+msgid "Setup DAViCal"
+msgstr "Asenna DAViCal"
+
+msgid "Should the uploaded entries be appended to the collection?"
+msgstr ""
+
+msgid "Show help on"
+msgstr ""
+
+msgid "Site Statistics"
+msgstr "Sivuston tilastot"
+
+msgid "Site Statistics require the database to be available!"
+msgstr "Sivuston tilastot vaativat tietokannan ollakseen saatavilla!"
+
+msgid "Some properties were not able to be changed."
+msgstr ""
+
+msgid "Some properties were not able to be set."
+msgstr ""
+
+msgid "Source resource does not exist."
+msgstr ""
+
+msgid ""
+"Special collections may not contain a calendar or other special collection."
+msgstr ""
+
+msgid "Specific Privileges"
+msgstr ""
+
+#, php-format
+msgid "Stable: %s, We have: %s !"
+msgstr ""
+
+msgid "Status"
+msgstr "Tila"
+
+#, php-format
+msgid "Status: %d, Message: %s, User: %d, Path: %s"
+msgstr ""
+
+msgid "Submit"
+msgstr "Lähetä"
+
+msgid "Suhosin \"server.strip\" disabled"
+msgstr ""
+
+msgid "Sync LDAP Groups with DAViCal"
+msgstr ""
+
+msgid "Sync LDAP with DAViCal"
+msgstr ""
+
+msgid "Target"
+msgstr "Kohde"
+
+msgid "That destination name contains invalid characters."
+msgstr ""
+
+msgid "That resource is not present on this server."
+msgstr ""
+
+msgid "The BIND Request MUST identify an existing resource."
+msgstr ""
+
+msgid "The BIND Request-URI MUST identify a collection."
+msgstr ""
+
+msgid "The BIND method is not allowed at that location."
+msgstr ""
+
+msgid ""
+"The CalDAV:schedule-calendar-transp property may only be set on calendars."
+msgstr "CalDAV:schedule-calendar-transp-ominaisuuden voi asettaa vain kalentereille."
+
+msgid "The DAViCal Home Page"
+msgstr "DAViCal-Web-sivusto"
+
+msgid "The access ticket will be deleted."
+msgstr "Pääsytiketti poistetaan."
+
+msgid ""
+"The addressbook-query report must be run against an addressbook collection"
+msgstr "Osoitekirja-kyselyraportti täytyy ajaa osoitekirjakokoelmalle"
+
+msgid "The application failed to understand that request."
+msgstr "Sovellus ei ymmärtänyt pyyntöä."
+
+msgid "The application program does not understand that request."
+msgstr "Sovellus ei ymmärrä pyyntöä."
+
+msgid "The binding will be deleted."
+msgstr ""
+
+msgid "The calendar path contains illegal characters."
+msgstr "Kalenteripolku sisältää kiellettyjä merkkejä."
+
+msgid ""
+"The calendar-free-busy-set is superseded by the  schedule-calendar-transp "
+"property of a calendar collection."
+msgstr ""
+
+msgid "The calendar-query report may not be run against that URL."
+msgstr ""
+
+msgid ""
+"The calendar-query report must be run against a calendar or a scheduling "
+"collection"
+msgstr "Kalenteri-kyselyraportti täytyy ajaa kalenteri- tai ajoituskokoelmalle"
+
+msgid "The collection name may not be blank."
+msgstr "Kokoelmanimi ei voi olla tyhjä."
+
+msgid "The destination collection does not exist"
+msgstr "Kohdekokoelmaa ei ole olemassa"
+
+msgid ""
+"The displayname may only be set on collections, principals or bindings."
+msgstr ""
+
+msgid "The email address really should not be blank."
+msgstr "Sähköpostiosoitteen ei oikeasti pitäisi olla tyhjä."
+
+#, php-format
+msgid "The file \"%s\" is not UTF-8 encoded, please check error for more details"
+msgstr "Tiedosto ”%s” ei ole UTF-8-koodattu, tarkista virhe saadaksesi lisätietoja"
+
+msgid ""
+"The file is not UTF-8 encoded, please check the error for more details."
+msgstr "Tiedosto ei ole UTF-8-koodattu, tarkista virhe saadaksesi lisätietoja."
+
+msgid "The full name for this person, group or other type of principal."
+msgstr ""
+
+msgid "The full name must not be blank."
+msgstr "Koko nimi ei voi olla tyhjä."
+
+msgid "The name this user can log into the system with."
+msgstr "Nimi, jolla käyttäjä voi kirjautua järjestelmään."
+
+msgid "The path on the server where your .ics files are."
+msgstr ""
+
+msgid "The preferred language for this person."
+msgstr "Henkilön ensisijainen kieli."
+
+#, php-format
+msgid "The principal \"%s\" does not exist"
+msgstr ""
+
+msgid "The style of dates used for this person."
+msgstr "Henkilölle käytettävä päivämäärätyyli."
+
+msgid "The user's e-mail address."
+msgstr "Käyttäjän sähköpostiosoite."
+
+msgid "The user's full name."
+msgstr "Käyttäjän koko nimi."
+
+msgid "The user's password for logging in."
+msgstr "Käyttäjän salasana sisäänkirjautumista varten."
+
+msgid "The username must not be blank, and may not contain a slash"
+msgstr "Käyttäjätunnus ei voi olla tyhjä, eikä saa sisältää kauttaviivaa (/)"
+
+msgid "There was an error reading from the database."
+msgstr "Virhe luettaessa tietokannasta."
+
+msgid "There was an error writing to the database."
+msgstr "Virhe kirjoitettaessa tietokantaan."
+
+msgid ""
+"This operation does the following: <ul><li>check valid groups in LDAP "
+"directory</li> <li>check groups in DAViCal</li></ul> then <ul><li>if a group"
+" is present in DAViCal but not in LDAP set as inactive in DAViCal</li> "
+"<li>if a group is present in LDAP but not in DAViCal create the group in "
+"DAViCal</li> <li>if a group in present in LDAP and DAViCal then update "
+"information in DAViCal</li> </ul>"
+msgstr ""
+
+msgid ""
+"This operation does the following: <ul><li>check valid users in LDAP "
+"directory</li> <li>check users in DAViCal</li></ul> then <ul><li>if a user "
+"is present in DAViCal but not in LDAP set him as inactive in DAViCal</li> "
+"<li>if a user is present in LDAP but not in DAViCal create the user in "
+"DAViCal</li> <li>if a user in present in LDAP and DAViCal then update "
+"information in DAViCal</li> </ul>"
+msgstr ""
+
+msgid ""
+"This page primarily checks the environment needed for DAViCal to work "
+"correctly.  Suggestions or patches to make it do more useful stuff will be "
+"gratefully received."
+msgstr ""
+
+msgid ""
+"This process will import each file in a directory named \"username.ics\" and"
+" create a user and calendar for each file to import."
+msgstr ""
+
+msgid "This server only supports the text/calendar format for freebusy URLs"
+msgstr ""
+
+msgid "Ticket ID"
+msgstr "Tiketin tunnus"
+
+msgid "Time"
+msgstr "Aika"
+
+msgid "To Collection"
+msgstr "Kokoelmaan"
+
+msgid "To ID"
+msgstr ""
+
+msgid "Toggle all privileges"
+msgstr ""
+
+msgid "Tools"
+msgstr "Työkalut"
+
+msgid "Transparent"
+msgstr "Läpinäkyvä"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "US Format"
+msgstr "Amerikkalainen muoto"
+
+msgid "Unauthenticated User"
+msgstr "Tunnistautumaton käyttäjä"
+
+msgid "United States of America (m/d/y)"
+msgstr "Amerikan yhdysvallat (m/d/y)"
+
+msgid "Unsupported resourcetype modification."
+msgstr ""
+
+msgid "Update"
+msgstr "Päivitä"
+
+msgid "Updated"
+msgstr "Päivitetty"
+
+msgid "Updating Collection record."
+msgstr ""
+
+msgid "Updating Member of this Group Principal"
+msgstr ""
+
+msgid "Updating Principal record."
+msgstr ""
+
+msgid "Updating grants by this Principal"
+msgstr ""
+
+msgid "Upgrade DAViCal database schema"
+msgstr "Päivitä DAViCalin tietokantaskeema"
+
+msgid "Upgrade Database"
+msgstr "Päivitä tietokanta"
+
+msgid "Upload an iCalendar file or VCard file to replace this collection."
+msgstr ""
+
+msgid "User Calendar Principals"
+msgstr ""
+
+msgid "User Details"
+msgstr "Käyttäjätiedot"
+
+msgid "User Functions"
+msgstr ""
+
+msgid "User Name"
+msgstr "Käyttäjätunnus"
+
+msgid "User Roles"
+msgstr "Käyttäjäroolit"
+
+msgid "User is active"
+msgstr "Käyttäjä on aktiivinen"
+
+msgid "User record written."
+msgstr "Käyttäjätietue kirjoitettu."
+
+msgid "Username"
+msgstr "Käyttäjätunnus"
+
+msgid "View My Details"
+msgstr "Näytä omat tiedot"
+
+msgid "View my own principal record"
+msgstr ""
+
+msgid "View this user record"
+msgstr "Näytä käyttäjän tietue"
+
+msgid "Visit the DAViCal Wiki"
+msgstr "Vieraile DAViCal-wikissä"
+
+#, php-format
+msgid "Want: %s, Currently: %s"
+msgstr ""
+
+msgid ""
+"Warning: there are no active admin users! You should fix this before logging"
+" out.  Consider using the $c->do_not_sync_from_ldap configuration setting."
+msgstr ""
+
+msgid "When the user's e-mail account was validated."
+msgstr "Kun käyttäjän sähköpostiosoite vahvistettiin."
+
+msgid "Write"
+msgstr "Kirjoita"
+
+msgid "Write ACLs for a resource or collection"
+msgstr "Kirjoita pääsysäännöt resurssille tai kokoelmalle"
+
+msgid "Write Access Controls"
+msgstr "Kirjoita pääsysäännöt"
+
+msgid "Write Data"
+msgstr "Kirjoita tiedot"
+
+msgid "Write Metadata"
+msgstr "Kirjoita metatiedot"
+
+msgid "Write content"
+msgstr "Kirjoita sisältö"
+
+msgid "Write properties"
+msgstr "Kirjoita ominaisuudet"
+
+msgid "Yes"
+msgstr "Kyllä"
+
+msgid "You are editing"
+msgstr "Muokkaat"
+
+msgid "You are not authorised to use this function."
+msgstr "Et ole oikeutettu tämän toiminnallisuuden käyttämiseen."
+
+msgid "You are viewing"
+msgstr "Katsot"
+
+msgid "You do not have permission to modify this record."
+msgstr "Sinulla ei ole oikeuksia muuttaa tätä tietuetta."
+
+msgid "You may not PUT to a collection URL"
+msgstr "Et voi tehdä PUT-pyyntöä kokoelman URL:ään"
+
+msgid "You must log in to use this system."
+msgstr "Sinun tulee kirjautua sisään käyttääksesi tätä järjestelmää."
+
+msgid "Your configuration produced PHP errors which should be corrected"
+msgstr "Asetuksesi tuottivat PHP-virheitä jotka tulisi korjata"
+
+msgid "calendar-timezone property is only valid for a calendar."
+msgstr "calendar-timezone-ominaisuus ei ole kelvollinen kalenterille."
+
+#, php-format
+msgid "directory %s is not readable"
+msgstr "hakemisto %s ei ole luettavissa"
+
+msgid ""
+"drivers_imap_pam : imap_url parameter not configured in "
+"/etc/davical/*-conf.php"
+msgstr ""
+
+msgid "drivers_ldap : Could not start TLS: ldap_start_tls() failed"
+msgstr ""
+
+#, php-format
+msgid ""
+"drivers_ldap : Failed to bind to host %1$s on port %2$s with bindDN of %3$s"
+msgstr ""
+
+msgid ""
+"drivers_ldap : Failed to set LDAP to use protocol version 3, TLS not "
+"supported"
+msgstr ""
+
+msgid ""
+"drivers_ldap : Unable to bind to LDAP - check your configuration for bindDN "
+"and passDN, and that your LDAP server is reachable"
+msgstr ""
+
+#, php-format
+msgid "drivers_ldap : Unable to connect to LDAP with port %s on host %s"
+msgstr ""
+
+msgid ""
+"drivers_ldap : function ldap_connect not defined, check your php_ldap module"
+msgstr ""
+
+#, php-format
+msgid "drivers_pwauth_pam : Unable to find %s file"
+msgstr ""
+
+#, php-format
+msgid "drivers_squid_pam : Unable to find %s file"
+msgstr ""
+
+#. Translators: this is a colloquial phrase in english (the name of a flower)
+#. and is an option allowing people to log in automatically in future
+msgid "forget me not"
+msgstr "muista minut"
+
+msgid "from principal"
+msgstr ""
+
+msgid "iSchedule Domains"
+msgstr ""
+
+msgid "invalid request"
+msgstr "virheellinen pyyntö"
+
+msgid "path to store your ics"
+msgstr "polku, johon tallennetaan ics:si"
+
+msgid "recipient must be organizer or attendee of event"
+msgstr ""
+
+msgid "sender must be organizer or attendee of event"
+msgstr ""
+
+msgid "unauthenticated"
+msgstr "tunnistamaton"
+
+msgid ""
+"you should log on with the username and password that have been issued to "
+"you."
+msgstr "kirjaudu sisään käyttäjätunnuksella ja salasanalla jotka on annettu sinulle."
