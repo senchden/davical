@@ -48,6 +48,8 @@ class ldapDrivers
           ldap_set_option($this->connect, LDAP_OPT_PROTOCOL_VERSION, $config['protocolVersion']);
       if (isset($config['optReferrals']))
           ldap_set_option($this->connect, LDAP_OPT_REFERRALS, $config['optReferrals']);
+      if (isset($config['networkTimeout']))
+          ldap_set_option($this->connect, LDAP_OPT_NETWORK_TIMEOUT, $config['networkTimeout']);
 
       if ($port)
           $this->connect=ldap_connect($host, $port);
