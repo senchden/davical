@@ -1,0 +1,1451 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# keithwrites <inbox@keithwrites.so>, 2014
+msgid ""
+msgstr ""
+"Project-Id-Version: DAViCal\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-26 14:17+0200\n"
+"PO-Revision-Date: 2014-05-12 14:30+0000\n"
+"Last-Translator: keithwrites <inbox@keithwrites.so>\n"
+"Language-Team: Korean (Korea) (http://www.transifex.com/projects/p/davical/language/ko_KR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ko_KR\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. Translators: this is the formatting of a date with time. See
+#. http://php.net/manual/en/function.strftime.php
+msgid "%F %T"
+msgstr "%F %T"
+
+#. Translators: his is the formatting of just the time. See
+#. http://php.net/manual/en/function.strftime.php
+msgid "%T"
+msgstr "%T"
+
+msgid "*** Default Locale ***"
+msgstr "*** 기본 로케일 ***"
+
+msgid "*** Unknown ***"
+msgstr ""
+
+#, php-format
+msgid "- adding %s to group : %s"
+msgstr "- %s 를 그룹에 추가중: %s"
+
+#, php-format
+msgid "- adding users %s to group : %s"
+msgstr "- 사용자 %s 를 그룹에 추가중: %s"
+
+#, php-format
+msgid "- creating groups : %s"
+msgstr "- 그룹 생성중: %s"
+
+#, php-format
+msgid "- creating record for users :  %s"
+msgstr "- 사용자 레코드 생성중: %s"
+
+#, php-format
+msgid "- deactivate groups : %s"
+msgstr "- 그룹 비활성화 : %s"
+
+#, php-format
+msgid "- deactivating users : %s"
+msgstr "- 사용자 비활성화 : %s"
+
+#, php-format
+msgid "- nothing done on : %s"
+msgstr "- 변경사항 없음 : %s"
+
+#, php-format
+msgid "- removing %s from group : %s"
+msgstr "- 그룹으로부터 %s 제거 : %s"
+
+#, php-format
+msgid "- updating groups : %s"
+msgstr "- 그룹 업데이트중 : %s"
+
+#, php-format
+msgid "- updating user records : %s"
+msgstr "- 사용자 레코드 업데이트 : %s"
+
+msgid ""
+"<b>WARNING: all events in this path will be deleted before inserting allof "
+"the ics file</b>"
+msgstr ""
+
+#, php-format
+msgid ""
+"<h1>Help</h1>\n"
+"<p>For initial help you should visit the <a href=\"http://www.davical.org/\" target=\"_blank\">DAViCal Home Page</a> or take\n"
+"a look at the <a href=\"http://wiki.davical.org/%s\" target=\"_blank\">DAViCal Wiki</a>.</p>\n"
+"<p>If you can't find the answers there, visit us on <a href=\"http://wikipedia.org/wiki/Internet_Relay_Chat\" target=\"_blank\">IRC</a> in\n"
+"the <b>#davical</b> channel on <a href=\"http://www.oftc.net/\" target=\"_blank\">irc.oftc.net</a>,\n"
+"or send a question to the <a href=\"http://lists.sourceforge.net/mailman/listinfo/davical-general\" target=\"_blank\">DAViCal Users mailing list</a>.</p>\n"
+"<p>The <a href=\"http://sourceforge.net/mailarchive/forum.php?forum_id=8348\" title=\"DAViCal Users Mailing List\" target=\"_blank\">mailing list\n"
+"archives can be helpful too.</p>"
+msgstr ""
+
+#, php-format
+msgid ""
+"<h1>Log On Please</h1><p>For access to the %s you should log on withthe "
+"username and password that have been issued to you.</p><p>If you would like "
+"to request access, please e-mail %s.</p>"
+msgstr ""
+
+msgid "A DAViCal principal collection may only contain collections"
+msgstr ""
+
+msgid "A collection already exists at that location."
+msgstr "그 위치에 이미 컬렉션이 존재합니다."
+
+msgid "A collection may not be both a calendar and an addressbook."
+msgstr ""
+
+msgid "A resource already exists at the destination."
+msgstr ""
+
+msgid "AWL Library version "
+msgstr "AWL 라이브러리 버전"
+
+msgid "Access Tickets"
+msgstr ""
+
+msgid "Access ticket deleted"
+msgstr ""
+
+msgid "Action"
+msgstr ""
+
+msgid "Active"
+msgstr "활성"
+
+msgid "Adding new member to this Group Principal"
+msgstr ""
+
+#. Translators: in the sense of 'systems admin'
+msgid "Admin"
+msgstr "관리자"
+
+msgid "Administration"
+msgstr "관리"
+
+msgid "Administrator"
+msgstr "관리자"
+
+msgid "All"
+msgstr "모두"
+
+msgid "All collection data will be unrecoverably deleted."
+msgstr "모든 컬렉션 데이터가 복구 불가능하게 삭제 되었습니다."
+
+#, php-format
+msgid "All events of user \"%s\" were deleted and replaced by those from file %s"
+msgstr ""
+
+msgid ""
+"All of the principal's calendars and events will be unrecoverably deleted."
+msgstr ""
+
+msgid "All privileges"
+msgstr ""
+
+msgid "All requested changes were made."
+msgstr "모든 변경사항이 적용되었습니다."
+
+msgid ""
+"Allow free/busy enquiries targeted at the owner of this scheduling inbox"
+msgstr ""
+
+msgid "An \"Administrator\" user has full rights to the whole DAViCal System"
+msgstr "\"Adminstrator\" 사용자는 DAViCal 시스템 전체에 대한 권한을 갖습니다."
+
+msgid "Anonymous users are not allowed to modify calendars"
+msgstr "익명 사용자는 캘린더를 변경할 수 없습니다."
+
+msgid "Anonymous users may only access public calendars"
+msgstr "익명 사용자는 공개 캘린더에만 접근 할 수 있습니다."
+
+msgid "Append"
+msgstr ""
+
+msgid "Application DB User"
+msgstr "어플리케이션 DB 사용자"
+
+msgid "Apply Changes"
+msgstr "변경사항 적용"
+
+msgid "Apply DB Patches"
+msgstr "데이터베이스 패치 적용"
+
+msgid "Attachment"
+msgstr "첨부파일"
+
+msgid "Authentication server unavailable."
+msgstr "인증서버가 응답하지 않습니다."
+
+msgid "Binding deleted"
+msgstr ""
+
+msgid "Bindings to other collections"
+msgstr "다른 컬렉션으로의 연결"
+
+msgid "Bindings to this Collection"
+msgstr "이 컬렉션으로 연결"
+
+msgid "Bindings to this Principal's Collections"
+msgstr ""
+
+msgid "Body contains no XML data!"
+msgstr ""
+
+msgid "Bound As"
+msgstr ""
+
+msgid "Browse all users"
+msgstr ""
+
+msgid "Busy"
+msgstr ""
+
+#, php-format
+msgid "Calendar \"%s\" was loaded from file."
+msgstr ""
+
+msgid "Calendar Principals"
+msgstr ""
+
+msgid "Calendar Timezone"
+msgstr ""
+
+msgid "Can only add tickets for existing collection paths which you own"
+msgstr ""
+
+msgid "Categories"
+msgstr ""
+
+msgid "Change Password"
+msgstr "비밀번호 변경"
+
+msgid "Click to display user details"
+msgstr ""
+
+msgid "Click to edit principal details"
+msgstr ""
+
+msgid "Collection"
+msgstr "컬렉션"
+
+msgid "Collection Grants"
+msgstr ""
+
+msgid "Collection ID"
+msgstr "컬렉션 ID"
+
+msgid "Collection deleted"
+msgstr "컬렉션 삭제됨"
+
+msgid ""
+"Collections may not be both CalDAV calendars and CardDAV addressbooks at the"
+" same time"
+msgstr ""
+
+msgid "Configuring Calendar Clients for DAViCal"
+msgstr ""
+
+msgid "Configuring DAViCal"
+msgstr ""
+
+msgid "Confirm"
+msgstr "확인"
+
+msgid "Confirm Deletion of the Binding"
+msgstr ""
+
+msgid "Confirm Deletion of the Collection"
+msgstr ""
+
+msgid "Confirm Deletion of the Principal"
+msgstr ""
+
+msgid "Confirm Deletion of the Ticket"
+msgstr ""
+
+msgid "Confirm Password"
+msgstr "비밀번호 확인"
+
+msgid "Confirm the new password."
+msgstr "새 비밀번호를 확인해 주세요."
+
+msgid "Could not retrieve"
+msgstr ""
+
+msgid "Create"
+msgstr "만들기"
+
+msgid "Create Collection"
+msgstr "컬렉션 만들기"
+
+msgid "Create Events/Collections"
+msgstr ""
+
+msgid "Create New Collection"
+msgstr "새 컬렉션 만들기"
+
+msgid "Create New Principal"
+msgstr ""
+
+msgid "Create Principal"
+msgstr ""
+
+msgid "Create a new principal (i.e. a new user, resource or group)"
+msgstr ""
+
+msgid "Create a resource or collection"
+msgstr ""
+
+msgid "Creating new Collection."
+msgstr "새 컬렉션 만드는 중"
+
+msgid "Creating new Principal record."
+msgstr ""
+
+msgid "Creating new ticket granting privileges to this Principal"
+msgstr ""
+
+msgid "Current DAViCal version "
+msgstr "현재 DAViCal 버전"
+
+msgid "DAV Path"
+msgstr "DAV 경로"
+
+msgid ""
+"DAV::resourcetype may only be set to a new value, it may not be removed."
+msgstr ""
+
+msgid "DAViCal CalDAV Server"
+msgstr "DAViCal CalDAV 서버"
+
+msgid "DAViCal DB Schema version "
+msgstr "DAViCal 데이터베이스 구조 버전"
+
+msgid "DAViCal Homepage"
+msgstr "DAViCal 홈페이지"
+
+msgid "DAViCal Wiki"
+msgstr "DAViCal 위키"
+
+msgid "DAViCal only allows BIND requests for collections at present."
+msgstr "DAViCal은 현재는 컬렉션에 대해서 BIND 리퀘스트만을 허용하고 있습니다."
+
+msgid "DKIM signature missing"
+msgstr "DKIM 서명이 없습니다."
+
+msgid "DKIM signature validation failed(DNS ERROR)"
+msgstr "DKIM 서명 검증 실패 (DNS 에러)"
+
+msgid "DKIM signature validation failed(KEY Parse ERROR)"
+msgstr "DKIM 서명 검증 실패 (키 파싱 에러)"
+
+msgid "DKIM signature validation failed(KEY Validation ERROR)"
+msgstr "DKIM 서명 검증 실패 (키 검증 에러)"
+
+msgid "DKIM signature validation failed(Signature verification ERROR)"
+msgstr "DKIM 서명 검증 실패 (서명 검증 에러)"
+
+msgid "Database Error"
+msgstr "데이터베이스 "
+
+msgid "Database Host"
+msgstr "데이터베이스 호스트 주소"
+
+msgid "Database Name"
+msgstr "데이터베이스 이름"
+
+msgid "Database Owner"
+msgstr "데이터베이스 Owner"
+
+msgid "Database Password"
+msgstr "데이터베이스 패스워드"
+
+msgid "Database Port"
+msgstr "데이터베이스 포트"
+
+msgid "Database Username"
+msgstr "데이터베이스 사용자"
+
+msgid "Database error"
+msgstr "데이터베이스 에러"
+
+msgid "Database is Connected"
+msgstr ""
+
+msgid "Date Format Style"
+msgstr "날짜 포맷 스타일"
+
+msgid "Date Style"
+msgstr "날짜 스타일"
+
+msgid "Default Privileges"
+msgstr "기본 권한"
+
+msgid "Default relationships added."
+msgstr ""
+
+msgid "Delete"
+msgstr "삭제"
+
+msgid "Delete Events/Collections"
+msgstr ""
+
+msgid "Delete Principal"
+msgstr ""
+
+msgid "Delete a resource or collection"
+msgstr ""
+
+msgid "Deleted a grant from this Principal"
+msgstr ""
+
+msgid "Deleting Binding:"
+msgstr ""
+
+msgid "Deleting Collection:"
+msgstr "컬렉션 지우는 중:"
+
+msgid "Deleting Principal:"
+msgstr ""
+
+msgid "Deleting Ticket:"
+msgstr ""
+
+msgid ""
+"Deliver scheduling invitations from an organiser to this scheduling inbox"
+msgstr ""
+
+msgid "Deliver scheduling replies from an attendee to this scheduling inbox"
+msgstr ""
+
+msgid "Dependencies"
+msgstr ""
+
+msgid "Dependency"
+msgstr ""
+
+msgid "Description"
+msgstr "설명"
+
+msgid "Destination collection does not exist"
+msgstr "해당 컬렉션이 존재하지 않습니다"
+
+msgid "Directory on the server"
+msgstr ""
+
+msgid "Display Name"
+msgstr ""
+
+msgid "Displayname"
+msgstr ""
+
+msgid "Does the user have the right to perform this role?"
+msgstr ""
+
+msgid "Domain"
+msgstr ""
+
+msgid "EMail"
+msgstr "이메일"
+
+msgid "EMail OK"
+msgstr "이메일 OK"
+
+msgid "ERROR: The full name may not be blank."
+msgstr "ERROR: 이름은 빈칸이면 안됩니다."
+
+msgid "ERROR: The new password must match the confirmed password."
+msgstr "ERROR: 새 비밀번호와 비밀번호 확인이 일치해야 합니다."
+
+msgid "ERROR: There was a database error writing the roles information!"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Edit this user record"
+msgstr ""
+
+msgid "Email Address"
+msgstr "이메일 주소"
+
+msgid ""
+"Enter a username, if you know it, and click here, to be e-mailed a temporary"
+" password."
+msgstr "사용자명을 안다면 입력하고 여기를 눌러주세요. 등록된 이메일 주소로 임시 비밀번호가 발송됩니다."
+
+msgid "Enter your username and password then click here to log in."
+msgstr ""
+
+#, php-format
+msgid "Error NoGroupFound with filter >%s<, attributes >%s< , dn >%s<"
+msgstr ""
+
+#, php-format
+msgid "Error NoUserFound with filter >%s<, attributes >%s< , dn >%s<"
+msgstr ""
+
+msgid "Error querying database."
+msgstr ""
+
+msgid "Error writing calendar details to database."
+msgstr ""
+
+msgid "Error writing calendar properties to database."
+msgstr ""
+
+msgid "European"
+msgstr ""
+
+msgid "European (d/m/y)"
+msgstr "유럽식 (일/월/년)"
+
+msgid "Existing resource does not match \"If-Match\" header - not accepted."
+msgstr ""
+
+msgid "Existing resource matches \"If-None-Match\" header - not accepted."
+msgstr ""
+
+msgid "Expires"
+msgstr ""
+
+msgid "External Calendars"
+msgstr ""
+
+msgid "External Url"
+msgstr ""
+
+msgid "Fail"
+msgstr ""
+
+msgid "Failed to write collection."
+msgstr "컬렉션에 쓰기가 실패했습니다."
+
+msgid "Feeds are only supported for calendars at present."
+msgstr ""
+
+msgid "For access to the"
+msgstr ""
+
+msgid "Forbidden"
+msgstr ""
+
+msgid "Free/Busy"
+msgstr ""
+
+msgid "Full Name"
+msgstr "성명"
+
+msgid "Fullname"
+msgstr "성명"
+
+msgid "GET requests on collections are only supported for calendars."
+msgstr "GET 리퀘스트는 캘린더에 대해서만 가능합니다."
+
+msgid "GNU gettext support"
+msgstr "GNU gettext 지원"
+
+msgid "GO!"
+msgstr ""
+
+msgid "Go to the DAViCal Feature Requests"
+msgstr "DAViCal 기능 건의하러 가기"
+
+msgid "Grant"
+msgstr ""
+
+msgid "Granting new privileges from this Principal"
+msgstr ""
+
+#. Translators: in the sense of a group of people
+msgid "Group"
+msgstr "그룹"
+
+msgid "Group Members"
+msgstr ""
+
+msgid "Group Memberships"
+msgstr ""
+
+msgid "Group Principals"
+msgstr ""
+
+msgid "Has Members"
+msgstr ""
+
+msgid "Help"
+msgstr "도움말"
+
+msgid "Help on the current screen"
+msgstr ""
+
+msgid "Help! I've forgotten my password!"
+msgstr "비밀번호 찾기"
+
+msgid "Home"
+msgstr ""
+
+msgid "Home "
+msgstr ""
+
+msgid "Home Page"
+msgstr "홈 페이지"
+
+msgid "ID"
+msgstr ""
+
+msgid "ISO Format"
+msgstr ""
+
+msgid "ISO Format (YYYY-MM-DD)"
+msgstr ""
+
+#. Translators: short for 'Identifier'
+msgid "Id"
+msgstr ""
+
+msgid "If you have forgotten your password then"
+msgstr "비밀번호를 잊어버렸다면"
+
+msgid "If you would like to request access, please e-mail"
+msgstr ""
+
+msgid "Import all .ics files of a directory"
+msgstr ""
+
+msgid "Import calendars and Synchronise LDAP."
+msgstr ""
+
+msgid "Inactive Principals"
+msgstr ""
+
+msgid "Incorrect content type for addressbook: "
+msgstr ""
+
+msgid "Incorrect content type for calendar: "
+msgstr ""
+
+msgid "Invalid user name or password."
+msgstr "사용자명 혹은 비밀번호가 잘못되었습니다."
+
+msgid "Invalid username or password."
+msgstr "사용자명 혹은 비밀번호가 잘못되었습니다."
+
+msgid "Is Member of"
+msgstr ""
+
+msgid "Is a Calendar"
+msgstr ""
+
+msgid "Is an Addressbook"
+msgstr ""
+
+msgid "Is this user active?"
+msgstr ""
+
+msgid "Items in Collection"
+msgstr ""
+
+msgid "Joined"
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Last used"
+msgstr ""
+
+msgid "List External Calendars"
+msgstr ""
+
+msgid "List Groups"
+msgstr ""
+
+msgid "List Resources"
+msgstr ""
+
+msgid "List Users"
+msgstr ""
+
+msgid "Load From File"
+msgstr ""
+
+msgid "Locale"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid "Log On Please"
+msgstr ""
+
+msgid "Log out of DAViCal"
+msgstr ""
+
+msgid "Logout"
+msgstr ""
+
+msgid "Member deleted from this Group Principal"
+msgstr ""
+
+msgid ""
+"Most of DAViCal will work but upgrading to PHP 5.2 or later is strongly "
+"recommended."
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "New Collection"
+msgstr ""
+
+msgid "New Password"
+msgstr "새 비밀번호"
+
+msgid "New Principal"
+msgstr ""
+
+#. Translators: not 'Yes'
+msgid "No"
+msgstr ""
+
+msgid "No calendar content"
+msgstr ""
+
+msgid "No collection found at that location."
+msgstr "그 위치에 콜렉션이 아무것도 없습니다."
+
+msgid "No resource exists at the destination."
+msgstr ""
+
+msgid "No summary"
+msgstr ""
+
+#. Translators: short for 'Number'
+msgid "No."
+msgstr ""
+
+msgid "No. of Collections"
+msgstr ""
+
+msgid "No. of Principals"
+msgstr ""
+
+msgid "No. of Resources"
+msgstr ""
+
+msgid "Not overwriting existing destination resource"
+msgstr ""
+
+msgid "Opaque"
+msgstr ""
+
+msgid "Organizer Missing"
+msgstr ""
+
+msgid "Override a Lock"
+msgstr ""
+
+msgid "PDO PostgreSQL drivers"
+msgstr "PDO PostgreSQL 드라이버"
+
+msgid "PHP DateTime class"
+msgstr "PHP DateTime 클래스"
+
+msgid "PHP LDAP module available"
+msgstr "PHP LDAP 모듈 사용 가능 여부"
+
+msgid "PHP Magic Quotes GPC off"
+msgstr "PHP Magic Quotes GPC 미사용"
+
+msgid "PHP Magic Quotes runtime off"
+msgstr "PHP Magic Quotes 런타임 미사용"
+
+msgid "PHP PDO module available"
+msgstr "PHP PDO 모듈 사용 가능 여부"
+
+msgid "PHP calendar extension available"
+msgstr "PHP 캘린더 확장 사용 가능 여부"
+
+msgid "PHP curl support"
+msgstr ""
+
+msgid "PHP iconv support"
+msgstr "PHP iconv 지원 여부"
+
+msgid "PHP not using Apache Filter mode"
+msgstr ""
+
+msgid "PHP5 curl support is required for external binds"
+msgstr ""
+
+msgid ""
+"PUT on a collection is only allowed for text/calendar content against a "
+"calendar collection"
+msgstr ""
+
+msgid ""
+"PUT on a collection is only allowed for text/vcard content against an "
+"addressbook collection"
+msgstr ""
+
+msgid "Passed"
+msgstr "정상"
+
+msgid "Password"
+msgstr "비밀번호"
+
+msgid "Path"
+msgstr "경로"
+
+msgid "Person"
+msgstr ""
+
+msgid "Please confirm deletion of access ticket - see below"
+msgstr ""
+
+msgid "Please confirm deletion of binding - see below"
+msgstr ""
+
+msgid "Please confirm deletion of collection - see below"
+msgstr ""
+
+msgid "Please confirm deletion of the principal"
+msgstr ""
+
+msgid "Please note the time and advise the administrator of your system."
+msgstr ""
+
+msgid "Principal"
+msgstr ""
+
+msgid "Principal Collections"
+msgstr ""
+
+msgid "Principal Grants"
+msgstr ""
+
+msgid "Principal ID"
+msgstr ""
+
+msgid "Principal Type"
+msgstr ""
+
+msgid "Principal deleted"
+msgstr ""
+
+msgid "Privileges"
+msgstr ""
+
+msgid "Privileges granted to All Users"
+msgstr ""
+
+msgid "Privileges to allow delivery of scheduling messages"
+msgstr ""
+
+msgid "Privileges to delegate scheduling decisions"
+msgstr ""
+
+msgid "Property is read-only"
+msgstr ""
+
+#. Translators: in the sense of being available to all users
+msgid "Public"
+msgstr ""
+
+msgid "Publicly Readable"
+msgstr ""
+
+msgid "REPORT body contains no XML data!"
+msgstr ""
+
+msgid "REPORT body is not valid XML data!"
+msgstr ""
+
+msgid "Read"
+msgstr ""
+
+msgid "Read ACLs for a resource or collection"
+msgstr ""
+
+msgid "Read Access Controls"
+msgstr ""
+
+msgid "Read Current User's Access"
+msgstr ""
+
+msgid "Read Free/Busy Information"
+msgstr ""
+
+msgid "Read the content of a resource or collection"
+msgstr ""
+
+msgid ""
+"Read the details of the current user's access control to this resource."
+msgstr ""
+
+msgid "Read the free/busy information for a calendar collection"
+msgstr ""
+
+msgid "Read/Write"
+msgstr ""
+
+msgid "References"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Remove a lock"
+msgstr ""
+
+msgid "Remove dangling external calendars"
+msgstr ""
+
+msgid "Report Bug"
+msgstr ""
+
+msgid "Report a bug in the system"
+msgstr ""
+
+msgid "Request Feature"
+msgstr ""
+
+msgid "Request body is not valid XML data!"
+msgstr ""
+
+#. Translators a thing which might be booked: a room, a carpark, a
+#. projector...
+msgid "Resource"
+msgstr ""
+
+msgid "Resource Calendar Principals"
+msgstr ""
+
+msgid "Resource Not Found."
+msgstr ""
+
+msgid "Resource has changed on server - not deleted"
+msgstr ""
+
+msgid "Resources may not be changed to / from collections."
+msgstr ""
+
+msgid "Revoke"
+msgstr ""
+
+msgid "SRV Record"
+msgstr ""
+
+msgid "Schedule Deliver"
+msgstr ""
+
+msgid "Schedule Send"
+msgstr ""
+
+msgid "Schedule Transparency"
+msgstr ""
+
+msgid "Scheduling: Deliver a Reply"
+msgstr ""
+
+msgid "Scheduling: Deliver an Invitation"
+msgstr ""
+
+msgid "Scheduling: Delivery"
+msgstr ""
+
+msgid "Scheduling: Query free/busy"
+msgstr ""
+
+msgid "Scheduling: Send a Reply"
+msgstr ""
+
+msgid "Scheduling: Send an Invitation"
+msgstr ""
+
+msgid "Scheduling: Send free/busy"
+msgstr ""
+
+msgid "Scheduling: Sending"
+msgstr ""
+
+msgid "Send free/busy enquiries"
+msgstr ""
+
+msgid ""
+"Send scheduling invitations as an organiser from the owner of this "
+"scheduling outbox."
+msgstr ""
+
+msgid ""
+"Send scheduling replies as an attendee from the owner of this scheduling "
+"outbox."
+msgstr ""
+
+msgid "Set free/busy privileges"
+msgstr ""
+
+msgid "Set read privileges"
+msgstr ""
+
+msgid "Set read+write privileges"
+msgstr ""
+
+msgid ""
+"Set the path to store your ics e.g. 'calendar' will be referenced as "
+"/caldav.php/username/calendar/"
+msgstr ""
+
+msgid "Setup"
+msgstr ""
+
+msgid "Setup DAViCal"
+msgstr ""
+
+msgid "Should the uploaded entries be appended to the collection?"
+msgstr ""
+
+msgid "Show help on"
+msgstr ""
+
+msgid "Site Statistics"
+msgstr ""
+
+msgid "Site Statistics require the database to be available!"
+msgstr ""
+
+msgid "Some properties were not able to be changed."
+msgstr ""
+
+msgid "Some properties were not able to be set."
+msgstr ""
+
+msgid "Source resource does not exist."
+msgstr ""
+
+msgid ""
+"Special collections may not contain a calendar or other special collection."
+msgstr ""
+
+msgid "Specific Privileges"
+msgstr ""
+
+#, php-format
+msgid "Stable: %s, We have: %s !"
+msgstr "최신 안정버전: %s, 현재버전: %s"
+
+msgid "Status"
+msgstr "상태"
+
+#, php-format
+msgid "Status: %d, Message: %s, User: %d, Path: %s"
+msgstr "상태: %d, 메세지: %s, 사용자: %d, 경로: %s"
+
+msgid "Submit"
+msgstr "보내기"
+
+msgid "Suhosin \"server.strip\" disabled"
+msgstr "Suhosin \"server.strip\" 비활성화"
+
+msgid "Sync LDAP Groups with DAViCal"
+msgstr ""
+
+msgid "Sync LDAP with DAViCal"
+msgstr ""
+
+msgid "Target"
+msgstr ""
+
+msgid "That destination name contains invalid characters."
+msgstr ""
+
+msgid "That resource is not present on this server."
+msgstr ""
+
+msgid "The BIND Request MUST identify an existing resource."
+msgstr ""
+
+msgid "The BIND Request-URI MUST identify a collection."
+msgstr ""
+
+msgid "The BIND method is not allowed at that location."
+msgstr "BIND를 할 수 없는 위치입니다."
+
+msgid ""
+"The CalDAV:schedule-calendar-transp property may only be set on calendars."
+msgstr ""
+
+msgid "The DAViCal Home Page"
+msgstr ""
+
+msgid "The access ticket will be deleted."
+msgstr ""
+
+msgid ""
+"The addressbook-query report must be run against an addressbook collection"
+msgstr ""
+
+msgid "The application failed to understand that request."
+msgstr ""
+
+msgid "The application program does not understand that request."
+msgstr ""
+
+msgid "The binding will be deleted."
+msgstr ""
+
+msgid "The calendar path contains illegal characters."
+msgstr ""
+
+msgid ""
+"The calendar-free-busy-set is superseded by the  schedule-calendar-transp "
+"property of a calendar collection."
+msgstr ""
+
+msgid "The calendar-query report may not be run against that URL."
+msgstr ""
+
+msgid ""
+"The calendar-query report must be run against a calendar or a scheduling "
+"collection"
+msgstr ""
+
+msgid "The collection name may not be blank."
+msgstr ""
+
+msgid "The destination collection does not exist"
+msgstr ""
+
+msgid ""
+"The displayname may only be set on collections, principals or bindings."
+msgstr ""
+
+msgid "The email address really should not be blank."
+msgstr ""
+
+#, php-format
+msgid "The file \"%s\" is not UTF-8 encoded, please check error for more details"
+msgstr ""
+
+msgid ""
+"The file is not UTF-8 encoded, please check the error for more details."
+msgstr "파일 인코딩이 UTF-8이 아닙니다. 추가 정보는 에러메세지를 확인하세요."
+
+msgid "The full name for this person, group or other type of principal."
+msgstr ""
+
+msgid "The full name must not be blank."
+msgstr ""
+
+msgid "The name this user can log into the system with."
+msgstr ""
+
+msgid "The path on the server where your .ics files are."
+msgstr ""
+
+msgid "The preferred language for this person."
+msgstr ""
+
+#, php-format
+msgid "The principal \"%s\" does not exist"
+msgstr ""
+
+msgid "The style of dates used for this person."
+msgstr ""
+
+msgid "The user's e-mail address."
+msgstr ""
+
+msgid "The user's full name."
+msgstr ""
+
+msgid "The user's password for logging in."
+msgstr ""
+
+msgid "The username must not be blank, and may not contain a slash"
+msgstr ""
+
+msgid "There was an error reading from the database."
+msgstr "데이터베이스로부터 데이터를 불러오는데 실패했습니다."
+
+msgid "There was an error writing to the database."
+msgstr ""
+
+msgid ""
+"This operation does the following: <ul><li>check valid groups in LDAP "
+"directory</li> <li>check groups in DAViCal</li></ul> then <ul><li>if a group"
+" is present in DAViCal but not in LDAP set as inactive in DAViCal</li> "
+"<li>if a group is present in LDAP but not in DAViCal create the group in "
+"DAViCal</li> <li>if a group in present in LDAP and DAViCal then update "
+"information in DAViCal</li> </ul>"
+msgstr ""
+
+msgid ""
+"This operation does the following: <ul><li>check valid users in LDAP "
+"directory</li> <li>check users in DAViCal</li></ul> then <ul><li>if a user "
+"is present in DAViCal but not in LDAP set him as inactive in DAViCal</li> "
+"<li>if a user is present in LDAP but not in DAViCal create the user in "
+"DAViCal</li> <li>if a user in present in LDAP and DAViCal then update "
+"information in DAViCal</li> </ul>"
+msgstr ""
+
+msgid ""
+"This page primarily checks the environment needed for DAViCal to work "
+"correctly.  Suggestions or patches to make it do more useful stuff will be "
+"gratefully received."
+msgstr ""
+
+msgid ""
+"This process will import each file in a directory named \"username.ics\" and"
+" create a user and calendar for each file to import."
+msgstr ""
+
+msgid "This server only supports the text/calendar format for freebusy URLs"
+msgstr ""
+
+msgid "Ticket ID"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "To Collection"
+msgstr ""
+
+msgid "To ID"
+msgstr ""
+
+msgid "Toggle all privileges"
+msgstr ""
+
+msgid "Tools"
+msgstr ""
+
+msgid "Transparent"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "US Format"
+msgstr ""
+
+msgid "Unauthenticated User"
+msgstr "인증되지 않은 사용자"
+
+msgid "United States of America (m/d/y)"
+msgstr ""
+
+msgid "Unsupported resourcetype modification."
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid "Updated"
+msgstr ""
+
+msgid "Updating Collection record."
+msgstr ""
+
+msgid "Updating Member of this Group Principal"
+msgstr ""
+
+msgid "Updating Principal record."
+msgstr ""
+
+msgid "Updating grants by this Principal"
+msgstr ""
+
+msgid "Upgrade DAViCal database schema"
+msgstr " DAViCal 데이터베이스 구조 업그레이드"
+
+msgid "Upgrade Database"
+msgstr "데이터베이스 업그레이드"
+
+msgid "Upload an iCalendar file or VCard file to replace this collection."
+msgstr ""
+
+msgid "User Calendar Principals"
+msgstr ""
+
+msgid "User Details"
+msgstr ""
+
+msgid "User Functions"
+msgstr ""
+
+msgid "User Name"
+msgstr ""
+
+msgid "User Roles"
+msgstr ""
+
+msgid "User is active"
+msgstr ""
+
+msgid "User record written."
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid "View My Details"
+msgstr ""
+
+msgid "View my own principal record"
+msgstr ""
+
+msgid "View this user record"
+msgstr ""
+
+msgid "Visit the DAViCal Wiki"
+msgstr "DAViCal 위키 방문"
+
+#, php-format
+msgid "Want: %s, Currently: %s"
+msgstr ""
+
+msgid ""
+"Warning: there are no active admin users! You should fix this before logging"
+" out.  Consider using the $c->do_not_sync_from_ldap configuration setting."
+msgstr ""
+
+msgid "When the user's e-mail account was validated."
+msgstr ""
+
+msgid "Write"
+msgstr ""
+
+msgid "Write ACLs for a resource or collection"
+msgstr ""
+
+msgid "Write Access Controls"
+msgstr ""
+
+msgid "Write Data"
+msgstr ""
+
+msgid "Write Metadata"
+msgstr ""
+
+msgid "Write content"
+msgstr ""
+
+msgid "Write properties"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "You are editing"
+msgstr ""
+
+msgid "You are not authorised to use this function."
+msgstr ""
+
+msgid "You are viewing"
+msgstr ""
+
+msgid "You do not have permission to modify this record."
+msgstr ""
+
+msgid "You may not PUT to a collection URL"
+msgstr ""
+
+msgid "You must log in to use this system."
+msgstr ""
+
+msgid "Your configuration produced PHP errors which should be corrected"
+msgstr "설정에 PHP 에러가 있습니다."
+
+msgid "calendar-timezone property is only valid for a calendar."
+msgstr "calendar-timezone 속성은 캘린더에만 유효한 속성입니다."
+
+#, php-format
+msgid "directory %s is not readable"
+msgstr "%s 디렉토리가 읽기가능하지 않습니다."
+
+msgid ""
+"drivers_imap_pam : imap_url parameter not configured in "
+"/etc/davical/*-conf.php"
+msgstr "drivers_imap_pam : /etc/davical/*-conf.php 파일에 imap_url 이 지정되지 않았습니다."
+
+msgid "drivers_ldap : Could not start TLS: ldap_start_tls() failed"
+msgstr ""
+
+#, php-format
+msgid ""
+"drivers_ldap : Failed to bind to host %1$s on port %2$s with bindDN of %3$s"
+msgstr ""
+
+msgid ""
+"drivers_ldap : Failed to set LDAP to use protocol version 3, TLS not "
+"supported"
+msgstr ""
+
+msgid ""
+"drivers_ldap : Unable to bind to LDAP - check your configuration for bindDN "
+"and passDN, and that your LDAP server is reachable"
+msgstr ""
+
+#, php-format
+msgid "drivers_ldap : Unable to connect to LDAP with port %s on host %s"
+msgstr ""
+
+msgid ""
+"drivers_ldap : function ldap_connect not defined, check your php_ldap module"
+msgstr ""
+
+#, php-format
+msgid "drivers_pwauth_pam : Unable to find %s file"
+msgstr ""
+
+#, php-format
+msgid "drivers_squid_pam : Unable to find %s file"
+msgstr ""
+
+#. Translators: this is a colloquial phrase in english (the name of a flower)
+#. and is an option allowing people to log in automatically in future
+msgid "forget me not"
+msgstr "자동 로그인"
+
+msgid "from principal"
+msgstr ""
+
+msgid "iSchedule Domains"
+msgstr ""
+
+msgid "invalid request"
+msgstr ""
+
+msgid "path to store your ics"
+msgstr ""
+
+msgid "recipient must be organizer or attendee of event"
+msgstr ""
+
+msgid "sender must be organizer or attendee of event"
+msgstr ""
+
+msgid "unauthenticated"
+msgstr ""
+
+msgid ""
+"you should log on with the username and password that have been issued to "
+"you."
+msgstr "올바른 사용자명과 패스워드를 사용하세요."

@@ -1,0 +1,1451 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+# sevo <sevelik@gmail.com>, 2012
+msgid ""
+msgstr ""
+"Project-Id-Version: DAViCal\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-26 14:17+0200\n"
+"PO-Revision-Date: 2013-11-20 09:36+0000\n"
+"Last-Translator: lkraav <leho@kraav.com>\n"
+"Language-Team: Slovak (Slovakia) (http://www.transifex.com/projects/p/davical/language/sk_SK/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: sk_SK\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#. Translators: this is the formatting of a date with time. See
+#. http://php.net/manual/en/function.strftime.php
+msgid "%F %T"
+msgstr "%F %T"
+
+#. Translators: his is the formatting of just the time. See
+#. http://php.net/manual/en/function.strftime.php
+msgid "%T"
+msgstr "%T"
+
+msgid "*** Default Locale ***"
+msgstr "*** Predvolený jazyk ***"
+
+msgid "*** Unknown ***"
+msgstr "*** Neznáma ***"
+
+#, php-format
+msgid "- adding %s to group : %s"
+msgstr "- pridáva sa %s do skupiny: %s"
+
+#, php-format
+msgid "- adding users %s to group : %s"
+msgstr "- pridávajú sa užívatelia %s do skupiny: %s"
+
+#, php-format
+msgid "- creating groups : %s"
+msgstr "- vytvárajú sa skupiny: %s"
+
+#, php-format
+msgid "- creating record for users :  %s"
+msgstr "- vytvárajú sa záznamy užívateľov:  %s"
+
+#, php-format
+msgid "- deactivate groups : %s"
+msgstr "- deaktivovať skupiny: %s"
+
+#, php-format
+msgid "- deactivating users : %s"
+msgstr "- deaktivujú sa užívatelia: %s"
+
+#, php-format
+msgid "- nothing done on : %s"
+msgstr "- nič sa nevykonalo na: %s"
+
+#, php-format
+msgid "- removing %s from group : %s"
+msgstr "- odstraňuje sa %s zo skupiny: %s"
+
+#, php-format
+msgid "- updating groups : %s"
+msgstr "- aktualizujú sa skupiny: %s"
+
+#, php-format
+msgid "- updating user records : %s"
+msgstr "- aktualizujú sa záznamy užívateľov:  %s"
+
+msgid ""
+"<b>WARNING: all events in this path will be deleted before inserting allof "
+"the ics file</b>"
+msgstr "<b> UPOZORNENIE: všetky udalosti tejto cesty sa pred vložením .ics súboru odstránia</ b>"
+
+#, php-format
+msgid ""
+"<h1>Help</h1>\n"
+"<p>For initial help you should visit the <a href=\"http://www.davical.org/\" target=\"_blank\">DAViCal Home Page</a> or take\n"
+"a look at the <a href=\"http://wiki.davical.org/%s\" target=\"_blank\">DAViCal Wiki</a>.</p>\n"
+"<p>If you can't find the answers there, visit us on <a href=\"http://wikipedia.org/wiki/Internet_Relay_Chat\" target=\"_blank\">IRC</a> in\n"
+"the <b>#davical</b> channel on <a href=\"http://www.oftc.net/\" target=\"_blank\">irc.oftc.net</a>,\n"
+"or send a question to the <a href=\"http://lists.sourceforge.net/mailman/listinfo/davical-general\" target=\"_blank\">DAViCal Users mailing list</a>.</p>\n"
+"<p>The <a href=\"http://sourceforge.net/mailarchive/forum.php?forum_id=8348\" title=\"DAViCal Users Mailing List\" target=\"_blank\">mailing list\n"
+"archives can be helpful too.</p>"
+msgstr "<h1>Pomocník</h1>\n<p>ak potrebujete poradiť, tak v prvom rade by ste mali navštíviť <a href=\"http://www.davical.org/\" target=\"_blank\"> DAViCal Domovskú stránku</ a> alebo si\n pozrite <a href=\"http://wiki.davical.org/%s\" target=\"_blank\">DAViCal Wiki</ a>.</p>\n<p>Ak sa vám nepodarí nájsť odpoveď tu, navštívte nás na <a href=\"http://wikipedia.org/wiki/Internet_Relay_Chat\" target=\"_blank\">IRC</a> na\n<b>#davical</b> kanáli <a href=\"http://www.oftc.net/\" target=\"_blank\">irc.oftc.net</a>,\nalebo pošlite otázku na<a href=\"http://lists.sourceforge.net/mailman/listinfo/davical-general\" target=\"_blank\"> DAViCal Users mailing list</a>.</p>\n<p><a href=\"http://sourceforge.net/mailarchive/forum.php?forum_id=8348\" title=\"DAViCal Users mailing list\" target=\"_blank\"> Archív mailing listov \nmôže byť tiež užitočný.</p>"
+
+#, php-format
+msgid ""
+"<h1>Log On Please</h1><p>For access to the %s you should log on withthe "
+"username and password that have been issued to you.</p><p>If you would like "
+"to request access, please e-mail %s.</p>"
+msgstr "<h1>Prihlásenie</h1><p>Na %s sa prihlásite pomocou vášho užívateľského mena a hesla.</p><p>Pre vyžiadanie prihlasovacích údajov použite e-mail %s.</p>"
+
+msgid "A DAViCal principal collection may only contain collections"
+msgstr "Zostava DAViCalu môže obsahovať len zostavy"
+
+msgid "A collection already exists at that location."
+msgstr "Zostava už na tomto mieste existuje."
+
+msgid "A collection may not be both a calendar and an addressbook."
+msgstr ""
+
+msgid "A resource already exists at the destination."
+msgstr "Zdroj už na cieľovom umiestnení existuje."
+
+msgid "AWL Library version "
+msgstr "Verzia AWL knižnice"
+
+msgid "Access Tickets"
+msgstr "Prístupové tikety"
+
+msgid "Access ticket deleted"
+msgstr "Prístupový tiket sa odstránil"
+
+msgid "Action"
+msgstr "Akcia"
+
+msgid "Active"
+msgstr "Aktívne"
+
+msgid "Adding new member to this Group Principal"
+msgstr "Do skupiny sa pridal nový člen"
+
+#. Translators: in the sense of 'systems admin'
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Administration"
+msgstr "Administrácia"
+
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "All"
+msgstr "Všetko"
+
+msgid "All collection data will be unrecoverably deleted."
+msgstr "Všetky dáta zostavy sa natrvalo odstránia."
+
+#, php-format
+msgid "All events of user \"%s\" were deleted and replaced by those from file %s"
+msgstr "Všetky činnosti užívateľa \"%s\"  sa odstránili a prepísali tými zo súboru %s"
+
+msgid ""
+"All of the principal's calendars and events will be unrecoverably deleted."
+msgstr "Všetko z kalendárov a udalostí položky sa natrvalo vymaže."
+
+msgid "All privileges"
+msgstr "Všetky oprávnenia"
+
+msgid "All requested changes were made."
+msgstr "Všetky požadované zmeny sa vykonali."
+
+msgid ""
+"Allow free/busy enquiries targeted at the owner of this scheduling inbox"
+msgstr "Povoliť Free/Busy otázky smerované vlastníkovi tohoto priečinka doručenej pošty plánovania."
+
+msgid "An \"Administrator\" user has full rights to the whole DAViCal System"
+msgstr "\"Administrator\" má plné práva k celému systému DAViCal"
+
+msgid "Anonymous users are not allowed to modify calendars"
+msgstr "Anonymní užívatelia nemôžu meniť kalendáre"
+
+msgid "Anonymous users may only access public calendars"
+msgstr "Anonymní užívatelia majú prístup len k verejným kalendárom"
+
+msgid "Append"
+msgstr ""
+
+msgid "Application DB User"
+msgstr "Užívateľ DB aplikácie"
+
+msgid "Apply Changes"
+msgstr "Použiť zmeny"
+
+msgid "Apply DB Patches"
+msgstr "Použiť DB opravy"
+
+msgid "Attachment"
+msgstr "Prílohy"
+
+msgid "Authentication server unavailable."
+msgstr ""
+
+msgid "Binding deleted"
+msgstr "Prepojenie sa odstránilo"
+
+msgid "Bindings to other collections"
+msgstr "Prepojenia na ďalšie zostavy"
+
+msgid "Bindings to this Collection"
+msgstr "Prepojenia na túto zostavu"
+
+msgid "Bindings to this Principal's Collections"
+msgstr "Prepojenia na túto položku zostavy"
+
+msgid "Body contains no XML data!"
+msgstr "Telo neobsahuje XML dáta!"
+
+msgid "Bound As"
+msgstr "Naviazaný ako"
+
+msgid "Browse all users"
+msgstr "Prechádzať všetkými užívateľmi"
+
+msgid "Busy"
+msgstr "Zaneprázdnený"
+
+#, php-format
+msgid "Calendar \"%s\" was loaded from file."
+msgstr "Kalendár \"%s\" sa nahral zo súboru."
+
+msgid "Calendar Principals"
+msgstr "Kalendár"
+
+msgid "Calendar Timezone"
+msgstr "Časová zóna kalendára"
+
+msgid "Can only add tickets for existing collection paths which you own"
+msgstr "Tikety sa dajú pridať len na existujúce zostavy ciest ktoré vlastníte"
+
+msgid "Categories"
+msgstr "Kategórie"
+
+msgid "Change Password"
+msgstr "Zmena hesla"
+
+msgid "Click to display user details"
+msgstr "Zobraziť detaily užívateľa"
+
+msgid "Click to edit principal details"
+msgstr "Kliknite pre editáciu"
+
+msgid "Collection"
+msgstr "Zostava"
+
+msgid "Collection Grants"
+msgstr "Poverenia (grants) zostáv"
+
+msgid "Collection ID"
+msgstr "ID zostavy"
+
+msgid "Collection deleted"
+msgstr "Zostava sa odstránila"
+
+msgid ""
+"Collections may not be both CalDAV calendars and CardDAV addressbooks at the"
+" same time"
+msgstr "Zostavy nemusia byť súčasne CalDAV kalendáre a CardDAV adresáre"
+
+msgid "Configuring Calendar Clients for DAViCal"
+msgstr "Konfigurácia klientov kalendára DAViCalu"
+
+msgid "Configuring DAViCal"
+msgstr "Konfigurovanie DAViCalu"
+
+msgid "Confirm"
+msgstr "Potvrdiť"
+
+msgid "Confirm Deletion of the Binding"
+msgstr "Potvrdenie výmazu prepojenia"
+
+msgid "Confirm Deletion of the Collection"
+msgstr "Potvrdenie výmazu zostavy"
+
+msgid "Confirm Deletion of the Principal"
+msgstr "Potvrdenie výmazu položky"
+
+msgid "Confirm Deletion of the Ticket"
+msgstr "Potvrdenie výmazu tiketu"
+
+msgid "Confirm Password"
+msgstr "Potvrdenie hesla"
+
+msgid "Confirm the new password."
+msgstr "Potvrdenie nového hesla"
+
+msgid "Could not retrieve"
+msgstr "Nedá sa získať"
+
+msgid "Create"
+msgstr "Vytvoriť"
+
+msgid "Create Collection"
+msgstr "Vytvoriť zostavu"
+
+msgid "Create Events/Collections"
+msgstr "Vytvoriť udalosti/zostavy"
+
+msgid "Create New Collection"
+msgstr "Vytvoriť novú zostavu"
+
+msgid "Create New Principal"
+msgstr "Vytvoriť novú položku"
+
+msgid "Create Principal"
+msgstr "Vytvoriť položku"
+
+msgid "Create a new principal (i.e. a new user, resource or group)"
+msgstr "Vytvoriť novú položku (nového užívateľa, zdroj alebo skupinu)"
+
+msgid "Create a resource or collection"
+msgstr "Vytvoriť zdroj alebo zostavu"
+
+msgid "Creating new Collection."
+msgstr "Vytvára sa nová zostava."
+
+msgid "Creating new Principal record."
+msgstr "Vvtvára sa nová položka."
+
+msgid "Creating new ticket granting privileges to this Principal"
+msgstr "Vytváranie nového tiketu udeľujúceho oprávnenia k tejto položke"
+
+msgid "Current DAViCal version "
+msgstr "Aktuálna verzia DAViCalu"
+
+msgid "DAV Path"
+msgstr "Cesta k DAV"
+
+msgid ""
+"DAV::resourcetype may only be set to a new value, it may not be removed."
+msgstr "DAV: typ zdroja sa nemôže odstrániť. Môže sa len zmeniť jeho hodnota."
+
+msgid "DAViCal CalDAV Server"
+msgstr "DAViCal CalDAV Server"
+
+msgid "DAViCal DB Schema version "
+msgstr "Verzia DAViCal DB schémy"
+
+msgid "DAViCal Homepage"
+msgstr "Domovská stránka DAViCalu"
+
+msgid "DAViCal Wiki"
+msgstr "DAViCal Wiki"
+
+msgid "DAViCal only allows BIND requests for collections at present."
+msgstr "DAViCal v súčasnosti umožňuje žiadosti prepojení len pre zostavy."
+
+msgid "DKIM signature missing"
+msgstr "Chýba DKIM podpis"
+
+msgid "DKIM signature validation failed(DNS ERROR)"
+msgstr "Zlyhalo overenie DKIM podpisu (DNS ERROR)"
+
+msgid "DKIM signature validation failed(KEY Parse ERROR)"
+msgstr "Zlyhalo overenie DKIM podpisu (KEY Parse ERROR)"
+
+msgid "DKIM signature validation failed(KEY Validation ERROR)"
+msgstr "Zlyhalo overenie DKIM podpisu (KEY Validation ERROR)"
+
+msgid "DKIM signature validation failed(Signature verification ERROR)"
+msgstr "Zlyhalo overenie DKIM podpisu (Signature verification ERROR)"
+
+msgid "Database Error"
+msgstr "Databázová chyba"
+
+msgid "Database Host"
+msgstr "Hostiteľ (host) databázy "
+
+msgid "Database Name"
+msgstr "Meno databázy "
+
+msgid "Database Owner"
+msgstr "Vlastník databázy"
+
+msgid "Database Password"
+msgstr "Heslo databázy"
+
+msgid "Database Port"
+msgstr "Port databázy"
+
+msgid "Database Username"
+msgstr "Užívateľ databázy"
+
+msgid "Database error"
+msgstr "Databázová chyba"
+
+msgid "Database is Connected"
+msgstr ""
+
+msgid "Date Format Style"
+msgstr "Formát dátumu"
+
+msgid "Date Style"
+msgstr "Štýl dátumu"
+
+msgid "Default Privileges"
+msgstr "Predvolené oprávnenia"
+
+msgid "Default relationships added."
+msgstr "Pridané predvolené vzťahy."
+
+msgid "Delete"
+msgstr "Zmazať"
+
+msgid "Delete Events/Collections"
+msgstr "Zmazať udalosti/zostavy"
+
+msgid "Delete Principal"
+msgstr "Zmazať položku"
+
+msgid "Delete a resource or collection"
+msgstr "Zmazať zdroj alebo zostavu"
+
+msgid "Deleted a grant from this Principal"
+msgstr "Poverenie (grant) z tejto položky sa odstránilo"
+
+msgid "Deleting Binding:"
+msgstr "Odstraňuje sa prepojenie:"
+
+msgid "Deleting Collection:"
+msgstr "Mazanie zostavy:"
+
+msgid "Deleting Principal:"
+msgstr "Mazanie položky:"
+
+msgid "Deleting Ticket:"
+msgstr "Mazanie tiketu:"
+
+msgid ""
+"Deliver scheduling invitations from an organiser to this scheduling inbox"
+msgstr "Doručenie pozvánok plánovania od organizátora do tohto priečinka doručenej pošty plánovania"
+
+msgid "Deliver scheduling replies from an attendee to this scheduling inbox"
+msgstr "Doručenie odpovedí plánovania od účastníka do tohoto priečinka doručenej pošty plánovania"
+
+msgid "Dependencies"
+msgstr "Závislosti"
+
+msgid "Dependency"
+msgstr "Potreba"
+
+msgid "Description"
+msgstr "Popis"
+
+msgid "Destination collection does not exist"
+msgstr "Cieľová zostava neexistuje"
+
+msgid "Directory on the server"
+msgstr "Zložka na serveri"
+
+msgid "Display Name"
+msgstr "Zobrazované meno"
+
+msgid "Displayname"
+msgstr "Zobrazované meno"
+
+msgid "Does the user have the right to perform this role?"
+msgstr "Má užívateľ oprávnenia na vykonanie tejto úlohy?"
+
+msgid "Domain"
+msgstr "Doména"
+
+msgid "EMail"
+msgstr "EMail"
+
+msgid "EMail OK"
+msgstr "EMail OK"
+
+msgid "ERROR: The full name may not be blank."
+msgstr "ERROR: Celé meno musí byť vyplnené."
+
+msgid "ERROR: The new password must match the confirmed password."
+msgstr "ERROR: Nové heslo sa musí zhodovať s overovaným heslom."
+
+msgid "ERROR: There was a database error writing the roles information!"
+msgstr "ERROR: Pri zápise úlohy sa vyskytla databázová chyba!"
+
+msgid "Edit"
+msgstr "Úpravy"
+
+msgid "Edit this user record"
+msgstr "Editovať záznam užívateľa"
+
+msgid "Email Address"
+msgstr "Emailová adresa"
+
+msgid ""
+"Enter a username, if you know it, and click here, to be e-mailed a temporary"
+" password."
+msgstr "Zadajte meno (ak ho viete) a kliknite sem na získanie dočacného hesla e-mailom."
+
+msgid "Enter your username and password then click here to log in."
+msgstr "Zadajte vaše meno a heslo a potom sem kliknite na prihlásenie."
+
+#, php-format
+msgid "Error NoGroupFound with filter >%s<, attributes >%s< , dn >%s<"
+msgstr "Chyba NoGroupFound s filtrom >%s<, atribútmi >%s< , dn >%s<"
+
+#, php-format
+msgid "Error NoUserFound with filter >%s<, attributes >%s< , dn >%s<"
+msgstr "Chyba NoUserFound s filtrom >%s<, atribútmi >%s< , dn >%s<"
+
+msgid "Error querying database."
+msgstr "Chyba pri dotaze na databázu."
+
+msgid "Error writing calendar details to database."
+msgstr "Chyba pri zápise detailov kalendára do databázy."
+
+msgid "Error writing calendar properties to database."
+msgstr "Chyba pri zápise vlastností kalendára do databázy."
+
+msgid "European"
+msgstr "Európsky"
+
+msgid "European (d/m/y)"
+msgstr "Európsky (d/m/r)"
+
+msgid "Existing resource does not match \"If-Match\" header - not accepted."
+msgstr "Existujúci zdroj nezodpovedá \"If-Match\" hlavičke - neakceptovala sa."
+
+msgid "Existing resource matches \"If-None-Match\" header - not accepted."
+msgstr "Existujúci zdroj zodpovedá \"If-None-Match\" hlavičke - neakceptovala sa."
+
+msgid "Expires"
+msgstr "Expiruje"
+
+msgid "External Calendars"
+msgstr "Externé kalendáre"
+
+msgid "External Url"
+msgstr "Externá URL"
+
+msgid "Fail"
+msgstr "Zlyhalo"
+
+msgid "Failed to write collection."
+msgstr "Nepodarilo sa zapísať kolekciu."
+
+msgid "Feeds are only supported for calendars at present."
+msgstr "V súčasnosti je pre kalendére podporované len naplňovanie."
+
+msgid "For access to the"
+msgstr "Pre prístup k"
+
+msgid "Forbidden"
+msgstr "Zakázaný"
+
+msgid "Free/Busy"
+msgstr "voľný/zaneprázdnený"
+
+msgid "Full Name"
+msgstr "Celé meno"
+
+msgid "Fullname"
+msgstr "Celé meno"
+
+msgid "GET requests on collections are only supported for calendars."
+msgstr "GET dotazy na zostavy sú podporované len pre kalendáre."
+
+msgid "GNU gettext support"
+msgstr "Podpora GNU gettext"
+
+msgid "GO!"
+msgstr "Poďme na to!"
+
+msgid "Go to the DAViCal Feature Requests"
+msgstr "Prejsť na požiadavky na nové fičury pre DAViCal"
+
+msgid "Grant"
+msgstr "Udeliť"
+
+msgid "Granting new privileges from this Principal"
+msgstr "Udeľovanie nových oprávnení z tejto položky"
+
+#. Translators: in the sense of a group of people
+msgid "Group"
+msgstr "Skupina"
+
+msgid "Group Members"
+msgstr "Členovia skupiny"
+
+msgid "Group Memberships"
+msgstr "Členstvo v skupine"
+
+msgid "Group Principals"
+msgstr "Položky skupiny"
+
+msgid "Has Members"
+msgstr "Členovia"
+
+msgid "Help"
+msgstr "Pomoc"
+
+msgid "Help on the current screen"
+msgstr "Pomocník na aktuálnej obrazovke"
+
+msgid "Help! I've forgotten my password!"
+msgstr "Zabudol som heslo!"
+
+msgid "Home"
+msgstr "Domov"
+
+msgid "Home "
+msgstr ""
+
+msgid "Home Page"
+msgstr "Domáca stránka"
+
+msgid "ID"
+msgstr "ID"
+
+msgid "ISO Format"
+msgstr "ISO Formát"
+
+msgid "ISO Format (YYYY-MM-DD)"
+msgstr "ISO Formát (YYYY-MM-DD)"
+
+#. Translators: short for 'Identifier'
+msgid "Id"
+msgstr "Id"
+
+msgid "If you have forgotten your password then"
+msgstr "Ak ste zabudli heslo"
+
+msgid "If you would like to request access, please e-mail"
+msgstr "Ak chcete požiadať o prístup, napíšte e-mail na"
+
+msgid "Import all .ics files of a directory"
+msgstr "Naimportovať všetky .ics súbory z adresára"
+
+msgid "Import calendars and Synchronise LDAP."
+msgstr "Import kalendára a LDAP synchronizácia."
+
+msgid "Inactive Principals"
+msgstr "Neaktívne základy"
+
+msgid "Incorrect content type for addressbook: "
+msgstr "Nesprávny typ obsahu adresára:"
+
+msgid "Incorrect content type for calendar: "
+msgstr "Nesprávny typ obsahu kalendára:"
+
+msgid "Invalid user name or password."
+msgstr "Nesprávne meno alebo heslo."
+
+msgid "Invalid username or password."
+msgstr "Nesprávne meno alebo heslo."
+
+msgid "Is Member of"
+msgstr "je členom"
+
+msgid "Is a Calendar"
+msgstr "Je kalendár"
+
+msgid "Is an Addressbook"
+msgstr "Je adresár"
+
+msgid "Is this user active?"
+msgstr "Je tento užívateľ aktívny?"
+
+msgid "Items in Collection"
+msgstr "položiek v zostave"
+
+msgid "Joined"
+msgstr "Pridané"
+
+msgid "Language"
+msgstr "Jazyk"
+
+msgid "Last used"
+msgstr "Posledne použité"
+
+msgid "List External Calendars"
+msgstr "Zoznam externých kalendárov"
+
+msgid "List Groups"
+msgstr "Zoznam skupín"
+
+msgid "List Resources"
+msgstr "Zoznam zdrojov"
+
+msgid "List Users"
+msgstr "Zoznam užívateľov"
+
+msgid "Load From File"
+msgstr "Nahrať zo súboru"
+
+msgid "Locale"
+msgstr "Jazyk"
+
+msgid "Location"
+msgstr "Umiestnenie"
+
+msgid "Log On Please"
+msgstr "Prihláste sa"
+
+msgid "Log out of DAViCal"
+msgstr "Odhlásiť sa z DAViCalu"
+
+msgid "Logout"
+msgstr "Logout"
+
+msgid "Member deleted from this Group Principal"
+msgstr "Odstránil sa člen z tejto skupiny"
+
+msgid ""
+"Most of DAViCal will work but upgrading to PHP 5.2 or later is strongly "
+"recommended."
+msgstr "Pre beh DAViCalu sa odporúča upgradovať PHP va verziu 5.2 alebo novšiu."
+
+msgid "Name"
+msgstr "Meno"
+
+msgid "New Collection"
+msgstr "Nová zostava"
+
+msgid "New Password"
+msgstr "Nové heslo"
+
+msgid "New Principal"
+msgstr "Nová položka"
+
+#. Translators: not 'Yes'
+msgid "No"
+msgstr "Nie"
+
+msgid "No calendar content"
+msgstr "Kalendár bez obsahu."
+
+msgid "No collection found at that location."
+msgstr "Na tomto mieste sa nenašli žiadne kolekcie."
+
+msgid "No resource exists at the destination."
+msgstr ""
+
+msgid "No summary"
+msgstr "Bez popisu"
+
+#. Translators: short for 'Number'
+msgid "No."
+msgstr "Počet"
+
+msgid "No. of Collections"
+msgstr "Počet zostáv"
+
+msgid "No. of Principals"
+msgstr "Počet položiek"
+
+msgid "No. of Resources"
+msgstr "Počet zdrojov"
+
+msgid "Not overwriting existing destination resource"
+msgstr "Existujúci cieľový zdroj sa neprepisuje"
+
+msgid "Opaque"
+msgstr "nepriehľadné"
+
+msgid "Organizer Missing"
+msgstr "Chýba organizátor"
+
+msgid "Override a Lock"
+msgstr "Prepísanie zámku"
+
+msgid "PDO PostgreSQL drivers"
+msgstr "Drivery PDO PostgreSQL"
+
+msgid "PHP DateTime class"
+msgstr "Trieda PHP DateTime"
+
+msgid "PHP LDAP module available"
+msgstr "Dostupný modul PHP LDAP"
+
+msgid "PHP Magic Quotes GPC off"
+msgstr "Vypnutý PHP Magic Quotes GPC"
+
+msgid "PHP Magic Quotes runtime off"
+msgstr "Vypnutý PHP Magic Quotes runtime "
+
+msgid "PHP PDO module available"
+msgstr "Dostupný modul PHP PDO"
+
+msgid "PHP calendar extension available"
+msgstr "Dostupné rozšírenie PHP calendar"
+
+msgid "PHP curl support"
+msgstr "Podpora PHP curl"
+
+msgid "PHP iconv support"
+msgstr "Podpora PHP iconv"
+
+msgid "PHP not using Apache Filter mode"
+msgstr "PHP nepoužíva mód Apache filtra"
+
+msgid "PHP5 curl support is required for external binds"
+msgstr "Pre externé spojenia sa vyžaduje podpora PHP5 curl"
+
+msgid ""
+"PUT on a collection is only allowed for text/calendar content against a "
+"calendar collection"
+msgstr "PUT žiadosť na zostavu je možné len na text/calendar obsah zostavy kalendára"
+
+msgid ""
+"PUT on a collection is only allowed for text/vcard content against an "
+"addressbook collection"
+msgstr "PUT žiadosť na zostavu je možné len na text/vcard obsah zostavy kalendára"
+
+msgid "Passed"
+msgstr "Prešlo"
+
+msgid "Password"
+msgstr "Heslo"
+
+msgid "Path"
+msgstr "Cesta"
+
+msgid "Person"
+msgstr "Osoba"
+
+msgid "Please confirm deletion of access ticket - see below"
+msgstr "Potvrďte odstránenie prístupového tiketu - viď nižšie"
+
+msgid "Please confirm deletion of binding - see below"
+msgstr "Potvrďte odstránenie väzby - viď nižšie"
+
+msgid "Please confirm deletion of collection - see below"
+msgstr "Potvrďte odstránene zostavy - viď nižšie"
+
+msgid "Please confirm deletion of the principal"
+msgstr "Potvrďte odstránenie položky"
+
+msgid "Please note the time and advise the administrator of your system."
+msgstr "Informujte správcu systému (ale vezmite prosím na vedomie koľko je hodín)."
+
+msgid "Principal"
+msgstr "Položka"
+
+msgid "Principal Collections"
+msgstr "Zostavy"
+
+msgid "Principal Grants"
+msgstr "Poverenia"
+
+msgid "Principal ID"
+msgstr "ID položky "
+
+msgid "Principal Type"
+msgstr "Typ položky "
+
+msgid "Principal deleted"
+msgstr "Položka sa odstránila"
+
+msgid "Privileges"
+msgstr "Oprávnenia"
+
+msgid "Privileges granted to All Users"
+msgstr "Oprávnenia udelené všetkým užívateľom"
+
+msgid "Privileges to allow delivery of scheduling messages"
+msgstr "Oprávnenia na povolenie doručenie správ plánovania"
+
+msgid "Privileges to delegate scheduling decisions"
+msgstr "Oprávnenia delegovať rozhodnutia o plánovaní"
+
+msgid "Property is read-only"
+msgstr "Vlastnosť je len na čítanie"
+
+#. Translators: in the sense of being available to all users
+msgid "Public"
+msgstr "Verejné"
+
+msgid "Publicly Readable"
+msgstr "Všetkým dostupné (len na čítanie)"
+
+msgid "REPORT body contains no XML data!"
+msgstr "Telo REPORTu obsahuje dáta ktoré nie sú XML!"
+
+msgid "REPORT body is not valid XML data!"
+msgstr "Telo REPORTu nie je validné XML!"
+
+msgid "Read"
+msgstr "Čítať"
+
+msgid "Read ACLs for a resource or collection"
+msgstr "Čítať ACL zdroja alebo zostavy"
+
+msgid "Read Access Controls"
+msgstr "Čítať oprávnenia"
+
+msgid "Read Current User's Access"
+msgstr "Čítať oprávnenia aktuálneho užívateľa"
+
+msgid "Read Free/Busy Information"
+msgstr "Čítať informácie voľný/zaneprázdnený"
+
+msgid "Read the content of a resource or collection"
+msgstr "Čítať obsah zdroja alebo zostavy"
+
+msgid ""
+"Read the details of the current user's access control to this resource."
+msgstr "Čítať detaily prístupov aktuálneho užívateľa k tomuto zdroju."
+
+msgid "Read the free/busy information for a calendar collection"
+msgstr "Čítať free/busy informácie pre zostavu kalendára"
+
+msgid "Read/Write"
+msgstr "Čítať/zapisovať"
+
+msgid "References"
+msgstr "Referencie"
+
+msgid "Remove"
+msgstr "Odstrániť"
+
+msgid "Remove a lock"
+msgstr "Odstránenie zámku"
+
+msgid "Remove dangling external calendars"
+msgstr "Odstrániť natiahnutý externý kalendár"
+
+msgid "Report Bug"
+msgstr "Nahlásiť chybu"
+
+msgid "Report a bug in the system"
+msgstr "Nahlásiť chybu v systéme"
+
+msgid "Request Feature"
+msgstr "Žiadosť o fičuru (novú funkciu)"
+
+msgid "Request body is not valid XML data!"
+msgstr "Žiadosť nemá správny XML formát!"
+
+#. Translators a thing which might be booked: a room, a carpark, a
+#. projector...
+msgid "Resource"
+msgstr "Zdroj"
+
+msgid "Resource Calendar Principals"
+msgstr "Zdroj položiek kalendára"
+
+msgid "Resource Not Found."
+msgstr "Zdroj sa nenašiel."
+
+msgid "Resource has changed on server - not deleted"
+msgstr "Zdroj bol na serveri zmenený - nie vymazaný"
+
+msgid "Resources may not be changed to / from collections."
+msgstr "Zdroje sa nemôžu pridávať/odoberať v zostavách."
+
+msgid "Revoke"
+msgstr "Zrušiť"
+
+msgid "SRV Record"
+msgstr "SRV záznam"
+
+msgid "Schedule Deliver"
+msgstr "Doručiť plánovanie"
+
+msgid "Schedule Send"
+msgstr "Odoslať plánovanie"
+
+msgid "Schedule Transparency"
+msgstr "Priehľadnosť plánovania"
+
+msgid "Scheduling: Deliver a Reply"
+msgstr "Plánovanie: doručiť odpoveď"
+
+msgid "Scheduling: Deliver an Invitation"
+msgstr "Plánovanie: doručiť pozvánku"
+
+msgid "Scheduling: Delivery"
+msgstr "Plánovanie: doručenia"
+
+msgid "Scheduling: Query free/busy"
+msgstr "Plánovanie: dotaz na voľný/zaneprázdnený"
+
+msgid "Scheduling: Send a Reply"
+msgstr "Plánovanie: odoslať odpoveď"
+
+msgid "Scheduling: Send an Invitation"
+msgstr "Plánovanie: odoslať pozvánku"
+
+msgid "Scheduling: Send free/busy"
+msgstr "Plánovanie: odoslať voľný/zaneprázdnený"
+
+msgid "Scheduling: Sending"
+msgstr "Plánovanie: odosielanie"
+
+msgid "Send free/busy enquiries"
+msgstr "Odoslať voľný/zaneprázdnený dotazy"
+
+msgid ""
+"Send scheduling invitations as an organiser from the owner of this "
+"scheduling outbox."
+msgstr "Poslať plánovacie pozvánky ako organizátor od majiteľa tohto plánovania."
+
+msgid ""
+"Send scheduling replies as an attendee from the owner of this scheduling "
+"outbox."
+msgstr "Poslať plánovacie odpovede ako účastník od majiteľa tohto plánovania."
+
+msgid "Set free/busy privileges"
+msgstr "Nastaviť oprávnenia voľný/zaneprázdnený"
+
+msgid "Set read privileges"
+msgstr "Nastaviť oprávnenia na čítanie"
+
+msgid "Set read+write privileges"
+msgstr "Nastaviť oprávnenia na čítanie+zápis"
+
+msgid ""
+"Set the path to store your ics e.g. 'calendar' will be referenced as "
+"/caldav.php/username/calendar/"
+msgstr "Zadajte cestu pre uloženie vášho ics (napr. hodnota 'calendar' bude zodpovedať ceste /caldav.php/username/calendar/)"
+
+msgid "Setup"
+msgstr "Nastavenia"
+
+msgid "Setup DAViCal"
+msgstr "Nstavenie DAViCalu"
+
+msgid "Should the uploaded entries be appended to the collection?"
+msgstr ""
+
+msgid "Show help on"
+msgstr "Zobraziť nápovedu"
+
+msgid "Site Statistics"
+msgstr "Štatistika stránky"
+
+msgid "Site Statistics require the database to be available!"
+msgstr "Štatistiky stránky vyžadujú, aby bola k dispozícii databáza!"
+
+msgid "Some properties were not able to be changed."
+msgstr "Niektoré vlastnosti sa nepodarilo zmeneniť."
+
+msgid "Some properties were not able to be set."
+msgstr "Niektoré vlastnosti sa nepodarilo nastaviť."
+
+msgid "Source resource does not exist."
+msgstr "Zdrojový prostriedok neexistuje."
+
+msgid ""
+"Special collections may not contain a calendar or other special collection."
+msgstr "Špeciálne zostavy nesmú obsahovať kalendár alebo iné špeciálne zostavy."
+
+msgid "Specific Privileges"
+msgstr "Osobitné oprávnenia"
+
+#, php-format
+msgid "Stable: %s, We have: %s !"
+msgstr ""
+
+msgid "Status"
+msgstr "Status"
+
+#, php-format
+msgid "Status: %d, Message: %s, User: %d, Path: %s"
+msgstr "Stav: %d, Správa: %s, Užívateľ: %d, Cesta: %s"
+
+msgid "Submit"
+msgstr "Odoslať"
+
+msgid "Suhosin \"server.strip\" disabled"
+msgstr "Vypnutý suhosin \"server.strip\""
+
+msgid "Sync LDAP Groups with DAViCal"
+msgstr "Synchronizovať skupiny LDAP s DAViCalom"
+
+msgid "Sync LDAP with DAViCal"
+msgstr "Synchronizovať LDAP s DAViCalom"
+
+msgid "Target"
+msgstr "Cieľ"
+
+msgid "That destination name contains invalid characters."
+msgstr "Cieľová destinácia obsahuje neplatné znaky."
+
+msgid "That resource is not present on this server."
+msgstr "Zdroj sa na serveri nenachádza."
+
+msgid "The BIND Request MUST identify an existing resource."
+msgstr "Žiadosť prepojenia musí smerovať na existujúce zdroje."
+
+msgid "The BIND Request-URI MUST identify a collection."
+msgstr "Žiadosť prepojenia URI musí smerovať na zostavu."
+
+msgid "The BIND method is not allowed at that location."
+msgstr "Na toto umiestnenie nie je povolená metóda prepojenia."
+
+msgid ""
+"The CalDAV:schedule-calendar-transp property may only be set on calendars."
+msgstr "CalDAV: vlastnosť schedule-calendar-transp môže byť nastavená len na kalendároch."
+
+msgid "The DAViCal Home Page"
+msgstr "Domovská stránka DAViCal"
+
+msgid "The access ticket will be deleted."
+msgstr " Prístupový tiket sa odstránil."
+
+msgid ""
+"The addressbook-query report must be run against an addressbook collection"
+msgstr "Adresárová-query správa musí bežať len na zostave adresára"
+
+msgid "The application failed to understand that request."
+msgstr "Aplikácia nepochopila požiadavku."
+
+msgid "The application program does not understand that request."
+msgstr "Program nepochopil požiadavku."
+
+msgid "The binding will be deleted."
+msgstr "Prepojenie sa odstráni."
+
+msgid "The calendar path contains illegal characters."
+msgstr "Cesta kalendáa obsahuje nepovolené znaky."
+
+msgid ""
+"The calendar-free-busy-set is superseded by the  schedule-calendar-transp "
+"property of a calendar collection."
+msgstr ""
+
+msgid "The calendar-query report may not be run against that URL."
+msgstr ""
+
+msgid ""
+"The calendar-query report must be run against a calendar or a scheduling "
+"collection"
+msgstr "Kalendár-query správa musí byť spustená len na kalendári alebo zostave plánovania"
+
+msgid "The collection name may not be blank."
+msgstr "Meno zostavy musí byť vyplnené."
+
+msgid "The destination collection does not exist"
+msgstr "Cieľová zostava neexistuje"
+
+msgid ""
+"The displayname may only be set on collections, principals or bindings."
+msgstr "Zobrazované meno môže byť nastavené len na zostavách, položkách alebo prepojeniach."
+
+msgid "The email address really should not be blank."
+msgstr "E-mailová adresa by nemala byť prázdna."
+
+#, php-format
+msgid "The file \"%s\" is not UTF-8 encoded, please check error for more details"
+msgstr "Súbor \"%s\" nie je v UTF-8. Pre viac detailov si skontrolujte chybu."
+
+msgid ""
+"The file is not UTF-8 encoded, please check the error for more details."
+msgstr "Súbor nie je v UTF-8. Pre viac detailov si skontrolujte chybu."
+
+msgid "The full name for this person, group or other type of principal."
+msgstr "Celé meno tejto osoby, skupiny alebo iného typu položky."
+
+msgid "The full name must not be blank."
+msgstr "Celé meno nesmie byť prázdne."
+
+msgid "The name this user can log into the system with."
+msgstr "Meno užívateľa s ktorým sa bude prihlásovať do systému."
+
+msgid "The path on the server where your .ics files are."
+msgstr "Cesta na serveri kde sú vaše .ics súbory."
+
+msgid "The preferred language for this person."
+msgstr "Upredňostňovaný jazyk tejto osoby."
+
+#, php-format
+msgid "The principal \"%s\" does not exist"
+msgstr "Položka \"%s\" neexistuje"
+
+msgid "The style of dates used for this person."
+msgstr "Štýl dátumu použitý pre túto osobu."
+
+msgid "The user's e-mail address."
+msgstr "E-mail užívateľa."
+
+msgid "The user's full name."
+msgstr "Celé meno užívateľa."
+
+msgid "The user's password for logging in."
+msgstr "Prihlasovacie heslo užívateľa."
+
+msgid "The username must not be blank, and may not contain a slash"
+msgstr "Meno užívateľa nesmie byť prázdne a nesmie obsahovať lomítko"
+
+msgid "There was an error reading from the database."
+msgstr "Pri čítaní z databázy došlo k chybe."
+
+msgid "There was an error writing to the database."
+msgstr "Pri zápise do databázy došlo k chybe."
+
+msgid ""
+"This operation does the following: <ul><li>check valid groups in LDAP "
+"directory</li> <li>check groups in DAViCal</li></ul> then <ul><li>if a group"
+" is present in DAViCal but not in LDAP set as inactive in DAViCal</li> "
+"<li>if a group is present in LDAP but not in DAViCal create the group in "
+"DAViCal</li> <li>if a group in present in LDAP and DAViCal then update "
+"information in DAViCal</li> </ul>"
+msgstr "Touto operáciou sa vykoná nasledovné: <ul> <li>načítajú sa skupiny z LDAP</ li> <li>načítajú sa skupiny z DAViCal</ li> </ ul>a potom...<ul> <li>ak je skupina v DAViCal ale nie je v LDAP - nastaví sa ako neaktívna v DAViCal</ li> <li>ak je skupina v LDAP ale nie je v DAViCal - vytvorí sa v DAViCal</ li> <li>ak je skupina aj v LDAP a aj v DAViCal - aktualizujú sa údaje v DAViCal</ li> </ ul>"
+
+msgid ""
+"This operation does the following: <ul><li>check valid users in LDAP "
+"directory</li> <li>check users in DAViCal</li></ul> then <ul><li>if a user "
+"is present in DAViCal but not in LDAP set him as inactive in DAViCal</li> "
+"<li>if a user is present in LDAP but not in DAViCal create the user in "
+"DAViCal</li> <li>if a user in present in LDAP and DAViCal then update "
+"information in DAViCal</li> </ul>"
+msgstr "Touto operáciou sa vykoná nasledovné: <ul><li>overia sa platní užívatelia v LDAP</li><li>overia sa užívatelia v DAViCal</li></ul>potom<ul><li>Ak sa užívateľ nachádza v DAViCal ale v LDAP nie, nastaví sa v DAViCal ako neaktívny</li><li>Ak sa užívateľ nachádza v LDAP ale nie v DAViCal, v DAViCal sa vytvorí</li><li>Ak sa užívateľ nachádza aj v LDAP a aj v DAViCal, aktualizujú sa jeho údaje v DAViCal</li></ul>"
+
+msgid ""
+"This page primarily checks the environment needed for DAViCal to work "
+"correctly.  Suggestions or patches to make it do more useful stuff will be "
+"gratefully received."
+msgstr "Na tejto stránke sa hlavne skontroluje prostredie potrebné pre správny chod DAViCalu. Návrhy alebo záplaty pre lepšie fungovanie budú prijaté s potešením."
+
+msgid ""
+"This process will import each file in a directory named \"username.ics\" and"
+" create a user and calendar for each file to import."
+msgstr "Tento proces naimportuje každý súbor v adresári s názvom \"username.ics\" a vytvorí užívateľa a kalendár pre každý súbor, ktorý naimportujete."
+
+msgid "This server only supports the text/calendar format for freebusy URLs"
+msgstr "Tento server podporuje len text/calendar formát pre free/busy URLs"
+
+msgid "Ticket ID"
+msgstr "ID tiketu"
+
+msgid "Time"
+msgstr "Čas"
+
+msgid "To Collection"
+msgstr "Do zostavy"
+
+msgid "To ID"
+msgstr "ID"
+
+msgid "Toggle all privileges"
+msgstr "Invertuje všetky oprávnenia"
+
+msgid "Tools"
+msgstr "Nástroje"
+
+msgid "Transparent"
+msgstr "Priehľadné"
+
+msgid "URL"
+msgstr "URL"
+
+msgid "US Format"
+msgstr "US Formát"
+
+msgid "Unauthenticated User"
+msgstr "Neautentifikovaný užívateľ"
+
+msgid "United States of America (m/d/y)"
+msgstr "United States of America (m/d/r)"
+
+msgid "Unsupported resourcetype modification."
+msgstr ""
+
+msgid "Update"
+msgstr "Aktualizovať"
+
+msgid "Updated"
+msgstr "Aktualizované"
+
+msgid "Updating Collection record."
+msgstr "Aktualizuje sa záznam zostavy."
+
+msgid "Updating Member of this Group Principal"
+msgstr "Aktualizue sa člen tejto položky skupiny."
+
+msgid "Updating Principal record."
+msgstr "Aktualizuje sa záznam položky."
+
+msgid "Updating grants by this Principal"
+msgstr "Aktualizujú sa poverenia tejto položky."
+
+msgid "Upgrade DAViCal database schema"
+msgstr "Aktualizovať databázovú schému DAViCalu"
+
+msgid "Upgrade Database"
+msgstr "Aktualizovať databázu"
+
+msgid "Upload an iCalendar file or VCard file to replace this collection."
+msgstr ""
+
+msgid "User Calendar Principals"
+msgstr "Hlavný používateľ kalendára"
+
+msgid "User Details"
+msgstr "Detaily užívateľa"
+
+msgid "User Functions"
+msgstr "Činnosti"
+
+msgid "User Name"
+msgstr "Meno užívateľa"
+
+msgid "User Roles"
+msgstr "Užívateľské role"
+
+msgid "User is active"
+msgstr "Aktívny užívateľ"
+
+msgid "User record written."
+msgstr "Záznam užívateľa sa zapísal."
+
+msgid "Username"
+msgstr "Meno užívateľa"
+
+msgid "View My Details"
+msgstr "Zobraziť moje detaily"
+
+msgid "View my own principal record"
+msgstr "Zobraziť záznam vlastnej položky"
+
+msgid "View this user record"
+msgstr "zobraziť záznam tohoto užívateľa"
+
+msgid "Visit the DAViCal Wiki"
+msgstr "Navštíviť DAViCal Wiki"
+
+#, php-format
+msgid "Want: %s, Currently: %s"
+msgstr "Potrebné: %s, Aktuálne: %s"
+
+msgid ""
+"Warning: there are no active admin users! You should fix this before logging"
+" out.  Consider using the $c->do_not_sync_from_ldap configuration setting."
+msgstr "Varovanie: nie sú aktívny žiadny admin užívatelia! Opravte to skôr ako sa odhlásite. Do budúcna skúste použiť v konfigurácii premennú $c->do_not_sync_from_ldap."
+
+msgid "When the user's e-mail account was validated."
+msgstr "Keď sa potvrdil užívateľov e-mailový účet."
+
+msgid "Write"
+msgstr "Zapísať"
+
+msgid "Write ACLs for a resource or collection"
+msgstr "Zápis ACL pre zdroj alebo zostavu"
+
+msgid "Write Access Controls"
+msgstr "Práva na zápis"
+
+msgid "Write Data"
+msgstr "Zapísať dáta"
+
+msgid "Write Metadata"
+msgstr "Zapísať metadáta"
+
+msgid "Write content"
+msgstr "Zapísať obsah"
+
+msgid "Write properties"
+msgstr "Zapísať"
+
+msgid "Yes"
+msgstr "Áno"
+
+msgid "You are editing"
+msgstr "Editovanie"
+
+msgid "You are not authorised to use this function."
+msgstr "Nemáte oprávnenie používať túto funkciu."
+
+msgid "You are viewing"
+msgstr "Čítanie"
+
+msgid "You do not have permission to modify this record."
+msgstr "Nemáte oprávnenie na zmenu tohoto záznamu."
+
+msgid "You may not PUT to a collection URL"
+msgstr "Nemôžete vložiť URL do zostavy"
+
+msgid "You must log in to use this system."
+msgstr "Pre použitie programu sa musíte prihlásiť."
+
+msgid "Your configuration produced PHP errors which should be corrected"
+msgstr "Vaša konfigurácia vygenerovala PHP chyby ktoré by mali byť opravené"
+
+msgid "calendar-timezone property is only valid for a calendar."
+msgstr "Vlastnosť calendar-timezone je povolená len pre kalendár."
+
+#, php-format
+msgid "directory %s is not readable"
+msgstr "Z adresára %s sa nedá čítať"
+
+msgid ""
+"drivers_imap_pam : imap_url parameter not configured in "
+"/etc/davical/*-conf.php"
+msgstr "drivers_imap_pam: imap_url parameter nie je nakonfigurovaný v /etc/davical/*-conf.php"
+
+msgid "drivers_ldap : Could not start TLS: ldap_start_tls() failed"
+msgstr "drivers_ldap: Nepodarilo sa naštartovať TLS: ldap_start_tls() zlyhalo"
+
+#, php-format
+msgid ""
+"drivers_ldap : Failed to bind to host %1$s on port %2$s with bindDN of %3$s"
+msgstr "drivers_ldap: Zlyhalo pripojenie k hostiteľovi %1$s cez port %2$s s bindDN %3$s"
+
+msgid ""
+"drivers_ldap : Failed to set LDAP to use protocol version 3, TLS not "
+"supported"
+msgstr "drivers_ldap: Zlyhalo nastavenie použitia protokolu 3 pre LDAP. TLS nie je podporované"
+
+msgid ""
+"drivers_ldap : Unable to bind to LDAP - check your configuration for bindDN "
+"and passDN, and that your LDAP server is reachable"
+msgstr "drivers_ldap: Nedá sa pripojiť k LDAP - skontrolujte si v konfigurácii položky bindDN a passDN a to či je server LDAP dostupný"
+
+#, php-format
+msgid "drivers_ldap : Unable to connect to LDAP with port %s on host %s"
+msgstr "drivers_ldap: Nedá sa pripojiťk LDAP na port %s a hostiteľa %s"
+
+msgid ""
+"drivers_ldap : function ldap_connect not defined, check your php_ldap module"
+msgstr "drivers_ldap: funkcia ldap_connect nie je definovaná. Skontrolujte, či máte nainštalovaný modul php_ldap"
+
+#, php-format
+msgid "drivers_pwauth_pam : Unable to find %s file"
+msgstr "drivers_pwauth_pam: Nedá sa nájsť súbor %s"
+
+#, php-format
+msgid "drivers_squid_pam : Unable to find %s file"
+msgstr "drivers_squid_pam: Nedá sa nájsť súbor %s"
+
+#. Translators: this is a colloquial phrase in english (the name of a flower)
+#. and is an option allowing people to log in automatically in future
+msgid "forget me not"
+msgstr "zapamätať prihlásenie"
+
+msgid "from principal"
+msgstr "z položky"
+
+msgid "iSchedule Domains"
+msgstr "iSchedule domény"
+
+msgid "invalid request"
+msgstr "nesprávna požiadavka"
+
+msgid "path to store your ics"
+msgstr "cesta pre uloženie vášho ics"
+
+msgid "recipient must be organizer or attendee of event"
+msgstr "príjemca musí byť organizátorom alebo účastník akcie"
+
+msgid "sender must be organizer or attendee of event"
+msgstr "odosielateľ musí byť organizátorom alebo účastník akcie"
+
+msgid "unauthenticated"
+msgstr "neoverený"
+
+msgid ""
+"you should log on with the username and password that have been issued to "
+"you."
+msgstr "mali by ste sa prihlásiť pomocou vášho mena a hesla."
