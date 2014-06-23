@@ -119,6 +119,7 @@ class ldapDrivers
     global $c;
 
     $query = $this->ldap_query_all;
+    $ret = array();
 
     foreach($this->baseDNUsers as $baseDNUsers) {
       $entry = $query($this->connect,$baseDNUsers,$this->filterUsers,$attributes);
@@ -150,6 +151,7 @@ class ldapDrivers
     global $c;
 
     $query = $this->ldap_query_all;
+    $ret = array();
 
     foreach($this->baseDNGroups as $baseDNGroups) {
       $entry = $query($this->connect,$baseDNGroups,$this->filterGroups,$attributes);
