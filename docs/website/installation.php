@@ -5,73 +5,41 @@
 <h1>Before Starting</h1>
 
 <h2>Debian Users</h2>
-<p>Ideally you will be running a recent Debian (or Ubuntu) release and will
-be able to add:</p>
-<pre>
-deb http://debian.mcmillan.net.nz/debian lenny awm
-</pre>
-<p>to your <code>/etc/apt/sources.list</code>.  Once you have done that you
-can use <code>apt-get</code> or <code>synaptic</code> or some other equivalent package
-manager to fetch and install <code>DAViCal</code> and all the dependencies.</p>
-
-<p>This repository is signed by Andrew McMillan's public key, which you can install so that
-you don't get asked for confirmation all the time:</p>
-
-<pre>
-sudo apt-key advanced --keyserver pgp.net.nz --recv-keys F6E0FA5CF0307507BB23A512EAFCFEBF8FEB8EBF
-</pre>
-
-<p>Skip to the "Database Setup" part if you have done that already.</p>
-
+<p>Recent Debian (and Ubuntu) releases have DAViCal 1.1.1 and AWL 0.53
+  (a library referenced by DAViCal) available in their repositories,
+  and you can use apt-get or similar tools to download and install
+  DAViCal. Once you have done that, you should be able to proceed to
+  the Database Setup section, below.</p>
 
 <h2>Other Linux Users</h2>
-<p>Please write something up about your experiences in the Wiki, adding distribution specific
-notes to pages somewhere under here:
- <a href="http://wiki.davical.org/w/Installation_Stuff">http://wiki.davical.org/w/Installation_Stuff</a></p>
+<p>The <a href="http://wiki.davical.org">DAViCal wiki</a> contains
+  information on installation on other versions of Linux. Please feel
+  free to contribute your experiences, using the mailing list if you
+  don't have a wiki account.</p>
 
-<h3>RPM Packages of DAViCal</h3>
-<p>We have created RPM packages of DAViCal and libawl-php from the .deb packages
-using "alien". These are reported to work fine, so use them and then proceed to the
-Pre-requisites section below.  If you would like to work with us to create native
-RPM packages please get in touch!</p>
+<p>In many cases, you will need to download the latest versions of
+the <code>DAViCal</code> and <code>awl</code> packages from
+the <a href="https://gitlab.com/groups/davical-project">repository on
+GitLab</a>. More details on this are on
+the <a href="http://davical.dhits.nl/index.php?title=Downloading">Downloading
+    page on the wiki</a>.</p>
 
-<h3>SuSE Linux</h3>
-<p>On SuSE Linux you may need to look in /var/lib/pgsql/data/ for the pg_hba.conf file.</p>
-
-<h3>Gentoo</h3>
-<p>Davical and the awl library ebuilds are available on the <a href="http://www.gentoo.org/proj/en/sunrise/">sunrise overlay</a>.
-You'll have to add this overlay to your system:</p>
-<pre>
-emerge layman
-layman -f -a sunrise
-echo "source /usr/portage/local/layman/make.conf" &gt;&gt; /etc/make.conf
-</pre>
-
-<p>From there, you can keep the overlay in sync with the command:</p>
-<pre>layman -s sunrise</pre>
-
-<p>Davical can now be installed with a normal:</p>
-<pre>emerge davical</pre>
-
-<h3>Slackware, BSD and the rest</h3>
-
-<p>You will need to download the latest versions of the <code>DAViCal</code> and <code>awl</code> packages
-from the <a href="http://sourceforge.net/projects/davical/files/">sourceforge download page for DAViCal</a>.</p>
-<p>You will need to untar these.  Preferably you will untar them from within the "<code>/usr/share</code>" directory and everything
-will be in it's expected location (well, except the docs, but it will at least be tidy and everything will be in one place).</p>
-
-<p>We would like to hear from non-Debian users regarding things which might have been missed, or things you have
-learned about the system, so please write about your installation experiences on the Wiki, or post a message
-in the Sourceforge forums.</p>
+<p>We would like to hear from non-Debian users regarding things which
+might have been missed, or things you have learned about the system,
+so please write about your installation experiences on the Wiki, or
+post a message on the mailing list.</p>
 
 <h2>Non-Linux Users</h2>
-<p>We would really like to hear from you.  As far as we can see there is no reason why this
-can't all work on FreeBSD, Microsoft Windows, VMS, Mac OS or whatever else, as long as the
-pre-requisites are able to be installed.</p>
-<p>For Unix and unix-like operating systems the "Other Linux Users" instructions are likely
-to be reasonably close to what you need.  For other systems everything will need some
-adjustment, and in particular some of the path name and shell expectations coded into
-the database creation scripts are likely to need love.</p>
+<p>We would really like to hear from you.  As far as we can see there
+is no reason why this can't all work on FreeBSD, Microsoft Windows,
+VMS, Mac OS or whatever else, as long as the pre-requisites are able
+to be installed.</p>
+
+<p>For Unix and unix-like operating systems the "Other Linux Users"
+instructions are likely to be reasonably close to what you need.  For
+other systems everything will need some adjustment, and in particular
+some of the path name and shell expectations coded into the database
+creation scripts are likely to need love.</p>
 <p>We're available to answer questions, anyway :-)</p>
 
 <h1>Pre-requisites</h1>
@@ -94,7 +62,7 @@ if you want to increase the security or scalability of your
 installation.</p>
 
 <p>Since the CalDAV store takes over a significant amount of path
-hierarchy, it can be easier in it's own virtual
+hierarchy, it can be easier in its own virtual
 host.  If you want it to operate within the web root of some
 other application there are instructions on the Wiki about doing this,
 as well as other fancy tricks such as configuring URL rewriting in

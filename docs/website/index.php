@@ -3,8 +3,9 @@
  include("inc/page-header.php");
 ?>
 <h1>About DAViCal</h1>
-<p>DAViCal is a server for calendar sharing.  It is an implementation of the CalDAV protocol which is designed
-for storing calendaring resources (in iCalendar format) on a remote shared server. </p>
+<p>DAViCal is a server for calendar sharing.  It is an implementation
+of the CalDAV protocol which is designed for storing calendaring
+resources (in iCalendar format) on a remote shared server. </p>
 <p>An increasing number of calendar clients support
 the maintenance of shared remote calendars through CalDAV, including Mozilla Calendar
 (Sunbird/Lightning), Evolution, Mulberry, Chandler, and various other closed-source products
@@ -30,9 +31,9 @@ and writing the same calendar entries over time, and scheduling of meetings with
 versions of Linux, FreeBSD, Mac OSX and even Microsoft Windows.  We definitely do not recommend using Windows
 for this unless you are completely hobbled by silly internal IT policies and have to do so.</p>
 
-<h2>Getting DAViCal and Installing DAViCal</h2>
-<p>You can download DAViCal from <a href="http://debian.mcmillan.net.nz/">http://debian.mcmillan.net.nz/</a></p>
-<p>Start looking on the <a href="installation.php">DAViCal Installation Page</a> for more places to download, and
+<h2>Getting and Installing DAViCal</h2>
+<p>Start by looking on the <a href="installation.php">DAViCal
+    Installation Page</a> for instructions on places to download, and
 detailed instructions as to what to do when you have it.</p>
 <p>There is a lot of information on the wiki about <a href="http://wiki.davical.org/w/Configuration">DAViCal configuration settings</a> but in most cases the configuration
 will need very few of these settings.</p>
