@@ -36,7 +36,7 @@ BEGIN
           ELSE 0 END)::BIT(24);
 END
 $$
-LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+LANGUAGE plpgsql IMMUTABLE STRICT;
 
 -- Given an array of verbose DAV: or CalDAV: privilege names return the bitmask
 CREATE or REPLACE FUNCTION privilege_to_bits( TEXT[] ) RETURNS BIT(24) AS $$
@@ -62,7 +62,7 @@ BEGIN
   RETURN out_bits;
 END
 $$
-LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 -- This sequence is used in a number of places so that any DAV resource will have a unique ID
@@ -262,7 +262,7 @@ CREATE or REPLACE FUNCTION sync_dav_id ( ) RETURNS TRIGGER AS $$
     RETURN NEW;
 
   END
-$$ LANGUAGE 'plpgsql';
+$$ LANGUAGE plpgsql;
 CREATE TRIGGER caldav_data_sync_dav_id AFTER INSERT OR UPDATE ON caldav_data
     FOR EACH ROW EXECUTE PROCEDURE sync_dav_id();
 
