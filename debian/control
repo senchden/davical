@@ -4,7 +4,7 @@ Priority: extra
 Maintainer: Davical Development Team <davical-devel@lists.sourceforge.net>
 Uploaders: Andrew McMillan <awm@debian.org>,
  Florian Schlichting <fsfs@debian.org>
-Standards-Version: 3.9.2
+Standards-Version: 3.9.5
 Build-Depends: debhelper (>= 9), libawl-php, gettext
 Vcs-git: https://gitlab.com/davical-project/davical.git
 Vcs-browser: https://gitlab.com/davical-project/davical

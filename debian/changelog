@@ -8,6 +8,16 @@ davical (1.1.3~git20140914-1) unstable; urgency=low
 
   [ Florian Schlichting ]
   * Takeover for the Davical Development Team (closes: #742498)
+  * Use short-form debian/rules and fix source format declaration
+    (closes: #730941)
+  * Clean up duplicate files (symlink identical files in api documentation)
+  * debian/control: update and sort dependencies, add php5, php5-cli
+    (closes: #717043), php5-curl to Recommends (closes: #656390)
+  * Add doc-base registration for api doc and website in davical-doc
+  * Bump dh compat to level 9
+  * Add a debian/watch file
+  * Switch d/copyright to copyright-format 1.0, amend CREDITS from git log
+  * Declare compliance with Debian Policy 3.9.5
   * Upload to Debian (closes: #726577)
 
  -- Florian Schlichting <fsfs@debian.org>  Sun, 14 Sep 2014 15:29:54 +0200
