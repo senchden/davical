@@ -8,13 +8,21 @@ Standards-Version: 3.9.2
 Build-Depends: debhelper (>= 7), libawl-php, gettext
 Vcs-git: https://gitlab.com/davical-project/davical.git
 Vcs-browser: https://gitlab.com/davical-project/davical
-Homepage: http://davical.org/
+Homepage: http://www.davical.org/
 
 Package: davical
 Architecture: all
-Depends: ${misc:Depends}, debconf (>= 1.0.32), php5-pgsql, postgresql-client (>= 8.1), libawl-php (>= 0.54-1~), libawl-php (<< 0.55), libdbd-pg-perl, libyaml-perl
-Recommends: postgresql (>= 8.3)
-Description: The DAViCal CalDAV & CardDAV Server
+Depends: ${misc:Depends}, ${perl:Depends},
+ libawl-php (>= 0.54-1~), libawl-php (<< 0.55),
+ libdbd-pg-perl,
+ libyaml-perl,
+ php5,
+ php5-cli,
+ php5-pgsql,
+ postgresql-client
+Recommends: php5-curl,
+ postgresql
+Description: PHP CalDAV and CardDAV Server
  The DAViCal CalDAV Server is designed to store CalDAV calendars and
  CardDAV addressbooks, such as those from Evolution, Sunbird/Lightning,
  Mulberry, iCal, iPhone or SOHO Organizer, in a central location,
@@ -25,7 +33,7 @@ Package: davical-doc
 Section: doc
 Architecture: all
 Depends: ${misc:Depends}
-Description: The DAViCal CalDAV & CardDAV Server - technical documentation
+Description: PHP CalDAV and CardDAV Server - technical documentation
  The DAViCal CalDAV Server is designed to store CalDAV calendars and
  CardDAV addressbooks, such as those from Evolution, Sunbird/Lightning,
  Mulberry, iCal, iPhone or SOHO Organizer, in a central location,
@@ -33,5 +41,5 @@ Description: The DAViCal CalDAV & CardDAV Server - technical documentation
  basic administration interface.
  .
  This package contains detailed technical documentation for the
- classes and methods in the DAViCal programs.  Some user-centric
+ classes and methods in the DAViCal programs. Some user-centric
  configuration documentation is also included.
