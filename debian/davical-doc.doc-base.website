@@ -1,0 +1,12 @@
+Document: davical-website
+Title: DAViCal Website
+Section: Data Management
+Abstract: The DAViCal Website
+ The DAViCal CalDAV & CardDAV Server can store calendars and addressbooks in a
+ central location, providing shared calendars, free/busy publication and a
+ basic administration interface. This offline copy of the website provides
+ configuration information for both the server and a diverse range of clients.
+
+Format: HTML
+Index: /usr/share/doc/davical-doc/website/index.php.gz
+Files: /usr/share/doc/davical-doc/website/*.php /usr/share/doc/davical-doc/website/*.php.gz /usr/share/doc/davical-doc/website/*/*.php

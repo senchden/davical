@@ -1,0 +1,12 @@
+Document: davical-api
+Title: DAViCal API Documentation
+Section: Programming/PHP
+Abstract: Technical documentation for DAViCal
+ The DAViCal CalDAV & CardDAV Server is designed to store CalDAV calendars and
+ CardDAV addressbooks in a central location, providing shared calendars,
+ free/busy publication and a basic administration interface. This API 
+ documentation details the classes and methods in die DAViCal programs.
+
+Format: HTML
+Index: /usr/share/doc/davical-doc/api/index.html
+Files: /usr/share/doc/davical-doc/api/*.html /usr/share/doc/davical-doc/api/*/*.html /usr/share/doc/davical-doc/api/*/*/*.html
