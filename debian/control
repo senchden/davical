@@ -1,11 +1,13 @@
 Source: davical
 Section: web
 Priority: extra
-Maintainer: Andrew McMillan <awm@debian.org>
+Maintainer: Davical Development Team <davical-devel@lists.sourceforge.net>
+Uploaders: Andrew McMillan <awm@debian.org>,
+ Florian Schlichting <fsfs@debian.org>
 Standards-Version: 3.9.2
 Build-Depends: debhelper (>= 7), libawl-php, gettext
-Vcs-git: git://github.com/DAViCal/davical.git
-Vcs-browser: https://github.com/DAViCal/davical
+Vcs-git: https://gitlab.com/davical-project/davical.git
+Vcs-browser: https://gitlab.com/davical-project/davical
 Homepage: http://davical.org/
 
 Package: davical
@@ -33,4 +35,3 @@ Description: The DAViCal CalDAV & CardDAV Server - technical documentation
  This package contains detailed technical documentation for the
  classes and methods in the DAViCal programs.  Some user-centric
  configuration documentation is also included.
-

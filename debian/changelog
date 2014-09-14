@@ -1,11 +1,16 @@
-davical (1.1.2-1) unstable; urgency=low
+davical (1.1.3~git20140914-1) unstable; urgency=low
 
+  [ Andrew McMillan ]
   * New upstream release (closes: #656395, #702403, #703290, #703383, #703387)
   * Updated the control file Vcs-* fields to the new addresses of the
     canonical git upstream repository.
   * Removed README.Debian which didn’t contain any useful information.
 
- -- Andrew McMillan <awm@debian.org>  Wed, 01 May 2013 10:05:33 +1200
+  [ Florian Schlichting ]
+  * Takeover for the Davical Development Team (closes: #742498)
+  * Upload to Debian (closes: #726577)
+
+ -- Florian Schlichting <fsfs@debian.org>  Sun, 14 Sep 2014 15:29:54 +0200
 
 davical (1.1.1-1) unstable; urgency=high
 
