@@ -28,7 +28,7 @@ CREATE or REPLACE FUNCTION check_db_revision( INT, INT, INT ) RETURNS BOOLEAN AS
       RAISE EXCEPTION ''Database has not been upgraded to %.%.%'', major, minor, patch;
       RETURN FALSE;
    END;
-' LANGUAGE 'plpgsql';
+' LANGUAGE plpgsql;
 
 
 -- Just in case these constraints got added manually, so we won't fail

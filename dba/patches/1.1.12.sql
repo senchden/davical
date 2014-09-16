@@ -46,7 +46,7 @@ CREATE or REPLACE FUNCTION sync_dav_id ( ) RETURNS TRIGGER AS '
     RETURN NEW;
 
   END
-' LANGUAGE 'plpgsql';
+' LANGUAGE plpgsql;
 
 CREATE TRIGGER caldav_data_sync_dav_id AFTER INSERT OR UPDATE ON caldav_data
     FOR EACH ROW EXECUTE PROCEDURE sync_dav_id();
