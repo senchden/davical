@@ -74,7 +74,7 @@ BEGIN
   RETURN our_answer;
 
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 CREATE or REPLACE FUNCTION calculate_later_timestamp( TIMESTAMP WITH TIME ZONE, TIMESTAMP WITH TIME ZONE, TEXT ) RETURNS TIMESTAMP WITH TIME ZONE AS $$
@@ -239,12 +239,12 @@ BEGIN
   RETURN our_answer;
 
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 CREATE or REPLACE FUNCTION usr_is_role( INT, TEXT ) RETURNS BOOLEAN AS $$
   SELECT EXISTS( SELECT 1 FROM role_member JOIN roles USING(role_no) WHERE role_member.user_no=$1 AND roles.role_name=$2 )
-$$ LANGUAGE 'sql' IMMUTABLE STRICT;
+$$ LANGUAGE sql IMMUTABLE STRICT;
 
 CREATE or REPLACE FUNCTION legacy_get_permissions( INT, INT ) RETURNS TEXT AS $$
 DECLARE
@@ -333,13 +333,13 @@ BEGIN
 
   RETURN '';
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 -- Function to convert a PostgreSQL date into UTC + the format used by iCalendar
 CREATE or REPLACE FUNCTION to_ical_utc( TIMESTAMP WITH TIME ZONE ) RETURNS TEXT AS $$
   SELECT to_char( $1 at time zone 'UTC', 'YYYYMMDD"T"HH24MISS"Z"' )
-$$ LANGUAGE 'sql' IMMUTABLE STRICT;
+$$ LANGUAGE sql IMMUTABLE STRICT;
 
 -- Function to set an arbitrary DAV property
 CREATE or REPLACE FUNCTION set_dav_property( TEXT, INTEGER, TEXT, TEXT ) RETURNS BOOLEAN AS $$
@@ -365,7 +365,7 @@ BEGIN
   END IF;
   RETURN TRUE;
 END;
-$$ LANGUAGE 'plpgsql' STRICT;
+$$ LANGUAGE plpgsql STRICT;
 
 -- List a user's relationships as a text string
 CREATE or REPLACE FUNCTION relationship_list( INT8 ) RETURNS TEXT AS $$
@@ -385,7 +385,7 @@ BEGIN
   END LOOP;
   RETURN rlist;
 END;
-$$ LANGUAGE 'plpgsql';
+$$ LANGUAGE plpgsql;
 
 DROP FUNCTION rename_davical_user( TEXT, TEXT );
 DROP TRIGGER usr_modified ON usr CASCADE;
@@ -518,7 +518,7 @@ CREATE or REPLACE FUNCTION sync_dav_id ( ) RETURNS TRIGGER AS $$
     RETURN NEW;
 
   END
-$$ LANGUAGE 'plpgsql';
+$$ LANGUAGE plpgsql;
 CREATE TRIGGER caldav_data_sync_dav_id AFTER INSERT OR UPDATE ON caldav_data
     FOR EACH ROW EXECUTE PROCEDURE sync_dav_id();
 
@@ -573,7 +573,7 @@ BEGIN
   RETURN out_bits;
 END
 $$
-LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+LANGUAGE plpgsql IMMUTABLE STRICT;
 
 -- This legacy conversion function will eventually be removed, once all logic
 -- has been converted to use bitmaps, or to use the bits_to_priv() output.
@@ -626,7 +626,7 @@ BEGIN
   RETURN out_priv;
 END
 $$
-LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+LANGUAGE plpgsql IMMUTABLE STRICT;
 
 CREATE or REPLACE FUNCTION get_permissions( INT, INT ) RETURNS TEXT AS $$
 DECLARE
@@ -679,12 +679,12 @@ BEGIN
 
   RETURN '';
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 CREATE or REPLACE FUNCTION get_group_role_no() RETURNS INT AS $$
   SELECT role_no FROM roles WHERE role_name = 'Group'
-$$ LANGUAGE 'sql' IMMUTABLE;
+$$ LANGUAGE sql IMMUTABLE;
 
 CREATE or REPLACE FUNCTION has_legacy_privilege( INT, TEXT, INT ) RETURNS BOOLEAN AS $$
 DECLARE
@@ -733,7 +733,7 @@ BEGIN
 
   RETURN FALSE;
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 -- Given a verbose DAV: or CalDAV: privilege name return the bitmask
@@ -770,7 +770,7 @@ BEGIN
           ELSE 0 END)::BIT(24);
 END
 $$
-LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 -- Given an array of verbose DAV: or CalDAV: privilege names return the bitmask
@@ -797,7 +797,7 @@ BEGIN
   RETURN out_bits;
 END
 $$
-LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 -- NOTE: Round-trip through this and then back through privilege_to_bits
@@ -892,7 +892,7 @@ BEGIN
   RETURN out_priv;
 END
 $$
-LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 -- Expanded group memberships out to some depth
@@ -902,7 +902,7 @@ CREATE or REPLACE FUNCTION expand_memberships( INT8, INT ) RETURNS SETOF INT8 AS
   SELECT expanded.g_id FROM (SELECT CASE WHEN $2 > 0 THEN expand_memberships( group_id, $2 - 1) END AS g_id
                                FROM group_member WHERE member_id = $1) AS expanded
                        WHERE expanded.g_id IS NOT NULL;
-$$ LANGUAGE 'sql' STABLE STRICT;
+$$ LANGUAGE sql STABLE STRICT;
 
 -- Expanded group members out to some depth
 CREATE or REPLACE FUNCTION expand_members( INT8, INT ) RETURNS SETOF INT8 AS $$
@@ -911,7 +911,7 @@ CREATE or REPLACE FUNCTION expand_members( INT8, INT ) RETURNS SETOF INT8 AS $$
   SELECT expanded.m_id FROM (SELECT CASE WHEN $2 > 0 THEN expand_members( member_id, $2 - 1) END AS m_id
                                FROM group_member WHERE group_id = $1) AS expanded
                        WHERE expanded.m_id IS NOT NULL;
-$$ LANGUAGE 'sql' STABLE STRICT;
+$$ LANGUAGE sql STABLE STRICT;
 
 
 
@@ -949,7 +949,7 @@ BEGIN
 
   RETURN out_conferred;
 END;
-$$ LANGUAGE 'plpgsql' STABLE STRICT;
+$$ LANGUAGE plpgsql STABLE STRICT;
 
 
 -- Privileges from accessor to grantor, by user_no
@@ -972,7 +972,7 @@ BEGIN
 
   RETURN out_conferred;
 END;
-$$ LANGUAGE 'plpgsql' STABLE STRICT;
+$$ LANGUAGE plpgsql STABLE STRICT;
 
 
 -- Privileges from accessor (by principal_id) to path
@@ -1046,7 +1046,7 @@ BEGIN
 
   RETURN out_conferred;
 END;
-$$ LANGUAGE 'plpgsql' STABLE STRICT;
+$$ LANGUAGE plpgsql STABLE STRICT;
 
 
 -- List a user's memberships as a text string
@@ -1066,7 +1066,7 @@ BEGIN
   END LOOP;
   RETURN mlist;
 END;
-$$ LANGUAGE 'plpgsql' STRICT;
+$$ LANGUAGE plpgsql STRICT;
 
 
 -- List a user's members as a text string
@@ -1086,7 +1086,7 @@ BEGIN
   END LOOP;
   RETURN mlist;
 END;
-$$ LANGUAGE 'plpgsql' STRICT;
+$$ LANGUAGE plpgsql STRICT;
 
 
 -- List the privileges as a text string
@@ -1113,7 +1113,7 @@ BEGIN
   END IF;
   RETURN plist;
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 DROP TRIGGER principal_modified ON principal CASCADE;
@@ -1175,7 +1175,7 @@ CREATE or REPLACE FUNCTION p_has_proxy_access_to( INT8, INT ) RETURNS SETOF INT8
            WHERE (default_privileges & 5::BIT(24)) != 0::BIT(24)
              AND principal_id != $1
     ) subquery;
-$$ LANGUAGE 'sql' STABLE STRICT;
+$$ LANGUAGE sql STABLE STRICT;
 
 
 -- A list of the principals who can proxy to this principal
@@ -1185,7 +1185,7 @@ CREATE or REPLACE FUNCTION grants_proxy_access_from_p( INT8, INT ) RETURNS SETOF
    WHERE by_collection IS NULL AND by_principal != $1
      AND by_principal IN (SELECT expand_members(g2.to_principal,$2) FROM grants g2 WHERE g2.by_principal = $1)
    ;
-$$ LANGUAGE 'sql' STABLE STRICT;
+$$ LANGUAGE sql STABLE STRICT;
 
 
 
@@ -1209,7 +1209,7 @@ BEGIN
                      VALUES( in_collection_id, in_status, tmp_int, in_dav_name);
   RETURN TRUE;
 END
-$$ LANGUAGE 'plpgsql' VOLATILE STRICT;
+$$ LANGUAGE plpgsql VOLATILE STRICT;
 
 
 CREATE or REPLACE FUNCTION new_sync_token( INT8, INT8 ) RETURNS INT8 AS $$
@@ -1254,7 +1254,7 @@ BEGIN
   -- Returning the new token
   RETURN new_token;
 END
-$$ LANGUAGE 'plpgsql' STRICT;
+$$ LANGUAGE plpgsql STRICT;
 
 
 DROP TRIGGER alarm_changed ON calendar_alarm CASCADE;

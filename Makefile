@@ -55,8 +55,8 @@ snapshot: release
 clean:
 	rm -f built-docs built-po
 	-find . -name "*~" -delete
-	-rm docs/translation.pdf
-	-rm davical.spec
+	rm -f docs/translation.pdf
+	rm -f davical.spec
 
 .PHONY: clean-all
 clean-all: clean

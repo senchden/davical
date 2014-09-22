@@ -75,7 +75,7 @@ BEGIN
 
   RETURN result;
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 -- Return a SETOF dates within the month of a particular date which match a string of BYDAY rule specifications
@@ -170,7 +170,7 @@ BEGIN
   RETURN;
 
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE;
+$$ LANGUAGE plpgsql IMMUTABLE;
 
 
 -- Return a SETOF dates within the month of a particular date which match a string of BYDAY rule specifications
@@ -204,7 +204,7 @@ BEGIN
   RETURN;
 
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 -- Return a SETOF dates within the week of a particular date which match a single BYDAY rule specification
@@ -238,12 +238,12 @@ BEGIN
   RETURN;
 
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE;
+$$ LANGUAGE plpgsql IMMUTABLE;
 
 
 CREATE or REPLACE FUNCTION event_has_exceptions( TEXT ) RETURNS BOOLEAN AS $$
   SELECT $1 ~ E'\nRECURRENCE-ID(;TZID=[^:]+)?:[[:space:]]*[[:digit:]]{8}(T[[:digit:]]{6})?'
-$$ LANGUAGE 'sql' IMMUTABLE STRICT;
+$$ LANGUAGE sql IMMUTABLE STRICT;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -261,7 +261,7 @@ BEGIN
   END IF;
   RETURN TRUE;
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE;
+$$ LANGUAGE plpgsql IMMUTABLE;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -277,7 +277,7 @@ BEGIN
   END IF;
   RETURN TRUE;
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE;
+$$ LANGUAGE plpgsql IMMUTABLE;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -293,7 +293,7 @@ BEGIN
   END IF;
   RETURN TRUE;
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE;
+$$ LANGUAGE plpgsql IMMUTABLE;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -309,7 +309,7 @@ BEGIN
   END IF;
   RETURN TRUE;
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE;
+$$ LANGUAGE plpgsql IMMUTABLE;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -356,7 +356,7 @@ BEGIN
   END IF;
   CLOSE curse;
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE;
+$$ LANGUAGE plpgsql IMMUTABLE;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -396,7 +396,7 @@ BEGIN
   RETURN NEXT after;
 
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -428,7 +428,7 @@ BEGIN
   END LOOP;
 
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -473,7 +473,7 @@ BEGIN
   END LOOP;
 
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -507,7 +507,7 @@ BEGIN
   END IF;
 
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -535,7 +535,7 @@ BEGIN
     RETURN NEXT after;
   END IF;
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -632,7 +632,7 @@ BEGIN
   END LOOP;
   -- RETURN QUERY;
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -651,7 +651,7 @@ BEGIN
     RETURN NEXT rowvar.d;
   END LOOP;
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE STRICT;
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 ------------------------------------------------------------------------------------------------------
@@ -701,9 +701,9 @@ BEGIN
   RETURN FOUND;
 
 END;
-$$ LANGUAGE 'plpgsql' IMMUTABLE;
+$$ LANGUAGE plpgsql IMMUTABLE;
 
 
 CREATE or REPLACE FUNCTION icalendar_interval_to_SQL( TEXT ) RETURNS interval AS $function$
   SELECT CASE WHEN substring($1,1,1) = '-' THEN -1 ELSE 1 END * regexp_replace( regexp_replace($1, '[PT-]', '', 'g'), '([A-Z])', E'\\1 ', 'g')::interval;
-$function$ LANGUAGE 'sql' IMMUTABLE STRICT;
+$function$ LANGUAGE sql IMMUTABLE STRICT;

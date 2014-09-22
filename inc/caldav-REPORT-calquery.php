@@ -88,11 +88,13 @@ function apply_filter( $filters, $item ) {
 
 /**
  * Process a filter fragment returning an SQL fragment
+ * Changed by GitHub user moosemark 2013-11-29 to allow multiple text-matches - SQL parameter now has numeric count appended.
  */
 $need_post_filter = false;
 $range_filter = null;
-function SqlFilterFragment( $filter, $components, $property = null, $parameter = null ) {
-  global $need_post_filter, $range_filter, $target_collection;
+$parameter_match_num = 0;
+function SqlFilterFragment( $filter, $components, $property = null, $parameter = null) {
+  global $need_post_filter, $range_filter, $target_collection, $parameter_match_num;
   $sql = "";
   $params = array();
   if ( !is_array($filter) ) {
@@ -180,10 +182,13 @@ function SqlFilterFragment( $filter, $components, $property = null, $parameter =
             $comparison = 'ILIKE';
             break;
         }
-        $params[':text_match'] = '%'.$search.'%';
-        $fragment = sprintf( 'AND (%s%s %s :text_match) ',
+        /* Append the match number to the SQL parameter, to allow multiple text match conditions within the same query */
+        $params[':text_match_'.$parameter_match_num] = '%'.$search.'%';
+        $fragment = sprintf( 'AND (%s%s %s :text_match_%s) ',
                         (isset($negate) && strtolower($negate) == "yes" ? $property.' IS NULL OR NOT ': ''),
-                                          $property, $comparison );
+                                          $property, $comparison, $parameter_match_num );
+        $parameter_match_num++;
+
         dbg_error_log('calquery', ' text-match: %s', $fragment );
         $sql .= $fragment;
         break;
@@ -233,6 +238,7 @@ function SqlFilterFragment( $filter, $components, $property = null, $parameter =
           case 'COMPLETED':  /** @todo this should be moved into the properties supported in SQL. */
           default:
             $need_post_filter = true;
+            unset($subproperty);
             dbg_error_log("calquery", "Could not handle 'prop-filter' on %s in SQL", $propertyname );
             continue;
         }
