@@ -98,6 +98,11 @@ elseif( preg_match('{^(\d{8})(\d{6})Z?}', $last_modified, $matches) ) {
   $vcard->ClearProperties('REV');
   $vcard->AddProperty('REV',$last_modified);
 }
+elseif( !preg_match('{^\d{8}T\d{6}Z$}', $last_modified) ) {
+  $last_modified = gmdate( 'Ymd\THis\Z' );
+  $vcard->ClearProperties('REV');
+  $vcard->AddProperty('REV',$last_modified);
+}
 
 $rendered_card = $vcard->Render(); 
 $etag = md5($rendered_card);
