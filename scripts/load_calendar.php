@@ -119,5 +119,5 @@ param_to_global('mode');
 include_once('caldav-PUT-functions.php');
 controlRequestContainer( $session->username, $dest->user_no(), $target, false, ($dest->IsPublic() ? true : false));
 import_collection( $ics, $dest->user_no(), $target, $session->user_no, ($mode == 'append') );
-printf(translate("Calendar '%s' was loaded from file.") . "\n", $target);
+printf(translate('Calendar "%s" was loaded from file.') . "\n", $target);
 
