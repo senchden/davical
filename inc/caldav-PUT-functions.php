@@ -233,7 +233,7 @@ function handle_schedule_request( $ical ) {
     $priv =  $ar->HavePrivilegeTo('schedule-deliver-invite' );
     if ( ! $ar->HavePrivilegeTo('schedule-deliver-invite' ) ){
       $reply = new XMLDocument( array('DAV:' => '') );
-      $privnodes = array( $reply->href($attendee_principal->url('schedule_inbox')), new XMLElement( 'privilege' ) );
+      $privnodes = array( $reply->href($attendee_principal->url('schedule-inbox')), new XMLElement( 'privilege' ) );
       // RFC3744 specifies that we can only respond with one needed privilege, so we pick the first.
       $reply->NSElement( $privnodes[1], 'schedule-deliver-invite' );
       $xml = new XMLElement( 'need-privileges', new XMLElement( 'resource', $privnodes) );
@@ -289,7 +289,7 @@ function handle_schedule_reply ( vCalendar $ical ) {
     $attendee_email = preg_replace( '/^mailto:/i', '', $attendee->Value() );
     dbg_error_log( "PUT", "Delivering to %s", $attendee_email );
     $attendee_principal = new DAVPrincipal ( array ('email'=>$attendee_email, 'options'=> array ( 'allow_by_email' => true ) ) );
-    $deliver_path = $attendee_principal->internal_url('schedule_inbox');
+    $deliver_path = $attendee_principal->internal_url('schedule-inbox');
     $attendee_email = preg_replace( '/^mailto:/i', '', $attendee->Value() );
     if ( $attendee_email == $request->principal->email ) {
       dbg_error_log( "PUT", "not delivering to owner" );
@@ -298,7 +298,7 @@ function handle_schedule_reply ( vCalendar $ical ) {
     $ar = new DAVResource($deliver_path);
     if ( ! $ar->HavePrivilegeTo('schedule-deliver-reply' ) ){
       $reply = new XMLDocument( array('DAV:' => '') );
-      $privnodes = array( $reply->href($attendee_principal->url('schedule_inbox')), new XMLElement( 'privilege' ) );
+      $privnodes = array( $reply->href($attendee_principal->url('schedule-inbox')), new XMLElement( 'privilege' ) );
       // RFC3744 specifies that we can only respond with one needed privilege, so we pick the first.
       $reply->NSElement( $privnodes[1], 'schedule-deliver-reply' );
       $xml = new XMLElement( 'need-privileges', new XMLElement( 'resource', $privnodes) );
