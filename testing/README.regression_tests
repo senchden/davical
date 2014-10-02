@@ -1,10 +1,7 @@
 Regression Testing
 ==================
 
-At present these regression tests are basically written to work in my
-own environment.  While I am, of course, happy to see patches that make
-them more generic they are still very much a work in progress.
-
+These tests were basically written to work in Andrew's environment.
 In order to run them in your environment you will need to ensure both
 the Webserver and Database server run in the 'Pacific/Auckland' timezone
 since the regression testing puts a number of events into the database
@@ -19,6 +16,99 @@ to /etc/apache2/envvars, and the line:
 
   TZ = 'Pacific/Auckland'
 
-to /etc/postgresql/8.4/main/environment
+to /etc/postgresql/9.4/main/environment
 
-You will also need to edit regression.conf as indicated in that file.
+You may also need to add a regression.conf file, see the provided example.
+
+
+TESTING SETUP
+-------------
+
+By default, the tests are run on a database called 'regression' and a
+host also called 'regression'. To set this up locally, add
+
+  127.0.1.1       regression
+
+to /etc/hosts and a VirtualHost to Apache with
+
+  ServerName regression
+  DocumentRoot /path/to/davical/htdocs
+
+Make the user running the tests known to postgres and allow it to create
+databases and roles (e.g. run the dba/create-database.sh script):
+
+  sudo -u postgres createuser <USERNAME> --createdb --createrole --role=davical_dba
+
+and let everyone locally access the regression database at will by adding the
+following line to pg_hba.conf:
+
+  local   regression    all           trust
+
+You can then run the entire test suite with the command
+
+  ./run_regressions.sh
+
+When a test fails to produce the expected output, you are prompted
+
+  Accept new result [e/s/r/v/f/m/x/y/w/N]?
+
+the options being
+
+  y = make new result the expected result
+  x = print command for running test in debug mode and exit testing
+  v = show test
+  s = side-by-side diff of actual and expected result
+  w = colourized wdiff
+  m = side-by-side 'meld'
+  f = show full details of test and result
+  e = edit test (vi)
+  r = re-run test
+  N = run next test
+
+This should allow for convenient updating of tests and expected results.
+
+
+WRITING TESTS
+-------------
+
+run_regressions.sh looks for test definitions in tests/<testsuite>/*.test,
+which it will pass to dav_test for execution. The result is filtered through
+normalise_result and then compared to the expected result in
+tests/<testsuite>/<testname>.result
+
+The test definition file will include lines like:
+
+    # This is an example
+    URL=http://mycaldav/caldav.php/andrew/
+    HEADER=Depth: 0
+    HEADER=Content-type: text/xml
+    TYPE=PROPFIND
+    HEAD
+    DATA=OTHERTEST
+    # This will let you use ##somename## for this value after this
+    GETSQL=somename
+    SELECT column FROM table WHERE criteria
+    ENDSQL
+    # The data can be included in line
+    BEGINDATA
+    ... data content ...
+    ENDDATA
+    # The result could be some SQL output
+    QUERY
+    SELECT something, or, other FROM table ...
+    ENDQUERY
+    #
+    REPLACE=/pattern/replacement/options
+
+You can use the following fields:
+
+URL      The URL to request from.
+HEADER   An additional header for the request
+TYPE     The type of request (e.g. GET/PUT/POST/REPORT/...)
+HEAD     Whether to include the headers in the recorded response
+VERBOSE  Whether to provide the full request / response headers.
+DATA     The name of a different test in this suite to use data from.
+REPLACE  A perl regex replacement to post-process the result through.
+
+Additionally, if a file 'tests/<testsuite>/<testname>.data' exists
+the contents of that file will be sent in the body of the request.
