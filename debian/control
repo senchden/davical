@@ -5,7 +5,9 @@ Maintainer: Davical Development Team <davical-devel@lists.sourceforge.net>
 Uploaders: Andrew McMillan <awm@debian.org>,
  Florian Schlichting <fsfs@debian.org>
 Standards-Version: 3.9.6
-Build-Depends: debhelper (>= 9), libawl-php, gettext
+Build-Depends: debhelper (>= 9),
+ libawl-php (>= 0.55-1~), libawl-php (<< 0.56),
+ gettext
 Vcs-git: https://gitlab.com/davical-project/davical.git
 Vcs-browser: https://gitlab.com/davical-project/davical
 Homepage: http://www.davical.org/
@@ -13,7 +15,7 @@ Homepage: http://www.davical.org/
 Package: davical
 Architecture: all
 Depends: ${misc:Depends}, ${perl:Depends},
- libawl-php (>= 0.54-1~), libawl-php (<< 0.55),
+ libawl-php (>= 0.55-1~), libawl-php (<< 0.56),
  libdbd-pg-perl,
  libyaml-perl,
  php5,

@@ -17,6 +17,7 @@ davical (1.1.3~git20140914-1) unstable; urgency=low
   * Bump dh compat to level 9
   * Add a debian/watch file
   * Switch d/copyright to copyright-format 1.0, amend CREDITS from git log
+  * Bump dependency on awl to 0.55
   * Declare compliance with Debian Policy 3.9.6
   * Upload to Debian (closes: #726577)
 
