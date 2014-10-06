@@ -24,6 +24,7 @@ Depends: ${misc:Depends}, ${perl:Depends},
  postgresql-client
 Recommends: php5-curl,
  postgresql
+Suggests: php5-ldap
 Description: PHP CalDAV and CardDAV Server
  The DAViCal CalDAV Server is designed to store CalDAV calendars and
  CardDAV addressbooks, such as those from Evolution, Sunbird/Lightning,

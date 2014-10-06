@@ -12,7 +12,8 @@ davical (1.1.3~git20140914-1) unstable; urgency=low
     (closes: #730941)
   * Clean up duplicate files (symlink identical files in api documentation)
   * debian/control: update and sort dependencies, add php5, php5-cli
-    (closes: #717043), php5-curl to Recommends (closes: #656390)
+    (closes: #717043), php5-curl to Recommends (closes: #656390),
+    php5-ldap as Suggests (LP: #479378)
   * Add doc-base registration for api doc and website in davical-doc
   * Bump dh compat to level 9
   * Add a debian/watch file
