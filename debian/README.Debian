@@ -1,0 +1,36 @@
+Initial DAViCal configuration on Debian
+=======================================
+
+General installation and configuration information is available at
+http://www.davical.org/installation.php Please visit that website for
+details and further reading.
+
+After installation, basic configuration with a local database consists
+of the following steps:
+
+1. Allow DAViCal to connect to the database, by adding the following 2
+lines at the top of your pg_hba.conf file (path depending on postgres
+version, for Debian Jessie try /etc/postgresql/9.4/main/pg_hba.conf):
+
+    local   davical    davical_app   trust
+    local   davical    davical_dba   trust
+
+2. Create the database, noting the displayed DAViCal admin password:
+
+    sudo -u postgres /usr/share/davical/dba/create-database.sh
+
+3. Create an Apache vhost config, or symlink /usr/share/davical/htdocs
+somewhere below an existing vhost's document root
+
+4. Create /etc/davical/config.php containing at least the lines
+
+    <?php
+      $c->pg_connect[] = 'dbname=davical user=davical_app';
+    ?>
+
+5. Point your browser to /setup.php (or wherever you symlinked the
+htdocs directory in step 3), log in as user admin with the password
+noted in step 2 above, and review the displayed issues, if any. 
+
+After that you're all set to create and configure users, upload existing
+calendars or set up clients.
