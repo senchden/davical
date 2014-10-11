@@ -4,8 +4,9 @@
 # 
 # Translators:
 # Andrew McMillan <andrew@mcmillan.net.nz>, 2011
-# Frizou <cgiraud@free.fr>, 2013-2014
-# Frizou <cgiraud@free.fr>, 2011, 2012
+# Cyril Giraud <cgiraud@free.fr>, 2013-2014
+# Cyril Giraud <cgiraud@free.fr>, 2011, 2012
+# Cyril Giraud <cgiraud@free.fr>, 2014
 # tikismoke <webmaster@tikijs.dyndns.org>, 2011
 # tikismoke <webmaster@tikijs.dyndns.org>, 2011, 2012
 msgid ""
@@ -13,8 +14,8 @@ msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-09-26 14:17+0200\n"
-"PO-Revision-Date: 2014-05-01 17:10+0000\n"
-"Last-Translator: Frizou <cgiraud@free.fr>\n"
+"PO-Revision-Date: 2014-10-05 20:10+0000\n"
+"Last-Translator: Cyril Giraud <cgiraud@free.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/davical/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1417,11 +1418,11 @@ msgstr "drivers_ldap : la fonction ldap_connect n'est pas définie, vérifiez q
 
 #, php-format
 msgid "drivers_pwauth_pam : Unable to find %s file"
-msgstr "drivers_pwauth_pam : fichier %s introuvable"
+msgstr "drivers_pwauth_pam : Fichier %s introuvable."
 
 #, php-format
 msgid "drivers_squid_pam : Unable to find %s file"
-msgstr "drivers_squid_pam : incapable de trouver le fichier %s."
+msgstr "drivers_squid_pam : Fichier %s introuvable."
 
 #. Translators: this is a colloquial phrase in english (the name of a flower)
 #. and is an option allowing people to log in automatically in future

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-22 21:54+0200\n"
+"POT-Creation-Date: 2014-10-12 00:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -227,7 +227,7 @@ msgstr ""
 msgid "Attachment"
 msgstr ""
 
-#: inc/drivers_ldap.php:341
+#: inc/drivers_ldap.php:341 inc/drivers_ldap.php:345
 msgid "Authentication server unavailable."
 msgstr ""
 
@@ -264,7 +264,7 @@ msgstr ""
 msgid "Busy"
 msgstr ""
 
-#: inc/ui/collection-edit.php:119
+#: inc/ui/collection-edit.php:119 scripts/load_calendar.php:122
 #, php-format
 msgid "Calendar \"%s\" was loaded from file."
 msgstr ""
@@ -627,12 +627,12 @@ msgstr ""
 msgid "Enter your username and password then click here to log in."
 msgstr ""
 
-#: inc/drivers_ldap.php:156
+#: inc/drivers_ldap.php:156 inc/drivers_ldap.php:160
 #, php-format
 msgid "Error NoGroupFound with filter >%s<, attributes >%s< , dn >%s<"
 msgstr ""
 
-#: inc/drivers_ldap.php:125
+#: inc/drivers_ldap.php:125 inc/drivers_ldap.php:128
 #, php-format
 msgid "Error NoUserFound with filter >%s<, attributes >%s< , dn >%s<"
 msgstr ""
@@ -920,6 +920,7 @@ msgid "No"
 msgstr ""
 
 #: inc/WritableCollection.php:47 inc/caldav-PUT-functions.php:1230
+#: inc/caldav-PUT-functions.php:1231
 msgid "No calendar content"
 msgstr ""
 
@@ -1401,7 +1402,7 @@ msgstr ""
 msgid "The access ticket will be deleted."
 msgstr ""
 
-#: inc/caldav-REPORT-cardquery.php:201
+#: inc/caldav-REPORT-cardquery.php:201 inc/caldav-REPORT-cardquery.php:260
 msgid ""
 "The addressbook-query report must be run against an addressbook collection"
 msgstr ""
@@ -1429,11 +1430,11 @@ msgid ""
 "property of a calendar collection."
 msgstr ""
 
-#: inc/caldav-REPORT-calquery.php:307
+#: inc/caldav-REPORT-calquery.php:307 inc/caldav-REPORT-calquery.php:313
 msgid "The calendar-query report may not be run against that URL."
 msgstr ""
 
-#: inc/caldav-REPORT-calquery.php:304
+#: inc/caldav-REPORT-calquery.php:304 inc/caldav-REPORT-calquery.php:310
 msgid ""
 "The calendar-query report must be run against a calendar or a scheduling "
 "collection"
@@ -1762,7 +1763,7 @@ msgid ""
 "and passDN, and that your LDAP server is reachable"
 msgstr ""
 
-#: inc/drivers_ldap.php:58
+#: inc/drivers_ldap.php:58 inc/drivers_ldap.php:60
 #, php-format
 msgid "drivers_ldap : Unable to connect to LDAP with port %s on host %s"
 msgstr ""
