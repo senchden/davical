@@ -1262,12 +1262,16 @@ function write_resource( DAVResource $resource, $caldav_data, DAVResource $colle
   if ( $first->GetType() == 'VTODO' ) $due = $first->GetPValue('DUE'); 
   $calitem_params[':due'] = $due;
   $dtstart = $first->GetPValue('DTSTART');
-  if ( empty($dtstart) ) $dtstart = $due; 
+  if ( empty($dtstart) ) $dtstart = $due;
+  if (preg_match("/^1[0-8][0-9][0-9][01][0-9][0-3][0-9]$/", $dtstart))
+     $dtstart = $dtstart . "T000000Z";
   $calitem_params[':dtstart'] = $dtstart;
   
   $dtend = $first->GetPValue('DTEND');
   if ( isset($dtend) && $dtend != '' ) {
     dbg_error_log( 'PUT', ' DTEND: "%s", DTSTART: "%s", DURATION: "%s"', $dtend, $dtstart, $first->GetPValue('DURATION') );
+    if (preg_match("/^1[0-8][0-9][0-9][01][0-9][0-3][0-9]$/", $dtend))
+       $dtend = $dtend . "T000000Z";
     $calitem_params[':dtend'] = $dtend;
     $dtend = ':dtend';
   }
