@@ -390,12 +390,18 @@ else {
   $site_statistics_table = "Statistics unavailable";
 }
 
+$heading_php_info = translate('PHP Information');
+
 $heading_config_clients = translate('Configuring Calendar Clients for DAViCal');
+$davical_client_page = translate('The <a href="http://www.davical.org/clients.php">client setup page on the DAViCal website</a> has information on how to configure Evolution, Sunbird, Lightning and Mulberry to use remotely hosted calendars.');
+$davical_no_calendar_interface = translate('The administrative interface has no facility for viewing or modifying calendar data.');
 $heading_config_davical = translate('Configuring DAViCal');
+$davical_moslty_working = translate ('If you can read this then things must be mostly working already.');
 $davical_configuration_errors = ( $config_warnings == '' ? '' : '<div class="error"><h3 class="error">'
              . translate('Your configuration produced PHP errors which should be corrected') . '</h3><pre>'
              . $config_warnings.'</pre></div>'
           );
+$davical_installation_page = translate('The <a href="http://www.davical.org/installation.php">installation page on the DAViCal website</a> has some further information on how to install and configure this application.');
 
 
   echo <<<EOBODY
@@ -438,20 +444,18 @@ $dependencies_table
 </table>
 </p>
 <h2>$heading_config_davical</h2>
-<p>If you can read this then things must be mostly working already.</p>
+<p>$davical_moslty_working</p>
 $davical_configuration_errors
-<p>The <a href="http://www.davical.org/installation.php">installation page on the DAViCal website</a> has
-some further information on how to install and configure this application.</p>
+<p>$davical_installation_page</p>
 
 <h2>$heading_config_clients</h2>
-<p>The <a href="http://www.davical.org/clients.php">client setup page on the DAViCal website</a> has information on how
-to configure Evolution, Sunbird, Lightning and Mulberry to use remotely hosted calendars.</p>
-<p>The administrative interface has no facility for viewing or modifying calendar data.</p>
+<p>$davical_client_page</p>
+<p>$davical_no_calendar_interface</p>
 
 <h2>$heading_site_statistics</h2>
 <p>$site_statistics_table</p>
 
-<h2>PHP Information</h2>
+<h2>$heading_php_info</h2>
 <script language="javascript">
 function toggle_visible() {
   var argv = toggle_visible.arguments;

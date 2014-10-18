@@ -5,7 +5,7 @@ $session->LoginRequired();
 
 include("interactive-page.php");
 
-$c->page_title = "DAViCal CalDAV Server - Configuration Help";
+$c->page_title = translate('DAViCal CalDAV Server - Configuration Help');
 include("page-header.php");
 
 $wiki_help = '';

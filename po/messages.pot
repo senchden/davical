@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-18 23:10+0200\n"
+"POT-Creation-Date: 2014-10-19 00:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -321,11 +321,11 @@ msgid ""
 "same time"
 msgstr ""
 
-#: htdocs/setup.php:393
+#: htdocs/setup.php:393 htdocs/setup.php:395
 msgid "Configuring Calendar Clients for DAViCal"
 msgstr ""
 
-#: htdocs/setup.php:394
+#: htdocs/setup.php:394 htdocs/setup.php:398
 msgid "Configuring DAViCal"
 msgstr ""
 
@@ -1728,7 +1728,7 @@ msgstr ""
 msgid "You must log in to use this system."
 msgstr ""
 
-#: htdocs/setup.php:396
+#: htdocs/setup.php:396 htdocs/setup.php:401
 msgid "Your configuration produced PHP errors which should be corrected"
 msgstr ""
 
@@ -1818,3 +1818,34 @@ msgid ""
 "you."
 msgstr ""
 
+#: htdocs/help.php:8
+msgid "DAViCal CalDAV Server - Configuration Help"
+msgstr ""
+
+#: htdocs/setup.php:393
+msgid "PHP Information"
+msgstr ""
+
+#: htdocs/setup.php:396
+msgid ""
+"The <a href=\"http://www.davical.org/clients.php\">client setup page on the "
+"DAViCal website</a> has information on how to configure Evolution, Sunbird, "
+"Lightning and Mulberry to use remotely hosted calendars."
+msgstr ""
+
+#: htdocs/setup.php:397
+msgid ""
+"The administrative interface has no facility for viewing or modifying "
+"calendar data."
+msgstr ""
+
+#: htdocs/setup.php:399
+msgid "If you can read this then things must be mostly working already."
+msgstr ""
+
+#: htdocs/setup.php:404
+msgid ""
+"The <a href=\"http://www.davical.org/installation.php\">installation page on "
+"the DAViCal website</a> has some further information on how to install and "
+"configure this application."
+msgstr ""
