@@ -396,7 +396,7 @@ $heading_config_clients = translate('Configuring Calendar Clients for DAViCal');
 $davical_client_page = translate('The <a href="http://www.davical.org/clients.php">client setup page on the DAViCal website</a> has information on how to configure Evolution, Sunbird, Lightning and Mulberry to use remotely hosted calendars.');
 $davical_no_calendar_interface = translate('The administrative interface has no facility for viewing or modifying calendar data.');
 $heading_config_davical = translate('Configuring DAViCal');
-$davical_moslty_working = translate ('If you can read this then things must be mostly working already.');
+$davical_mostly_working = translate ('If you can read this then things must be mostly working already.');
 $davical_configuration_errors = ( $config_warnings == '' ? '' : '<div class="error"><h3 class="error">'
              . translate('Your configuration produced PHP errors which should be corrected') . '</h3><pre>'
              . $config_warnings.'</pre></div>'
@@ -444,7 +444,7 @@ $dependencies_table
 </table>
 </p>
 <h2>$heading_config_davical</h2>
-<p>$davical_moslty_working</p>
+<p>$davical_mostly_working</p>
 $davical_configuration_errors
 <p>$davical_installation_page</p>
 
