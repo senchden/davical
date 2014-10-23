@@ -29,8 +29,7 @@ $content_princ1 = translate('These are the things which may have collections of 
 $content_princ2 = sprintf('<a href="%s/admin.php?action=browse&t=principal&type=1">%s</a>. %s',
 $c->base_url,
 translate('Here is a list of users (maybe :-)'),
-translate("You can click on any user to see the full detail
-for that person (or group or resource - but from now we'll just call them users).")
+translate("You can click on any user to see the full detail for that person (or group or resource - but from now we'll just call them users).")
 );
 $content_princ3 = translate('The primary differences between them are as follows:');
 $content_princ4 = translate('Users will probably have calendars, and are likely to also log on to the system.');
