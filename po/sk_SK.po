@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# sevo <sevelik@gmail.com>, 2014
 # sevo <sevelik@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-22 22:39+0200\n"
-"PO-Revision-Date: 2014-10-22 20:42+0000\n"
-"Last-Translator: Cyril Giraud <cgiraud@free.fr>\n"
+"PO-Revision-Date: 2014-10-25 11:20+0000\n"
+"Last-Translator: sevo <sevelik@gmail.com>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/projects/p/davical/language/sk_SK/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -113,7 +114,7 @@ msgstr "Zostava už na tomto mieste existuje."
 
 #: inc/caldav-PROPPATCH.php:143
 msgid "A collection may not be both a calendar and an addressbook."
-msgstr ""
+msgstr "Zostava môže byť len buď kalendár alebo len adresár."
 
 #: inc/caldav-BIND.php:47
 msgid "A resource already exists at the destination."
@@ -203,7 +204,7 @@ msgstr "Anonymní užívatelia majú prístup len k verejným kalendárom"
 
 #: inc/ui/collection-edit.php:31
 msgid "Append"
-msgstr ""
+msgstr "Pridať"
 
 #: htdocs/upgrade.php:45
 msgid "Application DB User"
@@ -223,7 +224,7 @@ msgstr "Prílohy"
 
 #: inc/drivers_ldap.php:341 inc/drivers_ldap.php:345
 msgid "Authentication server unavailable."
-msgstr ""
+msgstr "Server na ktorom beží overovanie je nedostupný"
 
 msgid "Binding deleted"
 msgstr "Prepojenie sa odstránilo"
@@ -487,7 +488,7 @@ msgstr "Databázová chyba"
 
 #: htdocs/setup.php:323
 msgid "Database is Connected"
-msgstr ""
+msgstr "Databáza je pripojená"
 
 #: inc/ui/principal-edit.php:283
 msgid "Date Format Style"
@@ -761,7 +762,7 @@ msgid "Home"
 msgstr "Domov"
 
 msgid "Home "
-msgstr ""
+msgstr "Domov"
 
 #: inc/interactive-page.php:45
 msgid "Home Page"
@@ -801,7 +802,7 @@ msgstr "Import kalendára a LDAP synchronizácia."
 
 #: inc/interactive-page.php:37
 msgid "Inactive Principals"
-msgstr "Neaktívne základy"
+msgstr "Neaktívne položky"
 
 #: inc/caldav-PUT-default.php:45
 msgid "Incorrect content type for addressbook: "
@@ -926,7 +927,7 @@ msgstr "Na tomto mieste sa nenašli žiadne kolekcie."
 
 #: inc/CalDAVRequest.php:1135
 msgid "No resource exists at the destination."
-msgstr ""
+msgstr "Na zadanej destinácii sa nenachádza žiadny zdroj"
 
 #: htdocs/feed.php:126
 msgid "No summary"
@@ -1299,7 +1300,7 @@ msgstr "Nstavenie DAViCalu"
 
 #: inc/ui/collection-edit.php:30
 msgid "Should the uploaded entries be appended to the collection?"
-msgstr ""
+msgstr "Majú sa nahraté záznamy pridať do zostavy?"
 
 #: inc/page-header.php:26
 msgid "Show help on"
@@ -1426,17 +1427,17 @@ msgstr "Cesta kalendáa obsahuje nepovolené znaky."
 msgid ""
 "The calendar-free-busy-set is superseded by the  schedule-calendar-transp "
 "property of a calendar collection."
-msgstr ""
+msgstr "\"calendar-free-busy-set\" sa nahradila za \"schedule-calendar-transp\" položku zostavy kalendára."
 
 #: inc/caldav-REPORT-calquery.php:307 inc/caldav-REPORT-calquery.php:313
 msgid "The calendar-query report may not be run against that URL."
-msgstr ""
+msgstr "calendar-query hlásenie nemôže bežať na tejto URL"
 
 #: inc/caldav-REPORT-calquery.php:304 inc/caldav-REPORT-calquery.php:310
 msgid ""
 "The calendar-query report must be run against a calendar or a scheduling "
 "collection"
-msgstr "Kalendár-query správa musí byť spustená len na kalendári alebo zostave plánovania"
+msgstr "Kalendár-query správa môže byť spustená len na kalendári alebo zostave plánovania"
 
 msgid "The collection name may not be blank."
 msgstr "Meno zostavy musí byť vyplnené."
@@ -1470,7 +1471,7 @@ msgid "The full name must not be blank."
 msgstr "Celé meno nesmie byť prázdne."
 
 msgid "The name this user can log into the system with."
-msgstr "Meno užívateľa s ktorým sa bude prihlásovať do systému."
+msgstr "Týmto menom sa užívateľ bude prihlásovať do systému."
 
 #: htdocs/tools.php:95
 msgid "The path on the server where your .ics files are."
@@ -1588,7 +1589,7 @@ msgstr "United States of America (m/d/r)"
 
 #: inc/caldav-PROPPATCH.php:147
 msgid "Unsupported resourcetype modification."
-msgstr ""
+msgstr "Nepodporovaná zmena typu zdroja."
 
 msgid "Update"
 msgstr "Aktualizovať"
@@ -1820,11 +1821,11 @@ msgstr "mali by ste sa prihlásiť pomocou vášho mena a hesla."
 
 #: htdocs/help.php:8
 msgid "DAViCal CalDAV Server - Configuration Help"
-msgstr ""
+msgstr "DAViCal CalDAV Server - Pomoc ku konfigurácii"
 
 #: htdocs/setup.php:393 htdocs/setup.php:395
 msgid "PHP Information"
-msgstr ""
+msgstr "PHP Informácia"
 
 #: htdocs/setup.php:396 htdocs/index.php:48 htdocs/setup.php:399
 #: htdocs/index.php:47
@@ -1832,66 +1833,66 @@ msgid ""
 "The <a href=\"http://www.davical.org/clients.php\">client setup page on the "
 "DAViCal website</a> has information on how to configure Evolution, Sunbird, "
 "Lightning and Mulberry to use remotely hosted calendars."
-msgstr ""
+msgstr "Na <a href=\"http://www.davical.org/clients.php\">klientskej DAViCal webovej stránke</a> sú informácie ako nakonfigurovať Evolution, Sunbird, Lightning a Mulberry na pužitie vzdialených kalendárov."
 
 #: htdocs/setup.php:397 htdocs/index.php:49 htdocs/setup.php:400
 #: htdocs/index.php:48
 msgid ""
 "The administrative interface has no facility for viewing or modifying "
 "calendar data."
-msgstr ""
+msgstr "V administračnom rozhraní sa nedajú zobraziť a editovať dáta kalendára."
 
 #: htdocs/setup.php:399 htdocs/index.php:53 htdocs/setup.php:404
 #: htdocs/index.php:52
 msgid "If you can read this then things must be mostly working already."
-msgstr ""
+msgstr "Po prečítaní tohoto by už mali veci ísť ľahšie."
 
 #: htdocs/setup.php:404
 msgid ""
 "The <a href=\"http://www.davical.org/installation.php\">installation page on"
 " the DAViCal website</a> has some further information on how to install and "
 "configure this application."
-msgstr ""
+msgstr "Na <a href=\"http://www.davical.org/installation.php\">stránke popisu DAViCal inštalácie</a> je viac informácií ako nainštalovať a konfigurovať túto applikáciu."
 
 #: htdocs/index.php:18
 #, php-format
 msgid "You are logged on as %s (%s)"
-msgstr ""
+msgstr "Si prihlásený/á ako %s (%s)"
 
 #: htdocs/index.php:20
 msgid "Administration Functions"
-msgstr ""
+msgstr "Administračné funkcie"
 
 #: htdocs/index.php:21
 msgid ""
 "The administration of this application should be fairly simple. You can "
 "administer:"
-msgstr ""
+msgstr "Administrácia aplikácie by mala byť jednoduchá. Môžeš upravovať:"
 
 #: htdocs/index.php:22
 msgid "Users (or Resources or Groups) and the relationships between them"
-msgstr ""
+msgstr "Užívateľov (alebo zdroje, skupiny) a vzťahy medzi nimi"
 
 #: htdocs/index.php:23
 msgid "The types of relationships that are available"
-msgstr ""
+msgstr "Dostupné typy vzťahov"
 
 #: htdocs/index.php:24
 msgid ""
 "There is no ability to view and / or maintain calendars or events from "
 "within this administrative interface."
-msgstr ""
+msgstr "V administračnom rozhraní sa nedajú pozerať ani spravovať kalendáre a udalosti."
 
 #: htdocs/index.php:25
 msgid ""
 "To do that you will need to use a CalDAV capable calendaring application "
 "such as Evolution, Sunbird, Thunderbird (with the Lightning extension) or "
 "Mulberry."
-msgstr ""
+msgstr "Pamätaj,že budeš potrebovať aplikácie ktoré vedia spolupracovať s CalDAV. Napr. Evolution, Sunbird, Thunderbird (s Lightning modulom) alebo Mulberry."
 
 #: htdocs/index.php:27
 msgid "Principals: Users, Resources and Groups"
-msgstr ""
+msgstr "Položky: Užívatelia, Zdroje a Skupiny"
 
 #: htdocs/index.php:28
 msgid ""
