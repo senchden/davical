@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-22 22:39+0200\n"
-"PO-Revision-Date: 2014-10-25 05:10+0000\n"
+"PO-Revision-Date: 2014-10-25 23:20+0000\n"
 "Last-Translator: Hector Colina <hcolina@gmail.com>\n"
 "Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/davical/language/es_VE/)\n"
 "MIME-Version: 1.0\n"
@@ -948,7 +948,7 @@ msgstr ""
 
 #: htdocs/setup.php:289
 msgid "No. of Resources"
-msgstr "Nñum. de recursos"
+msgstr "Núm. de recursos"
 
 #: inc/caldav-MOVE.php:38
 msgid "Not overwriting existing destination resource"
@@ -967,7 +967,7 @@ msgstr ""
 
 #: htdocs/setup.php:322
 msgid "PDO PostgreSQL drivers"
-msgstr ""
+msgstr "Controlador PDO de PostgreSQL"
 
 #: htdocs/setup.php:327
 msgid "PHP DateTime class"
@@ -991,7 +991,7 @@ msgstr "PHP PDO módulo disponible"
 
 #: htdocs/setup.php:331
 msgid "PHP calendar extension available"
-msgstr ""
+msgstr "Extensión PHP calendar disponible"
 
 #: htdocs/setup.php:332
 msgid "PHP curl support"
@@ -1003,7 +1003,7 @@ msgstr "PHP iconv soportado"
 
 #: htdocs/setup.php:320
 msgid "PHP not using Apache Filter mode"
-msgstr ""
+msgstr "PHP no está usando Apache Filter mode"
 
 #: inc/external-fetch.php:18 inc/external-fetch.php:46
 msgid "PHP5 curl support is required for external binds"
@@ -1022,7 +1022,7 @@ msgid ""
 msgstr ""
 
 msgid "Passed"
-msgstr ""
+msgstr "Pasado"
 
 msgid "Password"
 msgstr "Contraseña"
@@ -1081,7 +1081,7 @@ msgstr "Privilegios"
 
 #: inc/ui/principal-edit.php:288
 msgid "Privileges granted to All Users"
-msgstr ""
+msgstr "Privilegios otorgados a todos los usuarios"
 
 #: inc/ui/collection-edit.php:234 inc/ui/principal-edit.php:385
 msgid "Privileges to allow delivery of scheduling messages"
@@ -1162,7 +1162,7 @@ msgstr "Remover"
 
 #: inc/CalDAVRequest.php:736
 msgid "Remove a lock"
-msgstr ""
+msgstr "Remover un bloqueo"
 
 #: inc/ui/external-browse.php:35
 msgid "Remove dangling external calendars"
@@ -1305,7 +1305,7 @@ msgstr ""
 
 #: inc/page-header.php:26
 msgid "Show help on"
-msgstr ""
+msgstr "Mostrar ayuda"
 
 #: htdocs/setup.php:380 htdocs/setup.php:382
 msgid "Site Statistics"
@@ -1347,7 +1347,7 @@ msgstr "Estado"
 #: inc/caldav-PUT-functions.php:57
 #, php-format
 msgid "Status: %d, Message: %s, User: %d, Path: %s"
-msgstr ""
+msgstr "Estado: %d, Mensaje: %s, Usuario: %d, Ruta: %s"
 
 #: htdocs/tools.php:61 htdocs/tools.php:70 htdocs/tools.php:98
 msgid "Submit"
@@ -1453,7 +1453,7 @@ msgid ""
 msgstr ""
 
 msgid "The email address really should not be blank."
-msgstr ""
+msgstr "La dirección de correo no debe estar en blanco"
 
 #: htdocs/tools.php:139
 #, php-format
@@ -1497,7 +1497,7 @@ msgid "The user's full name."
 msgstr "El nombre complet del usuario"
 
 msgid "The user's password for logging in."
-msgstr ""
+msgstr "La contraseña del usuario para conectarse"
 
 msgid "The username must not be blank, and may not contain a slash"
 msgstr ""

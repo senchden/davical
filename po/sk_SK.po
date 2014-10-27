@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-22 22:39+0200\n"
-"PO-Revision-Date: 2014-10-25 11:20+0000\n"
+"PO-Revision-Date: 2014-10-26 15:50+0000\n"
 "Last-Translator: sevo <sevelik@gmail.com>\n"
 "Language-Team: Slovak (Slovakia) (http://www.transifex.com/projects/p/davical/language/sk_SK/)\n"
 "MIME-Version: 1.0\n"
@@ -1337,7 +1337,7 @@ msgstr "Osobitné oprávnenia"
 
 #, php-format
 msgid "Stable: %s, We have: %s !"
-msgstr ""
+msgstr "Stabilné: %s, Máme: %s !"
 
 #: htdocs/setup.php:377 htdocs/iSchedule.php:31 htdocs/setup.php:379
 msgid "Status"
@@ -1621,7 +1621,7 @@ msgstr "Aktualizovať databázu"
 
 #: inc/ui/collection-edit.php:27
 msgid "Upload an iCalendar file or VCard file to replace this collection."
-msgstr ""
+msgstr "Nahrať súbor iCalendar alebo VCard súbor a nahradiť túto zostavu."
 
 #: inc/ui/principal-browse.php:8
 msgid "User Calendar Principals"
@@ -1898,69 +1898,69 @@ msgstr "Položky: Užívatelia, Zdroje a Skupiny"
 msgid ""
 "These are the things which may have collections of calendar resources (i.e. "
 "calendars)."
-msgstr ""
+msgstr "To sú veci, ktoré môžu obsahovať zostavy zdrojov kalendára (kalendáre)."
 
 #: htdocs/index.php:31
 msgid "Here is a list of users (maybe :-)"
-msgstr ""
+msgstr "Zoznam užívateľov (možno :-)"
 
 #: htdocs/index.php:32
 msgid ""
 "You can click on any user to see the full detail for that person (or group "
 "or resource - but from now we'll just call them users)."
-msgstr ""
+msgstr "Po kliknutí na užívateľa si môžte pozrieť podrobnosti osoby (príp. skupiny alebo zdroja - od teraz to budú už len užívatelia)."
 
 #: htdocs/index.php:35 htdocs/index.php:34
 msgid "The primary differences between them are as follows:"
-msgstr ""
+msgstr "Toto sú hlavné rozdiely medzi nimi:"
 
 #: htdocs/index.php:36 htdocs/index.php:39 htdocs/index.php:35
 #: htdocs/index.php:38
 msgid ""
 "Users will probably have calendars, and are likely to also log on to the "
 "system."
-msgstr ""
+msgstr "Užívatelia budú mať pravdepodobne kalendáre a tiež sa budú môcť prihlásiť do systému."
 
 #: htdocs/index.php:37 htdocs/index.php:36
 msgid "Resources do have calendars, but they will not usually log on."
-msgstr ""
+msgstr "Zdroje majú kalendáre, ale normálne sa do systému neprihlasujú."
 
 #: htdocs/index.php:38 htdocs/index.php:37
 msgid ""
 "Groups provide an intermediate linking to minimise administration overhead."
 "  They might not have calendars, and they will not usually log on."
-msgstr ""
+msgstr "Skupiny sa používajú na zjednodušenie prepojení pre uľahčenie administrácie. Nemusia mať kalendáre a normálne sa neprihlasujú."
 
 #: htdocs/index.php:41 htdocs/index.php:40
 msgid "Groups &amp; Grants"
-msgstr ""
+msgstr "Skupiny &amp; Povolenia"
 
 #: htdocs/index.php:42 htdocs/index.php:41
 msgid "Grants specify the access rights to a collection or a principal"
-msgstr ""
+msgstr "Povolenia určujú prístupové práva pre zostavy a položky"
 
 #: htdocs/index.php:43 htdocs/index.php:42
 msgid ""
 "Groups allow those granted rights to be assigned to a set of many principals"
 " in one action"
-msgstr ""
+msgstr "Skupiny umožňujú tieto zadané oprávnenia priradiť viacerým položkám naraz"
 
 #: htdocs/index.php:44 htdocs/index.php:43
 msgid ""
 "Groups may be members of other groups, but complex nesting will hurt system "
 "performance"
-msgstr ""
+msgstr "Skupiny môžu byť členmi iných skupín, ale môže sa to dzrkadliť na výkone systému"
 
 #: htdocs/index.php:54 htdocs/setup.php:409 htdocs/index.php:53
 msgid ""
 "The <a href=\"http://www.davical.org/installation.php\">DAViCal installation"
 " page</a> on the DAViCal website has some further information on how to "
 "install and configure this application."
-msgstr ""
+msgstr "Na <a href=\"http://www.davical.org/installation.php\">stránke popisu DAViCal inštalácie</a> je viac informácií ako nainštalovať a konfigurovať túto applikáciu."
 
 #: htdocs/iSchedule.php:12
 msgid "iSchedule Configuration"
-msgstr ""
+msgstr "iSchedule konfigurácia"
 
 #: htdocs/iSchedule.php:13
 msgid ""
@@ -1969,7 +1969,7 @@ msgid ""
 " attendees are using different servers or providers. Additionally it enables"
 " freebusy lookups for remote attendees. Events and ToDos received via "
 "iSchedule will show up in the users scheduling inbox."
-msgstr ""
+msgstr "iSchedule umožňuje CalDAV serverom komunikovať o plánovaných akciách, kde účastníci používajú rôzne servery alebo poskytovateľov, priamo medzi sebou bez potreby posielania pozvánok e-mailom. Navyše umožňuje FreeBusy vyhľadávania pre vzdialených účastníkov. Udalosti  a ToDo prijaté cez iSchedule sa ukážu v rozvrhoch užívateľov."
 
 #: htdocs/iSchedule.php:14
 msgid ""
@@ -1979,72 +1979,72 @@ msgid ""
 "domain portion of email address on Principal records in DAViCal examples are"
 " listed below for domains found in your database. At least 1 public key must"
 " also be published if you wish to send requests from this server."
-msgstr ""
+msgstr "<a href=\"http://wiki.davical.org/w/iSchedule_configuration\">iSchedule konfigurácia</a> vyžaduje nejaké DNS záznamy. Pre všetky domény, pre ktoré chcete prijímať žiadosti, bude potrebné vytvoriť DNS SRV záznamy. Sú to doménové časti e-mailovej adresy hlavných položiek. V DAViCal príkladoch sú uvedené nižšie, pre domény sa nachádzajú v databáze. Pokiaľ si prajete zasielať žiadosti z tohto servera tak musí byť zverejnený aspoň 1 verejný kľúč."
 
 #: htdocs/iSchedule.php:25
 msgid "ERROR"
-msgstr ""
+msgstr "ERROR"
 
 #: htdocs/iSchedule.php:26
 msgid ""
 "scheduling_dkim_domain not set (please check your DAViCal configuration "
 "file)"
-msgstr ""
+msgstr "Nie je zadaná scheduling_dkim_domain položka (skontroluj DAViCal konfiguračný súbor)"
 
 #: htdocs/iSchedule.php:28
 msgid "WARNING"
-msgstr ""
+msgstr "VAROVANIE"
 
 #: htdocs/iSchedule.php:29
 msgid ""
 "scheduling_dkim_domain does not match server name (please check your DAViCal"
 " configuration file)"
-msgstr ""
+msgstr "scheduling_dkim_domain neobsahuje názov servera (skontroluj DAViCal konfiguračný súbor)"
 
 #: htdocs/iSchedule.php:56
 #, php-format
 msgid ""
 "SRV record missing for \"%s\" or DNS failure, the domain you are going to "
 "send events from should have an SRV record"
-msgstr ""
+msgstr "Pre \"%s\" chýba SRV záznam alebo zlyhal DNS. Doména z ktorej odosielate udalosti z by mala mať SRV záznam"
 
 #: htdocs/iSchedule.php:58
 #, php-format
 msgid "SRV record for \"%s\" points to wrong domain: \"%s\" instead of \"%s\""
-msgstr ""
+msgstr "SRV záznam pre \"%s\" ukazuje na zlú doménu: \"%s\" namiesto \"%s\""
 
 #: htdocs/iSchedule.php:63
 #, php-format
 msgid ""
 "TXT record missing for \"%s._domainkey.%s\" or DNS failure, Private RSA key "
 "is configured"
-msgstr ""
+msgstr "Pre \"%s._domainkey.%s\" chýba TXT záznam alebo zlyhal DNS. Súkromný RSA kľúč je nakonfigurovaný"
 
 #: htdocs/iSchedule.php:66
 msgid "please add the following section to your DAViCal configuration file"
-msgstr ""
+msgstr "Pridaj nasledujúcu časť do DAViCal konfiguračného súboru"
 
 #: htdocs/iSchedule.php:69
 #, php-format
 msgid "and create a DNS TXT record for <b>%s._domainkey.%s</b> that contains:"
-msgstr ""
+msgstr "a pre <b>%s._domainkey%s</b> vytvor DNS TXT záznam ktorý obsahuje:"
 
 #: htdocs/iSchedule.php:76
 #, php-format
 msgid "TXT record corrupt for %s._domainkey.%s or DNS failure"
-msgstr ""
+msgstr "TXT záznam pre %s._domainkey.%s je poškodený alebo zlyhal DNS"
 
 #: htdocs/iSchedule.php:78
 msgid "iSchedule OK"
-msgstr ""
+msgstr "iSchedule OK"
 
 #: htdocs/setup.php:339
 #, php-format
 msgid ""
 "<a href=\"http://wiki.davical.org/w/Setup_Failure_Codes/%s\">Explanation on "
 "DAViCal Wiki</a>"
-msgstr ""
+msgstr "<a href=\"http://wiki.davical.org/w/Setup_Failure_Codes/%s\">Vysvetlenie je na DAViCal Wiki</a>"
 
 #: htdocs/setup.php:388 htdocs/setup.php:392
 msgid "Statistics unavailable"
-msgstr ""
+msgstr "Štatistiky sú nedostupné"

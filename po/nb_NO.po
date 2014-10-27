@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# bruberg <bruberg@gmail.com>, 2014
 # aleksand <daniel@aleksand.no>, 2011
 # Daniel <i18n@daniel.priv.no>, 2011
 # Sven Olsen <sven@svenolsen.net>, 2011
@@ -11,8 +12,8 @@ msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-22 22:39+0200\n"
-"PO-Revision-Date: 2014-10-22 20:42+0000\n"
-"Last-Translator: Cyril Giraud <cgiraud@free.fr>\n"
+"PO-Revision-Date: 2014-10-27 07:42+0000\n"
+"Last-Translator: bruberg <bruberg@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/projects/p/davical/language/nb_NO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,7 +116,7 @@ msgstr "En samling finnes allerede der"
 
 #: inc/caldav-PROPPATCH.php:143
 msgid "A collection may not be both a calendar and an addressbook."
-msgstr ""
+msgstr "En samling kan ikke være både en kalender og en adressebok."
 
 #: inc/caldav-BIND.php:47
 msgid "A resource already exists at the destination."
@@ -138,7 +139,7 @@ msgstr "Adgangstilgang slettet"
 #: inc/ui/principal-edit.php:841 inc/ui/principal-edit.php:882
 #: inc/ui/principal-edit.php:918
 msgid "Action"
-msgstr "Aksjon"
+msgstr "Handling"
 
 #: inc/ui/principal-edit.php:285
 msgid "Active"
@@ -197,7 +198,7 @@ msgstr "En \"Administrator\" bruker har fulle rettigheter til hele DAViCal-syste
 
 #: htdocs/public.php:51
 msgid "Anonymous users are not allowed to modify calendars"
-msgstr "Anonyme brukere har ikke tillatelse til endring av kalendre"
+msgstr "Anonyme brukere har ikke tillatelse til å endre i kalendre"
 
 #: htdocs/public.php:33
 msgid "Anonymous users may only access public calendars"
@@ -205,7 +206,7 @@ msgstr "Anonyme brukere har kun tilgang til offentlige kalendre"
 
 #: inc/ui/collection-edit.php:31
 msgid "Append"
-msgstr ""
+msgstr "Legg til"
 
 #: htdocs/upgrade.php:45
 msgid "Application DB User"
@@ -225,7 +226,7 @@ msgstr "Vedlegg"
 
 #: inc/drivers_ldap.php:341 inc/drivers_ldap.php:345
 msgid "Authentication server unavailable."
-msgstr ""
+msgstr "Autentiseringsserver utilgjengelig"
 
 msgid "Binding deleted"
 msgstr "Forbindelse slettet"
@@ -437,19 +438,19 @@ msgstr "DKIM-signatur mangler"
 
 #: inc/iSchedule.php:663
 msgid "DKIM signature validation failed(DNS ERROR)"
-msgstr "DKIM signatursjekk feilet(DNS ERROR)"
+msgstr "DKIM signatursjekk feilet (DNS ERROR)"
 
 #: inc/iSchedule.php:665
 msgid "DKIM signature validation failed(KEY Parse ERROR)"
-msgstr "DKIM signatursjekk feilet(KEY Parse ERROR)"
+msgstr "DKIM signatursjekk feilet (KEY Parse ERROR)"
 
 #: inc/iSchedule.php:667
 msgid "DKIM signature validation failed(KEY Validation ERROR)"
-msgstr "DKIM signatursjekk feilet(KEY Validation ERROR)"
+msgstr "DKIM signatursjekk feilet (KEY Validation ERROR)"
 
 #: inc/iSchedule.php:670
 msgid "DKIM signature validation failed(Signature verification ERROR)"
-msgstr "DKIM signatursjekk feilet(Signature verification ERROR)"
+msgstr "DKIM signatursjekk feilet (Signature verification ERROR)"
 
 #: htdocs/feed.php:78 inc/caldav-GET-functions.php:65
 #: inc/CalDAVRequest.php:696 inc/CalDAVRequest.php:798 inc/caldav-BIND.php:64
@@ -459,27 +460,27 @@ msgstr "Databasefeil"
 
 #: htdocs/upgrade.php:43
 msgid "Database Host"
-msgstr "Database Host"
+msgstr "Databasetjener"
 
 #: htdocs/upgrade.php:39
 msgid "Database Name"
-msgstr "Database Navn"
+msgstr "Databasenavn"
 
 #: htdocs/upgrade.php:47
 msgid "Database Owner"
-msgstr "Database Eier"
+msgstr "Databaseeier"
 
 #: htdocs/upgrade.php:41
 msgid "Database Password"
-msgstr "Database Passord"
+msgstr "Databasepassord"
 
 #: htdocs/upgrade.php:42
 msgid "Database Port"
-msgstr "Database Port"
+msgstr "Databaseport"
 
 #: htdocs/upgrade.php:40
 msgid "Database Username"
-msgstr "Database Brukernavn"
+msgstr "Databasebrukernavn"
 
 #: inc/caldav-PUT-functions.php:43 inc/caldav-REPORT-sync-collection.php:63
 #: inc/caldav-REPORT-sync-collection.php:72
@@ -489,7 +490,7 @@ msgstr "Databasefeil"
 
 #: htdocs/setup.php:323
 msgid "Database is Connected"
-msgstr ""
+msgstr "Databasen er tilkoblet"
 
 #: inc/ui/principal-edit.php:283
 msgid "Date Format Style"
@@ -588,7 +589,7 @@ msgstr "Har brukeren rettigheter til denne rollen?"
 
 #: htdocs/iSchedule.php:109 htdocs/iSchedule.php:119
 msgid "Domain"
-msgstr ""
+msgstr "Domene"
 
 #: inc/ui/principal-browse.php:19
 msgid "EMail"
@@ -760,10 +761,10 @@ msgstr "Hjelp! Jeg har glemt passordet"
 
 #: inc/interactive-page.php:45
 msgid "Home"
-msgstr "Home"
+msgstr "Hjem"
 
 msgid "Home "
-msgstr ""
+msgstr "Hjem"
 
 #: inc/interactive-page.php:45
 msgid "Home Page"
@@ -777,10 +778,10 @@ msgid "ID"
 msgstr "ID"
 
 msgid "ISO Format"
-msgstr "ISO Format"
+msgstr "ISO-format"
 
 msgid "ISO Format (YYYY-MM-DD)"
-msgstr "ISO Format (YYYY-MM-DD)"
+msgstr "ISO-format (YYYY-MM-DD)"
 
 #. Translators: short for 'Identifier'
 msgid "Id"
@@ -928,7 +929,7 @@ msgstr "Ingen samling funnet på den lokasjonen"
 
 #: inc/CalDAVRequest.php:1135
 msgid "No resource exists at the destination."
-msgstr ""
+msgstr "Ingen ressurs eksisterer på det angitte målet"
 
 #: htdocs/feed.php:126
 msgid "No summary"
@@ -959,7 +960,7 @@ msgstr "Opaque"
 
 #: inc/iSchedule.php:656
 msgid "Organizer Missing"
-msgstr ""
+msgstr "Mangler organisator"
 
 #: inc/ui/collection-edit.php:166 inc/ui/principal-edit.php:13
 msgid "Override a Lock"
@@ -995,7 +996,7 @@ msgstr "PHP kalenderutvidelse er tilgjengelig."
 
 #: htdocs/setup.php:332
 msgid "PHP curl support"
-msgstr ""
+msgstr "PHP curl-støtte"
 
 #: htdocs/setup.php:326
 msgid "PHP iconv support"
@@ -1301,7 +1302,7 @@ msgstr "Sett opp DAViCal"
 
 #: inc/ui/collection-edit.php:30
 msgid "Should the uploaded entries be appended to the collection?"
-msgstr ""
+msgstr "Skal de opplastede innslagene legges til samlingen?"
 
 #: inc/page-header.php:26
 msgid "Show help on"
@@ -1387,7 +1388,7 @@ msgstr "BIND Request-URI MÅ identifisere en samling."
 
 #: inc/caldav-BIND.php:25
 msgid "The BIND method is not allowed at that location."
-msgstr "BIND metoden er ikke tillatt på den lokasjonen."
+msgstr "BIND-metoden er ikke tillatt på den lokasjonen."
 
 #: inc/caldav-PROPPATCH.php:165
 msgid ""
@@ -1432,7 +1433,7 @@ msgstr ""
 
 #: inc/caldav-REPORT-calquery.php:307 inc/caldav-REPORT-calquery.php:313
 msgid "The calendar-query report may not be run against that URL."
-msgstr ""
+msgstr "Den angitte URL kan ikke svare på kalenderforespørselsrapport."
 
 #: inc/caldav-REPORT-calquery.php:304 inc/caldav-REPORT-calquery.php:310
 msgid ""
@@ -1590,7 +1591,7 @@ msgstr "United States of America (m/d/y)"
 
 #: inc/caldav-PROPPATCH.php:147
 msgid "Unsupported resourcetype modification."
-msgstr ""
+msgstr "Ikke-støttet endring av ressurstype"
 
 msgid "Update"
 msgstr "Oppdater"
@@ -1622,7 +1623,7 @@ msgstr "Oppgrader database"
 
 #: inc/ui/collection-edit.php:27
 msgid "Upload an iCalendar file or VCard file to replace this collection."
-msgstr ""
+msgstr "Last opp en iCalendar-fil eller VCard-fil for å erstatte denne samlingen."
 
 #: inc/ui/principal-browse.php:8
 msgid "User Calendar Principals"
@@ -1796,7 +1797,7 @@ msgstr ""
 
 #: inc/iSchedule-POST.php:132 inc/iSchedule-POST.php:137
 msgid "invalid request"
-msgstr ""
+msgstr "Ugyldig forespørsel"
 
 #: htdocs/tools.php:87
 msgid "path to store your ics"
@@ -1826,7 +1827,7 @@ msgstr ""
 
 #: htdocs/setup.php:393 htdocs/setup.php:395
 msgid "PHP Information"
-msgstr ""
+msgstr "PHP-informasjon"
 
 #: htdocs/setup.php:396 htdocs/index.php:48 htdocs/setup.php:399
 #: htdocs/index.php:47
@@ -1846,7 +1847,7 @@ msgstr ""
 #: htdocs/setup.php:399 htdocs/index.php:53 htdocs/setup.php:404
 #: htdocs/index.php:52
 msgid "If you can read this then things must be mostly working already."
-msgstr ""
+msgstr "Hvis du kan lese dette, burde det meste allerede fungere."
 
 #: htdocs/setup.php:404
 msgid ""
@@ -1862,7 +1863,7 @@ msgstr ""
 
 #: htdocs/index.php:20
 msgid "Administration Functions"
-msgstr ""
+msgstr "Administrasjonsfunksjoner"
 
 #: htdocs/index.php:21
 msgid ""
@@ -1893,7 +1894,7 @@ msgstr ""
 
 #: htdocs/index.php:27
 msgid "Principals: Users, Resources and Groups"
-msgstr ""
+msgstr "Kontoer: Brukere, ressurser og grupper"
 
 #: htdocs/index.php:28
 msgid ""
@@ -1903,7 +1904,7 @@ msgstr ""
 
 #: htdocs/index.php:31
 msgid "Here is a list of users (maybe :-)"
-msgstr ""
+msgstr "Her er (kanskje :-) en liste over brukere"
 
 #: htdocs/index.php:32
 msgid ""
@@ -1913,18 +1914,18 @@ msgstr ""
 
 #: htdocs/index.php:35 htdocs/index.php:34
 msgid "The primary differences between them are as follows:"
-msgstr ""
+msgstr "Forskjellen mellom dem er følgende:"
 
 #: htdocs/index.php:36 htdocs/index.php:39 htdocs/index.php:35
 #: htdocs/index.php:38
 msgid ""
 "Users will probably have calendars, and are likely to also log on to the "
 "system."
-msgstr ""
+msgstr "Brukere vil normalt ha kalendre, og er også i stand til å logge på systemet."
 
 #: htdocs/index.php:37 htdocs/index.php:36
 msgid "Resources do have calendars, but they will not usually log on."
-msgstr ""
+msgstr "Ressurser har kalendre, men vil normalt ikke logge inn."
 
 #: htdocs/index.php:38 htdocs/index.php:37
 msgid ""
@@ -1934,11 +1935,11 @@ msgstr ""
 
 #: htdocs/index.php:41 htdocs/index.php:40
 msgid "Groups &amp; Grants"
-msgstr ""
+msgstr "Grupper og rettigheter"
 
 #: htdocs/index.php:42 htdocs/index.php:41
 msgid "Grants specify the access rights to a collection or a principal"
-msgstr ""
+msgstr "Tilganger angir rettighetene til en samling eller en konto"
 
 #: htdocs/index.php:43 htdocs/index.php:42
 msgid ""
@@ -2048,4 +2049,4 @@ msgstr ""
 
 #: htdocs/setup.php:388 htdocs/setup.php:392
 msgid "Statistics unavailable"
-msgstr ""
+msgstr "Statistikk utilgjengelig"
