@@ -342,7 +342,7 @@ function build_dependencies_table( ) {
   $dep_tpl = '<tr class="%s">
   <td>%s</td>
   <td>%s</td>
-  <td>$translated_failure_code</td>
+  <td>'.$translated_failure_code.'</td>
 </tr>
 ';
   foreach( $dependencies AS $k => $v ) {

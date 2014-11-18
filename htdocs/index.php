@@ -15,7 +15,7 @@ include("interactive-page.php");
 include("page-header.php");
 
 $heading_admin = translate('Administration');
-$content_admin = sprintf(translate('You are logged on as %s (%s)', $session->username, $session->fullname));
+$content_admin = sprintf(translate('You are logged on as %s (%s)'), $session->username, $session->fullname);
 
 $heading_functions = translate('Administration Functions');
 $content_func1 = translate('The administration of this application should be fairly simple. You can administer:');
