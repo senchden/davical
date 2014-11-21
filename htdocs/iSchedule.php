@@ -17,8 +17,8 @@ $content_sched2 = translate('The <a href="http://wiki.davical.org/w/iSchedule_co
  $page_elements = array();
  $page_elements[] = <<<EOBODY
 <h1>$heading_schedule</h1>
-<p>$content_sched1</p>
-<p><br>&nbsp;</p>
+<p>$content_sched1
+<br>&nbsp;</p>
 <p>$content_sched2</p>
 EOBODY;
 
