@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-19 00:13+0200\n"
-"PO-Revision-Date: 2014-10-18 22:14+0000\n"
+"POT-Creation-Date: 2014-10-22 22:39+0200\n"
+"PO-Revision-Date: 2014-10-22 20:42+0000\n"
 "Last-Translator: Cyril Giraud <cgiraud@free.fr>\n"
 "Language-Team: Estonian (http://www.transifex.com/projects/p/davical/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Admin"
 msgstr ""
 
-#: inc/interactive-page.php:47
+#: inc/interactive-page.php:47 htdocs/index.php:17
 msgid "Administration"
 msgstr ""
 
@@ -314,11 +314,13 @@ msgid ""
 " same time"
 msgstr ""
 
-#: htdocs/setup.php:393 htdocs/setup.php:395
+#: htdocs/setup.php:393 htdocs/setup.php:395 htdocs/index.php:47
+#: htdocs/setup.php:398 htdocs/index.php:46
 msgid "Configuring Calendar Clients for DAViCal"
 msgstr ""
 
-#: htdocs/setup.php:394 htdocs/setup.php:398
+#: htdocs/setup.php:394 htdocs/setup.php:398 htdocs/index.php:52
+#: htdocs/setup.php:403 htdocs/index.php:51
 msgid "Configuring DAViCal"
 msgstr ""
 
@@ -547,11 +549,11 @@ msgstr ""
 msgid "Deliver scheduling replies from an attendee to this scheduling inbox"
 msgstr ""
 
-#: htdocs/setup.php:375
+#: htdocs/setup.php:375 htdocs/setup.php:377
 msgid "Dependencies"
 msgstr ""
 
-#: htdocs/setup.php:376
+#: htdocs/setup.php:376 htdocs/setup.php:378
 msgid "Dependency"
 msgstr ""
 
@@ -581,7 +583,7 @@ msgstr ""
 msgid "Does the user have the right to perform this role?"
 msgstr ""
 
-#: htdocs/iSchedule.php:109
+#: htdocs/iSchedule.php:109 htdocs/iSchedule.php:119
 msgid "Domain"
 msgstr ""
 
@@ -1204,7 +1206,7 @@ msgstr ""
 msgid "Revoke"
 msgstr ""
 
-#: htdocs/iSchedule.php:111
+#: htdocs/iSchedule.php:111 htdocs/iSchedule.php:121
 msgid "SRV Record"
 msgstr ""
 
@@ -1286,7 +1288,7 @@ msgid ""
 "/caldav.php/username/calendar/"
 msgstr ""
 
-#: htdocs/setup.php:359 inc/interactive-page.php:34
+#: htdocs/setup.php:359 inc/interactive-page.php:34 htdocs/setup.php:361
 msgid "Setup"
 msgstr ""
 
@@ -1302,7 +1304,7 @@ msgstr ""
 msgid "Show help on"
 msgstr ""
 
-#: htdocs/setup.php:380
+#: htdocs/setup.php:380 htdocs/setup.php:382
 msgid "Site Statistics"
 msgstr ""
 
@@ -1335,7 +1337,7 @@ msgstr ""
 msgid "Stable: %s, We have: %s !"
 msgstr ""
 
-#: htdocs/setup.php:377
+#: htdocs/setup.php:377 htdocs/iSchedule.php:31 htdocs/setup.php:379
 msgid "Status"
 msgstr ""
 
@@ -1523,7 +1525,7 @@ msgid ""
 "information in DAViCal</li> </ul>"
 msgstr ""
 
-#: htdocs/setup.php:360
+#: htdocs/setup.php:360 htdocs/setup.php:362
 msgid ""
 "This page primarily checks the environment needed for DAViCal to work "
 "correctly.  Suggestions or patches to make it do more useful stuff will be "
@@ -1724,7 +1726,7 @@ msgstr ""
 msgid "You must log in to use this system."
 msgstr ""
 
-#: htdocs/setup.php:396 htdocs/setup.php:401
+#: htdocs/setup.php:396 htdocs/setup.php:401 htdocs/setup.php:406
 msgid "Your configuration produced PHP errors which should be corrected"
 msgstr ""
 
@@ -1785,7 +1787,7 @@ msgstr ""
 msgid "from principal"
 msgstr ""
 
-#: htdocs/iSchedule.php:108
+#: htdocs/iSchedule.php:108 htdocs/iSchedule.php:118
 msgid "iSchedule Domains"
 msgstr ""
 
@@ -1819,24 +1821,27 @@ msgstr ""
 msgid "DAViCal CalDAV Server - Configuration Help"
 msgstr ""
 
-#: htdocs/setup.php:393
+#: htdocs/setup.php:393 htdocs/setup.php:395
 msgid "PHP Information"
 msgstr ""
 
-#: htdocs/setup.php:396
+#: htdocs/setup.php:396 htdocs/index.php:48 htdocs/setup.php:399
+#: htdocs/index.php:47
 msgid ""
 "The <a href=\"http://www.davical.org/clients.php\">client setup page on the "
 "DAViCal website</a> has information on how to configure Evolution, Sunbird, "
 "Lightning and Mulberry to use remotely hosted calendars."
 msgstr ""
 
-#: htdocs/setup.php:397
+#: htdocs/setup.php:397 htdocs/index.php:49 htdocs/setup.php:400
+#: htdocs/index.php:48
 msgid ""
 "The administrative interface has no facility for viewing or modifying "
 "calendar data."
 msgstr ""
 
-#: htdocs/setup.php:399
+#: htdocs/setup.php:399 htdocs/index.php:53 htdocs/setup.php:404
+#: htdocs/index.php:52
 msgid "If you can read this then things must be mostly working already."
 msgstr ""
 
@@ -1845,4 +1850,199 @@ msgid ""
 "The <a href=\"http://www.davical.org/installation.php\">installation page on"
 " the DAViCal website</a> has some further information on how to install and "
 "configure this application."
+msgstr ""
+
+#: htdocs/index.php:18
+#, php-format
+msgid "You are logged on as %s (%s)"
+msgstr ""
+
+#: htdocs/index.php:20
+msgid "Administration Functions"
+msgstr ""
+
+#: htdocs/index.php:21
+msgid ""
+"The administration of this application should be fairly simple. You can "
+"administer:"
+msgstr ""
+
+#: htdocs/index.php:22
+msgid "Users (or Resources or Groups) and the relationships between them"
+msgstr ""
+
+#: htdocs/index.php:23
+msgid "The types of relationships that are available"
+msgstr ""
+
+#: htdocs/index.php:24
+msgid ""
+"There is no ability to view and / or maintain calendars or events from "
+"within this administrative interface."
+msgstr ""
+
+#: htdocs/index.php:25
+msgid ""
+"To do that you will need to use a CalDAV capable calendaring application "
+"such as Evolution, Sunbird, Thunderbird (with the Lightning extension) or "
+"Mulberry."
+msgstr ""
+
+#: htdocs/index.php:27
+msgid "Principals: Users, Resources and Groups"
+msgstr ""
+
+#: htdocs/index.php:28
+msgid ""
+"These are the things which may have collections of calendar resources (i.e. "
+"calendars)."
+msgstr ""
+
+#: htdocs/index.php:31
+msgid "Here is a list of users (maybe :-)"
+msgstr ""
+
+#: htdocs/index.php:32
+msgid ""
+"You can click on any user to see the full detail for that person (or group "
+"or resource - but from now we'll just call them users)."
+msgstr ""
+
+#: htdocs/index.php:35 htdocs/index.php:34
+msgid "The primary differences between them are as follows:"
+msgstr ""
+
+#: htdocs/index.php:36 htdocs/index.php:39 htdocs/index.php:35
+#: htdocs/index.php:38
+msgid ""
+"Users will probably have calendars, and are likely to also log on to the "
+"system."
+msgstr ""
+
+#: htdocs/index.php:37 htdocs/index.php:36
+msgid "Resources do have calendars, but they will not usually log on."
+msgstr ""
+
+#: htdocs/index.php:38 htdocs/index.php:37
+msgid ""
+"Groups provide an intermediate linking to minimise administration overhead."
+"  They might not have calendars, and they will not usually log on."
+msgstr ""
+
+#: htdocs/index.php:41 htdocs/index.php:40
+msgid "Groups &amp; Grants"
+msgstr ""
+
+#: htdocs/index.php:42 htdocs/index.php:41
+msgid "Grants specify the access rights to a collection or a principal"
+msgstr ""
+
+#: htdocs/index.php:43 htdocs/index.php:42
+msgid ""
+"Groups allow those granted rights to be assigned to a set of many principals"
+" in one action"
+msgstr ""
+
+#: htdocs/index.php:44 htdocs/index.php:43
+msgid ""
+"Groups may be members of other groups, but complex nesting will hurt system "
+"performance"
+msgstr ""
+
+#: htdocs/index.php:54 htdocs/setup.php:409 htdocs/index.php:53
+msgid ""
+"The <a href=\"http://www.davical.org/installation.php\">DAViCal installation"
+" page</a> on the DAViCal website has some further information on how to "
+"install and configure this application."
+msgstr ""
+
+#: htdocs/iSchedule.php:12
+msgid "iSchedule Configuration"
+msgstr ""
+
+#: htdocs/iSchedule.php:13
+msgid ""
+"iSchedule allows caldav servers to communicate directly with each other, "
+"bypassing the need to send invitations via email, for scheduled events where"
+" attendees are using different servers or providers. Additionally it enables"
+" freebusy lookups for remote attendees. Events and ToDos received via "
+"iSchedule will show up in the users scheduling inbox."
+msgstr ""
+
+#: htdocs/iSchedule.php:14
+msgid ""
+"The <a href=\"http://wiki.davical.org/w/iSchedule_configuration\">iSchedule "
+"configuration</a> requires a few DNS entries. DNS SRV record(s) will need to"
+" be created for all domains you wish to accept requests for, these are the "
+"domain portion of email address on Principal records in DAViCal examples are"
+" listed below for domains found in your database. At least 1 public key must"
+" also be published if you wish to send requests from this server."
+msgstr ""
+
+#: htdocs/iSchedule.php:25
+msgid "ERROR"
+msgstr ""
+
+#: htdocs/iSchedule.php:26
+msgid ""
+"scheduling_dkim_domain not set (please check your DAViCal configuration "
+"file)"
+msgstr ""
+
+#: htdocs/iSchedule.php:28
+msgid "WARNING"
+msgstr ""
+
+#: htdocs/iSchedule.php:29
+msgid ""
+"scheduling_dkim_domain does not match server name (please check your DAViCal"
+" configuration file)"
+msgstr ""
+
+#: htdocs/iSchedule.php:56
+#, php-format
+msgid ""
+"SRV record missing for \"%s\" or DNS failure, the domain you are going to "
+"send events from should have an SRV record"
+msgstr ""
+
+#: htdocs/iSchedule.php:58
+#, php-format
+msgid "SRV record for \"%s\" points to wrong domain: \"%s\" instead of \"%s\""
+msgstr ""
+
+#: htdocs/iSchedule.php:63
+#, php-format
+msgid ""
+"TXT record missing for \"%s._domainkey.%s\" or DNS failure, Private RSA key "
+"is configured"
+msgstr ""
+
+#: htdocs/iSchedule.php:66
+msgid "please add the following section to your DAViCal configuration file"
+msgstr ""
+
+#: htdocs/iSchedule.php:69
+#, php-format
+msgid "and create a DNS TXT record for <b>%s._domainkey.%s</b> that contains:"
+msgstr ""
+
+#: htdocs/iSchedule.php:76
+#, php-format
+msgid "TXT record corrupt for %s._domainkey.%s or DNS failure"
+msgstr ""
+
+#: htdocs/iSchedule.php:78
+msgid "iSchedule OK"
+msgstr ""
+
+#: htdocs/setup.php:339
+#, php-format
+msgid ""
+"<a href=\"http://wiki.davical.org/w/Setup_Failure_Codes/%s\">Explanation on "
+"DAViCal Wiki</a>"
+msgstr ""
+
+#: htdocs/setup.php:388 htdocs/setup.php:392
+msgid "Statistics unavailable"
 msgstr ""

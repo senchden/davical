@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# bruberg <bruberg@gmail.com>, 2014
 # aleksand <daniel@aleksand.no>, 2011
 # Daniel <i18n@daniel.priv.no>, 2011
 # Sven Olsen <sven@svenolsen.net>, 2011
@@ -10,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-19 00:13+0200\n"
-"PO-Revision-Date: 2014-10-18 22:14+0000\n"
-"Last-Translator: Cyril Giraud <cgiraud@free.fr>\n"
+"POT-Creation-Date: 2014-10-22 22:39+0200\n"
+"PO-Revision-Date: 2014-10-27 07:42+0000\n"
+"Last-Translator: bruberg <bruberg@gmail.com>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/projects/p/davical/language/nb_NO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -115,7 +116,7 @@ msgstr "En samling finnes allerede der"
 
 #: inc/caldav-PROPPATCH.php:143
 msgid "A collection may not be both a calendar and an addressbook."
-msgstr ""
+msgstr "En samling kan ikke være både en kalender og en adressebok."
 
 #: inc/caldav-BIND.php:47
 msgid "A resource already exists at the destination."
@@ -138,7 +139,7 @@ msgstr "Adgangstilgang slettet"
 #: inc/ui/principal-edit.php:841 inc/ui/principal-edit.php:882
 #: inc/ui/principal-edit.php:918
 msgid "Action"
-msgstr "Aksjon"
+msgstr "Handling"
 
 #: inc/ui/principal-edit.php:285
 msgid "Active"
@@ -152,7 +153,7 @@ msgstr "Legger nytt medlem til denne gruppekontoen"
 msgid "Admin"
 msgstr "Admin"
 
-#: inc/interactive-page.php:47
+#: inc/interactive-page.php:47 htdocs/index.php:17
 msgid "Administration"
 msgstr "Administrasjon"
 
@@ -197,7 +198,7 @@ msgstr "En \"Administrator\" bruker har fulle rettigheter til hele DAViCal-syste
 
 #: htdocs/public.php:51
 msgid "Anonymous users are not allowed to modify calendars"
-msgstr "Anonyme brukere har ikke tillatelse til endring av kalendre"
+msgstr "Anonyme brukere har ikke tillatelse til å endre i kalendre"
 
 #: htdocs/public.php:33
 msgid "Anonymous users may only access public calendars"
@@ -205,7 +206,7 @@ msgstr "Anonyme brukere har kun tilgang til offentlige kalendre"
 
 #: inc/ui/collection-edit.php:31
 msgid "Append"
-msgstr ""
+msgstr "Legg til"
 
 #: htdocs/upgrade.php:45
 msgid "Application DB User"
@@ -225,7 +226,7 @@ msgstr "Vedlegg"
 
 #: inc/drivers_ldap.php:341 inc/drivers_ldap.php:345
 msgid "Authentication server unavailable."
-msgstr ""
+msgstr "Autentiseringsserver utilgjengelig"
 
 msgid "Binding deleted"
 msgstr "Forbindelse slettet"
@@ -317,11 +318,13 @@ msgid ""
 " same time"
 msgstr "Samlinger kan ikke være både CalDAV og CardDAV adressebøker samtidig"
 
-#: htdocs/setup.php:393 htdocs/setup.php:395
+#: htdocs/setup.php:393 htdocs/setup.php:395 htdocs/index.php:47
+#: htdocs/setup.php:398 htdocs/index.php:46
 msgid "Configuring Calendar Clients for DAViCal"
 msgstr "Konfigurerer kalender-klienter for DAViCal"
 
-#: htdocs/setup.php:394 htdocs/setup.php:398
+#: htdocs/setup.php:394 htdocs/setup.php:398 htdocs/index.php:52
+#: htdocs/setup.php:403 htdocs/index.php:51
 msgid "Configuring DAViCal"
 msgstr "Konfigurerer DAViCal"
 
@@ -435,19 +438,19 @@ msgstr "DKIM-signatur mangler"
 
 #: inc/iSchedule.php:663
 msgid "DKIM signature validation failed(DNS ERROR)"
-msgstr "DKIM signatursjekk feilet(DNS ERROR)"
+msgstr "DKIM signatursjekk feilet (DNS ERROR)"
 
 #: inc/iSchedule.php:665
 msgid "DKIM signature validation failed(KEY Parse ERROR)"
-msgstr "DKIM signatursjekk feilet(KEY Parse ERROR)"
+msgstr "DKIM signatursjekk feilet (KEY Parse ERROR)"
 
 #: inc/iSchedule.php:667
 msgid "DKIM signature validation failed(KEY Validation ERROR)"
-msgstr "DKIM signatursjekk feilet(KEY Validation ERROR)"
+msgstr "DKIM signatursjekk feilet (KEY Validation ERROR)"
 
 #: inc/iSchedule.php:670
 msgid "DKIM signature validation failed(Signature verification ERROR)"
-msgstr "DKIM signatursjekk feilet(Signature verification ERROR)"
+msgstr "DKIM signatursjekk feilet (Signature verification ERROR)"
 
 #: htdocs/feed.php:78 inc/caldav-GET-functions.php:65
 #: inc/CalDAVRequest.php:696 inc/CalDAVRequest.php:798 inc/caldav-BIND.php:64
@@ -457,27 +460,27 @@ msgstr "Databasefeil"
 
 #: htdocs/upgrade.php:43
 msgid "Database Host"
-msgstr "Database Host"
+msgstr "Databasetjener"
 
 #: htdocs/upgrade.php:39
 msgid "Database Name"
-msgstr "Database Navn"
+msgstr "Databasenavn"
 
 #: htdocs/upgrade.php:47
 msgid "Database Owner"
-msgstr "Database Eier"
+msgstr "Databaseeier"
 
 #: htdocs/upgrade.php:41
 msgid "Database Password"
-msgstr "Database Passord"
+msgstr "Databasepassord"
 
 #: htdocs/upgrade.php:42
 msgid "Database Port"
-msgstr "Database Port"
+msgstr "Databaseport"
 
 #: htdocs/upgrade.php:40
 msgid "Database Username"
-msgstr "Database Brukernavn"
+msgstr "Databasebrukernavn"
 
 #: inc/caldav-PUT-functions.php:43 inc/caldav-REPORT-sync-collection.php:63
 #: inc/caldav-REPORT-sync-collection.php:72
@@ -487,7 +490,7 @@ msgstr "Databasefeil"
 
 #: htdocs/setup.php:323
 msgid "Database is Connected"
-msgstr ""
+msgstr "Databasen er tilkoblet"
 
 #: inc/ui/principal-edit.php:283
 msgid "Date Format Style"
@@ -550,11 +553,11 @@ msgstr "Levér invitasjoner fra en organisator til denne innboksen"
 msgid "Deliver scheduling replies from an attendee to this scheduling inbox"
 msgstr "Levér svar fra en deltaker til denne innboksen"
 
-#: htdocs/setup.php:375
+#: htdocs/setup.php:375 htdocs/setup.php:377
 msgid "Dependencies"
 msgstr "Avhengigheter"
 
-#: htdocs/setup.php:376
+#: htdocs/setup.php:376 htdocs/setup.php:378
 msgid "Dependency"
 msgstr "Avhengighet"
 
@@ -584,9 +587,9 @@ msgstr "Visningsnavn"
 msgid "Does the user have the right to perform this role?"
 msgstr "Har brukeren rettigheter til denne rollen?"
 
-#: htdocs/iSchedule.php:109
+#: htdocs/iSchedule.php:109 htdocs/iSchedule.php:119
 msgid "Domain"
-msgstr ""
+msgstr "Domene"
 
 #: inc/ui/principal-browse.php:19
 msgid "EMail"
@@ -758,10 +761,10 @@ msgstr "Hjelp! Jeg har glemt passordet"
 
 #: inc/interactive-page.php:45
 msgid "Home"
-msgstr "Home"
+msgstr "Hjem"
 
 msgid "Home "
-msgstr ""
+msgstr "Hjem"
 
 #: inc/interactive-page.php:45
 msgid "Home Page"
@@ -775,10 +778,10 @@ msgid "ID"
 msgstr "ID"
 
 msgid "ISO Format"
-msgstr "ISO Format"
+msgstr "ISO-format"
 
 msgid "ISO Format (YYYY-MM-DD)"
-msgstr "ISO Format (YYYY-MM-DD)"
+msgstr "ISO-format (YYYY-MM-DD)"
 
 #. Translators: short for 'Identifier'
 msgid "Id"
@@ -926,7 +929,7 @@ msgstr "Ingen samling funnet på den lokasjonen"
 
 #: inc/CalDAVRequest.php:1135
 msgid "No resource exists at the destination."
-msgstr ""
+msgstr "Ingen ressurs eksisterer på det angitte målet"
 
 #: htdocs/feed.php:126
 msgid "No summary"
@@ -957,7 +960,7 @@ msgstr "Opaque"
 
 #: inc/iSchedule.php:656
 msgid "Organizer Missing"
-msgstr ""
+msgstr "Mangler organisator"
 
 #: inc/ui/collection-edit.php:166 inc/ui/principal-edit.php:13
 msgid "Override a Lock"
@@ -993,7 +996,7 @@ msgstr "PHP kalenderutvidelse er tilgjengelig."
 
 #: htdocs/setup.php:332
 msgid "PHP curl support"
-msgstr ""
+msgstr "PHP curl-støtte"
 
 #: htdocs/setup.php:326
 msgid "PHP iconv support"
@@ -1207,7 +1210,7 @@ msgstr "Ressurser kan ikke endres fra/til samlinger"
 msgid "Revoke"
 msgstr "Gjenopprett"
 
-#: htdocs/iSchedule.php:111
+#: htdocs/iSchedule.php:111 htdocs/iSchedule.php:121
 msgid "SRV Record"
 msgstr ""
 
@@ -1289,7 +1292,7 @@ msgid ""
 "/caldav.php/username/calendar/"
 msgstr "Angi en sti for lagring av ics. For eksempel ‹kalender› vil bli referert som /caldav.php/brukernavn/kalender/"
 
-#: htdocs/setup.php:359 inc/interactive-page.php:34
+#: htdocs/setup.php:359 inc/interactive-page.php:34 htdocs/setup.php:361
 msgid "Setup"
 msgstr "Oppsett"
 
@@ -1299,13 +1302,13 @@ msgstr "Sett opp DAViCal"
 
 #: inc/ui/collection-edit.php:30
 msgid "Should the uploaded entries be appended to the collection?"
-msgstr ""
+msgstr "Skal de opplastede innslagene legges til samlingen?"
 
 #: inc/page-header.php:26
 msgid "Show help on"
 msgstr "Vis hjelp om"
 
-#: htdocs/setup.php:380
+#: htdocs/setup.php:380 htdocs/setup.php:382
 msgid "Site Statistics"
 msgstr "Statistikk"
 
@@ -1338,7 +1341,7 @@ msgstr "Spesifikke privilegier"
 msgid "Stable: %s, We have: %s !"
 msgstr ""
 
-#: htdocs/setup.php:377
+#: htdocs/setup.php:377 htdocs/iSchedule.php:31 htdocs/setup.php:379
 msgid "Status"
 msgstr "Status"
 
@@ -1385,7 +1388,7 @@ msgstr "BIND Request-URI MÅ identifisere en samling."
 
 #: inc/caldav-BIND.php:25
 msgid "The BIND method is not allowed at that location."
-msgstr "BIND metoden er ikke tillatt på den lokasjonen."
+msgstr "BIND-metoden er ikke tillatt på den lokasjonen."
 
 #: inc/caldav-PROPPATCH.php:165
 msgid ""
@@ -1430,7 +1433,7 @@ msgstr ""
 
 #: inc/caldav-REPORT-calquery.php:307 inc/caldav-REPORT-calquery.php:313
 msgid "The calendar-query report may not be run against that URL."
-msgstr ""
+msgstr "Den angitte URL kan ikke svare på kalenderforespørselsrapport."
 
 #: inc/caldav-REPORT-calquery.php:304 inc/caldav-REPORT-calquery.php:310
 msgid ""
@@ -1526,7 +1529,7 @@ msgid ""
 "information in DAViCal</li> </ul>"
 msgstr "Denne operasjonen gjør følgende: <ul><li>sjekker gyldige gruppe i LDAP katalogen</li> <li>sjekker brukere i DAViCal</li></ul> deretter <ul><li>hvis en bruker finnes i DAViCal men ikke i LDAP setter denne sim inaktiv i DAViCal</li> <li>hvis en bruker finnes i LDAP men ikke i DAViCal oppretter brukeren i DAViCal</li> <li>hvis brukeren finnes i LDAP og DAViCal oppdaterer informasjonen i DAViCal</li> </ul>"
 
-#: htdocs/setup.php:360
+#: htdocs/setup.php:360 htdocs/setup.php:362
 msgid ""
 "This page primarily checks the environment needed for DAViCal to work "
 "correctly.  Suggestions or patches to make it do more useful stuff will be "
@@ -1588,7 +1591,7 @@ msgstr "United States of America (m/d/y)"
 
 #: inc/caldav-PROPPATCH.php:147
 msgid "Unsupported resourcetype modification."
-msgstr ""
+msgstr "Ikke-støttet endring av ressurstype"
 
 msgid "Update"
 msgstr "Oppdater"
@@ -1620,7 +1623,7 @@ msgstr "Oppgrader database"
 
 #: inc/ui/collection-edit.php:27
 msgid "Upload an iCalendar file or VCard file to replace this collection."
-msgstr ""
+msgstr "Last opp en iCalendar-fil eller VCard-fil for å erstatte denne samlingen."
 
 #: inc/ui/principal-browse.php:8
 msgid "User Calendar Principals"
@@ -1727,7 +1730,7 @@ msgstr "Du kan ikke utføre PUT til en samlings URL"
 msgid "You must log in to use this system."
 msgstr "Du må logge inn for å bruke systemet"
 
-#: htdocs/setup.php:396 htdocs/setup.php:401
+#: htdocs/setup.php:396 htdocs/setup.php:401 htdocs/setup.php:406
 msgid "Your configuration produced PHP errors which should be corrected"
 msgstr "Konfigurasjonen lagde PHP feil som må rettes"
 
@@ -1788,13 +1791,13 @@ msgstr "forglem meg ei"
 msgid "from principal"
 msgstr "fra konto"
 
-#: htdocs/iSchedule.php:108
+#: htdocs/iSchedule.php:108 htdocs/iSchedule.php:118
 msgid "iSchedule Domains"
 msgstr ""
 
 #: inc/iSchedule-POST.php:132 inc/iSchedule-POST.php:137
 msgid "invalid request"
-msgstr ""
+msgstr "Ugyldig forespørsel"
 
 #: htdocs/tools.php:87
 msgid "path to store your ics"
@@ -1822,26 +1825,29 @@ msgstr "logg på med brukernavnet og passordet du fikk utstedt"
 msgid "DAViCal CalDAV Server - Configuration Help"
 msgstr ""
 
-#: htdocs/setup.php:393
+#: htdocs/setup.php:393 htdocs/setup.php:395
 msgid "PHP Information"
-msgstr ""
+msgstr "PHP-informasjon"
 
-#: htdocs/setup.php:396
+#: htdocs/setup.php:396 htdocs/index.php:48 htdocs/setup.php:399
+#: htdocs/index.php:47
 msgid ""
 "The <a href=\"http://www.davical.org/clients.php\">client setup page on the "
 "DAViCal website</a> has information on how to configure Evolution, Sunbird, "
 "Lightning and Mulberry to use remotely hosted calendars."
 msgstr ""
 
-#: htdocs/setup.php:397
+#: htdocs/setup.php:397 htdocs/index.php:49 htdocs/setup.php:400
+#: htdocs/index.php:48
 msgid ""
 "The administrative interface has no facility for viewing or modifying "
 "calendar data."
 msgstr ""
 
-#: htdocs/setup.php:399
+#: htdocs/setup.php:399 htdocs/index.php:53 htdocs/setup.php:404
+#: htdocs/index.php:52
 msgid "If you can read this then things must be mostly working already."
-msgstr ""
+msgstr "Hvis du kan lese dette, burde det meste allerede fungere."
 
 #: htdocs/setup.php:404
 msgid ""
@@ -1849,3 +1855,198 @@ msgid ""
 " the DAViCal website</a> has some further information on how to install and "
 "configure this application."
 msgstr ""
+
+#: htdocs/index.php:18
+#, php-format
+msgid "You are logged on as %s (%s)"
+msgstr ""
+
+#: htdocs/index.php:20
+msgid "Administration Functions"
+msgstr "Administrasjonsfunksjoner"
+
+#: htdocs/index.php:21
+msgid ""
+"The administration of this application should be fairly simple. You can "
+"administer:"
+msgstr ""
+
+#: htdocs/index.php:22
+msgid "Users (or Resources or Groups) and the relationships between them"
+msgstr ""
+
+#: htdocs/index.php:23
+msgid "The types of relationships that are available"
+msgstr ""
+
+#: htdocs/index.php:24
+msgid ""
+"There is no ability to view and / or maintain calendars or events from "
+"within this administrative interface."
+msgstr ""
+
+#: htdocs/index.php:25
+msgid ""
+"To do that you will need to use a CalDAV capable calendaring application "
+"such as Evolution, Sunbird, Thunderbird (with the Lightning extension) or "
+"Mulberry."
+msgstr ""
+
+#: htdocs/index.php:27
+msgid "Principals: Users, Resources and Groups"
+msgstr "Kontoer: Brukere, ressurser og grupper"
+
+#: htdocs/index.php:28
+msgid ""
+"These are the things which may have collections of calendar resources (i.e. "
+"calendars)."
+msgstr ""
+
+#: htdocs/index.php:31
+msgid "Here is a list of users (maybe :-)"
+msgstr "Her er (kanskje :-) en liste over brukere"
+
+#: htdocs/index.php:32
+msgid ""
+"You can click on any user to see the full detail for that person (or group "
+"or resource - but from now we'll just call them users)."
+msgstr ""
+
+#: htdocs/index.php:35 htdocs/index.php:34
+msgid "The primary differences between them are as follows:"
+msgstr "Forskjellen mellom dem er følgende:"
+
+#: htdocs/index.php:36 htdocs/index.php:39 htdocs/index.php:35
+#: htdocs/index.php:38
+msgid ""
+"Users will probably have calendars, and are likely to also log on to the "
+"system."
+msgstr "Brukere vil normalt ha kalendre, og er også i stand til å logge på systemet."
+
+#: htdocs/index.php:37 htdocs/index.php:36
+msgid "Resources do have calendars, but they will not usually log on."
+msgstr "Ressurser har kalendre, men vil normalt ikke logge inn."
+
+#: htdocs/index.php:38 htdocs/index.php:37
+msgid ""
+"Groups provide an intermediate linking to minimise administration overhead."
+"  They might not have calendars, and they will not usually log on."
+msgstr ""
+
+#: htdocs/index.php:41 htdocs/index.php:40
+msgid "Groups &amp; Grants"
+msgstr "Grupper og rettigheter"
+
+#: htdocs/index.php:42 htdocs/index.php:41
+msgid "Grants specify the access rights to a collection or a principal"
+msgstr "Tilganger angir rettighetene til en samling eller en konto"
+
+#: htdocs/index.php:43 htdocs/index.php:42
+msgid ""
+"Groups allow those granted rights to be assigned to a set of many principals"
+" in one action"
+msgstr ""
+
+#: htdocs/index.php:44 htdocs/index.php:43
+msgid ""
+"Groups may be members of other groups, but complex nesting will hurt system "
+"performance"
+msgstr ""
+
+#: htdocs/index.php:54 htdocs/setup.php:409 htdocs/index.php:53
+msgid ""
+"The <a href=\"http://www.davical.org/installation.php\">DAViCal installation"
+" page</a> on the DAViCal website has some further information on how to "
+"install and configure this application."
+msgstr ""
+
+#: htdocs/iSchedule.php:12
+msgid "iSchedule Configuration"
+msgstr ""
+
+#: htdocs/iSchedule.php:13
+msgid ""
+"iSchedule allows caldav servers to communicate directly with each other, "
+"bypassing the need to send invitations via email, for scheduled events where"
+" attendees are using different servers or providers. Additionally it enables"
+" freebusy lookups for remote attendees. Events and ToDos received via "
+"iSchedule will show up in the users scheduling inbox."
+msgstr ""
+
+#: htdocs/iSchedule.php:14
+msgid ""
+"The <a href=\"http://wiki.davical.org/w/iSchedule_configuration\">iSchedule "
+"configuration</a> requires a few DNS entries. DNS SRV record(s) will need to"
+" be created for all domains you wish to accept requests for, these are the "
+"domain portion of email address on Principal records in DAViCal examples are"
+" listed below for domains found in your database. At least 1 public key must"
+" also be published if you wish to send requests from this server."
+msgstr ""
+
+#: htdocs/iSchedule.php:25
+msgid "ERROR"
+msgstr ""
+
+#: htdocs/iSchedule.php:26
+msgid ""
+"scheduling_dkim_domain not set (please check your DAViCal configuration "
+"file)"
+msgstr ""
+
+#: htdocs/iSchedule.php:28
+msgid "WARNING"
+msgstr ""
+
+#: htdocs/iSchedule.php:29
+msgid ""
+"scheduling_dkim_domain does not match server name (please check your DAViCal"
+" configuration file)"
+msgstr ""
+
+#: htdocs/iSchedule.php:56
+#, php-format
+msgid ""
+"SRV record missing for \"%s\" or DNS failure, the domain you are going to "
+"send events from should have an SRV record"
+msgstr ""
+
+#: htdocs/iSchedule.php:58
+#, php-format
+msgid "SRV record for \"%s\" points to wrong domain: \"%s\" instead of \"%s\""
+msgstr ""
+
+#: htdocs/iSchedule.php:63
+#, php-format
+msgid ""
+"TXT record missing for \"%s._domainkey.%s\" or DNS failure, Private RSA key "
+"is configured"
+msgstr ""
+
+#: htdocs/iSchedule.php:66
+msgid "please add the following section to your DAViCal configuration file"
+msgstr ""
+
+#: htdocs/iSchedule.php:69
+#, php-format
+msgid "and create a DNS TXT record for <b>%s._domainkey.%s</b> that contains:"
+msgstr ""
+
+#: htdocs/iSchedule.php:76
+#, php-format
+msgid "TXT record corrupt for %s._domainkey.%s or DNS failure"
+msgstr ""
+
+#: htdocs/iSchedule.php:78
+msgid "iSchedule OK"
+msgstr ""
+
+#: htdocs/setup.php:339
+#, php-format
+msgid ""
+"<a href=\"http://wiki.davical.org/w/Setup_Failure_Codes/%s\">Explanation on "
+"DAViCal Wiki</a>"
+msgstr ""
+
+#: htdocs/setup.php:388 htdocs/setup.php:392
+msgid "Statistics unavailable"
+msgstr "Statistikk utilgjengelig"
