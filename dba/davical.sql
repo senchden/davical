@@ -115,8 +115,9 @@ CREATE TABLE collection (
   description TEXT DEFAULT '',
   UNIQUE(user_no,dav_name)
 );
-
 ALTER TABLE collection ADD CONSTRAINT unique_path UNIQUE (dav_name);
+CREATE INDEX collection_dav_name_idx ON collection (dav_name);
+
 
 -- The main event.  Where we store the things the calendar throws at us.
 CREATE TABLE caldav_data (
@@ -135,6 +136,8 @@ CREATE TABLE caldav_data (
   PRIMARY KEY ( user_no, dav_name )
 );
 CREATE INDEX caldav_data_collection_id_fkey ON caldav_data(collection_id);
+CREATE INDEX caldav_data_dav_name_idx ON caldav_data (dav_name);
+
 
 -- The parsed calendar item.  Here we have pulled those events/todos/journals apart somewhat.
 CREATE TABLE calendar_item (
@@ -175,7 +178,7 @@ CREATE TABLE calendar_item (
   PRIMARY KEY ( user_no, dav_name )
 );
 CREATE INDEX calendar_item_collection_id_fkey ON calendar_item(collection_id);
-
+CREATE INDEX calendar_item_dav_name_idx ON calendar_item (dav_name);
 
 
 -- Each user can be related to each other user.  This mechanism can also
@@ -311,6 +314,8 @@ CREATE TABLE sync_tokens (
   collection_id INT8 REFERENCES collection(collection_id) ON DELETE CASCADE ON UPDATE CASCADE,
   modification_time TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp
 );
+CREATE INDEX sync_tokens_collection_idx ON sync_tokens (collection_id);
+
 
 CREATE TABLE sync_changes (
   sync_time TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp,
@@ -444,4 +449,4 @@ $$ LANGUAGE plpgsql ;
 ALTER TABLE dav_binding ADD CONSTRAINT "dav_name_does_not_exist"
 		CHECK (NOT real_path_exists(dav_name));
 
-SELECT new_db_revision(1,2,11, 'Novembre' );
+SELECT new_db_revision(1,2,12, 'Decembre' );
