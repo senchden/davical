@@ -207,6 +207,18 @@ $c->external_refresh = 60;
 */
 
 
+/**
+ * The "support_obsolete_free_busy_property" value controls whether,
+ * during a PROPFIND, the obsolete Scheduling property "calendar-free-busy-set"
+ * is returned. Set the value to true to support the property only if your
+ * client requires it, however note that PROPFIND performance may be
+ * adversely affected if you do so.
+ * Introduced in DAViCal version 1.1.4 inm support of Issue #31 Database
+ * Performance Improvements.
+ * Default: false
+ */
+$c->support_obsolete_free_busy_property = false;
+
 
 
 /***************************************************************************

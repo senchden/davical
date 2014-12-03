@@ -376,23 +376,26 @@ class DAVPrincipal extends Principal
 
 
   /**
-  * Get the calendar_free_busy_set, as lazily as possible
+	 * The property calendar-free-busy-set has been dropped from draft 5 of the scheduling extensions for CalDAV,
+	 * and is not present in the final official RFC (6638).
+	 * Hence, by default we do not call this method and do not populate the property.
+	 * Enable the config value $c->support_obsolete_free_busy_property if you really need it, however be aware that
+	 * performance may be adversely affected if you do so, since the resulting query over the collection table is slow.
   */
   function calendar_free_busy_set() {
-    if ( !isset($this->calendar_free_busy_set) ) {
-      /**
-      * calendar-free-busy-set has been dropped from draft 5 of the scheduling extensions for CalDAV
-      * in favour of ???
-      */
-      $this->calendar_free_busy_set = array();
-      $qry = new AwlQuery('SELECT dav_name FROM collection WHERE is_calendar AND (schedule_transp = \'opaque\' OR schedule_transp IS NULL) AND dav_name ~ :dav_name_start ORDER BY user_no, collection_id',
-                             array( ':dav_name_start' => '^'.$this->dav_name));
-      if ( $qry->Exec('principal',__LINE__,__FILE__) ) {
-        while( $calendar = $qry->Fetch() ) {
-          $this->calendar_free_busy_set[] = ConstructURL($calendar->dav_name, true);
-        }
-      }
-    }
+		if (!isset($this->calendar_free_busy_set))
+		{
+			$this->calendar_free_busy_set = array();
+			$qry = new AwlQuery('SELECT dav_name FROM collection WHERE is_calendar AND (schedule_transp = \'opaque\' OR schedule_transp IS NULL) AND dav_name ~ :dav_name_start ORDER BY user_no, collection_id',
+					array(':dav_name_start' => '^' . $this->dav_name));
+			if ($qry->Exec('principal', __LINE__, __FILE__))
+			{
+				while ($calendar = $qry->Fetch())
+				{
+					$this->calendar_free_busy_set[] = ConstructURL($calendar->dav_name, true);
+				}
+			}
+		}
     return $this->calendar_free_busy_set;
   }
 
@@ -448,6 +451,7 @@ class DAVPrincipal extends Principal
   * Returns properties which are specific to this principal
   */
   function PrincipalProperty( $tag, $prop, &$reply, &$denied ) {
+		global $c;
 
     dbg_error_log('principal',': RenderAsXML: Principal Property "%s"', $tag );
     switch( $tag ) {
@@ -528,12 +532,19 @@ class DAVPrincipal extends Principal
         break;
 
       case 'urn:ietf:params:xml:ns:caldav:calendar-free-busy-set':
-        $reply->CalDAVElement( $prop, 'calendar-free-busy-set', $reply->href( $this->calendar_free_busy_set() ) );
-        break;
+				/** Note that this property was dropped from the scheduling extensions for CalDAV.
+				 * We only populate it if the config value support_obsolete_free_busy_property is set.
+				 * This should not be enabled unless your CalDAV client requires the property; beware
+				 * that doing so may also adversely affect PROPFIND performance. */
+				if ( isset($c->support_obsolete_free_busy_property) && $c->support_obsolete_free_busy_property )
+	        $reply->CalDAVElement( $prop, 'calendar-free-busy-set', $reply->href( $this->calendar_free_busy_set() ) );
+				else
+					return false;
+				break;
 
       case 'urn:ietf:params:xml:ns:caldav:calendar-user-address-set':
-        $reply->CalDAVElement($prop, 'calendar-user-address-set', $reply->href($this->user_address_set) );
-        break;
+				$reply->CalDAVElement($prop, 'calendar-user-address-set', $reply->href($this->user_address_set));
+				break;
 
       case 'DAV::owner':
         // After a careful reading of RFC3744 we see that this must be the principal-URL of the owner
