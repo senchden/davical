@@ -29,11 +29,11 @@ set AWL_APPUSER=davical_app
 set DBA=%AWL_DBAUSER%
 
 rem Need PostgreSQL location
-if DEFINED %PGDIR% (
+if DEFINED PGDIR (
     rem Use existing variable
 ) ELSE (
-    if EXIST "c:\Program Files\PostgreSQL\8.3\bin\createuser" (
-        set PGDIR="c:\Program Files\PostgreSQL\8.3\bin"
+    if EXIST "c:\Program Files\PostgreSQL\9.3\bin\createuser.exe" (
+        set PGDIR="c:\Program Files\PostgreSQL\9.3\bin"
     )
 )
 echo PGDIR=%PGDIR%
@@ -65,12 +65,12 @@ rem Test if egrep is available
 rem You can download egrep.exe for Windows e.g. from UnxUtils: http://unxutils.sourceforge.net/):
 egrep 2>NULL
 echo egrep results: %ERRORLEVEL%
-if %ERRORLEVEL% EQU 3 (
+if %ERRORLEVEL% EQU 9009 (
     rem No egrep
 
     rem Load the AWL base tables and schema management tables
     echo load windows\awl-tables.sql [no egrep]
-    %PGDIR%\psql -q -f %AWLDIR/awl-tables.sql %DBNAME% %USERNAME% 2>&1 
+    %PGDIR%\psql -q -f %AWLDIR%/awl-tables.sql %DBNAME% %USERNAME% 2>&1
 
     echo load windows\schema-management.sql [no egrep]
     %PGDIR%\psql -q -f %AWLDIR%/schema-management.sql %DBNAME% %USERNAME% 2>&1
@@ -94,8 +94,21 @@ if %ERRORLEVEL% EQU 3 (
 )
 del NULL
 
-echo load caldav_functions
+rem Apply locales data
+%PGDIR%\psql -q -f %DBADIR%/supported_locales.sql %DBNAME%  %USERNAME%
+echo Supported locales updated
+
+rem Apply any views (TODO really need to load all scripts in views folder)
+%PGDIR%\psql -q -f %DBADIR%/views/dav_principal.sql %DBNAME%  %USERNAME%
+echo Davical views updated
+
+rem Apply functions
 %PGDIR%\psql -q -f %DBADIR%/caldav_functions.sql %DBNAME%  %USERNAME%
+echo CalDAV functions updated
+
+rem Apply RRULE functions
+%PGDIR%\psql -q -f %DBADIR%/rrule_functions.sql %DBNAME%  %USERNAME%
+echo RRULE functions updated
 
 echo TBD: Set permissions for the application DB user on the database
 rem if EXIST %DBADIR%\update-davical-database (
