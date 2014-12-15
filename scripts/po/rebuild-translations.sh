@@ -10,17 +10,30 @@
 PODIR="po"
 LOCALEDIR="locale"
 APPLICATION="davical"
-AWL_LOCATION="../awl"
 
-if [ ! -d "${AWL_LOCATION}" ]; then
-  AWL_LOCATION="`find .. -type d -name 'awl-*.*'`"
-  if [ ! -d "${AWL_LOCATION}" ]; then
-    AWL_LOCATION=/usr/share/awl
-    if [ ! -d "${AWL_LOCATION}" ]; then
-      echo "I can't find a location for the AWL libraries and I need those strings too"
-      exit 1
+awldirs="../awl
+`find .. -type d -name 'awl-*.*'`
+/usr/share/awl
+/usr/share/php/awl
+/usr/local/share/awl"
+
+# Disable globbing and use newline as seperator
+set -f; IFS='
+'
+
+for d in $awldirs ; do
+    if [ -d "${d}" ] ; then
+	AWL_LOCATION="${d}"
+	break
     fi
-  fi
+done
+
+# Renable file globbing and reset seperator 
+set +f; unset IFS
+
+if [ -z "${AWL_LOCATION}" ] ; then
+    echo "I can't find a location for the AWL libraries and I need those strings too"
+    exit 1
 fi
 
 egrep -l '(i18n|translate)' htdocs/*.php inc/*.php inc/ui/*.php > ${PODIR}/pofilelist.tmp1
