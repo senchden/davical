@@ -1,6 +1,3 @@
-dba htdocs inc locale usr/share/davical
-debian/keepme etc/davical/.keep
-config/example-config.php usr/share/doc/davical/examples/davical-conf.php
-config/example-administration.yml usr/share/doc/davical/examples/administration.yml
-config/debug-config.php config/other-config.php usr/share/doc/davical/examples
-scripts/cron-sync-ldap.php scripts/tz-update.php usr/share/davical/scripts
+dba htdocs inc locale   usr/share/davical
+config/*                usr/share/doc/davical/examples
+scripts/*.php           usr/share/davical/scripts
