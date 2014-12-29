@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 22:39+0200\n"
-"PO-Revision-Date: 2014-10-22 20:42+0000\n"
+"POT-Creation-Date: 2014-12-29 22:24+0100\n"
+"PO-Revision-Date: 2014-12-29 20:35+0000\n"
 "Last-Translator: Cyril Giraud <cgiraud@free.fr>\n"
 "Language-Team: Korean (Korea) (http://www.transifex.com/projects/p/davical/language/ko_KR/)\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgstr "- 사용자 레코드 업데이트 : %s"
 msgid ""
 "<b>WARNING: all events in this path will be deleted before inserting allof "
 "the ics file</b>"
-msgstr ""
+msgstr "<b> 경고: 현재 경로에 ICS 파일을 불러오기 하면 기존 내용은 모두 삭제됩니다.</b>"
 
 #: htdocs/help.php:18
 #, php-format
@@ -101,7 +101,7 @@ msgid ""
 "<h1>Log On Please</h1><p>For access to the %s you should log on withthe "
 "username and password that have been issued to you.</p><p>If you would like "
 "to request access, please e-mail %s.</p>"
-msgstr ""
+msgstr "<h1>로그인 해주세요</h1><p> %s에 엑세스 하려면 먼저 로그인해야 합니다.</p><p>권한을 요청하려면 %s로 이메일을 보내세요.</p>"
 
 #: inc/caldav-PUT-vcard.php:51 inc/caldav-PUT-default.php:49
 msgid "A DAViCal principal collection may only contain collections"
@@ -1365,11 +1365,11 @@ msgstr ""
 
 #: inc/ui/collection-edit.php:506 inc/ui/principal-edit.php:787
 msgid "Target"
-msgstr ""
+msgstr "대상"
 
 #: inc/caldav-BIND.php:38
 msgid "That destination name contains invalid characters."
-msgstr ""
+msgstr "목표 이름에 잘못된 문자가 있습니다."
 
 #: inc/caldav-PROPFIND.php:261
 msgid "That resource is not present on this server."
@@ -1394,7 +1394,7 @@ msgstr ""
 
 #: inc/interactive-page.php:20
 msgid "The DAViCal Home Page"
-msgstr ""
+msgstr "DAViCal 홈페이지"
 
 #: inc/ui/principal-edit.php:821
 msgid "The access ticket will be deleted."
@@ -1647,7 +1647,7 @@ msgstr ""
 
 #: inc/ui/principal-edit.php:277
 msgid "Username"
-msgstr ""
+msgstr "아이디"
 
 #: inc/interactive-page.php:26
 msgid "View My Details"
@@ -1678,7 +1678,7 @@ msgstr ""
 
 #: inc/ui/collection-edit.php:179 inc/ui/principal-edit.php:26
 msgid "Write"
-msgstr ""
+msgstr "쓰기"
 
 #: inc/CalDAVRequest.php:735
 msgid "Write ACLs for a resource or collection"
@@ -1712,7 +1712,7 @@ msgid "You are editing"
 msgstr ""
 
 msgid "You are not authorised to use this function."
-msgstr ""
+msgstr "이 기능을 사용할 권한이 없습니다."
 
 msgid "You are viewing"
 msgstr ""
@@ -1820,11 +1820,11 @@ msgstr "올바른 사용자명과 패스워드를 사용하세요."
 
 #: htdocs/help.php:8
 msgid "DAViCal CalDAV Server - Configuration Help"
-msgstr ""
+msgstr "DAViCal CalDAV 서버 - 설정 도움말"
 
 #: htdocs/setup.php:393 htdocs/setup.php:395
 msgid "PHP Information"
-msgstr ""
+msgstr "PHP 정보"
 
 #: htdocs/setup.php:396 htdocs/index.php:48 htdocs/setup.php:399
 #: htdocs/index.php:47
@@ -1856,7 +1856,7 @@ msgstr ""
 #: htdocs/index.php:18
 #, php-format
 msgid "You are logged on as %s (%s)"
-msgstr ""
+msgstr "로그인됨: %s (%s)"
 
 #: htdocs/index.php:20
 msgid "Administration Functions"
@@ -1982,7 +1982,7 @@ msgstr ""
 
 #: htdocs/iSchedule.php:25
 msgid "ERROR"
-msgstr ""
+msgstr "에러"
 
 #: htdocs/iSchedule.php:26
 msgid ""
@@ -1992,7 +1992,7 @@ msgstr ""
 
 #: htdocs/iSchedule.php:28
 msgid "WARNING"
-msgstr ""
+msgstr "경고"
 
 #: htdocs/iSchedule.php:29
 msgid ""
@@ -2046,4 +2046,4 @@ msgstr ""
 
 #: htdocs/setup.php:388 htdocs/setup.php:392
 msgid "Statistics unavailable"
-msgstr ""
+msgstr "통계 없음"

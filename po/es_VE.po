@@ -10,9 +10,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 22:39+0200\n"
-"PO-Revision-Date: 2014-11-02 13:41+0000\n"
-"Last-Translator: Hector Colina <hcolina@gmail.com>\n"
+"POT-Creation-Date: 2014-12-29 22:24+0100\n"
+"PO-Revision-Date: 2014-12-29 20:35+0000\n"
+"Last-Translator: Cyril Giraud <cgiraud@free.fr>\n"
 "Language-Team: Spanish (Venezuela) (http://www.transifex.com/projects/p/davical/language/es_VE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -83,7 +83,7 @@ msgstr "- actualizando registros de usuario: %s"
 msgid ""
 "<b>WARNING: all events in this path will be deleted before inserting allof "
 "the ics file</b>"
-msgstr "</b>"
+msgstr "<b>ADVERTENCIA: Todos los eventos en este contenedor serán borrados antes de insertar el archivo ics</b>"
 
 #: htdocs/help.php:18
 #, php-format
@@ -96,18 +96,18 @@ msgid ""
 "or send a question to the <a href=\"http://lists.sourceforge.net/mailman/listinfo/davical-general\" target=\"_blank\">DAViCal Users mailing list</a>.</p>\n"
 "<p>The <a href=\"http://sourceforge.net/mailarchive/forum.php?forum_id=8348\" title=\"DAViCal Users Mailing List\" target=\"_blank\">mailing list\n"
 "archives can be helpful too.</p>"
-msgstr ""
+msgstr "<h1>Ayuda</h>\n<p>Visita <a href='http://www.davical.org/' target='_blank'>la Página Principal de DAViCal</a> para ayuda inicial, o consulta<a href='http://wiki.davical.org/%s' target='_blank'>el Wiki de DAViCal</a>.</p><p>Si no encuentras la respuesta a tus dudas, visítanos en <a href='http://wikipedia.org/wiki/Internet_Relay_Chat' target='_blank'>IRC</a> en el canal <b>#davical</b> en <a href='http://www.oftc.net/' target='_blank'>irc.oftc.net</a>,\no envía tus preguntas a <a href='http://lists.sourceforge.net/mailman/listinfo/davical-general' target='_blank'>la lista de correo de Usuarios de DAViCal</a>.</p>\n<p>El <a href='http://sourceforge.net/mailarchive/forum.php?forum_id=8348' title='Lista de Correo de Usuarios DAViCal' target='_blank'>archivo de la lista de correo</a>tambien te será útil. "
 
 #, php-format
 msgid ""
 "<h1>Log On Please</h1><p>For access to the %s you should log on withthe "
 "username and password that have been issued to you.</p><p>If you would like "
 "to request access, please e-mail %s.</p>"
-msgstr ""
+msgstr "<h1>Por favor autentíquese</h1><p>para acceder a %s debe identificarse con su nombre de usuario y su clave de acceso.</p><p>Escriba a %s si desea solicitar acceso. "
 
 #: inc/caldav-PUT-vcard.php:51 inc/caldav-PUT-default.php:49
 msgid "A DAViCal principal collection may only contain collections"
-msgstr ""
+msgstr "Una colección DAViCAL princiipal sólo puede contener colecciones"
 
 #: inc/caldav-MKCOL.php:190
 msgid "A collection already exists at that location."
@@ -176,7 +176,7 @@ msgstr "Todos los eventos del usuario \"%s\" fueron eliminados y reeemplazados p
 #: inc/ui/principal-edit.php:447
 msgid ""
 "All of the principal's calendars and events will be unrecoverably deleted."
-msgstr ""
+msgstr "Todos los calendarios y eventos de este Principal serán eliminados permanentemente"
 
 #: inc/ui/principal-edit.php:9
 msgid "All privileges"
@@ -193,7 +193,7 @@ msgstr ""
 
 #: inc/ui/principal-edit.php:174
 msgid "An \"Administrator\" user has full rights to the whole DAViCal System"
-msgstr ""
+msgstr "Un usuario \"Administrador\" tiene todos los privilegios sobre la totalidad del sistema DAViCal"
 
 #: htdocs/public.php:51
 msgid "Anonymous users are not allowed to modify calendars"
@@ -209,7 +209,7 @@ msgstr "Anexar"
 
 #: htdocs/upgrade.php:45
 msgid "Application DB User"
-msgstr ""
+msgstr "Usuario de la base de datos"
 
 #: inc/ui/collection-edit.php:416
 msgid "Apply Changes"
@@ -228,19 +228,19 @@ msgid "Authentication server unavailable."
 msgstr "El servidor de autenticación no está disponible"
 
 msgid "Binding deleted"
-msgstr ""
+msgstr "Enlace eliminado"
 
 #: inc/ui/principal-edit.php:873
 msgid "Bindings to other collections"
-msgstr ""
+msgstr "Enlaces hacia otras colecciones"
 
 #: inc/ui/collection-edit.php:533
 msgid "Bindings to this Collection"
-msgstr ""
+msgstr "Enlaces hacia esta colección"
 
 #: inc/ui/principal-edit.php:909
 msgid "Bindings to this Principal's Collections"
-msgstr ""
+msgstr "Enlaces hacia la coleción Principal"
 
 #: inc/autodiscover-handler.php:48
 msgid "Body contains no XML data!"
@@ -249,7 +249,7 @@ msgstr "El cuerpo no contiene datos de tipo XML!"
 #: inc/ui/collection-edit.php:536 inc/ui/principal-edit.php:877
 #: inc/ui/principal-edit.php:914
 msgid "Bound As"
-msgstr ""
+msgstr "Enlazado como"
 
 #: inc/interactive-page.php:46
 msgid "Browse all users"
@@ -275,7 +275,7 @@ msgstr "Zona horaria para el calendario"
 
 #: inc/ui/principal-edit.php:727
 msgid "Can only add tickets for existing collection paths which you own"
-msgstr ""
+msgstr "Sólo puede agregar tickets en conexiones existentes que le pertenezcan"
 
 #: htdocs/feed.php:165
 msgid "Categories"
@@ -293,7 +293,7 @@ msgstr "Click para desplegar detalles de usuario"
 #: inc/ui/principal-edit.php:559 inc/ui/principal-edit.php:674
 #: inc/ui/principal-edit.php:851
 msgid "Click to edit principal details"
-msgstr ""
+msgstr "Haga click para editar los detalles del Principal"
 
 #: inc/ui/collection-edit.php:4 inc/ui/collection-edit.php:136
 #: inc/ui/principal-edit.php:913
@@ -302,14 +302,14 @@ msgstr "Colección"
 
 #: inc/ui/collection-edit.php:460
 msgid "Collection Grants"
-msgstr ""
+msgstr "Permisos sobre la colección"
 
 #: inc/ui/collection-edit.php:214
 msgid "Collection ID"
 msgstr "ID de la colección"
 
 msgid "Collection deleted"
-msgstr "Colección elminada"
+msgstr "Colección eliminada"
 
 #: inc/caldav-MKCOL.php:83
 msgid ""
@@ -332,7 +332,7 @@ msgstr "Confirmar"
 
 #: inc/ui/principal-edit.php:900 inc/ui/principal-edit.php:936
 msgid "Confirm Deletion of the Binding"
-msgstr ""
+msgstr "Confirmar eliminación del enlace"
 
 #: inc/ui/principal-edit.php:865
 msgid "Confirm Deletion of the Collection"
@@ -340,7 +340,7 @@ msgstr "Confirmar borrado de la colección"
 
 #: inc/ui/principal-edit.php:446
 msgid "Confirm Deletion of the Principal"
-msgstr ""
+msgstr "Confirmar borrado del Principal"
 
 #: inc/ui/principal-edit.php:820
 msgid "Confirm Deletion of the Ticket"
@@ -374,11 +374,11 @@ msgstr "Crear nueva colección"
 
 #: inc/ui/principal-edit.php:255
 msgid "Create New Principal"
-msgstr ""
+msgstr "Crear nuevo Principal"
 
 #: inc/interactive-page.php:38
 msgid "Create Principal"
-msgstr ""
+msgstr "Crear Principal"
 
 #: inc/interactive-page.php:38
 msgid "Create a new principal (i.e. a new user, resource or group)"
@@ -392,7 +392,7 @@ msgid "Creating new Collection."
 msgstr "Creando nueva colección"
 
 msgid "Creating new Principal record."
-msgstr ""
+msgstr "Creando nuevo registro en el Principal"
 
 #: inc/ui/principal-edit.php:743
 msgid "Creating new ticket granting privileges to this Principal"
@@ -417,7 +417,7 @@ msgstr "Servidor DAViCal CalDAV"
 
 #: htdocs/setup.php:324
 msgid "DAViCal DB Schema version "
-msgstr ""
+msgstr "Esquema de la base de datos DAViCal"
 
 #: inc/interactive-page.php:20
 msgid "DAViCal Homepage"
@@ -517,7 +517,7 @@ msgstr "Borrar Eventos/Colecciones"
 
 #: inc/ui/principal-edit.php:298
 msgid "Delete Principal"
-msgstr ""
+msgstr "Eliminar Principal"
 
 #: inc/CalDAVRequest.php:728
 msgid "Delete a resource or collection"
@@ -529,7 +529,7 @@ msgstr ""
 
 #: inc/ui/principal-edit.php:898 inc/ui/principal-edit.php:934
 msgid "Deleting Binding:"
-msgstr ""
+msgstr "Eliminando enlaces"
 
 #: inc/ui/principal-edit.php:863
 msgid "Deleting Collection:"
@@ -537,7 +537,7 @@ msgstr "Borrando colección"
 
 #: inc/ui/principal-edit.php:445
 msgid "Deleting Principal:"
-msgstr ""
+msgstr "Eliminando principal"
 
 #: inc/ui/principal-edit.php:818
 msgid "Deleting Ticket:"
@@ -577,11 +577,11 @@ msgstr "Directorio en el servidor"
 #: inc/ui/principal-edit.php:461 inc/ui/principal-edit.php:544
 #: inc/ui/principal-edit.php:658 inc/ui/principal-edit.php:836
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre a desplegar"
 
 #: inc/ui/collection-edit.php:219
 msgid "Displayname"
-msgstr ""
+msgstr "Nombre mostrado"
 
 msgid "Does the user have the right to perform this role?"
 msgstr ""
@@ -719,7 +719,7 @@ msgstr ""
 
 #: inc/ui/collection-edit.php:413
 msgid "Grant"
-msgstr ""
+msgstr "Concedido"
 
 #: inc/ui/principal-edit.php:592
 msgid "Granting new privileges from this Principal"
@@ -780,7 +780,7 @@ msgid "ISO Format"
 msgstr "Formato ISO"
 
 msgid "ISO Format (YYYY-MM-DD)"
-msgstr ""
+msgstr "Formato ISO (AÑO-MES-DÍA)"
 
 #. Translators: short for 'Identifier'
 msgid "Id"
@@ -803,7 +803,7 @@ msgstr "Importar caledarios y sincronizar LDAP"
 
 #: inc/interactive-page.php:37
 msgid "Inactive Principals"
-msgstr ""
+msgstr "Principales inactivos"
 
 #: inc/caldav-PUT-default.php:45
 msgid "Incorrect content type for addressbook: "
@@ -878,7 +878,7 @@ msgstr "Ubicación"
 
 #: inc/DAViCalSession.php:166
 msgid "Log On Please"
-msgstr ""
+msgstr "Autentíquese, por favor"
 
 #: inc/interactive-page.php:6
 msgid "Log out of DAViCal"
@@ -890,7 +890,7 @@ msgstr "Desconectar"
 
 #: inc/ui/principal-edit.php:508
 msgid "Member deleted from this Group Principal"
-msgstr ""
+msgstr "Miembro eliminado de este grupo Principal"
 
 msgid ""
 "Most of DAViCal will work but upgrading to PHP 5.2 or later is strongly "
@@ -910,7 +910,7 @@ msgstr "Nuevo password"
 
 #: inc/ui/principal-edit.php:276
 msgid "New Principal"
-msgstr ""
+msgstr "Nuevo Principal"
 
 #. Translators: not 'Yes'
 #: inc/ui/principal-edit.php:837
@@ -944,7 +944,7 @@ msgstr "Núm. de colecciones"
 
 #: htdocs/setup.php:287
 msgid "No. of Principals"
-msgstr ""
+msgstr "Número de principales"
 
 #: htdocs/setup.php:289
 msgid "No. of Resources"
@@ -963,7 +963,7 @@ msgstr "Organizadir extraviado"
 
 #: inc/ui/collection-edit.php:166 inc/ui/principal-edit.php:13
 msgid "Override a Lock"
-msgstr ""
+msgstr "Ignorar un bloqueo"
 
 #: htdocs/setup.php:322
 msgid "PDO PostgreSQL drivers"
@@ -1044,18 +1044,18 @@ msgid "Please confirm deletion of collection - see below"
 msgstr ""
 
 msgid "Please confirm deletion of the principal"
-msgstr ""
+msgstr "Por favor, confirmar la eliminación del Principal"
 
 msgid "Please note the time and advise the administrator of your system."
 msgstr ""
 
 #: inc/ui/principal-edit.php:164 inc/ui/principal-edit.php:252
 msgid "Principal"
-msgstr ""
+msgstr "Principal"
 
 #: inc/ui/principal-edit.php:830
 msgid "Principal Collections"
-msgstr ""
+msgstr "Colección Principal"
 
 #: inc/ui/principal-edit.php:652
 msgid "Principal Grants"
@@ -1063,14 +1063,14 @@ msgstr "Privilegios concedidos"
 
 #: inc/ui/principal-edit.php:275
 msgid "Principal ID"
-msgstr ""
+msgstr "ID del Principal"
 
 #: inc/ui/principal-edit.php:287
 msgid "Principal Type"
-msgstr ""
+msgstr "Tipo del Principal"
 
 msgid "Principal deleted"
-msgstr ""
+msgstr "Principal eliminado"
 
 #: inc/ui/collection-edit.php:467 inc/ui/collection-edit.php:508
 #: inc/ui/collection-edit.php:538 inc/ui/principal-edit.php:659
@@ -1223,7 +1223,7 @@ msgstr "Calendario enviado"
 
 #: inc/ui/collection-edit.php:227
 msgid "Schedule Transparency"
-msgstr ""
+msgstr "Transparencia de planificaciones"
 
 #: inc/ui/collection-edit.php:174 inc/ui/principal-edit.php:21
 msgid "Scheduling: Deliver a Reply"
@@ -1293,11 +1293,11 @@ msgstr "Configure la ruta para almacenar tu ics. Por ejemplo si colocas 'calenda
 
 #: htdocs/setup.php:359 inc/interactive-page.php:34 htdocs/setup.php:361
 msgid "Setup"
-msgstr ""
+msgstr "Configuración"
 
 #: inc/interactive-page.php:34
 msgid "Setup DAViCal"
-msgstr ""
+msgstr "Configurar DAViCal"
 
 #: inc/ui/collection-edit.php:30
 msgid "Should the uploaded entries be appended to the collection?"
@@ -1418,7 +1418,7 @@ msgstr "La aplicación no entiende la petición"
 
 #: inc/ui/principal-edit.php:901 inc/ui/principal-edit.php:937
 msgid "The binding will be deleted."
-msgstr ""
+msgstr "El enlace será borrado"
 
 #: inc/CalDAVRequest.php:176
 msgid "The calendar path contains illegal characters."
