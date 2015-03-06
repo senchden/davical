@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 22:39+0200\n"
-"PO-Revision-Date: 2014-10-27 07:42+0000\n"
-"Last-Translator: bruberg <bruberg@gmail.com>\n"
+"POT-Creation-Date: 2015-01-04 19:01+0100\n"
+"PO-Revision-Date: 2015-01-04 18:03+0000\n"
+"Last-Translator: Cyril Giraud <cgiraud@free.fr>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/projects/p/davical/language/nb_NO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -208,7 +208,7 @@ msgstr "Anonyme brukere har kun tilgang til offentlige kalendre"
 msgid "Append"
 msgstr "Legg til"
 
-#: htdocs/upgrade.php:45
+#: htdocs/upgrade.php:45 htdocs/upgrade.php:49
 msgid "Application DB User"
 msgstr "Applikasjonens DB-bruker"
 
@@ -216,7 +216,7 @@ msgstr "Applikasjonens DB-bruker"
 msgid "Apply Changes"
 msgstr "Utfør endringer"
 
-#: htdocs/upgrade.php:46
+#: htdocs/upgrade.php:46 htdocs/upgrade.php:50
 msgid "Apply DB Patches"
 msgstr "Utfør DB-endringer"
 
@@ -458,27 +458,27 @@ msgstr "DKIM signatursjekk feilet (Signature verification ERROR)"
 msgid "Database Error"
 msgstr "Databasefeil"
 
-#: htdocs/upgrade.php:43
+#: htdocs/upgrade.php:43 htdocs/upgrade.php:47
 msgid "Database Host"
 msgstr "Databasetjener"
 
-#: htdocs/upgrade.php:39
+#: htdocs/upgrade.php:39 htdocs/upgrade.php:43
 msgid "Database Name"
 msgstr "Databasenavn"
 
-#: htdocs/upgrade.php:47
+#: htdocs/upgrade.php:47 htdocs/upgrade.php:51
 msgid "Database Owner"
 msgstr "Databaseeier"
 
-#: htdocs/upgrade.php:41
+#: htdocs/upgrade.php:41 htdocs/upgrade.php:45
 msgid "Database Password"
 msgstr "Databasepassord"
 
-#: htdocs/upgrade.php:42
+#: htdocs/upgrade.php:42 htdocs/upgrade.php:46
 msgid "Database Port"
 msgstr "Databaseport"
 
-#: htdocs/upgrade.php:40
+#: htdocs/upgrade.php:40 htdocs/upgrade.php:44
 msgid "Database Username"
 msgstr "Databasebrukernavn"
 
@@ -1617,7 +1617,8 @@ msgstr "Oppdaterer rettigheter for denne kontoen"
 msgid "Upgrade DAViCal database schema"
 msgstr "Oppgrader DAViCal database schema"
 
-#: htdocs/upgrade.php:29 inc/interactive-page.php:35
+#: htdocs/upgrade.php:29 inc/interactive-page.php:35 htdocs/upgrade.php:9
+#: htdocs/upgrade.php:33
 msgid "Upgrade Database"
 msgstr "Oppgrader database"
 
@@ -2050,3 +2051,35 @@ msgstr ""
 #: htdocs/setup.php:388 htdocs/setup.php:392
 msgid "Statistics unavailable"
 msgstr "Statistikk utilgjengelig"
+
+#: htdocs/upgrade.php:10
+msgid ""
+"Currently this page does nothing. Suggestions or patches to make it do "
+"something useful will be gratefully received."
+msgstr ""
+
+#: htdocs/upgrade.php:12
+msgid "Upgrading DAViCal Versions"
+msgstr ""
+
+#: htdocs/upgrade.php:13
+msgid ""
+"The <a href=\"http://wiki.davical.org/w/Update-davical-database\">update-"
+"davical-database</a> should be run manually after upgrading the software to "
+"a new version of DAViCal."
+msgstr ""
+
+#: htdocs/upgrade.php:14
+msgid ""
+"In due course this program will implement the functionality which is "
+"currently contained in that script, but until then I'm afraid you do need to"
+" run it."
+msgstr ""
+
+#: htdocs/upgrade.php:53
+msgid "Connection Parameters"
+msgstr ""
+
+#: htdocs/upgrade.php:54
+msgid "Operation Parameters"
+msgstr ""

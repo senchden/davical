@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-29 22:24+0100\n"
-"PO-Revision-Date: 2014-12-29 20:35+0000\n"
+"POT-Creation-Date: 2015-01-04 19:01+0100\n"
+"PO-Revision-Date: 2015-01-04 18:03+0000\n"
 "Last-Translator: Cyril Giraud <cgiraud@free.fr>\n"
 "Language-Team: Korean (Korea) (http://www.transifex.com/projects/p/davical/language/ko_KR/)\n"
 "MIME-Version: 1.0\n"
@@ -205,7 +205,7 @@ msgstr "익명 사용자는 공개 캘린더에만 접근 할 수 있습니다."
 msgid "Append"
 msgstr "추가"
 
-#: htdocs/upgrade.php:45
+#: htdocs/upgrade.php:45 htdocs/upgrade.php:49
 msgid "Application DB User"
 msgstr "어플리케이션 DB 사용자"
 
@@ -213,7 +213,7 @@ msgstr "어플리케이션 DB 사용자"
 msgid "Apply Changes"
 msgstr "변경사항 적용"
 
-#: htdocs/upgrade.php:46
+#: htdocs/upgrade.php:46 htdocs/upgrade.php:50
 msgid "Apply DB Patches"
 msgstr "데이터베이스 패치 적용"
 
@@ -455,27 +455,27 @@ msgstr "DKIM 서명 검증 실패 (서명 검증 에러)"
 msgid "Database Error"
 msgstr "데이터베이스 "
 
-#: htdocs/upgrade.php:43
+#: htdocs/upgrade.php:43 htdocs/upgrade.php:47
 msgid "Database Host"
 msgstr "데이터베이스 호스트 주소"
 
-#: htdocs/upgrade.php:39
+#: htdocs/upgrade.php:39 htdocs/upgrade.php:43
 msgid "Database Name"
 msgstr "데이터베이스 이름"
 
-#: htdocs/upgrade.php:47
+#: htdocs/upgrade.php:47 htdocs/upgrade.php:51
 msgid "Database Owner"
 msgstr "데이터베이스 Owner"
 
-#: htdocs/upgrade.php:41
+#: htdocs/upgrade.php:41 htdocs/upgrade.php:45
 msgid "Database Password"
 msgstr "데이터베이스 패스워드"
 
-#: htdocs/upgrade.php:42
+#: htdocs/upgrade.php:42 htdocs/upgrade.php:46
 msgid "Database Port"
 msgstr "데이터베이스 포트"
 
-#: htdocs/upgrade.php:40
+#: htdocs/upgrade.php:40 htdocs/upgrade.php:44
 msgid "Database Username"
 msgstr "데이터베이스 사용자"
 
@@ -1614,7 +1614,8 @@ msgstr ""
 msgid "Upgrade DAViCal database schema"
 msgstr " DAViCal 데이터베이스 구조 업그레이드"
 
-#: htdocs/upgrade.php:29 inc/interactive-page.php:35
+#: htdocs/upgrade.php:29 inc/interactive-page.php:35 htdocs/upgrade.php:9
+#: htdocs/upgrade.php:33
 msgid "Upgrade Database"
 msgstr "데이터베이스 업그레이드"
 
@@ -2047,3 +2048,35 @@ msgstr ""
 #: htdocs/setup.php:388 htdocs/setup.php:392
 msgid "Statistics unavailable"
 msgstr "통계 없음"
+
+#: htdocs/upgrade.php:10
+msgid ""
+"Currently this page does nothing. Suggestions or patches to make it do "
+"something useful will be gratefully received."
+msgstr ""
+
+#: htdocs/upgrade.php:12
+msgid "Upgrading DAViCal Versions"
+msgstr ""
+
+#: htdocs/upgrade.php:13
+msgid ""
+"The <a href=\"http://wiki.davical.org/w/Update-davical-database\">update-"
+"davical-database</a> should be run manually after upgrading the software to "
+"a new version of DAViCal."
+msgstr ""
+
+#: htdocs/upgrade.php:14
+msgid ""
+"In due course this program will implement the functionality which is "
+"currently contained in that script, but until then I'm afraid you do need to"
+" run it."
+msgstr ""
+
+#: htdocs/upgrade.php:53
+msgid "Connection Parameters"
+msgstr ""
+
+#: htdocs/upgrade.php:54
+msgid "Operation Parameters"
+msgstr ""

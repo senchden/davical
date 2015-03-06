@@ -7,15 +7,15 @@
 # Andrew McMillan <andrew@mcmillan.net.nz>, 2011
 # Cyril Giraud <cgiraud@free.fr>, 2013-2014
 # Cyril Giraud <cgiraud@free.fr>, 2011, 2012
-# Cyril Giraud <cgiraud@free.fr>, 2014
+# Cyril Giraud <cgiraud@free.fr>, 2014-2015
 # tikismoke <webmaster@tikijs.dyndns.org>, 2011
 # tikismoke <webmaster@tikijs.dyndns.org>, 2011, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 22:39+0200\n"
-"PO-Revision-Date: 2014-10-23 14:15+0000\n"
+"POT-Creation-Date: 2015-01-04 19:01+0100\n"
+"PO-Revision-Date: 2015-03-06 21:53+0000\n"
 "Last-Translator: Cyril Giraud <cgiraud@free.fr>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/davical/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -211,7 +211,7 @@ msgstr "Les utilisateurs anonymes ne peuvent accéder qu'aux agendas publics"
 msgid "Append"
 msgstr "Ajouter"
 
-#: htdocs/upgrade.php:45
+#: htdocs/upgrade.php:45 htdocs/upgrade.php:49
 msgid "Application DB User"
 msgstr "Utilisateur de BDD Application"
 
@@ -219,7 +219,7 @@ msgstr "Utilisateur de BDD Application"
 msgid "Apply Changes"
 msgstr "Appliquer les modifications"
 
-#: htdocs/upgrade.php:46
+#: htdocs/upgrade.php:46 htdocs/upgrade.php:50
 msgid "Apply DB Patches"
 msgstr "Appliquer la rustine à la base"
 
@@ -461,27 +461,27 @@ msgstr "validation de la signature DKIM échouée (erreur de vérification de si
 msgid "Database Error"
 msgstr "Erreur de base de données"
 
-#: htdocs/upgrade.php:43
+#: htdocs/upgrade.php:43 htdocs/upgrade.php:47
 msgid "Database Host"
 msgstr "Nom d'hôte pour la base de données"
 
-#: htdocs/upgrade.php:39
+#: htdocs/upgrade.php:39 htdocs/upgrade.php:43
 msgid "Database Name"
 msgstr "Nom de la base de données"
 
-#: htdocs/upgrade.php:47
+#: htdocs/upgrade.php:47 htdocs/upgrade.php:51
 msgid "Database Owner"
 msgstr "Propriétaire de la base de données"
 
-#: htdocs/upgrade.php:41
+#: htdocs/upgrade.php:41 htdocs/upgrade.php:45
 msgid "Database Password"
 msgstr "Mot de passe de la base de données"
 
-#: htdocs/upgrade.php:42
+#: htdocs/upgrade.php:42 htdocs/upgrade.php:46
 msgid "Database Port"
 msgstr "Port de base de données"
 
-#: htdocs/upgrade.php:40
+#: htdocs/upgrade.php:40 htdocs/upgrade.php:44
 msgid "Database Username"
 msgstr "Utilisateur de base de données"
 
@@ -1620,7 +1620,8 @@ msgstr "Mise à jour des droits accordés par ce compte"
 msgid "Upgrade DAViCal database schema"
 msgstr "Mise à jour le schéma de la base de données de DAViCal"
 
-#: htdocs/upgrade.php:29 inc/interactive-page.php:35
+#: htdocs/upgrade.php:29 inc/interactive-page.php:35 htdocs/upgrade.php:9
+#: htdocs/upgrade.php:33
 msgid "Upgrade Database"
 msgstr "Mise à niveau de la base de données"
 
@@ -2053,3 +2054,35 @@ msgstr "<a href=\"http://wiki.davical.org/w/Setup_Failure_Codes/%s\">Explication
 #: htdocs/setup.php:388 htdocs/setup.php:392
 msgid "Statistics unavailable"
 msgstr "Statistiques non disponibles"
+
+#: htdocs/upgrade.php:10
+msgid ""
+"Currently this page does nothing. Suggestions or patches to make it do "
+"something useful will be gratefully received."
+msgstr "Pour le moment, cette page ne fait rien. Les suggestions ou contributions pour lui faire faire quelque-chose d'utile seront bien accueillies."
+
+#: htdocs/upgrade.php:12
+msgid "Upgrading DAViCal Versions"
+msgstr "Mises à jour DAViCal"
+
+#: htdocs/upgrade.php:13
+msgid ""
+"The <a href=\"http://wiki.davical.org/w/Update-davical-database\">update-"
+"davical-database</a> should be run manually after upgrading the software to "
+"a new version of DAViCal."
+msgstr "La <a href=\"http://wiki.davical.org/w/Update-davical-database\">procédure de mise à jour de la base de données</a> doit être faite manuellement après mise à jour du logiciel  DAViCal."
+
+#: htdocs/upgrade.php:14
+msgid ""
+"In due course this program will implement the functionality which is "
+"currently contained in that script, but until then I'm afraid you do need to"
+" run it."
+msgstr "En temps utile ce programme fera ce qui est prévu dans le script, mais d'ici là vérifiez bien que vous ayez vraiment besoin de l'exécuter."
+
+#: htdocs/upgrade.php:53
+msgid "Connection Parameters"
+msgstr "Paramètres de connexion"
+
+#: htdocs/upgrade.php:54
+msgid "Operation Parameters"
+msgstr "Paramètres de l'opération"

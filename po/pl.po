@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# ab <g1@borowicz.info>, 2015
 # Andrew McMillan <andrew@mcmillan.net.nz>, 2011
 # dziobak <dziobak84@interia.pl>, 2011
 # silk <silk@boktor.net>, 2011
@@ -11,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 22:39+0200\n"
-"PO-Revision-Date: 2014-10-22 20:42+0000\n"
-"Last-Translator: Cyril Giraud <cgiraud@free.fr>\n"
+"POT-Creation-Date: 2015-01-04 19:01+0100\n"
+"PO-Revision-Date: 2015-02-14 10:01+0000\n"
+"Last-Translator: ab <g1@borowicz.info>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/davical/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -206,19 +207,19 @@ msgstr "Użytkownicy anonimowi mogą uzyskać dostęp tylko do publicznych kalen
 
 #: inc/ui/collection-edit.php:31
 msgid "Append"
-msgstr ""
+msgstr "Dodaj"
 
-#: htdocs/upgrade.php:45
+#: htdocs/upgrade.php:45 htdocs/upgrade.php:49
 msgid "Application DB User"
-msgstr ""
+msgstr "Użytkownik DB aplikacji"
 
 #: inc/ui/collection-edit.php:416
 msgid "Apply Changes"
 msgstr "Zatwierdź zmiany"
 
-#: htdocs/upgrade.php:46
+#: htdocs/upgrade.php:46 htdocs/upgrade.php:50
 msgid "Apply DB Patches"
-msgstr ""
+msgstr "Zastosuj uaktoalnienia DB"
 
 #: htdocs/feed.php:156
 msgid "Attachment"
@@ -458,27 +459,27 @@ msgstr ""
 msgid "Database Error"
 msgstr "Błąd bazy danych"
 
-#: htdocs/upgrade.php:43
+#: htdocs/upgrade.php:43 htdocs/upgrade.php:47
 msgid "Database Host"
 msgstr "Host bazy danych"
 
-#: htdocs/upgrade.php:39
+#: htdocs/upgrade.php:39 htdocs/upgrade.php:43
 msgid "Database Name"
 msgstr "Nazwa bazy danych"
 
-#: htdocs/upgrade.php:47
+#: htdocs/upgrade.php:47 htdocs/upgrade.php:51
 msgid "Database Owner"
 msgstr "Właściciel bazy danych"
 
-#: htdocs/upgrade.php:41
+#: htdocs/upgrade.php:41 htdocs/upgrade.php:45
 msgid "Database Password"
 msgstr "Hasło bazy danych"
 
-#: htdocs/upgrade.php:42
+#: htdocs/upgrade.php:42 htdocs/upgrade.php:46
 msgid "Database Port"
 msgstr "Port bazy danych"
 
-#: htdocs/upgrade.php:40
+#: htdocs/upgrade.php:40 htdocs/upgrade.php:44
 msgid "Database Username"
 msgstr "Nazwa użytkownika bazy danych"
 
@@ -1617,7 +1618,8 @@ msgstr ""
 msgid "Upgrade DAViCal database schema"
 msgstr ""
 
-#: htdocs/upgrade.php:29 inc/interactive-page.php:35
+#: htdocs/upgrade.php:29 inc/interactive-page.php:35 htdocs/upgrade.php:9
+#: htdocs/upgrade.php:33
 msgid "Upgrade Database"
 msgstr ""
 
@@ -2049,4 +2051,36 @@ msgstr ""
 
 #: htdocs/setup.php:388 htdocs/setup.php:392
 msgid "Statistics unavailable"
+msgstr ""
+
+#: htdocs/upgrade.php:10
+msgid ""
+"Currently this page does nothing. Suggestions or patches to make it do "
+"something useful will be gratefully received."
+msgstr ""
+
+#: htdocs/upgrade.php:12
+msgid "Upgrading DAViCal Versions"
+msgstr ""
+
+#: htdocs/upgrade.php:13
+msgid ""
+"The <a href=\"http://wiki.davical.org/w/Update-davical-database\">update-"
+"davical-database</a> should be run manually after upgrading the software to "
+"a new version of DAViCal."
+msgstr ""
+
+#: htdocs/upgrade.php:14
+msgid ""
+"In due course this program will implement the functionality which is "
+"currently contained in that script, but until then I'm afraid you do need to"
+" run it."
+msgstr ""
+
+#: htdocs/upgrade.php:53
+msgid "Connection Parameters"
+msgstr ""
+
+#: htdocs/upgrade.php:54
+msgid "Operation Parameters"
 msgstr ""

@@ -4,14 +4,15 @@
 # 
 # Translators:
 # m42 <p.m42.ribeiro@gmail.com>, 2011
+# m42 <p.m42.ribeiro@gmail.com>, 2015
 # m42 <p.m42.ribeiro@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 22:39+0200\n"
-"PO-Revision-Date: 2014-10-22 20:42+0000\n"
-"Last-Translator: Cyril Giraud <cgiraud@free.fr>\n"
+"POT-Creation-Date: 2015-01-04 19:01+0100\n"
+"PO-Revision-Date: 2015-02-10 16:51+0000\n"
+"Last-Translator: m42 <p.m42.ribeiro@gmail.com>\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/davical/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -114,7 +115,7 @@ msgstr "Já existe uma colecção nessa localização."
 
 #: inc/caldav-PROPPATCH.php:143
 msgid "A collection may not be both a calendar and an addressbook."
-msgstr ""
+msgstr "Uma colecção não pode ser ao mesmo tempo um calendário e um livro de endereços."
 
 #: inc/caldav-BIND.php:47
 msgid "A resource already exists at the destination."
@@ -204,9 +205,9 @@ msgstr "Utilizadores anónimos têm acesso apenas a calendários públicos"
 
 #: inc/ui/collection-edit.php:31
 msgid "Append"
-msgstr ""
+msgstr "Acrescentar"
 
-#: htdocs/upgrade.php:45
+#: htdocs/upgrade.php:45 htdocs/upgrade.php:49
 msgid "Application DB User"
 msgstr "Utilizador da Base de Dados da aplicação"
 
@@ -214,7 +215,7 @@ msgstr "Utilizador da Base de Dados da aplicação"
 msgid "Apply Changes"
 msgstr "Efectuar Mudanças"
 
-#: htdocs/upgrade.php:46
+#: htdocs/upgrade.php:46 htdocs/upgrade.php:50
 msgid "Apply DB Patches"
 msgstr "Aplicar patches da Base de Dados"
 
@@ -224,7 +225,7 @@ msgstr "Anexo"
 
 #: inc/drivers_ldap.php:341 inc/drivers_ldap.php:345
 msgid "Authentication server unavailable."
-msgstr ""
+msgstr "Servidor de autenticação não disponível"
 
 msgid "Binding deleted"
 msgstr "Ligação apagada"
@@ -377,7 +378,7 @@ msgstr "Criar novo Principal"
 
 #: inc/interactive-page.php:38
 msgid "Create Principal"
-msgstr "Criar principal"
+msgstr "Criar Principal"
 
 #: inc/interactive-page.php:38
 msgid "Create a new principal (i.e. a new user, resource or group)"
@@ -456,27 +457,27 @@ msgstr "Validação da assinatura DKIM falhou (ERRO verificação de assinatura)
 msgid "Database Error"
 msgstr "Erro de Base de Dados"
 
-#: htdocs/upgrade.php:43
+#: htdocs/upgrade.php:43 htdocs/upgrade.php:47
 msgid "Database Host"
 msgstr "Servidor de Base de Dados"
 
-#: htdocs/upgrade.php:39
+#: htdocs/upgrade.php:39 htdocs/upgrade.php:43
 msgid "Database Name"
 msgstr "Nome da Base de Dados"
 
-#: htdocs/upgrade.php:47
+#: htdocs/upgrade.php:47 htdocs/upgrade.php:51
 msgid "Database Owner"
 msgstr "Dono da Base de Dados"
 
-#: htdocs/upgrade.php:41
+#: htdocs/upgrade.php:41 htdocs/upgrade.php:45
 msgid "Database Password"
 msgstr "Password da Base de Dados"
 
-#: htdocs/upgrade.php:42
+#: htdocs/upgrade.php:42 htdocs/upgrade.php:46
 msgid "Database Port"
 msgstr "Porto da Base de Dados"
 
-#: htdocs/upgrade.php:40
+#: htdocs/upgrade.php:40 htdocs/upgrade.php:44
 msgid "Database Username"
 msgstr "Nome de utilizador da Base de Dados"
 
@@ -488,7 +489,7 @@ msgstr "Erro da Base de Dados"
 
 #: htdocs/setup.php:323
 msgid "Database is Connected"
-msgstr ""
+msgstr "A Base de Dados está ligada"
 
 #: inc/ui/principal-edit.php:283
 msgid "Date Format Style"
@@ -762,7 +763,7 @@ msgid "Home"
 msgstr "Entrada"
 
 msgid "Home "
-msgstr ""
+msgstr "Entrada"
 
 #: inc/interactive-page.php:45
 msgid "Home Page"
@@ -927,7 +928,7 @@ msgstr "Colecção não encontrada nessa localização."
 
 #: inc/CalDAVRequest.php:1135
 msgid "No resource exists at the destination."
-msgstr ""
+msgstr "Não existe um recurso nesse destino"
 
 #: htdocs/feed.php:126
 msgid "No summary"
@@ -1300,7 +1301,7 @@ msgstr "Configurar DAViCal"
 
 #: inc/ui/collection-edit.php:30
 msgid "Should the uploaded entries be appended to the collection?"
-msgstr ""
+msgstr "As entradas carregadas devem ser acrescentadas à colecção ?"
 
 #: inc/page-header.php:26
 msgid "Show help on"
@@ -1337,7 +1338,7 @@ msgstr "Privilégios específicos"
 
 #, php-format
 msgid "Stable: %s, We have: %s !"
-msgstr ""
+msgstr "Estável: %s, Temos: %s !"
 
 #: htdocs/setup.php:377 htdocs/iSchedule.php:31 htdocs/setup.php:379
 msgid "Status"
@@ -1427,11 +1428,11 @@ msgstr "O caminho do calendário contém caracteres ilegais."
 msgid ""
 "The calendar-free-busy-set is superseded by the  schedule-calendar-transp "
 "property of a calendar collection."
-msgstr ""
+msgstr "A propriedade calendar-free-busy-set é substituída pela propriedade schedule-transp duma colecção de calendário."
 
 #: inc/caldav-REPORT-calquery.php:307 inc/caldav-REPORT-calquery.php:313
 msgid "The calendar-query report may not be run against that URL."
-msgstr ""
+msgstr "O relatório calendar-query não pode ser executado nesse URL"
 
 #: inc/caldav-REPORT-calquery.php:304 inc/caldav-REPORT-calquery.php:310
 msgid ""
@@ -1589,7 +1590,7 @@ msgstr "Estados Unidos da América (m/d/a)"
 
 #: inc/caldav-PROPPATCH.php:147
 msgid "Unsupported resourcetype modification."
-msgstr ""
+msgstr "Modificação de resourcetype não suportada."
 
 msgid "Update"
 msgstr "Actualizar"
@@ -1615,13 +1616,14 @@ msgstr "A actualizar permissões de acordo com este principal"
 msgid "Upgrade DAViCal database schema"
 msgstr "Actualizar o schema da Base de Dados do DAViCal"
 
-#: htdocs/upgrade.php:29 inc/interactive-page.php:35
+#: htdocs/upgrade.php:29 inc/interactive-page.php:35 htdocs/upgrade.php:9
+#: htdocs/upgrade.php:33
 msgid "Upgrade Database"
 msgstr "Actualizar Base de Dados"
 
 #: inc/ui/collection-edit.php:27
 msgid "Upload an iCalendar file or VCard file to replace this collection."
-msgstr ""
+msgstr "Fazer o upload de um ficheiro iCalendar ou vCard para substituir esta colecção."
 
 #: inc/ui/principal-browse.php:8
 msgid "User Calendar Principals"
@@ -1821,11 +1823,11 @@ msgstr "deve entrar com o nome de utilizador e password que lhe foram atribuída
 
 #: htdocs/help.php:8
 msgid "DAViCal CalDAV Server - Configuration Help"
-msgstr ""
+msgstr "Servidor CalDAV DAViCal - Ajuda de Configuração"
 
 #: htdocs/setup.php:393 htdocs/setup.php:395
 msgid "PHP Information"
-msgstr ""
+msgstr "Informação PHP"
 
 #: htdocs/setup.php:396 htdocs/index.php:48 htdocs/setup.php:399
 #: htdocs/index.php:47
@@ -1833,35 +1835,35 @@ msgid ""
 "The <a href=\"http://www.davical.org/clients.php\">client setup page on the "
 "DAViCal website</a> has information on how to configure Evolution, Sunbird, "
 "Lightning and Mulberry to use remotely hosted calendars."
-msgstr ""
+msgstr "A <a href=\"http://www.davical.org/clients.php\">página de configuração de clientes no site do DAViCal</a> tem informação sobre como configurar o Evolution, Sunbird, Lightning e Mulberry para usar calendário alojados remotamente."
 
 #: htdocs/setup.php:397 htdocs/index.php:49 htdocs/setup.php:400
 #: htdocs/index.php:48
 msgid ""
 "The administrative interface has no facility for viewing or modifying "
 "calendar data."
-msgstr ""
+msgstr "A interface administrativa não tem possibilidades de ver ou modificar dados de calendário."
 
 #: htdocs/setup.php:399 htdocs/index.php:53 htdocs/setup.php:404
 #: htdocs/index.php:52
 msgid "If you can read this then things must be mostly working already."
-msgstr ""
+msgstr "Se conseguir ler isto as coisas já devem estar a funcionar."
 
 #: htdocs/setup.php:404
 msgid ""
 "The <a href=\"http://www.davical.org/installation.php\">installation page on"
 " the DAViCal website</a> has some further information on how to install and "
 "configure this application."
-msgstr ""
+msgstr "A <a href=\"http://www.davical.org/installation.php\">página de instalação no site do DAViCal</a> tem mais algumas informações sobre como instalar e configurar esta aplicação."
 
 #: htdocs/index.php:18
 #, php-format
 msgid "You are logged on as %s (%s)"
-msgstr ""
+msgstr "Está logado como %s (%s)"
 
 #: htdocs/index.php:20
 msgid "Administration Functions"
-msgstr ""
+msgstr "Funções de Administração"
 
 #: htdocs/index.php:21
 msgid ""
@@ -2047,4 +2049,36 @@ msgstr ""
 
 #: htdocs/setup.php:388 htdocs/setup.php:392
 msgid "Statistics unavailable"
+msgstr ""
+
+#: htdocs/upgrade.php:10
+msgid ""
+"Currently this page does nothing. Suggestions or patches to make it do "
+"something useful will be gratefully received."
+msgstr ""
+
+#: htdocs/upgrade.php:12
+msgid "Upgrading DAViCal Versions"
+msgstr ""
+
+#: htdocs/upgrade.php:13
+msgid ""
+"The <a href=\"http://wiki.davical.org/w/Update-davical-database\">update-"
+"davical-database</a> should be run manually after upgrading the software to "
+"a new version of DAViCal."
+msgstr ""
+
+#: htdocs/upgrade.php:14
+msgid ""
+"In due course this program will implement the functionality which is "
+"currently contained in that script, but until then I'm afraid you do need to"
+" run it."
+msgstr ""
+
+#: htdocs/upgrade.php:53
+msgid "Connection Parameters"
+msgstr ""
+
+#: htdocs/upgrade.php:54
+msgid "Operation Parameters"
 msgstr ""
