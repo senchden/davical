@@ -48,7 +48,7 @@ if ( $destination->Exists() ) {
 }
 
 //  external binds shouldn't ever point back to ourselves but they should be a valid http[s] url
-if ( preg_match ( '{^https?://([^/]+)(:[0-9]\+)?/.+$}', $href, $matches ) 
+if ( preg_match ( '{^(?:https?://|file:///)([^/]+)(:[0-9]\+)?/.+$}', $href, $matches ) 
       && strcasecmp( $matches[0], 'localhost' ) !== 0 && strcasecmp( $matches[0], '127.0.0.1' ) !== 0 
       && strcasecmp( $matches[0], $_SERVER['SERVER_NAME'] ) !== 0 && strcasecmp( $matches[0], $_SERVER['SERVER_ADDR'] ) !== 0 ) {
   require_once('external-fetch.php');
