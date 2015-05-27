@@ -274,6 +274,7 @@ class DAVResource
         if ( isset($this->resource->summary) )$this->resource->displayname = $this->resource->summary;
         if ( strtoupper(substr($this->resource->caldav_data,0,15)) == 'BEGIN:VCALENDAR' ) {
           $this->contenttype = 'text/calendar';
+          if ( isset($this->resource->caldav_type) ) $this->contenttype .= "; component=" . strtolower($this->resource->caldav_type);
           if ( !$this->HavePrivilegeTo('read') && $this->HavePrivilegeTo('read-free-busy') ) {
             $vcal = new iCalComponent($this->resource->caldav_data);
             $confidential = $vcal->CloneConfidential();
