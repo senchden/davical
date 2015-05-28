@@ -72,7 +72,7 @@ switch( $resource->caldav_type ) {
   case 'VJOURNAL':
   case 'VEVENT':
   case 'VTODO':
-    $contenttype = 'text/calendar';
+    $contenttype = 'text/calendar; component=' . strtolower($resource->caldav_type);
     break;
 
   case 'VCARD':
