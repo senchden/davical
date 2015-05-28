@@ -86,4 +86,7 @@ write_resource( $dav_resource, $request->raw_post, $collection, $session->user_n
 
 if ( isset($etag) ) header(sprintf('ETag: "%s"', $etag) );
 
+// make sure to return a Location header when add-member was used
+if ( $add_member ) header('Location: '.$c->protocol_server_port_script.$request->path);
+
 $request->DoResponse( ($dav_resource->Exists() ? 204 : 201) );
