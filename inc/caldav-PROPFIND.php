@@ -113,7 +113,7 @@ function get_collection_contents( $depth, $collection, $parent_path = null ) {
   dbg_error_log('PROPFIND','Getting collection contents: Depth %d, Path: %s, Bound from: %s, Bound to: %s',
                                                               $depth, $collection->dav_name(), $bound_from, $bound_to );
 
-  $date_format = AwlDatabase::HttpDateFormat;
+  $date_format = AwlDBDialect::HttpDateFormat;
   $responses = array();
   if ( ! $collection->IsCalendar() &&  ! $collection->IsAddressbook() ) {
     /**
