@@ -69,7 +69,7 @@ if ( $dav_resource->IsCollection() ) {
   }
 }
 else {
-  if ( (isset($request->etag_if_match) && $request->etag_if_match != $dav_resource->unique_tag() ) ) {
+  if ( isset($request->etag_if_match) && $request->etag_if_match != $dav_resource->unique_tag() && $request->etag_if_match != "*"  ) {
     $request->DoResponse( 412, translate("Resource has changed on server - not deleted") );
   }
 
