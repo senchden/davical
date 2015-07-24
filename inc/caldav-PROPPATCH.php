@@ -327,14 +327,15 @@ if ( $qry->Commit() ) {
 
   $url = ConstructURL($request->path);
   $multistatus = new XMLElement('multistatus');
-  $reply->DAVElement($multistatus,'href', $url);
-  $reply->DAVElement($multistatus,'responsedescription', translate("All requested changes were made.") );
+  $response = $multistatus->NewElement('response');
+  $reply->DAVElement($response,'href', $url);
+  $reply->DAVElement($response,'responsedescription', translate("All requested changes were made.") );
 
   $prop = new XMLElement('prop');
   foreach( $success AS $tag => $v ) {
     $reply->NSElement($prop, $tag);
   }
-  $reply->DAVElement($multistatus, 'propstat', array( $prop, new XMLElement( 'status', 'HTTP/1.1 200 OK' )) );
+  $reply->DAVElement($response, 'propstat', array( $prop, new XMLElement( 'status', 'HTTP/1.1 200 OK' )) );
   
   $url = ConstructURL($request->path);
   array_unshift( $failure, new XMLElement('href', $url ) );
