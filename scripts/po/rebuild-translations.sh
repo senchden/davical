@@ -52,8 +52,10 @@ build_supported_locales() {
   echo "INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )"
   echo "    VALUES( 'en', 'English', 'English' );"
   for LOCALE in `locale_list`; do
-    echo "INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )"
-    cat ${PODIR}/${LOCALE}.values
+    if [ -f ${PODIR}/${LOCALE}.values ] ; then
+      echo "INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )"
+      cat ${PODIR}/${LOCALE}.values
+    fi
   done
 }
 
