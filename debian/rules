@@ -8,6 +8,9 @@ get-orig-source:
 %:
 	dh $@
 
+override_dh_auto_build:
+	@echo "NOTE: not calling make / make built-docs, do this before building the package and review / commit the result"
+
 override_dh_installchangelogs:
 	dh_installchangelogs ChangeLog
 	rm debian/davical/usr/share/davical/htdocs/.htaccess || true
