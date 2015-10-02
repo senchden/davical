@@ -645,11 +645,11 @@ function do_scheduling_requests( vCalendar $resource, $create, $old_data = null 
 /**
 * This function will import a whole collection
 * @param string $ics_content the ics file to import
-* @param int $user_no the user wich will receive this ics file
-* @param string $path the $path where it will be store such as /user_foo/home/
+* @param int $user_no the user which will receive this ics file
+* @param string $path the $path where it will be stored such as /user_foo/home/
 * @param boolean $caldav_context Whether we are responding via CalDAV or interactively
 *
-* The work is either done by 
+* The work is either done by import_addressbook_collection() or import_calendar_collection()
 */
 function import_collection( $import_content, $user_no, $path, $caldav_context, $appending = false ) {
   global $c;
@@ -679,13 +679,11 @@ function import_collection( $import_content, $user_no, $path, $caldav_context, $
 }
 
 /**
-* This function will import a whole calendar
-* @param string $ics_content the ics file to import
-* @param int $user_no the user wich will receive this ics file
-* @param string $path the $path where it will be store such as /user_foo/home/
+* This function will import a whole addressbook
+* @param string $vcard_content the vcf file to import
+* @param int $user_no the user wich will receive this vcf file
+* @param string $path the $path where it will be stored such as /user_foo/addresses/
 * @param boolean $caldav_context Whether we are responding via CalDAV or interactively
-*
-* Any VEVENTs with the same UID will be concatenated together
 */
 function import_addressbook_collection( $vcard_content, $user_no, $path, $caldav_context, $appending = false ) {
   global $c, $session;
@@ -749,7 +747,7 @@ EOSQL;
     $dav_data_params = $base_params;
     $dav_data_params[':user_no'] = $user_no;
     // We don't allow any of &?\/@%+: in the UID to appear in the path, but anything else is fair game.
-    $dav_data_params[':dav_name'] = sprintf( '%s%s.ics', $path, preg_replace('{[&?\\/@%+:]}','',$uid) );
+    $dav_data_params[':dav_name'] = sprintf( '%s%s.vcf', $path, preg_replace('{[&?\\/@%+:]}','',$uid) );
     $dav_data_params[':etag'] = md5($rendered_card);
     $dav_data_params[':dav_data'] = $rendered_card;
     $dav_data_params[':modified'] = $last_modified;
@@ -779,7 +777,7 @@ EOSQL;
 * This function will import a whole calendar
 * @param string $ics_content the ics file to import
 * @param int $user_no the user wich will receive this ics file
-* @param string $path the $path where it will be store such as /user_foo/home/
+* @param string $path the $path where it will be stored such as /user_foo/home/
 * @param boolean $caldav_context Whether we are responding via CalDAV or interactively
 *
 * Any VEVENTs with the same UID will be concatenated together
