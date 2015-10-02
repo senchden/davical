@@ -2,7 +2,7 @@
 -- record 1:1 with the principal table
 
 
-DROP VIEW dav_principal CASCADE;
+DROP VIEW IF EXISTS dav_principal CASCADE;
 CREATE OR REPLACE VIEW dav_principal AS
   SELECT user_no, usr.active AS user_active, joined AS created, updated AS modified,
          username, password, fullname, email,

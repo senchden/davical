@@ -26,7 +26,7 @@
 */
 
 -- Create a composite type for the parts of the RRULE.
-DROP TYPE rrule_parts CASCADE;
+DROP TYPE IF EXISTS rrule_parts CASCADE;
 CREATE TYPE rrule_parts AS (
   base TIMESTAMP WITH TIME ZONE,
   until TIMESTAMP WITH TIME ZONE,
@@ -680,7 +680,7 @@ $$ LANGUAGE plpgsql IMMUTABLE;
 
 
 -- Create a composite type for the parts of the RRULE.
-DROP TYPE rrule_instance CASCADE;
+DROP TYPE IF EXISTS rrule_instance CASCADE;
 CREATE TYPE rrule_instance AS (
   dtstart TIMESTAMP WITH TIME ZONE,
   rrule TEXT,

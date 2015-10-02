@@ -387,8 +387,8 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-DROP FUNCTION rename_davical_user( TEXT, TEXT );
-DROP TRIGGER usr_modified ON usr CASCADE;
+DROP FUNCTION IF EXISTS rename_davical_user( TEXT, TEXT );
+DROP TRIGGER IF EXISTS usr_modified ON usr CASCADE;
 CREATE or REPLACE FUNCTION usr_modified() RETURNS TRIGGER AS $$
 DECLARE
   oldpath TEXT;
@@ -412,7 +412,7 @@ CREATE TRIGGER usr_modified AFTER UPDATE ON usr
     FOR EACH ROW EXECUTE PROCEDURE usr_modified();
 
 
-DROP TRIGGER collection_modified ON collection CASCADE;
+DROP TRIGGER IF EXISTS collection_modified ON collection CASCADE;
 CREATE or REPLACE FUNCTION collection_modified() RETURNS TRIGGER AS $$
 DECLARE
 BEGIN
@@ -439,7 +439,7 @@ CREATE TRIGGER collection_modified AFTER UPDATE OR DELETE ON collection
     FOR EACH ROW EXECUTE PROCEDURE collection_modified();
 
 
-DROP TRIGGER caldav_data_modified ON caldav_data CASCADE;
+DROP TRIGGER IF EXISTS caldav_data_modified ON caldav_data CASCADE;
 CREATE or REPLACE FUNCTION caldav_data_modified() RETURNS TRIGGER AS $$
 DECLARE
   coll_id caldav_data.collection_id%TYPE;
@@ -486,8 +486,8 @@ CREATE TRIGGER caldav_data_modified AFTER INSERT OR UPDATE OR DELETE ON caldav_d
     FOR EACH ROW EXECUTE PROCEDURE caldav_data_modified();
 
 
-DROP TRIGGER caldav_data_sync_dav_id ON caldav_data CASCADE;
-DROP TRIGGER calendar_item_sync_dav_id ON calendar_item CASCADE;
+DROP TRIGGER IF EXISTS caldav_data_sync_dav_id ON caldav_data CASCADE;
+DROP TRIGGER IF EXISTS calendar_item_sync_dav_id ON calendar_item CASCADE;
 CREATE or REPLACE FUNCTION sync_dav_id ( ) RETURNS TRIGGER AS $$
   DECLARE
   BEGIN
@@ -1116,7 +1116,7 @@ END;
 $$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
-DROP TRIGGER principal_modified ON principal CASCADE;
+DROP TRIGGER IF EXISTS principal_modified ON principal CASCADE;
 CREATE or REPLACE FUNCTION principal_modified() RETURNS TRIGGER AS $$
 DECLARE
 BEGIN
@@ -1135,7 +1135,7 @@ CREATE TRIGGER principal_modified AFTER UPDATE ON principal
     FOR EACH ROW EXECUTE PROCEDURE principal_modified();
 
 
-DROP TRIGGER grants_modified ON grants CASCADE;
+DROP TRIGGER IF EXISTS grants_modified ON grants CASCADE;
 CREATE or REPLACE FUNCTION grants_modified() RETURNS TRIGGER AS $$
 DECLARE
   old_to_principal INT8;
@@ -1257,7 +1257,7 @@ END
 $$ LANGUAGE plpgsql STRICT;
 
 
-DROP TRIGGER alarm_changed ON calendar_alarm CASCADE;
+DROP TRIGGER IF EXISTS alarm_changed ON calendar_alarm CASCADE;
 CREATE or REPLACE FUNCTION alarm_changed() RETURNS TRIGGER AS $$
 DECLARE
   oldcomponent TEXT;
