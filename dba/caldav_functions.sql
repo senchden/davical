@@ -1,7 +1,7 @@
 /**
 * PostgreSQL Functions for CalDAV handling
 *
-* @package rscds
+* @package davical
 * @subpackage database
 * @author Andrew McMillan <andrew@catalyst.net.nz>
 * @copyright Catalyst IT Ltd

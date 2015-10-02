@@ -1,7 +1,7 @@
 /**
 * PostgreSQL Functions for RRULE handling
 *
-* @package rscds
+* @package davical
 * @subpackage database
 * @author Andrew McMillan <andrew@morphoss.com>
 * @copyright Morphoss Ltd - http://www.morphoss.com/

@@ -1,5 +1,5 @@
 #
-# This file is used by update-rscds-database to set the correct
+# This file is used by update-davical-database to set the correct
 # permissions for the application user.  In newer installations
 # the application user will probably be called app_davical (and
 # the administrative user will be called dba_davical) but in
