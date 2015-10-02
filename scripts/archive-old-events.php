@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 /**
-* Script to refresh the pending alarm times for the next alarm instance.
+* Script to move old events into an archive collection
 *
 * @package   davical
 * @subpackage   alarms
@@ -17,7 +17,7 @@ $_SERVER['SERVER_NAME'] = 'localhost';
 /**
 * Call with something like e.g.:
 *
-* scripts/archive-old-events.php -a archive -p karora -o P93D
+* scripts/archive-old-events.php -a archive -p karora -c calendar -o P-93D
 *
 */
 
@@ -26,7 +26,7 @@ $args->debug = false;
 $args->principal = false;
 $args->collection = false;
 
-$args->older = 'P190D';
+$args->older = 'P-190D';
 $args->delete = false;
 $args->archive_suffix = 'archive';
 $debugging = null;
@@ -113,7 +113,8 @@ $recent->modify('P-6D');
 $archive_before_date = new RepeatRuleDateTime(gmdate('Ymd\THis\Z'));
 $archive_before_date->modify( $args->older );
 if ( $archive_before_date > $recent ) {
-  echo "Cowardly refusing to archive events before "+$archive_before_date->format('Y-m-d H:i:s') + "\n";
+  echo "Cowardly refusing to archive events before " . $archive_before_date->format('Y-m-d H:i:s') . "\n";
+  exit(1);
 }
 
 
