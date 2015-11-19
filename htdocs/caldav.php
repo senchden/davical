@@ -8,17 +8,7 @@
 * @copyright Catalyst .Net Ltd, Morphoss Ltd <http://www.morphoss.com/>
 * @license   http://gnu.org/copyleft/gpl.html GNU GPL v2 or later
 */
-if ( isset($_SERVER['PATH_INFO']) && preg_match( '{^(/favicon.ico|davical.css|(images|js|css)/.+)$}', $_SERVER['PATH_INFO'], $matches ) ) {
-  $filename = $_SERVER['DOCUMENT_ROOT'] . preg_replace('{(\.\.|\\\\)}', '', $matches[1]);
-  $fh = @fopen($matches[1],'r');
-  if ( ! $fh ) {
-    @header( sprintf("HTTP/1.1 %d %s", 404, 'Not found') );
-  }
-  else {
-    fpassthru($fh);
-  }
-  @ob_flush(); exit(0);
-}
+
 require_once('./always.php');
 
 if ( isset($_SERVER['PATH_INFO']) && preg_match( '{^/\.well-known/(.+)$}', $_SERVER['PATH_INFO'], $matches ) ) {
