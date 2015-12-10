@@ -1,11 +1,12 @@
 DAViCal CalDAV Server by Andrew McMillan.
 
-For documentation you are best advised to visit the sourceforge pages
-or to start searching from http://davical.org/ and see where you end
-up.
+For documentation you are best advised to visit the DAViCal
+website at http://davical.org/ or search our general mailing
+list at https://lists.sourceforge.net/mailman/listinfo/davical-general
 
 There's lots of useful information at http://wiki.davical.org/ as well,
-and if you want access to update that contact us on IRC or send an e-mail
+and if you want access to update that contact us on IRC (#davical on OFTC,
+be patient and stick around for a while) or send an e-mail
 to <wiki-access@davical.org>.
 
 Good luck!
