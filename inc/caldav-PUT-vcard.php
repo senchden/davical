@@ -103,8 +103,7 @@ elseif( !preg_match('{^\d{8}T\d{6}Z$}', $last_modified) ) {
   $vcard->ClearProperties('REV');
   $vcard->AddProperty('REV',$last_modified);
 }
-
-$rendered_card = $vcard->Render(); 
+$rendered_card = $vcard->Render();
 $etag = md5($rendered_card);
 $params = array(
     ':user_no' => $user_no,

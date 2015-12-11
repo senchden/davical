@@ -93,7 +93,9 @@ CREATE TABLE addressbook_address_adr (
       $type = $adr->GetParameterValue('TYPE');
       if ( is_array($type) ) $type = implode('~|~',$type);
       $params[':type'] = $type;
-      $address = explode(';',$adr->Value());
+      //explode on ; that is not preceeded by an \
+      $address = preg_split( '{(?<!\\\\);}', $adr->Value());
+      //$address = explode(';',$adr->Value());
 
       // We use @ to suppress the warnings here, because the NULL in the database suits us well.
       @$params[':box_no']   = $address[0];
