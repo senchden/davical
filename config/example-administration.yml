@@ -8,6 +8,9 @@
 #
 #  This file should be called 'administration.yml' in the config directory.
 #
+#  Make sure field-separating whitespace does not contain any ^I (tab)
+#  characters. The YAML parser will trip over them ungracefully.
+#
 
 ##
 ## The database username for connecting with sufficient rights to create
