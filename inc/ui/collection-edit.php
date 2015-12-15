@@ -339,7 +339,7 @@ label.privilege {
  <tr> <th class="right">$prompt_addressbook:</th>      <td class="left">##is_addressbook.checkbox##</td> </tr>
  <tr> <th class="right">$prompt_privileges:</th><td class="left">##use_default_privs.checkbox## &nbsp; &nbsp; &nbsp;
  <div id="privileges_settings">
-<input type="button" value="$btn_all" class="submit" title="$btn_all_title" onclick="toggle_privileges('default_privileges', 'all', 'editor_1');">
+<input type="button" value="$btn_all" class="submit" title="$btn_all_title" onclick="toggle_privileges('default_privileges', 'all', 'form_editor_1');">
 <input type="button" value="$btn_rw" class="submit" title="$btn_rw_title"
  onclick="toggle_privileges('default_privileges', 'read', 'write-properties', 'write-content', 'bind', 'unbind', 'read-free-busy',
                             'read-current-user-privilege-set', 'schedule-deliver-invite', 'schedule-deliver-reply', 'schedule-query-freebusy',
