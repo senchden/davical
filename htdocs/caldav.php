@@ -91,7 +91,7 @@ if ( ! ($request->IsPrincipal() || isset($request->collection) || $request->meth
     @ob_flush(); exit(0);
   }
 }
-param_to_global('add_member','.*');
+param_to_global('add_member', '.*', 'add-member');
 $add_member = isset($add_member);
 
 switch ( $request->method ) {
