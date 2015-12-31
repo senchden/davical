@@ -168,6 +168,7 @@ function principal_editor() {
   $editor->SetLookup( 'locale', 'SELECT \'\', \''.translate("*** Default Locale ***").'\' UNION SELECT locale, locale_name_locale FROM supported_locales ORDER BY 1 ASC' );
   $editor->AddAttribute( 'locale', 'title', translate("The preferred language for this person.") );
   $editor->AddAttribute( 'fullname', 'title', translate("The full name for this person, group or other type of principal.") );
+  $editor->AddAttribute( 'email', 'title', translate("The email address identifies principals when processing invitations and freebusy lookups. It should be set to a unique value.") );
   $editor->SetWhere( 'principal_id='.$id );
   
   $editor->AddField('is_admin', 'EXISTS( SELECT 1 FROM role_member WHERE role_no = 1 AND role_member.user_no = dav_principal.user_no )' );
@@ -297,7 +298,15 @@ function principal_editor() {
     if ( isset($id) )
       $delete_principal_button = '<a href="'.$c->base_url . '/admin.php?action=edit&t=principal&subaction=delete_principal&id='.$id.'" class="submit">' . translate("Delete Principal") . '</a>';
   }
-  
+
+  $email_unique = '';
+  $qry = new AwlQuery('SELECT user_no FROM usr WHERE lower(usr.email) = lower(:email)',
+                        array( ':email' => $editor->Value('email') ));
+  $qry->Exec('principal-edit', __LINE__, __FILE__);
+  if ($qry->rows() > 1 ) {
+      $email_unique = ' <b style="color:red;">' . translate('Attention: email address not unique, scheduling may not work!') . '</b>';
+  }
+
   $id = $editor->Value('principal_id');
   $template = <<<EOTEMPLATE
 ##form##
@@ -359,7 +368,7 @@ label.privilege {
  <tr> <th class="right">$prompt_password_1:</th>  <td class="left">##newpass1.password.$pwstars##</td> </tr>
  <tr> <th class="right">$prompt_password_2:</th>  <td class="left">##newpass2.password.$pwstars##</td> </tr>
  <tr> <th class="right">$prompt_fullname:</th>    <td class="left">##fullname.input.50##</td> </tr>
- <tr> <th class="right">$prompt_email:</th>       <td class="left">##email.input.50##</td> </tr>
+ <tr> <th class="right">$prompt_email:</th>       <td class="left">##email.input.50##$email_unique</td> </tr>
  <tr> <th class="right">$prompt_locale:</th>      <td class="left">##locale.select##</td> </tr>
  <tr> <th class="right">$prompt_date_format:</th> <td class="left">##date_format_type.select##</td> </tr>
  <tr> <th class="right">$prompt_type:</th>        <td class="left">##type_id.select##</td> </tr>
