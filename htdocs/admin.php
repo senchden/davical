@@ -10,6 +10,10 @@ require_once('AwlQuery.php');
 param_to_global('action', '{(edit|browse)}', 'action');
 param_to_global('component', '{[a-z0-9-_]+}', 't');
 param_to_global('id', '{[a-z0-9-_]+}', 'id');
+if ( ! $action || ! $component ) {
+    header('Location: index.php');
+    @ob_flush(); exit(0);
+}
 
 $c->stylesheets[] = 'css/'.$action.'.css';
 if ( $c->enable_row_linking ) {

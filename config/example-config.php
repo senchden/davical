@@ -65,6 +65,13 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 $c->admin_email ='calendar-admin@example.com';
 
 /**
+* Set this to 'true' in order to restrict the /setup.php page (which contains
+* the entire phpinfo() output) to 'Administrator' users.
+* Default: false
+*/
+// $c->restrict_setup_to_admin = true;
+
+/**
 * The "enable_row_linking" option controls whether javascript is used
 * to make the entire row clickable in browse lists in the administration
 * pages.  Since this doesn't work in Konqueror you may want to set this
