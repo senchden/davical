@@ -10,11 +10,9 @@
 *****************************/
 
 /**
-* Ex : $c->pg_connect[] = 'dbname=davical port=5432 user=general'
-* The application will attempt to
-* connect to the database, successively applying connection parameters from
-* the array in $c->pg_connect.
-* used in the web interface but also the caldav Server
+* Database connection: DAViCal will attempt to connect to the database by
+* successively applying connection parameters from the array in
+* $c->pg_connect.
 */
 $c->pg_connect[] = "dbname=davical user=davical_app";
 // $c->pg_connect[] = "dbname=davical user=davical_app port=5433 host=somehost password=mypass";
@@ -25,32 +23,33 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 *****************************/
 
 /**
-* default : DAViCal CalDAV Server
-* Is used to specify the authentication realm of the server, as well as
-* being used as a name to display in various places.
+* "system_name" is used to specify the authentication realm of the server, as
+* well as being used as a name to display in various places.
+* Default: DAViCal CalDAV Server
 */
 // $c->system_name = "DAViCal CalDAV Server";
 
 /**
-* default: true
-* If true, then VTODO requested  from someone other than the admmin or owner
-* of a calendar will not get any answer.  Often these todo are only relevant
-* to the owner, but in some shared calendar situations they might not be in
-* which case you should set this to false.
+* If "hide_TODO" is true, then VTODO requested from someone other than the
+* admin or owner of a calendar will not get an answer. Often these todo are
+* only relevant to the owner, but in some shared calendar situations they
+* might not be in which case you should set this to false.
+* Default: true
 */
 // $c->hide_TODO = false;
 
 /**
-* default: true
-* If true, then calendars accessed via WebDAV will only be readonly.  Any
-* changes to them must be applied via CalDAV.
+* If "readonly_webdav_collections" is true, then calendars accessed via WebDAV
+* will be read-only. Any changes to them must be applied via CalDAV.
 *
 * You may want to set this to false during your initial setup to make it
 * easier for people to PUT whole calendars as part of the conversion of
-* their data.  After this it is recommended to turn it off so that clients
+* their data. After this, it is recommended to turn it off so that clients
 * which have been misconfigured are readily identifiable.
+* Default: true
 */
 // $c->readonly_webdav_collections = false;
+
 
 /***************************************************************************
 *                                                                          *
@@ -58,22 +57,20 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 *                                                                          *
 ***************************************************************************/
 /**
-* Displayed on the login page to indicate who you should ask if you have
-* problems logging on. Also for the "From" of the email sent when a user
-* has lost his password and click on the login page
-* on "Help! I've forgotten my password"
+* Address displayed on the login page to indicate who you should ask if you
+* have problems logging on. Also for the "From" header of the email sent when
+* a user has lost his password and clicks on the "Help! I've forgotten my
+* password" on the login page.
 */
 $c->admin_email ='calendar-admin@example.com';
 
 /**
-* default=true
-* if true the admin web interface will
-* have link on name to access details
-* <p>The "enable_row_linking" option controls whether javascript is used
+* The "enable_row_linking" option controls whether javascript is used
 * to make the entire row clickable in browse lists in the administration
 * pages.  Since this doesn't work in Konqueror you may want to set this
 * to false if you expect people to be using Konqueror with the DAViCal
-* administration pages.</p>
+* administration pages.
+* Default=true
 */
 // $c->enable_row_linking = true;
 
@@ -82,7 +79,7 @@ $c->admin_email ='calendar-admin@example.com';
 * to the root directory.  Used for overriding display styles in the admin
 * interface.
 * e.g. : $c->local_styles = array('/css/my.css');
-**/
+*/
 // $c->local_styles = array();
 // $c->print_styles = array();
 
@@ -102,15 +99,14 @@ $c->admin_email ='calendar-admin@example.com';
 * creation of calendar collections.
 * Default: true
 */
-$c->collections_always_exist = false;
+// $c->collections_always_exist = false;
 
 /**
 * The name of a user's "home" calendar. This will be created for each
 * new user.
-* Default: 'home'
+* Default: 'calendar'
 */
-// $c->home_calendar_name = 'home';
-
+// $c->home_calendar_name = 'calendar';
 
 /**
 * An array of groups / permissions which should be automatically added
@@ -124,7 +120,6 @@ $c->collections_always_exist = false;
 */
 // $c->default_relationships = array();
 
-
 /**
 * An array of the privileges which will be configured for a user by default
 * from the possible set of real privileges:
@@ -137,7 +132,6 @@ $c->collections_always_exist = false;
 *   'write', 'schedule-deliver', 'schedule-send', 'all'
 */
 // $c->default_privileges = array('read-free-busy', 'schedule-query-freebusy');
-
 
 /**
 * An array of fields on the usr record which should be set to specific
@@ -169,7 +163,7 @@ $c->collections_always_exist = false;
 * cal._domainkey.example.com. 86400 IN   TXT     "k=rsa\; t=s\; p=PUBKEY"
 * Default: false
 */
-//$c->enable_scheduling = true;
+// $c->enable_scheduling = true;
 
 /**
 * Domain Key domain to use when signing outbound scheduling requests, this 
@@ -178,7 +172,7 @@ $c->collections_always_exist = false;
 * TODO: enable domain/signing by per user keys, patches welcome.
 * Default: none
 */
-//$c->scheduling_dkim_domain = '';
+// $c->scheduling_dkim_domain = '';
 
 /**
 * Domain Key selector to use when signing outbound scheduling requests.
@@ -186,39 +180,33 @@ $c->collections_always_exist = false;
 * TODO: enable selectors/signing by per user keys, patches welcome.
 * Default: 'cal'
 */
-//$c->scheduling_dkim_selector = 'cal';
+// $c->scheduling_dkim_selector = 'cal';
 
 /*
 * Domain Key private key 
 * Required if you want to enable outbound remote server scheduling
 * Default: none
 */  
-/*
-$c->schedule_private_key = 'PRIVATE-KEY-BASE-64-DATA';
-*/
+// $c->schedule_private_key = 'PRIVATE-KEY-BASE-64-DATA';
 
 /*
 * External subscription (BIND) minimum refresh interval
 * Required if you want to enable remote binding ( webcal subscriptions )
 * Default: none
 */  
-/*
-$c->external_refresh = 60;
-*/
-
+// $c->external_refresh = 60;
 
 /**
- * The "support_obsolete_free_busy_property" value controls whether,
- * during a PROPFIND, the obsolete Scheduling property "calendar-free-busy-set"
- * is returned. Set the value to true to support the property only if your
- * client requires it, however note that PROPFIND performance may be
- * adversely affected if you do so.
- * Introduced in DAViCal version 1.1.4 inm support of Issue #31 Database
- * Performance Improvements.
- * Default: false
- */
-$c->support_obsolete_free_busy_property = false;
-
+* The "support_obsolete_free_busy_property" value controls whether,
+* during a PROPFIND, the obsolete Scheduling property "calendar-free-busy-set"
+* is returned. Set the value to true to support the property only if your
+* client requires it, however note that PROPFIND performance may be
+* adversely affected if you do so.
+* Introduced in DAViCal version 1.1.4 in support of Issue #31 Database
+* Performance Improvements.
+* Default: false
+*/
+// $c->support_obsolete_free_busy_property = false;
 
 
 /***************************************************************************
@@ -273,8 +261,8 @@ $c->support_obsolete_free_busy_property = false;
 /*********** LDAP hook **********/
 /********************************/
 /*
- * For Active Directory go down to the next example.
- */
+* For Active Directory go down to the next example.
+*/
 
 //$c->authenticate_hook['call'] = 'LDAP_check';
 //$c->authenticate_hook['config'] = array(
@@ -326,11 +314,11 @@ $c->support_obsolete_free_busy_property = false;
 //include('drivers_ldap.php');
 
 /*
- * Use the following LDAP example if you are using Active Directory
- *
- * You will need to  change host, passDN and DOMAIN in bindDN
- * and baseDNUsers.
- */
+* Use the following LDAP example if you are using Active Directory
+*
+* You will need to  change host, passDN and DOMAIN in bindDN
+* and baseDNUsers.
+*/
 //$c->authenticate_hook['call'] = 'LDAP_check';
 //$c->authenticate_hook['config'] = array(
 //    'host'              => 'ldap://ldap.example.net',
@@ -363,8 +351,8 @@ $c->support_obsolete_free_busy_property = false;
 //include('drivers_squid_pam.php');
 
 /**
- * Authentication against PAM/system password database using pwauth.
- */
+* Authentication against PAM/system password database using pwauth.
+*/
 //$c->authenticate_hook = array('call' => 'PWAUTH_PAM_check',
 //			      'config' => array('path' => '/usr/sbin/pwauth',
 //						'email_base' => 'example.com'));
@@ -386,7 +374,7 @@ $c->support_obsolete_free_busy_property = false;
 *
 * People interested in providing new translations are directed to the Wiki:
 *   http://wiki.davical.org/w/Translating_DAViCal
-**/
+*/
 // $c->default_locale = "en_NZ";
 
 /**
@@ -429,14 +417,14 @@ $c->support_obsolete_free_busy_property = false;
 ***************************************************************************/
 
 /*
- * This enable XMPP PubSub push notifications to clients that request them.
- * N.B. this will publish urls for ALL updates and does NOT restrict
- * subscription permissions on the jabber server!  That means anyone with
- * read access to the pubsub tree of your jabber server can watch for updates,
- * they will only see URL's to the updated entries not the calendar data.
- *
- * Only tested with ejabberd 2.0.x
- */
+* This enable XMPP PubSub push notifications to clients that request them.
+* N.B. this will publish urls for ALL updates and does NOT restrict
+* subscription permissions on the jabber server!  That means anyone with
+* read access to the pubsub tree of your jabber server can watch for updates,
+* they will only see URL's to the updated entries not the calendar data.
+*
+* Only tested with ejabberd 2.0.x
+*/
 
 // $c->notifications_server = array( 'host' => $_SERVER['SERVER_NAME'],      // jabber server hostname
 //                                  'jid'  => 'user@example.com',           // user(JID) to login/ publish as                                  'password' => '',                       // password for above account
