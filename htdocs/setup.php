@@ -171,14 +171,13 @@ $loaded_extensions = array_flip(get_loaded_extensions());
 function do_error( $errormessage ) {
   // We can't translate this because we're testing these things even before 
   // the translation interface is available...
-  printf("<p class='error'>%s</p>", $errormessage );  
+  printf("<p class='error'><br/>%s</p>", $errormessage );
 }
 
 if ( !check_gettext()->getOK() )   do_error("The GNU 'gettext' extension for PHP is not available.");
 if ( !check_pgsql()->getOK() )     do_error("PHP 'pgsql' functions are not available");
 if ( !check_pdo()->getOK() )       do_error("PHP 'PDO' module is not available");
 if ( !check_pdo_pgsql()->getOK() ) do_error("The PDO drivers for PostgreSQL are not available");
-if ( !check_database_connection()->getOK() ) do_error("Unable to connect to database");
 if ( !check_iconv()->getOK() )     do_error("The 'iconv' extension for PHP is not available");
 
 function get_phpinfo() {
