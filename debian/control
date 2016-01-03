@@ -6,7 +6,7 @@ Uploaders: Andrew McMillan <awm@debian.org>,
  Florian Schlichting <fsfs@debian.org>
 Standards-Version: 3.9.6
 Build-Depends: debhelper (>= 9),
- libawl-php (>= 0.55-1~), libawl-php (<< 0.56),
+ libawl-php (>= 0.56-1~), libawl-php (<< 0.57),
  gettext,
  php5-cli,
  rst2pdf
@@ -17,7 +17,7 @@ Homepage: http://www.davical.org/
 Package: davical
 Architecture: all
 Depends: ${misc:Depends}, ${perl:Depends},
- libawl-php (>= 0.55-1~), libawl-php (<< 0.56),
+ libawl-php (>= 0.56-1~), libawl-php (<< 0.57),
  libdbd-pg-perl,
  libyaml-perl,
  php5,

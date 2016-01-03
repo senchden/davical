@@ -1,7 +1,11 @@
-davical (1.1.4~pre-1) UNRELEASED; urgency=medium
+davical (1.1.4-1~git) UNRELEASED; urgency=medium
 
+  * New upstream release (closes: ...)
   * Ship all config examples and user documentation, but remove website
     references since it was moved to its own git repository.
+  * Don't run make / make built-docs during package build to avoid nasty
+    surprises; files should be up-to-date in git anyway
+  * Purge /etc/davical/.keep directory 
 
  -- Florian Schlichting <fsfs@debian.org>  Tue, 16 Dec 2014 22:43:07 +0100
 

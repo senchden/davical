@@ -204,7 +204,7 @@ if ( function_exists('awl_set_locale') ) {
 */
 $c->code_version = 0;
 $c->want_awl_version = '0.56';
-$c->version_string = '1.1.3.1'; // The actual version # is replaced into that during the build /release process
+$c->version_string = '1.1.4'; // The actual version # is replaced into that during the build /release process
 if ( isset($c->version_string) && preg_match( '/(\d+)\.(\d+)\.(\d+)(.*)/', $c->version_string, $matches) ) {
   $c->code_major = $matches[1];
   $c->code_minor = $matches[2];
@@ -221,7 +221,7 @@ $_SERVER['SERVER_NAME'] = $c->domain_name;
 
 require_once('AwlQuery.php');
 
-$c->want_dbversion = array(1,2,11);
+$c->want_dbversion = array(1,2,12);
 $c->schema_version = 0;
 $qry = new AwlQuery( 'SELECT schema_major, schema_minor, schema_patch FROM awl_db_revision ORDER BY schema_id DESC LIMIT 1;' );
 if ( $qry->Exec('always',__LINE__,__FILE__) && $row = $qry->Fetch() ) {
