@@ -7,9 +7,11 @@ PACKAGE=::package::
 
 [ -n "${DEBUG}" ] && echo "PostRM Parameters: $@"
 
-case $1 in
-  purge)
-    ;;
-esac
+dpkg-maintscript-helper rm_conffile /etc/davical/.keep/keepme 1.1.4-1~ davical -- "$@"
 
 #DEBHELPER#
+
+# remove leftover /etc/davical/.keep directory, if empty (cf. #584185)
+[ -d /etc/davical/.keep ] && rmdir --ignore-fail-on-non-empty /etc/davical/.keep
+
+exit 0
