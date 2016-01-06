@@ -223,7 +223,7 @@ function handle_schedule_request( $ical ) {
     dbg_error_log( "PUT", "Delivering to %s", $attendee_email );
 
     $attendee_principal = new DAVPrincipal ( array ('email'=>$attendee_email, 'options'=> array ( 'allow_by_email' => true ) ) );
-    if ( $attendee_principal == false ){
+    if ( ! $attendee_principal->Exists() ){
       $attendee->SetParameterValue ('SCHEDULE-STATUS','5.3;No scheduling support for user');
       continue;
     }
@@ -415,7 +415,7 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
     // attendees) should remain unmodified. Therefore, we have to make $schedule_original
     // and $schedule_request be initialized by each attendee's object here.
     $attendee_principal = new DAVPrincipal ( array ('email'=>$email, 'options'=> array ( 'allow_by_email' => true ) ) );
-    if ( $attendee_principal == false ){
+    if ( ! $attendee_principal->Exists() ){
       dbg_error_log( 'PUT', 'Could not find attendee %s', $email);
       continue;
     }
