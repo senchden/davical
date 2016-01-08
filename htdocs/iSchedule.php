@@ -1,4 +1,12 @@
 <?php
+/**
+*
+* @package   iSchedule administration helper.
+* @subpackage   iSchedule
+* @author    Andrew McMillan <andrew@morphoss.com>
+* @copyright Catalyst .Net Ltd, Morphoss Ltd <http://www.morphoss.com/>
+* @license   http://gnu.org/copyleft/gpl.html GNU GPL v2 or later
+*/
 
 include("./always.php");
 include("DAViCalSession.php");

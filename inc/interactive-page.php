@@ -27,16 +27,17 @@ $user_menu->AddOption(translate('View My Details'),$c->base_url.'/admin.php?acti
 $user_menu->AddOption(translate('List Users'),$c->base_url.'/admin.php?action=browse&t=principal&type=1');
 $user_menu->AddOption(translate('List Resources'),$c->base_url.'/admin.php?action=browse&t=principal&type=2');
 $user_menu->AddOption(translate('List Groups'),$c->base_url.'/admin.php?action=browse&t=principal&type=3');
-$user_menu->AddOption(translate('List External Calendars'),$c->base_url.'/admin.php?action=browse&t=external');
 
 $admin_menu = new MenuSet('submenu', 'submenu', 'submenu_active');
 if ( $session->AllowedTo('Admin' )) {
   $admin_menu->AddOption(translate('Setup'),$c->base_url.'/setup.php',translate('Setup DAViCal') );
   $admin_menu->AddOption(translate('Upgrade Database'),$c->base_url.'/upgrade.php',translate('Upgrade DAViCal database schema') );
   $admin_menu->AddOption(translate('Tools'),$c->base_url.'/tools.php',translate('Import calendars and Synchronise LDAP.') );
+  $admin_menu->AddOption(translate('List External Calendars'),$c->base_url.'/admin.php?action=browse&t=external');
+  $admin_menu->AddOption(translate('iSchedule Configuration'),$c->base_url.'/iSchedule.php');
+
   $user_menu->AddOption(translate('Inactive Principals'),$c->base_url.'/admin.php?action=browse&t=principal&active=f');
   $user_menu->AddOption(translate('Create Principal'),$c->base_url.'/admin.php?action=edit&t=principal',translate('Create a new principal (i.e. a new user, resource or group)'));
-  $admin_menu->AddOption(translate('List External Calendars'),$c->base_url.'/admin.php?action=browse&t=external');
 }
 
 $related_menu = new MenuSet('related', 'menu', 'menu_active');
