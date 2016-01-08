@@ -1,280 +1,280 @@
 2016-01-08 Florian Schlichting <fsfs@debian.org>
 	* Update ChangeLog, add Debian bug closers
-        * add the iSchedule administration helper to the menu to give it more visibility and testing
-        * fix Thunderbird mutilating external attendees
-        * demote stack trace to regular debug logging (cf. #42)
+	* add the iSchedule administration helper to the menu to give it more visibility and testing
+	* fix Thunderbird mutilating external attendees
+	* demote stack trace to regular debug logging (cf. #42)
 
 2016-01-06 Florian Schlichting <fsfs@debian.org>
-        * Fix scheduling replies with mixed internal and external (ignored) attendees
+	* Fix scheduling replies with mixed internal and external (ignored) attendees
 
 2016-01-03 Florian Schlichting <fsfs@debian.org>
-        * prepare for 1.1.4
-        * Properly remove /etc/davical/.keep/keepme
+	* prepare for 1.1.4
+	* Properly remove /etc/davical/.keep/keepme
 
 2016-01-01 Florian Schlichting <fsfs@debian.org>
-        * remove database connection check before $c is available (closes #36)
-        * handle events started before 1900 (closes: #58) [by Benedikt
+	* remove database connection check before $c is available (closes #36)
+	* handle events started before 1900 (closes: #58) [by Benedikt
 	  Spranger]
 	* let admin.php without parameters redirect to index.php, and document
 	  restrict_setup_to_admin setting (fixes #55)
-        * minor cleanup of example-config.php
+	* minor cleanup of example-config.php
 
 2015-12-31 Florian Schlichting <fsfs@debian.org>
-        * email addresses must be unique: add a tooltip and a warning message (fixes #30)
-        * Apache 2.4 removed Order / Allow directives for new Require
-        * transform date from iOS to standart format [by Milan Medlik]
-        * Revert "add fix for the OSX Contacts.app:" [by Andrew McMillan]
-        * Support regression testing with postgres on non-default port [by
+	* email addresses must be unique: add a tooltip and a warning message (fixes #30)
+	* Apache 2.4 removed Order / Allow directives for new Require
+	* transform date from iOS to standart format [by Milan Medlik]
+	* Revert "add fix for the OSX Contacts.app:" [by Andrew McMillan]
+	* Support regression testing with postgres on non-default port [by
 	  Andrew McMillan]
 
 2015-12-16 Florian Schlichting <fsfs@debian.org>
-        * fix issue #72 - 405 error when adding a new contact from Apple's Contacts
-        * Make "Toggle all privileges" button work on all forms
+	* fix issue #72 - 405 error when adding a new contact from Apple's Contacts
+	* Make "Toggle all privileges" button work on all forms
 
 2015-12-14 Florian Schlichting <fsfs@debian.org>
-        * document that YAML hates tabs (fixes #70)
+	* document that YAML hates tabs (fixes #70)
 
 2015-12-10 Jim Fenton <fenton@bluepopcorn.net>
-        * Update required version of AWL to 0.56
+	* Update required version of AWL to 0.56
 
 2015-12-10 Florian <fsfs@debian.org>
 	* remove reference to sourceforge pages from README, add info on IRC
 	  channel and davical-general mailing list
 
 2015-11-19 Frank O. Martin <mail@frank-o-martin.de>
-        * Removed favicon.ico work around
+	* Removed favicon.ico work around
 
 2015-11-13 ClemensN <c.nuebel@gorilla-computing.de>
-        * Fixed grouped Properties naming (vcard)
+	* Fixed grouped Properties naming (vcard)
 
 2015-11-05 Cyril Giraud <cgiraud@free.fr>
-        * Add Arabic to language list.
-        * Add Slovak (Slovakia) language to language list.
-        * Add Finnish language and update for Korean.
-        * Add language selection for Korean.
+	* Add Arabic to language list.
+	* Add Slovak (Slovakia) language to language list.
+	* Add Finnish language and update for Korean.
+	* Add language selection for Korean.
 
 2015-06-25 Louis DuruflÃ© <commit@durufle.eu>
-        * HttpDateFormat is actually in AwlDBDialect
+	* HttpDateFormat is actually in AwlDBDialect
 
 2015-10-02 Florian Schlichting <fsfs@debian.org>
-        * set dav_name of imported address books to .vcf instead of .ics (fixes #39)
+	* set dav_name of imported address books to .vcf instead of .ics (fixes #39)
 	* fix default value for old events, and actually bail out if "old" is
 	  less than six days ago (fixes #49)
-        * replace a few remaining instances of the old name "rscds"
+	* replace a few remaining instances of the old name "rscds"
 	* Do not throw postgres errors when views/types/functions to be
 	  dropped do not exist (yet). Fixes #43
-        * Debian: build and ship all the docs, including the translation guide
-        * dont call make in Debian package builds (fixes #40)
-        * do not create incorrect SQL in supported_locales.sql when $lang.values file is missing
+	* Debian: build and ship all the docs, including the translation guide
+	* dont call make in Debian package builds (fixes #40)
+	* do not create incorrect SQL in supported_locales.sql when $lang.values file is missing
 
 2015-07-24 Marten Gajda <marten@dmfs.org>
-        * Fix positive PROPPATCH response message body.
+	* Fix positive PROPPATCH response message body.
 
 2015-07-09 Petr Jurášek <petr.jurasek@solnet.cz>
-        * Windows phone 8.1 sends ETag=*, see https://www.ietf.org/rfc/rfc2068.txt, chapter 14.25
+	* Windows phone 8.1 sends ETag=*, see https://www.ietf.org/rfc/rfc2068.txt, chapter 14.25
 
 2015-05-27 Marten Gajda <marten@dmfs.org>
-        * Add component parameter to content-types headers and getcontenttype properties
-        * Change the add-member parameter to add_member
+	* Add component parameter to content-types headers and getcontenttype properties
+	* Change the add-member parameter to add_member
 
 2015-05-14 Andrew Ruthven <puck@catalyst.net.nz>
-        * Allow external BIND URL to be file:///
+	* Allow external BIND URL to be file:///
 
 2015-04-22 Matthias <matthias.althaus@iserv.eu>
-        * Fixed broken .ics import function (fixes #38)
+	* Fixed broken .ics import function (fixes #38)
 
 2015-03-06 Cyril Giraud <cgiraud@free.fr>
-        * Extract translatable strings in upgrade.php + update according to Transifex translations.
+	* Extract translatable strings in upgrade.php + update according to Transifex translations.
 
 2014-12-29 Cyril Giraud <cgiraud@free.fr>
-        * Translation update for es_VE and ko_KR, thanks to Transifex contributors.
-        * Forum link update without making translators to re-translate the whole help string
+	* Translation update for es_VE and ko_KR, thanks to Transifex contributors.
+	* Forum link update without making translators to re-translate the whole help string
 
 2014-12-29 Timothy Brown <timothy.brown-1@colorado.edu>
-        * Bugfix on Basic Auth username/password split.
+	* Bugfix on Basic Auth username/password split.
 
 2014-12-16 Florian Schlichting <fsfs@debian.org>
-        * Debian: Ship all config examples and user documentation but remove website
+	* Debian: Ship all config examples and user documentation but remove website
 
 2014-10-20 Florian Schlichting <fsfs@debian.org>
-        * test for basic syntax errors in php files
-        * fix scripts/build-always.sh: AWL_VERSION is always without quotes
+	* test for basic syntax errors in php files
+	* fix scripts/build-always.sh: AWL_VERSION is always without quotes
 
 2014-12-03 Mark Davies <mark.davies@moose-beast.com>
-        * Add config value "support_obsolete_free_busy_property"
-        * First batch of database indexes
-        * Fix up Windows create-database.bat - see Issue #32.
+	* Add config value "support_obsolete_free_busy_property"
+	* First batch of database indexes
+	* Fix up Windows create-database.bat - see Issue #32.
 
 2014-11-22 Jim Fenton <fenton@bluepopcorn.net>
-        * Correct links to mailing list archives and bug report location
+	* Correct links to mailing list archives and bug report location
 
 2014-11-14 Aaron W. Swenson <aaron.w.swenson@gmail.com>
-        * Loop Over AWL Directory Candidates
+	* Loop Over AWL Directory Candidates
 
 2014-11-10 Cyril Giraud <cgiraud@free.fr>
-        * Update from Transifex.
+	* Update from Transifex.
 
 2014-11-10 Jorge López Pérez <jorge@adobo.org>
-        * Fix current-user-principal
+	* Fix current-user-principal
 
 2014-10-27 Cyril Giraud <cgiraud@free.fr>
-        * Localization update according to Transifex (Englis, French, German and Slovak at 100%).
+	* Localization update according to Transifex (Englis, French, German and Slovak at 100%).
 
 2014-10-25 Cyril Giraud <cgiraud@free.fr>
-        * Translations update from Transifex.
+	* Translations update from Transifex.
 
 2014-10-23 Jim Fenton <fenton@bluepopcorn.net>
-        * Removed website which is now in DAViCal Project/Website
+	* Removed website which is now in DAViCal Project/Website
 
 2014-10-23 Cyril Giraud <cgiraud@free.fr>
-        * Translations update according to transifex (french).
+	* Translations update according to transifex (french).
 
 2014-10-22 Cyril Giraud <cgiraud@free.fr>
-        * Issue #20: Code modification to make some strings translatable.
-        * Issue #20: setup.php and help.php fixed (to be reviewed) + translations updates.
+	* Issue #20: Code modification to make some strings translatable.
+	* Issue #20: setup.php and help.php fixed (to be reviewed) + translations updates.
 
 2014-10-12 Cyril Giraud <cgiraud@free.fr>
-        * Minor translation update.
+	* Minor translation update.
 
 2014-10-07 Florian Schlichting <fsfs@debian.org>
-        * release 1.1.3.1, fixing a critical typo in htdocs/always.php :-(
-        * release 1.1.3
-        * Add a README.Debian explaining the necessary steps for a basic installation
-        * Add php5-ldap as Suggests (LP: #479378)
-        * exclude debian/ from tarball
+	* release 1.1.3.1, fixing a critical typo in htdocs/always.php :-(
+	* release 1.1.3
+	* Add a README.Debian explaining the necessary steps for a basic installation
+	* Add php5-ldap as Suggests (LP: #479378)
+	* exclude debian/ from tarball
 
 2014-10-06 Florian Schlichting <fsfs@debian.org>
-        * Bump dependency on awl to 0.55
-        * Declare compliance with Debian Policy 3.9.6
-        * document regression testing setup
+	* Bump dependency on awl to 0.55
+	* Declare compliance with Debian Policy 3.9.6
+	* document regression testing setup
 
 2014-09-25 Kribbio <kribbio.dk@gmail.com>
-        * Create array Organizer for merged with array Attendee on
+	* Create array Organizer for merged with array Attendee on
 	  'handle_schedule_reply' function.
-        * Name property is 'schedule-inbox' and not 'schedule_inbox'
+	* Name property is 'schedule-inbox' and not 'schedule_inbox'
 
 2014-09-24 Andrew Ruthven <andrew@etc.gen.nz>
-        * Closes #25 - Remove a duplicate string.
+	* Closes #25 - Remove a duplicate string.
 
 2014-09-22 Ján Máté <jan.mate@inf-it.com>
 	* fix for debian bug #740827 - ensure that the timestamp inserted into
 	  the INSERT query is valid
 
 2014-09-22 Cyril Giraud <cgiraud@free.fr>
-        * Translations update from Transifex.
+	* Translations update from Transifex.
 
 2014-09-14 Florian Schlichting <fsfs@debian.org>
-        * Declare compliance with Debian Policy 3.9.5 and update d/changelog
-        * Switch d/copyright to copyright-format 1.0, amend CREDITS from git log
-        * Add a debian/watch file
-        * Bump dh compat to level 9
-        * Add doc-base registration for api doc and website in davical-doc
+	* Declare compliance with Debian Policy 3.9.5 and update d/changelog
+	* Switch d/copyright to copyright-format 1.0, amend CREDITS from git log
+	* Add a debian/watch file
+	* Bump dh compat to level 9
+	* Add doc-base registration for api doc and website in davical-doc
 	* debian/control: update and sort dependencies, add php5, php5-cli
 	  (closes: #717043), php5-curl to Recommends (closes: #656390)
-        * Clean up duplicate files (symlink identical files in api documentation)
-        * Use short-form debian/rules and fix source format declaration (closes: #730941)
-        * Takeover for the Davical Development Team
+	* Clean up duplicate files (symlink identical files in api documentation)
+	* Use short-form debian/rules and fix source format declaration (closes: #730941)
+	* Takeover for the Davical Development Team
 
 2014-09-02 “Paul <“p.kallnbach@gorilla-computing.de”>
-        * Remove quoted SQL language identifiers
+	* Remove quoted SQL language identifiers
 
 2014-07-18 Jim Fenton <fenton@bluepopcorn.net>
-        * Update downloading information
+	* Update downloading information
 
 2014-07-02 Jim Fenton <fenton@bluepopcorn.net>
-        * Removed PayPal donation request and Flattr button
+	* Removed PayPal donation request and Flattr button
 
 2014-06-23 “Paul <“p.kallnbach@gorilla-computing.de”>
-        * Fixed fetching new external resources on BIND
-        * inc/drivers_ldap: fix 'Undefined variable'
-        * CardDAV Query Report
-        * Support multiple text-match elements within a filter query.
-        * Call log_caldav_action for VCARD PUT requests.
-        * Support uniqueMember with DN for user names.
-        * Added check to ensure email field does not get a double extension.
+	* Fixed fetching new external resources on BIND
+	* inc/drivers_ldap: fix 'Undefined variable'
+	* CardDAV Query Report
+	* Support multiple text-match elements within a filter query.
+	* Call log_caldav_action for VCARD PUT requests.
+	* Support uniqueMember with DN for user names.
+	* Added check to ensure email field does not get a double extension.
 
 2014-06-13 Jim Fenton <fenton@bluepopcorn.net>
-        * Adjust copyright; remove broken website footer beacon
+	* Adjust copyright; remove broken website footer beacon
 
 2014-06-12 Ján Máté <jan.mate@inf-it.com>
-        * added network timeout option for LDAP (thanks Sebastian Kotthoff)
+	* added network timeout option for LDAP (thanks Sebastian Kotthoff)
 
 2014-06-11 Cyril Giraud <cgiraud@free.fr>
-        * Translation updates and new languages.
+	* Translation updates and new languages.
 
 2014-06-07 Jim Fenton <fenton@bluepopcorn.net>
-        * Updated home page with updated information on support structure
+	* Updated home page with updated information on support structure
 
 2014-05-14 Ján Máté <jan.mate@inf-it.com>
-        * added $c->disable_caldav_proxy_propfind_collections option 
-        * added $c->hide_bound configuration option
-        * added functions for regex comparison
-        * various scheduling related fixes (there are still few remaining bugs)
-        * expand-property repord - prevent infinite recursion
-        * various scheduling related fixes (there are still few remaining bugs)
+	* added $c->disable_caldav_proxy_propfind_collections option 
+	* added $c->hide_bound configuration option
+	* added functions for regex comparison
+	* various scheduling related fixes (there are still few remaining bugs)
+	* expand-property repord - prevent infinite recursion
+	* various scheduling related fixes (there are still few remaining bugs)
 
 2014-04-27 Ján Máté <jan.mate@inf-it.com>
-        * fixed uninitialized principal object for calendar-proxy-* queries
+	* fixed uninitialized principal object for calendar-proxy-* queries
 
 2014-04-07 Ján Máté <jan.mate@inf-it.com>
-        * Awl interface related changes (WritableCollection.php)
-        * comment out lines related to external invitation (the Email class is still undefined)
-        * awl interface related changes (schedule-functions.php)
+	* Awl interface related changes (WritableCollection.php)
+	* comment out lines related to external invitation (the Email class is still undefined)
+	* awl interface related changes (schedule-functions.php)
 
 2014-03-25 Ján Máté <jan.mate@inf-it.com>
-        * fixed missing semicolons in drivers_ldap.php
+	* fixed missing semicolons in drivers_ldap.php
 
 2014-03-24 Ján Máté <jan.mate@inf-it.com>
-        * fixed masking of confidential event components
+	* fixed masking of confidential event components
 
 2013-10-15 Andrew McMillan <andrew@morphoss.com>
-        * Improve regression tests
-        * Change to read all calendars and then discard inaccessible ones
+	* Improve regression tests
+	* Change to read all calendars and then discard inaccessible ones
 
 2013-09-27 Andrew McMillan <andrew@morphoss.com>
-        * Minor restructuring of caldav-REPORT
+	* Minor restructuring of caldav-REPORT
 
 2013-09-26 Andrew McMillan <andrew@morphoss.com>
-        * Changes to VCALENDAR content due to parser / renderer changes.
-        * Changes to sending of DAV header.
-        * More aggressively set timezone for regression testing.
-        * Transifex updates
-        * Fixing and debugging (freebusy, RRule)
-        * The SQL date formatting constants have moved.
-        * We will add a setting to disable the DAV header on non-OPTIONS requests.
-        * Set the default timezone to the database as well as for PHP.
+	* Changes to VCALENDAR content due to parser / renderer changes.
+	* Changes to sending of DAV header.
+	* More aggressively set timezone for regression testing.
+	* Transifex updates
+	* Fixing and debugging (freebusy, RRule)
+	* The SQL date formatting constants have moved.
+	* We will add a setting to disable the DAV header on non-OPTIONS requests.
+	* Set the default timezone to the database as well as for PHP.
 
 2013-09-24 Andrew McMillan <andrew@morphoss.com>
-        * Freebusy should use vComponent rather than the deprecated iCalComponent
-        * Force consistent result ordering.
-        * Results changed for new VXXXXX parser.
-        * Add options to do colourized, side-by-side & meld reviewing of results.
-        * Fix deprecated warning.
+	* Freebusy should use vComponent rather than the deprecated iCalComponent
+	* Force consistent result ordering.
+	* Results changed for new VXXXXX parser.
+	* Add options to do colourized, side-by-side & meld reviewing of results.
+	* Fix deprecated warning.
 
 2013-09-20 Ján Máté <jan.mate@inf-it.com>
-        * fix for $c->hide_TODO processing and user-agent extension
-        * fix of major todo synchronization issue if $c->hide_older_than option is set
-        * fix to rename/delete the collection properties during the collection renaming/deleting
-        * Extend $c->default_collections - adding 'calendar_components' and 'default_properties'
-        * Prevent processing of collections from inactive principals
+	* fix for $c->hide_TODO processing and user-agent extension
+	* fix of major todo synchronization issue if $c->hide_older_than option is set
+	* fix to rename/delete the collection properties during the collection renaming/deleting
+	* Extend $c->default_collections - adding 'calendar_components' and 'default_properties'
+	* Prevent processing of collections from inactive principals
 
 2013-09-19 Matthias Beyer <matthias@ib-fb.de>
-        * Added dbg_error_log() calls to the ldap driver
-        * Instance caching added
-        * Only set the cached instance if driver is valid
+	* Added dbg_error_log() calls to the ldap driver
+	* Instance caching added
+	* Only set the cached instance if driver is valid
 
 2013-09-02 Andrew McMillan <andrew@morphoss.com>
-        * Changes to default supported-component-set.
-        * ETag/path changes due to regression.host changes.
+	* Changes to default supported-component-set.
+	* ETag/path changes due to regression.host changes.
 
 2013-05-28 Matthias <matthias.althaus@iserv.eu>
-        * Fixed schedule reply handling for missing organizer
+	* Fixed schedule reply handling for missing organizer
 
 2013-04-21 Jason Alavaliant <alavaliant@gmail.com>
-        * fix the append box when importing collections
+	* fix the append box when importing collections
 	* fix for CLASS attribute problem (CONFIDENTIAL value) and invalid
 	  processing of ->hide_alarm configuration option:
-        * add fix for the OSX Contacts.app:
+	* add fix for the OSX Contacts.app:
 
 2013-03-25  Christoph Anton Mitterer <mail@christoph.anton.mitterer.name>
 	* In places where the CGI variable REMOTE_USER is read, support
@@ -288,7 +288,7 @@
 	  defined by RFC 3875 Section 4.1.1.
 
 2013-03-22 fbiete@gmail.com <fbiete@gmail.com>
-        * CardDAV support for search contains, starts-with, ends-with, equals
+	* CardDAV support for search contains, starts-with, ends-with, equals
 
 2013-03-21  Christoph Anton Mitterer <mail@christoph.anton.mitterer.name>
 	* Changed the pathnames of the debug files to be a bit more FHS
@@ -1932,8 +1932,8 @@
 
 2009-04-17  Andrew McMillan  <andrew@morphoss.com>
 
-        * Added support for publicly_readable attribute of collection
-          when accessing a /public.php/user/collection/ path.
+	* Added support for publicly_readable attribute of collection
+	  when accessing a /public.php/user/collection/ path.
 
 2009-04-11  Andrew McMillan <andrew@morphoss.com>
 
