@@ -1458,7 +1458,7 @@ EOQRY;
 
       case 'dav-data':
         if ( !isset($this->resource) ) $this->FetchResource();
-        trace_bug("Exists ".($this->exists?"true":"false"));
+        dbg_error_log( 'DAVResource', ':GetProperty: dav-data: fetched resource does%s exist.', ($this->exists?'':' not') );
         return $this->resource->caldav_data;
         break;
         
