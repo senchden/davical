@@ -608,19 +608,19 @@ function do_scheduling_requests( vCalendar $resource, $create, $old_data = null 
       $remote = new iSchedule ();
       $answer = $remote->sendRequest ( $email, 'VEVENT/REQUEST', $schedule_request->Render() );
       if ( $answer === false ) {
-        $response = "3.7;Invalid Calendar User" ;
+        $response = '3.7'; // Invalid Calendar User: iSchedule request failed or DKIM not configured
       }
       else {
         foreach ( $answer as $a ) // should only be one element in array
         {
           if ( $a === false ) {
-            $response = "3.7;Invalid Calendar User" ;
+            $response = '3.7'; // Invalid Calendar User: weird reply from remote server
           }
           elseif ( substr( $a, 0, 1 ) >= 1 ) {
-            $response = $a ;
+            $response = $a; // NOTE: this may need to be limited to the reponse code
           }
           else {
-            $response = "2.0;Success" ;
+            $response = '2.0'; // Success
           }
         }
       }
