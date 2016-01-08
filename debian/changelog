@@ -1,6 +1,6 @@
 davical (1.1.4-1~git) UNRELEASED; urgency=medium
 
-  * New upstream release (closes: ...)
+  * New upstream release (closes: #703128, #703294, #703287, #656020, #764915)
   * Ship all config examples and user documentation, but remove website
     references since it was moved to its own git repository.
   * Don't run make / make built-docs during package build to avoid nasty
