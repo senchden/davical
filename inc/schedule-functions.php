@@ -336,6 +336,7 @@ function deliverItipCancel( vCalendar $iTIP, vProperty $attendee, WritableCollec
 }
 
 require_once('Multipart.php');
+require_once('EMail.php');
 
 /**
  * Send an iMIP message since they look like a non-local user.
@@ -347,8 +348,7 @@ require_once('Multipart.php');
 function doImipMessage($method, $to_email, vCalendar $itip) {
   global $c, $request;
 
-/*
-  header( 'Debug: Sending iMIP '.$method.' message to '.$to_email);
+  dbg_error_log( 'schedule' 'Sending iMIP %s message to %s', $method, $to_email );
   $mime = new MultiPart();
   $mime->addPart( $itip->Render(), 'text/calendar; charset=UTF-8; method='.$method );
 
@@ -402,5 +402,4 @@ EOTEMPLATE;
   else {
     $email->Send($mime->getMimeHeaders());
   }
-*/
 }
