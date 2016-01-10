@@ -11,10 +11,12 @@ Translators
 Translating DAViCal
 -------------------
 
-All translation of DAViCal is done by the Transifex tool (http://transifex.org/).
-We are using the Transifex service (http://www.transifex.net/) to translate the software.
+All translation of DAViCal is done by the Transifex tool and service (https://www.transifex.com).
+Transifex tools was released with open source licence, and then switch to commercial (mid 2012).
+Transifex service still free of charge for opensource projects (https://www.transifex.com/customers/open-source).
+We are using the Transifex service to translate the software.
 
-To translate DAViCal go to http://www.transifex.net/projects/p/davical.
+To translate DAViCal go to https://www.transifex.com/lkraav/davical/.
 You can register an account there and then translate DAViCal in the webbrowser to your language.
 Furthermore you can improve existing translations and join the team of your language.
 
@@ -83,7 +85,7 @@ They have created a command line client namend ``tx``::
 
    $ tx init
    Creating .tx folder...
-   Transifex instance [http://www.transifex.net]: 
+   Transifex instance [https://www.transifex.com]: 
    Creating skeleton...
    Creating config file...
    Done.
