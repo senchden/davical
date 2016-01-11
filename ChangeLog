@@ -1,3 +1,10 @@
+2016-01-11 Florian Schlichting <fsfs@debian.org>
+	* release 1.1.4
+	* allow BuildDeadPropertyXML to continue on namespace errors (#9)
+
+2016-01-10 Cyril Giraud <cgiraud@free.fr>
+	* Transifex web site URL update. To be continued.
+
 2016-01-08 Florian Schlichting <fsfs@debian.org>
 	* Update ChangeLog, add Debian bug closers
 	* add the iSchedule administration helper to the menu to give it more visibility and testing
