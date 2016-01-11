@@ -640,6 +640,12 @@ EOQRY;
     }
   }
 
+  /**
+   * FIXME: does this function return a string or an array, or either?
+   * It used to be string only, but b4fd9e2e changed successfully parsed
+   * values to array. However values not in angle brackets are passed
+   * through, and those seem to be the majority in my database?!
+   */
   public static function BuildDeadPropertyXML($property_name, $raw_string) {
     if ( !preg_match('{^\s*<.*>\s*$}s', $raw_string) ) return $raw_string;
     $xmlns = null;
@@ -654,11 +660,17 @@ EOQRY;
     xml_parser_set_option ( $xml_parser, XML_OPTION_CASE_FOLDING, 0 );
     $rc = xml_parse_into_struct( $xml_parser, $xml, $xml_tags );
     if ( $rc == false ) {
-      dbg_error_log( 'ERROR', 'XML parsing error: %s at line %d, column %d',
-                  xml_error_string(xml_get_error_code($xml_parser)),
+      $errno = xml_get_error_code($xml_parser);
+      dbg_error_log( 'ERROR', 'XML parsing error: %s (%d) at line %d, column %d',
+                  xml_error_string($errno), $errno,
                   xml_get_current_line_number($xml_parser), xml_get_current_column_number($xml_parser) );
       dbg_error_log( 'ERROR', "Error occurred in:\n%s\n",$xml);
-      return $raw_string;
+      if ($errno >= 200 && $errno < 300 && count($xml_tags) >= 3) {
+          // XML namespace error, but parsing was probably fine: continue and return tags (cf. #9)
+          dbg_error_log( 'ERROR', 'XML namspace error but tags extracted, trying to continue');
+      } else {
+          return $raw_string;
+      }
     }
     xml_parser_free($xml_parser);
     $position = 0;
