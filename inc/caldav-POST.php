@@ -50,6 +50,35 @@ function handle_freebusy_request( $ic ) {
   }
   dbg_error_log( "POST", "Responding with free/busy for %d attendees", count($attendees) );
 
+  if ($c->enable_attendee_group_resolution) {
+    $new_attendees = array();
+    foreach( $attendees AS $attendee ) {
+      $v = $attendee->Value();
+      unset($localname);
+      if ($v == "invalid:nomail") {
+        $localname = $attendee->GetParameterValue("CN");
+      } else if ((preg_match('/^@/', $v) == 1) || (preg_match('/mailto:@/',$v) == 1)) {
+        $localname = preg_replace('/^.*@/', '', $v);
+      } else if (preg_match('/@/', $v) != 1) {
+        $localname = $v;
+      }
+      if ($localname) {
+        dbg_error_log( 'POST', 'try to resolve local attendee %s', $localname);
+        $qry = new AwlQuery('SELECT fullname, email FROM usr WHERE user_no = (SELECT user_no FROM principal WHERE type_id = 1 AND user_no = (SELECT user_no FROM usr WHERE lower(username) = (text(:username)))) UNION SELECT fullname, email FROM usr WHERE user_no IN (SELECT user_no FROM principal WHERE principal_id IN (SELECT member_id FROM group_member WHERE group_id = (SELECT principal_id FROM principal WHERE type_id = 3 AND user_no = (SELECT user_no FROM usr WHERE lower(username) = (text(:username))))))', array(':username' => strtolower($localname)));
+        if ( $qry->Exec('POST',__LINE__,__FILE__) && $qry->rows() >= 1 ) {
+          dbg_error_log( 'POST', 'resolved local name %s to %d individual attendees', $localname, $qry->rows());
+          while ($row = $qry->Fetch()) {
+            dbg_error_log( 'POST', 'adding individual attendee %s <%s>', $row->fullname, $row->email);
+            $new_attendees[] = new vProperty("ATTENDEE:mailto:" . $row->email);
+          }
+        }
+      } else {
+        $new_attendees[] = clone($attendee);
+      }
+    }
+    $attendees = $new_attendees;
+  }
+
   foreach( $attendees AS $k => $attendee ) {
     $attendee_email = preg_replace( '/^mailto:/', '', $attendee->Value() );
     dbg_error_log( "POST", "Calculating free/busy for %s", $attendee_email );

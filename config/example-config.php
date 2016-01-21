@@ -300,6 +300,15 @@ $c->admin_email ='calendar-admin@example.com';
 */
 // $c->allow_get_email_visibility = false;
 
+/**
+* EXPERIMENTAL:
+* If true, names of groups (prefixed with "@") given as an event attendee
+* will get resolved to a list of members of that group. Note that CalDAV
+* clients might get confused by this server behavior until they get
+* synced again. Default: false.
+*/
+// $c->enable_attendee_group_resolution = true;
+
 
 /***************************************************************************
 *                                                                          *

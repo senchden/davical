@@ -510,6 +510,52 @@ function do_scheduling_requests( vCalendar $resource, $create, $old_data = null 
     return do_scheduling_reply($resource,$organizer);
   }
 
+  if ($c->enable_attendee_group_resolution) {
+    $mail_domain = preg_replace( '/^.*@/i', '', $c->admin_email );
+    $attendees = $resource->GetAttendees();
+    $new_attendees = array();
+    foreach( $attendees AS $attendee ) {
+      $v = $attendee->Value();
+      unset($localname);
+      if ($v == "invalid:nomail") {
+        $localname = $attendee->GetParameterValue("CN");
+      } else if ((preg_match('/^@/', $v) == 1) || (preg_match('/mailto:@/',$v) == 1)) {
+        $localname = preg_replace('/^.*@/', '', $v);
+      } else if (preg_match('/@/', $v) != 1) {
+        $localname = $v;
+      } else if (preg_match('/@'.$mail_domain.'/', $v) == 1) {
+        $localname = preg_replace('/@.*$/', '', $v);
+        $localname = preg_replace('/^mailto:/', '', $localname);
+      }
+      if ($localname) {
+        dbg_error_log( 'PUT', 'try to resolve local attendee %s', $localname);
+        $qry = new AwlQuery('SELECT fullname, email FROM usr WHERE user_no = (SELECT user_no FROM principal WHERE type_id = 1 AND user_no = (SELECT user_no FROM usr WHERE lower(username) = (text(:username)))) UNION SELECT fullname, email FROM usr WHERE user_no IN (SELECT user_no FROM principal WHERE principal_id IN (SELECT member_id FROM group_member WHERE group_id = (SELECT principal_id FROM principal WHERE type_id = 3 AND user_no = (SELECT user_no FROM usr WHERE lower(username) = (text(:username))))))', array(':username' => strtolower($localname)));
+        if ( $qry->Exec('PUT',__LINE__,__FILE__) && $qry->rows() >= 1 ) {
+          dbg_error_log( 'PUT', 'resolved local name %s to %d individual attendees', $localname, $qry->rows());
+          while ($row = $qry->Fetch()) {
+           if ($row->email == $request->principal->email()) continue;
+           dbg_error_log( 'PUT', 'adding individual attendee %s <%s>', $row->fullname, $row->email);
+           $a = clone($attendee);
+           $a->SetParameterValue("CN", $row->fullname);
+           $a->SetParameterValue("PARTSTAT", "NEEDS-ACTION");
+           $a->Value("mailto:" . $row->email);
+           $new_attendees[] = $a;
+          }
+        } else {
+          $new_attendees[] = clone($attendee);
+        }
+      } else {
+        $new_attendees[] = clone($attendee);
+      }
+    }
+    $events = $resource->GetComponents("VEVENT");
+    $event = $events[0];
+    $event->SetProperties($new_attendees,'ATTENDEE');
+    // this is just to reset the private attribute "attendees" in the $resource object
+    $resource->UpdateAttendeeStatus("this-is-nonsense", new vProperty("ATTENDEE:dummy"));
+    $attendees = $resource->GetAttendees();
+  }
+
   // required because we set the schedule status on the original object (why clone() not works here?)
   $orig_resource = new vCalendar($resource->Render(null, true));
 
