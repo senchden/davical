@@ -443,9 +443,9 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
       $r = new DAVResource($row);
       $attendee_calendar = new WritableCollection(array('path' => $r->parent_path()));
       if ($attendee_calendar->IsCalendar()) {
-        dbg_error_log( 'XXX', "found the event in attendee's calendar %s", $attendee_calendar->dav_name() );
+        dbg_error_log( 'PUT', "found the event in attendee's calendar %s", $attendee_calendar->dav_name() );
       } else {
-        dbg_error_log( 'XXX', 'could not find the event in any calendar, using schedule-default-calendar');
+        dbg_error_log( 'PUT', 'could not find the event in any calendar, using schedule-default-calendar');
         $attendee_calendar = new WritableCollection(array('path' => $schedule_target->internal_url('schedule-default-calendar')));
       }
       if ( !$attendee_calendar->Exists() ) {
@@ -581,9 +581,9 @@ function do_scheduling_requests( vCalendar $resource, $create, $old_data = null 
         $r = new DAVResource($row);
         $attendee_calendar = new WritableCollection(array('path' => $r->parent_path()));
         if ($attendee_calendar->IsCalendar()) {
-          dbg_error_log( 'XXX', "found the event in attendee's calendar %s", $attendee_calendar->dav_name() );
+          dbg_error_log( 'PUT', "found the event in attendee's calendar %s", $attendee_calendar->dav_name() );
         } else {
-          dbg_error_log( 'XXX', 'could not find the event in any calendar, using schedule-default-calendar');
+          dbg_error_log( 'PUT', 'could not find the event in any calendar, using schedule-default-calendar');
           $attendee_calendar = new WritableCollection(array('path' => $schedule_target->internal_url('schedule-default-calendar')));
         }
       }
