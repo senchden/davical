@@ -4,11 +4,11 @@ Priority: extra
 Maintainer: Davical Development Team <davical-devel@lists.sourceforge.net>
 Uploaders: Andrew McMillan <awm@debian.org>,
  Florian Schlichting <fsfs@debian.org>
-Standards-Version: 3.9.6
+Standards-Version: 3.9.8
 Build-Depends: debhelper (>= 9),
  libawl-php (>= 0.56-1~), libawl-php (<< 0.57),
  gettext,
- php5-cli,
+ php-cli | php5-cli,
  rst2pdf
 Vcs-git: https://gitlab.com/davical-project/davical.git
 Vcs-browser: https://gitlab.com/davical-project/davical
@@ -20,13 +20,13 @@ Depends: ${misc:Depends}, ${perl:Depends},
  libawl-php (>= 0.56-1~), libawl-php (<< 0.57),
  libdbd-pg-perl,
  libyaml-perl,
- php5,
- php5-cli,
- php5-pgsql,
+ php | php5,
+ php-cli | php5-cli,
+ php-pgsql | php5-pgsql,
  postgresql-client
-Recommends: php5-curl,
+Recommends: php-curl | php5-curl,
  postgresql
-Suggests: php5-ldap
+Suggests: php-ldap | php5-ldap
 Description: PHP CalDAV and CardDAV Server
  The DAViCal CalDAV Server is designed to store CalDAV calendars and
  CardDAV addressbooks, such as those from Evolution, Sunbird/Lightning,

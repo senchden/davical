@@ -1,0 +1,25 @@
+Description: Update to PHP7.0 naming
+Author: Nishanth Aravamudan <nish.aravamudan@canonical.com>
+
+--- a/Makefile
++++ b/Makefile
+@@ -53,7 +53,7 @@
+ 
+ .PHONY: test
+ test:
+-	@for PHP in htdocs/*.php inc/*.php; do php5 -l $${PHP} | grep -v 'No syntax errors detected' >> test-syntax; done; \
++	@for PHP in htdocs/*.php inc/*.php; do php -l $${PHP} | grep -v 'No syntax errors detected' >> test-syntax; done; \
+ 	    if [ -s test-syntax ]; then \
+ 	    	cat test-syntax >&2; \
+ 		rm test-syntax; \
+--- a/inc/drivers_imap_pam.php
++++ b/inc/drivers_imap_pam.php
+@@ -13,7 +13,7 @@
+ 
+ // The PHP interpreter will die quietly unless satisfied. This provides user feedback instead.
+ if (!function_exists('imap_open')) {
+-  die("drivers_imap_pam: php5-imap required.");
++  die("drivers_imap_pam: php-imap required.");
+ }
+ 
+ require_once("auth-functions.php");
