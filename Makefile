@@ -16,8 +16,8 @@ nodocs: htdocs/always.php built-po
 .PHONY: all
 all: htdocs/always.php built-docs built-po
 
-built-docs: docs/api/phpdoc.ini htdocs/*.php inc/*.php docs/translation.rst
-	phpdoc -c docs/api/phpdoc.ini || echo "NOTICE: Failed to build optional API docs"
+built-docs: docs/phpdoc.ini htdocs/*.php inc/*.php docs/translation.rst
+	apigen generate --title=DAViCal --todo --tree --deprecated -s inc -s htdocs -d docs/api || phpdoc -c docs/phpdoc.ini || echo "NOTICE: Failed to build API docs"
 	rst2pdf docs/translation.rst || echo "NOTICE: Failed to build ReST docs"
 	touch $@
 
@@ -68,10 +68,7 @@ test:
 .PHONY: clean
 clean:
 	rm -f built-docs built-po
+	rm -rf docs/api
 	-find . -name "*~" -delete
 	rm -f docs/translation.pdf
 	rm -f davical.spec
-
-.PHONY: clean-all
-clean-all: clean
-	-find docs/api/* ! -name "phpdoc.ini" ! -name ".gitignore" -delete
