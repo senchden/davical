@@ -53,7 +53,7 @@ snapshot: release
 
 .PHONY: test
 test:
-	@for PHP in htdocs/*.php inc/*.php; do php5 -l $${PHP} | grep -v 'No syntax errors detected' >> test-syntax; done; \
+	@for PHP in htdocs/*.php inc/*.php; do php -l $${PHP} | grep -v 'No syntax errors detected' >> test-syntax; done; \
 	    if [ -s test-syntax ]; then \
 	    	cat test-syntax >&2; \
 		rm test-syntax; \
