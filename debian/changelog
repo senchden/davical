@@ -1,3 +1,9 @@
+davical (1.1.4-3) unstable; urgency=medium
+
+  * Add missing dependency on php-xml, which is a separate package from PHP 7
+
+ -- Florian Schlichting <fsfs@debian.org>  Wed, 01 Jun 2016 22:18:51 +0200
+
 davical (1.1.4-2) unstable; urgency=medium
 
   * Update to work with both php5 and php7, mainly based on the Ubuntu patch

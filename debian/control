@@ -23,6 +23,7 @@ Depends: ${misc:Depends}, ${perl:Depends},
  php | php5,
  php-cli | php5-cli,
  php-pgsql | php5-pgsql,
+ php-xml | php5,
  postgresql-client
 Recommends: php-curl | php5-curl,
  postgresql
