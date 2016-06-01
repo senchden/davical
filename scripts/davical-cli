@@ -1,0 +1,3310 @@
+#!/usr/bin/perl
+
+# VERSION : RELEASE 1.1
+
+ #####     #    ######  ####### #     # ####### #######     #####         #        #     #
+#     #   # #   #     # #       ##    # #          #       #     #       # #       #     #
+#        #   #  #     # #       # #   # #          #       #            #   #      #     #
+ #####  #     # ######  #####   #  #  # #####      #        #####      #     #     #     #
+      # ####### #   #   #       #   # # #          #             # ### ####### ### #     #
+#     # #     # #    #  #       #    ## #          #       #     # ### #     # ### #     #
+ #####  #     # #     # ####### #     # #######    #        #####  ### #     # ###  #####
+
+
+############################# LICENSE #############################
+#
+# Davical interface for command line is a software developed by
+# Egoitz Aurrekoetxea at Sarenet S.A.U (http://www.sarenet.es/).
+#
+# It is under BSD license and is distributed as is without any
+# other warranty. You can contact with me in the following
+# email address : egoitz(at)sarenet.es
+#
+# Enjoy!
+#
+# Copyright (c) Sarenet S.A.U (http://www.sarenet.es/).
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+# 3. Neither the name of Sarenet S.A.U nor the names of its contributors
+#    may be used to endorse or promote products derived from this software
+#    without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY SARENET S.A.U AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL SARENET S.A.U OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+######################### IMPORTANT NOTES #########################
+#
+# This code has been created for and used in a FreeBSD machine with Davical
+# installed from the own ports (at the beginning). This means that in this
+# version the hardcoded paths and checks will have some customization for that
+# environment. Even they have been hardcoded in this version (which probably
+# will be improved in the following releases of this tool) they can be easily
+# customed for your env.
+#
+# About hardcoded important notes:
+#
+# * This program does not hardcoded any admin of database for managing
+#   different Davical domain instances. It fetches from the config file
+#   credentials for each of the Davical database it manages. This way we make
+#   more difficult for an attacker to try to do a massive change. It fetches
+#   config files the way described in the next point.
+#
+# * Function obtener_conexion_a_bbdd --> Line 1971 --> my $fichero =
+#   "/usr/local/etc/davical/".$dominioloc.".organizer.sarenet.es-conf.php";
+#
+#   This tool is being used in production env in a mail hosting service where
+#   each domain contains it's own Davical instance and the config of each
+#   instance is located under /usr/local/etc/davical.
+#
+# * This script assumes default collections, calendar and addresses should
+#   never be removed for the fact of being the default ones... and for keeping a
+#   default same content in all accounts.
+#
+# * It logs to syslog by default to the local2 facility and info priority. Can
+#   easily be changed in ## SYSLOG STAFF section.
+#
+# * At present time it does only contemplate read only or read write
+#   permissions. It allows too by default seeing if an account is busy or free in
+#   the calendar.
+#
+#   Even being bynarily defined the rest of permissions and not being used at
+#   this moment at least... as said. Everyone who needs to make use of them, the
+#   code is pretty ordered for being to achieve some modifications which could
+#   allow anyone use different permission types.
+#
+# * I wanted to excuse myself for being all syslogged comments, vars,
+#   functions, etc in Spanish. This code had been done in some "free" and other
+#   non free times I had at work but the coding having to be compatible with
+#   other tasks I do as Sarenet sysadmin/postmaster, etc…. So the more
+#   significant errors, var names, function names and so where for me... the most
+#   easily I could get all job finished. So excuse me but at least in the first
+#   times of this code (where I didn't know If I was going to be able to make it
+#   open  even) was important to be in my native language.
+#
+# * The URL this code manages are basically :
+#   https://the-customer-domain-without-dots-or-dash.organizer.sarenet.es/caldav.php/_______.
+#   So for instance for a domain like acme-comp.com.es the URL would be :
+#   https://acmecompcomes.organizer.sarenet.es/caldav.php/_______. When in the
+#   code you see $dominioloc var is referring to the domain after this
+#   transformation.
+#
+# * Lines containing the string "organizer.sarenet.es/caldav.php". The product
+#   name at Sarenet is Organizer. And the URL always called is :
+#   https://____________.organizer.sarenet.es/caldav.php/____ so it's too
+#   hardcoded in the code.
+#
+# * 9987982389 is nothing but an invented error code which is pretty dificult
+#   to any time be owned by any valid id.
+#
+# * Of course you can, have to... must... whatever any line you need to adapt
+#   for your env. Mainly talking about literals. Specially literals like :
+#
+#   "Fallo en acceso a BBDD. CONTACTE CON SARENET."
+#
+#   As said previously this code was written for easily being understood in
+#   literal terms and so... by anyone at Sarenet.
+#
+# * It has too some very light security meassures in function
+#   comprobar_permiso_ejecutar. It does some checks that could help you at least
+#   delaying slihtly an attack. Obviously you have to properly configure the
+#   function for your env in order to use this code. You could too remove all
+#   code inside this function if you prefer it.
+#
+# * The code reads database access credentials from a file in which the
+#   pg_connect line has the format : $c->pg_connect[] = "host=XX.XX.XX.XX
+#   port=5432 dbname=whatever user=whatever password=whatever”;
+#
+#
+# In case of suffering issues or having doubts of it's working mode, please
+# contact me at egoitz@sarenet.es email address and I'll help you happily :)
+#
+###################################################################
+
+## REQUIRED PERL MODULES
+use DBI;
+use strict;
+use warnings;
+use Getopt::Long;
+use Switch;
+use Sys::Syslog qw(:DEFAULT setlogsock);
+
+
+## SYSLOG STAFF
+our $syslog_socktype = 'unix'; # inet, unix, stream, console
+our $syslog_facility="local2";
+our $syslog_options="pid";
+our $syslog_priority="info";
+
+openlog $0, $syslog_options, $syslog_facility;
+
+## DATABASE CONNECTION VARIABLES
+our $driver = "Pg";
+our $host = "";
+our $database = "";
+our $dsn = "";
+our $userid = "";
+our $password = "";
+our $dbh = "";
+
+our $error_general = '9987982389';
+our $mensaje_fallo_gen = "";
+our $colec_default_calendar = 'calendar';
+our $colec_default_addresses = 'addresses';
+our $permisos_defecto_nada = 'NONE';
+
+## GENERAL PURPOSE VARIABLES
+our $usuario = "";
+our $usudest = "";
+our $grupo = "";
+our $principal = "";
+our $permisos = "";
+our $coleccion = "";
+our $tipocol = "";
+our $email = "";
+our $dominio = "";
+our $coldispname = "";
+our $idoperacion = 99;
+our $dequien = "";
+
+our $usercorriendo = "";
+
+our $verbose = 0;
+
+## DAVICAL PERMISSIONS
+our $perm_all              = '000000001111111111111111';
+our $perm_readwrite        = '000000001111111011100111';
+our $perm_read             = '000000000001001000100001';
+our $perm_readsched        = '000000001111111000100001';
+our $perm_freebusy         = '000000000001001000000000';
+our $perm_schedliv         = '000000000001110000000000';
+our $perm_schedsend        = '000000001110000000000000';
+our $perm_none             = '000000000000000000000000';
+our $perm_resetprinc       = '000000001111111000100000';
+
+#### POSSIBLE OPERATIONS
+#
+### 1  - CREATE COLLECTION
+### 2  - REMOVE COLLECTION
+### 3  - APPEND USER TO A GROUP OF AN OWNER (OWNERS ARE THE WAY OF UNIQUELY IDENTIFY A GROUP FROM A CONCRETE PRINCIPAL OR USER)
+### 4  - REMOVE USER TO A GROUP OF AN OWNER (OWNERS ARE THE WAY OF UNIQUELY IDENTIFY A GROUP FROM A CONCRETE PRINCIPAL OR USER)
+### 5  - GRANT CONCRETE PERMISSIONS TO A PRINCIPAL IN ANOTHER PRINCIPAL (PRINCIPALS ARE FINALLY JUST USERS)
+### 6  - REVOKE PERMISSIONS TO A PRINCIPAL IN PRINCIPAL (PRINCIPALS ARE FINALLY JUST USERS)
+### 7  - GRANT PERMISSIONS TO A PRINCIPAL (A USER FINALLY) IN A COLLECTION OF ANOTHER PRINCIPAL (ANOTHER USER FINALLY)
+### 8  - REVOKE PERMISSIONS TO A PRINCIPAL (A USER FINALLY) IN A COLLECTION OF ANOTHER PRINCIPAL (ANOTHER USER FINALLY)
+### 9  - CREATE GROUP OWNED BY USER (BY A PRINCIPAL FINALLY)
+### 10 - REMOVE GROUP OWNED BY USER (BY A PRINCIPAL FINALLY)
+### 11 - REMOVE PRINCIPAL/USER (AN ACCOUNT FINALLY WITH ALL THE COLLECTIONS)
+### 12 - SET DEFAULT PERMISSIONS IN A COLLECTION OF A PRINCIPAL
+### 13 - UNSET DEFAULT PERMISSIONS IN A COLLECTION OF A PRINCIPAL
+### 14 - SET DEFAULT PERMISSIONS IN A PRINCIPAL
+### 15 - UNSET DEFAULT PERMISSIONS IN A PRINCIPAL
+### 16 - OBTAIN PRINCIPAL GRANTS FOR DISPLAYING THEM FOR EXAMPLE IN THE WEBMAIL....
+### 17 - OBTAIN GROUP MEMBERS FROM A GROUP OWNED BY AN USER (A PRINCIPAL)
+### 18 - OBTAIN GROUPS OWNED BY AN USER (OR PRINCIPAL)
+### 19 - SET A COLLECTION'S (FROM A PRINCIPAL) DISPLAY NAME
+### 20 - OBTAIN PERMISSIONS GRANTED TO OTHER USERS IN MY COLLECTIONS
+### 21 - OBTAIN A LIST OF ALL CREATED USERS IN THE DAVICAL INSTANCE
+### 22 - OBTAIN A LISTING WHICH DISPLAYS FROM A CONCRETE OWNER, GROUP:MEMBERS
+### 23 - COMBINED LISTING OF 16,20,21,22
+#
+##########################
+
+#### FUNCIONES BASICAS PARA SER COMBINADAS EN OTRAS FUNCIONES MAS COMPLEJAS QUE HAGAN LAS TAREAS
+
+sub comprobar_error_variable {
+	if (($_[0] == '9987982389') && ($_[1] eq ""))
+	{
+		syslog $syslog_priority, "Error general en rutina de comprobacion general, al comprobar valor de variable. CONTACTE CON SARENET.";
+		$dbh->disconnect();
+		closelog();
+		die "Error general en rutina de comprobacion general, al comprobar valor de variable. CONTACTE CON SARENET.";
+	}
+	elsif (($_[0] == '9987982389') && ($_[1] ne ""))
+	{
+		syslog $syslog_priority, $_[1];
+		$dbh->disconnect();
+		closelog();
+		die "Error general en rutina de comprobacion general, al comprobar valor de variable. CONTACTE CON SARENET.";
+	}
+}
+
+sub comprobar_error_variable_texto {
+	if (($_[0] eq '9987982389') && ($_[1] eq ""))
+	{
+		syslog $syslog_priority, "Error general en rutina de comprobacion general, al comprobar valor de variable. CONTACTE CON SARENET.";
+		$dbh->disconnect();
+		closelog();
+		die "Error general en rutina de comprobacion general, al comprobar valor de variable. CONTACTE CON SARENET.";
+	}
+	elsif (($_[0] eq '9987982389') && ($_[1] ne ""))
+	{
+		syslog $syslog_priority, $_[1];
+		$dbh->disconnect();
+		closelog();
+		die "Error general en rutina de comprobacion general, al comprobar valor de variable. CONTACTE CON SARENET.";
+	}
+}
+
+sub comprobar_error_array {
+	if (grep(/^$9987982389$/, @{$_[0]}) && ($_[1] eq ""))
+	{
+		syslog $syslog_priority, "Error general en rutina de comprobacion general, al comprobar valor de array. CONTACTE CON SARENET.";
+		$dbh->disconnect();
+		closelog();
+		die "Error general en rutina de comprobacion general, al comprobar valor de array. CONTACTE CON SARENET.";
+	}
+	elsif (grep(/^$9987982389$/, @{$_[0]}) && ($_[1] ne ""))
+	{
+		syslog $syslog_priority, $_[1];
+		$dbh->disconnect();
+		closelog();
+		die "Error general en rutina de comprobacion general, al comprobar valor de array. CONTACTE CON SARENET.";
+	}
+}
+
+sub func_remplazo_die {
+	$dbh->disconnect();
+	closelog();
+	syslog $syslog_priority, $_[0];
+	die $_[0];
+}
+
+sub comprobar_version {
+	my $stmt = qq(SELECT schema_major||'.'||schema_minor FROM awl_db_revision ORDER BY schema_id DESC LIMIT 1;);
+	my $sth = $dbh->prepare( $stmt );
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my $i = 0;
+	my $version = "";
+	if($rv < 0){
+		print $DBI::errstr;
+	}
+	@row = $sth->fetchrow_array();
+	$version = $row[0];
+
+	if ($version != '1.2')
+	{
+		func_remplazo_die("Version de esquema incompatible. CONTACTE CON SARENET.");
+	}
+}
+
+sub sacar_userid {
+	syslog $syslog_priority, "Obteniendo userid de usuario : ----$_[0]----" if ($verbose==1);
+	## Se quotea el valor del nombre de usuario del que obtener el id. Nos lo pasan al llamar a la funcion
+	my $entfuncq = $dbh->quote($_[0]);
+	my $stmt = "SELECT user_no FROM usr WHERE username = "."$entfuncq"." LIMIT 1;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	$entfuncq = $dbh->quote($_[0]);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	if($rv < 0){
+		print $DBI::errstr;
+	}
+	@row = $sth->fetchrow_array();
+	my $usuarioid = $row[0];
+
+	if (scalar(@row) > 0)
+	{
+		syslog $syslog_priority, "Para userid de usuario ----$_[0]---- devolvemos id de usuario ----$usuarioid----" if ($verbose==1);
+	return($usuarioid);
+	}
+	else
+	{
+		syslog $syslog_priority, "Para userid de usuario ----$_[0]---- devolvemos id de usuario ----ERROR 9987982389----" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub sacar_principalid {
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quotea el valor del ID de usuario del que obtener el id. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT principal_id FROM principal WHERE user_no = "."$entfuncq"." LIMIT 1;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my $principalid = "";
+	if($rv < 0){
+		print $DBI::errstr;
+	}
+	@row = $sth->fetchrow_array();
+	$principalid = $row[0];
+
+	if (scalar(@row) > 0)
+	{
+		syslog $syslog_priority, "El valor que devolvemos para ID de principal del usuario con usuario id ---$_[0]--- es ---$principalid---" if ($verbose==1);
+		return($principalid);
+	}
+	else
+	{
+		syslog $syslog_priority, "El valor que devolvemos para ID de principal del usuario con usuario id ---$_[0]--- es ---ERROR 9987982389---" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub sacar_userid_principal {
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quotea el valor del ID de principal de usuario del que obtener el id de usuario. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT user_no FROM principal WHERE principal_id = "."$entfuncq"." LIMIT 1;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my $userno = "";
+	if($rv < 0){
+		print $DBI::errstr;
+	}
+	@row = $sth->fetchrow_array();
+	$userno = $row[0];
+
+	if (scalar(@row) > 0)
+	{
+		syslog $syslog_priority, "El ID del usuario del ID del principal ----$_[0]---- es ---$userno---" if ($verbose==1);
+		return($userno);
+	}
+	else
+	{
+		syslog $syslog_priority, "El ID del usuario del ID del principal ----$_[0]---- es ---ERROR 9987982389---" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub sacar_username_deidusu {
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quotea el valor del ID de usuario del que obtener el nombre de usuario. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT username FROM usr WHERE user_no = "."$entfuncq"." LIMIT 1;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my $username = "";
+	if($rv < 0){
+		print $DBI::errstr;
+	}
+	@row = $sth->fetchrow_array();
+	$username = $row[0];
+
+	if (scalar(@row) > 0)
+	{
+		syslog $syslog_priority, "El username obtenido de userid : ----$_[0]---- es ---$username---" if ($verbose==1);
+		return($username);
+	}
+	else
+	{
+		syslog $syslog_priority, "El username obtenido de userid : ----$_[0]---- es ---ERROR 9987982389---" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub sacar_tipo_principal {
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quotea el valor del ID de usuario del que obtener el tipo de principal que es. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT principal_type_desc FROM ((usr LEFT JOIN principal USING (user_no)) LEFT JOIN role_member USING (user_no)) LEFT JOIN principal_type ON (principal_type_id = type_id) WHERE user_no = "."$entfuncq"." AND active = 't' and role_no IS DISTINCT FROM '1' LIMIT 1;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my $principaltype = "";
+	if($rv < 0){
+		print $DBI::errstr;
+	}
+	@row = $sth->fetchrow_array();
+	$principaltype = $row[0];
+
+	if (scalar(@row) > 0)
+	{
+		syslog $syslog_priority, "El tipo de principal obtenido al consultarlo para el id de usuario ----$_[0]---- es ----$principaltype-----" if ($verbose==1);
+		return($principaltype);
+	}
+	else
+	{
+		syslog $syslog_priority, "El tipo de principal obtenido al consultarlo para el id de usuario ----$_[0]---- es ----ERROR 9987982389-----" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub tipo_principal_es_persona {
+	my $tipo_principal = sacar_tipo_principal($_[0]);
+
+	if ($tipo_principal eq $error_general)
+	{
+		syslog $syslog_priority, "Al consultar si el tipo de principal del usuario ID ---$_[0]--- es Persona decimos NO y devolvemos 1" if ($verbose==1);
+		return(1);
+	}
+
+	if ($tipo_principal eq "Person")
+	{
+		syslog $syslog_priority, "Al consultar si el tipo de principal del usuario ID ---$_[0]--- es Persona decimos SI y devolvemos 0" if ($verbose==1);
+		return(0);
+	}
+	else
+	{
+		syslog $syslog_priority, "Al consultar si el tipo de principal del usuario ID ---$_[0]--- es Persona decimos NO y devolvemos 1" if ($verbose==1);
+		return(1);
+	}
+}
+
+sub tipo_principal_es_grupo {
+	my $tipo_principal = sacar_tipo_principal($_[0]);
+
+	if ($tipo_principal eq $error_general)
+	{
+		syslog $syslog_priority, "Al consultar si el tipo de principal del usuario ID ---$_[0]--- es Grupo decimos NO y devolvemos 1" if ($verbose==1);
+		return(1);
+	}
+
+	if ($tipo_principal eq "Group")
+	{
+		syslog $syslog_priority, "Al consultar si el tipo de principal del usuario ID ---$_[0]--- es Grupo decimos SI y devolvemos 0" if ($verbose==1);
+		return(0);
+	}
+	else
+	{
+		syslog $syslog_priority, "Al consultar si el tipo de principal del usuario ID ---$_[0]--- es Grupo decimos NO y devolvemos 1" if ($verbose==1);
+		return(1);
+	}
+}
+
+sub sacar_colecciones_usuario {
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quotea el valor del ID de usuario del que obtener que colecciones tiene. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT dav_name,is_addressbook,collection_id FROM collection WHERE user_no = "."$entfuncq".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my @parte_collection = ();
+	my @nombres_id_tipo_collections = ();
+	my $contador = 0;
+	if($rv < 0){
+		print $DBI::errstr;
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+		@parte_collection = split(/\//, $row[0]);
+		$nombres_id_tipo_collections[$contador][0] = $parte_collection[2];
+		$nombres_id_tipo_collections[$contador][1] = $row[1];
+		$nombres_id_tipo_collections[$contador][2] = $row[2];
+
+		$contador = $contador + 1;
+	}
+
+	if (scalar(@nombres_id_tipo_collections) > 0)
+	{
+		return(@nombres_id_tipo_collections);
+	}
+	else
+	{
+	syslog $syslog_priority, "Del id de usuario ---$_[0]--- sacamos que tiene las colecciones ----ERROR 9987982389----" if ($verbose==1);
+		@nombres_id_tipo_collections = ('9987982389');
+		return(@nombres_id_tipo_collections);
+	}
+}
+
+sub comprobar_existencia_permisos {
+	my $en_princ_o_col = $_[0];
+	my $permisos_supuestos_no_existen = $_[1];
+	my $id_princ_origen = $_[2];
+	my $id_princ_col_destino = $_[3];
+	my $ok_adelante = '0';
+	my $permisos_nombre_que_existen = "";
+
+	if ($en_princ_o_col == '0')
+	{
+		my $entfuncq = $dbh->quote($id_princ_origen);
+		my $entfuncq2 = $dbh->quote($id_princ_col_destino);
+		## Se quotea el valor del ID de principal para el que sacar permisos externos en otras colecciones. Nos lo pasan al llamar a la funcion
+		my $stmt = "SELECT privileges FROM grants WHERE to_principal = "."$entfuncq"." AND by_principal = "."$entfuncq2"." LIMIT 1;";
+		syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+		my $sth = $dbh->prepare($stmt);
+		my $rv = $sth->execute() or die $DBI::errstr;
+		my @row = ();
+		my @array_coles_permisos = ();
+		my $contador = 0;
+		if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+		}
+
+		@row = $sth->fetchrow_array();
+		my $permisos_que_existen = $row[0];
+		$permisos_nombre_que_existen = permisosbin_a_nombre($permisos_que_existen);
+		syslog $syslog_priority, "Para el principal ID origen ---$id_princ_origen--- en principal ID destino ---$id_princ_col_destino--- existen permisos de ---$permisos_nombre_que_existen---" if ($verbose==1);
+	}
+	elsif ($en_princ_o_col == '1')
+	{
+		my $entfuncq = $dbh->quote($id_princ_origen);
+		my $entfuncq2 = $dbh->quote($id_princ_col_destino);
+		## Se quotea el valor del ID de principal para el que sacar permisos externos en otras colecciones. Nos lo pasan al llamar a la funcion
+		my $stmt = "SELECT privileges FROM grants WHERE to_principal = "."$entfuncq"." AND by_collection = "."$entfuncq2"." LIMIT 1;";
+		syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+		my $sth = $dbh->prepare($stmt);
+		my $rv = $sth->execute() or die $DBI::errstr;
+		my @row = ();
+		my @array_coles_permisos = ();
+		my $contador = 0;
+		if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+		}
+
+		@row = $sth->fetchrow_array();
+		my $permisos_que_existen = $row[0];
+		$permisos_nombre_que_existen = permisosbin_a_nombre($permisos_que_existen);
+		syslog $syslog_priority, "Para el principal ID origen ---$id_princ_origen--- en collection ID destino ---$id_princ_col_destino--- existen permisos de ---$permisos_nombre_que_existen---" if ($verbose==1);
+	}
+
+	if ($permisos_supuestos_no_existen ne $permisos_nombre_que_existen)
+	{
+		syslog $syslog_priority, "Adelante en aplicar esos permisos" if ($verbose==1);
+		return($ok_adelante);
+	}
+	else
+	{
+		syslog $syslog_priority, "Los permisos ya estan aplicados y no se tiene que volver a aplicar" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub sacar_id_colecc_usuario_nombre {
+	my $entfuncq = $dbh->quote($_[0]);
+	my $entfuncq2 = $dbh->quote($_[1]);
+	## Se quotea el valor del id de usuario y nombre completo de la coleccion para obtener un id de coleccion. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT collection_id FROM collection WHERE user_no = "."$entfuncq"." AND dav_name = "."$entfuncq2"." LIMIT 1;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	my $id_col = 998798238;
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	if($rv < 0){
+		print $DBI::errstr;
+	}
+
+	@row = $sth->fetchrow_array();
+	$id_col = $row[0];
+
+	if (scalar(@row) > 0)
+	{
+		syslog $syslog_priority, "Para el ID de usuario ---$_[0]--- y nombre de coleccion ---$_[1]--- el id de coleccion vale ---$id_col---" if ($verbose==1);
+		return($id_col);
+	}
+	else
+	{
+		syslog $syslog_priority, "Para el ID de usuario ---$_[0]--- y nombre de coleccion ---$_[1]--- el id de coleccion vale ---ERROR 9987982389---" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub sacar_nombre_id_colecc {
+	## Se quotea el valor del id de coleccion para obtener el nombre completo de coleccion. Nos lo pasan al llamar a la funcion
+	my $entfuncq = $dbh->quote($_[0]);
+	my $stmt = "SELECT dav_name FROM collection WHERE collection_id = "."$entfuncq"." LIMIT 1;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	my $dav_name = 998798238;
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	if($rv < 0){
+		print $DBI::errstr;
+	}
+
+	@row = $sth->fetchrow_array();
+	$dav_name = $row[0];
+
+	if (scalar(@row) > 0)
+	{
+		syslog $syslog_priority, "El valor que devolvemos de nombre de coleccion para id de coleccion ----$_[0]--- vale ---$dav_name---" if ($verbose==1);
+		return($dav_name);
+	}
+	else
+	{
+		syslog $syslog_priority, "El valor que devolvemos de nombre de coleccion para id de coleccion ----$_[0]--- vale ---ERROR 9987982389---" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+
+sub sacar_permisos_acceso_autorizados_defecto {
+
+	## Se quotea el valor del id de coleccion para obtener el nombre completo de coleccion. Nos lo pasan al llamar a la funcion
+
+	### PRIMERO SACO LAS COLECCIONES QUE TIENEN PERMISOS POR DEFECTO DE LECTURA
+	my $colec_usu_opquetoca = "";
+	my $stmt = "SELECT parent_container,dav_name,user_no,collection_id FROM collection WHERE default_privileges = "."'$perm_read'".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare($stmt);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my @array_coles_permisos_defecto_lectura = ();
+	my @array_coles_permisos_defecto_lecturaescritura = ();
+	my @resultado_devolver = ();
+	my $contador = 0;
+	my $dominioloc = $dominio;
+	$dominioloc =~ s/\.//g;
+	$dominioloc =~ s/-//g;
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+		$array_coles_permisos_defecto_lectura[$contador][0] = $row[0];
+		$array_coles_permisos_defecto_lectura[$contador][1] = $row[1];
+		$array_coles_permisos_defecto_lectura[$contador][2] = $row[2];
+		$array_coles_permisos_defecto_lectura[$contador][3] = $row[3];
+		$contador = $contador + 1;
+	}
+
+	### LUEGO SACO LAS COLECCIONES QUE TIENEN PERMISOS POR DEFECTO DE LECTURA-ESCRITURA
+	$contador = 0;
+	$stmt = "SELECT parent_container,dav_name,user_no,collection_id FROM collection WHERE default_privileges = "."'$perm_readwrite'".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	$sth = $dbh->prepare($stmt);
+	$rv = $sth->execute() or die $DBI::errstr;
+	@row = ();
+	$contador = 0;
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+		$array_coles_permisos_defecto_lecturaescritura[$contador][0] = $row[0];
+		$array_coles_permisos_defecto_lecturaescritura[$contador][1] = $row[1];
+		$array_coles_permisos_defecto_lecturaescritura[$contador][2] = $row[2];
+		$array_coles_permisos_defecto_lecturaescritura[$contador][3] = $row[3];
+		$contador = $contador + 1;
+	}
+
+	### AHORA SACO QUE PRINCIPALS TIENEN PERMISO DE LECTURA --- NOOO TIENE QUE HABER PRINCIPALS CON PERMISOS EN LECTURA-ESCRITURA
+	$contador = 0;
+	$stmt = "SELECT principal_id FROM principal WHERE (default_privileges = '".$perm_read."' OR default_privileges = '".$perm_readwrite."');";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	$sth = $dbh->prepare($stmt);
+	$rv = $sth->execute() or die $DBI::errstr;
+	@row = ();
+	my @array_principal_permisos_defecto_lectura = ();
+	$contador = 0;
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+		$array_principal_permisos_defecto_lectura[$contador] = $row[0];
+		$contador = $contador + 1;
+	}
+
+	### AHORA CRUZAMOS LOS ARRAYS PARA VER QUE COLECCIONES PUEDEN SER ACCEDIDAS POR SUS PERMISOS POR DEFECTO POR TENERLOS TAMBIEN SUS RESPECTIVOS PRINCIPALS
+	$contador = 0;
+	my $principal_revisar = 0;
+	my $princ_que_toca = 0;
+	foreach $colec_usu_opquetoca (@array_coles_permisos_defecto_lectura) {
+		$principal_revisar = sacar_principalid(@$colec_usu_opquetoca[2]);
+		foreach $princ_que_toca (@array_principal_permisos_defecto_lectura)
+		{
+			if ($princ_que_toca == $principal_revisar)
+			{
+				$resultado_devolver[$contador][0] = 'https://'.$dominioloc.'.organizer.sarenet.es/caldav.php'.@$colec_usu_opquetoca[1].'';
+				$resultado_devolver[$contador][1] = 'READ';
+				$resultado_devolver[$contador][2] = coleccion_es_libreta_o_agenda(@$colec_usu_opquetoca[3]);
+				$contador = $contador + 1;
+				next;
+			}
+		}
+	}
+
+	foreach $colec_usu_opquetoca (@array_coles_permisos_defecto_lecturaescritura) {
+		$principal_revisar = sacar_principalid(@$colec_usu_opquetoca[2]);
+		foreach $princ_que_toca (@array_principal_permisos_defecto_lectura)
+		{
+			if ($princ_que_toca == $principal_revisar)
+			{
+				$resultado_devolver[$contador][0] = 'https://'.$dominioloc.'.organizer.sarenet.es/caldav.php'.@$colec_usu_opquetoca[1].'';
+				$resultado_devolver[$contador][1] = 'READWRITE';
+				$resultado_devolver[$contador][2] = coleccion_es_libreta_o_agenda(@$colec_usu_opquetoca[3]);
+				$contador = $contador + 1;
+				next;
+			}
+		}
+	}
+
+	return(@resultado_devolver);
+}
+
+sub colecc_tiene_permisos_por_defecto {
+	my $colec_usu_opquetoca = "";
+	my $stmt = "SELECT user_no FROM collection WHERE (default_privileges = '".$perm_read."' OR default_privileges = '".$perm_readwrite."') AND collection_id = '".$_[0]."' LIMIT 1;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare($stmt);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my @array_coles_permisos_defecto_lectura = ();
+	my @array_coles_permisos_defecto_lecturaescritura = ();
+	my @resultado_devolver = ();
+	my $contador = 0;
+	my $dominioloc = $dominio;
+	my $userid_para_comp_principal = '0';
+	$dominioloc =~ s/\.//g;
+	$dominioloc =~ s/-//g;
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	@row = $sth->fetchrow_array();
+	$userid_para_comp_principal = $row[0];
+	if ((defined($userid_para_comp_principal)) && ($userid_para_comp_principal =~ /^[+-]?\d+$/))
+	{
+		if ($userid_para_comp_principal != '0')
+		{
+			syslog $syslog_priority, "El userid que miro vale ----$userid_para_comp_principal----" if ($verbose==1);
+
+			my $stmt = "SELECT principal_id FROM principal WHERE (default_privileges = '".$perm_read."' OR default_privileges = '".$perm_readwrite."') AND user_no = '".$userid_para_comp_principal."';";
+			syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+			$sth = $dbh->prepare($stmt);
+			$rv = $sth->execute() or die $DBI::errstr;
+			if($rv < 0){
+				print $DBI::errstr;
+				die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+			}
+
+			@row = $sth->fetchrow_array();
+			if (scalar(@row) > 0)
+			{
+				syslog $syslog_priority, "El tipo de coleccion para el ID de coleccion ---$_[0]--- tiene permisos por defecto" if ($verbose==1);
+				my $devolvemos = 0;
+				return($devolvemos);
+			}
+		}
+		else
+		{
+			syslog $syslog_priority, "Nos ha salido userid 0... algo raro ocurre...." if ($verbose==1);
+			my $devolvemos = 1;
+			return($devolvemos);
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "El tipo de coleccion para el ID de coleccion ---$_[0]--- NO tiene permisos por defecto---" if ($verbose==1);
+		my $devolvemos = 1;
+		return($devolvemos);
+	}
+}
+
+sub ver_permisos_defecto_colecc {
+	my $stmt = "SELECT default_privileges FROM collection WHERE (default_privileges = '".$perm_read."' OR default_privileges = '".$perm_readwrite."') AND collection_id = '".$_[0]."' LIMIT 1;";
+	syslog $syslog_priority, "  Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare($stmt);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my $default_privileges_collection = '9987982389';
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	@row = $sth->fetchrow_array();
+	$default_privileges_collection = $row[0];
+
+	if (defined($default_privileges_collection))
+	{
+		if (($default_privileges_collection ne '9987982389') && ($default_privileges_collection ne ''))
+		{
+			syslog $syslog_priority, (" Los permisos binarios que obtengo para colec id ----$_[0]---- valen ----$default_privileges_collection----");
+			my $nombre_permisos_defecto = permisosbin_a_nombre($default_privileges_collection);
+			return($nombre_permisos_defecto);
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, " La colecc ----$_[0]---- no tiene permisos por defecto de lectura o lectura-escritura" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub sacar_permisos_de_principalconcreto_en_colecciones {
+	my $entfuncq = $dbh->quote($_[0]);
+	my $entfuncq2 = $dbh->quote($_[1]);
+	## Se quotea el valor del ID de principal para el que sacar permisos externos en otras principals. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT to_principal,privileges FROM grants WHERE by_collection = "."$entfuncq"." AND to_principal = "."$entfuncq2".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare($stmt);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my @array_coles_permisos = ();
+	my $contador = 0;
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+		$array_coles_permisos[$contador][0] = $row[0];
+		$array_coles_permisos[$contador][1] = $row[1];
+		$contador = $contador + 1;
+	}
+
+	syslog $syslog_priority, "El ID de principal ---$_[0]--- tiene los siguientes permisos de array_coles_permisos--- en coleccion ---$_[0]--" if ($verbose==1);
+	return(@array_coles_permisos);
+}
+
+sub existen_perm_defecto_princ {
+	my $stmt = "SELECT default_privileges FROM dav_principal WHERE (default_privileges = '".$perm_read."' OR default_privileges = '".$perm_readwrite."') AND principal_id = '".$_[0]."' LIMIT 1;";
+	syslog $syslog_priority, "  Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare($stmt);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my $default_privileges_principal = '9987982389';
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	@row = $sth->fetchrow_array();
+	$default_privileges_principal = $row[0];
+
+	if (defined($default_privileges_principal))
+	{
+		if (($default_privileges_principal != '9987982389') && ($default_privileges_principal ne ''))
+		{
+			syslog $syslog_priority, (" Los permisos binarios que obtengo para principal id ----$_[0]---- valen ----$default_privileges_principal----");
+			my $nombre_permisos_defecto = permisosbin_a_nombre($default_privileges_principal);
+			return($nombre_permisos_defecto);
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, " El principal ----$_[0]---- NO tiene permisos por defecto de lectura o lectura-escritura" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub sacar_permisos_externos_principal_en_coleccion {
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quotea el valor del ID de principal para el que sacar permisos externos en otras colecciones. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT by_collection,privileges FROM grants WHERE to_principal = "."$entfuncq"." AND by_collection IS NOT NULL;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare($stmt);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my @array_coles_permisos = ();
+	my $contador = 0;
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+		$array_coles_permisos[$contador][0] = $row[0];
+		$array_coles_permisos[$contador][1] = $row[1];
+		$contador = $contador + 1;
+	}
+
+	return(@array_coles_permisos);
+}
+
+sub sacar_permisos_de_NOprincipal_en_colecciones {
+	my $entfuncq = $dbh->quote($_[0]);
+	my $entfuncq2 = $dbh->quote($_[1]);
+	## Se quotea el valor del ID de principal para el que sacar permisos externos en otras principals. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT to_principal,privileges FROM grants WHERE by_collection = "."$entfuncq"." AND to_principal != "."$entfuncq2".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare($stmt);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my @array_coles_permisos = ();
+	my $contador = 0;
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+		$array_coles_permisos[$contador][0] = $row[0];
+		$array_coles_permisos[$contador][1] = $row[1];
+		$contador = $contador + 1;
+	}
+
+	syslog $syslog_priority, "El ID de principal ---$_[0]--- tiene los siguientes permisos en otras colecciones ---@array_coles_permisos---" if ($verbose==1);
+	return(@array_coles_permisos);
+}
+
+sub sacar_permisos_de_principal_en_colecciones {
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quotea el valor del ID de principal para el que sacar permisos externos en otras principals. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT to_principal,privileges FROM grants WHERE by_collection = "."$entfuncq"." AND to_principal IS NOT NULL;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare($stmt);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my @array_coles_permisos = ();
+	my $contador = 0;
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+		$array_coles_permisos[$contador][0] = $row[0];
+		$array_coles_permisos[$contador][1] = $row[1];
+		$contador = $contador + 1;
+	}
+
+	syslog $syslog_priority, "El ID de principal ---$_[0]--- tiene los siguientes permisos en otras colecciones ---@array_coles_permisos---" if ($verbose==1);
+	return(@array_coles_permisos);
+}
+
+sub sacar_permisos_de_principals_en_principal {
+	my $entfuncq = $dbh->quote($_[0]);
+	my $entfuncq2 = $dbh->quote($_[1]);
+	## Se quotea el valor del ID de principal para el que sacar permisos externos en otras principals. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT to_principal,privileges FROM grants WHERE by_principal = "."$entfuncq"." AND privileges != '000000000000000000000000';";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare($stmt);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my @array_princs_permisos = ();
+	my $contador = 0;
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+		$array_princs_permisos[$contador][0] = $row[0];
+		$array_princs_permisos[$contador][1] = $row[1];
+		$contador = $contador + 1;
+	}
+
+	syslog $syslog_priority, "Devolvemos si hay mas principals con permisos sobre otro principal" if ($verbose==1);
+	return(@array_princs_permisos);
+}
+
+sub sacar_grupos_de_propietario {
+	my $entfuncqtemp = $_[0].'%';
+	## Se quotea el valor del ID de usuario propietario del que saber que grupos tiene. Todos los grupos empiezan con ID de usuario propietario + nombre de grupo. Nos pasan ID de propietario al llamar a la funcion
+	my $entfuncq = $dbh->quote($entfuncqtemp);
+	my $stmt = "SELECT username FROM dav_principal WHERE username like "."$entfuncq"." AND type_id = 3;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare($stmt);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my @array_grupos_prop = ();
+	my $contador = 0;
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+		$array_grupos_prop[$contador] = $row[0];
+		$contador = $contador + 1;
+	}
+
+	syslog $syslog_priority, "El usuario ID ---$_[0]--- es propietario de los grupos ---@array_grupos_prop---" if ($verbose==1);
+	return(@array_grupos_prop);
+}
+
+sub sacar_listado_usuarios_davical {
+	## Se quotea el valor del ID de usuario propietario del que saber que grupos tiene. Todos los grupos empiezan con ID de usuario propietario + nombre de grupo. Nos pasan ID de propietario al llamar a la funcion
+	my $stmt = "SELECT username FROM dav_principal WHERE type_id = 1;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare($stmt);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my @listado_usuarios_davical = ();
+	my $contador = 0;
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+		$listado_usuarios_davical[$contador] = $row[0];
+		$contador = $contador + 1;
+	}
+
+	return(@listado_usuarios_davical);
+}
+
+sub grupo_conpermisos_asignados {
+	## MIRAMOS SI EL ID DE PRINCIPAL DEL GRUPO TIENE MAS PERMISOS ASOCIADOS PARA SABER SI UN GRUPO SE PUEDE BORRAR O NO.....
+	my $entfuncq = $dbh->quote($_[0]);
+	my $stmt = "SELECT to_principal FROM grants WHERE to_principal = "."$entfuncq".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare($stmt);
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	my @listado_usuarios_davical = ();
+	my $contador = 0;
+	if($rv < 0){
+		print $DBI::errstr;
+		die("Fallo en acceso a BBDD. CONTACTE CON SARENET.");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+		$listado_usuarios_davical[$contador] = $row[0];
+		$contador = $contador + 1;
+	}
+
+	return(@listado_usuarios_davical);
+}
+
+sub coleccion_es_libreta_o_agenda {
+	my $tipocole = 0;
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quotea el valor del ID de la coleccion de la que saber de QUE tipo es. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT is_addressbook FROM collection WHERE collection_id = "."$entfuncq"." LIMIT 1;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	if($rv < 0){
+		print $DBI::errstr;
+	}
+	@row = $sth->fetchrow_array();
+	$tipocole = $row[0];
+
+	if (scalar(@row) > 0)
+	{
+		syslog $syslog_priority, "El tipo de coleccion para el ID de coleccion ---$_[0]--- es ---$tipocole---" if ($verbose==1);
+		return($tipocole);
+	}
+	else
+	{
+		syslog $syslog_priority, "El tipo de coleccion para el ID de coleccion ---$_[0]--- es ---ERROR 9987982389---" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub permisosbin_a_nombre{
+	my $permnombre = 'NONE';
+	switch ($_[0]) {
+			case '000000001111111111111111'	{ $permnombre = 'ALL'; }
+			case '000000001111111011100111'	{ $permnombre = 'READWRITE' }
+			case '000000000001001000100001'	{ $permnombre = 'READ' }
+			case '000000001111111000100001'	{ $permnombre = 'READSCHED' }
+			case '000000000001001000000000'	{ $permnombre = 'FREEBUSY' }
+			case '000000000001110000000000'	{ $permnombre = 'SCHEDLIV' }
+			case '000000001110000000000000'	{ $permnombre = 'SCHEDSEND' }
+			case '000000000000000000000000'	{ $permnombre = 'NONE' }
+			else { $permnombre = '9987982389' }
+		}
+	return($permnombre);
+}
+
+sub permnombre_a_permbin{
+	my $permbin = '000000000000000000000000';
+	switch ($_[0]) {
+			case 'ALL'		{ $permbin = $perm_all }
+			case 'READWRITE'	{ $permbin = $perm_readwrite }
+			case 'READ'		{ $permbin = $perm_read }
+			case 'READSCHED'	{ $permbin = $perm_readsched }
+			case 'FREEBUSY'		{ $permbin = $perm_freebusy }
+			case 'SCHEDLIV'		{ $permbin = $perm_schedliv }
+			case 'SCHEDSEND'	{ $permbin = $perm_schedsend }
+			case 'NONE'		{ $permbin = $perm_none }
+			else { $permbin = '9987982389' }
+		}
+	return($permbin);
+}
+
+sub sacar_colecc_permisos_usuario {
+	my $userid = sacar_userid($_[0]);
+	my $mensaje_fallo_gen = 'ERROR GRAVE : Intento de sacar permisos en colecciones para usuario --$_[0]-- inexistente';
+	comprobar_error_variable($userid, $mensaje_fallo_gen);
+	my $usuario_poner = "";
+	my $grupoquetoca = "";
+	my @permisosgrupoquetoca = ();
+	my $colecquetoca = ();
+	my @array_url_tipo_permisos = ();
+	my $linea_array_url_tipo_permisos = "";
+	my $contador = 0;
+	my $dominioloc = $dominio;
+	$dominioloc =~ s/\.//g;
+	$dominioloc =~ s/-//g;
+	my $idcolecc = 0;
+	my $colec_nombre = "";
+	my $colec_perm = "";
+	my $tipo_colecc = 0;
+	my $useridcolecc = 0;
+
+	my @colec_prop_usuario = sacar_colecciones_usuario($userid);
+	comprobar_existencia_colecciones_por_defecto($userid);
+
+	my $principalid = sacar_principalid($userid);
+	$mensaje_fallo_gen = 'ERROR GRAVE: Hemos obtenido un usuario --$_[0]-- por valido que no tiene ID de principal';
+	comprobar_error_variable($principalid, $mensaje_fallo_gen);
+
+	## SACAR ACCESOS POR PERMISO POR DEFECTO
+	my @permisos_usuario_privilegios_defecto = sacar_permisos_acceso_autorizados_defecto();
+
+	## SACAR PERMISOS POR SI MISMO
+	my @permisos_usuario_comotal = sacar_permisos_externos_principal_en_coleccion($principalid);
+
+	my @permisos_usuario_comogrupos = ();
+	my @grupos_usuario = saca_grupos_usuario($principalid);
+
+	## SACAR PERMISOS DE LOS GRUPOS
+	foreach $grupoquetoca (@grupos_usuario) {
+		@permisosgrupoquetoca = sacar_permisos_externos_principal_en_coleccion($grupoquetoca);
+		push(@permisos_usuario_comogrupos, @permisosgrupoquetoca);
+		@permisosgrupoquetoca = ();
+	}
+
+	## PINTAR POSIBILIDADES ACCESO POR PRINCIPAL LOCAL
+	$usuario_poner = sacar_username_deidusu($userid);
+
+	foreach $colecquetoca (@colec_prop_usuario) {
+		$array_url_tipo_permisos[$contador][0] = 'https://'.$dominioloc.'.organizer.sarenet.es/caldav.php/'.$usuario_poner.'/'.@$colecquetoca[0].'/';
+		$array_url_tipo_permisos[$contador][1] = 'READWRITE';
+		$tipo_colecc = coleccion_es_libreta_o_agenda(@$colecquetoca[2]);
+		$mensaje_fallo_gen = 'ERROR GRAVE : La coleccion --$colecquetoca-- no es calendario o libreta de direcciones';
+		comprobar_error_variable($tipo_colecc, $mensaje_fallo_gen);
+		$array_url_tipo_permisos[$contador][2] = $tipo_colecc;
+		$contador = $contador + 1;
+	}
+
+	$colecquetoca = ();
+
+	## PINTAR POSIBILIDADES ACCESO EXTERNOS SIN ESTAR EN GRUPO
+	foreach $colecquetoca (@permisos_usuario_comotal) {
+		$colec_nombre = sacar_nombre_id_colecc(@$colecquetoca[0]);
+		$mensaje_fallo_gen = 'ERROR GRAVE : No puedo obtener el nombre de coleccion a partir del id ---@$colecquetoca[0]---';
+		comprobar_error_variable_texto($colec_nombre, $mensaje_fallo_gen);
+		$mensaje_fallo_gen = 'ERROR GRAVE : No puedo obtener el nombre de usuario para la URL de la coleccion ---$colec_nombre---';
+		comprobar_error_variable_texto($usuario_poner, $mensaje_fallo_gen);
+		$array_url_tipo_permisos[$contador][0] = 'https://'.$dominioloc.'.organizer.sarenet.es/caldav.php'.$colec_nombre;
+		$colec_perm = permisosbin_a_nombre(@$colecquetoca[1]);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Para la coleccion --$colecquetoca-- no hemos obtenido un valor normal de nombre de permisos';
+		comprobar_error_variable_texto($colec_perm, $mensaje_fallo_gen);
+		$tipo_colecc = coleccion_es_libreta_o_agenda(@$colecquetoca[0]);
+		$mensaje_fallo_gen = 'ERROR GRAVE : La coleccion --$colecquetoca-- no es calendario o libreta de direcciones';
+		comprobar_error_variable($tipo_colecc, $mensaje_fallo_gen);
+		$array_url_tipo_permisos[$contador][1] = $colec_perm;
+		$array_url_tipo_permisos[$contador][2] = $tipo_colecc;
+		$contador = $contador + 1;
+	}
+
+	$colecquetoca = ();
+
+	## PINTAR POSIBILIDADES ACCESO POR GRUPO
+	foreach $colecquetoca (@permisos_usuario_comogrupos) {
+		$colec_nombre = sacar_nombre_id_colecc(@$colecquetoca[0]);
+		$mensaje_fallo_gen = 'ERROR GRAVE : No puedo obtener el nombre de coleccion a partir del id ---@$colecquetoca[0]---';
+		comprobar_error_variable_texto($colec_nombre, $mensaje_fallo_gen);
+		$mensaje_fallo_gen = 'ERROR GRAVE : No puedo obtener el nombre de usuario para la URL de la coleccion ---$colec_nombre---';
+		comprobar_error_variable_texto($usuario_poner, $mensaje_fallo_gen);
+		$array_url_tipo_permisos[$contador][0] = 'https://'.$dominioloc.'.organizer.sarenet.es/caldav.php'.$colec_nombre;
+		$colec_perm = permisosbin_a_nombre(@$colecquetoca[1]);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Para la coleccion --$colecquetoca-- no hemos obtenido un valor normal de nombre de permisos';
+		comprobar_error_variable_texto($colec_perm, $mensaje_fallo_gen);
+		$tipo_colecc = coleccion_es_libreta_o_agenda(@$colecquetoca[0]);
+		$mensaje_fallo_gen = 'ERROR GRAVE : La coleccion --$colecquetoca-- no es calendario o libreta de direcciones';
+		comprobar_error_variable($tipo_colecc, $mensaje_fallo_gen);
+		$array_url_tipo_permisos[$contador][1] = $colec_perm;
+		$array_url_tipo_permisos[$contador][2] = $tipo_colecc;
+		$contador = $contador + 1;
+	}
+
+	$contador = 0;
+
+	## ANADO PERMISOS CONCEDIDOS POR PRIVILEGIOS POR DEFECTO
+	push(@array_url_tipo_permisos,@permisos_usuario_privilegios_defecto);
+
+	## POR ULTIMO COMPRUEBO NO DAR RESULTADOS DUPLICADOS Y POR ELLO POSIBLE QUE CON DIFERENTES PERMISOS
+	my $linea_array_url_tipo_permisos_resumen = "";
+	my $cuenta_repeticiones = '0';
+	my $permisos_escritura = '0';
+	my $permisos_lectura = '0';
+	my @array_cuentas_repetidas = ();
+	foreach $linea_array_url_tipo_permisos (@array_url_tipo_permisos)
+	{
+		$cuenta_repeticiones = 0;
+		$permisos_escritura = 0;
+		$permisos_lectura = 0;
+
+		foreach $linea_array_url_tipo_permisos_resumen (@array_url_tipo_permisos)
+		{
+			if (@$linea_array_url_tipo_permisos[0] eq @$linea_array_url_tipo_permisos_resumen[0])
+			{
+				$cuenta_repeticiones = $cuenta_repeticiones + 1;
+				if (@$linea_array_url_tipo_permisos[1] eq "READWRITE")
+				{
+					$permisos_escritura = '1';
+				}
+				elsif (@$linea_array_url_tipo_permisos[1] eq "READ")
+				{
+					$permisos_lectura = '1';
+				}
+
+			}
+		}
+
+		if ($cuenta_repeticiones > '1')
+		{
+			if (!grep { @$linea_array_url_tipo_permisos[0] eq $_ } @array_cuentas_repetidas)
+			{
+				syslog $syslog_priority, "AAAA";
+				push(@array_cuentas_repetidas,@$linea_array_url_tipo_permisos[0]);
+				if ($permisos_escritura eq '1')
+				{
+					syslog $syslog_priority, "Para el usuario ---$_[0]--- sacamos que tiene acceso a : @$linea_array_url_tipo_permisos[0]|@$linea_array_url_tipo_permisos[1]|@$linea_array_url_tipo_permisos[2]|" if ($verbose==1);
+					print ("@$linea_array_url_tipo_permisos[0]|READWRITE|@$linea_array_url_tipo_permisos[2]|\n");
+				}
+				elsif ($permisos_lectura eq '1')
+				{
+					syslog $syslog_priority, "Para el usuario ---$_[0]--- sacamos que tiene acceso a : @$linea_array_url_tipo_permisos[0]|@$linea_array_url_tipo_permisos[1]|@$linea_array_url_tipo_permisos[2]|" if ($verbose==1);
+					print ("@$linea_array_url_tipo_permisos[0]|READ|@$linea_array_url_tipo_permisos[2]|\n");
+				}
+			}
+			else
+			{
+				syslog $syslog_priority, "Evitando repetir ---@$linea_array_url_tipo_permisos[0]--- al citar colecciones con permisos" if ($verbose==1);
+				next;
+			}
+		}
+		elsif ($cuenta_repeticiones eq '1')
+		{
+			syslog $syslog_priority, "Para el usuario ---$_[0]--- sacamos que tiene acceso a : @$linea_array_url_tipo_permisos[0]|@$linea_array_url_tipo_permisos[1]|@$linea_array_url_tipo_permisos[2]|" if ($verbose==1);
+			print ("@$linea_array_url_tipo_permisos[0]|@$linea_array_url_tipo_permisos[1]|@$linea_array_url_tipo_permisos[2]|\n");
+		}
+	}
+}
+
+sub sacar_ids_colecc_usuario {
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quotea el valor del ID de usuario del que obtener los ID de coleccion. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT collection_id FROM collection WHERE user_no = "."$entfuncq".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	my @id_col = ();
+	my $contador = 0;
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	if($rv < 0){
+		print $DBI::errstr;
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+	$id_col[$contador] = $row[0];
+	$contador = $contador + 1;
+	}
+
+	if (scalar(@id_col) > 0)
+	{
+		syslog $syslog_priority, "El ID de usuario ---$_[0]--- tiene las colecciones ---@id_col---" if ($verbose==1);
+		return(@id_col);
+	}
+	else
+	{
+		syslog $syslog_priority, "El ID de usuario ---$_[0]--- tiene las colecciones ---ERROR 9987982389---" if ($verbose==1);
+		@id_col = ('9987982389');
+		return(@id_col);
+	}
+}
+
+sub sacar_id_coledavname {
+	my $coleasacarid = '/'.$_[0].'/'.$_[1].'/';
+	my $entfuncq = $dbh->quote($coleasacarid);
+	## Se quotea el valor del ID de usuario del que obtener los ID de coleccion. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT collection_id FROM collection WHERE dav_name = "."$entfuncq"." LIMIT 1;";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	my @id_col = ();
+	my $contador = 0;
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	if($rv < 0){
+		print $DBI::errstr;
+	}
+
+	if (@row = $sth->fetchrow_array())
+	{
+		$id_col[$contador] = $row[0];
+	}
+
+	if (scalar(@id_col) > 0)
+	{
+		syslog $syslog_priority, "El ID de cole que tiene el DAV_NAME ---$_[0]--- es ---$row[0]---" if ($verbose==1);
+		return($row[0]);
+	}
+	else
+	{
+		syslog $syslog_priority, "FALLO -- El ID de cole que tiene el DAV_NAME ---$coleasacarid--- es ---$row[0]---" if ($verbose==1);
+		@id_col = ('9987982389');
+		return($error_general);
+	}
+}
+
+sub usuario_ya_tiene_coleccion {
+	my @colecciones_usuario = @{$_[0]};
+	my $coleccion_comprobar = $_[1];
+
+	if (grep(/^$coleccion_comprobar$/, @colecciones_usuario))
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+sub crear_coleccion {
+	## Se quotea el valor de username, descripcion, tipo de coleccion para dar de alta una nueva. Nos lo pasan al llamar a la funcion
+	my $usuarioid = sacar_userid($_[0]);
+	comprobar_error_variable($usuarioid, 'ERROR GRAVE : Pidiendo crear coleccion para un ---$usuario--- inexistente.');
+	my $entfuncq = $dbh->quote($usuarioid);
+	my $entfuncq3 = $dbh->quote($_[2]);
+	my $entfuncq4 = $dbh->quote($_[3]);
+	my $tempentfunc5 = '/'.$_[0].'/';
+	my $tempentfunc52 = '/'.$_[0].'/'.$_[1].'/';
+	my $entfuncq52 = $dbh->quote($tempentfunc52);
+	my $entfuncq5 = $dbh->quote($tempentfunc5);
+	my $escaloag = $_[3];
+	my $stmt = "";
+
+	if ($escaloag == 0)
+	{
+	$stmt = "INSERT INTO collection (user_no, parent_container, dav_name, dav_displayname, is_calendar, publicly_readable, default_privileges, is_addressbook, resourcetypes, schedule_transp, description) VALUES( "."$entfuncq".", "."$entfuncq5".","."$entfuncq52".", "."$entfuncq3".", TRUE, FALSE, NULL, FALSE, '<DAV::collection/><urn:ietf:params:xml:ns:caldav:calendar/>', 'opaque', '' )";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	}
+	else
+	{
+	$stmt = "INSERT INTO collection (user_no, parent_container, dav_name, dav_displayname, is_calendar, publicly_readable, default_privileges, is_addressbook, resourcetypes, schedule_transp, description) VALUES( "."$entfuncq".", "."$entfuncq5".","."$entfuncq52".", "."$entfuncq3".", FALSE, FALSE, NULL, TRUE, '<DAV::collection/><urn:ietf:params:xml:ns:carddav:addressbook/>', 'opaque', '' )";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	}
+	my $rv = $dbh->do($stmt) or die $DBI::errstr;
+}
+
+sub borrar_coleccion {
+	my $coleaborrar = '/'.$_[0].'/'.$_[1].'/';
+	## Se quotea el valor del username propietario de la coleccion y la coleccion a borrar. Vamos, el nombre completo de la coleccion. Nos lo pasan al llamar a la funcion
+	my $entfuncq = $dbh->quote($coleaborrar);
+	my $stmt = "";
+
+	$stmt = "DELETE FROM collection WHERE dav_name="."$entfuncq".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $rv = $dbh->do($stmt) or die $DBI::errstr;
+	if( $rv < 0 ) {
+		print $DBI::errstr;
+	} else {
+		syslog $syslog_priority, "La consulta ---$stmt---- devuelve ----Total number of rows deleted : $rv-----" if ($verbose==1);
+	}
+}
+
+sub borrar_de_grupo {
+	my $entfuncq = $dbh->quote($_[0]);
+	my $entfuncq2 = $dbh->quote($_[1]);
+	my $stmt = "";
+	## Se quotea el valor del ID de grupo y ID de miembro que borrar del grupo del ID. Nos lo pasan al llamar a la funcion
+	$stmt = "DELETE FROM group_member WHERE group_id="."$entfuncq"." AND member_id="."$entfuncq2".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $rv = $dbh->do($stmt) or die $DBI::errstr;
+	if( $rv < 0 ){
+		print $DBI::errstr;
+	} else {
+		syslog $syslog_priority, "La consulta ---$stmt---- devuelve ----Total number of rows deleted : $rv-----" if ($verbose==1);
+	}
+}
+
+sub anadir_a_grupo {
+	my $entfuncq = $dbh->quote($_[0]);
+	my $entfuncq2 = $dbh->quote($_[1]);
+	## Se quotea el valor del ID de grupo y ID de miembro que anadir al grupo del ID. Nos lo pasan al llamar a la funcion
+	my $stmt = "INSERT INTO group_member (group_id, member_id) VALUES ("."$entfuncq".", "."$entfuncq2".");";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $rv = $dbh->do($stmt) or die $DBI::errstr;
+}
+
+sub crear_grupo {
+	## Se quotea el valor de username, Nombre completo y email del grupo que se va a crear. Ademas los valores del nombre de grupo se forman con IDusuariopropietario + grupo. Nos lo pasan al llamar a la funcion
+	my $tempentfuncq = $_[1].$_[0];
+	my $entfuncq = $dbh->quote($tempentfuncq);
+
+	my $tempentfuncq2 = $_[1].$_[0].'@'.$_[2];
+	my $entfuncq2 = $dbh->quote($tempentfuncq2);
+
+	my $stmt = "INSERT INTO dav_principal (user_active, username, password, fullname, email, date_format_type, locale, type_id, displayname, default_privileges) VALUES( TRUE, "."$entfuncq".", \'\', "."$entfuncq2".", "."$entfuncq2".", 'E', '', 3, "."$entfuncq".", '000000001111111000100000' );";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+
+	my $rv = $dbh->do($stmt) or die $DBI::errstr;
+}
+
+sub elimina_principal{
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quotea el valor del ID de principal que dar de baja. Nos lo pasan al llamar a la funcion
+	my $stmt = "DELETE FROM dav_principal WHERE principal_id="."$entfuncq".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $rv = $dbh->do($stmt) or die $DBI::errstr;
+}
+
+sub elimina_grupo{
+	my $id_principal = $_[0];
+	## Se quota el valor del id de principal del grupo a eliminar. Nos lo pasan al llamar a la funcion.
+	syslog $syslog_priority, "Dando de baja grupo que tiene por ID de principal ---$_[0]---" if ($verbose==1);
+	elimina_principal($id_principal);
+}
+
+sub elimina_usuario{
+	my $id_principal = $_[0];
+	## Se quota el valor del id de principal del usuario a eliminar. Nos lo pasan al llamar a la funcion.
+	syslog $syslog_priority, "Dando de baja usuario que tiene por ID de principal ---$_[0]---" if ($verbose==1);
+	elimina_principal($id_principal);
+}
+
+sub sacaid_princ_grupo {
+	my $id_usuario = 0;
+	my $id_principal = 0;
+	my $tipo_principal = "9987982389";
+
+	## Se quotea el valor del username del principal tipo grupo del que queremos sacar el principal ID. Nos lo pasan al llamar a la funcion.
+
+	$id_usuario = sacar_userid($_[0]);
+	$mensaje_fallo_gen = 'ERROR GRAVE : Intentando obtener id de principal para grupo ---$_[0]--- inexistente';
+	comprobar_error_variable($id_usuario, $mensaje_fallo_gen);
+
+	if ($id_usuario != 0)
+	{
+		$tipo_principal = sacar_tipo_principal($id_usuario);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Imposible obtener tipo de principal para ---$_[0]--- con ID Usuario --$id_usuario-- inexistente';
+		comprobar_error_variable_texto($tipo_principal, $mensaje_fallo_gen);
+
+		if ($tipo_principal eq "Group")
+		{
+				$id_principal = sacar_principalid($id_usuario);
+				syslog $syslog_priority, "El grupo que tiene por usuario ---$_[0]--- tiene por id de principal ---$id_principal---" if ($verbose==1);
+				return($id_principal);
+		}
+		else
+		{
+				syslog $syslog_priority, "El grupo que tiene por usuario ---$_[0]--- tiene por id de principal ---ERROR 9987982389---" if ($verbose==1);
+				return($error_general);
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "Fallo al obtener id de principal para el grupo que tiene por usuario ---$_[0]--- por no poderse sacar id de usuario ---ERROR 9987982389---" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub saca_grupos_usuario {
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quota el valor del id de usuario del que queremos sacar que grupos tiene o de los que el usuario que nos pasan es propietario. Nos lo pasan al llamar a la funcion.
+
+	my $stmt = "SELECT group_id FROM group_member WHERE member_id = "."$entfuncq".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	my @id_grupos = ();
+	my $contador = 0;
+	my $ids_grupos_sacados = "";
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	if($rv < 0){
+		print $DBI::errstr;
+		die ("Error de acceso a BBDD");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+	$id_grupos[$contador] = $row[0];
+	$contador = $contador + 1;
+	$ids_grupos_sacados = $ids_grupos_sacados." $row[0]";
+	}
+
+	syslog $syslog_priority, "El ID de usuario ---$_[0]--- tiene los grupos ---$ids_grupos_sacados---" if ($verbose==1);
+	return(@id_grupos);
+}
+
+sub saca_usuarios_grupo {
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quotea el valor del ID de grupo del que obtener que miembros tiene. Nos lo pasan al llamar a la funcion
+	my $stmt = "SELECT member_id FROM group_member WHERE group_id = "."$entfuncq".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $sth = $dbh->prepare( $stmt );
+	my @id_usu = ();
+	my $contador = 0;
+	my $rv = $sth->execute() or die $DBI::errstr;
+	my @row = ();
+	if($rv < 0){
+		print $DBI::errstr;
+		die ("Error de acceso a BBDD");
+	}
+
+	while(@row = $sth->fetchrow_array()) {
+	$id_usu[$contador] = $row[0];
+	$contador = $contador + 1;
+	}
+
+	syslog $syslog_priority, "El ID de grupo ---$_[0]--- tiene los id de miembros ---@id_usu---" if ($verbose==1);
+	return(@id_usu);
+}
+
+sub existe_usuario_en_grupo {
+	my $id_usuario = 0;
+	my $id_grupo = 0;
+	my $id_principal = 0;
+	my $respuesta = 0;
+	my $respuesta2 = 0;
+	$respuesta = existe_usuario($usuario);
+	$respuesta2 = existe_usuario($grupo);
+	if (($respuesta != 1) || ($respuesta2 != 1))
+	{
+		func_remplazo_die("No existe el usuario o grupo");
+	}
+
+	$id_usuario = sacar_userid($usuario);
+	$mensaje_fallo_gen = 'ERROR GRAVE : Imposible obtener id de usuario para ---$usuario---';
+	comprobar_error_variable($id_usuario, $mensaje_fallo_gen);
+	$id_grupo = sacar_userid($grupo);
+	$mensaje_fallo_gen = 'ERROR GRAVE : Imposible obtener id de grupo para ---$grupo---';
+	comprobar_error_variable($id_grupo, $mensaje_fallo_gen);
+
+	syslog $syslog_priority, "El id_usuario vale ---$id_usuario---. El id_usuario que nos pasan a la func vale ---$_[1]---" if ($verbose==1);
+	syslog $syslog_priority, "El id_grupo vale ---$id_grupo---. El id_grupo que nos pasan a la func vale ---$_[0]---" if ($verbose==1);
+
+	my $id_principal_origen = sacar_principalid($id_usuario);
+	$mensaje_fallo_gen = 'ERROR GRAVE : Imposible obtener id de principal para ---$usuario--- con id de usuario ---$id_usuario---';
+	comprobar_error_variable($id_principal_origen, $mensaje_fallo_gen);
+	my $id_principal_grupo = sacaid_princ_grupo($grupo);
+	my $mensaje_fallo_gen = 'ERROR GRAVE : Imposible obtener id de principal para ---$grupo--- con id de grupo ---$id_grupo---';
+	comprobar_error_variable($id_principal_grupo, $mensaje_fallo_gen);
+	my $entfuncq = $dbh->quote($id_principal_origen);
+	my $entfuncq2 = $dbh->quote($id_principal_grupo);
+
+	if (($id_principal_grupo != 0) && ($id_principal_origen != 0))
+	{
+
+		my $stmt = "SELECT group_id,member_id from group_member where group_id="."$entfuncq2"." and member_id="."$entfuncq"." LIMIT 1;";
+		syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+		my $sth = $dbh->prepare( $stmt );
+		my $rv = $sth->execute() or die $DBI::errstr;
+		my @row = ();
+		if($rv < 0){
+			print $DBI::errstr;
+		}
+		if (@row = $sth->fetchrow_array())
+		{
+			syslog $syslog_priority, "El usuario $usuario existe en grupo $grupo. Devolvemos 1." if ($verbose==1);
+			return (1);
+		}
+		else
+		{
+			syslog $syslog_priority, "El usuario $usuario NO existe en grupo $grupo. Devolvemos 0." if ($verbose==1);
+			return (0);
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "El usuario $usuario o grupo $grupo no existen. Devolvemos ERROR 9987982389." if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub existe_usuario {
+	my $id_usuario = 0;
+	my $id_principal = 0;
+	$id_usuario = sacar_userid($_[0]);
+	## Se quota el valor del username de quien comprobar su existencia. Nos lo pasan al llamar a la funcion.
+
+	if ($id_usuario != '9987982389')
+	{
+		syslog $syslog_priority, "El usuario ---$_[0]--- existe. El ID de usuario es ---$id_usuario----" if ($verbose==1);
+		return(1);
+	}
+	else
+	{
+		syslog $syslog_priority, "El usuario ---$_[0]--- NO existe. El ID de usuario es ---ERROR 9987982389----" if ($verbose==1);
+		return(0);
+	}
+}
+
+sub fijar_permisos_defect_col {
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quotea el valor del ID de coleccion sobre la que aplicar los permisos que nos digan. Nos pasan ambas cosas al llamar la funcion.
+
+	my $stmt = "";
+	my $permbin = $perm_none;
+
+	if ($_[1] eq "defecto")
+	{
+		$stmt = "UPDATE collection SET default_privileges = NULL WHERE collection_id="."$entfuncq".";";
+		syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	}
+	else
+	{
+		my $perm = $_[1];
+		my $permbin = permnombre_a_permbin($perm);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Imposible obtener permisos binarios para nombre ---$perm---';
+		comprobar_error_variable_texto($permbin, $mensaje_fallo_gen);
+		my $entfuncq2 = $dbh->quote($permbin);
+		$stmt = "UPDATE collection SET default_privileges = "."$entfuncq2"." WHERE collection_id="."$entfuncq".";";
+		syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	}
+
+	my $rv = $dbh->do($stmt) or die $DBI::errstr;
+	if ($rv < 0) {
+		print $DBI::errstr;
+		die ("Error de acceso a BBDD");
+	} else {
+		syslog $syslog_priority, "La consulta ---$stmt---- devuelve ----Total number of rows modified : $rv-----" if ($verbose==1);
+	}
+}
+
+sub fijar_permisos_defect_princ {
+	my $principal_id = $_[0];
+	my $perm = $_[1];
+	my $entfuncq = $dbh->quote($_[0]);
+	## Se quota el valor del id de principal al que aplicar los permisos que nos digan. Nos los pasan al llamar a la funcion.
+
+	my $stmt = "";
+	my $permbin = $perm_none;
+
+	if ($_[1] eq "defecto")
+	{
+		$stmt = "UPDATE dav_principal SET default_privileges = '000000001111111000100000' WHERE principal_id="."$entfuncq".";";
+		syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	}
+	else
+	{
+		$permbin = permnombre_a_permbin($perm);
+		my $entfuncq2 = $dbh->quote($permbin);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Imposible obtener permisos binarios para nombre ---$perm---';
+		comprobar_error_variable_texto($permbin, $mensaje_fallo_gen);
+		$stmt = "UPDATE dav_principal SET default_privileges = "."$entfuncq2"." WHERE principal_id="."$entfuncq".";";
+		syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	}
+
+	my $rv = $dbh->do($stmt) or die $DBI::errstr;
+	if ($rv < 0) {
+		print $DBI::errstr;
+		die ("Error de acceso a BBDD");
+	} else {
+		syslog $syslog_priority, "La consulta ---$stmt---- devuelve ----Total number of rows modified : $rv-----" if ($verbose==1);
+	}
+}
+
+
+sub anadir_permisos_principal_a_principal {
+	## Se quota el valor del id de principal al que darle permisos en el principal X. Ademas nos dicen que permisos. Nos lo pasan al llamar a la funcion.
+	my $entfuncq = $dbh->quote($_[0]);
+	my $entfuncq2 = $dbh->quote($_[1]);
+	my $perm = $_[2];
+	## AHORA COMPRUEBO SI YA ESTA ASI
+	my $existencia_permisos_ya = comprobar_existencia_permisos(0,$_[2],$_[0],$_[1]);
+
+	if ($existencia_permisos_ya != $error_general)
+	{
+		my $permbin = $perm_none;
+		$permbin = permnombre_a_permbin($perm);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Imposible obtener permisos binarios para nombre ---$perm---';
+		comprobar_error_variable_texto($permbin, $mensaje_fallo_gen);
+		my $entfuncq3 = $dbh->quote($permbin);
+
+		my $stmt = "INSERT INTO grants (by_principal, to_principal, privileges) VALUES( "."$entfuncq2".", "."$entfuncq".", "."$entfuncq3".");";
+		syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+		my $rv = $dbh->do($stmt) or die $DBI::errstr;
+
+	}
+	else
+	{
+		syslog $syslog_priority, "No aplicando permisos ya aplicados." if ($verbose==1);
+	}
+}
+
+sub eliminar_permisos_principal_a_principal {
+	my $entfuncq = $dbh->quote($_[0]);
+	my $entfuncq2 = $dbh->quote($_[1]);
+	## Se quota el valor del id de principal al que quitarle permisos en el principal X. Nos lo pasan al llamar a la funcion.
+
+	my $stmt = "DELETE FROM grants WHERE by_principal="."$entfuncq2"." AND to_principal="."$entfuncq".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $rv = $dbh->do($stmt) or die $DBI::errstr;
+}
+
+sub anadir_permisos_principal_a_collection {
+	my $entfuncq = $dbh->quote($_[0]);
+	my $entfuncq2 = $dbh->quote($_[1]);
+	my $perm = $_[2];
+	my $permbin = permnombre_a_permbin($perm);
+	$mensaje_fallo_gen = 'ERROR GRAVE : El valor binario de los permisos no es valido';
+	comprobar_error_variable_texto($permbin, $mensaje_fallo_gen);
+
+	## AHORA COMPRUEBO SI YA ESTA ASI
+	my $existencia_permisos_ya = comprobar_existencia_permisos(1,$_[2],$_[0],$_[1]);
+	if ($existencia_permisos_ya != $error_general)
+	{
+		my $entfuncq3 = $dbh->quote($permbin);
+		## Se quota el valor del id de principal al que darle permisos en la coleccion X. Ademas nos dicen que permisos. Nos lo pasan al llamar a la funcion.
+		my $stmt = "INSERT INTO grants (by_collection, to_principal, privileges) VALUES("."$entfuncq2".", "."$entfuncq".", "."$entfuncq3".");";
+		my $rv = $dbh->do($stmt) or die $DBI::errstr;
+		syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	}
+	else
+	{
+		syslog $syslog_priority, "No aplicando permisos ya aplicados." if ($verbose==1);
+	}
+}
+
+sub sacar_nombre_real_grupo {
+	### PONEMOS EL NOMBRE DEL GRUPO REAL CON EL QUE TRABAJAMOS
+	syslog $syslog_priority, "Recibimos por la llamada a la funcion el nombre de grupo ---$_[0]--- perteneciente al id de usuario ---$_[1]---" if ($verbose==1);
+	my $existe_propietario = existe_usuario($_[1]);
+	## NO HAGO COMPROBACION DE ERR CON NUMEROS RAROS PORQUE ESTOY TANTEANDO POSIBILIDADES PARA TIPO DE USUARIO ORIGEN ETC.... GRUPO NO GRUPO....
+	my $dominioponeres = sacar_dominio_para_email($_[1]);
+	$mensaje_fallo_gen = 'ERROR GRAVE : El dominio de email de ---$_[1]--- no es valido';
+	comprobar_error_variable_texto($dominioponeres, $mensaje_fallo_gen);
+	my $idusuariodequien = 9987982389;
+	my $gruporesultante = "";
+	if ($existe_propietario == 1)
+	{
+		$idusuariodequien = sacar_userid($_[1]);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Me sale que no existe el usuario ---$_[1]--- propietario del posible grupo ---$_[0]';
+		comprobar_error_variable($idusuariodequien, $mensaje_fallo_gen);
+		syslog $syslog_priority, "El propietario solicitado para el grupo existe y tiene por id de usuario ---$idusuariodequien---" if ($verbose==1);
+		my $espersona = tipo_principal_es_persona($idusuariodequien);
+
+		if ($espersona == 0)
+		{
+			$gruporesultante = $idusuariodequien.$_[0];
+			syslog $syslog_priority, "El propietario solicitado para el grupo existe y tiene por id de usuario ---$idusuariodequien---. Ademas es persona y grupo resultante vale ---$gruporesultante---" if ($verbose==1);
+		}
+		else
+		{
+			syslog $syslog_priority, "El propietario solicitado para el grupo existe y tiene por id de usuario ---$idusuariodequien--- pero NO ES PERSONA" if ($verbose==1);
+			func_remplazo_die("El supuesto propietario del grupo indicado ---$_[1]--- no puede serlo porque no es persona");
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "No podemos formar nombre real de grupo porque no existe el propietario del mismo." if ($verbose==1);
+		func_remplazo_die("No puedo formar el nombre real del grupo");
+	}
+	return($gruporesultante);
+}
+
+sub comprobar_si_pers_o_grupo_y_poner_nombre_grupo_bien {
+	my $id_usuario_op = sacar_userid($_[0]);
+	my $existe_como_usuario = existe_usuario($_[0]);
+	my $espersona = tipo_principal_es_persona($id_usuario_op);
+
+	if (($espersona != 0) && ($existe_como_usuario == 0) && ($dequien eq ""))
+	{
+		syslog $syslog_priority, "Pidiendo trabajar con algo que no es persona ----$usuario---- y sin poder formar grupo" if ($verbose==1);
+		func_remplazo_die("Pidiendo trabajar con algo que no es persona ----$usuario---- y sin poder formar grupo");
+	}
+
+	if (($espersona == 0) && ($existe_como_usuario == 1) && ($dequien eq ""))
+	{
+		syslog $syslog_priority, "Devolviendo el username ---$usuario--- recibido porque es persona. No le doy mas vueltas." if ($verbose==1);
+		return($_[0]);
+	}
+
+
+	if ($dequien ne "")
+	{
+		my $usuario_resultante = sacar_nombre_real_grupo($usuario,$dequien);
+		my $existe_como_grupo = existe_usuario($usuario_resultante);
+		if ($existe_como_grupo == 1)
+		{
+			syslog $syslog_priority, "Devolviendo el username ---$usuario_resultante--- despues de procesar y sacar el nombre del grupo." if ($verbose==1);
+			return($usuario_resultante);
+		}
+		else
+		{
+			syslog $syslog_priority, "El ---$usuario_resultante--- despues de procesar y sacar el nombre del grupo tampoco existe." if ($verbose==1);
+			func_remplazo_die("Tampoco existe como grupo....");
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "No nos han pasado el propietario del grupo..." if ($verbose==1);
+		func_remplazo_die("No tenemos propietario para grupo...");
+	}
+}
+
+sub eliminar_permisos_principal_a_collection {
+	my $entfuncq = $dbh->quote($_[0]);
+	my $entfuncq2 = $dbh->quote($_[1]);
+	## Se quota el valor del id de principal y coleccion sobre la que quitar permisos... Nos lo pasan al llamar a la funcion.
+	my $stmt = "DELETE FROM grants WHERE by_collection="."$entfuncq2"." AND to_principal = "."$entfuncq".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $rv = $dbh->do($stmt) or die $DBI::errstr;
+}
+
+sub actualiza_display_name {
+	my $entfuncq = $dbh->quote($_[0]);
+	my $entfuncq2 = $dbh->quote($_[1]);
+	## Se quota el valor del id de principal y coleccion sobre la que quitar permisos... Nos lo pasan al llamar a la funcion.
+	my $stmt = "UPDATE collection SET dav_displayname="."$entfuncq2"." WHERE collection_id="."$entfuncq".";";
+	syslog $syslog_priority, "Logueando consulta para instancia Davical para dominio $dominio : ---$stmt----" if ($verbose==1);
+	my $rv = $dbh->do($stmt) or die $DBI::errstr;
+}
+
+sub sacar_dominio_para_email {
+	my @array_correo = split(/\@/,$_[0]);
+	my $dominio = $array_correo[1];
+
+	if ($dominio =~ /^((\w)+\.{1})+(\w)+$/)
+	{
+		syslog $syslog_priority, "Sacamos el ---$dominio--- del propietario ---$_[0]---" if ($verbose==1);
+		return($dominio);
+	}
+	else
+	{
+		syslog $syslog_priority, "Rechazamos el ---$dominio--- del propietario ---$_[0]--- que tiene formato NO valido" if ($verbose==1);
+		return($error_general);
+	}
+}
+
+sub comprobar_existencia_colecciones_por_defecto {
+	my @colec_usuario_op = sacar_colecciones_usuario($_[0]);
+
+	my $colec_usu_opquetoca = "";
+	my @colec_usu_pasar = ();
+
+	foreach $colec_usu_opquetoca (@colec_usuario_op) {
+		push(@colec_usu_pasar,@$colec_usu_opquetoca[0]);
+	}
+
+	my $comprobar_que_tiene_calendar = usuario_ya_tiene_coleccion(\@colec_usu_pasar,$colec_default_calendar);
+	my $comprobar_que_tiene_addresses = usuario_ya_tiene_coleccion(\@colec_usu_pasar,$colec_default_addresses);
+
+	if (($comprobar_que_tiene_calendar == 0) || ($comprobar_que_tiene_addresses == 0))
+	{
+		syslog $syslog_priority, "Para el usuario ---$usuario--- no existen las colecciones por defecto calendar o addresses";
+	}
+}
+
+sub sacar_nombre_grupo_sin_userid {
+	my $nombre_grupo_completo = $_[0];
+	my $id_usuario_quitar = $_[1];
+	$nombre_grupo_completo =~ s/$id_usuario_quitar//g;
+	return($nombre_grupo_completo);
+}
+
+sub comprobar_permiso_ejecutar {
+	my $pidpadre = getppid();
+	$usercorriendo = `/usr/bin/whoami | /usr/bin/tr -d '\n'`;
+	my $lineappid = `/bin/ps auxwww | grep '$usercorriendo' | grep '$pidpadre' | grep -v 'grep'`;
+	syslog $syslog_priority, "La linea lineappid vale ----$lineappid------";
+	my ($ppidname) = $lineappid =~ m/[0-9]+:{1}[0-9]+\.[0-9]+\s+(.*)\n$/;
+	my ($ppidnameusernam) = $lineappid =~ m/^([a-zA-Z0-9]+)\s+[0-9]+\s+[0-9]+(\.{1}[0-9]+)*\s+/;
+	syslog $syslog_priority, "El PID name del parent es ---$ppidname---- que corre como ----$ppidnameusernam---";
+
+	if ($usercorriendo eq "root")
+	{
+		if (($usercorriendo eq $ppidnameusernam) && (($ppidname =~ m/gestiona_altasbajas\.pl/) || ($ppidname =~ m/csh/) || ($ppidname =~ m/gestiones-organizer-webmail-v011\.pl/)))
+		{
+			syslog $syslog_priority, "Adelante con la ejecucion con ---$usercorriendo--- llamado desde el usuario ---$ppidnameusernam--- y siendo el proceso padre ---$ppidname---";
+		}
+		else
+		{
+			die "UNEXPECTED GENERAL FAILURE";
+			syslog $syslog_priority, "Abortamos ejecucion con ---$usercorriendo--- llamado desde el ---$ppidnameusernam--- y siendo el proceso padre ---$ppidname---";
+		}
+	}
+	elsif ($usercorriendo eq "www")
+	{
+		if (($usercorriendo eq $ppidnameusernam) && ($ppidname =~ m/gestiones-organizer-webmail-v011\.pl/))
+		{
+			syslog $syslog_priority, "Adelante con la ejecucion con ---$usercorriendo--- llamado desde el usuario ---$ppidnameusernam--- y siendo el proceso padre ---$ppidname---";
+		}
+		else
+		{
+			die "UNEXPECTED GENERAL FAILURE";
+			syslog $syslog_priority, "Abortamos ejecucion con ---$usercorriendo--- llamado desde el usuario ---$ppidnameusernam--- y siendo el proceso padre ---$ppidname---";
+		}
+	}
+	else
+	{
+		die "UNEXPECTED GENERAL FAILURE";
+		syslog $syslog_priority, "Abortamos ejecucion con ---$usercorriendo--- llamado desde el ---$ppidnameusernam--- y siendo el proceso padre ---$ppidname---";
+	}
+}
+
+sub obtener_conexion_a_bbdd {
+	syslog $syslog_priority, "El dominio vale --$dominio--";
+	my $dominioloc = $dominio;
+	$dominioloc =~ s/\.//g;
+	$dominioloc =~ s/-//g;
+	my $fichero = "/usr/local/etc/davical/".$dominioloc.".organizer.sarenet.es-conf.php";
+	my $linea_conexion = "";
+	my $linea_conexion_trabajo = "";
+	if ($verbose == 1) { syslog $syslog_priority, ("El fichero vale ----$fichero-----"); }
+	open FILE, "<", $fichero or die "No existe fichero $fichero";
+	while (<FILE>) {
+		if($_ =~ m/^\$c->pg_connect\[\] = \"host=([0-9]{1,3}\.{1}){3}([0-9]{1,3}){1} port=5432 dbname=[\w]+ user=[\w]+ password=[\w]+\";/i)
+		{
+		if ($verbose == 1) { syslog $syslog_priority, ("La linea de conexion vale ---$_----"); }
+		$linea_conexion = $_;
+		$linea_conexion =~ s/\s+$//;
+		$linea_conexion_trabajo = $linea_conexion;
+		$linea_conexion_trabajo =~ m/(\w+)=(\w+\.{1}\w+\.{1}\w+\.{1}\w+ )(\w+)=(\w+ )(\w+)=(\w+ )(\w+)=(\w+ )(\w+)=(\w+)/;
+		if ($verbose == 1) { syslog $syslog_priority, "La linea de conexion trabajo vale ---$1--- ---$2--- ---$3--- ---$4--- ---$5--- ---$6--- ---$7--- ---$8--- ---$9--- ---$10---; El host vale : ---$2---; El port vale : ---$4---; La BBDD vale : ---$6---; El usuario vale : ---$8--- "};
+		$host = $2;
+		$database = $6;
+		$dsn = "DBI:$driver:dbname=$database;host=$host;port=5432";
+		$userid = $8;
+		$password = $10;
+		$host =~ s/^\s+|\s+$//g;
+		$database =~ s/^\s+|\s+$//g;
+		$userid =~ s/^\s+|\s+$//g;
+		$password =~ s/^\s+|\s+$//g;
+		last;
+		}
+	}
+	close FILE;
+	## VARIABLES DE CONEXION
+	$dbh = DBI->connect($dsn, $userid, $password, { RaiseError => 1 })
+		or die $DBI::errstr;
+}
+
+sub funcion_case_22 {
+	my $princ_id_grupo_revisar = "";
+	my @array_usuarios_grupo = ();
+	my $id_princ_usuario = 998798238;
+	my $id_usu_princ = 998798238;
+	my $nombre_id_usu = "";
+	my @array_nombres_grupo_mostrar = ();
+	my $nombre_que_toca = "";
+	my $contador = 0;
+	my $useridgrupo = 0;
+
+	my $id_usuario_prop_grupo = sacar_userid($dequien);
+	$mensaje_fallo_gen = 'ERROR GRAVE : Queriendo sacar los grupos de un propietario no podemos sacar el id de usuario de ---$dequien---';
+	comprobar_error_variable($id_usuario_prop_grupo, $mensaje_fallo_gen);
+	my $espersona = tipo_principal_es_persona($id_usuario_prop_grupo);
+	if ($espersona != 0)
+	{
+		syslog $syslog_priority, "Intentando sacar grupos pertenecientes a ---$dequien--- pero que no es persona este principal...";
+		func_remplazo_die("Intentando sacar grupos pertenecientes a ---$dequien--- pero que no es persona este principal...");
+	}
+
+	my @array_grupos_propietario = sacar_grupos_de_propietario($id_usuario_prop_grupo);
+	my $grupo_propietario_quetoca = "";
+	my $grupo_sin_id_usuario = "";
+	syslog $syslog_priority, "El propietario --$dequien-- tiene los grupos : @array_grupos_propietario";
+	foreach $grupo_propietario_quetoca (@array_grupos_propietario) {
+		$grupo_sin_id_usuario = sacar_nombre_grupo_sin_userid($grupo_propietario_quetoca,$id_usuario_prop_grupo);
+		print ("$grupo_sin_id_usuario:");
+		$princ_id_grupo_revisar = sacaid_princ_grupo($grupo_propietario_quetoca);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Nos piden sacar miembros de un grupo ---$grupo--- que pertenece a un usuario ---$usuario---. No podemos sacar principal del grupo resultante.';
+		comprobar_error_variable($useridgrupo, $mensaje_fallo_gen);
+		@array_usuarios_grupo = saca_usuarios_grupo($princ_id_grupo_revisar);
+		$nombre_id_usu = "";
+
+		syslog $syslog_priority, "El grupo $grupo tiene los siguientes miembros : @array_usuarios_grupo\n";
+		@array_nombres_grupo_mostrar = ();
+
+		foreach $id_princ_usuario (@array_usuarios_grupo) {
+			$id_usu_princ = sacar_userid_principal($id_princ_usuario);
+			$mensaje_fallo_gen = 'ERROR GRAVE : Al rellenar array de nombres de usuarios de un grupo a mostrar no podemos sacar el id de usuario del principal --$id_princ_usuario--';
+			comprobar_error_variable($id_usu_princ, $mensaje_fallo_gen);
+			$nombre_id_usu = sacar_username_deidusu($id_usu_princ);
+			$mensaje_fallo_gen = 'ERROR GRAVE : Al rellenar array de nombres de usuarios de un grupo a mostrar no podemos sacar el nombre de usuario del userid --$id_usu_princ--';
+			comprobar_error_variable_texto($nombre_id_usu, $mensaje_fallo_gen);
+			push(@array_nombres_grupo_mostrar, $nombre_id_usu);
+		}
+
+		foreach $nombre_que_toca (@array_nombres_grupo_mostrar) {
+			if ($contador eq '0')
+			{
+				print "$nombre_que_toca";
+			}
+			else
+			{
+				print ",$nombre_que_toca";
+			}
+			$contador = $contador + 1;
+		}
+	$contador = 0;
+	print "\n";
+	}
+}
+
+sub funcion_case_21 {
+	my @listado_usuarios_davical = sacar_listado_usuarios_davical();
+	my $usu_que_toca = "";
+	foreach $usu_que_toca (@listado_usuarios_davical) {
+		if ($usu_que_toca ne "admin")
+		{
+			print "$usu_que_toca\n";
+		}
+	}
+}
+
+sub funcion_case_20 {
+	if ($usuario ne "")
+	{
+		my $id_usu_modif = sacar_userid($usuario);
+		my $espersona = tipo_principal_es_persona($id_usu_modif);
+
+		if (($espersona == 1) || ($id_usu_modif == '9987982389'))
+		{
+			syslog $syslog_priority, "El usuario ----$usuario----- del que obtener libretas no existe o no es persona.";
+			func_remplazo_die("El usuario ----$usuario----- del que obtener libretas no existe o no es persona.");
+		}
+
+		my $id_principal_propio = sacar_principalid($id_usu_modif);
+		$mensaje_fallo_gen="ERROR GRAVE : Problemas para sacar el principalID de ---$usuario---";
+		comprobar_error_variable($id_principal_propio, $mensaje_fallo_gen);
+		my @array_colecciones_usuario = sacar_colecciones_usuario($id_usu_modif);
+		my $filas_array = scalar(@array_colecciones_usuario);
+		if ($filas_array < '2')
+		{
+			syslog $syslog_priority, "El usuario ----$usuario----- tiene demasiadas pocas colecciones. Que lo revisen.";
+			func_remplazo_die("El usuario ----$usuario----- tiene demasiadas pocas colecciones. Que lo revisen.");
+		}
+
+		my $nombre_coleccion = "";
+		my $useridtemp = "";
+		my $usernametemp = "";
+		my $usernametemp2 = "";
+		my $linea_array_coleccniones_disponibles_usuario = "";
+		my $linea2_array_coleccniones_disponibles_usuario = "";
+		my $linea3_array_coleccniones_disponibles_usuario = "";
+		my @array_propios_permisos_coleccion = ();
+		my @array_externos_permisos_coleccion = ();
+		my @array_permisos_defecto_cole = ();
+		my @array_principal_permisos_coleccion = ();
+		my @permisos_totales_en_colecciones_de_usuario = ();
+		my $nombre_permisos = "";
+		my $id_colec_temp = "";
+		my $permisos_bin_temp = "";
+		my $principal_temp = "";
+		my $tiene_permisos_defecto_rw_ro = '9987982389';
+		my $nombre_permisos_defecto = 'NONE';
+
+		foreach $linea_array_coleccniones_disponibles_usuario (@array_colecciones_usuario) {
+			$id_colec_temp = @$linea_array_coleccniones_disponibles_usuario[2];
+			$mensaje_fallo_gen="ERROR GRAVE : Id de coleccion erroneo ---$id_colec_temp---";
+			comprobar_error_variable($id_colec_temp, $mensaje_fallo_gen);
+			syslog $syslog_priority, "Comprobando permisos por defecto para ----$id_colec_temp-----." if ($verbose==1);
+			$tiene_permisos_defecto_rw_ro = colecc_tiene_permisos_por_defecto($id_colec_temp);
+			if ($tiene_permisos_defecto_rw_ro == 0)
+			{
+				$nombre_permisos_defecto = ver_permisos_defecto_colecc($id_colec_temp);
+				syslog $syslog_priority, "La id de coleccion ----$id_colec_temp----- tiene permisos por defecto de lectura o lectura-escritura ----$nombre_permisos_defecto---." if ($verbose==1);
+				if (($nombre_permisos_defecto eq "READ") || ($nombre_permisos_defecto eq "READWRITE"))
+				{
+					$nombre_coleccion = sacar_nombre_id_colecc($id_colec_temp);
+					syslog $syslog_priority, "La id de coleccion ----$id_colec_temp----- tiene permisos por defecto de ----$nombre_permisos_defecto----." if ($verbose==1);
+					@array_permisos_defecto_cole = ($nombre_coleccion,'T0D0S_AUTENTICAD0S_D4VICAL',$nombre_permisos_defecto);
+					push(@permisos_totales_en_colecciones_de_usuario,@array_permisos_defecto_cole);
+				}
+			}
+
+			$nombre_coleccion = sacar_nombre_id_colecc($id_colec_temp);
+			$mensaje_fallo_gen="ERROR GRAVE : Problemas obteniendo nombre de coleccion de id ---$nombre_coleccion---";
+			comprobar_error_variable_texto($nombre_coleccion, $mensaje_fallo_gen);
+			@array_propios_permisos_coleccion = ("$nombre_coleccion","$usuario","READWRITE");
+			push(@permisos_totales_en_colecciones_de_usuario,@array_propios_permisos_coleccion);
+			@array_principal_permisos_coleccion = sacar_permisos_de_principal_en_colecciones($id_colec_temp);
+			foreach $linea2_array_coleccniones_disponibles_usuario(@array_principal_permisos_coleccion) {
+				$permisos_bin_temp = @$linea2_array_coleccniones_disponibles_usuario[1];
+				$principal_temp = @$linea2_array_coleccniones_disponibles_usuario[0];
+				if (($permisos_bin_temp ne '000000000001001000100001') && ($permisos_bin_temp ne '000000001111111011100111'))
+				{
+					syslog $syslog_priority, "Estos permisos ---$permisos_bin_temp--- no son los permisos que usamos en provision y seran NONE";
+					next;
+				}
+				$nombre_permisos = permisosbin_a_nombre($permisos_bin_temp);
+				$mensaje_fallo_gen="ERROR GRAVE : Problemas para sacar el nombre de los permisos binarios ---$permisos_bin_temp---";
+				comprobar_error_variable_texto($nombre_permisos, $mensaje_fallo_gen);
+				$useridtemp = sacar_userid_principal($principal_temp);
+				$mensaje_fallo_gen="ERROR GRAVE : Problemas para sacar el userid del principalID ---$principal_temp---";
+				comprobar_error_variable($useridtemp, $mensaje_fallo_gen);
+				$usernametemp = sacar_username_deidusu($useridtemp);
+				$mensaje_fallo_gen="ERROR GRAVE : Problemas para sacar el username del userid ---$useridtemp---";
+				comprobar_error_variable($usernametemp, $mensaje_fallo_gen);
+				$usernametemp2 = sacar_nombre_grupo_sin_userid($usernametemp,$id_usu_modif);
+				@array_externos_permisos_coleccion = ($nombre_coleccion,$usernametemp2,$nombre_permisos);
+				push(@permisos_totales_en_colecciones_de_usuario,@array_externos_permisos_coleccion);
+			}
+		}
+
+		my $contador = 0;
+		foreach (@permisos_totales_en_colecciones_de_usuario) {
+			if ($contador > 1)
+			{
+				print "$_";
+				print "|";
+				print "\n";
+				$contador = 0;
+				next;
+			}
+			print "$_";
+			print "|";
+			$contador = $contador + 1;
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "Faltan argumentos para sacar permisos de colection de un usuario ---$usuario---";
+		print "Faltan argumentos para sacar permisos de colection de un usuario ---$usuario---";
+	}
+}
+
+sub funcion_case_16 {
+	if ($usuario ne "")
+	{
+		sacar_colecc_permisos_usuario($usuario);
+	}
+	else
+	{
+		syslog $syslog_priority, "No puedo pasar al webmail (case 16) las url de las collection para ---$usuario--- porque faltan argumentos.";
+		print "No puedo pasar al webmail (case 16) las url de las collection para ---$usuario--- porque faltan argumentos.";
+	}
+}
+#### FIN FUNCIONES BASICAS PARA SER COMBINADAS EN OTRAS FUNCIONES MAS COMPLEJAS QUE HAGAN LAS TAREAS
+
+## COMIENZA LA FIESTA!!! FUNCION MAIN()
+
+GetOptions ("usuario=s" => \$usuario,
+		"grupo=s" => \$grupo,
+		"permisos=s" => \$permisos,
+		"coleccion=s" => \$coleccion,
+		"tipocol=s" => \$tipocol,
+		"displaynamecoleccion=s" => \$coldispname,
+		"operacion=i" => \$idoperacion,
+		"wdestusu=s" => \$usudest,
+		"femailgr=s" => \$email,
+		"rdomprinc=s" => \$dominio,
+		"zdequien=s" => \$dequien,
+		"verbose" => \$verbose)
+or die("Error in command line arguments\n");
+
+## if ($verbose == 1)
+## {
+##	print "En modo verboso";
+## }
+
+comprobar_permiso_ejecutar();
+obtener_conexion_a_bbdd();
+comprobar_version();
+
+## SWITCH PARA LA FUNCION PRINCIPAL A REALIZAR
+
+switch ($idoperacion) {
+case 1	{
+	if (($usuario ne "") && ($tipocol ne "") && ($coleccion ne ""))
+	{
+		syslog $syslog_priority, "ACCION 1 : Se solicita crear la coleccion ---$coleccion--- solicitada porque el usuario ---$usuario---." if ($verbose==1);
+		my $usuario_existe = existe_usuario($usuario);
+
+		if ($usuario_existe != 1)
+		{
+			syslog $syslog_priority, "No podemos crear la coleccion ---$coleccion--- solicitada porque el usuario ---$usuario--- sobre el que crearlo no existe." if ($verbose==1);
+			func_remplazo_die("El usuario ---$usuario--- no existe");
+		}
+		my $id_usuario_op = sacar_userid($usuario);
+		my $id_usuario_op_princ = sacar_principalid($id_usuario_op);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Despues de ver que --$usuario-- existe no podemos obtener su user id';
+		comprobar_error_variable($id_usuario_op, $mensaje_fallo_gen);
+		my $espersona = tipo_principal_es_persona($id_usuario_op);
+
+		if ($espersona != 0)
+		{
+			syslog $syslog_priority, "No podemos crear la coleccion ---$coleccion--- solicitada porque el usuario ---$usuario--- porque usuario no es de tipo persona." if ($verbose==1);
+			func_remplazo_die("Pidiendo crear coleccion para usuario ----$usuario---- que no es de tipo persona.");
+		}
+
+		if ($coldispname eq "")
+		{
+			if ($tipocol == 0)
+			{
+				$coldispname = "Calendario llamado ".$coleccion;
+			}
+			elsif ($tipocol == 1)
+			{
+				$coldispname = "Agenda de contactos llamada ".$coleccion;
+			}
+			else
+			{
+				syslog $syslog_priority, "No podemos crear la coleccion ---$coleccion--- solicitada porque el usuario ---$usuario--- porque la coleccion no es de tipo libreta o agenda." if ($verbose==1);
+				func_remplazo_die("La coleccion no es de tipo agenda o libreta...");
+			}
+		}
+
+		my @colec_usuario_op = sacar_colecciones_usuario($id_usuario_op);
+
+		my $colec_usu_opquetoca = "";
+		my @colec_usu_pasar = ();
+
+		foreach $colec_usu_opquetoca (@colec_usuario_op) {
+			push(@colec_usu_pasar,@$colec_usu_opquetoca[0]);
+		}
+		my $colec_exist_usu_op = usuario_ya_tiene_coleccion(\@colec_usu_pasar,$coleccion);
+
+
+		if ($colec_exist_usu_op == 0)
+		{
+			my $principal_con_permisos_todos_usu_autenticados_fijados = existen_perm_defecto_princ($id_usuario_op_princ);
+			my @permisos_externos_sobre_principal = sacar_permisos_de_principals_en_principal($id_usuario_op_princ);
+			my $n_permisos_externos_sobre_principal = scalar(@permisos_externos_sobre_principal);
+			crear_coleccion($usuario,$coleccion,$coldispname,$tipocol);
+			if (($principal_con_permisos_todos_usu_autenticados_fijados != '9987982389') || ($n_permisos_externos_sobre_principal > '0'))
+			{
+				syslog $syslog_priority, "Ajustando permisos sobre coleccion ---$coleccion--- a permisos defecto nada para prevenir accesos no autorizados";
+				my $id_colec_creada = sacar_id_colecc_usuario_nombre($id_usuario_op,'/'.$usuario.'/'.$coleccion.'/');
+				fijar_permisos_defect_col($id_colec_creada,$permisos_defecto_nada);
+			}
+			print "OK";
+		}
+		else
+		{
+			print ("No se puede crear la coleccion porque ya existe.");
+			syslog $syslog_priority, "No podemos crear la coleccion ---$coleccion--- solicitada porque el usuario ---$usuario--- porque la coleccion ya existe." if ($verbose==1);
+		}
+		comprobar_existencia_colecciones_por_defecto($id_usuario_op);
+	}
+	else
+	{
+		print "Para el case 1 faltan argumentos. Usuario vale --$usuario-- Tipo de colecc vale --$tipocol-- y Coleccion vale --$coleccion--";
+		syslog $syslog_priority, "Solicitud de crear coleccion (case 1) erronea porque faltan argumentos. Usuario vale --$usuario-- Tipo de colecc vale --$tipocol-- y Coleccion vale --$coleccion--";
+	}
+}
+case 2	{
+	if (($usuario ne "") && ($coleccion ne ""))
+	{
+		syslog $syslog_priority, "ACCION 2 : Se solicita eliminar la coleccion ---$coleccion--- para el usuario ---$usuario---." if ($verbose==1);
+		my $usuario_existe = existe_usuario($usuario);
+		if ($usuario_existe != 1)
+		{
+			syslog $syslog_priority, "No se puede eliminar la coleccion ---$coleccion--- del usuario ---$usuario--- porque el usuario no existe" if ($verbose==1);
+			func_remplazo_die("No se puede eliminar la coleccion ---$coleccion--- del usuario ---$usuario--- porque el usuario no existe");
+		}
+
+		my $id_usuario_op = sacar_userid($usuario);
+		my $id_principal_usuario = sacar_principalid($id_usuario_op);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Despues de ver que --$usuario-- existe no podemos obtener su user id';
+		comprobar_error_variable($id_usuario_op, $mensaje_fallo_gen);
+		my $espersona = tipo_principal_es_persona($id_usuario_op);
+		my $colec_usu_opquetoca = "";
+		my @colec_usu_pasar = ();
+
+		if ($espersona != 0)
+		{
+			syslog $syslog_priority, "Pidiendo borrar coleccion para usuario ----$usuario---- que no es de tipo persona." if ($verbose==1);
+			func_remplazo_die("Pidiendo borrar coleccion para usuario ----$usuario---- que no es de tipo persona.");
+		}
+
+		my @colec_usuario_op = sacar_colecciones_usuario($id_usuario_op);
+
+		foreach $colec_usu_opquetoca (@colec_usuario_op) {
+			push(@colec_usu_pasar,@$colec_usu_opquetoca[0]);
+		}
+
+		my $colec_exist_usu_op = usuario_ya_tiene_coleccion(\@colec_usu_pasar,$coleccion);
+
+		### COMPRUEBO QUE LA COLECCION SE PUEDE BORRAR PORQUE NADIE TIENE PERMISOS SOBRE ELLA O NO TIENE PERMISOS DEFECTO
+		my $imposibilidad_borrar = '0';
+		my $id_de_cole = sacar_id_coledavname($usuario,$coleccion);
+		my @permisos_deotros_que_hay_sobre_colecc = sacar_permisos_de_NOprincipal_en_colecciones($id_de_cole,$id_principal_usuario);
+		my $n_permisos_deotros_que_hay_sobre_colecc = scalar(@permisos_deotros_que_hay_sobre_colecc);
+		if ($n_permisos_deotros_que_hay_sobre_colecc > 0)
+		{
+			$imposibilidad_borrar = '1';
+		}
+		my $lacole_tiene_permisos_defecto = colecc_tiene_permisos_por_defecto($id_de_cole);
+		if ($lacole_tiene_permisos_defecto == '0')
+		{
+			$imposibilidad_borrar = '1';
+		}
+		### FIN COMPRUEBO QUE LA COLECCION SE PUEDE BORRAR PORQUE NADIE TIENE PERMISOS SOBRE ELLA O NO TIENE PERMISOS DEFECTO
+
+		if (($colec_exist_usu_op == '1') && (($coleccion ne "calendar") && ($coleccion ne "addresses")) && ($imposibilidad_borrar == '0'))
+		{
+			borrar_coleccion($usuario,$coleccion);
+			print "OK";
+		}
+		else
+		{
+			syslog $syslog_priority, "Imposible borrar coleccion ---$coleccion--- para usuario ----$usuario---- porque NO existe o si son las de por defecto no se permite." if ($verbose==1);
+			print ("Imposible borrar coleccion ---$coleccion--- para usuario ----$usuario---- porque NO existe o si son las de por defecto no se permite.");
+		}
+		comprobar_existencia_colecciones_por_defecto($id_usuario_op);
+	}
+	else
+	{
+		syslog $syslog_priority, "Para el case 2 faltan argumentos. Usuario vale --$usuario-- y Coleccion vale --$coleccion--";
+		print "Para el case 2 faltan argumentos. Usuario vale --$usuario-- y Coleccion vale --$coleccion--";
+	}
+}
+case 3	{
+	if (($usuario ne "") && ($grupo ne "") && ($dequien ne ""))
+	{
+		syslog $syslog_priority, "ACCION 3 : Se solicita anadir el usuario ---$usuario--- al grupo ---$grupo--- perteneciente a ---$dequien---" if ($verbose==1);
+		my $id_usuario_op = sacar_userid($usuario);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden anadir usuario ---$usuario--- que no se puede sacar el user id al grupo ---$grupo---";
+		comprobar_error_variable($id_usuario_op, $mensaje_fallo_gen);
+		my $id_usuario_prop_grupo = sacar_userid($dequien);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden anadir usuario ---$usuario--- al grupo ---$grupo--- de cuyo propietario no podemos sacar user id";
+		comprobar_error_variable($id_usuario_prop_grupo, $mensaje_fallo_gen);
+		my $nombregrupousar = sacar_nombre_real_grupo($grupo,$dequien);
+		my $id_grupocomp = sacar_userid($nombregrupousar);
+		$mensaje_fallo_gen = "ERROR GRAVE : No podemos obtener id de usuario del grupo resultante ---$nombregrupousar---";
+		comprobar_error_variable($id_grupocomp, $mensaje_fallo_gen);
+		my $grupo_existe = existe_usuario($nombregrupousar);
+		if ($grupo_existe != 1)
+		{
+			syslog $syslog_priority, "El grupo --$grupo-- no es valido para el propietario --$dequien--";
+			func_remplazo_die("El grupo --$grupo-- no es valido para el propietario --$dequien--");
+		}
+
+		my $id_grupo_op = 998798238;
+		my $id_princ_memb = 998798238;
+
+		my $espersona = tipo_principal_es_persona($id_usuario_op);
+		my $esgrupo = tipo_principal_es_grupo($id_grupocomp);
+		my $espersona2 = tipo_principal_es_persona($id_usuario_prop_grupo);
+
+		if (($espersona != 0) || ($espersona2 != 0))
+		{
+			syslog $syslog_priority, "El usuario ---$usuario---, grupo ---$grupo--- no son del tipo que deben ser para la accion solicitada o alguno no existe.";
+			func_remplazo_die("El usuario ---$usuario---, grupo ---$grupo--- no son del tipo que deben ser para la accion solicitada o alguno no existe.");
+		}
+
+		my $grupo_resultante = $nombregrupousar;
+		$grupo = $grupo_resultante;
+
+		$id_princ_memb = sacar_principalid($id_usuario_op);
+		$id_grupo_op = sacaid_princ_grupo($grupo_resultante);
+
+		if (($id_princ_memb == 998798238) || ($id_grupo_op == 998798238))
+		{
+			syslog $syslog_priority, "No existe el usuario ---$usuario--- o grupo indicados ---$grupo----";
+			func_remplazo_die("No existe el usuario ---$usuario--- o grupo indicados ---$grupo----");
+		}
+		my $usu_yaexiste_grupo = existe_usuario_en_grupo($id_grupo_op,$id_princ_memb);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Error extrano al intentar ver si el usuario ---$usuario--- con principal id ---$id_princ_memb--- pertenece al grupo ---$grupo--- con principal id ---$id_grupo_op---';
+		comprobar_error_variable($usu_yaexiste_grupo, $mensaje_fallo_gen);
+		if ($usu_yaexiste_grupo == 0)
+		{
+			anadir_a_grupo($id_grupo_op,$id_princ_memb);
+			print "OK";
+		}
+		else
+		{
+			syslog $syslog_priority, "Es imposible anadir usuario ---$usuario--- a grupo ---$grupo--- porque ya pertenece a grupo";
+			print ("Es imposible anadir usuario ---$usuario--- a grupo ---$grupo--- porque ya pertenece a grupo");
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "No se puede anadir usuario a grupo. Usuario vale --$usuario-- y Grupo vale --$grupo-- perteneciendo a --$dequien--";
+		print "No se puede anadir usuario a grupo. Usuario vale --$usuario-- y Grupo vale --$grupo-- perteneciendo a --$dequien--";
+	}
+}
+case 4	{
+	if (($usuario ne "") && ($grupo ne "") && ($dequien ne ""))
+	{
+		syslog $syslog_priority, "ACCION 4 : Se solicita eliminar el usuario ---$usuario--- del grupo ---$grupo--- perteneciente a ---$dequien---" if ($verbose==1);
+		my $id_usuario_op = sacar_userid($usuario);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Nos piden eliminar usuario ---$usuario--- que no se puede sacar el user id al grupo ---$grupo---';
+		comprobar_error_variable($id_usuario_op, $mensaje_fallo_gen);
+		my $id_usuario_prop_grupo = sacar_userid($dequien);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Nos piden eliminar usuario ---$usuario--- al grupo ---$grupo--- de cuyo propietario no podemos sacar user id';
+		comprobar_error_variable($id_usuario_prop_grupo,$mensaje_fallo_gen);
+		my $id_grupocomp = sacar_userid($id_usuario_prop_grupo.$grupo);
+		my $grupo_existe = existe_usuario($id_usuario_prop_grupo.$grupo);
+		if ($grupo_existe != 1)
+		{
+			syslog $syslog_priority, "El grupo --$grupo-- no es valido para el propietario --$dequien--";
+			func_remplazo_die("El grupo --$grupo-- no es valido para el propietario --$dequien--");
+		}
+
+		my $id_grupo_op = 998798238;
+		my $id_princ_memb = 998798238;
+
+		my $espersona = tipo_principal_es_persona($id_usuario_op);
+		my $espersona2 = tipo_principal_es_persona($id_usuario_prop_grupo);
+
+		if (($espersona != 0) || ($espersona2 != 0))
+		{
+			syslog $syslog_priority, "El usuario ---$usuario---, grupo ---$grupo--- no son del tipo que deben ser para la accion solicitada o alguno no existe.";
+			func_remplazo_die("El usuario ---$usuario---, grupo ---$grupo--- no son del tipo que deben ser para la accion solicitada o alguno no existe.");
+		}
+
+		my $esgrupo = tipo_principal_es_grupo($id_grupocomp);
+
+		if ($esgrupo != 0)
+		{
+			syslog $syslog_priority, "El destino --$grupo-- no es un grupo....";
+			func_remplazo_die("El destino --$grupo-- no es un grupo....");
+		}
+
+		$id_princ_memb = sacar_principalid($id_usuario_op);
+
+		my $grupo_resultante = sacar_nombre_real_grupo($grupo,$dequien);
+		$grupo = $grupo_resultante;
+
+		$id_grupo_op = sacaid_princ_grupo($grupo);
+
+		if (($id_princ_memb == 9987982389) || ($id_grupo_op == 9987982389))
+		{
+			syslog $syslog_priority, "No existe el usuario ---$usuario--- o grupo ---$grupo--- indicados";
+			func_remplazo_die("No existe el usuario ---$usuario--- o grupo ---$grupo--- indicados");
+		}
+		my $usu_yaexiste_grupo = existe_usuario_en_grupo($id_grupo_op,$id_princ_memb);
+		if ($usu_yaexiste_grupo == 1)
+		{
+			borrar_de_grupo($id_grupo_op,$id_princ_memb);
+			print "OK";
+		}
+		else
+		{
+			syslog $syslog_priority, "Imposible borrar usuario ---$usuario--- de grupo ---$grupo--- porque NO pertenece a grupo";
+			func_remplazo_die("Imposible borrar usuario ---$usuario--- de grupo ---$grupo--- porque NO pertenece a grupo");
+		}
+	}
+	else
+	{
+		print "No se puede (case 4) borrar usuario ---$usuario--- de grupo ---$grupo--- porque faltan argumentos....";
+		syslog $syslog_priority, "No se puede (case 4) borrar usuario ---$usuario--- de grupo ---$grupo--- porque faltan argumentos....";
+	}
+}
+case 5	{
+	if (($usuario ne "") && ($usudest ne "") && ($permisos ne ""))
+	{
+		syslog $syslog_priority, "ACCION 5 : Se solicita dar permisos de principal ---$permisos--- al usuario ---$usuario--- en el principal ---$usudest---" if ($verbose==1);
+		my $id_princ_usuario = 0;
+		my $id_princ_destino = 0;
+		my $resultado_usu_grupo_orig = "";
+		my $colec_usu_opquetoca = "";
+		my @colec_usu_pasar = ();
+
+		## TENGO QUE TENER CLARO CON QUE TRABAJO
+		$resultado_usu_grupo_orig = comprobar_si_pers_o_grupo_y_poner_nombre_grupo_bien($usuario,$dequien);
+
+		my $id_usuario_op = sacar_userid($usudest);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden dar permisos a ---$usuario--- en ---$usudest--- pero no ponemos obtener el id de usuario destino";
+		comprobar_error_variable($id_usuario_op, $mensaje_fallo_gen);
+		my $espersona = tipo_principal_es_persona($id_usuario_op);
+		if ($espersona != 0)
+		{
+			syslog $syslog_priority, "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+			syslog $syslog_priority, "Pidiendo dar permisos a ---$usuario--- sobre ---$usudest--- que no es una persona... NO VALE";
+			func_remplazo_die("Pidiendo dar permisos a ---$usuario--- sobre ---$usudest--- que no es una persona... NO VALE");
+		}
+
+		my $id_usuario_origen = sacar_userid($resultado_usu_grupo_orig);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden dar permisos a ---$resultado_usu_grupo_orig--- en ---$usudest--- pero no ponemos obtener el id de usuario origen";
+		comprobar_error_variable($id_usuario_origen, $mensaje_fallo_gen);
+		my $id_usuario_destino = $id_usuario_op;
+		my @id_col_poner_defpriv_a_0 = sacar_ids_colecc_usuario($id_usuario_destino);
+		comprobar_existencia_colecciones_por_defecto($id_usuario_op);
+
+		my $toca_col = "";
+
+		$id_princ_usuario = sacar_principalid($id_usuario_origen);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden dar permisos a ---$usuario--- en ---$usudest--- pero no ponemos obtener el id de principal del id de usuario origen ---$id_usuario_origen---";
+		comprobar_error_variable($id_princ_usuario, $mensaje_fallo_gen);
+		$id_princ_destino = sacar_principalid($id_usuario_destino);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden dar permisos a ---$usuario--- en ---$usudest--- pero no ponemos obtener el id de principal del id de usuario destino ---$id_usuario_destino---";
+		comprobar_error_variable($id_princ_destino, $mensaje_fallo_gen);
+
+		my $colec_tiene_perm_defecto = 1;
+
+		anadir_permisos_principal_a_principal($id_princ_usuario,$id_princ_destino,$permisos);
+
+		my $colpuntoin = sacar_id_colecc_usuario_nombre($id_usuario_destino,'/'.$usudest.'/.in/');
+		my $colpuntoout = sacar_id_colecc_usuario_nombre($id_usuario_destino,'/'.$usudest.'/.out/');
+
+		foreach $toca_col (@id_col_poner_defpriv_a_0) {
+
+			$colec_tiene_perm_defecto = colecc_tiene_permisos_por_defecto($toca_col);
+			$mensaje_fallo_gen = "Imposible saber si la coleccion con id ---$toca_col--- tiene permisos por defecto";
+			comprobar_error_variable($colec_tiene_perm_defecto, $mensaje_fallo_gen);
+			if ($colec_tiene_perm_defecto == 1)
+			{
+				if (($toca_col != $colpuntoin) && ($toca_col != $colpuntoout))
+				{
+					fijar_permisos_defect_col($toca_col,$permisos_defecto_nada);
+					syslog $syslog_priority, "Reseteando permisos para colid --$toca_col-- de usuario ---$usudest--- para para principalid ---$id_princ_usuario--- y usuario origen ---$usuario--- evitar accesos no deseados" if ($verbose==1);
+				}
+				else
+				{
+					syslog $syslog_priority, "Evitando tocar coleccion con id ----$toca_col--- porque es una .in o .out" if ($verbose==1);
+				}
+			}
+			else
+			{
+				syslog $syslog_priority, "No reseteamos permisos para colid --$toca_col-- de usuario ---$usudest--- para evitar accesos no deseados porque esa cole tiene permisos por defecto" if ($verbose==1);
+			}
+		}
+		print "OK";
+	}
+	else
+	{
+		syslog $syslog_priority, "No podemos aplicar permisos sobre el principal ---$usudest--- a ---$usuario--- con permisos ---$permisos--- porque faltan argumentos";
+		print "No podemos aplicar permisos sobre el principal ---$usudest--- a ---$usuario--- con permisos ---$permisos--- porque faltan argumentos";
+	}
+}
+case 6	{
+	if (($usuario ne "") && ($usudest ne ""))
+	{
+		syslog $syslog_priority, "ACCION 6 : Se solicita quitar permisos de principal al usuario ---$usuario--- en el principal ---$usudest---" if ($verbose==1);
+		my $id_princ_usuario = 0;
+		my $id_princ_destino = 0;
+
+		my $resultado_usu_grupo_orig = comprobar_si_pers_o_grupo_y_poner_nombre_grupo_bien($usuario);
+
+		my $id_usuario_op = sacar_userid($usudest);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden eliminar permisos a ---$usuario--- en ---$usudest--- pero no ponemos obtener el id de usuario destino";
+		comprobar_error_variable($id_usuario_op, $mensaje_fallo_gen);
+		my $espersona = tipo_principal_es_persona($id_usuario_op);
+		if ($espersona != 0)
+		{
+			syslog $syslog_priority, "Pidiendo quitar permisos a ---$usuario--- sobre principal ---$usudest--- que no es una persona... NO VALE";
+			func_remplazo_die("Pidiendo quitar permisos a ---$usuario--- sobre principal ---$usudest--- que no es una persona... NO VALE");
+		}
+
+		my $id_usuario_origen = sacar_userid($resultado_usu_grupo_orig);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden eliminar permisos a ---$resultado_usu_grupo_orig--- en ---$usudest--- pero no ponemos obtener el id de usuario origen";
+		comprobar_error_variable($id_usuario_origen, $mensaje_fallo_gen);
+		my $id_usuario_destino = $id_usuario_op;
+		my @id_col_poner_defpriv_a_0 = sacar_ids_colecc_usuario($id_usuario_destino);
+		comprobar_existencia_colecciones_por_defecto($id_usuario_op);
+
+		my $toca_col = "";
+
+		$id_princ_usuario = sacar_principalid($id_usuario_origen);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden eliminar permisos a ---$usuario--- en ---$usudest--- pero no ponemos obtener el id de principal del id de usuario origen ---$id_usuario_origen---";
+		comprobar_error_variable($id_princ_usuario, $mensaje_fallo_gen);
+		$id_princ_destino = sacar_principalid($id_usuario_destino);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden eliminar permisos a ---$usuario--- en ---$usudest--- pero no ponemos obtener el id de principal del id de usuario destino ---$id_usuario_destino---";
+		comprobar_error_variable($id_princ_destino, $mensaje_fallo_gen);
+		foreach $toca_col (@id_col_poner_defpriv_a_0) {
+			eliminar_permisos_principal_a_collection($id_princ_usuario, $toca_col);
+			syslog $syslog_priority, "Eliminando los permisos que se dieron a ---$usuario--- en principal ---$usudest---" if ($verbose == 1);
+		}
+
+		eliminar_permisos_principal_a_principal($id_princ_usuario,$id_princ_destino);
+		print "OK";
+	}
+	else
+	{
+		syslog $syslog_priority, "Imposible eliminar permisos en principal ---$usudest--- para usuario ---$usuario---. Faltan argumentos (Case 6).";
+	}
+}
+case 7	{
+	if (($usuario ne "") && ($coleccion ne "") && ($usudest ne "") && ($permisos ne ""))
+	{
+		syslog $syslog_priority, "ACCION 7 : Se solicita dar permisos sobre coleccion ---$coleccion--- de tipo ---$permisos--- al usuario ---$usuario--- en el principal ---$usudest---" if ($verbose==1);
+
+		my $id_princ_usuario = 0;
+		my $id_princ_destino = 0;
+
+		my $resultado_usu_grupo_orig = comprobar_si_pers_o_grupo_y_poner_nombre_grupo_bien($usuario);
+
+		syslog $syslog_priority, "Nombre de usuario implicado con el que trabajaremos es -----$resultado_usu_grupo_orig----------";
+
+		## TENGO QUE TENER CLARO CON QUE TRABAJO
+		my $id_usudest = sacar_userid($usudest);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden dar permisos a ---$usuario--- en ---$usudest--- en coleccion --$coleccion-- pero no podemos determinar el ID de usuario destino.";
+		comprobar_error_variable($id_usudest, $mensaje_fallo_gen);
+		my $tipo_principal = sacar_tipo_principal($id_usudest);
+		if ($tipo_principal != "Person")
+		{
+			syslog $syslog_priority, "Pidiendo dar permisos a ---$usuario--- sobre usuario ---$usudest--- en coleccion ---$coleccion--- que no es una persona... NO VALE";
+			func_remplazo_die("Pidiendo dar permisos a ---$usuario--- sobre usuario ---$usudest--- en coleccion ---$coleccion--- que no es una persona... NO VALE");
+		}
+
+		my $id_usuario_origen = sacar_userid($resultado_usu_grupo_orig);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden dar permisos a ---$usuario--- en ---$usudest--- en coleccion --$coleccion-- pero no podemos determinar el ID de usuario origen.";
+		comprobar_error_variable($id_usuario_origen, $mensaje_fallo_gen);
+		my $id_usuario_destino = $id_usudest;
+		$id_princ_usuario = sacar_principalid($id_usuario_origen);
+		$id_princ_destino = sacar_principalid($id_usuario_destino);
+		my $cole_existe = sacar_id_colecc_usuario_nombre($id_usuario_destino,'/'.$usudest.'/'.$coleccion.'/');
+
+		if (($cole_existe == 9987982389) || ($id_princ_usuario == 9987982389) || ($id_princ_destino == 9987982389))
+		{
+			syslog $syslog_priority, "Al dar permisos de usuario en coleccion no existe usuario origen $usuario --$id_usuario_origen-- o usuario destino $usudest --$id_usuario_destino-- o coleccion $coleccion --$cole_existe--";
+			func_remplazo_die("Al dar permisos de usuario en coleccion no existe usuario origen $usuario --$id_usuario_origen-- o usuario destino $usudest --$id_usuario_destino-- o coleccion $coleccion --$cole_existe--");
+		}
+		my $id_colec_destino = $cole_existe;
+		anadir_permisos_principal_a_collection($id_princ_usuario, $id_colec_destino, $permisos);
+		print "OK";
+	}
+	else
+	{
+		syslog $syslog_priority, "Me faltan argumentos para dar permisos a ---$usuario--- en ---$usudest--- coleccion ---$coleccion--- los permisos de ---$permisos---. Faltan argumentos (Case 7)";
+		print "Me faltan argumentos para dar permisos a ---$usuario--- en ---$usudest--- coleccion ---$coleccion--- los permisos de ---$permisos---. Faltan argumentos (Case 7)";
+	}
+}
+case 8	{
+	if (($usuario ne "") && ($coleccion ne "") && ($usudest ne ""))
+	{
+		syslog $syslog_priority, "ACCION 8 : Se solicita quitar permisos sobre coleccion ---$coleccion--- al usuario ---$usuario--- en el principal ---$usudest---" if ($verbose==1);
+		my $id_princ_usuario = 0;
+		my $id_princ_destino = 0;
+
+		my $resultado_usu_grupo_orig = comprobar_si_pers_o_grupo_y_poner_nombre_grupo_bien($usuario);
+
+		## TENGO QUE TENER CLARO CON QUE TRABAJO
+		my $id_usudest = sacar_userid($usudest);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden eliminar permisos a ---$usuario--- en ---$usudest--- en coleccion --$coleccion-- pero no podemos determinar el ID de usuario destino.";
+		comprobar_error_variable($id_usudest, $mensaje_fallo_gen);
+		my $tipo_principal = sacar_tipo_principal($id_usudest);
+		if ($tipo_principal != "Person")
+		{
+			syslog $syslog_priority, "Pidiendo quitar permisos a ---$usuario--- sobre usuario ---$usudest--- en coleccion ---$coleccion--- que no es una persona... NO VALE";
+			func_remplazo_die("Pidiendo quitar permisos a ---$usuario--- sobre usuario ---$usudest--- en coleccion ---$coleccion--- que no es una persona... NO VALE");
+		}
+
+		my $id_usuario_origen = sacar_userid($resultado_usu_grupo_orig);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden eliminar permisos a ---$usuario--- en ---$usudest--- en coleccion --$coleccion-- pero no podemos determinar el ID de usuario origen.";
+		comprobar_error_variable($id_usuario_origen, $mensaje_fallo_gen);
+		my $id_usuario_destino = $id_usudest;
+		my $cole_existe = sacar_id_colecc_usuario_nombre($id_usuario_destino,'/'.$usudest.'/'.$coleccion.'/');
+		$id_princ_usuario = sacar_principalid($id_usuario_origen);
+		$id_princ_destino = sacar_principalid($id_usuario_destino);
+		if (($cole_existe == 9987982389) || ($id_princ_usuario == 9987982389) || ($id_princ_destino == 9987982389))
+		{
+			syslog $syslog_priority, "No puedo quitar permisos en coleccion de usuario origen $usuario --$id_usuario_origen-- en usuario destino $usudest --$id_usuario_destino-- en coleccion $coleccion --$cole_existe--";
+			func_remplazo_die("No puedo quitar permisos en coleccion de usuario origen $usuario --$id_usuario_origen-- en usuario destino $usudest --$id_usuario_destino-- en coleccion $coleccion --$cole_existe--");
+		}
+		my $id_colec_destino = $cole_existe;
+		eliminar_permisos_principal_a_collection($id_princ_usuario, $id_colec_destino);
+
+		my @colecs_usuario_destino = sacar_ids_colecc_usuario($id_usudest);
+		my @colecs_usuario_destino_permisos = ();
+		my $toca_col = "";
+		my $elementos_array = '0';
+		my $testigo = '0';
+
+		foreach $toca_col (@colecs_usuario_destino) {
+			@colecs_usuario_destino_permisos = sacar_permisos_de_principalconcreto_en_colecciones($toca_col,$id_princ_usuario);
+			$elementos_array = scalar(@colecs_usuario_destino_permisos);
+			if ($elementos_array > '0')
+			{
+				$testigo = '1';
+				print "OK";
+			}
+		}
+
+		if ($testigo eq '0')
+		{
+				syslog $syslog_priority, "HACIENDO LIMPIEZAAAAAAA";
+				eliminar_permisos_principal_a_principal($id_princ_usuario,$id_princ_destino);
+				syslog $syslog_priority, "Como el principal origen --$id_princ_usuario-- no tiene mas permisos en --$id_princ_destino-- podemos eliminar del principal el permiso de ---$id_princ_usuario---";
+				my @princ_con_perm_sobre_princ_pend = sacar_permisos_de_principals_en_principal($id_princ_destino);
+				$elementos_array = scalar(@princ_con_perm_sobre_princ_pend);
+				if ($elementos_array == '0')
+				{
+					my $perm_def_en_principal = existen_perm_defecto_princ($id_princ_destino);
+					if ($perm_def_en_principal == '9987982389')
+					{
+						foreach $toca_col (@colecs_usuario_destino) {
+								fijar_permisos_defect_col($toca_col,"defecto");
+						}
+
+					}
+				}
+				print "OK";
+		}
+	}
+	else
+	{
+		print "Me faltan argumentos (case 8) para quitar permisos en coleccion para : usuario origen $usuario en usuario destino $usudest en coleccion $coleccion";
+		syslog $syslog_priority, "Me faltan argumentos (case 8) para quitar permisos en coleccion para : usuario origen $usuario en usuario destino $usudest en coleccion $coleccion";
+	}
+}
+case 9	{
+	if (($grupo ne "") && ($dequien ne ""))
+	{
+		syslog $syslog_priority, "ACCION 9 : El usuario ---$dequien--- solicita crear el grupo ---$grupo--- a su nombre" if ($verbose==1);
+		my $existe_usuario = existe_usuario($dequien);
+		my $dominiomail = sacar_dominio_para_email($dequien);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Nos hemos podido obtener un dominio bueno para poner al email del grupo.';
+		comprobar_error_variable_texto($dominiomail, $mensaje_fallo_gen);
+		my $idusuarioprop = 998798238;
+		my $idusuariogrupo = 998798238;
+		if ($existe_usuario == 1)
+		{
+			$idusuarioprop = sacar_userid($dequien);
+			$mensaje_fallo_gen = 'ERROR GRAVE : Intentando crear el grupo ---$grupo--- del propietario ---$dequien--- del que no podemos sacar el id de usuario.';
+			comprobar_error_variable($idusuarioprop, $mensaje_fallo_gen);
+			my $espersona = tipo_principal_es_persona($idusuarioprop);
+			if ($espersona != 0)
+			{
+				syslog $syslog_priority, "Pidiendo crear grupo ---$grupo--- sin que propietario ---$dequien---- sea persona.... No vale....";
+				func_remplazo_die("Pidiendo crear grupo ---$grupo--- sin que propietario ---$dequien---- sea persona.... No vale....");
+			}
+
+			my $grupo_resultante = sacar_nombre_real_grupo($grupo,$dequien);
+			my $grupo_existe = existe_usuario($grupo_resultante);
+
+			if ($grupo_existe == 0)
+			{
+				if ($grupo !~ m/\@/)
+				{
+					syslog $syslog_priority, "Paso a crear grupo como grupo ----$grupo--- y como propietario -----$idusuarioprop-----" if ($verbose==1);
+					crear_grupo($grupo, $idusuarioprop, $dominiomail);
+					print "OK";
+				}
+				else
+				{
+					print "Caracter ARROBA no permitido para nombre de grupo";
+					syslog $syslog_priority, "Caracter ARROBA no permitido para nombre de grupo";
+				}
+			}
+			else
+			{
+				syslog $syslog_priority, "No puedo crear un grupo --$grupo_resultante-- que viene de --$grupo-- y es de --$dequien-- que ya existe";
+				func_remplazo_die("No puedo crear un grupo --$grupo_resultante-- que viene de --$grupo-- y es de --$dequien-- que ya existe");
+			}
+		}
+		else
+		{
+			syslog $syslog_priority, "El usuario $usuario (propietario) para el que se quiere crear el grupo $grupo no existe";
+			func_remplazo_die("El usuario $usuario (propietario) para el que se quiere crear el grupo $grupo no existe");
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "No puedo crear grupo (case 9) porque me faltan argumentos. Grupo vale --$grupo-- El dominio vale --$email--";
+		print("No puedo crear grupo (case 9) porque me faltan argumentos. Grupo vale --$grupo-- El dominio vale --$email--");
+	}
+}
+case 10 {
+	if (($grupo ne "") && ($dequien ne ""))
+	{
+		syslog $syslog_priority, "ACCION 10 : El usuario ---$dequien--- solicita eliminar el grupo ---$grupo--- de su nombre" if ($verbose==1);
+		my $existe_usuario = existe_usuario($dequien);
+		my $idusuarioprop = 998798238;
+		my $idusuariogrupo = 998798238;
+		if ($existe_usuario == 1)
+		{
+			$idusuarioprop = sacar_userid($dequien);
+			$mensaje_fallo_gen = "ERROR GRAVE : Intentando eliminar el grupo ---$grupo--- del propietario ---$dequien--- del que no podemos sacar el id de usuario.";
+			comprobar_error_variable($idusuarioprop, $mensaje_fallo_gen);
+			my $espersona = tipo_principal_es_persona($idusuarioprop);
+			if ($espersona != 0)
+			{
+				syslog $syslog_priority, "Pidiendo eliminar grupo ---$grupo--- sin que propietario ---$dequien---- sea persona.... No vale....";
+				func_remplazo_die("Pidiendo eliminar grupo ---$grupo--- sin que propietario ---$dequien---- sea persona.... No vale....");
+			}
+			my $grupo_resultante = sacar_nombre_real_grupo($grupo,$dequien);
+			my $grupo_existe = existe_usuario($grupo_resultante);
+			if ($grupo_existe == 1)
+			{
+				my $userid_gruporesult = sacar_userid($grupo_resultante);
+				my $principalgruporesult = sacar_principalid($userid_gruporesult);
+				my @registros_implicado_en_permisos = grupo_conpermisos_asignados($principalgruporesult);
+				my $n_registros_implicado_en_permisos = scalar(@registros_implicado_en_permisos);
+				if ($n_registros_implicado_en_permisos == 0)
+				{
+					elimina_grupo($principalgruporesult);
+					syslog $syslog_priority, "El grupo no tiene cuentas con mas permisos pendientes... si se quiere... se puede borrar....";
+					print "OK";
+				}
+				else
+				{
+					syslog $syslog_priority, "El grupo TIENE cuentas con mas permisos pendientes... NO se puede borrar....";
+					print "KO";
+				}
+
+			}
+			else
+			{
+				syslog $syslog_priority, "No existe grupo ---$grupo--- a eliminar";
+				print "No existe grupo ---$grupo--- a eliminar";
+			}
+		}
+		else
+		{
+			syslog $syslog_priority, "El usuario $usuario para el que se quiere eliminar el grupo $grupo no existe";
+			print "El usuario $usuario para el que se quiere eliminar el grupo $grupo no existe";
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "Imposible eliminar (case 10) grupo --$grupo-- de propietario --$dequien--  porque faltan argumentos";
+		print "Imposible eliminar (case 10) grupo --$grupo-- de propietario --$dequien--  porque faltan argumentos";
+	}
+}
+case 11 {
+	if (($usuario ne "") && ($usercorriendo eq "root"))
+	{
+		syslog $syslog_priority, "ACCION 11 : Se solicita eliminar el usuario/principal con nombre ---$usuario--- del sistema" if ($verbose==1);
+		my $id_princ_usuario = $error_general;
+		my $existe_userid_resultado_usu_grupo_orig = $error_general;
+		my $resultado_usu_grupo_orig = comprobar_si_pers_o_grupo_y_poner_nombre_grupo_bien($usuario);
+		my $existe_resultado_usu_grupo_orig = existe_usuario($resultado_usu_grupo_orig);
+		if ($existe_resultado_usu_grupo_orig == 1)
+		{
+			my $userid_resultado_usu_grupo_orig = sacar_userid($resultado_usu_grupo_orig);
+			my $cosa_baja_es_pers_o_grupo = tipo_principal_es_persona($userid_resultado_usu_grupo_orig);
+			if ($cosa_baja_es_pers_o_grupo == 0)
+			{
+				my @grupos_es_prop_usuario_de_baja = sacar_grupos_de_propietario($userid_resultado_usu_grupo_orig);
+				my $grupo_que_toca = "";
+				my $id_usu_grupo_que_toca = 0;
+				my $id_princ_usu_grupo_que_toca = 0;
+
+				###	ELIMINANDO GRUPOS DE USUARIO PARA EVITAR GRUPOS HUERFANOS....
+				foreach $grupo_que_toca (@grupos_es_prop_usuario_de_baja) {
+					$id_usu_grupo_que_toca = sacar_userid($grupo_que_toca);
+					$id_princ_usu_grupo_que_toca = sacar_principalid($id_usu_grupo_que_toca);
+					elimina_usuario($id_princ_usu_grupo_que_toca);
+				}
+
+				### AHORA SI ELIMINANDO EL PRINCIPAL DEL USUARIO
+				$id_princ_usuario = sacar_principalid($userid_resultado_usu_grupo_orig);
+				comprobar_error_variable($id_princ_usuario);
+				elimina_usuario($id_princ_usuario);
+				print "OK";
+			}
+			elsif ($cosa_baja_es_pers_o_grupo == 1)
+			{
+				$id_princ_usuario = sacar_principalid($userid_resultado_usu_grupo_orig);
+				elimina_usuario($id_princ_usuario);
+				print "OK";
+			}
+		}
+		elsif ($existe_userid_resultado_usu_grupo_orig == 0)
+		{
+			syslog $syslog_priority, "Intentando dar de baja el (principal) usuario ---$usuario--- pero es imposible porque no existe";
+			func_remplazo_die("Intentando dar de baja el (principal) usuario ---$usuario--- pero es imposible porque no existe");
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "Imposible dar de baja el usuario (case 11) faltan argumentos. Usuario vale --$usuario--";
+		print "Imposible dar de baja el usuario (case 11) faltan argumentos. Usuario vale --$usuario--";
+	}
+}
+case 12 {
+	if (($usuario ne "") && ($coleccion ne "") && ($permisos ne ""))
+	{
+		syslog $syslog_priority, "ACCION 12 : Se solicita dar permisos por defecto ---$permisos--- sobre coleccion ---$coleccion--- de usuario ---$usuario---" if ($verbose==1);
+		my $id_usuario_destino = sacar_userid($usuario);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Imposible obtener usuario id de usuario destino de colec ---$coleccion--- de usuario ---$usuario--- para fijar perm por defec en cole.';
+		comprobar_error_variable($id_usuario_destino, $mensaje_fallo_gen);
+		my $espersona = tipo_principal_es_persona($id_usuario_destino);
+		if ($espersona != 0)
+		{
+			syslog $syslog_priority, "Pidiendo fijar permisos ---$permisos--- por defecto sobre una coleccion ---$coleccion--- de un principal ---$usuario--- que no es persona... No vale...";
+			print "Pidiendo fijar permisos ---$permisos--- por defecto sobre una coleccion ---$coleccion--- de un principal ---$usuario--- que no es persona... No vale...";
+		}
+
+		my $id_colec = sacar_id_colecc_usuario_nombre($id_usuario_destino,'/'.$usuario.'/'.$coleccion.'/');
+
+		if ($id_colec != 9987982389)
+		{
+			fijar_permisos_defect_col($id_colec,$permisos);
+			print "OK";
+		}
+		else
+		{
+			syslog $syslog_priority, "No existe la coleccion ---$coleccion--- para fijar los permisos ---$permisos--- por defecto";
+			print "No existe la coleccion ---$coleccion--- para fijar los permisos ---$permisos--- por defecto";
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "Imposible fijar permisos por defecto en coleccion (case 12). Faltan argumentos. Usuario vale --$usuario--, coleccion --$coleccion-- y permisos por defecto vale --$permisos--";
+		print "Imposible fijar permisos por defecto en coleccion (case 12). Faltan argumentos. Usuario vale --$usuario--, coleccion --$coleccion-- y permisos por defecto vale --$permisos--";
+	}
+}
+case 13 {
+	if (($usudest ne "") && ($coleccion ne ""))
+	{
+		syslog $syslog_priority, "ACCION 13 : Se solicita quitar permisos por defecto ---$permisos--- sobre coleccion ---$coleccion--- de usuario ---$usuario---" if ($verbose==1);
+		my $id_colec = 0;
+		my $id_usuario_destino = sacar_userid($usudest);
+		my $id_princ = sacar_principalid($id_usuario_destino);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Imposible obtener usuario id de usuario destino de colec ---$coleccion--- de usuario ---$usudest--- para eliminar perm por defec en cole.';
+		comprobar_error_variable($id_usuario_destino, $mensaje_fallo_gen);
+		my $espersona = tipo_principal_es_persona($id_usuario_destino);
+
+		if ($espersona != 0)
+		{
+			syslog $syslog_priority, "Pidiendo eliminar permisos ---$permisos--- por defecto sobre una coleccion ---$coleccion--- de un principal ---$usudest--- que no es persona... No vale...";
+			func_remplazo_die("Pidiendo eliminar permisos ---$permisos--- por defecto sobre una coleccion ---$coleccion--- de un principal ---$usudest--- que no es persona... No vale...");
+		}
+
+		$id_colec = sacar_id_colecc_usuario_nombre($id_usuario_destino,'/'.$usudest.'/'.$coleccion.'/');
+
+		if ($id_colec != 9987982389)
+		{
+			fijar_permisos_defect_col($id_colec,$permisos_defecto_nada);
+			my @colecc_usuario_a_comp_si_perm_defecto = sacar_ids_colecc_usuario($id_usuario_destino);
+			my $toca_col = "";
+			my $permisos_defecto = "";
+			my $testigo_a_fab = '0';
+			foreach $toca_col (@colecc_usuario_a_comp_si_perm_defecto) {
+				$permisos_defecto = ver_permisos_defecto_colecc($toca_col);
+				if ($permisos_defecto ne "9987982389")
+				{
+					$testigo_a_fab = '1';
+				}
+			}
+
+			if ($testigo_a_fab eq '0')
+			{
+				my @princs_con_perms_sobre_princ = sacar_permisos_de_principals_en_principal($id_princ);
+				my $nprincs_con_perms_sobre_princ = scalar(@princs_con_perms_sobre_princ);
+				if ($nprincs_con_perms_sobre_princ == '0')
+				{
+					foreach $toca_col (@colecc_usuario_a_comp_si_perm_defecto) {
+						fijar_permisos_defect_col($toca_col,"defecto");
+					}
+				}
+				my $id_princ = sacar_principalid($id_usuario_destino);
+				fijar_permisos_defect_princ($id_princ,"defecto");
+				syslog $syslog_priority, "Como era la unica coleccion con permisos por defecto reseteo toda la cuenta a permisos de fabrica" if ($verbose==1);
+
+			}
+			print "OK";
+		}
+		else
+		{
+			syslog $syslog_priority, "No existe la coleccion ---$coleccion--- para fijar los permisos ---$permisos--- por defecto";
+			print "No existe la coleccion ---$coleccion--- para fijar los permisos ---$permisos--- por defecto";
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "Imposible eliminar permisos por defecto en coleccion (case 13) faltan argumentos. Usuario vale --$usudest--, coleccion --$coleccion--";
+		print "Imposible eliminar permisos por defecto en coleccion (case 13) faltan argumentos. Usuario vale --$usudest--, coleccion --$coleccion--";
+	}
+}
+case 14 {
+	if (($usudest ne "") && ($permisos ne ""))
+	{
+		syslog $syslog_priority, "ACCION 14 : Se solicita dar permisos por defecto ---$permisos--- sobre principal de usuario ---$usudest---" if ($verbose==1);
+		my $id_princ = 0;
+		my $id_usuario_destino = sacar_userid($usudest);
+		$mensaje_fallo_gen = "ERROR GRAVE : Imposible obtener usuario id de usuario destino ---$usudest--- para fijar perm por defec en su principal.";
+		comprobar_error_variable($id_usuario_destino, $mensaje_fallo_gen);
+		my $toca_col = "";
+
+		my $espersona = tipo_principal_es_persona($id_usuario_destino);
+		if ($espersona != 0)
+		{
+			syslog $syslog_priority, "Pidiendo fijar permisos ---$permisos--- por defecto sobre un principal ---$usudest--- que no es persona... No vale...";
+			func_remplazo_die("Pidiendo fijar permisos ---$permisos--- por defecto sobre un principal que no es persona... No vale...");
+		}
+
+		$id_princ = sacar_principalid($id_usuario_destino);
+
+		if ($id_princ != 9987982389)
+		{
+			fijar_permisos_defect_princ($id_princ,$permisos);
+			my $colpuntoin = sacar_id_colecc_usuario_nombre($id_usuario_destino,'/'.$usudest.'/.in/');
+			my $colpuntoout = sacar_id_colecc_usuario_nombre($id_usuario_destino,'/'.$usudest.'/.out/');
+			my @id_col_poner_defpriv_a_0 = sacar_ids_colecc_usuario($id_usuario_destino);
+			foreach $toca_col (@id_col_poner_defpriv_a_0) {
+				my $cole_tiene_perm_defecto = colecc_tiene_permisos_por_defecto($toca_col);
+				if (($toca_col != $colpuntoin) && ($toca_col != $colpuntoout) && ($cole_tiene_perm_defecto == '1'))
+				{
+					fijar_permisos_defect_col($toca_col,$permisos_defecto_nada);
+					syslog $syslog_priority, "Reseteando permisos para colid --$toca_col-- de usuario ---$usudest--- para evitar accesos no deseados" if ($verbose==1);
+
+				}
+				else
+				{
+					syslog $syslog_priority, "Evitando tocar coleccion con id ----$toca_col--- porque es una .in o .out" if ($verbose==1);
+				}
+			}
+			print "OK";
+		}
+		else
+		{
+			syslog $syslog_priority, "El principal --$id_princ-- del usuario --$usudest-- no existe para poder fijar permisos por defecto";
+			print "El principal --$id_princ-- del usuario --$usudest-- no existe para poder fijar permisos por defecto";
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "Faltan argumentos para fijar permisos por defecto en principal (case 14) del usuario --$usudest--";
+		print "Faltan argumentos para fijar permisos por defecto en principal (case 14) del usuario --$usudest--";
+	}
+}
+case 15 {
+	if ($usudest ne "")
+	{
+		syslog $syslog_priority, "ACCION 15 : Se solicita quitar permisos por defecto existentes sobre principal de usuario ---$usudest---" if ($verbose==1);
+		my $id_princ = 0;
+		my $id_usuario_destino = sacar_userid($usudest);
+		$mensaje_fallo_gen = "ERROR GRAVE : Imposible obtener usuario id de usuario destino ---$usudest--- para quitar perm por defec en su principal.";
+		comprobar_error_variable($id_usuario_destino, $mensaje_fallo_gen);
+		my $toca_col = "";
+		my $espersona = tipo_principal_es_persona($id_usuario_destino);
+		if ($espersona != 0)
+		{
+			syslog $syslog_priority, "Pidiendo resetear permisos por defecto sobre un principal ---$usudest--- que no es persona... No vale...";
+			func_remplazo_die("Pidiendo resetear permisos por defecto sobre un principal ---$usudest--- que no es persona... No vale...");
+		}
+
+		$id_princ = sacar_principalid($id_usuario_destino);
+
+		my @id_col_poner_defpriv_a_def = sacar_ids_colecc_usuario($id_usuario_destino);
+
+		if ($id_princ != 9987982389)
+		{
+			foreach $toca_col (@id_col_poner_defpriv_a_def) {
+				fijar_permisos_defect_col($toca_col,"defecto");
+				syslog $syslog_priority, "Poniendo a defecto permisos en colleciones como salva guardia en principal ---$usudest---" if ($verbose == 1);
+			}
+			fijar_permisos_defect_princ($id_princ,"defecto");
+			print "OK";
+		}
+		else
+		{
+			syslog $syslog_priority, "El principal --$id_princ-- del usuario --$usudest-- no existe para poder resetear permisos por defecto sobre principal";
+			print "El principal --$id_princ-- del usuario --$usudest-- no existe para poder resetear permisos por defecto sobre principal";
+		}
+	}
+	else
+	{
+		print "Faltan argumentos para resetear permisos (case 15) por defecto en principal de ---$usudest---";
+	}
+}
+case 16 {
+	funcion_case_16();
+}
+case 17 {
+	if (($grupo ne "") && ($dequien ne ""))
+	{
+		my $id_usuario_prop_grupo = sacar_userid($dequien);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden sacar miembros de un grupo ---$grupo--- de un usuario ---$usuario--- del que no podemos obtener su id.";
+		comprobar_error_variable($id_usuario_prop_grupo, $mensaje_fallo_gen);
+		my $espersona = tipo_principal_es_persona($id_usuario_prop_grupo);
+		if ($espersona != 0)
+		{
+			syslog $syslog_priority, "No podemos sacar miembros de grupo ---$grupo--- de un usuario ---$dequien--- que no es persona....";
+		}
+
+
+		my $existe_grupo = existe_usuario($id_usuario_prop_grupo.$grupo);
+		my $useridgrupo = sacar_userid($id_usuario_prop_grupo.$grupo);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden sacar miembros de un grupo ---$grupo--- que pertenece a un usuario ---$usuario---. No podemos sacar userid del grupo resultante.";
+		comprobar_error_variable($useridgrupo, $mensaje_fallo_gen);
+		my $esgrupo = tipo_principal_es_grupo($useridgrupo);
+
+		if (($existe_grupo != 1) || ($esgrupo != 0))
+		{
+			syslog $syslog_priority, "No existe el grupo $id_usuario_prop_grupo.$grupo para el que sacar los usuarios (case 17)";
+			func_remplazo_die("No existe el grupo $id_usuario_prop_grupo.$grupo para el que sacar los usuarios (case 17)");
+		}
+
+		my $princ_id_grupo_revisar = sacaid_princ_grupo($id_usuario_prop_grupo.$grupo);
+		$mensaje_fallo_gen = "ERROR GRAVE : Nos piden sacar miembros de un grupo ---$grupo--- que pertenece a un usuario ---$usuario---. No podemos sacar principal del grupo resultante.";
+		comprobar_error_variable($useridgrupo, $mensaje_fallo_gen);
+		my @array_usuarios_grupo = saca_usuarios_grupo($princ_id_grupo_revisar);
+		my $id_princ_usuario = 998798238;
+		my $id_usu_princ = 998798238;
+		my $nombre_id_usu = "";
+
+		syslog $syslog_priority, "El grupo $grupo tiene los siguientes miembros : @array_usuarios_grupo\n";
+		print ("El grupo $grupo tiene los siguientes miembros :\n");
+		my @array_nombres_grupo_mostrar = ();
+
+		foreach $id_princ_usuario (@array_usuarios_grupo) {
+			$id_usu_princ = sacar_userid_principal($id_princ_usuario);
+			$mensaje_fallo_gen = "ERROR GRAVE : Al rellenar array de nombres de usuarios de un grupo a mostrar no podemos sacar el id de usuario del principal --$id_princ_usuario--";
+			comprobar_error_variable($id_usu_princ, $mensaje_fallo_gen);
+			$nombre_id_usu = sacar_username_deidusu($id_usu_princ);
+			$mensaje_fallo_gen = "ERROR GRAVE : Al rellenar array de nombres de usuarios de un grupo a mostrar no podemos sacar el nombre de usuario del userid --$id_usu_princ--";
+			comprobar_error_variable_texto($nombre_id_usu, $mensaje_fallo_gen);
+			push(@array_nombres_grupo_mostrar, $nombre_id_usu);
+		}
+
+		## SI TODO HA IDO BIEN IMPRIMIMOS
+		my $nombre_que_toca = "";
+		foreach $nombre_que_toca (@array_nombres_grupo_mostrar) {
+			print "$nombre_que_toca\n";
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "Para sacar miembros de grupo (case 17) de un usuario faltan argumentos. Propietario vale --$dequien-- y --$grupo--";
+		print "Para sacar miembros de grupo (case 17) de un usuario faltan argumentos. Propietario vale --$dequien-- y --$grupo--";
+	}
+}
+case 18 {
+	if ($dequien ne "")
+	{
+		my $id_usuario_prop_grupo = sacar_userid($dequien);
+		$mensaje_fallo_gen = 'ERROR GRAVE : Queriendo sacar los grupos de un propietario no podemos sacar el id de usuario de ---$dequien---';
+		comprobar_error_variable($id_usuario_prop_grupo, $mensaje_fallo_gen);
+		my $espersona = tipo_principal_es_persona($id_usuario_prop_grupo);
+		if ($espersona != 0)
+		{
+			syslog $syslog_priority, "Intentando sacar grupos pertenecientes a ---$dequien--- pero que no es persona este principal...";
+			func_remplazo_die("Intentando sacar grupos pertenecientes a ---$dequien--- pero que no es persona este principal...");
+		}
+
+
+		my @array_grupos_propietario = sacar_grupos_de_propietario($id_usuario_prop_grupo);
+		my $grupo_propietario_quetoca = "";
+		my $grupo_sin_id_usuario = "";
+		syslog $syslog_priority, "El propietario --$dequien-- tiene los grupos : @array_grupos_propietario";
+		print "El propietario --$dequien-- tiene los grupos : \n";
+		foreach $grupo_propietario_quetoca (@array_grupos_propietario) {
+			$grupo_sin_id_usuario = sacar_nombre_grupo_sin_userid($grupo_propietario_quetoca,$id_usuario_prop_grupo);
+			print ("----$grupo_sin_id_usuario-----\n");
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "Para sacar grupos de propietario (case 18) ---$dequien--- tenemos problemas porque faltan argumentos.";
+		print "Para sacar grupos de propietario (case 18) ---$dequien--- tenemos problemas porque faltan argumentos.";
+	}
+}
+case 19 {
+	if (($usuario ne "") && ($coleccion ne "") && ($coldispname ne ""))
+	{
+		syslog $syslog_priority, "ACCION 19 : Se solicita cambiar display name de coleccion ---$coleccion--- del usuario ---$usuario--- pasando a ser el disp name ---$coldispname---" if ($verbose==1);
+		my $id_usu_modif = sacar_userid($usuario);
+		$mensaje_fallo_gen="ERROR GRAVE : Queriendo cambiar el display name de la coleccion ---$coleccion--- a ---$coldispname--- no podemos sacar el user id de ---$usuario--- de principal de coleccion";
+		comprobar_error_variable($id_usu_modif, $mensaje_fallo_gen);
+		my $espersona = tipo_principal_es_persona($id_usu_modif);
+		my $id_colec_modif = 0;
+		if ($espersona != 0)
+		{
+			syslog $syslog_priority, "No podemos actualizar display name de coleccion ---$coleccion--- poniendo ---$coldispname--- de usuario ---$usuario--- que no es persona....";
+			func_remplazo_die("No podemos actualizar display name de coleccion ---$coleccion--- poniendo ---$coldispname--- de usuario ---$usuario--- que no es persona....");
+		}
+
+		$coleccion = '/'.$usuario.'/'.$coleccion.'/';
+		$id_colec_modif = sacar_id_colecc_usuario_nombre($id_usu_modif,$coleccion);
+		if ($id_colec_modif != 9987982389)
+		{
+			actualiza_display_name($id_colec_modif,$coldispname);
+			syslog $syslog_priority, "El nuevo display name es ---$coldispname--- de la coleccion ---$coleccion--- del usuario ----$usuario-----";
+			print "OK";
+		}
+		else
+		{
+			syslog $syslog_priority, "No existe la coleccion --$coleccion-- para el usuario --$usuario-- a la que poner el display name ---$coldispname---";
+			func_remplazo_die("No existe la coleccion --$coleccion-- para el usuario --$usuario-- a la que poner el display name ---$coldispname---");
+		}
+	}
+	else
+	{
+		syslog $syslog_priority, "Faltan argumentos para actualizar al display name ---$coldispname--- de la coleccion ---$coleccion--- del usuario ---$usuario---";
+		print "Faltan argumentos para actualizar al display name ---$coldispname--- de la coleccion ---$coleccion--- del usuario ---$usuario---";
+	}
+}
+case 20 {
+	funcion_case_20();
+}
+case 21 {
+	funcion_case_21();
+}
+case 22 {
+	funcion_case_22();
+}
+case 23 {
+	$dequien = $usuario;
+	print "-----------------------------------------------------------------------------------------------------------------------------\n";
+	funcion_case_16();
+	print "-----------------------------------------------------------------------------------------------------------------------------\n";
+	funcion_case_22();
+	print "-----------------------------------------------------------------------------------------------------------------------------\n";
+	funcion_case_20();
+	print "-----------------------------------------------------------------------------------------------------------------------------\n";
+	funcion_case_21();
+	print "-----------------------------------------------------------------------------------------------------------------------------\n";
+}
+else	{
+	print " \n";
+	print " \n";
+	print " \n";
+	print "**********************************************************************************************************************************\n";
+	print "**********************************************************************************************************************************\n";
+	print "**********************************************************************************************************************************\n";
+	print " \n";
+	print "Please enter with -o the number of the request you need to carry out by looking at the example requests below.\n";
+	print " \n";
+	print " 1  -> CREATE COLLECTION. \n";
+	print " 2  -> REMOVE COLLECTION. Syntax : $0 -r domain -o 2 -c collection_name -u user_principal_to_create_inside -v\n";
+	print " 3  -> APPEND USER TO A GROUP OF AN OWNER (OWNERS ARE THE WAY OF UNIQUELY IDENTIFY A GROUP FROM A CONCRETE PRINCIPAL OR USER)\n";
+	print " 4  -> REMOVE USER TO A GROUP OF AN OWNER (OWNERS ARE THE WAY OF UNIQUELY IDENTIFY A GROUP FROM A CONCRETE PRINCIPAL OR USER)\n";
+	print " 5  -> GRANT CONCRETE PERMISSIONS TO A PRINCIPAL IN ANOTHER PRINCIPAL (PRINCIPALS ARE FINALLY JUST USERS)\n";
+	print " 6  -> REVOKE PERMISSIONS TO A PRINCIPAL IN PRINCIPAL (PRINCIPALS ARE FINALLY JUST USERS)\n";
+	print " 7  -> GRANT PERMISSIONS TO A PRINCIPAL (A USER FINALLY) IN A COLLECTION OF ANOTHER PRINCIPAL (ANOTHER USER FINALLY)\n";
+	print " 8  -> REVOKE PERMISSIONS TO A PRINCIPAL (A USER FINALLY) IN A COLLECTION OF ANOTHER PRINCIPAL (ANOTHER USER FINALLY)\n";
+	print " 9  -> CREATE GROUP OWNED BY USER (BY A PRINCIPAL FINALLY)\n";
+	print " 10 -> REMOVE GROUP OWNED BY USER (BY A PRINCIPAL FINALLY)\n";
+	print " 11 -> REMOVE PRINCIPAL/USER (AN ACCOUNT FINALLY WITH ALL THE COLLECTIONS)\n";
+	print " 12 -> SET DEFAULT PERMISSIONS IN A COLLECTION OF A PRINCIPAL\n";
+	print " 13 -> UNSET DEFAULT PERMISSIONS IN A COLLECTION OF A PRINCIPAL\n";
+	print " 14 -> SET DEFAULT PERMISSIONS IN A PRINCIPAL \n";
+	print " 15 -> UNSET DEFAULT PERMISSIONS IN A PRINCIPAL \n";
+	print " 16 -> OBTAIN PRINCIPAL GRANTS FOR DISPLAYING THEM FOR EXAMPLE IN THE WEBMAIL....\n";
+	print " 17 -> OBTAIN GROUP MEMBERS FROM A GROUP OWNED BY AN USER (A PRINCIPAL)\n";
+	print " 18 -> OBTAIN GROUPS OWNED BY AN USER (OR PRINCIPAL)\n";
+	print " 19 -> SET A COLLECTION'S (FROM A PRINCIPAL) DISPLAY NAME\n";
+	print " 20 -> OBTAIN PERMISSIONS GRANTED TO OTHER USERS IN MY COLLECTIONS\n";
+	print " 21 -> OBTAIN A LIST OF ALL CREATED USERS IN THE DAVICAL INSTANCE\n";
+	print " 22 -> OBTAIN A LISTING WHICH DISPLAYS FROM A CONCRETE OWNER, GROUP:MEMBERS\n";
+	print " 23 -> COMBINED LISTING OF 16,20,21,22\n";
+	print " \n";
+	print "**********************************************************************************************************************************\n";
+	print " \n";
+	print " Example syntax for all operations :\n";
+	print " \n";
+	print " 1  -> $0 -r domain -o 1 -c collection_name -u user_principal_to_create_inside -t 0 for calendar or 1 for addressbook -v\n";
+	print " 2  -> $0 -r domain -o 2 -c collection_name -u user_principal_to_create_inside -v\n";
+	print " 3  -> $0 -r domain -o 3 -u user_to_add -z owner_of_the_group_of_this_request -g groupname -v\n";
+	print " 4  -> $0 -r domain -o 4 -u user_to_add -z owner_of_the_group_of_this_request -g groupname -v\n";
+	print " 5  -> $0 -r domain -o 5 -u permissions_granted_to_user -w permissions_granted_in_principal -p READ OR READWRITE -v\n";
+	print " 6  -> $0 -r domain -o 6 -u permissions_revoked_to_user -w permissions_revoked_in_principal -v\n";
+	print " 7  -> $0 -r domain -o 7 -u permissions_granted_to_user -w permissions_granted_in_collection_of_principal -c collection -p READ or READWRITE -v\n";
+	print " 8  -> $0 -r domain -o 8 -u permissions_granted_to_user -w permissions_granted_in_collection_of_principal -c collection -v\n";
+	print " 9  -> $0 -r domain -o 9 -z user_owner_of_group -g groupname -v\n";
+	print " 10 -> $0 -r domain -o 10 -z user_owner_of_group -g groupname -v\n";
+	print " 11 -> $0 -r domain -o 11 -u user_principal_to_be_removed -v\n";
+	print " 12 -> $0 -r domain -o 12 -u user_owning_the_collection_overwhich -p READ or READWRITE -c collection -v\n";
+	print " 13 -> $0 -r domain -o 13 -w user_owning_the_collection_overwhich -c collection -v\n";
+	print " 14 -> $0 -r domain -o 14 -w destination_principal -p READ OR READWRITE -v\n";
+	print " 15 -> $0 -r domain -o 15 -w destination_principal -v\n";
+	print " 16 -> $0 -r domain -o 16 -u user_principal_to_answer_for -v\n";
+	print " 17 -> $0 -r domain -o 17 -z principal_user_owner_of_the_group -g the_own_group_of_the_query_for_obtain_members -v\n";
+	print " 18 -> $0 -r domain -o 18 -z principal_user_owner_of_the_groups -v\n";
+	print " 19 -> $0 -r domain -o 19 -u principal_with_collection_inside -c collection_name -d \"NEW DISPLAY NAME\" -v\n";
+	print " 20 -> $0 -r domain -o 20 -u user_principal_to_query_for -v\n";
+	print " 21 -> $0 -r domain -o 21 -v\n";
+	print " 22 -> $0 -r domain -o 22 -z owner_to_query_for_the_listing -v\n";
+	print " 22 -> $0 -r domain -o 23 -v\n";
+	print " \n";
+	print "**********************************************************************************************************************************\n";
+	print "**********************************************************************************************************************************\n";
+	print "**********************************************************************************************************************************\n";
+	print " \n";
+	print " \n";
+	print " \n";
+	syslog $syslog_priority, "No operation requested with -o modifier";
+	}
+}
+
+$dbh->disconnect();
+closelog();
