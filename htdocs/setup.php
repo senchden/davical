@@ -224,6 +224,10 @@ function check_datetime() {
   return $result;
 }
 
+function check_xml() {
+  return new CheckResult(function_exists('xml_parser_create_ns'));
+}
+
 function check_schema_version() {
   global $c;
   if ( $c->want_dbversion[0] == $c->schema_major
@@ -324,6 +328,7 @@ function build_dependencies_table( ) {
     translate('GNU gettext support')              => 'check_gettext',
     translate('PHP iconv support')                => 'check_iconv',
     translate('PHP DateTime class')               => 'check_datetime',
+    translate('PHP XML support')                  => 'check_xml',
     translate('Suhosin "server.strip" disabled')  => 'check_suhosin_server_strip',
     translate('PHP Magic Quotes GPC off')         => 'check_magic_quotes_gpc',
     translate('PHP Magic Quotes runtime off')     => 'check_magic_quotes_runtime',
