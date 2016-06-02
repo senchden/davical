@@ -115,7 +115,7 @@ function update_external ( $request )
   if ( $qry->Exec('DAVResource') && $qry->rows() > 0 && $row = $qry->Fetch() ) {
 		if ( $row->bind_id != 0 ) {
 			dbg_error_log("external", "external resource needs updating, this might take a minute : %s", $row->url );
-			fetch_external ( $row->bind_id );
+			fetch_external ( $row->bind_id, $c->external_refresh . ' minutes' );
 		}
   }
 }
