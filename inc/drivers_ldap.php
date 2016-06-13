@@ -471,7 +471,7 @@ function sync_LDAP_groups(){
 
   if ( sizeof ( $groups_to_create ) ){
     $c->messages[] = sprintf(i18n('- creating groups : %s'),join(', ',$groups_to_create));
-    $validUserFields = get_fields('usr');
+    $validUserFields = awl_get_fields('usr');
     foreach ( $groups_to_create as $k => $group ){
       $user = (object) array();
 
