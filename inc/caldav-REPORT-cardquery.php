@@ -54,7 +54,8 @@ if ( count($qry_filters) == 0 ) {
 $qry_limit = -1; // everything
 $qry_filters_combination='OR';
 if ( is_array($qry_filters) ) {
-  $filters_parent = $xmltree->GetPath('/urn:ietf:params:xml:ns:carddav:addressbook-query/urn:ietf:params:xml:ns:carddav:filter')[0];
+  $filters_parent = $xmltree->GetPath('/urn:ietf:params:xml:ns:carddav:addressbook-query/urn:ietf:params:xml:ns:carddav:filter');
+  $filters_parent = $filters_parent[0];
   // only anyof (OR) or allof (AND) allowed, if missing anyof is default (RFC6352 10.5)
   if ( $filters_parent->GetAttribute("test") == 'allof' ) {
     $qry_filters_combination='AND';
