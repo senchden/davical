@@ -73,7 +73,7 @@ function doItipAttendeeReply( vCalendar $resource, $partstat ) {
   
   if ( !$organizer_principal->Exists() ) {
     dbg_error_log( 'schedule', 'Unknown ORGANIZER "%s" - unable to notify.', $organizer->Value() );
-    header( "Debug: Could maybe do the iMIP message dance for organizer ". $organizer->Value() );
+    //TODO: header( "Debug: Could maybe do the iMIP message dance for organizer ". $organizer->Value() );
     return true;
   }
 
@@ -177,7 +177,7 @@ function doItipAttendeeReply( vCalendar $resource, $partstat ) {
       }
     }
     else {
-      header( "Debug: Could maybe do the iMIP message dance for attendee ". $email );
+      //TODO: header( "Debug: Could maybe do the iMIP message dance for attendee ". $email );
     }
   }
 
@@ -280,7 +280,7 @@ function processItipCancel( vCalendar $vcal, vProperty $attendee, WritableCollec
   global $request;
   
   dbg_error_log( 'schedule', 'Processing iTIP CANCEL to %s', $attendee->Value());
-  header( "Debug: Could maybe do the iMIP message dance for attendee ". $attendee->Value() );
+  //TODO: header( "Debug: Could maybe do the iMIP message dance for attendee ". $attendee->Value() );
   if ( !$attendee_calendar->Exists() ) {
     if ( doImipMessage('CANCEL', $attendee_principal->email(), $vcal) ) {
       return '1.1'; // Scheduling whoosit 'Sent' 
@@ -332,7 +332,7 @@ function processItipCancel( vCalendar $vcal, vProperty $attendee, WritableCollec
  */
 function deliverItipCancel( vCalendar $iTIP, vProperty $attendee, WritableCollection $attendee_inbox ) {
   $attendee_inbox->WriteCalendarMember($iTIP, false);
-  header( "Debug: Could maybe do the iMIP message dance canceling for attendee: ".$attendee->Value());
+  //TODO: header( "Debug: Could maybe do the iMIP message dance canceling for attendee: ".$attendee->Value());
 }
 
 require_once('Multipart.php');
