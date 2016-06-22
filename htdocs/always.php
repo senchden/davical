@@ -42,6 +42,27 @@ function early_exception_handler($e) {
 }
 set_exception_handler('early_exception_handler');
 
+function early_catch_fatal_error() {
+  global $request;
+
+  if ( !empty($request) ) return;
+
+  // Getting Last Error
+  $e =  error_get_last();
+
+  // Check if Last error is of type FATAL
+  if (isset($e['type']) && $e['type'] == E_ERROR) {
+    if ( !headers_sent() ) {
+      header("Content-type: text/plain");
+      header( sprintf("HTTP/1.1 %d %s", 500, getStatusMessage(500)) );
+    }
+    echo "PHP Fatal error: ".$e['message']."\n";
+    echo "At line ", $e['line'], " of ", $e['file'], "\n";
+    error_log("PHP Fatal Error: '".$e['message']. "' at line ". $e['line']. " of ". $e['file']);
+  }
+}
+register_shutdown_function('early_catch_fatal_error');
+
 $c->default_timezone = ini_get ( 'date.timezone' );
 if (empty ( $c->default_timezone )) {
     if (isset ( $_SERVER ['HTTP_X_DAVICAL_TESTCASE'] )) {

@@ -75,6 +75,17 @@ function send_dav_header() {
 require_once('CalDAVRequest.php');
 $request = new CalDAVRequest();
 
+function late_catch_fatal_error() {
+  global $request;
+
+  // Getting Last Error
+  $e =  error_get_last();
+  if (isset($e['type']) && $e['type'] == E_ERROR) {
+    $request->DoResponse(500, "Fatal PHP Error");
+  }
+}
+register_shutdown_function('late_catch_fatal_error');
+
 //if ( $request->method == 'OPTIONS' || $c->always_send_dav_header )
     send_dav_header();  // Avoid polluting global namespace
 
@@ -94,50 +105,56 @@ if ( ! ($request->IsPrincipal() || isset($request->collection) || $request->meth
 param_to_global('add_member', '.*', 'add-member');
 $add_member = isset($add_member);
 
-switch ( $request->method ) {
-  case 'OPTIONS':    include_once('caldav-OPTIONS.php');   break;
-  case 'REPORT':     include_once('caldav-REPORT.php');    break;
-  case 'PROPFIND':   include('caldav-PROPFIND.php');       break;
-  case 'GET':        include('caldav-GET.php');            break;
-  case 'HEAD':       include('caldav-GET.php');            break;
-  case 'PROPPATCH':  include('caldav-PROPPATCH.php');      break;
-  case 'POST':
-    if ( $request->content_type != 'text/vcard' && !$add_member ) {
-      include('caldav-POST.php');
+try {
+
+  switch ( $request->method ) {
+    case 'OPTIONS':    include_once('caldav-OPTIONS.php');   break;
+    case 'REPORT':     include_once('caldav-REPORT.php');    break;
+    case 'PROPFIND':   include('caldav-PROPFIND.php');       break;
+    case 'GET':        include('caldav-GET.php');            break;
+    case 'HEAD':       include('caldav-GET.php');            break;
+    case 'PROPPATCH':  include('caldav-PROPPATCH.php');      break;
+    case 'POST':
+      if ( $request->content_type != 'text/vcard' && !$add_member ) {
+        include('caldav-POST.php');
+        break;
+      }
+    case 'PUT':
+      switch( $request->content_type ) {
+        case 'text/calendar':
+          include('caldav-PUT-vcalendar.php');
+          break;
+        case 'text/vcard':
+        case 'text/x-vcard':
+          include('caldav-PUT-vcard.php');
+          break;
+        default:
+          include('caldav-PUT-default.php');
+          break;
+      }
       break;
-    }
-  case 'PUT':
-    switch( $request->content_type ) {
-      case 'text/calendar':
-        include('caldav-PUT-vcalendar.php');
-        break;
-      case 'text/vcard':
-      case 'text/x-vcard':
-        include('caldav-PUT-vcard.php');
-        break;
-      default:
-        include('caldav-PUT-default.php');
-        break;
-    }
-    break;
-  case 'MKCALENDAR': include('caldav-MKCOL.php');          break;
-  case 'MKCOL':      include('caldav-MKCOL.php');          break;
-  case 'DELETE':     include('caldav-DELETE.php');         break;
-  case 'MOVE':       include('caldav-MOVE.php');           break;
-  case 'ACL':        include('caldav-ACL.php');            break;
-  case 'LOCK':       include('caldav-LOCK.php');           break;
-  case 'UNLOCK':     include('caldav-LOCK.php');           break;
-  case 'MKTICKET':   include('caldav-MKTICKET.php');       break;
-  case 'DELTICKET':  include('caldav-DELTICKET.php');      break;
-  case 'BIND':       include('caldav-BIND.php');           break;
+    case 'MKCALENDAR': include('caldav-MKCOL.php');          break;
+    case 'MKCOL':      include('caldav-MKCOL.php');          break;
+    case 'DELETE':     include('caldav-DELETE.php');         break;
+    case 'MOVE':       include('caldav-MOVE.php');           break;
+    case 'ACL':        include('caldav-ACL.php');            break;
+    case 'LOCK':       include('caldav-LOCK.php');           break;
+    case 'UNLOCK':     include('caldav-LOCK.php');           break;
+    case 'MKTICKET':   include('caldav-MKTICKET.php');       break;
+    case 'DELTICKET':  include('caldav-DELTICKET.php');      break;
+    case 'BIND':       include('caldav-BIND.php');           break;
 
-  case 'TESTRRULE':  include('test-RRULE-v2.php');         break;
+    case 'TESTRRULE':  include('test-RRULE-v2.php');         break;
 
-  default:
-    dbg_error_log( 'caldav', 'Unhandled request method >>%s<<', $request->method );
-    dbg_log_array( 'caldav', '_SERVER', $_SERVER, true );
-    dbg_error_log( 'caldav', 'RAW: %s', str_replace("\n", '',str_replace("\r", '', $request->raw_post)) );
+    default:
+      dbg_error_log( 'caldav', 'Unhandled request method >>%s<<', $request->method );
+      dbg_log_array( 'caldav', '_SERVER', $_SERVER, true );
+      dbg_error_log( 'caldav', 'RAW: %s', str_replace("\n", '',str_replace("\r", '', $request->raw_post)) );
+  }
+
+} catch (Exception $e) {
+  trace_bug('DAViCal Fatal Error');
+  $request->DoResponse( 500, translate('DAViCal Fatal Error') );
 }
 
 $request->DoResponse( 400, translate('The application program does not understand that request.') );
-
