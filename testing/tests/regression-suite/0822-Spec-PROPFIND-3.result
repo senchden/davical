@@ -46,7 +46,7 @@
     <displayname>Lunch with David</displayname>
     <getcontentlanguage/>
     <getcontentlength>747</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"2c32a2f8aba853654eb17fe037a4db4d"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -81,7 +81,7 @@
     <displayname>A Changed Meeting</displayname>
     <getcontentlanguage/>
     <getcontentlength>829</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"bcc402382688cb3e8e57379c757dbcb0"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -116,7 +116,7 @@
     <displayname>Weekly Project Meeting</displayname>
     <getcontentlanguage/>
     <getcontentlength>999</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"a1c6404d61190f9574e2bfd69383f144"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -151,7 +151,7 @@
     <displayname>Confidential Event</displayname>
     <getcontentlanguage/>
     <getcontentlength>956</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"08a435c2abaf38f4a50a997343c098a7"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -186,7 +186,7 @@
     <displayname>Private Event</displayname>
     <getcontentlanguage/>
     <getcontentlength>970</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"5def8ae2b20893a1c7f4dbaeb008f2f1"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -221,7 +221,7 @@
     <displayname>Tentative Event</displayname>
     <getcontentlanguage/>
     <getcontentlength>929</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"ac90acd649c25070b1a2a17fb31a105a"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -256,7 +256,7 @@
     <displayname>Incomplete, uncancelled</displayname>
     <getcontentlanguage/>
     <getcontentlength>415</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vtodo</getcontenttype>
     <getetag>"509b0f0d8a3363379f9f5727f5dd74a0"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -291,7 +291,7 @@
     <displayname>50% Complete, uncancelled</displayname>
     <getcontentlanguage/>
     <getcontentlength>449</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vtodo</getcontenttype>
     <getetag>"cb3d9dc3e8c157f53eba3ea0e1e0f146"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -326,7 +326,7 @@
     <displayname>Due 7/8/7 16:30, completed</displayname>
     <getcontentlanguage/>
     <getcontentlength>961</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vtodo</getcontenttype>
     <getetag>"00ad5eb1eb5507884710b0b66aa5d5c4"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -361,7 +361,7 @@
     <displayname>A Cancelled Task, with a start and due date</displayname>
     <getcontentlanguage/>
     <getcontentlength>1001</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vtodo</getcontenttype>
     <getetag>"a2990674708634a311bb98a59865ca50"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -396,7 +396,7 @@
     <displayname>Morning Meeting</displayname>
     <getcontentlanguage/>
     <getcontentlength>1119</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"e8060931f30c1798ac58ffbe4ec0bffc"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -431,7 +431,7 @@
     <displayname>Release 0.9.3</displayname>
     <getcontentlanguage/>
     <getcontentlength>1013</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vtodo</getcontenttype>
     <getetag>"8f581a053df6d833254756dfd7553d37"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -466,7 +466,7 @@
     <displayname>Beer O'Clock</displayname>
     <getcontentlanguage/>
     <getcontentlength>769</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"55f02f66966ee150320383803d1e0d34"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -501,7 +501,7 @@
     <displayname>Morning Mgmt Mtg</displayname>
     <getcontentlanguage/>
     <getcontentlength>313</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"6f16959eee5c920b45548840b1e9ea19"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -536,7 +536,7 @@
     <displayname>BBQ @ ML's</displayname>
     <getcontentlanguage/>
     <getcontentlength>981</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"efd0257efbc898d059c200d1391af060"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -571,7 +571,7 @@
     <displayname>New Event</displayname>
     <getcontentlanguage/>
     <getcontentlength>676</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"257b9df4aaf573a578af4aadd033abf4"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -606,7 +606,7 @@
     <displayname>In Central Europe, 2pm, Oct 5th for 1 hour</displayname>
     <getcontentlanguage/>
     <getcontentlength>761</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"6ddd18264a9d40c1c9d37a005eeb7e4f"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -641,7 +641,7 @@
     <displayname>In Prague, 10am, Oct 7th for 1 hour</displayname>
     <getcontentlanguage/>
     <getcontentlength>710</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"4a3aa58a3e11487e87d87024465d4182"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -676,7 +676,7 @@
     <displayname>Party all day!</displayname>
     <getcontentlanguage/>
     <getcontentlength>772</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"165746adbab8bc0c8336a63cc5332ff2"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>
@@ -711,7 +711,7 @@
     <displayname>Woohoo!  Time to Par-tay!</displayname>
     <getcontentlanguage/>
     <getcontentlength>800</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"2a09ef8c6a9e0b6bc16228359b99d8e7"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>

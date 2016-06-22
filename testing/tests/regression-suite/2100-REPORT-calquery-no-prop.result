@@ -3,7 +3,7 @@ Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
 ETag: "looks like an etag"
-Content-Length: 5464
+Content-Length: 5572
 Content-Type: text/xml; charset="utf-8"
 
 <?xml version="1.0" encoding="utf-8" ?>
@@ -12,7 +12,7 @@ Content-Type: text/xml; charset="utf-8"
   <href>/caldav.php/user1/home/4aaf8f37-f232-4c8e-a72e-e171d4c4fe54.ics</href>
   <propstat>
    <prop>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <resourcetype/>
     <getcontentlength>999</getcontentlength>
     <displayname>Weekly Project Meeting</displayname>
@@ -44,7 +44,7 @@ Content-Type: text/xml; charset="utf-8"
   <href>/caldav.php/user1/home/9d050be7-8a02-4355-8ed3-02a9fc5f473f.ics</href>
   <propstat>
    <prop>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <resourcetype/>
     <getcontentlength>956</getcontentlength>
     <displayname>Confidential Event</displayname>
@@ -76,7 +76,7 @@ Content-Type: text/xml; charset="utf-8"
   <href>/caldav.php/user1/home/1906b3ca-4890-468a-9b58-1de74bf2c716.ics</href>
   <propstat>
    <prop>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <resourcetype/>
     <getcontentlength>970</getcontentlength>
     <displayname>Private Event</displayname>
@@ -108,7 +108,7 @@ Content-Type: text/xml; charset="utf-8"
   <href>/caldav.php/user1/home/fbd57454-d966-4a14-8341-abe1edb1ae66.ics</href>
   <propstat>
    <prop>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <resourcetype/>
     <getcontentlength>929</getcontentlength>
     <displayname>Tentative Event</displayname>
@@ -140,7 +140,7 @@ Content-Type: text/xml; charset="utf-8"
   <href>/caldav.php/user1/home/71e2ae82-7870-11db-c6d6-f6927c144649.ics</href>
   <propstat>
    <prop>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <resourcetype/>
     <getcontentlength>769</getcontentlength>
     <displayname>Beer O'Clock</displayname>
@@ -172,7 +172,7 @@ Content-Type: text/xml; charset="utf-8"
   <href>/caldav.php/user1/home/da81c0ee-7871-11db-c6d6-f6927c144649.ics</href>
   <propstat>
    <prop>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <resourcetype/>
     <getcontentlength>313</getcontentlength>
     <displayname>Morning Mgmt Mtg</displayname>
