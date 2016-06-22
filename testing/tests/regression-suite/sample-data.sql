@@ -52,7 +52,7 @@ INSERT INTO collection (user_no, parent_container, dav_name, dav_etag,
     SELECT user_no, '/' || username || '/',  '/' || username || '/home/', md5(username),
            username || ' home', TRUE, '2009-06-03', '2009-06-04',
            FALSE, FALSE, user_no + 150, '<DAV::collection/><urn:ietf:params:xml:ns:caldav:calendar/>'
-      FROM usr;
+      FROM usr ORDER BY user_no;
 
 INSERT INTO collection (user_no, parent_container, dav_name, dav_etag,
                  dav_displayname, is_calendar, is_addressbook, created, modified,
@@ -60,24 +60,24 @@ INSERT INTO collection (user_no, parent_container, dav_name, dav_etag,
     SELECT user_no, '/' || username || '/',  '/' || username || '/addresses/', md5(username),
            username || ' addresses', FALSE, TRUE, '1957-07-26', '1998-03-16',
            FALSE, FALSE, user_no + 450, '<DAV::collection/><urn:ietf:params:xml:ns:carddav:addressbook/>'
-      FROM usr;
+      FROM usr ORDER BY user_no;
 
 
 INSERT INTO principal (type_id, user_no, displayname, default_privileges)
          SELECT 1, user_no, fullname, privilege_to_bits(ARRAY['read-free-busy','schedule-send','schedule-deliver']) FROM usr
                  WHERE NOT EXISTS(SELECT 1 FROM role_member JOIN roles USING(role_no) WHERE role_name = 'Group' AND role_member.user_no = usr.user_no)
                    AND NOT EXISTS(SELECT 1 FROM role_member JOIN roles USING(role_no) WHERE role_name = 'Resource' AND role_member.user_no = usr.user_no)
-                   AND NOT EXISTS(SELECT 1 FROM principal WHERE principal.user_no = usr.user_no);
+                   AND NOT EXISTS(SELECT 1 FROM principal WHERE principal.user_no = usr.user_no) ORDER BY user_no;
 
 INSERT INTO principal (type_id, user_no, displayname, default_privileges)
          SELECT 2, user_no, fullname, privilege_to_bits(ARRAY['read','schedule-send','schedule-deliver']) FROM usr
                  WHERE EXISTS(SELECT 1 FROM role_member JOIN roles USING(role_no) WHERE role_name = 'Resource' AND role_member.user_no = usr.user_no)
-                   AND NOT EXISTS(SELECT 1 FROM principal WHERE principal.user_no = usr.user_no);
+                   AND NOT EXISTS(SELECT 1 FROM principal WHERE principal.user_no = usr.user_no) ORDER BY user_no;
 
 INSERT INTO principal (type_id, user_no, displayname, default_privileges)
          SELECT 3, user_no, fullname, privilege_to_bits(ARRAY['read-free-busy','schedule-send','schedule-deliver']) FROM usr
                  WHERE EXISTS(SELECT 1 FROM role_member JOIN roles USING(role_no) WHERE role_name = 'Group' AND role_member.user_no = usr.user_no)
-                   AND NOT EXISTS(SELECT 1 FROM principal WHERE principal.user_no = usr.user_no);
+                   AND NOT EXISTS(SELECT 1 FROM principal WHERE principal.user_no = usr.user_no) ORDER BY user_no;
 
 -- Set the insert sequence to the next number, with a minimum of 1000
 SELECT setval('relationship_type_rt_id_seq', (SELECT 10 UNION SELECT rt_id FROM relationship_type ORDER BY 1 DESC LIMIT 1) );
@@ -114,7 +114,7 @@ UPDATE relationship r SET confers = (SELECT bit_confers FROM relationship_type r
 INSERT INTO group_member ( group_id, member_id)
               SELECT g.principal_id, m.principal_id
                 FROM relationship JOIN principal g ON(to_user=g.user_no AND g.type_id = 3)    -- Group
-                                  JOIN principal m ON(from_user=m.user_no AND m.type_id IN (1,2)); -- Person | Resource
+                                  JOIN principal m ON(from_user=m.user_no AND m.type_id IN (1,2)) ORDER BY 1, 2; -- Person | Resource
 
 INSERT INTO grants ( by_principal, to_principal, privileges, is_group )
    SELECT pby.principal_id AS by_principal, pto.principal_id AS to_principal,
@@ -123,4 +123,4 @@ INSERT INTO grants ( by_principal, to_principal, privileges, is_group )
                          JOIN usr t ON(t.user_no=r.to_user)
                          JOIN principal pby ON(t.user_no=pby.user_no)
                          JOIN principal pto ON(pto.user_no=f.user_no)
-     WHERE rt_id < 4 AND pby.type_id < 3;
+     WHERE rt_id < 4 AND pby.type_id < 3 ORDER BY 1, 2;
