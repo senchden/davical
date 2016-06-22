@@ -41,3 +41,6 @@ zonedb/tzcode
 zonedb/tzdata
 zonedb/vtimezones
 zonedb/*.tar.gz
+.idea
+*.orig
+zonedb/releases
