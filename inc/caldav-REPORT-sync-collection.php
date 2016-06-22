@@ -33,7 +33,7 @@ if ( $sync_level == DEPTH_INFINITY ) {
 $sync_tokens = $xmltree->GetPath('/DAV::sync-collection/DAV::sync-token');
 if ( isset($sync_tokens[0]) ) $sync_token = $sync_tokens[0]->GetContent();
 if ( !isset($sync_token) ) $sync_token = 0;
-$sync_token = intval(str_ireplace('data:,', '', $sync_token ));
+$sync_token = intval(str_replace('data:,', '', strtolower($sync_token) ));
 dbg_error_log( 'sync', " sync-token: %s", $sync_token );
 
 $proplist = array();
