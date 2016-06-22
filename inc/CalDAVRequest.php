@@ -269,7 +269,7 @@ class CalDAVRequest
     }
     if ( !is_int($this->depth) && "infinity" == $this->depth  ) $this->depth = DEPTH_INFINITY;
     $this->depth = intval($this->depth);
-    
+
     /**
     * MOVE/COPY use a "Destination" header and (optionally) an "Overwrite" one.
     */
@@ -1301,20 +1301,22 @@ EOSQL;
       }
     }
 
+    $script_finish = microtime(true);
+    $script_time = $script_finish - $c->script_start_time;
+    $message_length = strlen($message);
     if ( $message != '' ) {
-      if ( !headers_sent() ) header( "Content-Length: ".strlen($message) );
+      if ( !headers_sent() ) header( "Content-Length: ".$message_length );
       echo $message;
     }
 
     if ( isset($c->dbg['caldav']) && $c->dbg['caldav'] ) {
-      if ( strlen($message) > 100 || strstr($message, "\n") ) {
-        $message = substr( preg_replace("#\s+#m", ' ', $message ), 0, 100) . (strlen($message) > 100 ? "..." : "");
+      if ( $message_length > 100 || strstr($message, "\n") ) {
+        $message = substr( preg_replace("#\s+#m", ' ', $message ), 0, 100) . ($message_length > 100 ? "..." : "");
       }
 
       dbg_error_log("caldav", "Status: %d, Message: %s, User: %d, Path: %s", $status, $message, $session->principal->user_no(), $this->path);
     }
     if ( isset($c->dbg['statistics']) && $c->dbg['statistics'] ) {
-      $script_time = microtime(true) - $c->script_start_time;
       $memory = '';
       if ( function_exists('memory_get_usage') ) {
         $memory = sprintf( ', Memory: %dk, Peak: %dk', memory_get_usage()/1024, memory_get_peak_usage(true)/1024);
@@ -1327,14 +1329,97 @@ EOSQL;
     }
     catch( Exception $ignored ) {}
 
+    if ( isset($c->metrics_style) && $c->metrics_style !== false ) {
+      $flush_time = microtime(true) - $script_finish;
+      $this->DoMetrics($status, $message_length, $script_time, $flush_time);
+    }
+
     if ( isset($c->exit_after_memory_exceeds) && function_exists('memory_get_peak_usage') && memory_get_peak_usage(true) > $c->exit_after_memory_exceeds ) { // 64M
       @dbg_error_log("statistics", "Peak memory use exceeds %d bytes (%d) - killing process %d", $c->exit_after_memory_exceeds, memory_get_peak_usage(true), getmypid());
       register_shutdown_function( 'CalDAVRequest::kill_on_exit' );
     }
-    
-    
+
     exit(0);
   }
 
+
+  /**
+  * Record the metrics related to this request.
+  *
+  * @param status The HTTP status code for this response
+  * @param response_size The size of the response (bytes).
+  * @param script_time The time taken to generate the response (pre-sending)
+  * @param flush_time The time taken to send the response (buffers flushed)
+  */
+  function DoMetrics($status, $response_size, $script_time, $flush_time) {
+    global $c;
+    static $ns = 'metrics';
+
+    $method = (empty($this->method) ? 'UNKNOWN' : $this->method);
+
+    // If they want 'both' or 'all' or something then that's what they will get
+    // If they don't want counters, they must want to use memcache!
+    if ( $c->metrics_style != 'counters' ) {
+      $cache = getCacheInstance();
+      if ( $cache->isActive() ) {
+
+        $base_key = $method.':';
+        $count_like_this = $cache->increment( $ns, $base_key.$status );
+        $cache->increment( $ns, $base_key.'size', $response_size );
+        $cache->increment( $ns, $base_key.'script_time', intval($script_time * 1000000) );
+        $cache->increment( $ns, $base_key.'flush_time', intval($flush_time * 1000000) );
+        $cache->increment( $ns, $base_key.'query_time', intval($c->total_query_time * 1000000) );
+
+        if ( $count_like_this == 1 ) {
+          // We need to maintain a set of details regarding the methods and statuses we have
+          // encountered, so we know what to retrieve.  Since this is the first one like
+          // this, we add it to the index.
+          try {
+            $index = unserialize($cache->get($ns, 'index'));
+          } catch (Exception $e) {
+            $index = array('methods' => array(), 'statuses' => array());
+          }
+          $index['methods'][$method] = 1;
+          $index['statuses'][$status] = 1;
+          $cache->set($ns, 'index', serialize($index), 0);
+        }
+      }
+      else {
+        error_log("Full statistics are only available with a working Memcache configuration");
+      }
+    }
+
+    // If they don't want memcache, they must want to use counters!
+    if ( $c->metrics_style != 'memcache' ) {
+      $qstring = "SELECT nextval('%s')";
+      switch( $method ) {
+        case 'OPTIONS':
+        case 'REPORT':
+        case 'PROPFIND':
+        case 'GET':
+        case 'PUT':
+        case 'HEAD':
+        case 'PROPPATCH':
+        case 'POST':
+        case 'MKCALENDAR':
+        case 'MKCOL':
+        case 'DELETE':
+        case 'MOVE':
+        case 'ACL':
+        case 'LOCK':
+        case 'UNLOCK':
+        case 'MKTICKET':
+        case 'DELTICKET':
+        case 'BIND':
+          $counter = strtolower($this->method);
+          break;
+        default:
+          $counter = 'unknown';
+          break;
+      }
+      $qry = new AwlQuery( "SELECT nextval('metrics_count_" . $counter . "')" );
+      $qry->Exec('always',__LINE__,__FILE__);
+    }
+  }
 }
 
