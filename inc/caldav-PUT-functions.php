@@ -373,7 +373,7 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
   $response = '3.7'; // Organizer was not found on server.
   if ( !$organizer_calendar->Exists() ) {
     dbg_error_log('ERROR','Default calendar at "%s" does not exist for user "%s"',
-                              $organizer_calendar->dav_name(), $schedule_target->username());
+                              $organizer_calendar->dav_name(), $organizer_principal->username());
     $response = '5.2'; // No scheduling support for user
   }
   else {
@@ -384,7 +384,7 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
       $response = '1.2'; // Scheduling reply delivered successfully
       if ( $organizer_calendar->WriteCalendarMember($schedule_original, false, false, $segment_name) === false ) {
         dbg_error_log('ERROR','Could not write updated calendar member to %s',
-                $attendee_calendar->dav_name(), $attendee_calendar->dav_name(), $schedule_target->username());
+                $organizer_calendar->dav_name());
         trace_bug('Failed to write scheduling resource.');
       }
     }
@@ -1249,7 +1249,7 @@ function write_resource( DAVResource $resource, $caldav_data, DAVResource $colle
   }
   if ( $qry->rows() != 1 || !($row = $qry->Fetch()) ) {
     // No dav_id?  => We're toast!
-    trace_bug( 'No dav_id for "%s" on %s!!!', $path, ($create_resource ? 'create': 'update'));
+    trace_bug( 'No dav_id for "%s" on %s!!!', $path, ($put_action_type == 'INSERT' ? 'create': 'update'));
     rollback_on_error( $caldav_context, $user_no, $path);
     return false;
   }

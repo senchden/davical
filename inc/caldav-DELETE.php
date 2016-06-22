@@ -20,6 +20,8 @@ $lock_opener = $request->FailIfLocked();
 require_once('schedule-functions.php');
 
 function delete_collection( $id ) {
+  global $session, $request;
+
   $params = array( ':collection_id' => $id );
   $qry = new AwlQuery('SELECT child.collection_id AS child_id FROM collection child JOIN collection parent ON (parent.dav_name = child.parent_container) WHERE parent.collection_id = :collection_id', $params );
   if ( $qry->Exec('DELETE',__LINE__,__FILE__) && $qry->rows() > 0 ) {
