@@ -24,92 +24,92 @@ require_once('iCalendar.php');
 class DAVResource
 {
   /**
-  * @var The partial URL of the resource within our namespace, which this resource is being retrieved as
+  * @var string The partial URL of the resource within our namespace, which this resource is being retrieved as
   */
   protected $dav_name;
 
   /**
-  * @var Boolean: does the resource actually exist yet?
+  * @var bool Does the resource actually exist yet?
   */
   protected $exists;
 
   /**
-  * @var The unique etag associated with the current version of the resource
+  * @var string The unique etag associated with the current version of the resource
   */
   protected $unique_tag;
 
   /**
-  * @var The actual resource content, if it exists and is not a collection
+  * @var string The actual resource content, if it exists and is not a collection
   */
   protected $resource;
 
   /**
-  * @var The parent of the resource, which will always be a collection
+  * @var DAVResource The parent of the resource, which will always be a collection
   */
   protected $parent;
 
   /**
-  * @var The types of the resource, possibly multiple
+  * @var array The types of the resource, possibly multiple
   */
   protected $resourcetypes;
 
   /**
-  * @var The type of the content
+  * @var string The type of the content
   */
   protected $contenttype;
 
   /**
-  * @var The canonical name which this resource exists at
+  * @var string The canonical name which this resource exists at
   */
   protected $bound_from;
 
   /**
-  * @var An object which is the collection record for this resource, or for it's container
+  * @var DAVResource An object which is the collection record for this resource, or for it's container
   */
   private $collection;
 
   /**
-  * @var An object which is the principal for this resource, or would be if it existed.
+  * @var DAVPrincipal An object which is the principal for this resource, or would be if it existed.
   */
   private $principal;
 
   /**
-  * @var A bit mask representing the current user's privileges towards this DAVResource
+  * @var integer A bit mask representing the current user's privileges towards this DAVResource
   */
   private $privileges;
 
   /**
-  * @var True if this resource is a collection of any kind
+  * @var bool True if this resource is a collection of any kind
   */
   private $_is_collection;
 
   /**
-  * @var True if this resource is a principal-URL
+  * @var bool True if this resource is a principal-URL
   */
   private $_is_principal;
 
   /**
-  * @var True if this resource is a calendar collection
+  * @var bool True if this resource is a calendar collection
   */
   private $_is_calendar;
 
   /**
-  * @var True if this resource is a binding to another resource
+  * @var bool True if this resource is a binding to another resource
   */
   private $_is_binding;
 
   /**
-  * @var True if this resource is a binding to an external resource
+  * @var bool True if this resource is a binding to an external resource
   */
   private $_is_external;
 
   /**
-  * @var True if this resource is an addressbook collection
+  * @var bool True if this resource is an addressbook collection
   */
   private $_is_addressbook;
 
   /**
-  * @var True if this resource is, or is in, a proxy collection
+  * @var bool True if this resource is, or is in, a proxy collection
   */
   private $_is_proxy_resource;
 
@@ -119,27 +119,27 @@ class DAVResource
   private $proxy_type;
 
   /**
-  * @var An array of the methods we support on this resource.
+  * @var array An array of the methods we support on this resource.
   */
   private $supported_methods;
 
   /**
-  * @var An array of the reports we support on this resource.
+  * @var array An array of the reports we support on this resource.
   */
   private $supported_reports;
 
   /**
-  * @var An array of the dead properties held for this resource
+  * @var array An array of the dead properties held for this resource
   */
   private $dead_properties;
 
   /**
-  * @var An array of the component types we support on this resource.
+  * @var array An array of the component types we support on this resource.
   */
   private $supported_components;
 
   /**
-  * @var An array of DAVTicket objects if any apply to this resource, such as via a bind.
+  * @var array An array of DAVTicket objects if any apply to this resource, such as via a bind.
   */
   private $tickets;
 
@@ -1201,8 +1201,9 @@ EOQRY;
 
 
   /**
-  * Returns the URL of our resource
-  */
+   * Returns the URL of our resource
+   * @return string
+   */
   function url() {
     if ( !isset($this->dav_name) ) {
       throw Exception("What! How can dav_name not be set?");
@@ -1212,8 +1213,9 @@ EOQRY;
 
 
   /**
-  * Returns the dav_name of the resource in our internal namespace
-  */
+   * Returns the dav_name of the resource in our internal namespace
+   * @return string
+   */
   function dav_name() {
     if ( isset($this->dav_name) ) return $this->dav_name;
     return null;
@@ -1222,7 +1224,8 @@ EOQRY;
 
   /**
   * Returns the dav_name of the resource we are bound to, within our internal namespace
-  */
+   * @return string
+   */
   function bound_from() {
     if ( isset($this->bound_from) ) return $this->bound_from;
     return $this->dav_name();
