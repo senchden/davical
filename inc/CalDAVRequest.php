@@ -1059,7 +1059,8 @@ EOSQL;
       else
         $trim_chars = ' ';
 
-      if ( isset($this->etag_if_match) && $this->etag_if_match != '' && trim( $this->etag_if_match, $trim_chars) != trim( $dest_etag, $trim_chars ) ) {
+      if ( isset($this->etag_if_match) && $this->etag_if_match != '' && $this->etag_if_match != '*'
+              && trim( $this->etag_if_match, $trim_chars) != trim( $dest_etag, $trim_chars ) ) {
         /**
         * RFC2068, 14.25:
         * If none of the entity tags match, or if "*" is given and no current
