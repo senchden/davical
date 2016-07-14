@@ -438,3 +438,26 @@ $c->admin_email ='calendar-admin@example.com';
 //                  //              'debug_jid' => 'otheruser@example.com'  // send a copy of all publishes to this jid
 //                                );
 // include ( 'pubsub.php' );
+
+
+/***************************************************************************
+*                                                                          *
+*                             Detailed Metrics                             *
+*                                                                          *
+***************************************************************************/
+
+/*
+* This enables a /metrics.php URL containing detailed metrics about the
+* operation of DAViCal.  Ideally you will be running memcache if you are
+* interested in keeping metrics, but there is a simple metrics collection
+* available to you without running memcache.
+*
+* Note that there is currently no way of enabling metrics via memcache
+* without memcache being enabled for all of DAViCal.
+*/
+//  $c->metrics_style = 'counters';               // Just the simple counter-based metrics
+//  $c->metrics_style = 'memcache';               // Only the metrics using memcache
+//  $c->metrics_style = 'both';                   // Both styles of metrics
+//  $c->metrics_collectors = array('127.0.0.1');  // Restrict access to only this IP address
+//  $c->metrics_require_user = 'metricsuser';     // Restrict access to only connections authenticating as this user
+

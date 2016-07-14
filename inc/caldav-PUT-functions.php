@@ -98,7 +98,7 @@ function controlRequestContainer( $username, $user_no, $path, $caldav_context, $
     $sql = 'SELECT * FROM collection WHERE dav_name = :dav_name';
     $qry = new AwlQuery( $sql, array( ':dav_name' => $request_container) );
     if ( ! $qry->Exec('PUT',__LINE__,__FILE__) ) {
-      rollback_on_error( $caldav_context, $user_no, $path );
+      rollback_on_error( $caldav_context, $user_no, $path, 'Database error in: '.$sql );
     }
     if ( !isset($c->readonly_webdav_collections) || $c->readonly_webdav_collections == true ) {
       if ( $qry->rows() == 0 ) {
@@ -132,7 +132,7 @@ VALUES( :user_no, :parent_container, :dav_name, :dav_etag, :dav_displayname, TRU
         $sql = 'UPDATE collection SET publicly_readable = :is_public::boolean WHERE collection_id = :collection_id';
         $params = array( ':is_public' => ($public?'t':'f'), ':collection_id' => $collection->collection_id );
         if ( ! $qry->QDo($sql,$params) ) {
-          rollback_on_error( $caldav_context, $user_no, $path );
+          rollback_on_error( $caldav_context, $user_no, $path, 'Database error in: '.$sql );
         }
       }
     }
@@ -373,7 +373,7 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
   $response = '3.7'; // Organizer was not found on server.
   if ( !$organizer_calendar->Exists() ) {
     dbg_error_log('ERROR','Default calendar at "%s" does not exist for user "%s"',
-                              $organizer_calendar->dav_name(), $schedule_target->username());
+                              $organizer_calendar->dav_name(), $organizer_principal->username());
     $response = '5.2'; // No scheduling support for user
   }
   else {
@@ -384,7 +384,7 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
       $response = '1.2'; // Scheduling reply delivered successfully
       if ( $organizer_calendar->WriteCalendarMember($schedule_original, false, false, $segment_name) === false ) {
         dbg_error_log('ERROR','Could not write updated calendar member to %s',
-                $attendee_calendar->dav_name(), $attendee_calendar->dav_name(), $schedule_target->username());
+                $organizer_calendar->dav_name());
         trace_bug('Failed to write scheduling resource.');
       }
     }
@@ -694,10 +694,10 @@ function import_addressbook_collection( $vcard_content, $user_no, $path, $caldav
 
   $sql = 'SELECT * FROM collection WHERE dav_name = :dav_name';
   $qry = new AwlQuery( $sql, array( ':dav_name' => $path) );
-  if ( ! $qry->Exec('PUT',__LINE__,__FILE__) ) rollback_on_error( $caldav_context, $user_no, $path );
+  if ( ! $qry->Exec('PUT',__LINE__,__FILE__) ) rollback_on_error( $caldav_context, $user_no, $path, 'Database error in: '.$sql );
   if ( ! $qry->rows() == 1 ) {
     dbg_error_log( 'ERROR', ' PUT: Collection does not exist at "%s" for user %d', $path, $user_no );
-    rollback_on_error( $caldav_context, $user_no, $path );
+    rollback_on_error( $caldav_context, $user_no, $path, sprintf('Error: Collection does not exist at "%s" for user %d', $path, $user_no ));
   }
   $collection = $qry->Fetch();
   
@@ -709,7 +709,7 @@ function import_addressbook_collection( $vcard_content, $user_no, $path, $caldav
   );
   if ( !$appending ) {
     if ( !$qry->QDo('DELETE FROM caldav_data WHERE collection_id = :collection_id', $base_params) )
-    rollback_on_error( $caldav_context, $user_no, $collection->collection_id );
+    rollback_on_error( $caldav_context, $user_no, $collection->collection_id, 'Database error on DELETE of existing rows' );
   }
   
   $dav_data_insert = <<<EOSQL
@@ -755,7 +755,7 @@ EOSQL;
         
     if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Begin();
     
-    if ( !$qry->QDo($dav_data_insert,$dav_data_params) ) rollback_on_error( $caldav_context, $user_no, $path );
+    if ( !$qry->QDo($dav_data_insert,$dav_data_params) ) rollback_on_error( $caldav_context, $user_no, $path, 'Database error on: '.$dav_data_insert );
   
     $qry->QDo('SELECT dav_id FROM caldav_data WHERE dav_name = :dav_name ', array(':dav_name' => $dav_data_params[':dav_name']));
     if ( $qry->rows() == 1 && $row = $qry->Fetch() ) {
@@ -768,7 +768,7 @@ EOSQL;
   }
   
   if ( !(isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import) ) {
-    if ( ! $qry->Commit() ) rollback_on_error( $caldav_context, $user_no, $path);
+    if ( ! $qry->Commit() ) rollback_on_error( $caldav_context, $user_no, $path, 'Database error on COMMIT');
   }
   
 }
@@ -808,7 +808,7 @@ function import_calendar_collection( $ics_content, $user_no, $path, $caldav_cont
   if ( !$appending && isset($displayname) ) {
     $sql = 'UPDATE collection SET dav_displayname = :displayname WHERE dav_name = :dav_name';
     $qry = new AwlQuery( $sql, array( ':displayname' => $displayname, ':dav_name' => $path) );
-    if ( ! $qry->Exec('PUT',__LINE__,__FILE__) ) rollback_on_error( $caldav_context, $user_no, $path );
+    if ( ! $qry->Exec('PUT',__LINE__,__FILE__) ) rollback_on_error( $caldav_context, $user_no, $path, 'Database error on: '.$sql );
   }
   
 
@@ -839,10 +839,10 @@ function import_calendar_collection( $ics_content, $user_no, $path, $caldav_cont
 
   $sql = 'SELECT * FROM collection WHERE dav_name = :dav_name';
   $qry = new AwlQuery( $sql, array( ':dav_name' => $path) );
-  if ( ! $qry->Exec('PUT',__LINE__,__FILE__) ) rollback_on_error( $caldav_context, $user_no, $path );
+  if ( ! $qry->Exec('PUT',__LINE__,__FILE__) ) rollback_on_error( $caldav_context, $user_no, $path, 'Database error on: '.$sql );
   if ( ! $qry->rows() == 1 ) {
     dbg_error_log( 'ERROR', ' PUT: Collection does not exist at "%s" for user %d', $path, $user_no );
-    rollback_on_error( $caldav_context, $user_no, $path );
+    rollback_on_error( $caldav_context, $user_no, $path, sprintf( 'Error: Collection does not exist at "%s" for user %d', $path, $user_no ));
   }
   $collection = $qry->Fetch();
   $collection_id = $collection->collection_id;
@@ -944,7 +944,7 @@ EOSQL;
 
     // Write to the caldav_data table
     if ( !$qry->QDo( ($inserting ? $dav_data_insert : $dav_data_update), $dav_data_params) )
-      rollback_on_error( $caldav_context, $user_no, $path );
+      rollback_on_error( $caldav_context, $user_no, $path, 'Database error on:'. ($inserting ? $dav_data_insert : $dav_data_update));
 
     // Get the dav_id for this row
     $qry->QDo('SELECT dav_id FROM caldav_data WHERE dav_name = :dav_name ', array(':dav_name' => $dav_data_params[':dav_name']));
@@ -1249,7 +1249,7 @@ function write_resource( DAVResource $resource, $caldav_data, DAVResource $colle
   }
   if ( $qry->rows() != 1 || !($row = $qry->Fetch()) ) {
     // No dav_id?  => We're toast!
-    trace_bug( 'No dav_id for "%s" on %s!!!', $path, ($create_resource ? 'create': 'update'));
+    trace_bug( 'No dav_id for "%s" on %s!!!', $path, ($put_action_type == 'INSERT' ? 'create': 'update'));
     rollback_on_error( $caldav_context, $user_no, $path);
     return false;
   }

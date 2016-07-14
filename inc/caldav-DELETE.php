@@ -20,6 +20,8 @@ $lock_opener = $request->FailIfLocked();
 require_once('schedule-functions.php');
 
 function delete_collection( $id ) {
+  global $session, $request;
+
   $params = array( ':collection_id' => $id );
   $qry = new AwlQuery('SELECT child.collection_id AS child_id FROM collection child JOIN collection parent ON (parent.dav_name = child.parent_container) WHERE parent.collection_id = :collection_id', $params );
   if ( $qry->Exec('DELETE',__LINE__,__FILE__) && $qry->rows() > 0 ) {
@@ -43,6 +45,7 @@ function delete_collection( $id ) {
 if ( !$dav_resource->Exists() )$request->DoResponse( 404 );
 
 if ( ! ( $dav_resource->resource_id() > 0 ) ) {
+  @dbg_error_log( "DELETE", ": failed: User: %d, ETag: %s, Path: %s, ResourceID: %d", $session->user_no, $request->etag_if_match, $request->path, $dav_resource->resource_id());
   $request->DoResponse( 403 );
 }
 
@@ -50,11 +53,16 @@ $qry = new AwlQuery();
 $qry->Begin();
 
 if ( $dav_resource->IsCollection() ) {
+  $cache = getCacheInstance();
+  $myLock = $cache->acquireLock('collection-'.$dav_resource->parent_path());
   if ( $dav_resource->IsBinding() ) {
     $params = array( ':dav_name' => $dav_resource->dav_name() );
   
     if ( $qry->QDo("DELETE FROM dav_binding WHERE dav_name = :dav_name", $params )
       && $qry->Commit() ) {
+      $cache->delete( 'collection-'.$dav_resource->dav_name(), null );
+      $cache->delete( 'collection-'.$dav_resource->parent_path(), null );
+      $cache->releaseLock($myLock);
       @dbg_error_log( "DELETE", "DELETE: Binding: %d, ETag: %s, Path: %s", $session->user_no, $request->etag_if_match, $request->path);
       $request->DoResponse( 204 );
     }
@@ -62,11 +70,13 @@ if ( $dav_resource->IsCollection() ) {
   else {
     if ( delete_collection( $dav_resource->resource_id() ) && $qry->Commit() ) {
       // Uncache anything to do with the collection
-      $cache = getCacheInstance();
       $cache->delete( 'collection-'.$dav_resource->dav_name(), null );
+      $cache->delete( 'collection-'.$dav_resource->parent_path(), null );
+      $cache->releaseLock($myLock);
       $request->DoResponse( 204 );
     }
   }
+  $cache->releaseLock($myLock);
 }
 else {
   if ( isset($request->etag_if_match) && $request->etag_if_match != $dav_resource->unique_tag() && $request->etag_if_match != "*"  ) {

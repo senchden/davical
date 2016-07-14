@@ -3,7 +3,7 @@ Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, calendar-access
 Etag: "13249ced6c7527191a003f54f7e3cd25"
 Content-Length: 834
-Content-Type: text/calendar; charset="utf-8"
+Content-Type: text/calendar; component=vevent; charset="utf-8"
 
 BEGIN:VCALENDAR
 PRODID:-//davical.org//NONSGML AWL Calendar//EN

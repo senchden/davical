@@ -4,7 +4,7 @@ DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
 Etag: "fdcc61a1e0d76b177ad81cf7c8bdacaf"
 Content-Length: 1106
-Content-Type: text/calendar; charset="utf-8"
+Content-Type: text/calendar; component=vevent; charset="utf-8"
 
 BEGIN:VCALENDAR
 CALSCALE:GREGORIAN

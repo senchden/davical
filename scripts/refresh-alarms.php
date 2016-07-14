@@ -24,6 +24,7 @@ $_SERVER['SERVER_NAME'] = 'localhost';
 $args = (object) array();
 $args->debug = false;
 $args->set_last = false;
+$args->slow_query_threshold = false; // Won't set higher threshold by default
 
 $args->future = 'P400D';
 $args->near_past = 'P1D';
@@ -33,11 +34,12 @@ $debugging = null;
 function parse_arguments() {
   global $args;
 
-  $opts = getopt( 'f:p:s:d:lh' );
+  $opts = getopt( 'f:p:q:s:d:lh' );
   foreach( $opts AS $k => $v ) {
     switch( $k ) {
       case 'f':   $args->future = $v;  break;
       case 'p':   $args->near_past = $v;  break;
+      case 'q':   $args->slow_query_threshold = $v;  break;
       case 's':   $_SERVER['SERVER_NAME'] = $v; break;
       case 'd':   $args->debug = true;  $debugging = explode(',',$v); break;
       case 'l':   $args->set_last = true; break;
@@ -59,6 +61,7 @@ Usage:
 
   -l               Try to set the 'last' alarm date in historical alarms
 
+  -q <secs>        Warn about slow queries which take longer than this many seconds (use AWL default).
   -d xxx           Enable debugging where 'xxx' is a comma-separated list of debug subsystems
 
 USAGE;
@@ -75,6 +78,9 @@ if ( $args->debug && is_array($debugging )) {
 $args->near_past = '-' .  $args->near_past;
 
 require_once("./always.php");
+if ( $args->slow_query_threshold !== false ) {
+  $c->default_query_warning_threshold = $args->slow_query_threshold;
+}
 require_once('AwlQuery.php');
 require_once('RRule-v2.php');
 require_once('vCalendar.php');

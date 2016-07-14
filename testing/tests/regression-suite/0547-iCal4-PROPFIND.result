@@ -2,8 +2,8 @@ HTTP/1.1 207 Multi-Status
 Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
-ETag: "3c1ce7546b05f98eabd8cbe7680646d8"
-Content-Length: 19736
+ETag: "84f6ab86e65ad459a930d65cf80aad20"
+Content-Length: 17999
 Content-Type: text/xml; charset="utf-8"
 
 <?xml version="1.0" encoding="utf-8" ?>
@@ -21,11 +21,6 @@ Content-Type: text/xml; charset="utf-8"
     <owner>
      <href>/caldav.php/user1/</href>
     </owner>
-    <C1:calendar-free-busy-set>
-     <href>/caldav.php/user1/home/</href>
-     <href>/caldav.php/user1/created/</href>
-     <href>/caldav.php/user1/6E20BB7C-EFD9-4F0F-9BDC-5335E04D47E0/</href>
-    </C1:calendar-free-busy-set>
     <C1:schedule-default-calendar-URL>
      <href>/caldav.php/user1/home/</href>
     </C1:schedule-default-calendar-URL>
@@ -75,6 +70,7 @@ Content-Type: text/xml; charset="utf-8"
     <A:calendar-color/>
     <A:calendar-order/>
     <C1:supported-calendar-component-set/>
+    <C1:calendar-free-busy-set/>
     <C1:schedule-calendar-transp/>
     <quota-available-bytes/>
     <quota-used-bytes/>
@@ -111,11 +107,6 @@ Content-Type: text/xml; charset="utf-8"
     <owner>
      <href>/caldav.php/user1/</href>
     </owner>
-    <C1:calendar-free-busy-set>
-     <href>/caldav.php/user1/home/</href>
-     <href>/caldav.php/user1/created/</href>
-     <href>/caldav.php/user1/6E20BB7C-EFD9-4F0F-9BDC-5335E04D47E0/</href>
-    </C1:calendar-free-busy-set>
     <C1:schedule-default-calendar-URL>
      <href>/caldav.php/user1/home/</href>
     </C1:schedule-default-calendar-URL>
@@ -165,6 +156,7 @@ Content-Type: text/xml; charset="utf-8"
     <C:xmpp-server/>
     <C:xmpp-uri/>
     <C1:calendar-description/>
+    <C1:calendar-free-busy-set/>
     <C1:schedule-calendar-transp/>
     <quota-available-bytes/>
     <quota-used-bytes/>
@@ -194,11 +186,6 @@ Content-Type: text/xml; charset="utf-8"
     <owner>
      <href>/caldav.php/user1/</href>
     </owner>
-    <C1:calendar-free-busy-set>
-     <href>/caldav.php/user1/home/</href>
-     <href>/caldav.php/user1/created/</href>
-     <href>/caldav.php/user1/6E20BB7C-EFD9-4F0F-9BDC-5335E04D47E0/</href>
-    </C1:calendar-free-busy-set>
     <C1:schedule-default-calendar-URL>
      <href>/caldav.php/user1/home/</href>
     </C1:schedule-default-calendar-URL>
@@ -248,6 +235,7 @@ Content-Type: text/xml; charset="utf-8"
     <A:calendar-color/>
     <A:calendar-order/>
     <C1:supported-calendar-component-set/>
+    <C1:calendar-free-busy-set/>
     <C1:schedule-calendar-transp/>
     <quota-available-bytes/>
     <quota-used-bytes/>
@@ -282,11 +270,6 @@ Content-Type: text/xml; charset="utf-8"
     <owner>
      <href>/caldav.php/user1/</href>
     </owner>
-    <C1:calendar-free-busy-set>
-     <href>/caldav.php/user1/home/</href>
-     <href>/caldav.php/user1/created/</href>
-     <href>/caldav.php/user1/6E20BB7C-EFD9-4F0F-9BDC-5335E04D47E0/</href>
-    </C1:calendar-free-busy-set>
     <C1:schedule-default-calendar-URL>
      <href>/caldav.php/user1/home/</href>
     </C1:schedule-default-calendar-URL>
@@ -338,6 +321,7 @@ Content-Type: text/xml; charset="utf-8"
     <C1:calendar-description/>
     <A:calendar-color/>
     <A:calendar-order/>
+    <C1:calendar-free-busy-set/>
     <C1:schedule-calendar-transp/>
     <quota-available-bytes/>
     <quota-used-bytes/>
@@ -372,11 +356,6 @@ Content-Type: text/xml; charset="utf-8"
     <owner>
      <href>/caldav.php/user1/</href>
     </owner>
-    <C1:calendar-free-busy-set>
-     <href>/caldav.php/user1/home/</href>
-     <href>/caldav.php/user1/created/</href>
-     <href>/caldav.php/user1/6E20BB7C-EFD9-4F0F-9BDC-5335E04D47E0/</href>
-    </C1:calendar-free-busy-set>
     <C1:schedule-default-calendar-URL>
      <href>/caldav.php/user1/home/</href>
     </C1:schedule-default-calendar-URL>
@@ -437,6 +416,7 @@ Content-Type: text/xml; charset="utf-8"
     <C1:calendar-description/>
     <A:calendar-color/>
     <A:calendar-order/>
+    <C1:calendar-free-busy-set/>
     <C1:schedule-calendar-transp/>
     <quota-available-bytes/>
     <quota-used-bytes/>
@@ -471,11 +451,6 @@ Content-Type: text/xml; charset="utf-8"
     <owner>
      <href>/caldav.php/user1/</href>
     </owner>
-    <C1:calendar-free-busy-set>
-     <href>/caldav.php/user1/home/</href>
-     <href>/caldav.php/user1/created/</href>
-     <href>/caldav.php/user1/6E20BB7C-EFD9-4F0F-9BDC-5335E04D47E0/</href>
-    </C1:calendar-free-busy-set>
     <C1:schedule-default-calendar-URL>
      <href>/caldav.php/user1/home/</href>
     </C1:schedule-default-calendar-URL>
@@ -536,6 +511,7 @@ Content-Type: text/xml; charset="utf-8"
     <C1:calendar-description/>
     <A:calendar-color/>
     <A:calendar-order/>
+    <C1:calendar-free-busy-set/>
     <C1:schedule-calendar-transp/>
     <quota-available-bytes/>
     <quota-used-bytes/>
@@ -571,11 +547,6 @@ Content-Type: text/xml; charset="utf-8"
     <owner>
      <href>/caldav.php/user1/</href>
     </owner>
-    <C1:calendar-free-busy-set>
-     <href>/caldav.php/user1/home/</href>
-     <href>/caldav.php/user1/created/</href>
-     <href>/caldav.php/user1/6E20BB7C-EFD9-4F0F-9BDC-5335E04D47E0/</href>
-    </C1:calendar-free-busy-set>
     <C1:schedule-default-calendar-URL>
      <href>/caldav.php/user1/home/</href>
     </C1:schedule-default-calendar-URL>
@@ -626,6 +597,7 @@ Content-Type: text/xml; charset="utf-8"
     <C:xmpp-uri/>
     <C1:calendar-description/>
     <A:calendar-order/>
+    <C1:calendar-free-busy-set/>
     <C1:schedule-calendar-transp/>
     <quota-available-bytes/>
     <quota-used-bytes/>
@@ -655,11 +627,6 @@ Content-Type: text/xml; charset="utf-8"
     <owner>
      <href>/caldav.php/user1/</href>
     </owner>
-    <C1:calendar-free-busy-set>
-     <href>/caldav.php/user1/home/</href>
-     <href>/caldav.php/user1/created/</href>
-     <href>/caldav.php/user1/6E20BB7C-EFD9-4F0F-9BDC-5335E04D47E0/</href>
-    </C1:calendar-free-busy-set>
     <C1:schedule-default-calendar-URL>
      <href>/caldav.php/user1/home/</href>
     </C1:schedule-default-calendar-URL>
@@ -712,6 +679,7 @@ Content-Type: text/xml; charset="utf-8"
     <A:calendar-color/>
     <A:calendar-order/>
     <C1:supported-calendar-component-set/>
+    <C1:calendar-free-busy-set/>
     <C1:schedule-calendar-transp/>
     <quota-available-bytes/>
     <quota-used-bytes/>
@@ -741,11 +709,6 @@ Content-Type: text/xml; charset="utf-8"
     <owner>
      <href>/caldav.php/user1/</href>
     </owner>
-    <C1:calendar-free-busy-set>
-     <href>/caldav.php/user1/home/</href>
-     <href>/caldav.php/user1/created/</href>
-     <href>/caldav.php/user1/6E20BB7C-EFD9-4F0F-9BDC-5335E04D47E0/</href>
-    </C1:calendar-free-busy-set>
     <C1:schedule-default-calendar-URL>
      <href>/caldav.php/user1/home/</href>
     </C1:schedule-default-calendar-URL>
@@ -798,6 +761,7 @@ Content-Type: text/xml; charset="utf-8"
     <A:calendar-color/>
     <A:calendar-order/>
     <C1:supported-calendar-component-set/>
+    <C1:calendar-free-busy-set/>
     <C1:schedule-calendar-transp/>
     <quota-available-bytes/>
     <quota-used-bytes/>

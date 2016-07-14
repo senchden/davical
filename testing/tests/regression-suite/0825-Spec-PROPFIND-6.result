@@ -4,7 +4,7 @@
   <href>/caldav.php/user1/home/da81c0ee-7871-11db-c6d6-f6927c144649.ics</href>
   <propstat>
    <prop>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <resourcetype/>
     <getcontentlength>313</getcontentlength>
     <displayname>Morning Mgmt Mtg</displayname>

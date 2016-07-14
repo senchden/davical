@@ -58,6 +58,26 @@ GRANT SELECT,UPDATE
   ON principal_type_principal_type_id_seq
   ON sync_tokens_sync_token_seq
   ON timezones_our_tzno_seq
+  ON metrics_count_acl
+  ON metrics_count_bind
+  ON metrics_count_delete
+  ON metrics_count_delticket
+  ON metrics_count_get
+  ON metrics_count_head
+  ON metrics_count_lock
+  ON metrics_count_mkcalendar
+  ON metrics_count_mkcol
+  ON metrics_count_mkticket
+  ON metrics_count_move
+  ON metrics_count_options
+  ON metrics_count_post
+  ON metrics_count_propfind
+  ON metrics_count_proppatch
+  ON metrics_count_put
+  ON metrics_count_report
+  ON metrics_count_unknown
+  ON metrics_count_unlock
+
 
 GRANT SELECT
   ON supported_locales

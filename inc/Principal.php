@@ -150,7 +150,7 @@ class Principal {
         throw new Exception('Can only retrieve a Principal by user_no,principal_id,username or email address');
     }
 
-    $cache = new AwlCache();
+    $cache = getCacheInstance();
     if ( $use_cache && isset($session->principal_id) ) {
       switch ( $type ) {
         case 'user_no':
@@ -498,7 +498,7 @@ class Principal {
   
   public function unCache() {
     if ( !isset($this->cacheNs) ) return; 
-    $cache = new AwlCache();
+    $cache = getCacheInstance();
     $cache->delete($this->cacheNs, null );
   }
 
@@ -601,7 +601,7 @@ class Principal {
   }
 
   static public function cacheFlush( $where, $whereparams=array() ) {
-    $cache = new AwlCache();
+    $cache = getCacheInstance();
     if ( !$cache->isActive() ) return;
     $qry = new AwlQuery('SELECT dav_name FROM dav_principal WHERE '.$where, $whereparams );
     if ( $qry->Exec('Principal',__FILE__,__LINE__) ) {
@@ -612,7 +612,7 @@ class Principal {
   }  
 
   static public function cacheDelete( $type, $value ) {
-    $cache = new AwlCache();
+    $cache = getCacheInstance();
     if ( !$cache->isActive() ) return;
     if ( $type == 'username' ) {
       $value = '/'.$value.'/';

@@ -93,7 +93,7 @@
     <displayname>Morning Mgmt Mtg</displayname>
     <getcontentlanguage/>
     <getcontentlength>313</getcontentlength>
-    <getcontenttype>text/calendar</getcontenttype>
+    <getcontenttype>text/calendar; component=vevent</getcontenttype>
     <getetag>"6f16959eee5c920b45548840b1e9ea19"</getetag>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <resourcetype/>

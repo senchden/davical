@@ -406,6 +406,23 @@ CREATE TABLE calendar_alarm (
   trigger_state CHAR DEFAULT 'N' -- 'N' => 'New/Needs setting', 'A' = 'Active', 'O' = 'Old'
 );
 
+
+CREATE TABLE calendar_attendee_email_status (
+  email_status_id INT8 PRIMARY KEY,
+  description TEXT NOT NULL
+);
+
+INSERT INTO calendar_attendee_email_status (email_status_id, description)
+  VALUES
+  (1, 'waiting for invitation to be sent'),
+  (2, 'invitation has been sent'),
+  (3, 'waiting for schedule change to be sent'),
+  (4, 'schedule change has been sent'),
+  (11, 'attendee has accepted'),
+  (12, 'attendee indicated maybe'),
+  (13, 'attendee has refused')
+;
+
 CREATE TABLE calendar_attendee (
   dav_id INT8 NOT NULL REFERENCES caldav_data(dav_id) ON UPDATE CASCADE ON DELETE CASCADE,
   status TEXT,
@@ -417,6 +434,8 @@ CREATE TABLE calendar_attendee (
   property TEXT, -- The full text of the property
   attendee_state TEXT, -- Internal DAViCal processing state
   weak_etag TEXT, -- The week_etag applying for this attendee state
+  email_status INT REFERENCES calendar_attendee_email_status(email_status_id) DEFAULT 1 NOT NULL,
+  is_remote BOOLEAN DEFAULT false,
   PRIMARY KEY ( dav_id, attendee )
 );
 
@@ -449,4 +468,25 @@ $$ LANGUAGE plpgsql ;
 ALTER TABLE dav_binding ADD CONSTRAINT "dav_name_does_not_exist"
 		CHECK (NOT real_path_exists(dav_name));
 
-SELECT new_db_revision(1,2,12, 'Decembre' );
+-- We create a bunch of counters for reporting basic statistics
+CREATE SEQUENCE metrics_count_get;
+CREATE SEQUENCE metrics_count_put;
+CREATE SEQUENCE metrics_count_propfind;
+CREATE SEQUENCE metrics_count_proppatch;
+CREATE SEQUENCE metrics_count_report;
+CREATE SEQUENCE metrics_count_head;
+CREATE SEQUENCE metrics_count_options;
+CREATE SEQUENCE metrics_count_post;
+CREATE SEQUENCE metrics_count_mkcalendar;
+CREATE SEQUENCE metrics_count_mkcol;
+CREATE SEQUENCE metrics_count_delete;
+CREATE SEQUENCE metrics_count_move;
+CREATE SEQUENCE metrics_count_acl;
+CREATE SEQUENCE metrics_count_lock;
+CREATE SEQUENCE metrics_count_unlock;
+CREATE SEQUENCE metrics_count_mkticket;
+CREATE SEQUENCE metrics_count_delticket;
+CREATE SEQUENCE metrics_count_bind;
+CREATE SEQUENCE metrics_count_unknown;
+
+SELECT new_db_revision(1,3,2, 'Luty' );

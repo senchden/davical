@@ -2,8 +2,8 @@ HTTP/1.1 207 Multi-Status
 Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
-ETag: "a8d0404f59a91a8a4ef9ab3fd8b356b2"
-Content-Length: 1354
+ETag: "1a0c2d97d0118e22caff1e90871e41dd"
+Content-Length: 1206
 Content-Type: text/xml; charset="utf-8"
 
 <?xml version="1.0" encoding="utf-8" ?>
@@ -18,9 +18,6 @@ Content-Type: text/xml; charset="utf-8"
      <collection/>
      <C1:schedule-inbox/>
     </resourcetype>
-    <C1:calendar-free-busy-set>
-     <href>/caldav.php/user2/home/</href>
-    </C1:calendar-free-busy-set>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -29,6 +26,7 @@ Content-Type: text/xml; charset="utf-8"
     <C1:calendar-description/>
     <A:calendar-color/>
     <A:calendar-order/>
+    <C1:calendar-free-busy-set/>
    </prop>
    <status>HTTP/1.1 404 Not Found</status>
   </propstat>
@@ -39,9 +37,6 @@ Content-Type: text/xml; charset="utf-8"
    <prop>
     <displayname>test meeting</displayname>
     <resourcetype/>
-    <C1:calendar-free-busy-set>
-     <href>/caldav.php/user2/home/</href>
-    </C1:calendar-free-busy-set>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -51,6 +46,7 @@ Content-Type: text/xml; charset="utf-8"
     <C1:calendar-description/>
     <A:calendar-color/>
     <A:calendar-order/>
+    <C1:calendar-free-busy-set/>
    </prop>
    <status>HTTP/1.1 404 Not Found</status>
   </propstat>
