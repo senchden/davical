@@ -51,6 +51,8 @@
 #
 ######################### IMPORTANT NOTES #########################
 #
+# SEE ALSO: http://wiki.davical.org/index.php/DAViCal-cli
+#
 # This code has been created for and used in a FreeBSD machine with Davical
 # installed from the own ports (at the beginning). This means that in this
 # version the hardcoded paths and checks will have some customization for that
