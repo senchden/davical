@@ -381,7 +381,11 @@ function LDAP_check($username, $password ){
     return false;
   }
 
-  $ldap_timestamp = $valid[$mapping['modified']];
+  if ( $mapping['modified'] != "" && in_array($mapping['modified'], $valid)) {
+    $ldap_timestamp = $valid[$mapping['modified']];
+  } else {
+    $ldap_timestamp = '19700101000000';
+  }
 
   /**
   * This splits the LDAP timestamp apart and assigns values to $Y $m $d $H $M and $S
@@ -390,7 +394,9 @@ function LDAP_check($username, $password ){
     $$k = substr($ldap_timestamp,$v[0],$v[1]);
 
   $ldap_timestamp = "$Y"."$m"."$d"."$H"."$M"."$S";
-  $valid[$mapping['modified']] = "$Y-$m-$d $H:$M:$S";
+  if ($mapping['modified'] != "" && in_array($mapping['modified'], $valid)) {
+    $valid[$mapping['modified']] = "$Y-$m-$d $H:$M:$S";
+  }
 
   $principal = new Principal('username',$username);
   if ( $principal->Exists() ) {
@@ -606,7 +612,11 @@ function sync_LDAP(){
     foreach( $users_to_create as $username ) {
       $principal = new Principal( 'username', $username );
       $valid = $ldap_users_info[$username];
-      $ldap_timestamp = $valid[$mapping['modified']];
+      if ( $mapping['modified'] != "" && in_array($mapping['modified'], $valid)) {
+        $ldap_timestamp = $valid[$mapping['modified']];
+      } else {
+        $ldap_timestamp = '19700101000000';
+      }
 
       if ( !empty($c->authenticate_hook['config']['format_updated']) ) {
         /**
@@ -622,7 +632,9 @@ function sync_LDAP(){
       else if ( empty($ldap_timestamp) ) {
         $ldap_timestamp = date('c');
       }
-      $valid[$mapping['modified']] = $ldap_timestamp;
+      if ( $mapping['modified'] != "" && in_array($mapping['modified'], $valid)) {
+        $valid[$mapping['modified']] = $ldap_timestamp;
+      }
 
       sync_user_from_LDAP( $principal, $mapping, $valid );
     }
@@ -651,7 +663,11 @@ function sync_LDAP(){
     foreach ( $users_to_update as $key=> $username ) {
       $principal = new Principal( 'username', $username );
       $valid=$ldap_users_info[$username];
-      $ldap_timestamp = $valid[$mapping['modified']];
+      if ( $mapping['modified'] != "" && in_array($mapping['modified'], $valid)) {
+        $ldap_timestamp = $valid[$mapping['modified']];
+      } else {
+        $ldap_timestamp = '19700101000000';
+      }
 
       $valid['user_no'] = $db_users_info[$username]['user_no'];
       $mapping['user_no'] = 'user_no';
