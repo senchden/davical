@@ -348,7 +348,7 @@ require_once('EMail.php');
 function doImipMessage($method, $to_email, vCalendar $itip) {
   global $c, $request;
 
-  dbg_error_log( 'schedule' 'Sending iMIP %s message to %s', $method, $to_email );
+  dbg_error_log( 'schedule', 'Sending iMIP %s message to %s', $method, $to_email );
   $mime = new MultiPart();
   $mime->addPart( $itip->Render(), 'text/calendar; charset=UTF-8; method='.$method );
 
