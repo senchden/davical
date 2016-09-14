@@ -18,7 +18,7 @@ require_once('RRule-v2.php');
  *  - We don't do scheduling (disabled, no organizer, ...)
  *  - We are an ATTENDEE declining the meeting.
  *  - We are the ORGANIZER canceling the meeting.
- *   
+ *
  * @param DAVResource $deleted_resource The resource which has already been deleted
  */
 function do_scheduling_for_delete(DAVResource $deleted_resource ) {
@@ -28,10 +28,10 @@ function do_scheduling_for_delete(DAVResource $deleted_resource ) {
 
   if ( !isset($request) || (isset($c->enable_auto_schedule) && !$c->enable_auto_schedule) ) return true;
   if ( $deleted_resource->IsInSchedulingCollection() ) return true;
-  
+
   $caldav_data = $deleted_resource->GetProperty('dav-data');
   if ( empty($caldav_data) ) return true;
-  
+
   $vcal = new vCalendar($caldav_data);
   $organizer = $vcal->GetOrganizer();
   if ( $organizer === false || empty($organizer) ) {
@@ -43,7 +43,7 @@ function do_scheduling_for_delete(DAVResource $deleted_resource ) {
     return true;
   }
   $organizer_email = preg_replace( '/^mailto:/i', '', $organizer->Value() );
-  
+
   if ( $request->principal->email() == $organizer_email ) {
     return doItipOrganizerCancel( $vcal );
   }
@@ -54,7 +54,7 @@ function do_scheduling_for_delete(DAVResource $deleted_resource ) {
     }
     return doItipAttendeeReply( $vcal, 'DECLINED', $request->principal->email());
   }
-  
+
 }
 
 
@@ -66,11 +66,11 @@ function do_scheduling_for_delete(DAVResource $deleted_resource ) {
 //function do_scheduling_reply( vCalendar $vcal, vProperty $organizer ) {
 function doItipAttendeeReply( vCalendar $resource, $partstat ) {
   global $request;
-  
+
   $organizer = $resource->GetOrganizer();
   $organizer_email = preg_replace( '/^mailto:/i', '', $organizer->Value() );
   $organizer_principal = new Principal('email',$organizer_email );
-  
+
   if ( !$organizer_principal->Exists() ) {
     dbg_error_log( 'schedule', 'Unknown ORGANIZER "%s" - unable to notify.', $organizer->Value() );
     //TODO: header( "Debug: Could maybe do the iMIP message dance for organizer ". $organizer->Value() );
@@ -95,7 +95,7 @@ function doItipAttendeeReply( vCalendar $resource, $partstat ) {
   $collection_path = preg_replace('{/[^/]+$}', '/', $row->dav_name );
   $segment_name = str_replace($collection_path, '', $row->dav_name );
   $vcal = new vCalendar($row->caldav_data);
-  
+
   $attendees = $vcal->GetAttendees();
   foreach( $attendees AS $v ) {
     $email = preg_replace( '/^mailto:/i', '', $v->Value() );
@@ -118,7 +118,7 @@ function doItipAttendeeReply( vCalendar $resource, $partstat ) {
 
   $schedule_reply = GetItip(new vCalendar($vcal->Render(null, true)), 'REPLY', $attendee->Value(), array('CUTYPE'=>true, 'SCHEDULE-STATUS'=>true));
   $schedule_request = GetItip(new vCalendar($row->caldav_data), 'REQUEST', null);
-  
+
   dbg_error_log( 'schedule', 'Writing ATTENDEE scheduling REPLY from %s to %s', $request->principal->email(), $organizer_principal->email() );
 
   $response = '3.7'; // Organizer was not found on server.
@@ -209,13 +209,14 @@ function GetItip( VCalendar $vcal, $method, $attendee_value, $clear_attendee_par
   return $iTIP;
 }
 
+
 /**
  * Handles sending the iTIP CANCEL messages to each ATTENDEE by the ORGANIZER.
  * @param vCalendar $vcal  What's being cancelled.
  */
 function doItipOrganizerCancel( vCalendar $vcal ) {
   global $request;
-  
+
   $attendees = $vcal->GetAttendees();
   if ( count($attendees) == 0 && count($old_attendees) == 0 ) {
     dbg_error_log( 'schedule', 'Event has no attendees - no scheduling required.', count($attendees) );
@@ -226,14 +227,14 @@ function doItipOrganizerCancel( vCalendar $vcal ) {
   $scheduling_actions = false;
 
   $iTIP = GetItip($vcal, 'CANCEL', null);
-  
+
   foreach( $attendees AS $attendee ) {
     $email = preg_replace( '/^mailto:/i', '', $attendee->Value() );
     if ( $email == $request->principal->email() ) {
       dbg_error_log( 'schedule', "not delivering to owner '%s'", $request->principal->email() );
       continue;
     }
-    
+
     $agent = $attendee->GetParameterValue('SCHEDULE-AGENT');
     if ( $agent && $agent != 'SERVER' ) {
       dbg_error_log( 'schedule', "not delivering to %s, schedule agent set to value other than server", $email );
@@ -268,6 +269,7 @@ function doItipOrganizerCancel( vCalendar $vcal ) {
   return true;
 }
 
+
 /**
  * Does the actual processing of the iTIP CANCEL message on behalf of an ATTENDEE,
  * which generally means writing it into the ATTENDEE's default calendar.
@@ -278,7 +280,7 @@ function doItipOrganizerCancel( vCalendar $vcal ) {
  */
 function processItipCancel( vCalendar $vcal, vProperty $attendee, WritableCollection $attendee_calendar, Principal $attendee_principal ) {
   global $request;
-  
+
   dbg_error_log( 'schedule', 'Processing iTIP CANCEL to %s', $attendee->Value());
   //TODO: header( "Debug: Could maybe do the iMIP message dance for attendee ". $attendee->Value() );
   if ( !$attendee_calendar->Exists() ) {
@@ -307,7 +309,7 @@ function processItipCancel( vCalendar $vcal, vProperty $attendee, WritableCollec
     return '1.2';
   }
   $row = $qry->Fetch();
-  
+
   if ( $attendee_calendar->actualDeleteCalendarMember($row->dav_name) === false ) {
     dbg_error_log('ERROR', 'Could not delete calendar member %s for %s',
                                     $row->dav_name(), $attendee->Value());
@@ -316,7 +318,7 @@ function processItipCancel( vCalendar $vcal, vProperty $attendee, WritableCollec
   }
 
   return '1.2';  // Scheduling invitation delivered successfully
-    
+
 }
 
 
@@ -385,7 +387,7 @@ EOTEMPLATE;
     }
   }
   $mime->addPart( $friendly_part, 'text/plain' );
-  
+
   $email = new EMail();
   $email->SetFrom($request->principal->email());
   $email->AddTo($to_email);

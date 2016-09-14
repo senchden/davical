@@ -119,6 +119,7 @@ try {
         include('caldav-POST.php');
         break;
       }
+      // fall through if POST add member
     case 'PUT':
       switch( $request->content_type ) {
         case 'text/calendar':

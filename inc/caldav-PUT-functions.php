@@ -166,6 +166,7 @@ function public_events_only( $user_no, $dav_name ) {
   return false;
 }
 
+
 /**
  * Get a TZID string from this VEVENT/VTODO/... component if we can
  * @param vComponent $comp
@@ -179,6 +180,7 @@ function GetTZID( vComponent $comp ) {
   if ( !isset($p) ) return null;
   return $p->GetParameterValue('TZID');
 }
+
 
 /**
 * Deliver scheduling requests to attendees
@@ -267,6 +269,7 @@ function handle_schedule_request( $ical ) {
   header('Schedule-Tag: "'.$etag . '"' );
   $request->DoResponse( 201, 'Created' );
 }
+
 
 /**
 * Deliver scheduling replies to organizer and other attendees
@@ -653,7 +656,7 @@ function do_scheduling_requests( vCalendar $resource, $create, $old_data = null 
 */
 function import_collection( $import_content, $user_no, $path, $caldav_context, $appending = false ) {
   global $c;
-  
+
   if ( ! ini_get('open_basedir') && (isset($c->dbg['ALL']) || isset($c->dbg['put'])) ) {
     $fh = fopen('/var/log/davical/PUT-2.debug','w');
     if ( $fh ) {
@@ -667,7 +670,7 @@ function import_collection( $import_content, $user_no, $path, $caldav_context, $
       import_addressbook_collection( $import_content, $user_no, $path, $caldav_context, $appending );
     elseif ( $matches[1] == 'VCALENDAR' )
       import_calendar_collection( $import_content, $user_no, $path, $caldav_context, $appending );
-  
+
     // Uncache anything to do with the collection
     $cache = getCacheInstance();
     $cache_ns = 'collection-'.preg_replace( '{/[^/]*$}', '/', $path);
@@ -675,8 +678,9 @@ function import_collection( $import_content, $user_no, $path, $caldav_context, $
   }
   else {
     dbg_error_log('PUT', 'Can only import files which are VCARD or VCALENDAR');
-  } 
+  }
 }
+
 
 /**
 * This function will import a whole addressbook
@@ -700,7 +704,7 @@ function import_addressbook_collection( $vcard_content, $user_no, $path, $caldav
     rollback_on_error( $caldav_context, $user_no, $path, sprintf('Error: Collection does not exist at "%s" for user %d', $path, $user_no ));
   }
   $collection = $qry->Fetch();
-  
+
   if ( !(isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import) ) $qry->Begin();
   $base_params = array(
        ':collection_id' => $collection->collection_id,
@@ -711,17 +715,17 @@ function import_addressbook_collection( $vcard_content, $user_no, $path, $caldav
     if ( !$qry->QDo('DELETE FROM caldav_data WHERE collection_id = :collection_id', $base_params) )
     rollback_on_error( $caldav_context, $user_no, $collection->collection_id, 'Database error on DELETE of existing rows' );
   }
-  
+
   $dav_data_insert = <<<EOSQL
 INSERT INTO caldav_data ( user_no, dav_name, dav_etag, caldav_data, caldav_type, logged_user, created, modified, collection_id )
     VALUES( :user_no, :dav_name, :etag, :dav_data, :caldav_type, :session_user, :created, :modified, :collection_id )
 EOSQL;
-  
+
 
   $resources = $addressbook->GetComponents();
   foreach( $resources AS $k => $resource ) {
     if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Begin();
-  
+
     $vcard = new vCard( $resource->Render() );
 
     $uid = $vcard->GetPValue('UID');
@@ -743,7 +747,7 @@ EOSQL;
     }
 
     $rendered_card = $vcard->Render();
-    
+
     $dav_data_params = $base_params;
     $dav_data_params[':user_no'] = $user_no;
     // We don't allow any of &?\/@%+: in the UID to appear in the path, but anything else is fair game.
@@ -752,26 +756,27 @@ EOSQL;
     $dav_data_params[':dav_data'] = $rendered_card;
     $dav_data_params[':modified'] = $last_modified;
     $dav_data_params[':created'] = $created;
-        
+
     if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Begin();
-    
+
     if ( !$qry->QDo($dav_data_insert,$dav_data_params) ) rollback_on_error( $caldav_context, $user_no, $path, 'Database error on: '.$dav_data_insert );
-  
+
     $qry->QDo('SELECT dav_id FROM caldav_data WHERE dav_name = :dav_name ', array(':dav_name' => $dav_data_params[':dav_name']));
     if ( $qry->rows() == 1 && $row = $qry->Fetch() ) {
       $dav_id = $row->dav_id;
     }
-      
+
     $vcard->Write( $row->dav_id, false );
-    
+
     if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Commit();
   }
-  
+
   if ( !(isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import) ) {
     if ( ! $qry->Commit() ) rollback_on_error( $caldav_context, $user_no, $path, 'Database error on COMMIT');
   }
-  
+
 }
+
 
 /**
 * This function will import a whole calendar
@@ -803,14 +808,14 @@ function import_calendar_collection( $ics_content, $user_no, $path, $caldav_cont
       $after = $after->epoch();
     }
   }
-  
+
   $displayname = $calendar->GetPValue('X-WR-CALNAME');
   if ( !$appending && isset($displayname) ) {
     $sql = 'UPDATE collection SET dav_displayname = :displayname WHERE dav_name = :dav_name';
     $qry = new AwlQuery( $sql, array( ':displayname' => $displayname, ':dav_name' => $path) );
     if ( ! $qry->Exec('PUT',__LINE__,__FILE__) ) rollback_on_error( $caldav_context, $user_no, $path, 'Database error on: '.$sql );
   }
-  
+
 
   $tz_ids    = array();
   foreach( $timezones AS $k => $tz ) {
@@ -846,7 +851,7 @@ function import_calendar_collection( $ics_content, $user_no, $path, $caldav_cont
   }
   $collection = $qry->Fetch();
   $collection_id = $collection->collection_id;
-  
+
   // Fetch the current collection data
   $qry->QDo('SELECT dav_name, caldav_data FROM caldav_data WHERE collection_id=:collection_id', array(
           ':collection_id' => $collection_id
@@ -854,7 +859,7 @@ function import_calendar_collection( $ics_content, $user_no, $path, $caldav_cont
   $current_data = array();
   while( $row = $qry->Fetch() )
     $current_data[$row->dav_name] = $row->caldav_data;
-  
+
   if ( !(isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import) ) $qry->Begin();
   $base_params = array( ':collection_id' => $collection_id );
 
@@ -867,7 +872,7 @@ EOSQL;
 UPDATE caldav_data SET user_no=:user_no, caldav_data=:dav_data, dav_etag=:etag, caldav_type=:caldav_type, logged_user=:session_user,
   modified=current_timestamp WHERE collection_id=:collection_id AND dav_name=:dav_name
 EOSQL;
-  
+
   $calitem_insert = <<<EOSQL
 INSERT INTO calendar_item (user_no, dav_name, dav_id, dav_etag, uid, dtstamp, dtstart, dtend, summary, location, class, transp,
                     description, rrule, tz_id, last_modified, url, priority, created, due, percent_complete, status, collection_id )
@@ -883,11 +888,11 @@ UPDATE calendar_item SET user_no=:user_no, dav_etag=:etag, uid=:uid, dtstamp=:dt
                 due=:due, percent_complete=:percent_complete, status=:status
        WHERE collection_id=:collection_id AND dav_name=:dav_name
 EOSQL;
-  
+
   $last_olson = '';
   if ( count($resources) > 0 )
     $qry->QDo('SELECT new_sync_token(0,'.$collection_id.')');
-  
+
   foreach( $resources AS $uid => $resource ) {
 
     /** Construct the VCALENDAR data */
@@ -895,9 +900,9 @@ EOSQL;
     $vcal->SetComponents($resource);
     $icalendar = $vcal->Render();
     $dav_name = sprintf( '%s%s.ics', $path, preg_replace('{[&?\\/@%+:]}','',$uid) );
- 
+
     if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Begin();
-    
+
     /** As ever, we mostly deal with the first resource component */
     $first = $resource[0];
 
@@ -1061,7 +1066,7 @@ EOSQL;
     write_attendees($dav_id, $vcal);
 
     $qry->QDo("SELECT write_sync_change( $collection_id, $sync_change, :dav_name)", array(':dav_name' => $dav_name ) );
-    
+
     do_scheduling_requests( $vcal, true );
     if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Commit();
   }
@@ -1076,7 +1081,7 @@ EOSQL;
     }
     if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Commit();
   }
-  
+
   if ( !(isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import) ) {
     if ( ! $qry->Commit() ) rollback_on_error( $caldav_context, $user_no, $path);
   }
@@ -1322,7 +1327,7 @@ function write_resource( DAVResource $resource, $caldav_data, DAVResource $colle
 
   $created = $first->GetPValue('CREATED');
   if ( $created == '00001231T000000Z' ) $created = '20001231T000000Z';
-  
+
   $class = $first->GetPValue('CLASS');
   /* Check and see if we should over ride the class. */
   /** @todo is there some way we can move this out of this function? Or at least get rid of the need for the SQL query here. */
@@ -1425,7 +1430,7 @@ function write_resource( DAVResource $resource, $caldav_data, DAVResource $colle
     return false;
   }
 
-  
+
   if ( $put_action_type == 'INSERT' ) {
     $sql = <<<EOSQL
 INSERT INTO calendar_item (user_no, dav_name, dav_id, dav_etag, uid, dtstamp,
@@ -1465,7 +1470,7 @@ EOSQL;
     dbg_error_log( 'PUT', 'No log_caldav_action( %s, %s, %s, %s, %s) can be called.',
             $put_action_type, $first->GetPValue('UID'), $user_no, $collection_id, $path );
   }
-  
+
   $qry = new AwlQuery( $sql, $calitem_params );
   if ( !$qry->Exec('PUT',__LINE__,__FILE__) ) {
     rollback_on_error( $caldav_context, $user_no, $path);
@@ -1477,12 +1482,12 @@ EOSQL;
   if ( function_exists('post_commit_action') ) {
     post_commit_action( $put_action_type, $first->GetPValue('UID'), $user_no, $collection_id, $path );
   }
-  
+
   // Uncache anything to do with the collection
   $cache = getCacheInstance();
   $cache_ns = 'collection-'.preg_replace( '{/[^/]*$}', '/', $path);
   $cache->delete( $cache_ns, null );
-  
+
   dbg_error_log( 'PUT', 'User: %d, ETag: %s, Path: %s', $author, $etag, $path);
 
   return true;  // Success!
