@@ -1,3 +1,4 @@
 dba htdocs inc locale   usr/share/davical
 config/*                usr/share/doc/davical/examples
 scripts/*.php           usr/share/davical/scripts
+scripts/davical-cli     usr/share/davical/scripts
