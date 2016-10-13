@@ -10,9 +10,10 @@ include("page-header.php");
 <p>Well, you're seeing this! At least you have DAViCal <i>installed</i> :-) You also have Apache and PHP working
    and so really you are well on the road to success!</p>
 <h2>The Dubious News</h2>
-<p>You could try and <a href="http://$_SERVER[SERVER_NAME]/setup/start_here.php">click here</a> and
-   see if that enlightens you at all.  Odds are it's a fairly broken link, but it might work sooner
-   or later so keep downloading new versions and trying again.  Or make some guesses.  Or bug Andrew :-)</p>
+<p>You could try and <a href="setup.php">click here</a> and see if that enlightens you at all.
+   Or rather have a look at the <a href="http://davical.org/installation.php">Installation
+   guide</a> and the <a href="http://wiki.davical.org/w/Main_Page">wiki</a>. Or make some guesses.
+   Or bug us on IRC or the mailing lists :-)</p>
 <h2>The Really Basic Help</h2>
 <p>The configuration file should look something like this:</p>
 <pre>
