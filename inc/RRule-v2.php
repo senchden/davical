@@ -18,7 +18,7 @@ if ( !class_exists('DateTime') ) return;
 */
 function olson_from_vtimezone( vComponent $vtz ) {
   $tzid = $vtz->GetProperty('TZID');
-  if ( empty($tzid) ) $tzid = $vtz->GetProperty('TZID'); 
+  if ( empty($tzid) ) $tzid = $vtz->GetProperty('TZID');
   if ( !empty($tzid) ) {
     $result = olson_from_tzstring($tzid);
     if ( !empty($result) ) return $result;
@@ -106,8 +106,8 @@ class Rfc5545Duration {
    */
   function equals( $other ) {
     if ( $this == $other ) return true;
-    if ( $this->asSeconds() == $other->asSeconds() ) return true; 
-    return false; 
+    if ( $this->asSeconds() == $other->asSeconds() ) return true;
+    return false;
   }
 
   /**
@@ -141,7 +141,7 @@ class Rfc5545Duration {
     return $this->epoch_seconds;
   }
 
-  
+
   /**
    * Returns the duration as a text string of the form ^(-?)P(\d+W)|((\d+D)?(T(\d+H)?(\d+M)?(\d+S)?)?)$
    * @return string The stringified stuff.
@@ -177,18 +177,18 @@ class Rfc5545Duration {
   /**
    * Factory method to return an Rfc5545Duration object from the difference
    * between two dates.
-   * 
-   * This is flawed, at present: we should really localise both dates and work 
+   *
+   * This is flawed, at present: we should really localise both dates and work
    * out the difference in days, then localise the times and work out the difference
    * between the clock times.  On the other hand we're replacing a quick and dirty
    * hack that did it exactly the same way in the past, so we're not making things
    * any *worse* and at least we're making it clear that it could be improved...
-   * 
+   *
    * The problem strikes (as they all do) across DST boundaries.
-   * 
+   *
    * @todo Improve this to calculate the days difference and then the clock time diff
    * and work from there.
-   * 
+   *
    * @param RepeatRuleDateTime $d1
    * @param RepeatRuleDateTime $d2
    * @return Rfc5545Duration
@@ -196,7 +196,7 @@ class Rfc5545Duration {
   static function fromTwoDates( $d1, $d2 ) {
     $diff = $d2->epoch() - $d1->epoch();
     return new Rfc5545Duration($diff);
-  } 
+  }
 }
 
 /**
@@ -217,12 +217,12 @@ class RepeatRuleDateTime extends DateTime {
     $this->is_date = false;
     if ( isset($is_date) ) $this->is_date = $is_date;
     if ( !isset($date) ) {
-      $date = date('Ymd\THis');            
+      $date = date('Ymd\THis');
       // Floating
       $dtz = self::$UTCzone;
     }
     $this->tzid = null;
-    
+
     if ( is_object($date) && method_exists($date,'GetParameterValue') ) {
       $tzid = $date->GetParameterValue('TZID');
       $actual_date = $date->Value();
@@ -234,7 +234,7 @@ class RepeatRuleDateTime extends DateTime {
         $dtz = self::$UTCzone;
         if ( substr($actual_date,-1) == 'Z' ) {
           $this->tzid = 'UTC';
-          $actual_date = substr($actual_date, 0, strlen($actual_date) - 1);          
+          $actual_date = substr($actual_date, 0, strlen($actual_date) - 1);
         }
       }
       if ( strlen($actual_date) == 8 ) {
@@ -275,7 +275,7 @@ class RepeatRuleDateTime extends DateTime {
       $dtz = self::$UTCzone;
       $this->tzid = null;
       if ( DEBUG_RRULE ) printf( "Floating Date value: %s\n", $date );
-    } 
+    }
     elseif ( $dtz === null || $dtz == '' ) {
       $dtz = self::$UTCzone;
       if ( preg_match('/(\d{8}(T\d{6})?)(Z?)/', $date, $matches) ) {
@@ -299,7 +299,7 @@ class RepeatRuleDateTime extends DateTime {
 
     parent::__construct($date, $dtz);
     if ( isset($is_date) ) $this->is_date = $is_date;
-    
+
     return $this;
   }
 
@@ -327,12 +327,12 @@ class RepeatRuleDateTime extends DateTime {
     return $this->is_date;
   }
 
-  
+
   public function setAsDate() {
     $this->is_date = true;
   }
 
-  
+
   public function modify( $interval ) {
 //    print ">>$interval<<\n";
     if ( preg_match('{^(-)?P(([0-9-]+)W)?(([0-9-]+)D)?T?(([0-9-]+)H)?(([0-9-]+)M)?(([0-9-]+)S)?$}', $interval, $matches) ) {
@@ -359,7 +359,7 @@ class RepeatRuleDateTime extends DateTime {
    * Always returns a time localised to UTC.  Even floating times are converted to UTC
    * using the server's currently configured PHP timezone.  Even dates will include a
    * time, which will be non-zero if they were localised dates.
-   * 
+   *
    * @see RepeatRuleDateTime::FloatOrUTC()
    */
   public function UTC($fmt = 'Ymd\THis\Z' ) {
@@ -379,14 +379,14 @@ class RepeatRuleDateTime extends DateTime {
 
 
   /**
-   * If this is a localised time then this will return the UTC equivalent.  If it is a 
+   * If this is a localised time then this will return the UTC equivalent.  If it is a
    * floating time, then you will just get the floating time.  If it is a date then it
    * will be returned as a date.  Note that if it is a *localised* date then the answer
    * will still be the UTC equivalent but only the date itself will be returned.
-   * 
+   *
    * If return_floating_times is true then all dates will be returned as floating times
-   * and UTC will not be returned. 
-   * 
+   * and UTC will not be returned.
+   *
    * @see RepeatRuleDateTime::UTC()
    */
   public function FloatOrUTC($return_floating_times = false) {
@@ -460,7 +460,7 @@ class RepeatRuleDateTime extends DateTime {
     return 28 + RepeatRuleDateTime::hasLeapDay($year);
   }
 
-  
+
   function setDate( $year=null, $month=null, $day=null ) {
     if ( !isset($year) )  $year  = parent::format('Y');
     if ( !isset($month) ) $month = parent::format('m');
@@ -520,7 +520,7 @@ class RepeatRuleDateTime extends DateTime {
 /**
  * This class is used to hold a pair of dates defining a range.  The range may be open-ended by including
  * a null for one end or the other, or both.
- *  
+ *
  * @author Andrew McMillan <andrew@mcmillan.net.nz>
  */
 class RepeatRuleDateRange {
@@ -532,7 +532,7 @@ class RepeatRuleDateRange {
    * dates will be used as the start of the period, the latest as the end.  If one of the dates is null then the order
    * of the parameters is significant, with the null treated as -infinity if it is first, or +infinity if it is second.
    * If both parameters are null then the range is from -infinity to +infinity.
-   *  
+   *
    * @param RepeatRuleDateTime $date1
    * @param RepeatRuleDateTime $date2
    */
@@ -568,7 +568,7 @@ class RepeatRuleDateRange {
   /**
    * Get an Rfc5545Duration from this date range.  If the from date is null it will be null.
    * If the until date is null the duration will either be 1 day (if the from is a date) or 0 otherwise.
-   *   
+   *
    * @return NULL|Rfc5545Duration
    */
   function getDuration() {
@@ -588,7 +588,7 @@ class RepeatRuleDateRange {
  * This class is an implementation of RRULE parsing and expansion, as per RFC5545.  It should be reasonably
  * complete, except that it does not handle changing the WKST - there may be a few errors in unusual rules
  * also, but all of the common cases should be handled correctly.
- *  
+ *
  * @author Andrew McMillan <andrew@mcmillan.net.nz>
  */
 class RepeatRule {
@@ -670,7 +670,7 @@ class RepeatRule {
    * @return boolean Whether or not one of these properties is present.
    */
   public function hasLimitedOccurrences() {
-    return ( isset($this->count) || isset($this->until) );    
+    return ( isset($this->count) || isset($this->until) );
   }
 
 
@@ -686,7 +686,7 @@ class RepeatRule {
     $this->finished = false;
   }
 
-  
+
   public function rewind() {
     $this->position = -1;
   }
@@ -731,7 +731,7 @@ class RepeatRule {
   /**
    * This function returns an array which lists the order of processing, and whether the processing is
    * to expand or limit based on this component.
-   * 
+   *
    * Note that yearly-byday and monthly-byday have special handling which is coded within the
    * expand_byday() method
    * @param $freq a string indicating the frequency.
@@ -764,7 +764,7 @@ class RepeatRule {
     return array( 'bymonth' => 'limit', 'bymonthday' => 'limit',
                         'byday' => 'limit', 'byhour' => 'expand', 'byminute' => 'expand', 'bysecond' => 'expand' );
   }
-  
+
   private function GetMoreInstances($return_floating_times=false) {
     if ( $this->finished ) return;
     $got_more = false;
@@ -783,11 +783,11 @@ class RepeatRule {
       $this->current_set = array( clone($this->current_base) );
       foreach( self::rrule_expand_limit($this->freq) AS $bytype => $action ) {
         if ( isset($this->{$bytype}) ) {
-          $this->{$action.'_'.$bytype}();          
+          $this->{$action.'_'.$bytype}();
           if ( !isset($this->current_set[0]) ) break;
-        } 
+        }
       }
-  
+
       sort($this->current_set);
       if ( isset($this->bysetpos) ) $this->limit_bysetpos();
 
@@ -813,7 +813,7 @@ class RepeatRule {
     }
   }
 
-  
+
   public static function rrule_day_number( $day ) {
     switch( $day ) {
       case 'SU': return 0;
@@ -826,8 +826,8 @@ class RepeatRule {
     }
     return false;
   }
-  
-  
+
+
   static public function date_mask( $date, $y, $mo, $d, $h, $mi, $s ) {
     $date_parts = explode(',',$date->format('Y,m,d,H,i,s'));
 
@@ -885,7 +885,7 @@ class RepeatRule {
       }
     }
   }
-  
+
   private function expand_byday_in_week( $day_in_week ) {
 
     /**
@@ -1157,7 +1157,7 @@ function rrule_expand( $dtstart, $property, $component, $range_end, $is_date=nul
     $this_start = clone($dtstart);
   }
   if ( $return_floating_times ) $this_start->setAsFloat();
-  
+
 //  if ( DEBUG_RRULE ) print_r( $this_start );
   if ( DEBUG_RRULE ) printf( "RRULE: %s (floating: %s)\n", $recur, ($return_floating_times?"yes":"no") );
   $rule = new RepeatRule( $this_start, $recur, $is_date, $return_floating_times );
@@ -1175,7 +1175,7 @@ function rrule_expand( $dtstart, $property, $component, $range_end, $is_date=nul
 
 /**
 * Expand the event instances for an iCalendar VEVENT (or VTODO)
-* 
+*
 * Note: expansion here does not apply modifications to instances other than modifying start/end/due/duration.
 *
 * @param object $vResource A vComponent which is a VCALENDAR containing components needing expansion
@@ -1191,20 +1191,20 @@ function expand_event_instances( vComponent $vResource, $range_start = null, $ra
     $clear_instance_props = array(
             'DTSTART' => true,
             'DUE' => true,
-            'DTEND' => true 
+            'DTEND' => true
     );
     if ( empty( $c->expanded_instances_include_rrule ) ) {
         $clear_instance_props += array(
                 'RRULE' => true,
                 'RDATE' => true,
-                'EXDATE' => true 
+                'EXDATE' => true
         );
     }
 
   if ( empty($range_start) ) { $range_start = new RepeatRuleDateTime(); $range_start->modify('-6 weeks'); }
   if ( empty($range_end) )   {
       $range_end   = clone($range_start);
-      $range_end->modify('+6 months');  
+      $range_end->modify('+6 months');
   }
 
   $instances = array();
@@ -1254,7 +1254,7 @@ function expand_event_instances( vComponent $vResource, $range_start = null, $ra
       $p =  $comp->GetProperty('UID');
       $uid = ( isset($p) ? $p->Value() : 'not set');
       printf( "Processing event '%s' with UID '%s' starting on %s\n",
-                 $summary, $uid, $dtstart->FloatOrUTC($return_floating_times) );      
+                 $summary, $uid, $dtstart->FloatOrUTC($return_floating_times) );
       print( "Instances at start");
       foreach( $instances AS $k => $v ) {
         print ' : '.$k;
@@ -1265,7 +1265,7 @@ function expand_event_instances( vComponent $vResource, $range_start = null, $ra
     if ( DEBUG_RRULE ) {
       print( "After rrule_expand");
       foreach( $instances AS $k => $v ) {
-        print ' : '.$k;        
+        print ' : '.$k;
       }
       print "\n";
     }
@@ -1363,11 +1363,11 @@ function expand_event_instances( vComponent $vResource, $range_start = null, $ra
         $dtstart_prop = $comp->GetProperty($dtstart_type);
         if ( !isset($dtstart_prop) ) continue;  // No start: no expansion.  Note that we consider 'DUE' to be a start if DTSTART is missing
         $dtstart = new RepeatRuleDateTime( $dtstart_prop );
-        $is_date = $dtstart->isDate();  
+        $is_date = $dtstart->isDate();
         if ( $return_floating_times ) $dtstart->setAsFloat();
         $dtstart = $dtstart->FloatOrUTC($return_floating_times);
         if ( $dtstart > $end_utc ) continue; // Start after end of range, skip it
-        
+
         $end_type = ($comp->GetType() == 'VTODO' ? 'DUE' : 'DTEND');
         $duration = $comp->GetProperty('DURATION');
         if ( !isset($duration) || $duration->Value() == '' ) {
@@ -1375,7 +1375,7 @@ function expand_event_instances( vComponent $vResource, $range_start = null, $ra
           if ( isset($instance_end) ) {
             $dtend = new RepeatRuleDateTime( $instance_end );
             if ( $return_floating_times ) $dtend->setAsFloat();
-            $dtend = $dtend->FloatOrUTC($return_floating_times); 
+            $dtend = $dtend->FloatOrUTC($return_floating_times);
           }
           else {
             $dtend = $dtstart  + ($is_date ? $dtstart + 86400 : 0 );
@@ -1431,12 +1431,12 @@ function getComponentRange(vComponent $comp) {
       default:
         throw new Exception('getComponentRange cannot handle "'.$comp->GetType().'" components', 0);
     }
-  
+
     if ( isset($dtstart_prop) )
       $dtstart = new RepeatRuleDateTime($dtstart_prop);
-    else 
+    else
       $dtstart = null;
-  
+
     if ( isset($dtend_prop) )
       $dtend = new RepeatRuleDateTime($dtend_prop);
     else
@@ -1453,14 +1453,13 @@ function getComponentRange(vComponent $comp) {
 
 /**
 * Return a RepeatRuleDateRange from the earliest start to the latest end of the event.
-* 
+*
 * @todo: This should probably be made part of the VCalendar object when we move the RRule.php into AWL.
 *
 * @param object $vResource A vComponent which is a VCALENDAR containing components needing expansion
-* @return RepeatRuleDateRange Representing the range of time covered by the event. 
+* @return RepeatRuleDateRange Representing the range of time covered by the event.
 */
 function getVCalendarRange( $vResource ) {
-  global $c;
   $components = $vResource->GetComponents();
 
   $dtstart = null;
@@ -1481,14 +1480,14 @@ function getVCalendarRange( $vResource ) {
       $rule = new RepeatRule($dtstart, $rrule);
       $limited_occurrences  = $rule->hasLimitedOccurrences();
     }
-    
+
     if ( $limited_occurrences ) {
       $instances = array();
       $instances[$dtstart->FloatOrUTC()] = $dtstart;
       if ( !isset($range_end) ) {
         $range_end   = new RepeatRuleDateTime();
         $range_end->modify('+150 years');
-      }  
+      }
       $instances += rrule_expand($dtstart, 'RRULE', $comp, $range_end);
       $instances += rdate_expand($dtstart, 'RDATE', $comp, $range_end);
       foreach ( rdate_expand($dtstart, 'EXDATE', $comp, $range_end) AS $k => $v ) {
