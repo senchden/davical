@@ -11,14 +11,8 @@ include_once('RRule-v2.php');
 
 
 function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null ) {
-    global $request, $c;
-
-    $debugging = false;
-//    if ( $debugging ) {
-//        printf( "Path: %s\n", $path_match );
-//        print_r( $range_start );
-//        print_r( $range_end );
-//    }
+  global $request, $c;
+  dbg_error_log( 'freebusy', ' Getting freebusy for path %s from %s to %s', $path_match, $range_start, $range_end);
 
   if ( !isset($bin_privs) ) $bin_privs = $request->Privileges();
   if ( !isset($range_start) || !isset($range_end) ) {
@@ -55,17 +49,14 @@ function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null 
       else if ( isset($c->_workaround_client_freebusy_bug) && $c->_workaround_client_freebusy_bug ) {
         $extra = ';BUSY';
       }
-//      if ( $debugging ) {
-//        $extra = ';'.$calendar_object->dav_id;
-//      }
-//      dbg_error_log( "REPORT", " FreeBusy: Not transparent, tentative or cancelled: %s, %s, %s", $calendar_object->start, $calendar_object->finish, $calendar_object->class );
+      //$extra = ';'.$calendar_object->dav_id;
       $ics = new vComponent($calendar_object->caldav_data);
       $expanded = expand_event_instances($ics, $range_start, $range_end);
       $expansion = $expanded->GetComponents( array('VEVENT'=>true,'VTODO'=>true,'VJOURNAL'=>true) );
-//      if ( $debugging ) echo "===================   $calendar_object->dav_id   ========================\n";
+      dbg_error_log( "freebusy", "===================   $calendar_object->dav_id   ======================== %s -> %s, %s %s", $calendar_object->start, $calendar_object->finish, $calendar_object->class, $extra );
       $dtstart_type = 'DTSTART';
       foreach( $expansion AS $k => $v ) {
-//        if ( $debugging ) print $k."\n".$v->Render();
+        dbg_error_log( "freebusy", " %s: %s", $k, $v->Render() );
         $start_date = $v->GetProperty($dtstart_type);
         if ( !isset($start_date) && $v->GetType() != 'VTODO' ) {
             $dtstart_type = 'DUE';
@@ -77,13 +68,9 @@ function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null 
         $end_date = clone($start_date);
         $end_date->modify( $duration );
         if ( $end_date == $start_date || $end_date < $range_start || $start_date > $range_end ) {
-//            if ( $debugging )
-//              echo "-----------------------------------------------------\n";
-
-            continue;
+          dbg_error_log( "freebusy", "-----------------------------------------------------" );
+          continue;
         }
-//        if ( $debugging )
-//            echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
         $thisfb = $start_date->UTC() .'/'. $end_date->UTC() . $extra;
         array_push( $fbtimes, $thisfb );
       }
