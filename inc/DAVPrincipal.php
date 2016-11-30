@@ -453,7 +453,7 @@ class DAVPrincipal extends Principal
   function PrincipalProperty( $tag, $prop, &$reply, &$denied ) {
 		global $c;
 
-    dbg_error_log('principal',': RenderAsXML: Principal Property "%s"', $tag );
+    dbg_error_log('principal',':PrincipalProperty: Principal Property "%s"', $tag );
     switch( $tag ) {
       case 'DAV::getcontenttype':
         $reply->DAVElement( $prop, 'getcontenttype', 'httpd/unix-directory' );
@@ -581,7 +581,7 @@ class DAVPrincipal extends Principal
   function RenderAsXML( $properties, &$reply, $props_only = false ) {
     global $request;
 
-    dbg_error_log('principal',': RenderAsXML: Principal "%s"', $this->username );
+    dbg_error_log('principal',':RenderAsXML: Principal "%s"', $this->username );
 
     $prop = new XMLElement('prop');
     $denied = array();
