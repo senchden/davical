@@ -65,11 +65,10 @@ register_shutdown_function('early_catch_fatal_error');
 
 $c->default_timezone = ini_get ( 'date.timezone' );
 if (empty ( $c->default_timezone )) {
+    $c->default_timezone = 'UTC';
     if (isset ( $_SERVER ['HTTP_X_DAVICAL_TESTCASE'] )) {
         $c->default_timezone = 'Pacific/Auckland';
     }
-    $c->default_timezone = 'UTC';
-    date_default_timezone_set ( 'UTC' );
 }
 
 // Default some of the configurable values
@@ -259,6 +258,7 @@ if ( $qry->Exec('always',__LINE__,__FILE__) && $row = $qry->Fetch() ) {
     $qry->QDo('SET TIMEZONE TO ?', $c->default_timezone );
   }
 }
+date_default_timezone_set ( $c->default_timezone );
 
 require_once('Principal.php');
 
