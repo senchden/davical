@@ -87,7 +87,6 @@ $c->enable_row_linking = true;
 $c->enable_scheduling = false;
 $c->http_auth_mode = 'Basic';
 // $c->default_locale = array('es_MX', 'es_AR', 'es', 'pt');  // An array of locales to try, or just a single locale
-// $c->local_tzid = 'Pacific/Auckland';  // Perhaps we should read from /etc/timezone - I wonder how standard that is?
 $c->default_locale = 'en';
 $c->locale_path = '../locale';
 $c->base_url = preg_replace('#/[^/]+\.php.*$#', '', $_SERVER['SCRIPT_NAME']);

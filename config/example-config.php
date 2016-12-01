@@ -393,12 +393,6 @@ $c->admin_email ='calendar-admin@example.com';
 // $c->domain_name;
 
 /**
-* Used as a fallback for the TZID of an event where one is not supplied as part
-* of a VEVENT.  The local (server) time zone will be used as a default.
-*/
-// $c->local_tzid;
-
-/**
 * Many people want this, but it may be a security issue for you, so it is
 * disabled by default.  If you enable it, then confidential / private events
 * will be visible to the 'organizer' or 'attendee' lists.  The reason that
