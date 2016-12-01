@@ -11,18 +11,22 @@ snapshot : version = $(majorversion)-git$(gitrev)
 snapshot : issnapshot = 1
 
 .PHONY: nodocs
-nodocs: htdocs/always.php built-po
+nodocs: htdocs/always.php built-locale
 
 .PHONY: all
-all: htdocs/always.php built-docs built-po
+all: htdocs/always.php built-docs built-locale
 
 built-docs: docs/phpdoc.ini htdocs/*.php inc/*.php docs/translation.rst
-	apigen generate --title=DAViCal --todo --tree --deprecated -s inc -s htdocs -d docs/api || phpdoc -c docs/phpdoc.ini || echo "NOTICE: Failed to build API docs"
+	apigen generate --quiet --title=DAViCal --todo --tree --deprecated -s inc -s htdocs -d docs/api || phpdoc -c docs/phpdoc.ini || echo "NOTICE: Failed to build API docs"
 	rst2pdf docs/translation.rst || echo "NOTICE: Failed to build ReST docs"
 	touch $@
 
-built-po: htdocs/always.php scripts/po/rebuild-translations.sh po/*.po
-	scripts/po/rebuild-translations.sh
+built-locale: po/*.po
+	for LOCALE in `ls po/*.po | cut -f2 -d/ | cut -f1 -d.` ; do \
+	    [ "$${LOCALE}" = "en" ] && continue; \
+	    mkdir -p locale/$${LOCALE}/LC_MESSAGES; \
+	    msgfmt po/$${LOCALE}.po -o locale/$${LOCALE}/LC_MESSAGES/davical.mo; \
+	done
 	touch $@
 
 #
@@ -30,6 +34,13 @@ built-po: htdocs/always.php scripts/po/rebuild-translations.sh po/*.po
 #
 htdocs/always.php: inc/always.php.in scripts/build-always.sh VERSION dba/davical.sql
 	scripts/build-always.sh <$< >$@
+
+#
+# recreate translations
+#
+.PHONY: translations
+translations:
+	scripts/po/rebuild-translations.sh
 
 #
 # Build a release .tar.gz file in the directory above us
@@ -67,8 +78,8 @@ test:
 
 .PHONY: clean
 clean:
-	rm -f built-docs built-po
-	rm -rf docs/api
+	rm -f built-docs built-locale
+	rm -rf docs/api locale
 	-find . -name "*~" -delete
 	rm -f docs/translation.pdf
 	rm -f davical.spec

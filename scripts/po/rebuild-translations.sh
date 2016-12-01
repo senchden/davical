@@ -8,8 +8,6 @@
 [ -n "${DEBUG}" ] && set -o xtrace
 
 PODIR="po"
-LOCALEDIR="locale"
-APPLICATION="davical"
 
 awldirs="../awl
 `find .. -type d -name 'awl-*.*'`
@@ -67,11 +65,5 @@ for LOCALE in `locale_list` ; do
     cp ${PODIR}/messages.pot ${PODIR}/${LOCALE}.po
   fi
   msgmerge --no-fuzzy-matching --quiet --width 105 --update ${PODIR}/${LOCALE}.po ${PODIR}/messages.pot
-done
-
-for LOCALE in `locale_list` ; do
-  [ "${LOCALE}" = "en" ] && continue
-  mkdir -p ${LOCALEDIR}/${LOCALE}/LC_MESSAGES
-  msgfmt ${PODIR}/${LOCALE}.po -o ${LOCALEDIR}/${LOCALE}/LC_MESSAGES/${APPLICATION}.mo
 done
 

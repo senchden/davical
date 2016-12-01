@@ -10,8 +10,7 @@ get-orig-source:
 	dh $@
 
 override_dh_auto_build:
-	@echo "NOTE: not calling make, do this before building the package and review / commit the result"
-	make built-docs
+	make all
 
 override_dh_installchangelogs:
 	dh_installchangelogs ChangeLog

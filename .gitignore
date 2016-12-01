@@ -9,7 +9,7 @@ rscds.bfproject
 davical.bfproject
 locale
 built-docs
-built-po
+built-locale
 .settings
 *~
 testing/dumps
