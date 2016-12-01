@@ -13,7 +13,7 @@
 * to set the relative address of images and so forth.  You probably should
 * not change it unless you know why you want to.
 */
-// $c->base_url
+// $c->base_url = 'http://example.com/davical';
 
 /**
 * Automatically set according to $_SERVER['DOCUMENT_ROOT'], but could be overridden
@@ -24,15 +24,15 @@
 /**
 * Used to set the timeouts applying to the LOCK method.
 */
-// $c->default_lock_timeout;
-// $c->maximum_lock_timeout;
+// $c->default_lock_timeout = 900;
+// $c->maximum_lock_timeout = 8640000;
 
 /**
 * default = true;
 * If set, DAViCal will store each unique time zone used in any calendar to speed
 * future timezone interpretation.
 */
-// $c->save_time_zone_defs;
+// $c->save_time_zone_defs = true;
 
 
 /**
@@ -51,7 +51,7 @@
 */
 // Usually internally assigned, but you may want to set it to something meaningful
 // if you are writing your own pages within the admin interface.
-// $c->page_title;
+// $c->page_title = 'DAViCal CalDAV Server';
 
 
 /**
@@ -60,29 +60,8 @@
 */
 // Usually internally assigned, but you may want to append meaningful messages
 // to this array if you are writing your own pages within the admin interface.
-//$c->messages;
+//$c->messages[] = 'Hello World!';
 
-
-/**
-* These  6 next properties are extracted automatically from the Changelog
-* used to give informtion for debugging
-*/
-// Internally assigned
-// $c->code_debian,
-// $c->code_major,
-// $c->code_minor,
-// $c->code_patch,
-// $c->code_pkgver,
-// $c->code_version,
-/**
-* Used internally to know the revision of the database schema and display
-* in HTTP error anwser in the header
-*/
-// Internally assigned
-// $c->schema_major
-// $c->schema_minor
-// $c->schema_patch
-// $c->schema_version
 
 /**
 * This property is used to enforce regular ordering of query results so
@@ -90,4 +69,4 @@
 * real life this is not important, and it is a performance hit, so it
 * should not usually be enabled anywhere else.
 */
-// $c->strict_result_ordering = boolean;
+// $c->strict_result_ordering = false;

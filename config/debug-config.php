@@ -9,7 +9,7 @@
 * if this is set then any e-mail that would normally be sent by DAViCal will be
 * sent to this e-mail address for debugging.
 */
-//$c->debug_email
+//$c->debug_email = 'davical@example.com'
 
 
 /**

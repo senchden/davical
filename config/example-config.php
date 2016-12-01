@@ -390,7 +390,7 @@ $c->admin_email ='calendar-admin@example.com';
 * want to force this to a specific domain in responses if your system is accessed by
 * multiple names, otherwise you probably won't need to change it.
 */
-// $c->domain_name;
+// $c->domain_name = 'example.com';
 
 /**
 * Many people want this, but it may be a security issue for you, so it is
