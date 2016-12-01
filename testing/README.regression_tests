@@ -2,21 +2,10 @@ Regression Testing
 ==================
 
 These tests were basically written to work in Andrew's environment.
-In order to run them in your environment you will need to ensure both
-the Webserver and Database server run in the 'Pacific/Auckland' timezone
-since the regression testing puts a number of events into the database
-in a floating timezone, and some responses which are affected by these
-events are reported in UTC (mostly freebusy results).
-
-On a Debian system you can do this by adding the line:
-
-  export TZ=Pacific/Auckland
-
-to /etc/apache2/envvars, and the line:
-
-  TZ = 'Pacific/Auckland'
-
-to /etc/postgresql/9.4/main/environment
+Along with the database and PHP timezone handling code in DAViCal,
+they have been improved to a point where they should be able to pass
+on any system. But should you encounter timezone-related issues, make
+sure all components interpret floating timezones to be Pacific/Auckland.
 
 You may also need to add a regression.conf file, see the provided example.
 
@@ -25,14 +14,59 @@ TESTING SETUP
 -------------
 
 By default, the tests are run on a database called 'regression' and a
-host also called 'regression'. To set this up locally, add
+number of hosts called 'regression', 'mycaldav' and 'myempty'. To set
+this up locally, add
 
-  127.0.1.1       regression
+  127.0.1.1       regression mycaldav myempty
 
 to /etc/hosts and a VirtualHost to Apache with
 
-  ServerName regression
-  DocumentRoot /path/to/davical/htdocs
+  Listen 127.0.1.1:80
+  <VirtualHost 127.0.1.1:80>
+    ServerName regression
+    ServerAlias myempty mycaldav
+    DocumentRoot /path/to/davical/htdocs
+    CustomLog ${APACHE_LOG_DIR}/regression-access.log combined
+    ErrorLog  ${APACHE_LOG_DIR}/regression-error.log
+
+    Alias /davical /path/to/davical/htdocs
+    <Directory /path/to/davical/htdocs>
+      Require all granted
+      DirectoryIndex index.php index.html
+      php_value include_path /path/to/awl/inc:/path/to/davical/testing
+    </Directory>
+
+    RewriteEngine On
+    # Redirect /.well-known URLs
+    RewriteRule ^/\.well-known/(.*)$ /caldav.php/.well-known/$1 [NC,L]
+    # let caldav.php handle "anything else"
+    RewriteCond %{REQUEST_URI} !^/$
+    RewriteCond %{REQUEST_URI} !\.(php|css|png|gif|js|jpg)
+    RewriteRule ^(.*)$ /caldav.php$1  [NC,L]
+  </VirtualHost>
+
+For DAViCal, create a regression-conf.php (as well as identical
+mycaldav-conf.php and myempty-conf.php, which can be symlinks to the
+former) with
+
+  <?php
+    $c->pg_connect[] = 'dbname=regression user=davical_app';
+
+    // use strict result ordering for regression testing only
+    $c->strict_result_ordering = true;
+    // PUT: 405 Method Not Allowed
+    $c->readonly_webdav_collections = false;
+    // fix ETag differences (CRLF) in 0218-Moz-REPORT and later
+    $c->hide_alarm = true;
+    // some freebusy queries will be 404 otherwise
+    $c->public_freebusy_url = true;
+
+    // for ischedule suite; also needs DKIM set up?
+    $c->enable_scheduling = true;
+
+    // enable for debugging, as needed
+    //$c->dbg['ALL'] = 1;
+  ?>
 
 Make the user running the tests known to postgres and allow it to create
 databases and roles (e.g. run the dba/create-database.sh script):
@@ -44,9 +78,21 @@ following line to pg_hba.conf:
 
   local   regression    all           trust
 
+Finally, don't forget to restart Apache and Postgres for all these
+changes to take effekt.
+
+
+RUNNING THE TESTSUITE
+---------------------
+
 You can then run the entire test suite with the command
 
   ./run_regressions.sh
+
+To run a number of specific suites in addition to the standard
+regression-suite, use
+
+  ./run_regressions.sh all
 
 When a test fails to produce the expected output, you are prompted
 

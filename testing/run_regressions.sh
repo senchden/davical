@@ -2,17 +2,28 @@
 #
 # Run the regression tests and display differences
 #
+# ./run_regressions.sh              - default to regression-suite
+# ./run_regressions.sh all          - runs ALLSUITES (defined below)
+# ./run_regressions.sh ischedule    - runs a single suite
+#
+# A second parameter can be given to automatically answer the
+# "Accept new result?" question, e.g. 'y' or 'x'
+#
 DBNAME=regression
 PGPOOL=inactive
 HOSTNAME=regression
 
 # We need to run the regression tests in the timezone they were written for.
 export PGTZ=Pacific/Auckland
-export TZ=Pacific/Auckland
+#export TZ=Pacific/Auckland
 
 ALLSUITES="regression-suite binding carddav scheduling timezone"
 
-. ./regression.conf
+# who wants meld if they can have xxdiff? Go on, override it in regression.conf
+MELD=meld
+[ ! -x /usr/bin/$MELD ] && [ -x /usr/bin/xxdiff ] && MELD=xxdiff
+
+[ -s regression.conf ] && . ./regression.conf
 
 if [ -z "${DSN}" ]; then
   DSN="${DBNAME}"
@@ -79,7 +90,7 @@ check_result() {
       return 3
     elif [ "${ACCEPT}" = "m" ]; then
       echo "Displaying side-by-side 'meld' of ${TEST} results"
-      meld "${REGRESSION}/${TEST}.result" "${RESULTS}/${TEST}"
+      $MELD "${REGRESSION}/${TEST}.result" "${RESULTS}/${TEST}"
       return 3
     elif [ "${ACCEPT}" = "f" ]; then
       echo "Showing full details of ${TEST}"
@@ -204,6 +215,7 @@ TCOUNT=0
 
 if [ "${SUITE}" = "all" ]; then
   for SUITE in ${ALLSUITES} ; do
+    echo "Running $SUITE"
     REGRESSION="tests/${SUITE}"
     if [ "${SUITE}" != "regression-suite" ]; then
       dump_database
@@ -211,6 +223,7 @@ if [ "${SUITE}" = "all" ]; then
     run_regression_suite "${SUITE}"
   done
 else
+  echo "Running $SUITE"
   REGRESSION="tests/${SUITE}"
   run_regression_suite "${SUITE}"
 fi
