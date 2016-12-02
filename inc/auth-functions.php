@@ -177,7 +177,7 @@ function CreateHomeCalendar($username) {
 }
 
 /**
-* Defunct function for creating default relationships.
+* Create default relationships.
 * @param string $username The username of the user we are creating relationships for.
 */
 function CreateDefaultRelationships( $username ) {
