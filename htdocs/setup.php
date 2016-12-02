@@ -252,6 +252,8 @@ function check_schema_version() {
 
 function check_davical_version() {
   global $c;
+  if ( ! ini_get('allow_url_fopen') )
+    return new CheckResult( false, translate("Cannot determine upstream version, because PHP has set “<a href=\"http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen\"><code>allow_url_fopen</code></a>” to “<code>FALSE</code>”."), 'dep_warning' );
   $url = 'http://www.davical.org/current_davical_version?v='.$c->version_string;
   $version_file = @fopen($url, 'r');
   if ( ! $version_file ) return new CheckResult( false, translate("Could not retrieve") . " '$url'", 'dep_warning' );
