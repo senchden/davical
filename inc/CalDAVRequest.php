@@ -149,7 +149,7 @@ class CalDAVRequest
     else {
       $this->path = '/';
       if ( isset($_SERVER['REQUEST_URI']) ) {
-        if ( preg_match( '{^(.*?\.php)(.*)$}', $_SERVER['REQUEST_URI'], $matches ) ) {
+        if ( preg_match( '{^(.*?\.php)([^?]*)}', $_SERVER['REQUEST_URI'], $matches ) ) {
           $this->path = $matches[2];
           if ( substr($this->path,0,1) != '/' )
             $this->path = '/'.$this->path;
