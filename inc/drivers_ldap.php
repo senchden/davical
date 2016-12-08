@@ -170,6 +170,7 @@ class ldapDrivers
           $row[$arr[$j]] = count($arr[$arr[$j]])>2?$arr[$arr[$j]]:$arr[$arr[$j]][0];
         }
         $ret[]=$row;
+	unset($row);
       }
     }
     return $ret;
