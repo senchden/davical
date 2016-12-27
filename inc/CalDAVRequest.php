@@ -440,7 +440,6 @@ EOSQL;
     if ( $this->collection_type == 'principal' || $this->collection_type == 'email' || $this->collection_type == 'proxy' ) {
       $this->collection = $this->principal->AsCollection();
       if( $this->collection_type == 'proxy' ) {
-        $this->collection = $this->principal->AsCollection();
         $this->collection->is_proxy = 't';
         $this->collection->type = 'proxy';
         $this->collection->proxy_type = $this->proxy_type;
