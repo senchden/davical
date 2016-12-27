@@ -405,7 +405,7 @@ EOSQL;
       $this->collection->dav_name = $this->dav_name;
       $this->collection->dav_displayname = sprintf( '%s proxy %s', $matches[2], $matches[3] );
       $this->collection->exists = true;
-      $this->collection->parent_container = $matches[1] . '/';
+      $this->collection->parent_container = '/' . $matches[2] . '/';
     }
     else if ( preg_match( '#^(/[^/]+)/?$#', $this->dav_name, $matches)
            || preg_match( '#^((/principals/[^/]+/)[^/]+)/?$#', $this->dav_name, $matches) ) {
