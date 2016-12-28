@@ -1,0 +1,25 @@
+#
+# check group-member-set on /user/calendar-proxy-read/
+# (look up the principals that have been delegated read access to this user)
+# and return a minimal result (excluding the 404s on unsupported email-address-set)
+#
+TYPE=REPORT
+URL=http://mycaldav/caldav.php/resource1/calendar-proxy-read/
+HEAD
+
+AUTH=manager1:manager1
+
+HEADER=Content-Type: text/xml
+HEADER=Prefer: return=minimal
+HEADER=User-Agent: Mac+OS+X/10.11.4 (15E65) CalendarAgent/361.2
+
+BEGINDATA
+<?xml version="1.0" encoding="UTF-8"?>
+<A:expand-property xmlns:A="DAV:">
+  <A:property name="group-member-set" namespace="DAV:">
+    <A:property name="displayname" namespace="DAV:"/>
+    <A:property name="calendar-user-address-set" namespace="urn:ietf:params:xml:ns:caldav"/>
+    <A:property name="email-address-set" namespace="http://calendarserver.org/ns/"/>
+  </A:property>
+</A:expand-property>
+ENDDATA
