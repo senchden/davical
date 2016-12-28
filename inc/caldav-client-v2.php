@@ -85,10 +85,10 @@ class CalDAVClient {
   protected $httpResponseCode = 0; // http response code
   protected $httpResponseHeaders = "";
   protected $httpParsedHeaders;
-  protected $httpResponseBody = "";  
+  protected $httpResponseBody = "";
 
   protected $parser; // our XML parser object
-  
+
   private $debug = false; // Whether we are debugging
 
   /**
@@ -123,7 +123,7 @@ class CalDAVClient {
     }
   }
 
-  
+
   /**
    * Call this to enable / disable debugging.  It will return the prior value of the debugging flag.
    * @param boolean $new_value The new value for debugging.
@@ -138,8 +138,8 @@ class CalDAVClient {
     return $old_value;
   }
 
-  
-  
+
+
   /**
   * Adds an If-Match or If-None-Match header
   *

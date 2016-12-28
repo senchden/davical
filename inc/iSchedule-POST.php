@@ -60,7 +60,7 @@ if ( $d->validateRequest ( ) ) {
     $rcpt = explode ( ',', $_SERVER['HTTP_RECIPIENT'] );
     foreach ( $rcpt as $k => $v ) {
       $recipients[$k] = preg_replace( '/^mailto:/i', '', trim ( $v ) );
-    } 
+    }
   }
   if ( ! in_array ( preg_replace( '/^mailto:/i', '', $_SERVER['HTTP_ORIGINATOR'] ), $addresses ) ) { // should this be case sensitive?
     $request->DoResponse( 412, translate('sender must be organizer or attendee of event') );
@@ -169,9 +169,9 @@ function ischedule_freebusy_request( $ic, $attendees, $attendees_fail) {
 
     $response = $reply->NewXMLElement( "response", false, false, 'urn:ietf:params:xml:ns:ischedule' );
     $response->NewElement( "recipient", 'mailto:'.$attendee->email, false, 'urn:ietf:params:xml:ns:ischedule' );
-    $response->NewElement( "request-status", "2.0;Success", false, 'urn:ietf:params:xml:ns:ischedule' );  
+    $response->NewElement( "request-status", "2.0;Success", false, 'urn:ietf:params:xml:ns:ischedule' );
     $response->NewElement( "calendar-data", $vcal->Render(), false, 'urn:ietf:params:xml:ns:ischedule' );
-         
+
     $responses[] = $response;
   }
 
@@ -219,14 +219,14 @@ function ischedule_request( $ic, $attendees, $attendees_fail ) {
     }
     dbg_error_log( 'ischedule', 'Status for attendee <%s> set to "%s"', $attendee->email, $response );
     $XMLresponse->NewElement("recipient", 'mailto:'.$attendee->email, false, 'urn:ietf:params:xml:ns:ischedule' );
-    $XMLresponse->NewElement("request-status", $response, false, 'urn:ietf:params:xml:ns:ischedule' ); 
+    $XMLresponse->NewElement("request-status", $response, false, 'urn:ietf:params:xml:ns:ischedule' );
     $responses[] = $XMLresponse;
   }
 
   foreach ( $attendees_fail AS $k => $attendee ) {
     $XMLresponse = $reply->NewXMLElement("response", false, false, 'urn:ietf:params:xml:ns:ischedule');
     $XMLresponse->NewElement("recipient", 'mailto:'.$attendee->email, false, 'urn:ietf:params:xml:ns:ischedule' );
-    $XMLresponse->NewElement("request-status", '5.3;cannot schedule this user, unknown or access denied', false, 'urn:ietf:params:xml:ns:ischedule' ); 
+    $XMLresponse->NewElement("request-status", '5.3;cannot schedule this user, unknown or access denied', false, 'urn:ietf:params:xml:ns:ischedule' );
     $responses[] = $XMLresponse;
   }
 
@@ -265,14 +265,14 @@ function ischedule_cancel( $ic, $attendees, $attendees_fail ) {
     }
     dbg_error_log( 'PUT', 'Status for attendee <%s> set to "%s"', $attendee->email, $response );
     $XMLresponse->NewElement("recipient", $reply->href('mailto:'.$attendee->email), false, 'urn:ietf:params:xml:ns:ischedule' );
-    $XMLresponse->NewElement("request-status", $response, false, 'urn:ietf:params:xml:ns:ischedule' ); 
+    $XMLresponse->NewElement("request-status", $response, false, 'urn:ietf:params:xml:ns:ischedule' );
     $responses[] = $XMLresponse;
   }
 
   foreach ( $attendees_fail AS $k => $attendee ) {
     $XMLresponse = $reply->NewXMLElement("response", false, false, 'urn:ietf:params:xml:ns:ischedule');
     $XMLresponse->NewElement("recipient", $reply->href('mailto:'.$attendee->email), false, 'urn:ietf:params:xml:ns:ischedule' );
-    $XMLresponse->NewElement("request-status", '5.3;cannot schedule this user, unknown or access denied', false, 'urn:ietf:params:xml:ns:ischedule' ); 
+    $XMLresponse->NewElement("request-status", '5.3;cannot schedule this user, unknown or access denied', false, 'urn:ietf:params:xml:ns:ischedule' );
     $responses[] = $XMLresponse;
   }
 

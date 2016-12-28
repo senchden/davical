@@ -61,17 +61,17 @@ switch( $xmltree->GetNSTag() ) {
     include("caldav-REPORT-pps-set.php");
     exit; // Not that it should return anyway.
   case 'DAV::sync-collection':
-		if ( $target->IsExternal() ) {
-			require_once("external-fetch.php");
-			update_external ( $target );
-		}
+    if ( $target->IsExternal() ) {
+      require_once("external-fetch.php");
+      update_external ( $target );
+    }
     include("caldav-REPORT-sync-collection.php");
     exit; // Not that it should return anyway.
   case 'DAV::expand-property':
     if ( $target->IsExternal() ) {
-			require_once("external-fetch.php");
-			update_external ( $target );
-		}
+      require_once("external-fetch.php");
+      update_external ( $target );
+    }
     include("caldav-REPORT-expand-property.php");
     exit; // Not that it should return anyway.
   case 'DAV::principal-match':
@@ -201,7 +201,7 @@ function component_to_xml( $properties, $item ) {
       }
       $elements[] = new XMLElement( "propstat", array( $noprop, $status) );
     }
-  
+
     if ( ! $request->PreferMinimal() && count($unsupported) > 0 ) {
       $status = new XMLElement("status", "HTTP/1.1 404 Not Found" );
       $noprop = new XMLElement("prop");
@@ -218,8 +218,8 @@ function component_to_xml( $properties, $item ) {
 }
 
 if ( $target->IsExternal() ) {
-	require_once("external-fetch.php");
-	update_external ( $target );
+  require_once("external-fetch.php");
+  update_external ( $target );
 }
 
 // These reports are always allowed to see the resource_data because they are special

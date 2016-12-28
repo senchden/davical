@@ -24,19 +24,19 @@ class Principal {
    */
   private static $db_tablename = 'dav_principal';
   private static $db_mandatory_fields = array(
-        'username', 
+        'username',
   );
 
   public static function updateableFields() {
     return array(
-            'username', 'email', 'user_active', 'modified', 'password', 'fullname', 
+            'username', 'email', 'user_active', 'modified', 'password', 'fullname',
             'email_ok', 'date_format_type', 'locale', 'type_id', 'displayname', 'default_privileges'
-		  );
-  } 
+    );
+  }
 
   /**
    * We cache these so if we try and access a row by principal_id/user_no/e_mail that we've
-   * already read we don't read it again. 
+   * already read we don't read it again.
    * @var unknown_type
    */
   private static $byUserno = array();
@@ -52,22 +52,22 @@ class Principal {
   protected $email;
   protected $dav_name;
   public $user_active;
-  public $created; 
-  public $modified; 
+  public $created;
+  public $modified;
   public $password;
-  public $fullname; 
-  public $email_ok; 
-  public $date_format_type; 
-  public $locale; 
+  public $fullname;
+  public $email_ok;
+  public $date_format_type;
+  public $locale;
   public $type_id;
-  public $displayname; 
-  public $default_privileges; 
+  public $displayname;
+  public $default_privileges;
   public $is_principal;
   public $is_calendar;
-  public $collection_id; 
-  public $is_addressbook; 
+  public $collection_id;
+  public $is_addressbook;
   public $resourcetypes;
-  public $privileges; 
+  public $privileges;
 
   /**
    * Whether this Principal actually exists in the database yet.
@@ -78,18 +78,18 @@ class Principal {
   /**
   * @var The home URL of the principal
   */
-  protected $url; 
+  protected $url;
 
   /**
   * @var The actual requested URL for this principal, when the request was for /principals/... or such
   */
-  protected $original_request_url; 
-  
+  protected $original_request_url;
+
   /**
    * Whether this was retrieved using an e-mail address
    * @var boolean
    */
-  protected $by_email;  
+  protected $by_email;
 
   /**
    * If we're using memcached this is the namespace we'll put stuff in
@@ -104,7 +104,7 @@ class Principal {
 
   /**
    * Construct a new Principal object.  The principal record will be retrieved from the database, or (if not found) initialised to a new record.  You can test for whether the Principal exists by calling the Exists() method on the returned object.
-   * 
+   *
    * Depending on the supplied $type, the following behaviour will occur:
    *  path:          Will attempt to extract a username or email from the supplied path, and then do what those do.
    *  dav_name:      Expects the dav_name of a <em>principal</em>, exactly, like: /principal/ and will use that as for username.
@@ -112,9 +112,9 @@ class Principal {
    *  principal_id:  Expects an integer which is the principal.principal_id
    *  email:         Will try and retrieve a unique principal by using the email address.  Will fail (subsequent call to Exists() will be false) if there is not a unique match.
    *  username:      Will retrieve based on strtolower($value) = lower(usr.username)
-   * 
+   *
    * @param string $type One of 'path', 'dav_name', 'user_no', 'principal_id', 'email' or 'username'
-   * @param mixed $value A value appropriate to the $type requested. 
+   * @param mixed $value A value appropriate to the $type requested.
    * @param boolean $use_cache Whether to use an available cache source (default true)
    * @throws Exception When provided with an invalid $type parameter.
    * @return Principal
@@ -219,7 +219,7 @@ class Principal {
         break;
     }
     $params[':param'] = $value;
-  
+
     $qry = new AwlQuery( $sql, $params );
     if ( $qry->Exec('Principal',__LINE__,__FILE__) && $qry->rows() == 1 && $row = $qry->Fetch() ) {
       $this->exists = true;
@@ -249,17 +249,17 @@ class Principal {
    * @param $property
    */
   public function __get( $property ) {
-    return $this->{$property};      
+    return $this->{$property};
   }
 
-  
+
   /**
    * This will allow protected properties to be examined for whether they are set
    * without making them writable.  PHP 5.1 or later only.
    * @param $property
    */
   public function __isset( $property ) {
-    return isset($this->{$property});      
+    return isset($this->{$property});
   }
 
   private function assignGuestValues() {
@@ -271,25 +271,25 @@ class Principal {
     $this->is_principal = true;
     $this->is_calendar = false;
     $this->principal_id = -1;
-    $this->privileges = $this->default_privileges = 0;    
+    $this->privileges = $this->default_privileges = 0;
   }
 
   private function assignRowValues( $db_row ) {
     foreach( $db_row AS $k => $v ) {
-      $this->{$k} = $v;      
+      $this->{$k} = $v;
     }
-  }  
+  }
 
   public function Exists() {
     return $this->exists;
   }
 
-  
+
   public function byEmail() {
     return $this->by_email;
   }
 
-  
+
   /**
   * Work out the username, based on elements of the path.
   * @param string $path The path to be used.
@@ -309,11 +309,11 @@ class Principal {
     $username = $path_split[1];
     if ( $path_split[1] == 'principals' && isset($path_split[3]) ) {
       $username = $path_split[3];
-      $this->original_request_url = $path;      
+      $this->original_request_url = $path;
     }
     if ( substr($username,0,1) == '~' ) {
-      $username = substr($username,1);      
-      $this->original_request_url = $path;      
+      $username = substr($username,1);
+      $this->original_request_url = $path;
     }
 
     if ( isset($c->allow_by_email) && $c->allow_by_email && preg_match( '#^(\S+@\S+[.]\S+)$#', $username) ) {
@@ -325,7 +325,7 @@ class Principal {
     return $username;
   }
 
-  
+
   /**
   * Return the username
   * @return string The username
@@ -387,7 +387,7 @@ class Principal {
     return $this->dav_name;
   }
 
-  
+
   /**
   * Ensure the principal's dead properties are loaded
   */
@@ -402,15 +402,15 @@ class Principal {
       }
     }
   }
-  
-  
+
+
   /**
   * Fetch the list of collections for this principal
   * @return string The internal dav_name for the home_calendar, or null if there is none
   */
   protected function FetchCollections() {
     if ( isset($this->collections) ) return;
-    
+
     $this->collections = array();
     $qry = new AwlQuery('SELECT * FROM collection WHERE user_no= :user_no', array(':user_no' => $this->user_no()) );
     if ( $qry->Exec('Principal') ) {
@@ -420,14 +420,14 @@ class Principal {
     }
   }
 
-  
+
   /**
   * Return the default calendar for this principal
   * @return string The internal dav_name for the home_calendar, or false if there is none
   */
   function default_calendar() {
     global $c;
-    
+
     if ( !isset($this->default_calendar) ) {
       $this->default_calendar = false;
       if ( !isset($this->dead_properties) ) $this->FetchDeadProperties();
@@ -458,7 +458,7 @@ class Principal {
     return $this->default_calendar;
   }
 
-  
+
   /**
   * Return the URL for this principal
   * @param string $type The type of URL we want (the principal, by default)
@@ -467,14 +467,14 @@ class Principal {
   */
   public function url($type = 'principal', $internal=false ) {
     global $c;
-    
+
     if ( $internal )
       $result = $this->dav_name();
     else {
       if ( isset($this->original_request_url) && $type == 'principal' )
         $result = $this->original_request_url;
       else
-        $result = $this->url; 
+        $result = $this->url;
     }
 
     switch( $type ) {
@@ -490,19 +490,19 @@ class Principal {
     return ConstructURL(DeconstructURL($result));
   }
 
-  
+
   public function internal_url($type = 'principal' ) {
     return $this->url($type,true);
   }
 
-  
+
   public function unCache() {
-    if ( !isset($this->cacheNs) ) return; 
+    if ( !isset($this->cacheNs) ) return;
     $cache = getCacheInstance();
     $cache->delete($this->cacheNs, null );
   }
 
-  
+
   private function Write( $field_values, $inserting=true ) {
     global $c;
     if ( is_array($field_values) ) $field_values = (object) $field_values;
@@ -519,8 +519,8 @@ class Principal {
       $field_values->{'type_id'} = 1; // Default to 'person'
     if ( !isset($field_values->{'default_privileges'}) && $inserting )
       $field_values->{'default_privileges'} = sprintf('%024s',decbin(privilege_to_bits($c->default_privileges)));
-    
-      
+
+
     $sql = '';
     if ( $inserting ) {
       $insert_fields = array();
@@ -534,7 +534,7 @@ class Principal {
       if ( !isset($field_values->{$k}) && !isset($this->{$k}) ) continue;
 
       $param_name = ':'.$k;
-      $sql_params[$param_name] = (isset($field_values->{$k}) ? $field_values->{$k} : $this->{$k});  
+      $sql_params[$param_name] = (isset($field_values->{$k}) ? $field_values->{$k} : $this->{$k});
       if ( $k  ==  'default_privileges' ) {
         $sql_params[$param_name] = sprintf('%024s',$sql_params[$param_name]);
         $param_name = 'cast('.$param_name.' as text)::BIT(24)';
@@ -558,11 +558,11 @@ class Principal {
       foreach( self::$db_mandatory_fields AS $k ) {
         if ( !isset($sql_params[':'.$k]) ) {
           throw new Exception( get_class($this).'::Create: Mandatory field "'.$k.'" is not set.');
-        } 
+        }
       }
       if ( isset($this->user_no) ) {
         $param_names[] = ':user_no';
-        $insert_fields[] = 'user_no'; 
+        $insert_fields[] = 'user_no';
         $sql_params[':user_no'] = $this->user_no;
       }
       if ( isset($this->created) ) {
@@ -575,7 +575,7 @@ class Principal {
     else {
       $sql = 'UPDATE '.self::$db_tablename.' SET '.implode(',',$update_list);
       $sql .= ' WHERE principal_id=:principal_id';
-      $sql_params[':principal_id'] = $this->principal_id; 
+      $sql_params[':principal_id'] = $this->principal_id;
     }
 
     $qry = new AwlQuery($sql, $sql_params);
@@ -588,7 +588,7 @@ class Principal {
     }
   }
 
-  
+
   public function Create( $field_values ) {
     $this->Write($field_values, true);
   }
@@ -609,7 +609,7 @@ class Principal {
         $cache->delete('principal-'.$row->dav_name, null);
       }
     }
-  }  
+  }
 
   static public function cacheDelete( $type, $value ) {
     $cache = getCacheInstance();
@@ -618,5 +618,5 @@ class Principal {
       $value = '/'.$value.'/';
     }
     $cache->delete('principal-'.$value, null);
-  }  
+  }
 }

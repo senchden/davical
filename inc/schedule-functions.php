@@ -1,7 +1,7 @@
 <?php
 /**
  * Functions for handling CalDAV Scheduling.
- * 
+ *
  * @package   davical
  * @subpackage   caldav
  * @author    Andrew McMillan <andrew@morphoss.com>
@@ -24,7 +24,7 @@ require_once('RRule-v2.php');
 function do_scheduling_for_delete(DAVResource $deleted_resource ) {
   // By the time we arrive here the resource *has* actually been deleted from disk
   // we can only fail to (de-)schedule the activity...
-  global $request, $c; 
+  global $request, $c;
 
   if ( !isset($request) || (isset($c->enable_auto_schedule) && !$c->enable_auto_schedule) ) return true;
   if ( $deleted_resource->IsInSchedulingCollection() ) return true;
@@ -124,7 +124,7 @@ function doItipAttendeeReply( vCalendar $resource, $partstat ) {
   $response = '3.7'; // Organizer was not found on server.
   if ( !$organizer_calendar->Exists() ) {
     if ( doImipMessage('REPLY', $organizer_principal->email(), $vcal) ) {
-      $response = '1.1'; // Scheduling whoosit 'Sent' 
+      $response = '1.1'; // Scheduling whoosit 'Sent'
     }
     else {
       dbg_error_log('ERROR','Default calendar at "%s" does not exist for user "%s"',
@@ -186,7 +186,7 @@ function doItipAttendeeReply( vCalendar $resource, $partstat ) {
 
 function GetItip( VCalendar $vcal, $method, $attendee_value, $clear_attendee_parameters = null ) {
   $iTIP = $vcal->GetItip($method, $attendee_value, $clear_attendee_parameters );
-  $components = $iTIP->GetComponents(); 
+  $components = $iTIP->GetComponents();
   foreach( $components AS $comp ) {
     $comp->AddProperty('REQUEST-STATUS','2.0');
     $properties = array();
@@ -243,7 +243,7 @@ function doItipOrganizerCancel( vCalendar $vcal ) {
     $schedule_target = new Principal('email',$email);
     if ( !$schedule_target->Exists() ) {
       if ( doImipMessage('CANCEL', $email, $vcal) ) {
-        $response = '1.1'; // Scheduling whoosit 'Sent' 
+        $response = '1.1'; // Scheduling whoosit 'Sent'
       }
       else {
         $response = '3.7';
@@ -273,7 +273,7 @@ function doItipOrganizerCancel( vCalendar $vcal ) {
 /**
  * Does the actual processing of the iTIP CANCEL message on behalf of an ATTENDEE,
  * which generally means writing it into the ATTENDEE's default calendar.
- * 
+ *
  * @param vCalendar $vcal The message.
  * @param vProperty $attendee
  * @param WritableCollection $attendee_calendar
@@ -285,7 +285,7 @@ function processItipCancel( vCalendar $vcal, vProperty $attendee, WritableCollec
   //TODO: header( "Debug: Could maybe do the iMIP message dance for attendee ". $attendee->Value() );
   if ( !$attendee_calendar->Exists() ) {
     if ( doImipMessage('CANCEL', $attendee_principal->email(), $vcal) ) {
-      return '1.1'; // Scheduling whoosit 'Sent' 
+      return '1.1'; // Scheduling whoosit 'Sent'
     }
     else {
       dbg_error_log('ERROR', 'Default calendar at "%s" does not exist for attendee "%s"',
@@ -324,10 +324,10 @@ function processItipCancel( vCalendar $vcal, vProperty $attendee, WritableCollec
 
 /**
  * Delivers the iTIP CANCEL message to an ATTENDEE's Scheduling Inbox Collection.
- * 
+ *
  * This is pretty simple at present, but could be extended in the future to do the sending
  * of e-mail to a remote attendee.
- * 
+ *
  * @param vCalendar $iTIP
  * @param vProperty $attendee
  * @param WritableCollection $attendee_inbox
@@ -342,7 +342,7 @@ require_once('EMail.php');
 
 /**
  * Send an iMIP message since they look like a non-local user.
- *  
+ *
  * @param string $method The METHOD parameter from the iTIP
  * @param string $to_email The e-mail address we're going to send to
  * @param vCalendar $vcal The iTIP part of the message.

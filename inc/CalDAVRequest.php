@@ -111,7 +111,7 @@ class CalDAVRequest
    * can test that value with the PreferMinimal() method.
    */
   private $prefer;
-  
+
   /**
   * Create a new CalDAVRequest object.
   */
@@ -127,8 +127,8 @@ class CalDAVRequest
     else if ( isset($_SERVER['HTTP_BRIEF']) && (strtoupper($_SERVER['HTTP_BRIEF']) == 'T') ) {
       $this->prefer = array( 'return-minimal');
     }
-    else 
-      $this->prefer = array(); 
+    else
+      $this->prefer = array();
 
     /**
     * Our path is /<script name>/<user name>/<user controlled> if it ends in
@@ -377,7 +377,7 @@ EOSQL;
       $cache = getCacheInstance();
       $cache->delete( 'collection-'.$params[':dav_name'], null );
       $cache->delete( 'principal-'.$params[':parent_container'], null );
-      
+
       $qry = new AwlQuery( "SELECT * FROM collection WHERE dav_name = :dav_name", array( ':dav_name' => $matches[1] ) );
       if ( $qry->Exec('caldav',__LINE__,__FILE__) && $qry->rows() == 1 && ($row = $qry->Fetch()) ) {
         $this->collection_id = $row->collection_id;
@@ -718,7 +718,7 @@ EOSQL;
   }
 
 
-  private static function supportedPrivileges() { 
+  private static function supportedPrivileges() {
     return array(
       'all' => array(
         'read' => translate('Read the content of a resource or collection'),
@@ -748,7 +748,7 @@ EOSQL;
       )
     );
   }
-  
+
   /**
   * Returns the dav_name of the resource in our internal namespace
   */
@@ -1116,13 +1116,13 @@ EOSQL;
 
   /**
    * Check that the incoming Etag matches the one for the existing (or non-existing) resource.
-   * 
+   *
    * @param boolean $exists Whether the destination exists
    * @param string $dest_etag The etag for the destination.
    */
   function CheckEtagMatch( $exists, $dest_etag ) {
     global $c;
-    
+
     if ( ! $exists ) {
       if ( (isset($this->etag_if_match) && $this->etag_if_match != '') ) {
         /**
@@ -1135,7 +1135,7 @@ EOSQL;
       }
     }
     else {
-    
+
       if ( isset($c->strict_etag_checking) && $c->strict_etag_checking )
          $trim_chars = '\'\\" ';
       else
@@ -1166,7 +1166,7 @@ EOSQL;
 
   }
 
-  
+
   /**
   * Is the user has the privileges to do what is requested.
   */
@@ -1270,7 +1270,7 @@ EOSQL;
   public static function kill_on_exit() {
     posix_kill( getmypid(), 28 );
   }
-  
+
   /**
   * Utility function we call when we have a simple status-based response to
   * return to the client.  Possibly

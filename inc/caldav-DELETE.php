@@ -57,7 +57,7 @@ if ( $dav_resource->IsCollection() ) {
   $myLock = $cache->acquireLock('collection-'.$dav_resource->parent_path());
   if ( $dav_resource->IsBinding() ) {
     $params = array( ':dav_name' => $dav_resource->dav_name() );
-  
+
     if ( $qry->QDo("DELETE FROM dav_binding WHERE dav_name = :dav_name", $params )
       && $qry->Commit() ) {
       $cache->delete( 'collection-'.$dav_resource->dav_name(), null );
@@ -85,7 +85,7 @@ else {
 
   // Check to see if we need to do any scheduling transactions for this one.
   do_scheduling_for_delete($dav_resource);
-  
+
   // We need to serialise access to this process just for this collection
   $cache = getCacheInstance();
   $myLock = $cache->acquireLock('collection-'.$dav_resource->parent_path());
@@ -99,7 +99,7 @@ else {
     if ( function_exists('log_caldav_action') ) {
       log_caldav_action( 'DELETE', $dav_resource->GetProperty('uid'), $dav_resource->GetProperty('user_no'), $collection_id, $request->path );
     }
-    
+
     $qry->Commit();
     @dbg_error_log( "DELETE", "DELETE: User: %d, ETag: %s, Path: %s", $session->user_no, $request->etag_if_match, $request->path);
 

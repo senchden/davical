@@ -50,11 +50,11 @@ class DAViCalSession extends Session
 
   public $principal_id;
   private $privilege_resources = array();
-  
+
   /**
   * Create a new DAViCalSession object.
   *
-  * We create a Session and extend it with some additional useful DAViCal 
+  * We create a Session and extend it with some additional useful DAViCal
   * related information.
   *
   * @param string $sid A session identifier.

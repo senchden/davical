@@ -9,7 +9,7 @@ function i18n($value) {
 $skip_errors = false; // We need to hide a couple of unsightly errors even here...
 function log_setup_error($errno , $errstr , $errfile , $errline) {
   global $skip_errors;
-  if ( $skip_errors ) return; 
+  if ( $skip_errors ) return;
   error_log('DAViCal setup.php: Informational: '.$errfile.'('.$errline.'): ['.$errno.'] '.$errstr);
 }
 
@@ -51,13 +51,13 @@ class CheckResult {
   private $ok;
   private $use_class;
   private $description;
-  
+
   function __construct( $success, $description=null, $use_class=null ) {
     $this->ok = (boolean) $success;
     $this->description = (isset($description)?$description : ($success===true? i18n('Passed') : i18n('Fail')));
-    $this->use_class = (isset($use_class)?$use_class:($success===true?'dep_ok' : 'dep_fail'));        
+    $this->use_class = (isset($use_class)?$use_class:($success===true?'dep_ok' : 'dep_fail'));
   }
-  
+
   public function getClass() {
     return $this->use_class;
   }
@@ -169,7 +169,7 @@ $loaded_extensions = array_flip(get_loaded_extensions());
 
 
 function do_error( $errormessage ) {
-  // We can't translate this because we're testing these things even before 
+  // We can't translate this because we're testing these things even before
   // the translation interface is available...
   printf("<p class='error'><br/>%s</p>", $errormessage );
 }
@@ -185,7 +185,7 @@ function get_phpinfo() {
   phpinfo();
   $phpinfo = ob_get_contents( );
   ob_end_clean( );
-  
+
   $phpinfo = preg_replace( '{^.*?<body>}s', '', $phpinfo);
   $phpinfo = preg_replace( '{</body>.*?$}s', '', $phpinfo);
   return $phpinfo;
@@ -275,16 +275,16 @@ function check_davical_version() {
 
 function check_awl_version() {
   global $c;
-  
+
   if ( !function_exists('awl_version') ) return new CheckResult(false);
-  
+
   $result = new CheckResult($c->want_awl_version == awl_version());
   if ( ! $result->getOK() ) {
     $result->setDescription( sprintf(i18n('Want: %s, Currently: %s'), $c->want_awl_version, awl_version()) );
     if ( $c->want_awl_version < awl_version() ) $result->setClass('dep_warning');
   }
   return $result;
-  
+
 }
 
 
@@ -318,7 +318,7 @@ EOTABLE;
 
 function build_dependencies_table( ) {
   global $c;
-  
+
   $dependencies = array(
     translate('Current DAViCal version ')         => 'check_davical_version',
     translate('AWL Library version ')             => 'check_awl_version',
@@ -343,7 +343,7 @@ function build_dependencies_table( ) {
   }
 
   $translated_failure_code = translate('<a href="http://wiki.davical.org/w/Setup_Failure_Codes/%s">Explanation on DAViCal Wiki</a>');
-    
+
   $dependencies_table = '';
   $dep_tpl = '<tr class="%s">
   <td>%s</td>
@@ -359,7 +359,7 @@ function build_dependencies_table( ) {
                              rawurlencode($k)
                            );
   }
-  
+
   return $dependencies_table;
 }
 

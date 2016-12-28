@@ -100,7 +100,7 @@ if ( $c->metrics_style != 'counters' ) {
 if ( $c->metrics_style != 'memcache' ) {
   // These are more basic metrics.  Just counts of requests, by type.
   $sql = <<<QUERY
-SELECT 
+SELECT
   (SELECT last_value FROM metrics_count_get) AS get_count,
   (SELECT last_value FROM metrics_count_put) AS put_count,
   (SELECT last_value FROM metrics_count_propfind) AS propfind_count,

@@ -97,16 +97,16 @@ if ( ! $grantor->Exists() ) $request->DoResponse( 404 );
 if ( ! $grantor->IsCollection() )
   $request->PreconditionFailed(403,'not-supported-privilege','ACLs are only supported on Principals or Collections');
 
-$grantor->NeedPrivilege('write-acl');  
+$grantor->NeedPrivilege('write-acl');
 
 $cache_delete_list = array();
-  
+
 $qry = new AwlQuery('BEGIN');
 $qry->Exec('ACL',__LINE__,__FILE__);
 
 function process_ace( $grantor, $by_principal, $by_collection, $ace ) {
   global $cache_delete_list, $request;
-  
+
   $elements = $ace->GetContent();
   $principal_node = $elements[0];
   $grant = $elements[1];

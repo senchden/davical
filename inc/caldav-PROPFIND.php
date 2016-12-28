@@ -132,7 +132,7 @@ function get_collection_contents( $depth, $collection, $parent_path = null ) {
       $sql .= 'ORDER BY usr.user_no';
     }
     else {
-      if ( !( isset($c->hide_bound) && ( 
+      if ( !( isset($c->hide_bound) && (
               ((is_bool($c->hide_bound) || is_numeric($c->hide_bound)) && $c->hide_bound != false) ||
               (is_string($c->hide_bound) && preg_match($c->hide_bound, $_SERVER['HTTP_USER_AGENT'])) ||
               (is_array($c->hide_bound) && count(array_uintersect_assoc(
@@ -261,10 +261,10 @@ else {
     $request->PreconditionFailed( 404, 'must-exist', translate('That resource is not present on this server.') );
   }
   $resource->NeedPrivilege('DAV::read');
-	if ( $resource->IsExternal() ) {
-		require_once("external-fetch.php");
-		update_external ( $resource );
-	}
+  if ( $resource->IsExternal() ) {
+    require_once("external-fetch.php");
+    update_external ( $resource );
+  }
   if ( $resource->IsCollection() ) {
     dbg_error_log('PROPFIND','Getting collection contents: Depth %d, Path: %s', $request->depth, $resource->dav_name() );
     $responses[] = $resource->RenderAsXML($property_list, $reply);

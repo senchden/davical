@@ -38,7 +38,7 @@ function early_exception_handler($e) {
   foreach( $trace AS $k => $v ) {
     printf( "%s[%d] %s%s%s()\n", $v['file'], $v['line'], (isset($v['class'])?$v['class']:''), (isset($v['type'])?$v['type']:''), (isset($v['function'])?$v['function']:'') );
   }
-  
+
 }
 set_exception_handler('early_exception_handler');
 
@@ -155,12 +155,12 @@ $c->protocol_server_port = sprintf( '%s://%s%s',
                  (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'? 'https' : 'http'),
                  $_SERVER['SERVER_NAME'],
                  (
-                    ( (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on')
-                                        && (!isset($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT'] == 80) )
-                           || (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
-                           				&& (!isset($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT'] == 443) )
-                   ? ''
-                   : ':'.$_SERVER['SERVER_PORT']
+                     ( (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on')
+                          && (!isset($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT'] == 80) )
+                     || ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
+                          && (!isset($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT'] == 443) )
+                     ? ''
+                     : ':'.$_SERVER['SERVER_PORT']
                  ) );
 $c->protocol_server_port_script = $c->protocol_server_port . ($_SERVER['SCRIPT_NAME'] == '/index.php' ? '' : $_SERVER['SCRIPT_NAME']);
 
@@ -389,20 +389,20 @@ function ISODateToHTTPDate( $isodate ) {
   // It is necessary to use English for this, explicitly.  See Debian BTS Bug#661985 for more info.
   $month = gmstrftime('%m', strtotime($isodate));
   switch( intval($month) ) {
-  	case 1: $month = 'Jan'; break;
-  	case 2: $month = 'Feb'; break;
-  	case 3: $month = 'Mar'; break;
-  	case 4: $month = 'Apr'; break;
-  	case 5: $month = 'May'; break;
-  	case 6: $month = 'Jun'; break;
-  	case 7: $month = 'Jul'; break;
-  	case 8: $month = 'Aug'; break;
-  	case 9: $month = 'Sep'; break;
-  	case 10: $month = 'Oct'; break;
-  	case 11: $month = 'Nov'; break;
-  	case 12: $month = 'Dec'; break;
-  	default:
-  		throw new Exception('Invalid month '.$month);
+    case 1: $month = 'Jan'; break;
+    case 2: $month = 'Feb'; break;
+    case 3: $month = 'Mar'; break;
+    case 4: $month = 'Apr'; break;
+    case 5: $month = 'May'; break;
+    case 6: $month = 'Jun'; break;
+    case 7: $month = 'Jul'; break;
+    case 8: $month = 'Aug'; break;
+    case 9: $month = 'Sep'; break;
+    case 10: $month = 'Oct'; break;
+    case 11: $month = 'Nov'; break;
+    case 12: $month = 'Dec'; break;
+    default:
+      throw new Exception('Invalid month '.$month);
   }
   // Use strtotime since strptime is not available on Windows platform.
   return( gmstrftime('%a, %d '.$month.' %Y %H:%M:%S GMT', strtotime($isodate)) );

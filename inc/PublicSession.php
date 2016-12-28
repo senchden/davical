@@ -69,11 +69,11 @@ class PublicSession {
     $this->email = $principal->email();
     $this->dav_name = $principal->dav_name();
     $this->principal = $principal;
-    
+
     if ( function_exists("awl_set_locale") && isset($this->locale) && $this->locale != "" ) {
       awl_set_locale($this->locale);
     }
-    
+
 
     $this->groups = ( isset($c->public_groups) ? $c->public_groups : array() );
     $this->roles = array( 'Public' => true );

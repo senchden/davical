@@ -48,7 +48,7 @@ function handle_subaction( $subaction ) {
   global $delete_ticket_confirmation_required;
   global $delete_bind_in_confirmation_required;
   global $delete_binding_confirmation_required;
-  
+
   dbg_error_log('admin-principal-edit',':handle_action: Action %s', $subaction );
 
   switch( $subaction ) {
@@ -162,7 +162,7 @@ function handle_subaction( $subaction ) {
 function principal_editor() {
   global $c, $id, $can_write_principal, $session;
   $editor = new Editor(translate('Principal'), 'dav_principal');
-  
+
   $editor->SetLookup( 'date_format_type', "SELECT 'E', 'European' UNION SELECT 'U', 'US Format' UNION SELECT 'I', 'ISO Format'" );
   $editor->SetLookup( 'type_id', 'SELECT principal_type_id, principal_type_desc FROM principal_type ORDER BY principal_type_id' );
   $editor->SetLookup( 'locale', 'SELECT \'\', \''.translate("*** Default Locale ***").'\' UNION SELECT locale, locale_name_locale FROM supported_locales ORDER BY 1 ASC' );
@@ -170,12 +170,12 @@ function principal_editor() {
   $editor->AddAttribute( 'fullname', 'title', translate("The full name for this person, group or other type of principal.") );
   $editor->AddAttribute( 'email', 'title', translate("The email address identifies principals when processing invitations and freebusy lookups. It should be set to a unique value.") );
   $editor->SetWhere( 'principal_id='.$id );
-  
+
   $editor->AddField('is_admin', 'EXISTS( SELECT 1 FROM role_member WHERE role_no = 1 AND role_member.user_no = dav_principal.user_no )' );
   $editor->AddAttribute('is_admin', 'title', translate('An "Administrator" user has full rights to the whole DAViCal System'));
-  
+
   $post_values = false;
-  
+
   if ( isset($_POST['xxxxusername']) ) {
     $_POST['xxxxusername'] = trim(str_replace('/', '', $_POST['xxxxusername']));
     if ( $_POST['xxxxusername'] == '' ) {
@@ -190,7 +190,7 @@ function principal_editor() {
   if ( isset($_POST['email']) && trim($_POST['email']) == '' ) {
     $c->messages[] = i18n("The email address really should not be blank.");
   }
-  
+
   $pwstars = '@@@@@@@@@@';
   if ( $can_write_principal && $editor->IsSubmit() ) {
     $editor->WhereNewRecord( "principal_id=(SELECT CURRVAL('dav_id_seq'))" );
@@ -287,9 +287,9 @@ function principal_editor() {
   $prompt_locale = translate('Locale');
   $prompt_type = translate('Principal Type');
   $prompt_privileges = translate('Privileges granted to All Users');
-  
+
   $privs_html = build_privileges_html( $editor, 'default_privileges');
-  
+
   $admin_row_entry = '';
   $delete_principal_button = '';
   if ( $session->AllowedTo('Admin') ) {
@@ -386,14 +386,14 @@ EOTEMPLATE;
 
 function build_privileges_html( $ed, $fname ) {
   global $privilege_xlate, $privilege_names;
-  
+
   $btn_all = htmlspecialchars(translate('All'));             $btn_all_title = htmlspecialchars(translate('Toggle all privileges'));
   $btn_rw  = htmlspecialchars(translate('Read/Write'));      $btn_rw_title = htmlspecialchars(translate('Set read+write privileges'));
   $btn_read = htmlspecialchars(translate('Read'));           $btn_read_title = htmlspecialchars(translate('Set read privileges'));
   $btn_fb = htmlspecialchars(translate('Free/Busy'));        $btn_fb_title = htmlspecialchars(translate('Set free/busy privileges'));
   $btn_sd = htmlspecialchars(translate('Schedule Deliver')); $btn_sd_title = htmlspecialchars(translate('Privileges to allow delivery of scheduling messages'));
   $btn_ss = htmlspecialchars(translate('Schedule Send'));    $btn_ss_title = htmlspecialchars(translate('Privileges to delegate scheduling decisions'));
-  
+
   $privs_dec = bindec($ed->Value($fname));
   $privileges_set = sprintf('<div id="privileges"><input type="hidden" name="%s[fake_privilege_for_input]" value="0">%s', $fname, "\n");
   for( $i=0; $i < count($privilege_names); $i++ ) {
@@ -448,7 +448,7 @@ function privilege_format_function( $value, $column, $row ) {
 }
 
 
-function confirm_delete_principal($confirmation_hash, $displayname ) { 
+function confirm_delete_principal($confirmation_hash, $displayname ) {
   $html = '<p class="error">';
   $html .= sprintf('<b>%s</b> \'%s\' <a class="error" href="%s&%s">%s</a> %s',
        translate('Deleting Principal:'), $displayname, $_SERVER['REQUEST_URI'],
@@ -459,7 +459,7 @@ function confirm_delete_principal($confirmation_hash, $displayname ) {
 }
 
 
-    
+
 function group_memberships_browser() {
   global $c, $id, $editor;
   $browser = new Browser(translate('Group Memberships'));
@@ -626,7 +626,7 @@ function grant_row_editor() {
 
 function edit_grant_row( $row_data ) {
   global $id, $grantrow;
-  
+
   $orig_to_id = intval($row_data->to_principal);
   if ( $orig_to_id > -1 ) {
     $grantrow->SetRecord( $row_data );
@@ -634,7 +634,7 @@ function edit_grant_row( $row_data ) {
   else {
     $grantrow->Initialise( $row_data );
   }
-  
+
   $privs_html = build_privileges_html( $grantrow, 'grant_privileges' );
 
   $form_id = $grantrow->Id();
@@ -655,7 +655,7 @@ EOTEMPLATE;
   return $grantrow->Render();
 }
 
-    
+
 function principal_grants_browser() {
   global $c, $id, $editor, $can_write_principal;
     $browser = new Browser(translate('Principal Grants'));
@@ -710,15 +710,15 @@ function ticket_row_editor() {
   $ticketrow = new Editor("Tickets", "access_ticket");
   $ticketrow->SetSubmitName( 'ticketrow' );
   if ( $can_write_principal && $ticketrow->IsSubmit() ) {
-    
+
     $username = $editor->Value('username');
     $ugly_path = $_POST['target'];
     if ( $ugly_path == '/'.$username || $ugly_path == '/'.$username.'/' ) {
       $target_collection = $id;
     }
-    else { 
+    else {
       $username_len = strlen($username) + 2;
-      $sql = "SELECT collection_id FROM collection WHERE dav_name = :exact_name"; 
+      $sql = "SELECT collection_id FROM collection WHERE dav_name = :exact_name";
       $sql .= " AND substring(dav_name FROM 1 FOR $username_len) = '/$username/'";
       $params = array( ':exact_name' => $ugly_path );
       if ( !preg_match( '#/$#', $ugly_path ) ) {
@@ -737,7 +737,7 @@ function ticket_row_editor() {
         return $ticketrow;
       }
     }
-    
+
     $_POST['dav_owner_id'] = $id;
     $_POST['target_collection_id'] = $target_collection;
     $ticket_id = check_by_regex($_POST['ticket_id'], '/[A-Za-z0-9]+/');
@@ -820,7 +820,7 @@ function access_ticket_browser() {
   return $browser;
 }
 
-  
+
 function confirm_delete_ticket($confirmation_hash) {
   $html = '<table><tr><td class="error">';
   $html .= sprintf('<b>%s</b> "%s" <a class="error" href="%s&%s">%s</a> %s',
@@ -865,7 +865,7 @@ function principal_collection_browser() {
   $browser->DoQuery();
   return $browser;
 }
-  
+
 function confirm_delete_collection($confirmation_hash) {
   $html = '<table><tr><td class="error">';
   $html .= sprintf('<b>%s</b> "%s" <a class="error" href="%s&%s">%s</a> %s',
@@ -900,7 +900,7 @@ function bindings_to_other_browser() {
   $browser->DoQuery();
   return $browser;
 }
-  
+
 function confirm_delete_bind_in($confirmation_hash) {
   $html = '<table><tr><td class="error">';
   $html .= sprintf('<b>%s</b> "%s" <a class="error" href="%s&%s">%s</a> %s',
@@ -911,8 +911,8 @@ function confirm_delete_bind_in($confirmation_hash) {
   $html .= "</td></tr></table>\n";
   return $html;
 }
-  
-  
+
+
 function bindings_to_us_browser() {
   global $c, $page_elements, $id, $editor;
   $browser = new Browser(translate('Bindings to this Principal\'s Collections'));
@@ -936,7 +936,7 @@ function bindings_to_us_browser() {
   $browser->DoQuery();
   return $browser;
 }
-  
+
 function confirm_delete_binding( $confirmation_hash ) {
   $html = '<table><tr><td class="error">';
   $html .= sprintf('<b>%s</b> "%s" <a class="error" href="%s&%s">%s</a> %s',
@@ -951,7 +951,7 @@ function confirm_delete_binding( $confirmation_hash ) {
 
 if ( isset($_GET['subaction']) ) {
   if ( handle_subaction($_GET['subaction']) && 'delete_principal' == $_GET['subaction'] ) {
-    return true;    
+    return true;
   }
 }
 
@@ -964,8 +964,8 @@ if ( isset($id) && $id > 0 ) {
 
   if ( isset($delete_principal_confirmation_required) )
     $page_elements[] = confirm_delete_principal($delete_principal_confirmation_required, $editor->Value('displayname'));
-  
-  
+
+
   $page_elements[] = group_memberships_browser();
   if ( $editor->Value('type_id') == 3 ) {
     $grouprow = group_row_editor();
@@ -973,18 +973,18 @@ if ( isset($id) && $id > 0 ) {
   }
   $grantrow = grant_row_editor();
   $page_elements[] = principal_grants_browser();
-  if ( isset($delete_grant_confirmation_required) ) $page_elements[] = confirm_delete_grant($delete_grant_confirmation_required);  
-  
+  if ( isset($delete_grant_confirmation_required) ) $page_elements[] = confirm_delete_grant($delete_grant_confirmation_required);
+
   $ticketrow = ticket_row_editor();
   $page_elements[] = access_ticket_browser();
-  if ( isset($delete_ticket_confirmation_required) ) $page_elements[] = confirm_delete_ticket($delete_ticket_confirmation_required);  
+  if ( isset($delete_ticket_confirmation_required) ) $page_elements[] = confirm_delete_ticket($delete_ticket_confirmation_required);
 
   $page_elements[] = principal_collection_browser();
-  if ( isset($delete_collection_confirmation_required) ) $page_elements[] = confirm_delete_collection($delete_collection_confirmation_required);  
-  
+  if ( isset($delete_collection_confirmation_required) ) $page_elements[] = confirm_delete_collection($delete_collection_confirmation_required);
+
   $page_elements[] = bindings_to_other_browser();
-  if ( isset($delete_bind_in_confirmation_required) ) $page_elements[] = confirm_delete_bind_in($delete_bind_in_confirmation_required);  
-  
+  if ( isset($delete_bind_in_confirmation_required) ) $page_elements[] = confirm_delete_bind_in($delete_bind_in_confirmation_required);
+
   $page_elements[] = bindings_to_us_browser();
   if ( isset($delete_binding_confirmation_required) ) $page_elements[] = confirm_delete_binding($delete_binding_confirmation_required);
 }

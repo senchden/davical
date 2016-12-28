@@ -65,7 +65,7 @@ function add_failure( $type, $tag, $status, $description=null, $error_tag = null
   if ( isset($error_tag) )
     $propstat[] = new XMLElement( 'error', new XMLElement( $error_tag ) );
 
-  $failure[$type.'-'.$tag] = new XMLElement('propstat', $propstat ); 
+  $failure[$type.'-'.$tag] = new XMLElement('propstat', $propstat );
 }
 
 
@@ -187,7 +187,7 @@ foreach( $setprops AS $k => $setting ) {
           $params[':vtimezone'] = (isset($tz) ? $tz->Render() : null );
           $qry->QDo('INSERT INTO timezones (tzid, olson_name, active, vtimezone) VALUES(:tzid,:olson_name,false,:vtimezone)', $params );
         }
-        
+
         $qry->QDo('UPDATE collection SET timezone = :tzid WHERE dav_name = :dav_name',
                                        array( ':tzid' => $tzid, ':dav_name' => $dav_resource->dav_name()) );
       }
@@ -286,20 +286,20 @@ foreach( $rmprops AS $k => $setting ) {
 if ( count($failure) > 0 ) {
 
   $qry->Rollback();
-  
+
   $url = ConstructURL($request->path);
   $multistatus = new XMLElement('multistatus');
   array_unshift($failure,new XMLElement('responsedescription', translate("Some properties were not able to be changed.") ));
   array_unshift($failure,new XMLElement('href', $url));
   $response = $reply->DAVElement($multistatus,'response', $failure);
-  
-  if ( !empty($success) ) { 
+
+  if ( !empty($success) ) {
     $prop = new XMLElement('prop');
     foreach( $success AS $tag => $v ) {
       $reply->NSElement($prop, $tag);
     }
     $reply->DAVElement($response, 'propstat', array( $prop, new XMLElement( 'status', 'HTTP/1.1 424 Failed Dependency' )) );
-  }  
+  }
   $request->DoResponse( 207, $reply->Render($multistatus), 'text/xml; charset="utf-8"' );
 
 }
@@ -336,10 +336,10 @@ if ( $qry->Commit() ) {
     $reply->NSElement($prop, $tag);
   }
   $reply->DAVElement($response, 'propstat', array( $prop, new XMLElement( 'status', 'HTTP/1.1 200 OK' )) );
-  
+
   $url = ConstructURL($request->path);
   array_unshift( $failure, new XMLElement('href', $url ) );
-  
+
   $request->DoResponse( 207, $reply->Render($multistatus), 'text/xml; charset="utf-8"' );
 }
 

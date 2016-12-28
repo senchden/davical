@@ -6,8 +6,8 @@
  * @category Technical
  * @subpackage   pwauth
  * @author    Eric Seigne <eric.seigne@ryxeo.com>,
- *   Michael B. Trausch <mike@trausch.us>,
- *   Andrew McMillan <andrew@mcmillan.net.nz>
+ *            Michael B. Trausch <mike@trausch.us>,
+ *            Andrew McMillan <andrew@mcmillan.net.nz>
  * @copyright Eric Seigne
  * @license   http://gnu.org/copyleft/gpl.html GNU GPL v2 or later
  *
@@ -95,8 +95,7 @@ function PWAUTH_PAM_check($username, $password) {
 
     case 3:
       // STATUS_BLOCKED: UID for username is < pwauth's MIN_UNIX_UID
-      dbg_error_log('pwauth', 'UID for username %s is < pwauth MIN_UNIX_UID',
-  		  $username);
+      dbg_error_log('pwauth', 'UID for username %s is < pwauth MIN_UNIX_UID', $username);
       break;
 
     case 4:
@@ -106,8 +105,7 @@ function PWAUTH_PAM_check($username, $password) {
 
     case 5:
       // STATUS_PW_EXPIRED: The user account's password has expired.
-      dbg_error_log('pwauth', 'The account password for user %s has expired',
-  		  $username);
+      dbg_error_log('pwauth', 'The account password for user %s has expired', $username);
       break;
 
     case 6:
@@ -117,14 +115,12 @@ function PWAUTH_PAM_check($username, $password) {
 
     case 7:
       // STATUS_MANYFAILS: Too many login failures for user account.
-      dbg_error_log('pwauth', 'Login rejected for %s, too many failures',
-  		  $username);
+      dbg_error_log('pwauth', 'Login rejected for %s, too many failures', $username);
       break;
 
     case 50:
       // STATUS_INT_USER: Configuration error, Web server cannot use pwauth
-      dbg_error_log('pwauth', 'config error: see pwauth man page (%s)',
-  		  'STATUS_INT_USER');
+      dbg_error_log('pwauth', 'config error: see pwauth man page (%s)', 'STATUS_INT_USER');
       break;
 
     case 51:
@@ -134,20 +130,17 @@ function PWAUTH_PAM_check($username, $password) {
 
     case 52:
       // STATUS_INT_ERR: unknown error
-      dbg_error_log('pwauth', 'error: see pwauth man page (%s)',
-  		  'STATUS_INT_ERR');
+      dbg_error_log('pwauth', 'error: see pwauth man page (%s)', 'STATUS_INT_ERR');
       break;
 
     case 53:
       // STATUS_INT_NOROOT: pwauth could not read the password database
-      dbg_error_log('pwauth', 'config error: cannot read password database (%s)',
-  		  'STATUS_INT_NOROOT');
+      dbg_error_log('pwauth', 'config error: cannot read password database (%s)', 'STATUS_INT_NOROOT');
       break;
-      
+
     default:
       // Unknown error code.
-      dbg_error_log('pwauth', 'An unknown error (%d) has occurred',
-  		  $return_status);
+      dbg_error_log('pwauth', 'An unknown error (%d) has occurred', $return_status);
   }
 
   return(FALSE);

@@ -93,7 +93,7 @@ if ( $can_write_collection && $editor->IsSubmit() ) {
   else {
     $c->messages[] = i18n("Updating Collection record.");
   }
-  if ( !$editor->Write() ) { 
+  if ( !$editor->Write() ) {
     $c->messages[] = i18n("Failed to write collection.");
     if ( $id > 0 ) $editor->GetRecord();
   }
@@ -137,7 +137,7 @@ if ( $editor->Available() ) {
   $entryqry = new AwlQuery( 'SELECT count(*) as count from caldav_data where collection_id='.$editor->Value('collection_id')  );
   $entryqry->Exec('admin-collection-edit');
   $entries = $entryqry->Fetch();  $entries = $entries->count;
-  
+
   $externalqry = new AwlQuery( 'SELECT external_url from dav_binding where bound_source_id=:id  limit 1', array(':id' => $editor->Value('collection_id') ) );
   $externalqry->Exec('external-bind-url');
   $external = $externalqry->Fetch();  $external_url = $external->external_url;
@@ -332,7 +332,7 @@ label.privilege {
  <tr> <th class="right">$prompt_dav_name:</th>         <td class="left">$value_dav_name</td> </tr>$external_bind
  <tr> <th class="right">$prompt_entries:</th>          <td class="left">$entries</td> </tr>
  <tr> <th class="right">$prompt_load_file:</th>        <td class="left">##ics_file.file.60## ##mode.checkbox##
- </td> </tr> 
+ </td> </tr>
  <tr> <th class="right">$prompt_displayname:</th>      <td class="left">##dav_displayname.input.50##</td> </tr>
  <tr> <th class="right">$prompt_public:</th>           <td class="left">##publicly_readable.checkbox##</td> </tr>
  <tr> <th class="right">$prompt_calendar:</th>         <td class="left">##is_calendar.checkbox##</td> </tr>
@@ -367,7 +367,7 @@ toggle_visible('fld_use_default_privs','!privileges_settings');
 
 EOTEMPLATE;
 
- 
+
 
 $editor->SetTemplate( $template );
 $page_elements[] = $editor;
@@ -519,15 +519,15 @@ EOTEMPLATE;
   $browser->DoQuery();
   $page_elements[] = $browser;
 
-  
+
 /**
  bind_id          | bigint | not null default nextval('dav_id_seq'::regclass)
- bound_source_id  | bigint | 
- access_ticket_id | text   | 
+ bound_source_id  | bigint |
+ access_ticket_id | text   |
  dav_owner_id     | bigint | not null
  parent_container | text   | not null
  dav_name         | text   | not null
- dav_displayname  | text   | 
+ dav_displayname  | text   |
  */
 
   $browser = new Browser(translate('Bindings to this Collection'));

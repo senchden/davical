@@ -29,9 +29,9 @@ $page_elements[] = $browser;
 
 $externalqry = new AwlQuery( "SELECT count(*) as count from collection where parent_container='/.external/' and collection_id not in ( select bound_source_id from dav_binding where external_url is not null)" );
 $externalqry->Exec('external-bind-url');
-$external = $externalqry->Fetch();  
+$external = $externalqry->Fetch();
 if ( $external->count > 0 ) {
-  $link = '<a href="'.$c->base_url . '/admin.php?action=edit&t=external&subaction=clean" class="submit">'. 
+  $link = '<a href="'.$c->base_url . '/admin.php?action=edit&t=external&subaction=clean" class="submit">'.
     translate("Remove dangling external calendars").'('.$external->count.')</a>';
   $c->stylesheets[] = 'css/edit.css';
   $page_elements[] = $link;

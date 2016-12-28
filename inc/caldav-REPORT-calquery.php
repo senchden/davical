@@ -42,7 +42,7 @@ while (list($idx, $qqq) = each($qry_content))
         if ( $propertyname == 'urn:ietf:params:xml:ns:caldav:calendar-data' ) check_for_expansion($v);
       }
       break;
-  
+
     case 'DAV::allprop':
       $properties['DAV::allprop'] = 1;
       if ( $qry_content[$idx]->GetNSTag() == 'DAV::include' ) {
@@ -362,9 +362,9 @@ if ( $qry->Exec("calquery",__LINE__,__FILE__) && $qry->rows() > 0 ) {
           $vResource = new vComponent($dav_object->caldav_data);
           $expanded = getVCalendarRange($vResource);
           if ( !$expanded->overlaps($range_filter) ) continue;
-  
+
           $expanded = expand_event_instances($vResource, $expand_range_start, $expand_range_end, $expand_as_floating );
-  
+
           if ( $expanded->ComponentCount() == 0 ) continue;
           if ( $need_expansion ) $dav_object->caldav_data = $expanded->Render();
         }

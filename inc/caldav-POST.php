@@ -80,7 +80,7 @@ function handle_freebusy_request( $ic ) {
         $responses[] = $response;
         continue;
       }
-      
+
       foreach ( $answer as $a )
       {
         if ( $a === false ) {
@@ -132,7 +132,7 @@ function handle_cancel_request( $ic ) {
   global $c, $session, $request;
 
   $request->NeedPrivilege('CALDAV:schedule-send-reply');
-  
+
   $reply = new XMLDocument( array("DAV:" => "", "urn:ietf:params:xml:ns:caldav" => "C" ) );
 
   $response = $reply->NewXMLElement( "response", false, false, 'urn:ietf:params:xml:ns:caldav' );

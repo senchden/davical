@@ -106,7 +106,7 @@ function SRVOk ( $value, $name, $row ) {
   global $BrowserCurrentRow;
   if ( empty($BrowserCurrentRow->domain) ) return ''; // skip empty rows
   $s = new iSchedule();
-  $s->domain = $BrowserCurrentRow->domain; 
+  $s->domain = $BrowserCurrentRow->domain;
   return translate( ( $s->getServer()?'OK': SRVFormat ( $s->domain ) ) );
 }
 

@@ -22,7 +22,7 @@ switch ( $request->path ) {
     $parameters = '';
     foreach( $_GET as $k => $v ) {
       $parameters .= ($parameters == '' ? '?' : '&' );
-      $parameters .= $k.'='.rawurlencode($v); 
+      $parameters .= $k.'='.rawurlencode($v);
     }
     header('Location: ' . $c->protocol_server_port . str_replace('/caldav.php', '', ConstructURL('/tz.php',true)).$parameters );
     $request->DoResponse(301); // Moved permanently

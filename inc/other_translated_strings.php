@@ -9,7 +9,7 @@
 # Translators: in the sense of 'systems admin'
 i18n("Admin");
 
-# Translators: in the sense of a group of people 
+# Translators: in the sense of a group of people
 i18n("Group");
 
 # Translators: in the sense of being available to all users

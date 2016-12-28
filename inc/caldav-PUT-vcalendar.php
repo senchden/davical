@@ -29,7 +29,7 @@ if ( $add_member ) {
     $vcalendar->SetUID($uid);
     $request->path = $request->dav_name() . $uid . '.ics';
     $dav_resource = new DAVResource($request->path);
-    
+
     if ( $dav_resource->Exists() ) throw new Exception("Failed to generate unique segment name for add-member!");
   }
 }

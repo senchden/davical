@@ -130,7 +130,7 @@ if ( $src->IsCollection()  ) {
     $sql .= ', parent_container=:parent ';
     $params[':parent'] = $dest->parent_path();
     $cachekeys[] = ($dest->ContainerType() == 'principal' ? 'principal' : 'collection').'-'.$dest->parent_path();
-  } 
+  }
   $sql .= 'WHERE collection_id = :src_collection';
   $params[':src_collection'] = $src_collection;
   $qry = new AwlQuery( $sql, $params );

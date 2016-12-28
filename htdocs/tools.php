@@ -78,7 +78,7 @@ class Tools {
       $html = '<div id="entryform">';
       $html .= '<h1>'.translate('Import all .ics files of a directory') .'</h1>';
       $html .= '<p>'.translate('This process will import each file in a directory named "username.ics" and create a user and calendar for each file to import.') .'</p>';
-      
+
       $data = (object) array('directory_path' => '/path/to/your/ics/files','calendar_path' => 'calendar');
       $ef = new EntryForm( $_SERVER['REQUEST_URI'],$data , true,true );
       $html .= "<table width=\"100%\" class=\"data\">\n";

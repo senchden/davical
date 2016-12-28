@@ -16,18 +16,18 @@ class WritableCollection extends DAVResource {
     if ( !isset($p) ) return null;
     return $p->GetParameterValue('TZID');
   }
-  
+
   /**
-   * Writes the data to a member in the collection and returns the segment_name of the 
+   * Writes the data to a member in the collection and returns the segment_name of the
    * resource in our internal namespace.
-   *  
+   *
    * @param vCalendar $vcal The resource to be written.
    * @param boolean $create_resource True if this is a new resource.
    * @param boolean $do_scheduling True if we should also do scheduling for this write. Default false.
    * @param string $segment_name The name of the resource within the collection, or null if this
    *                             call should invent one based on the UID of the vCalendar.
    * @param boolean $log_action Whether to log this action.  Defaults to false since this is normally called
-   *                             in situations where one is writing secondary data. 
+   *                             in situations where one is writing secondary data.
    * @return string The segment_name of the resource within the collection, as written, or false on failure.
    */
   function WriteCalendarMember( vCalendar $vcal, $create_resource, $do_scheduling=false, $segment_name = null, $log_action=false ) {
@@ -37,7 +37,7 @@ class WritableCollection extends DAVResource {
     }
 
     global $session, $caldav_context;
-  
+
     $resources = $vcal->GetComponents('VTIMEZONE',false); // Not matching VTIMEZONE
     $user_no = $this->user_no();
     $collection_id = $this->collection_id();
@@ -51,7 +51,7 @@ class WritableCollection extends DAVResource {
       $first = $resources[0];
       $resource_type = $first->GetType();
     }
-  
+
     $uid = $vcal->GetUID();
     if ( empty($segment_name) ) {
       $segment_name = $uid.'.ics';
@@ -61,12 +61,12 @@ class WritableCollection extends DAVResource {
     $caldav_data = $vcal->Render();
     $etag = md5($caldav_data);
     $weak_etag = null;
-    
+
     $qry = new AwlQuery();
     $existing_transaction_state = $qry->TransactionState();
     if ( $existing_transaction_state == 0 ) $qry->Begin();
-    
-  
+
+
     if ( $create_resource ) {
       $qry->QDo('SELECT nextval(\'dav_id_seq\') AS dav_id');
     }
@@ -102,7 +102,7 @@ class WritableCollection extends DAVResource {
         ':session_user' => $session->user_no,
         ':weak_etag' => $weak_etag
     ) );
-    
+
     if ( !$this->IsSchedulingCollection() && $do_scheduling ) {
       if ( do_scheduling_requests($vcal, $create_resource ) ) {
         $dav_params[':dav_data'] = $vcal->Render(null, true);
@@ -123,13 +123,13 @@ class WritableCollection extends DAVResource {
       rollback_on_error( $caldav_context, $user_no, $path);
       return false;
     }
-  
+
     $dtstart = $first->GetPValue('DTSTART');
     $calitem_params[':dtstart'] = $dtstart;
     if ( (!isset($dtstart) || $dtstart == '') && $first->GetPValue('DUE') != '' ) {
       $dtstart = $first->GetPValue('DUE');
     }
-  
+
     $dtend = $first->GetPValue('DTEND');
     if ( isset($dtend) && $dtend != '' ) {
       dbg_error_log( 'PUT', ' DTEND: "%s", DTSTART: "%s", DURATION: "%s"', $dtend, $dtstart, $first->GetPValue('DURATION') );
@@ -165,19 +165,19 @@ class WritableCollection extends DAVResource {
           $dtend = ':dtstart';
       }
     }
-  
+
     $last_modified = $first->GetPValue('LAST-MODIFIED');
     if ( !isset($last_modified) || $last_modified == '' ) {
       $last_modified = gmdate( 'Ymd\THis\Z' );
     }
     $calitem_params[':modified'] = $last_modified;
-  
+
     $dtstamp = $first->GetPValue('DTSTAMP');
     if ( !isset($dtstamp) || $dtstamp == '' ) {
       $dtstamp = $last_modified;
     }
     $calitem_params[':dtstamp'] = $dtstamp;
-  
+
     $class = $first->GetPValue('CLASS');
     /*
      * It seems that some calendar clients don't set a class...
@@ -187,14 +187,14 @@ class WritableCollection extends DAVResource {
       $class = 'PUBLIC';
     }
     $calitem_params[':class'] = $class;
-  
+
     /** Calculate what timezone to set, first, if possible */
     $last_olson = 'Turkmenikikamukau';  // I really hope this location doesn't exist!
     $tzid = self::GetTZID($first);
     if ( !empty($tzid) ) {
       $tz = $vcal->GetTimeZone($tzid);
       $olson = $vcal->GetOlsonName($tz);
-    
+
       if ( !empty($olson) && ($olson != $last_olson) ) {
         dbg_error_log( 'PUT', ' Setting timezone to %s', $olson );
         $qry->QDo('SET TIMEZONE TO \''.$olson."'" );
@@ -205,7 +205,7 @@ class WritableCollection extends DAVResource {
     $created = $first->GetPValue('CREATED');
     if ( $created == '00001231T000000Z' ) $created = '20001231T000000Z';
     $calitem_params[':created'] = $created;
-  
+
     $calitem_params[':tzid'] = $tzid;
     $calitem_params[':uid'] = $uid;
     $calitem_params[':summary'] = $first->GetPValue('SUMMARY');
@@ -241,7 +241,7 @@ UPDATE calendar_item SET dav_etag=:etag, uid=:uid, dtstamp=:dtstamp,
 EOSQL;
       $sync_change = 200;
     }
-  
+
     if ( !$this->IsSchedulingCollection() ) {
       $this->WriteCalendarAlarms($dav_id, $vcal);
       $this->WriteCalendarAttendees($dav_id, $vcal);
@@ -262,27 +262,27 @@ EOSQL;
     }
     $qry->QDo("SELECT write_sync_change( $collection_id, $sync_change, :dav_name)", array(':dav_name' => $path ) );
     if ( $existing_transaction_state == 0 ) $qry->Commit();
-  
+
     dbg_error_log( 'PUT', 'User: %d, ETag: %s, Path: %s', $session->user_no, $etag, $path);
-  
-    
+
+
     return $segment_name;
   }
-  
+
   /**
-   * Writes the data to a member in the collection and returns the segment_name of the 
+   * Writes the data to a member in the collection and returns the segment_name of the
    * resource in our internal namespace.
-   *  
+   *
    * A caller who wants scheduling not to happen for this write must already
    * know they are dealing with a calendar, so should be calling WriteCalendarMember
    * directly.
-   *  
+   *
    * @param $resource mixed The resource to be written.
    * @param $create_resource boolean True if this is a new resource.
    * @param $segment_name The name of the resource within the collection, or false on failure.
    * @param boolean $log_action Whether to log this action.  Defaults to true since this is normally called
    *                             in situations where one is writing primary data.
-   * @return string The segment_name that was given, or one that was assigned if null was given. 
+   * @return string The segment_name that was given, or one that was assigned if null was given.
    */
   function WriteMember( $resource, $create_resource, $segment_name = null, $log_action=true ) {
     if ( ! $this->IsCollection() ) {
@@ -291,7 +291,7 @@ EOSQL;
     }
     if ( ! is_object($resource) ) {
       dbg_error_log( 'PUT', 'No data supplied!' );
-      return false; 
+      return false;
     }
 
     if ( $resource instanceof vCalendar ) {
@@ -299,11 +299,11 @@ EOSQL;
     }
     else if ( $resource instanceof VCard )
       return $this->WriteAddressbookMember($resource,$create_resource,$segment_name, $log_action);
-    
+
     return $segment_name;
   }
 
-  
+
   /**
   * Given a dav_id and an original vCalendar, pull out each of the VALARMs
   * and write the values into the calendar_alarm table.
@@ -315,7 +315,7 @@ EOSQL;
     $qry->Exec('PUT',__LINE__,__FILE__);
 
     $components = $vcal->GetComponents();
-    
+
     $qry->SetSql('INSERT INTO calendar_alarm ( dav_id, action, trigger, summary, description, component, next_trigger )
             VALUES( '.$dav_id.', :action, :trigger, :summary, :description, :component,
                                         :related::timestamp with time zone + :related_trigger::interval )' );
@@ -363,8 +363,8 @@ EOSQL;
       }
     }
   }
-  
-  
+
+
   /**
    * Parse out the attendee property and write a row to the
    * calendar_attendee table for each one.
@@ -375,10 +375,10 @@ EOSQL;
   function WriteCalendarAttendees( $dav_id, vCalendar $vcal ) {
     $qry = new AwlQuery('DELETE FROM calendar_attendee WHERE dav_id = '.$dav_id );
     $qry->Exec('PUT',__LINE__,__FILE__);
-  
+
     $attendees = $vcal->GetAttendees();
     if ( count($attendees) < 1 ) return;
-  
+
     $qry->SetSql('INSERT INTO calendar_attendee ( dav_id, status, partstat, cn, attendee, role, rsvp, property )
             VALUES( '.$dav_id.', :status, :partstat, :cn, :attendee, :role, :rsvp, :property )' );
     $qry->Prepare();
@@ -402,11 +402,11 @@ EOSQL;
       $processed[$attendee] = $v->Render();
     }
   }
-  
+
   /**
-   * Writes the data to a member in the collection and returns the segment_name of the 
+   * Writes the data to a member in the collection and returns the segment_name of the
    * resource in our internal namespace.
-   *  
+   *
    * @param vCalendar $member_dav_name The path to the resource to be deleted.
    * @return boolean Success is true, or false on failure.
    */
@@ -423,7 +423,7 @@ EOSQL;
     // We need to serialise access to this process just for this collection
     $cache = getCacheInstance();
     $myLock = $cache->acquireLock('collection-'.$this->dav_name());
-    
+
     $qry = new AwlQuery();
     $params = array( ':dav_name' => $member_dav_name );
 
@@ -434,13 +434,13 @@ EOSQL;
       @dbg_error_log( "DELETE", "DELETE: Calendar member %s deleted from calendar '%s'", $member_dav_name, $this->dav_name() );
 
       $cache->releaseLock($myLock);
-      
+
       return true;
     }
 
     $cache->releaseLock($myLock);
     return false;
-    
+
   }
 
 

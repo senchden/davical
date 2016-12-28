@@ -34,14 +34,14 @@ echo <<<EOCAP
     <action>list</action>
     <description>List timezone identifiers and localized forms
     </description>
-    
+
     <accept-parameter>
       <name>lang</name>
       <required>false</required>
       <multi>true</multi>
       <description>Specify desired localized form(s)</description>
     </accept-parameter>
-    
+
     <accept-parameter>
       <name>changedsince</name>
       <required>false</required>
@@ -50,7 +50,7 @@ echo <<<EOCAP
        given date
       </description>
     </accept-parameter>
-    
+
     <accept-parameter>
       <name>returnall</name>
       <required>false</required>
@@ -59,14 +59,14 @@ echo <<<EOCAP
       </description>
     </accept-parameter>
   </operation>
-  
+
   <operation>
     <action>get</action>
     <description>
      Returns one or more timezones as specified by the
      tzid parameter.
     </description>
-    
+
     <accept-parameter>
       <name>format</name>
       <required>false</required>
@@ -76,14 +76,14 @@ echo <<<EOCAP
       <description>Specify required format for timezone.
       </description>
     </accept-parameter>
-    
+
     <accept-parameter>
       <name>lang</name>
       <required>false</required>
       <multi>true</multi>
       <description>Specify desired localized form(s)</description>
     </accept-parameter>
-    
+
     <accept-parameter>
       <name>tzid</name>
       <required>true</required>
@@ -92,21 +92,21 @@ echo <<<EOCAP
       </description>
     </accept-parameter>
   </operation>
-  
+
   <operation>
     <action>expand</action>
     <description>
      Expands the specified timezone(s) into local onset and UTC
      offsets
     </description>
-    
+
     <accept-parameter>
       <name>tzid</name>
       <required>true</required>
       <multi>true</multi>
       <description>Specify desired timezone identifiers</description>
     </accept-parameter>
-    
+
     <accept-parameter>
       <name>start</name>
       <required>false</required>
@@ -116,7 +116,7 @@ echo <<<EOCAP
        current year is assumed.
       </description>
     </accept-parameter>
-    
+
     <accept-parameter>
       <name>end</name>
       <required>false</required>
@@ -127,7 +127,7 @@ echo <<<EOCAP
       </description>
     </accept-parameter>
   </operation>
-  
+
   <operation>
     <action>capabilities</action>
     <description>Gets the capabilities of the server</description>

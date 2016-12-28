@@ -137,7 +137,7 @@ else {
   $response_code = 201;
   $qry->QDo( $sql, $params );
   $put_action_type = 'INSERT';
-  
+
   $qry->QDo("SELECT currval('dav_id_seq') AS dav_id" );
 }
 $row = $qry->Fetch();

@@ -127,7 +127,7 @@ VALUES( :user_no, :parent_container, :dav_name, :dav_etag, :dav_displayname, TRU
     }
     else if ( isset($public) ) {
       $collection = $qry->Fetch();
-      if ( empty($collection->is_public) ) $collection->is_public = 'f'; 
+      if ( empty($collection->is_public) ) $collection->is_public = 'f';
       if ( $collection->is_public == ($public?'t':'f')  ) {
         $sql = 'UPDATE collection SET publicly_readable = :is_public::boolean WHERE collection_id = :collection_id';
         $params = array( ':is_public' => ($public?'t':'f'), ':collection_id' => $collection->collection_id );
@@ -217,7 +217,7 @@ function handle_schedule_request( $ical ) {
 
     if ( isset($c->enable_auto_schedule) && !$c->enable_auto_schedule ) {
       // In this case we're being asked not to do auto-scheduling, so we build
-      // a response back for the client saying we can't...  
+      // a response back for the client saying we can't...
       $attendee->SetParameterValue ('SCHEDULE-STATUS','5.3;No scheduling support for user');
       continue;
     }
@@ -372,7 +372,7 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
   $schedule_reply = GetItip(new vCalendar($schedule_original->Render(null, true)), 'REPLY', $attendee->Value(), array('CUTYPE'=>true, 'SCHEDULE-STATUS'=>true));
 
   dbg_error_log( 'PUT', 'Writing scheduling REPLY from %s to %s', $request->principal->email(), $organizer_principal->email() );
-  
+
   $response = '3.7'; // Organizer was not found on server.
   if ( !$organizer_calendar->Exists() ) {
     dbg_error_log('ERROR','Default calendar at "%s" does not exist for user "%s"',
@@ -400,7 +400,7 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
   $organizer->SetParameterValue( 'SCHEDULE-STATUS', $response );
   $resource->UpdateOrganizerStatus($organizer);
   $scheduling_actions = true;
-  
+
   $calling_attendee = clone($attendee);
   $attendees = $schedule_original->GetAttendees();
   foreach( $attendees AS $attendee ) {
@@ -461,7 +461,7 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
         else if ( $attendee_inbox->WriteCalendarMember($schedule_request, false) !== false ) {
           $response = '1.2'; // Scheduling invitation delivered successfully
           if ( $attendee_calendar->WriteCalendarMember($schedule_original, false) === false ) {
-            dbg_error_log('ERROR','Could not write updated calendar member to %s', 
+            dbg_error_log('ERROR','Could not write updated calendar member to %s',
                     $attendee_calendar->dav_name(), $attendee_calendar->dav_name(), $schedule_target->username());
             trace_bug('Failed to write scheduling resource.');
           }
@@ -471,11 +471,11 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
     dbg_error_log( 'PUT', 'Status for attendee <%s> set to "%s"', $attendee->Value(), $response );
     $attendee->SetParameterValue( 'SCHEDULE-STATUS', $response );
     $scheduling_actions = true;
-    
+
     $resource->UpdateAttendeeStatus($email, clone($attendee));
-    
+
   }
-  
+
   return $scheduling_actions;
 }
 
@@ -490,7 +490,7 @@ function do_scheduling_reply( vCalendar $resource, vProperty $organizer ) {
 function do_scheduling_requests( vCalendar $resource, $create, $old_data = null ) {
   global $request, $c;
   if ( !isset($request) || (isset($c->enable_auto_schedule) && !$c->enable_auto_schedule) ) return false;
-  
+
   if ( ! is_object($resource) ) {
     trace_bug( 'do_scheduling_requests called with non-object parameter (%s)', gettype($resource) );
     return  false;
@@ -989,7 +989,7 @@ EOSQL;
         if ( empty($dtstart_prop) ) {
           dbg_error_log('PUT','Invalid VEVENT without DTSTART, UID="%s" in collection %d', $uid, $collection_id);
           continue;
-        } 
+        }
         $value_type = $dtstart_prop->GetParameterValue('VALUE');
         dbg_error_log('PUT','DTSTART without DTEND. DTSTART value type is %s', $value_type );
         if ( isset($value_type) && $value_type == 'DATE' )
@@ -1193,7 +1193,7 @@ function write_attendees( $dav_id, vCalendar $ical ) {
 /**
 * Actually write the resource to the database.  All checking of whether this is reasonable
 * should be done before this is called.
-* 
+*
 * @param DAVResource $resource The resource being written
 * @param string $caldav_data The actual data to be written
 * @param DAVResource $collection The collection containing the resource being written
@@ -1204,7 +1204,7 @@ function write_attendees( $dav_id, vCalendar $ical ) {
 * @param string Either 'INSERT' or 'UPDATE': the type of action we are doing
 * @param boolean $log_action Whether to log the fact that we are writing this into an action log (if configured)
 * @param string $weak_etag An etag that is NOT modified on ATTENDEE changes for this event
-* 
+*
 * @return boolean True for success, false for failure.
 */
 function write_resource( DAVResource $resource, $caldav_data, DAVResource $collection, $author, &$etag, $put_action_type, $caldav_context, $log_action=true, $weak_etag=null ) {
@@ -1228,7 +1228,7 @@ function write_resource( DAVResource $resource, $caldav_data, DAVResource $colle
     }
     $resource_type = $first->GetType();
   }
-  
+
   $collection_id = $collection->collection_id();
 
   $qry = new AwlQuery();
@@ -1264,14 +1264,14 @@ function write_resource( DAVResource $resource, $caldav_data, DAVResource $colle
   $calitem_params[':dav_id'] = $dav_id;
 
   $due = null;
-  if ( $first->GetType() == 'VTODO' ) $due = $first->GetPValue('DUE'); 
+  if ( $first->GetType() == 'VTODO' ) $due = $first->GetPValue('DUE');
   $calitem_params[':due'] = $due;
   $dtstart = $first->GetPValue('DTSTART');
   if ( empty($dtstart) ) $dtstart = $due;
   if (preg_match("/^1[0-8][0-9][0-9][01][0-9][0-3][0-9]$/", $dtstart))
      $dtstart = $dtstart . "T000000Z";
   $calitem_params[':dtstart'] = $dtstart;
-  
+
   $dtend = $first->GetPValue('DTEND');
   if ( isset($dtend) && $dtend != '' ) {
     dbg_error_log( 'PUT', ' DTEND: "%s", DTSTART: "%s", DURATION: "%s"', $dtend, $dtstart, $first->GetPValue('DURATION') );
@@ -1353,7 +1353,7 @@ function write_resource( DAVResource $resource, $caldav_data, DAVResource $colle
     foreach( $timezones AS $k => $tz ) {
       if ( $tz->GetPValue('TZID') != $tzid ) {
         /**
-        * We'll skip any tz definitions that are for a TZID other than the DTSTART/DUE on the first VEVENT/VTODO 
+        * We'll skip any tz definitions that are for a TZID other than the DTSTART/DUE on the first VEVENT/VTODO
         */
         dbg_error_log( 'ERROR', ' Event uses TZID[%s], skipping included TZID[%s]!', $tz->GetPValue('TZID'), $tzid );
         continue;

@@ -152,7 +152,7 @@ class HTTPAuthSession {
 
         /**
          * Maybe some external authentication didn't return false for an inactive
-         * user, so we'll be pedantic here. 
+         * user, so we'll be pedantic here.
          */
         if ( $p->user_active ) {
           $this->AssignSessionDetails($p);
@@ -194,7 +194,7 @@ class HTTPAuthSession {
     if ( isset($_SERVER['HTTP_USER_AGENT']) ) $opaque .= $_SERVER['HTTP_USER_AGENT'];
     if ( isset($_SERVER['REMOTE_ADDR']) )     $opaque .= $_SERVER['REMOTE_ADDR'];
     $opaque = sha1($opaque);
-    
+
     if ( ! empty($_SERVER['PHP_AUTH_DIGEST'])) {
       // analyze the PHP_AUTH_DIGEST variable
       if ( $data = $this->ParseDigestHeader($_SERVER['PHP_AUTH_DIGEST']) ) {
@@ -204,7 +204,7 @@ class HTTPAuthSession {
           $this->AuthFailedResponse();
           // Does not return
         }
-        
+
         // generate the valid response
         $test_user = new Principal('username', $data['username']);
 
@@ -220,7 +220,7 @@ class HTTPAuthSession {
 //          dbg_error_log( "HTTPAuth", "DigestAuthString: %s", $auth_string);
           $valid_response = md5($auth_string);
 //          dbg_error_log( "HTTPAuth", "DigestResponse: %s", $valid_response);
-          
+
           if ( $data['response'] == $valid_response ) {
             $this->AssignSessionDetails($test_user);
 //            dbg_error_log( "HTTPAuth", "Success!!!" );
@@ -269,14 +269,14 @@ class HTTPAuthSession {
       dbg_error_log( "HTTPAuth", 'Received: %s: %s', $m[1], $m[2] );
     }
 
-    
+
     @dbg_error_log( "HTTPAuth", 'Received: nonce: %s, nc: %s, cnonce: %s, qop: %s, username: %s, uri: %s, response: %s',
         $data['nonce'], $data['nc'], $data['cnonce'], $data['qop'], $data['username'], $data['uri'], $data['response']
       );
     return $needed_parts ? false : $data;
   }
 
-  
+
   /**
   * CheckPassword does all of the password checking and
   * returns a user record object, or false if it all ends in tears.
@@ -321,7 +321,7 @@ class HTTPAuthSession {
     return false;
   }
 
-  
+
   /**
   * Checks whether a user is allowed to do something.
   *
@@ -373,7 +373,7 @@ class HTTPAuthSession {
     $this->email = $principal->email();
     $this->dav_name = $principal->dav_name();
     $this->principal = $principal;
-    
+
     $this->GetRoles();
     $this->logged_in = true;
     if ( function_exists("awl_set_locale") && isset($this->locale) && $this->locale != "" ) {

@@ -6,7 +6,7 @@
 * @category Technical
 * @subpackage   ldap
 * @author    Oliver Schulze <oliver@samera.com.py>,
-*   		 Andrew McMillan <andrew@mcmillan.net.nz>
+*            Andrew McMillan <andrew@mcmillan.net.nz>
 * @copyright Based on Eric Seigne script drivers_squid_pam.php
 * @license   http://gnu.org/copyleft/gpl.html GNU GPL v2 or later
 */
@@ -66,7 +66,7 @@ function RIMAP_check($username, $password ){
   //$imap_url = '{localhost:993/imap/ssl/novalidate-cert}';
   $imap_url = $c->authenticate_hook['config']['imap_url'];
   $auth_result = "ERR";
-  
+
   $imap_stream = @imap_open($imap_url, $imap_username, $password, OP_HALFOPEN);
   //print_r(imap_errors());
   if ( $imap_stream ) {

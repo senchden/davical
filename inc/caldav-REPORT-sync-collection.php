@@ -117,10 +117,10 @@ EOSQL;
     }
   }
   $qry = new AwlQuery($sql, $params );
- 
+
   $last_dav_name = '';
   $first_status = 0;
-  
+
   if ( $qry->Exec("REPORT",__LINE__,__FILE__) ) {
     if ( $qry->rows() > 50 ) {
       // If there are more than 50 rows to send we should not send full data in response ...

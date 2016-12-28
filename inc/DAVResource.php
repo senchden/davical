@@ -427,8 +427,8 @@ EOSQL;
 SELECT collection.*, path_privs(:session_principal::int8, collection.dav_name,:scan_depth::int), p.principal_id,
     p.type_id AS principal_type_id, p.displayname AS principal_displayname, p.default_privileges AS principal_default_privileges,
     timezones.vtimezone, dav_binding.access_ticket_id, dav_binding.parent_container AS bind_parent_container,
-		dav_binding.dav_displayname, owner.dav_name AS bind_owner_url, dav_binding.dav_name AS bound_to,  
-    dav_binding.external_url AS external_url, dav_binding.type AS external_type, dav_binding.bind_id AS bind_id 
+    dav_binding.dav_displayname, owner.dav_name AS bind_owner_url, dav_binding.dav_name AS bound_to,
+    dav_binding.external_url AS external_url, dav_binding.type AS external_type, dav_binding.bind_id AS bind_id
 FROM dav_binding
     LEFT JOIN collection ON (collection.collection_id=bound_source_id)
     LEFT JOIN principal p USING (user_no)
@@ -481,15 +481,15 @@ EOSQL;
         $this->collection->dav_name = preg_replace('{/[^/]*$}', '/', $this->dav_name);
       }
     }
-    
+
   }
-  
+
   /**
   * Find the collection associated with this resource.
   */
   protected function FetchCollection() {
     global $session;
-    
+
     /**
     * RFC4918, 8.3: Identifiers for collections SHOULD end in '/'
     *    - also discussed at more length in 5.2
@@ -528,7 +528,7 @@ EOSQL;
       }
       @dbg_error_log( 'DAVResource', ':FetchCollection: Read cached collection named "%s" of type "%s".', $this->collection->dav_name, $this->collection->type );
     }
-    
+
     if ( isset($this->collection->bound_from) ) {
       $this->_is_binding = true;
       $this->bound_from = str_replace( $this->collection->bound_to, $this->collection->bound_from, $this->dav_name);
@@ -537,7 +537,7 @@ EOSQL;
         $this->tickets[] = new DAVTicket($this->collection->access_ticket_id);
       }
     }
-    
+
     $this->_is_collection = ( $this->_is_principal || $this->collection->dav_name == $this->dav_name || $this->collection->dav_name == $this->dav_name.'/' );
     if ( $this->_is_collection ) {
       $this->dav_name = $this->collection->dav_name;
@@ -754,7 +754,7 @@ EOQRY;
     return $this->parent;
   }
 
-  
+
   /**
   * Fetch the parent to this resource. This is deprecated - use GetParentContainer() instead.
   */
@@ -1312,7 +1312,7 @@ EOQRY;
     dbg_error_log('DAVResource', 'Request for a%scached sync-token', ($cachedOK ? ' ' : 'n un') );
     if ( $this->IsPrincipal() ) return null;
     if ( $this->collection_id() == 0 ) return null;
-    if ( !isset($this->sync_token) || !$cachedOK ) { 
+    if ( !isset($this->sync_token) || !$cachedOK ) {
       $sql = 'SELECT new_sync_token( 0, :collection_id) AS sync_token';
       $params = array( ':collection_id' => $this->collection_id());
       $qry = new AwlQuery($sql, $params );
@@ -1325,7 +1325,7 @@ EOQRY;
     dbg_error_log('DAVResource', 'Returning sync token of "%s"', $this->sync_token );
     return $this->sync_token;
   }
-  
+
   /**
   * Checks whether the target collection is publicly_readable
   */
@@ -1473,7 +1473,7 @@ EOQRY;
         dbg_error_log( 'DAVResource', ':GetProperty: dav-data: fetched resource does%s exist.', ($this->exists?'':' not') );
         return $this->resource->caldav_data;
         break;
-        
+
       case 'principal':
         if ( !isset($this->principal) ) $this->FetchPrincipal();
         return clone($this->principal);
@@ -1483,7 +1483,7 @@ EOQRY;
         if ( isset($this->{$name}) ) {
           if ( ! is_object($this->{$name}) ) return $this->{$name};
           return clone($this->{$name});
-        } 
+        }
         if ( $this->_is_principal ) {
           if ( !isset($this->principal) ) $this->FetchPrincipal();
           if ( isset($this->principal->{$name}) ) return $this->principal->{$name};
@@ -1503,7 +1503,7 @@ EOQRY;
         if ( isset($this->{$name}) ) {
           if ( ! is_object($this->{$name}) ) return $this->{$name};
           return clone($this->{$name});
-        } 
+        }
         // dbg_error_log( 'DAVResource', ':GetProperty: Failed to find property "%s" on "%s".', $name, $this->dav_name );
     }
 
@@ -1537,7 +1537,7 @@ EOQRY;
     global $c, $session, $request;
 
 //    dbg_error_log( 'DAVResource', 'Processing "%s" on "%s".', $tag, $this->dav_name );
-    
+
     if ( $reply === null ) $reply = $GLOBALS['reply'];
 
     switch( $tag ) {
@@ -1694,7 +1694,7 @@ EOQRY;
         if ( isset($c->disable_caldav_proxy) && $c->disable_caldav_proxy ) return false;
         if ( !isset($proxy_type) ) $proxy_type = 'write';
         // ProxyFor is an already constructed URL
-		$this->FetchPrincipal();
+        $this->FetchPrincipal();
         $reply->CalendarserverElement($prop, 'calendar-proxy-'.$proxy_type.'-for', $reply->href( $this->principal->ProxyFor($proxy_type) ) );
         break;
 

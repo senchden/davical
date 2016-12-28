@@ -14,7 +14,7 @@ class VTimezone extends vComponent {
       $vtz = new vComponent($row->vtimezone);
       if ( $vtz->GetType() == 'VTIMEZONE' ) return $vtz;
       $tmp = $vtz->GetComponents('VTIMEZONE');
-      if ( count($tmp) < 1 || $tmp[0]->GetType() != 'VTIMEZONE' ) return null; 
+      if ( count($tmp) < 1 || $tmp[0]->GetType() != 'VTIMEZONE' ) return null;
       $vtz = $tmp[0];
       return $vtz;
     }
@@ -102,7 +102,7 @@ class VTimezone extends vComponent {
       case 74:   return('Asia/Riyadh');
       case 75:   return('Asia/Taipei');
       case 76:   return('Australia/Sydney');
-    
+
       case 57: // null
       case 52: // null
       default: // null
@@ -110,5 +110,5 @@ class VTimezone extends vComponent {
     return null;
   }
 
-  
+
 }

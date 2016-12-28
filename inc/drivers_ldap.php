@@ -6,7 +6,7 @@
 * @category Technical
 * @subpackage   ldap
 * @author    Maxime Delorme <mdelorme@tennaxia.net>,
-*   		 Andrew McMillan <andrew@mcmillan.net.nz>
+*            Andrew McMillan <andrew@mcmillan.net.nz>
 * @copyright Maxime Delorme
 * @license   http://gnu.org/copyleft/gpl.html GNU GPL v2 or later
 */
@@ -170,7 +170,7 @@ class ldapDrivers
           $row[$arr[$j]] = count($arr[$arr[$j]])>2?$arr[$arr[$j]]:$arr[$arr[$j]][0];
         }
         $ret[]=$row;
-	unset($row);
+        unset($row);
       }
     }
     return $ret;
@@ -303,7 +303,7 @@ function sync_user_from_LDAP( Principal &$principal, $mapping, $ldap_values ) {
       dbg_error_log( "LDAP", "Setting usr->%s to %s from configured defaults", $field, $c->authenticate_hook['config']['default_value'][$field] );
     }
   }
-    
+
   if ( $principal->Exists() ) {
     $principal->Update($fields_to_set);
   }
@@ -413,10 +413,10 @@ function LDAP_check($username, $password ){
     dbg_error_log( "LDAP", "user %s doesn't exist in local DB, we need to create it",$username );
   }
   $principal->setUsername($username);
-  
+
   // The local cached user doesn't exist, or is older, so we create/update their details
   sync_user_from_LDAP( $principal, $mapping, $valid );
-  
+
   return $principal;
 
 }

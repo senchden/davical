@@ -213,7 +213,7 @@ function CreateDefaultRelationships( $username ) {
 
 
 function UpdateCollectionTimezones( $username, $new_timezone=null ) {
-  if ( empty($new_timezone) ) return; 
+  if ( empty($new_timezone) ) return;
   $qry = new AwlQuery('UPDATE collection SET timezone=? WHERE dav_name LIKE ? AND is_calendar', '/'.$username.'/%', $new_timezone);
   $qry->Exec();
 }
@@ -260,7 +260,7 @@ function UpdateUserFromExternal( &$usr ) {
   }
   else
     $type = "INSERT";
-    
+
   $params = array();
   if ( $type != 'INSERT' ) $params[':user_no'] = $usr->user_no;
   $qry = new AwlQuery( sql_from_object( $usr, $type, 'usr', 'WHERE user_no= :user_no' ), $params );

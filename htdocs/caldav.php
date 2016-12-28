@@ -22,13 +22,13 @@ elseif ( isset($_SERVER['PATH_INFO']) && $_SERVER['PATH_INFO'] == '/autodiscover
 
 function logRequestHeaders() {
   global $c;
-  
+
   /** Log the request headers */
   $lines = apache_request_headers();
   dbg_error_log( "LOG ", "***************** Request Header ****************" );
   dbg_error_log( "LOG ", "%s %s", $_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI'] );
   foreach( $lines AS $k => $v ) {
-    if ( $k != 'Authorization' || (isset($c->dbg['password']) && $c->dbg['password'] ) ) 
+    if ( $k != 'Authorization' || (isset($c->dbg['password']) && $c->dbg['password'] ) )
       dbg_error_log( "LOG headers", "-->%s: %s", $k, $v );
     else
       dbg_error_log( "LOG headers", "-->%s: %s", $k, 'Delicious tasty password eaten by debugging monster!' );

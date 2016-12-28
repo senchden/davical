@@ -86,9 +86,9 @@ function fetch_external ( $bind_id, $min_age = '1 hour' )
     curl_close ( $curl );
     if ( is_string ( $ics ) && strlen ( $ics ) > 20 ) {
       // BUGlet: should track server-time instead of local-time
-      $qry = new AwlQuery( 'UPDATE collection SET modified=NOW(), dav_etag=:etag WHERE collection_id = :cid', 
+      $qry = new AwlQuery( 'UPDATE collection SET modified=NOW(), dav_etag=:etag WHERE collection_id = :cid',
         array ( ':cid' => $row->collection_id, ':etag' => md5($ics) ) );
-      $qry->Exec('DAVResource');  
+      $qry->Exec('DAVResource');
       require_once ( 'caldav-PUT-functions.php');
       import_collection ( $ics , $row->user_no, $row->path, 'External Fetch' , false ) ;
       return true;
@@ -102,7 +102,7 @@ function fetch_external ( $bind_id, $min_age = '1 hour' )
 
 function update_external ( $request )
 {
-	global $c;
+  global $c;
   if ( $c->external_refresh < 1 )
     return ;
   if ( ! function_exists ( "curl_init" ) ) {
@@ -111,11 +111,11 @@ function update_external ( $request )
   }
   $sql = 'SELECT bind_id, external_url as url from dav_binding LEFT JOIN collection ON (collection.collection_id=bound_source_id) WHERE dav_binding.dav_name = :dav_name AND collection.modified + interval :interval < NOW()';
   $qry = new AwlQuery( $sql, array ( ':dav_name' => $request->dav_name(), ':interval' => $c->external_refresh . ' minutes' ) );
-	dbg_error_log("external", "checking if external resource needs update");
+  dbg_error_log("external", "checking if external resource needs update");
   if ( $qry->Exec('DAVResource') && $qry->rows() > 0 && $row = $qry->Fetch() ) {
-		if ( $row->bind_id != 0 ) {
-			dbg_error_log("external", "external resource needs updating, this might take a minute : %s", $row->url );
-			fetch_external ( $row->bind_id, $c->external_refresh . ' minutes' );
-		}
+    if ( $row->bind_id != 0 ) {
+      dbg_error_log("external", "external resource needs updating, this might take a minute : %s", $row->url );
+      fetch_external ( $row->bind_id, $c->external_refresh . ' minutes' );
+    }
   }
 }

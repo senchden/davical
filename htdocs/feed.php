@@ -53,7 +53,7 @@ function caldav_get_feed( $request, $collection ) {
   if ( $response !== false ) return $response;
 
   $principal = $collection->GetProperty('principal');
-  
+
   /**
    * The CalDAV specification does not define GET on a collection, but typically this is
    * used as a .ics download for the whole collection, which is what we do also.
@@ -92,9 +92,9 @@ function caldav_get_feed( $request, $collection ) {
   $feed->setLink($url);
   $feed->setFeedLink($c->protocol_server_port_script . $request->path, 'atom');
   $feed->addAuthor(array(
-  			'name'  => $principal->GetProperty('displayname'),
-  			'email' => $principal->GetProperty('email'),
-  			'uri'   => $c->protocol_server_port . $principal->url(),
+        'name'  => $principal->GetProperty('displayname'),
+        'email' => $principal->GetProperty('email'),
+        'uri'   => $c->protocol_server_port . $principal->url(),
   ));
   $feed_description = $collection->GetProperty('description');
   if ( isset($feed_description) && $feed_description != '' ) $feed->setDescription($feed_description);
@@ -112,7 +112,7 @@ function caldav_get_feed( $request, $collection ) {
 
     $ical = new vComponent( $event->caldav_data );
     $event_data = $ical->GetComponents('VTIMEZONE', false);
-    
+
     $item = $feed->createEntry();
     $item->setId( $c->protocol_server_port_script . ConstructURL($event->dav_name) );
 

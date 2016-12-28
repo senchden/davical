@@ -38,10 +38,10 @@ $tz = $qry->Fetch();
 
 // define( 'DEBUG_EXPAND', true);
 define( 'DEBUG_EXPAND', false );
- 
+
 
 /**
-* Expand the instances for a STANDARD or DAYLIGHT component of a VTIMEZONE 
+* Expand the instances for a STANDARD or DAYLIGHT component of a VTIMEZONE
 *
 * @param object $vResource is a VCALENDAR with a VTIMEZONE containing components needing expansion
 * @param object $range_start A RepeatRuleDateTime which is the beginning of the range for events.
@@ -61,7 +61,7 @@ function expand_timezone_onsets( vCalendar $vResource, RepeatRuleDateTime $range
   $is_date = false;
   $has_repeats = false;
   $zone_tz = $vtz->GetPValue('TZID');
-  
+
   foreach( $components AS $k => $comp ) {
     if ( DEBUG_EXPAND ) {
       printf( "Starting TZ expansion for component '%s' in timezone '%s'\n", $comp->GetType(), $zone_tz);
@@ -119,7 +119,7 @@ function expand_timezone_onsets( vCalendar $vResource, RepeatRuleDateTime $range
           if ( $rdate > $range_end ) break;
         }
       }
-   
+
       if ( DEBUG_EXPAND ) {
         print( "After rdate_expand");
         foreach( $instances AS $k => $v ) {
@@ -144,7 +144,7 @@ function expand_timezone_onsets( vCalendar $vResource, RepeatRuleDateTime $range
     if ( $utc < $start_utc ) {
       continue;
     }
-    $onsets[$utc] = array( 
+    $onsets[$utc] = array(
       'from' => $comp->GetPValue('TZOFFSETFROM'),
       'to' => $comp->GetPValue('TZOFFSETTO'),
       'name' => $comp->GetPValue('TZNAME'),
@@ -186,7 +186,7 @@ foreach( $observances AS $onset => $details ) {
     new XMLElement('onset', $onset ),
     new XMLElement('utc-offset-from', substr($details['from'],0,-2).':'.substr($details['from'],-2) ),
     new XMLElement('utc-offset-to', substr($details['to'],0,-2).':'.substr($details['to'],-2) )
-  )); 
+  ));
 }
 
 $timezones->NewElement('tzdata', $tzdata );
