@@ -107,7 +107,7 @@ class CalDAVRequest
   public $ticket;
 
   /**
-   * An array of values from the 'Prefer' header.  At present only 'return-minimal' is acted on in any way - you
+   * An array of values from the 'Prefer' header.  At present only 'return=minimal' is acted on in any way - you
    * can test that value with the PreferMinimal() method.
    */
   private $prefer;
@@ -125,7 +125,7 @@ class CalDAVRequest
       $this->prefer = explode( ',', $_SERVER['HTTP_PREFER']);
     }
     else if ( isset($_SERVER['HTTP_BRIEF']) && (strtoupper($_SERVER['HTTP_BRIEF']) == 'T') ) {
-      $this->prefer = array( 'return-minimal');
+      $this->prefer = array( 'return=minimal');
     }
     else
       $this->prefer = array();
@@ -926,12 +926,13 @@ EOSQL;
 
 
   /**
-   * Returns true if the 'Prefer: return-minimal' or 'Brief: t' were present in the request headers.
+   * Returns true if the 'Prefer: return=minimal' or 'Brief: t' were present in the request headers.
    */
   function PreferMinimal() {
     if ( empty($this->prefer) ) return false;
     foreach( $this->prefer AS $v ) {
-      if ( $v == 'return-minimal' ) return true;
+      if ( $v == 'return=minimal' ) return true;
+      if ( $v == 'return-minimal' ) return true; // RFC7240 up until draft -15 (Oct 2012)
     }
     return false;
   }
