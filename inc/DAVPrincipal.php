@@ -577,8 +577,6 @@ class DAVPrincipal extends Principal
   * @return string An XML fragment with the requested properties for this principal
   */
   function RenderAsXML( $properties, &$reply, $props_only = false ) {
-    global $request;
-
     dbg_error_log('principal',':RenderAsXML: Principal "%s"', $this->username );
 
     $prop = new XMLElement('prop');

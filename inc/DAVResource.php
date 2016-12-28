@@ -598,8 +598,6 @@ EOSQL;
   * Retrieve the actual resource.
   */
   protected function FetchResource() {
-    global $c, $session;
-
     if ( isset($this->exists) ) return;   // True or false, we've got what we can already
     if ( $this->_is_collection ) return;   // We have all we're going to read
 
@@ -1401,8 +1399,6 @@ EOQRY;
   * Return ACL settings
   */
   function GetACL( &$xmldoc ) {
-    global $c, $session;
-
     if ( !isset($this->principal) ) $this->FetchPrincipal();
     $default_privs = $this->principal->default_privileges;
     if ( isset($this->collection->default_privileges) ) $default_privs = $this->collection->default_privileges;
@@ -1433,8 +1429,6 @@ EOQRY;
   * Return general server-related properties, in plain form
   */
   function GetProperty( $name ) {
-    global $c, $session;
-
 //    dbg_error_log( 'DAVResource', ':GetProperty: Fetching "%s".', $name );
     $value = null;
 
@@ -1910,8 +1904,6 @@ EOQRY;
   * @return string An XML fragment with the requested properties for this principal
   */
   function RenderAsXML( $properties, &$reply, $bound_parent_path = null ) {
-    global $session, $c, $request;
-
     dbg_error_log('DAVResource',':RenderAsXML: Resource "%s" exists(%d)', $this->dav_name, $this->Exists() );
 
     if ( !$this->Exists() ) return null;
