@@ -37,7 +37,7 @@ class DAVPrincipal extends Principal
   private $calendar_free_busy_set;
 
   /**
-  * @var RFC3744: The principals that are direct members of this group.
+  * @var RFC3744: Whether this is a group principal.
   */
   protected $_is_group;
 
@@ -232,10 +232,10 @@ class DAVPrincipal extends Principal
         }
       }
     }
-//      @dbg_error_log( 'principal', 'Read-proxy-for:    %s', implode(',',$this->read_proxy_for) );
-//      @dbg_error_log( 'principal', 'Write-proxy-for:   %s', implode(',',$this->write_proxy_for) );
-//      @dbg_error_log( 'principal', 'Read-proxy-group:  %s', implode(',',$this->read_proxy_group) );
-//      @dbg_error_log( 'principal', 'Write-proxy-group: %s', implode(',',$this->write_proxy_group) );
+      dbg_error_log( 'principal', 'Read-proxy-for:    %s', implode(',',$this->read_proxy_for) );
+      dbg_error_log( 'principal', 'Write-proxy-for:   %s', implode(',',$this->write_proxy_for) );
+      dbg_error_log( 'principal', 'Read-proxy-group:  %s', implode(',',$this->read_proxy_group) );
+      dbg_error_log( 'principal', 'Write-proxy-group: %s', implode(',',$this->write_proxy_group) );
   }
 
 
@@ -448,7 +448,7 @@ class DAVPrincipal extends Principal
   * Returns properties which are specific to this principal
   */
   function PrincipalProperty( $tag, $prop, &$reply, &$denied ) {
-    global $c;
+    global $c, $request;
 
     dbg_error_log('principal',':PrincipalProperty: Principal Property "%s"', $tag );
     switch( $tag ) {
@@ -485,8 +485,18 @@ class DAVPrincipal extends Principal
 
       case 'http://calendarserver.org/ns/:group-member-set':
       case 'DAV::group-member-set':
-        if ( ! $this->_is_group ) return false;
-        $reply->DAVElement( $prop, 'group-member-set', $reply->href($this->group_member_set) );
+        if ( $request->IsProxyRequest() ) {
+          /** calendar-proxy-{read,write} pseudo-principal, see caldav-proxy 3.2 */
+          if ($request->proxy_type == 'read') {
+            $reply->DAVElement( $prop, 'group-member-set', $reply->href($this->ReadProxyGroup()) );
+          } else {
+            $reply->DAVElement( $prop, 'group-member-set', $reply->href($this->WriteProxyGroup()) );
+          }
+        } else {
+          /** regular group principal */
+          if ( ! $this->_is_group ) return false;
+          $reply->DAVElement( $prop, 'group-member-set', $reply->href($this->group_member_set) );
+        }
         break;
 
       case 'http://calendarserver.org/ns/:group-membership':
