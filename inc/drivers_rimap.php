@@ -11,24 +11,20 @@
 * @license   http://gnu.org/copyleft/gpl.html GNU GPL v2 or later
 */
 
+// The PHP interpreter will die quietly unless satisfied. This provides user feedback instead.
+if (!function_exists('imap_open')) {
+  die("drivers_rimap: php-imap required.");
+}
+
 require_once("auth-functions.php");
 
-class imapPamDrivers
+class rimapPamDrivers
 {
   /**#@+
   * @access private
   */
 
   /**#@-*/
-
-
-  /**
-  * Constructor.
-  * @param string $imap_url formated for imap_open()
-  */
-  function imapPamDrivers($imap_url){
-      $this->__construct($imap_url);
-  }
 
 
   /**
@@ -40,7 +36,7 @@ class imapPamDrivers
   {
       global $c;
       if (empty($imap_url)){
-          $c->messages[] = sprintf(i18n('drivers_imap_pam : imap_url parameter not configured in /etc/davical/*-conf.php'));
+          $c->messages[] = sprintf(i18n('drivers_rimap : imap_url parameter not configured in /etc/davical/*-conf.php'));
           $this->valid=false;
           return ;
       }
