@@ -201,12 +201,12 @@ try {
   }
 }
 catch( Exception $e ) {
-  class FakeSession {
+  class setupFakeSession {
     function AllowedTo() {
       return true;
     }
   }
-  $session = new FakeSession(1);
+  $session = new setupFakeSession(1);
 }
 
 

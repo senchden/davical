@@ -1,7 +1,8 @@
 <?php
 /**
+* iSchedule administration helper
 *
-* @package   iSchedule administration helper.
+* @package   davical
 * @subpackage   iSchedule
 * @author    Andrew McMillan <andrew@morphoss.com>
 * @copyright Catalyst .Net Ltd, Morphoss Ltd <http://www.morphoss.com/>

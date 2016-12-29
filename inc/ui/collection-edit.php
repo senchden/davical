@@ -182,7 +182,7 @@ $privilege_xlate = array(
 );
 
 /**
-* privilege_format_function is for formatting the binary privileges from the
+* collection_privilege_format_function is for formatting the binary privileges from the
 * database, including localising them.  This is a hook function for a browser
 * column object, so it takes three parameters:
 * @param mixed $value The value of the column.
@@ -190,7 +190,7 @@ $privilege_xlate = array(
 * @param dbrow $row The row object we read from the database.
 * @return string The formatted privileges.
 */
-function privilege_format_function( $value, $column, $row ) {
+function collection_privilege_format_function( $value, $column, $row ) {
   global $privilege_xlate;
 
   $privs = bits_to_privilege($value);
@@ -405,7 +405,7 @@ if ( $editor->Available() ) {
     }
   }
 
-  function edit_grant_row( $row_data ) {
+  function edit_grant_row_collection( $row_data ) {
     global $grantrow, $id, $privilege_xlate, $privilege_names;
     global $btn_all, $btn_all_title, $btn_rw, $btn_rw_title, $btn_read, $btn_read_title;
     global $btn_fb, $btn_fb_title, $btn_sd, $btn_sd_title, $btn_ss, $btn_ss_title;
@@ -464,7 +464,7 @@ EOTEMPLATE;
   $browser->AddHidden( 'principal_link', "'<a href=\"$rowurl' || to_principal || '\">' || to_principal || '</a>'" );
   $browser->AddHidden( 'grant_privileges', 'privileges' );
   $browser->AddColumn( 'displayname', translate('Display Name') );
-  $browser->AddColumn( 'privs', translate('Privileges'), '', '', 'privileges', '', '', 'privilege_format_function' );
+  $browser->AddColumn( 'privs', translate('Privileges'), '', '', 'privileges', '', '', 'collection_privilege_format_function' );
   $browser->AddColumn( 'members', translate('Has Members'), '', '', 'has_members_list(principal_id)' );
 
   if ( $can_write_collection ) {
@@ -489,11 +489,11 @@ EOTEMPLATE;
 
   if ( $can_write_collection ) {
     if ( isset($_GET['edit_grant']) ) {
-      $browser->MatchedRow('to_principal', $_GET['edit_grant'], 'edit_grant_row');
+      $browser->MatchedRow('to_principal', $_GET['edit_grant'], 'edit_grant_row_collection');
     }
     else {
       $extra_row = array( 'to_principal' => -1 );
-      $browser->MatchedRow('to_principal', -1, 'edit_grant_row');
+      $browser->MatchedRow('to_principal', -1, 'edit_grant_row_collection');
       $extra_row = (object) $extra_row;
       $browser->AddRow($extra_row);
     }

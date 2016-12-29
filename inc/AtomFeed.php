@@ -1,4 +1,12 @@
 <?php
+/**
+ * Atom feed of recent changes to a calendar collection
+ *
+ * @package davical
+ * @subpackage feed
+ * @author Andrew McMillan <andrew@morphoss.com>
+ * @license GPL v2 or later
+ */
 
 require_once("XMLDocument.php");
 

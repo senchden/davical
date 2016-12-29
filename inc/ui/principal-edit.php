@@ -426,7 +426,7 @@ EOTEMPLATE;
 
 
 /**
-* privilege_format_function is for formatting the binary privileges from the
+* principal_privilege_format_function is for formatting the binary privileges from the
 * database, including localising them.  This is a hook function for a browser
 * column object, so it takes three parameters:
 * @param mixed $value The value of the column.
@@ -434,7 +434,7 @@ EOTEMPLATE;
 * @param dbrow $row The row object we read from the database.
 * @return string The formatted privileges.
 */
-function privilege_format_function( $value, $column, $row ) {
+function principal_privilege_format_function( $value, $column, $row ) {
   global $privilege_xlate;
 
   $privs = bits_to_privilege($value,'*');
@@ -624,7 +624,7 @@ function grant_row_editor() {
 }
 
 
-function edit_grant_row( $row_data ) {
+function edit_grant_row_principal( $row_data ) {
   global $id, $grantrow;
 
   $orig_to_id = intval($row_data->to_principal);
@@ -665,7 +665,7 @@ function principal_grants_browser() {
   $browser->AddHidden( 'principal_link', "'<a href=\"$rowurl' || to_principal || '\">' || to_principal || '</a>'" );
   $browser->AddHidden( 'grant_privileges', 'privileges' );
   $browser->AddColumn( 'displayname', translate('Display Name') );
-  $browser->AddColumn( 'privs', translate('Privileges'), '', '', 'privileges', '', '', 'privilege_format_function' );
+  $browser->AddColumn( 'privs', translate('Privileges'), '', '', 'privileges', '', '', 'principal_privilege_format_function' );
   $browser->AddColumn( 'members', translate('Has Members'), '', '', 'has_members_list(principal_id)' );
 
   if ( $can_write_principal ) {
@@ -690,12 +690,12 @@ function principal_grants_browser() {
 
   if ( $can_write_principal ) {
     if ( isset($_GET['edit_grant']) ) {
-      $browser->MatchedRow('to_principal', $_GET['edit_grant'], 'edit_grant_row');
+      $browser->MatchedRow('to_principal', $_GET['edit_grant'], 'edit_grant_row_principal');
     }
     else if ( isset($id ) ) {
       $browser->RowFormat( '<tr class="r%d">', '</tr>', '#even' );
       $extra_row = array( 'to_principal' => -1 );
-      $browser->MatchedRow('to_principal', -1, 'edit_grant_row');
+      $browser->MatchedRow('to_principal', -1, 'edit_grant_row_principal');
       $extra_row = (object) $extra_row;
       $browser->AddRow($extra_row);
     }
@@ -795,7 +795,7 @@ function access_ticket_browser() {
   $browser->AddColumn( 'ticket_id', translate('Ticket ID'), '', '' );
   $browser->AddColumn( 'target', translate('Target'), '', '<td style="white-space:nowrap;">%s</td>', "COALESCE(d.dav_name,c.dav_name)" );
   $browser->AddColumn( 'expires', translate('Expires'), '', '', 'TO_CHAR(expires,\'YYYY-MM-DD HH:MI:SS\')');
-  $browser->AddColumn( 'privs', translate('Privileges'), '', '', 'privileges', '', '', 'privilege_format_function' );
+  $browser->AddColumn( 'privs', translate('Privileges'), '', '', 'privileges', '', '', 'principal_privilege_format_function' );
   $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id='.$id.'&ticket_id=##URL:ticket_id##&subaction=delete_ticket';
   $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
 

@@ -55,7 +55,7 @@ if ( count($qry_filters) != 1 ) $qry_filters = false;
 *
 * @return boolean True if the check succeeded, false otherwise.
 */
-function apply_filter( $filters, $item ) {
+function calquery_apply_filter( $filters, $item ) {
   global $session, $c, $request;
 
   if ( count($filters) == 0 ) return true;
@@ -334,7 +334,7 @@ $qry = new AwlQuery( $sql, $params );
 if ( $qry->Exec("calquery",__LINE__,__FILE__) && $qry->rows() > 0 ) {
   while( $dav_object = $qry->Fetch() ) {
     try {
-      if ( !$need_post_filter || apply_filter( $qry_filters, $dav_object ) ) {
+      if ( !$need_post_filter || calquery_apply_filter( $qry_filters, $dav_object ) ) {
         if ( $bound_from != $target_collection->dav_name() ) {
           $dav_object->dav_name = str_replace( $bound_from, $target_collection->dav_name(), $dav_object->dav_name);
         }

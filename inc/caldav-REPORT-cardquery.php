@@ -77,7 +77,7 @@ if ( is_array($qry_filters) ) {
 *
 * @return boolean True if the check succeeded, false otherwise.
 */
-function apply_filter( $filters, $item, $filter_type) {
+function cardquery_apply_filter( $filters, $item, $filter_type) {
   global $session, $c, $request;
 
   if ( count($filters) == 0 ) return true;
@@ -316,7 +316,7 @@ if ( isset($c->strict_result_ordering) && $c->strict_result_ordering ) $sql .= "
 $qry = new AwlQuery( $sql, $params );
 if ( $qry->Exec("cardquery",__LINE__,__FILE__) && $qry->rows() > 0 ) {
   while( $address_object = $qry->Fetch() ) {
-    if ( !$need_post_filter || apply_filter( $post_filters, $address_object, $qry_filters_combination ) ) {
+    if ( !$need_post_filter || cardquery_apply_filter( $post_filters, $address_object, $qry_filters_combination ) ) {
       if ( $bound_from != $target_collection->dav_name() ) {
         $address_object->dav_name = str_replace( $bound_from, $target_collection->dav_name(), $address_object->dav_name);
       }

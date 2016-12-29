@@ -1,6 +1,9 @@
 <?php
 /**
  * A script for returning a feed (currently Atom) of recent changes to a calendar collection
+ *
+ * @package davical
+ * @subpackage feed
  * @author Leho Kraav <leho@kraav.com>
  * @author Andrew McMillan <andrew@morphoss.com>
  * @license GPL v2 or later
