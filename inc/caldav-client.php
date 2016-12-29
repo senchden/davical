@@ -1,12 +1,13 @@
 <?php
 /**
-* A Class for connecting to a caldav server
+* A Class for connecting to a caldav server (older, standalone version)
+* Use caldav-client-v2.php for a more powerful implementation.
 *
 * @package   awl
 * removed curl - now using fsockopen
 * changed 2009 by Andres Obrero - Switzerland andres@obrero.ch
 *
-* @subpackage   caldav
+* @subpackage caldav-client
 * @author Andrew McMillan <debian@mcmillan.net.nz>
 * @copyright Andrew McMillan
 * @license   http://gnu.org/copyleft/gpl.html GNU GPL v2
@@ -15,8 +16,6 @@
 
 /**
 * A class for accessing DAViCal via CalDAV, as a client
-*
-* @package   awl
 */
 class CalDAVClient {
   /**

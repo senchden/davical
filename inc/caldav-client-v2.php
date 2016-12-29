@@ -4,7 +4,7 @@
 *
 * @package   awl
 *
-* @subpackage   caldav
+* @subpackage caldav-client-v2
 * @author Andrew McMillan <andrew@mcmillan.net.nz>
 * @copyright Andrew McMillan
 * @license   http://www.gnu.org/licenses/lgpl-3.0.txt  GNU LGPL version 3 or later
