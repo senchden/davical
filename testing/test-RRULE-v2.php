@@ -9,7 +9,7 @@ else {
 }
 require_once("always.php");
 $c->dbg = array();
-require_once("RRule-v2.php");
+require_once("RRule.php");
 require_once('AwlQuery.php');
 
 @header("Content-Type: text/plain");

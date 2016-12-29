@@ -11,7 +11,7 @@
 
 require_once('vCalendar.php');
 require_once('WritableCollection.php');
-require_once('RRule-v2.php');
+require_once('RRule.php');
 
 /**
  * Entry point for scheduling on DELETE, for which there are thee outcomes:

@@ -93,7 +93,7 @@ if ( $args->debug && is_array($debugging )) {
 require_once("./always.php");
 require_once('AwlQuery.php');
 require_once('AwlCache.php');
-require_once('RRule-v2.php');
+require_once('RRule.php');
 require_once('vCalendar.php');
 
 

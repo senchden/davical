@@ -21,7 +21,7 @@ require_once('vCalendar.php');
 require_once('WritableCollection.php');
 require_once('schedule-functions.php');
 include_once('iSchedule.php');
-include_once('RRule-v2.php');
+include_once('RRule.php');
 
 $bad_events = null;
 

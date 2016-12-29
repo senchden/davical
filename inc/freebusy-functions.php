@@ -7,7 +7,7 @@
  */
 
 include_once('vCalendar.php');
-include_once('RRule-v2.php');
+include_once('RRule.php');
 
 
 function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null ) {

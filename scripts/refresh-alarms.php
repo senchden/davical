@@ -82,7 +82,7 @@ if ( $args->slow_query_threshold !== false ) {
   $c->default_query_warning_threshold = $args->slow_query_threshold;
 }
 require_once('AwlQuery.php');
-require_once('RRule-v2.php');
+require_once('RRule.php');
 require_once('vCalendar.php');
 
 

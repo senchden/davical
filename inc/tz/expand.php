@@ -10,7 +10,7 @@
 */
 
 require_once('vCalendar.php');
-require_once('RRule-v2.php');
+require_once('RRule.php');
 
 if ( empty($format) ) $format = 'text/calendar';
 if ( $format != 'text/calendar' ) {

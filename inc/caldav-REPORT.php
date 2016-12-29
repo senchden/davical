@@ -13,7 +13,7 @@ dbg_error_log("REPORT", "method handler");
 require_once("XMLDocument.php");
 require_once('DAVResource.php');
 
-require_once('RRule-v2.php');
+require_once('RRule.php');
 
 if ( ! ini_get('open_basedir') && (isset($c->dbg['ALL']) || (isset($c->dbg['report']) && $c->dbg['report'])) ) {
   $fh = fopen('/var/log/davical/REPORT.debug','w');

@@ -99,7 +99,7 @@ function caldav_get_feed( $request, $collection ) {
   $feed_description = $collection->GetProperty('description');
   if ( isset($feed_description) && $feed_description != '' ) $feed->setDescription($feed_description);
 
-  require_once('RRule-v2.php');
+  require_once('RRule.php');
 
   $need_zones = array();
   $timezones = array();

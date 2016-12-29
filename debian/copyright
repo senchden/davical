@@ -12,7 +12,7 @@ License: GPL-2+
 
 Files: dba/caldav_functions.sql htdocs/public.php htdocs/tools.php
  inc/pubsub.php inc/caldav-MKCOL.php inc/log_caldav_action.php
- inc/caldav-ACL.php inc/caldav-PROPPATCH.php inc/RRule.php
+ inc/caldav-ACL.php inc/caldav-PROPPATCH.php
  inc/HTTPAuthSession.php inc/caldav-client.php inc/DAViCalSession.php
  inc/caldav-REPORT.php inc/caldav-MOVE.php
 Copyright: 2006 - 2013, Andrew McMillan <andrew@mcmillan.net.nz>

@@ -42,7 +42,7 @@ if ( isset($argv[2]) ) {
 
 require_once('vCalendar.php');
 require_once('XMLDocument.php');
-require_once('RRule-v2.php');
+require_once('RRule.php');
 
 chdir($original_dir);
 
