@@ -79,6 +79,29 @@ switch( $xmltree->GetNSTag() ) {
     exit; // Not that it should return anyway.
 }
 
+/**
+* check if we need to do expansion of recurring events
+* @param object $calendar_data_node
+*/
+function check_for_expansion( $calendar_data_node ) {
+  global $need_expansion, $expand_range_start, $expand_range_end, $expand_as_floating;
+
+  if ( !class_exists('DateTime') ) return; /** We don't support expansion on PHP5.1 */
+
+  $expansion = $calendar_data_node->GetElements('urn:ietf:params:xml:ns:caldav:expand');
+  if ( isset($expansion[0]) ) {
+    $need_expansion = true;
+    $expand_range_start = $expansion[0]->GetAttribute('start');
+    $expand_range_end = $expansion[0]->GetAttribute('end');
+    $expand_as_floating = $expansion[0]->GetAttribute('floating');
+    if ( isset($expand_range_start) ) $expand_range_start = new RepeatRuleDateTime($expand_range_start);
+    if ( isset($expand_range_end) )   $expand_range_end   = new RepeatRuleDateTime($expand_range_end);
+    if ( isset($expand_as_floating) && $expand_as_floating == "yes" )
+      $expand_as_floating = true;
+    else
+      $expand_as_floating = false;
+  }
+}
 
 
 /**
