@@ -303,7 +303,6 @@ class CalDAVClient {
   *
   * @param string $filter XML fragment which is the <filter> element of a calendar-query
   * @param string $relative_url The URL relative to the base_url specified when the calendar was opened.  Default ''.
-  * @param string $report_type Used as a name for the array element containing the calendar data. @deprecated
   *
   * @return array An array of the relative URLs, etags, and events from the server.  Each element of the array will
   *               be an array with 'href', 'etag' and 'data' elements, corresponding to the URL, the server-supplied

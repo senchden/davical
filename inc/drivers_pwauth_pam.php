@@ -76,7 +76,7 @@ function PWAUTH_PAM_check($username, $password) {
           dbg_error_log( "PAM", "Unable to create local principal for '%s'", $username );
           return false;
         }
-        CreateHomeCalendar($username);
+        CreateHomeCollections($username);
       }
       return $principal;
       break;

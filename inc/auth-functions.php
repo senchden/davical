@@ -28,36 +28,46 @@
 require_once("DataUpdate.php");
 
 if ( !function_exists('auth_functions_deprecated') ) {
+  /**
+   * Warn about deprecated auth functions
+   */
   function auth_functions_deprecated( $method, $message = null ) {
-    global $c;
-    if ( isset($c->dbg['ALL']) || isset($c->dbg['deprecated']) ) {
       $stack = debug_backtrace();
       array_shift($stack);
-      if ( preg_match( '{/inc/auth-functions.php$}', $stack[0]['file'] ) && $stack[0]['line'] > __LINE__ ) return;
-      dbg_error_log("LOG", " auth-functions: Call to deprecated routine '%s'%s", $method, (isset($message)?': '.$message:'') );
+      dbg_error_log("ERROR", " auth-functions: Call to deprecated routine '%s'%s", $method, (isset($message)?': '.$message:'') );
       foreach( $stack AS $k => $v ) {
-        dbg_error_log( 'LOG', ' auth-functions: Deprecated call from line %4d of %s', $v['line'], $v['file']);
+        dbg_error_log( 'ERROR', ' auth-functions: Deprecated call from line %4d of %s', $v['line'], $v['file']);
       }
-    }
   }
 }
 
-
+/**
+ * @deprecated
+ */
 function getUserByName( $username, $use_cache=true ) {
   auth_functions_deprecated('getUserByName','replaced by Principal class');
   return new Principal('username', $username, $use_cache);
 }
 
+/**
+ * @deprecated
+ */
 function getUserByEMail( $email, $use_cache = true ) {
   auth_functions_deprecated('getUserByEMail','replaced by Principal class');
   return new Principal('email', $email, $use_cache);
 }
 
+/**
+ * @deprecated
+ */
 function getUserByID( $user_no, $use_cache = true ) {
   auth_functions_deprecated('getUserByID','replaced by Principal class');
   return new Principal('user_no', $user_no, $use_cache);
 }
 
+/**
+ * @deprecated
+ */
 function getPrincipalByID( $principal_id, $use_cache = true ) {
   auth_functions_deprecated('getPrincipalByID','replaced by Principal class');
   return new Principal('principal_id', $principal_id, $use_cache);
@@ -168,8 +178,8 @@ function CreateHomeCollections( $username, $defult_timezone = null ) {
 }
 
 /**
- * Backward compatibility
- * @param unknown_type $username
+ * @deprecated
+ * @param string $username
  */
 function CreateHomeCalendar($username) {
   auth_functions_deprecated('CreateHomeCalendar','renamed to CreateHomeCollections');
@@ -185,11 +195,12 @@ function CreateDefaultRelationships( $username ) {
   if(! isset($c->default_relationships) || count($c->default_relationships) == 0) return true;
 
   $changes = false;
+  $principal = new Principal('username', $username, true);
   foreach($c->default_relationships as $group => $relationships)
   {
     $sql = 'INSERT INTO grants (by_principal, to_principal, privileges) VALUES(:by_principal, :to_principal, :privileges::INT::BIT(24))';
     $params = array(
-      ':by_principal' => getUserByName($username)->principal_id,
+      ':by_principal' => $principal->principal_id,
       ':to_principal' => $group,
       ':privileges' => privilege_to_bits($relationships)
     );
@@ -211,7 +222,11 @@ function CreateDefaultRelationships( $username ) {
   return true;
 }
 
-
+/**
+ * Set a new timezone for a user's calendars
+ * @param string $username
+ * @param string $new_timezone
+ */
 function UpdateCollectionTimezones( $username, $new_timezone=null ) {
   if ( empty($new_timezone) ) return;
   $qry = new AwlQuery('UPDATE collection SET timezone=? WHERE dav_name LIKE ? AND is_calendar', '/'.$username.'/%', $new_timezone);
@@ -219,7 +234,7 @@ function UpdateCollectionTimezones( $username, $new_timezone=null ) {
 }
 
 /**
-* Update the local cache of the remote user details
+* @deprecated
 * @param object $usr The user details we read from the remote.
 */
 function UpdateUserFromExternal( &$usr ) {
