@@ -34,8 +34,7 @@ $editor->AddAttribute('mode', 'id', 'fld_mode');
 $editor->SetWhere( 'collection_id='.$id );
 
 $privilege_names = array( 'read', 'write-properties', 'write-content', 'unlock', 'read-acl', 'read-current-user-privilege-set',
-                         'bind', 'unbind', 'write-acl', 'read-free-busy', 'schedule-deliver-invite', 'schedule-deliver-reply',
-                         'schedule-query-freebusy', 'schedule-send-invite', 'schedule-send-reply', 'schedule-send-freebusy' );
+                          'bind', 'unbind', 'write-acl', 'read-free-busy' );
 
 $params = array(
   ':session_principal' => $session->principal_id,
@@ -193,10 +192,10 @@ $privilege_xlate = array(
 function collection_privilege_format_function( $value, $column, $row ) {
   global $privilege_xlate;
 
-  $privs = bits_to_privilege($value);
+  $privs = bits_to_privilege($value, 'calendar');
   $formatted = '';
   foreach( $privs AS $k => $v ) {
-    $formatted .= ($formatted == '' ? '' : ' , ');
+    $formatted .= ($formatted == '' ? '' : ', ');
     $v = preg_replace( '{^.*:}', '', $v );
     $formatted .= (isset($privilege_xlate[$v]) ? $privilege_xlate[$v] : $v );
   }
@@ -348,10 +347,6 @@ label.privilege {
  onclick="toggle_privileges('default_privileges', 'read', 'read-free-busy', 'schedule-query-freebusy', 'read-current-user-privilege-set' );">
 <input type="button" value="$btn_fb" class="submit" title="$btn_fb_title"
  onclick="toggle_privileges('default_privileges', 'read-free-busy', 'schedule-query-freebusy' );">
-<input type="button" value="$btn_sd" class="submit" title="$btn_sd_title"
- onclick="toggle_privileges('default_privileges', 'schedule-deliver-invite', 'schedule-deliver-reply', 'schedule-query-freebusy' );">
-<input type="button" value="$btn_ss" class="submit" title="$btn_ss_title"
- onclick="toggle_privileges('default_privileges', 'schedule-send-invite', 'schedule-send-reply', 'schedule-send-freebusy' );">
 <br>$privileges_set</div></td> </tr>
  <tr> <th class="right">$prompt_timezone:</th>         <td class="left">##timezone.select##</td> </tr>
  <tr> <th class="right">$prompt_schedule_transp:</th>  <td class="left">##schedule_transp.select##</td> </tr>
@@ -441,10 +436,6 @@ if ( $editor->Available() ) {
  onclick="toggle_privileges('grant_privileges', 'read', 'read-free-busy', 'schedule-query-freebusy', 'read-current-user-privilege-set' );">
 <input type="button" value="$btn_fb" class="submit" title="$btn_fb_title"
  onclick="toggle_privileges('grant_privileges', 'read-free-busy', 'schedule-query-freebusy' );">
-<input type="button" value="$btn_sd" class="submit" title="$btn_sd_title"
- onclick="toggle_privileges('grant_privileges', 'schedule-deliver-invite', 'schedule-deliver-reply', 'schedule-query-freebusy' );">
-<input type="button" value="$btn_ss" class="submit" title="$btn_ss_title"
- onclick="toggle_privileges('grant_privileges', 'schedule-send-invite', 'schedule-send-reply', 'schedule-send-freebusy' );">
 <br>$privileges_set
   <td class="center">##$submit_label.submit##</td>
 </form>
