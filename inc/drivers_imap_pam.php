@@ -1,10 +1,10 @@
 <?php
 /**
-* Manages PAM repository connection with local imap server help
+* Authentication against IMAP using the imap_open function
 *
 * @package   davical
-* @category Technical
-* @subpackage   ldap
+* @category  Technical
+* @subpackage authentication/drivers
 * @author    Oliver Schulze <oliver@samera.com.py>,
 *            Andrew McMillan <andrew@mcmillan.net.nz>
 * @copyright Based on Eric Seigne script drivers_squid_pam.php
@@ -18,7 +18,10 @@ if (!function_exists('imap_open')) {
 
 require_once("auth-functions.php");
 
-class imapPamDrivers
+/**
+ * Plugin to authenticate against IMAP
+ */
+class imapPamDriver
 {
   /**#@+
   * @access private
@@ -45,7 +48,7 @@ class imapPamDrivers
 
 
 /**
-* Check the username / password against the PAM system
+* Check the username / password against the IMAP server, provision from GECOS
 */
 function IMAP_PAM_check($username, $password ){
   global $c;

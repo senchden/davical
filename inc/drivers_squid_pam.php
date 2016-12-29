@@ -1,10 +1,10 @@
 <?php
 /**
-* Manages PAM repository connection with SQUID help
+* Authentication against PAM with Squid
 *
 * @package   davical
-* @category Technical
-* @subpackage   ldap
+* @category  Technical
+* @subpackage authentication/drivers
 * @author    Eric Seigne <eric.seigne@ryxeo.com>,
 *            Andrew McMillan <andrew@mcmillan.net.nz>
 * @copyright Eric Seigne
@@ -13,7 +13,10 @@
 
 require_once("auth-functions.php");
 
-class squidPamDrivers
+/**
+ * Plugin to authenticate with the help of Squid
+ */
+class squidPamDriver
 {
   /**#@+
   * @access private
@@ -39,7 +42,7 @@ class squidPamDrivers
 
 
 /**
-* Check the username / password against the PAM system
+* Check the username / password against PAM using the Squid helper script
 */
 function SQUID_PAM_check($username, $password ){
   global $c;
@@ -50,10 +53,10 @@ function SQUID_PAM_check($username, $password ){
                                  $script);
   $auth_result = exec($cmd);
   if ( $auth_result == "OK") {
-    dbg_error_log('pwauth', 'User %s successfully authenticated', $username);
+    dbg_error_log('PAM', 'User %s successfully authenticated', $username);
     $principal = new Principal('username',$username);
     if ( !$principal->Exists() ) {
-      dbg_error_log('pwauth', 'User %s does not exist in local db, creating', $username);
+      dbg_error_log('PAM', 'User %s does not exist in local db, creating', $username);
       $pwent = posix_getpwnam($username);
       $gecos = explode(',',$pwent['gecos']);
       $fullname = $gecos[0];

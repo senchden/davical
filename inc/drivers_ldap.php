@@ -3,8 +3,8 @@
 * Manages LDAP repository connection
 *
 * @package   davical
-* @category Technical
-* @subpackage   ldap
+* @category  Technical
+* @subpackage authentication/drivers
 * @author    Maxime Delorme <mdelorme@tennaxia.net>,
 *            Andrew McMillan <andrew@mcmillan.net.nz>
 * @copyright Maxime Delorme
@@ -13,7 +13,10 @@
 
 require_once("auth-functions.php");
 
-class ldapDrivers
+/**
+ * Plugin to authenticate and sync with LDAP
+ */
+class ldapDriver
 {
   /**#@+
   * @access private
@@ -314,7 +317,7 @@ function sync_user_from_LDAP( Principal &$principal, $mapping, $ldap_values ) {
   }
 }
 
-/*
+/**
 * explode the multipart mapping
 */
 function array_values_mapping($mapping){
@@ -421,6 +424,9 @@ function LDAP_check($username, $password ){
 
 }
 
+/**
+* turn a list of uniqueMember into member strings
+*/
 function fix_unique_member($list) {
   $fixed_list = array();
   foreach ( $list as $member ){
