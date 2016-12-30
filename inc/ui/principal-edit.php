@@ -74,6 +74,9 @@ function handle_subaction( $subaction ) {
           return false;
         }
       }
+      else {
+        $c->messages[] = i18n('You are not allowed to delete collections for this principal.');
+      }
       break;
 
     case 'delete_principal':
@@ -96,6 +99,9 @@ function handle_subaction( $subaction ) {
           $delete_principal_confirmation_required = $session->BuildConfirmationHash('GET', 'confirm');
           return false;
         }
+      }
+      else {
+        $c->messages[] = i18n('You are not allowed to delete principals.');
       }
       break;
 
@@ -121,6 +127,9 @@ function handle_subaction( $subaction ) {
           return false;
         }
       }
+      else {
+        $c->messages[] = i18n('You are not allowed to delete tickets for this principal.');
+      }
       break;
 
     case 'delete_bind_in':
@@ -129,7 +138,7 @@ function handle_subaction( $subaction ) {
       if ( $session->AllowedTo('Admin')
                 || ($id > 0 && $session->principal_id == $id) ) {
         if ( $session->CheckConfirmationHash('GET', 'confirm') ) {
-          dbg_error_log('admin-principal-edit',':handle_action: Allowed to delete ticket "%s" for principal %d', $_GET['bind_id'], $id );
+          dbg_error_log('admin-principal-edit',':handle_action: Allowed to delete binding "%s" for principal %d', $_GET['bind_id'], $id );
           $qry = new AwlQuery('DELETE FROM dav_binding WHERE bind_id=?;', $_GET['bind_id'] );
           if ( $qry->Exec() ) {
             $c->messages[] = i18n('Binding deleted');
@@ -150,6 +159,9 @@ function handle_subaction( $subaction ) {
           }
           return false;
         }
+      }
+      else {
+        $c->messages[] = i18n('You are not allowed to delete bindings for this principal.');
       }
       break;
 
