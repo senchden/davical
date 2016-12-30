@@ -90,7 +90,7 @@ if ( $can_write_collection && $editor->IsSubmit() ) {
     $c->messages[] = i18n("Creating new Collection.");
   }
   else {
-    $c->messages[] = i18n("Updating Collection record.");
+    $c->messages[] = i18n("Updating Collection.");
   }
   if ( !$editor->Write() ) {
     $c->messages[] = i18n("Failed to write collection.");
@@ -128,7 +128,7 @@ if ( $can_write_collection && $editor->IsSubmit() ) {
 else {
   if ( $id > 0 ) $editor->GetRecord();
   if ( $editor->IsSubmit() ) {
-    $c->messages[] = i18n('You do not have permission to modify this record.');
+    $c->messages[] = i18n('You do not have permission to modify this collection.');
   }
 }
 if ( $editor->Available() ) {
@@ -233,6 +233,25 @@ $btn_fb = htmlspecialchars(translate('Free/Busy'));        $btn_fb_title = htmls
 $btn_sd = htmlspecialchars(translate('Schedule Deliver')); $btn_sd_title = htmlspecialchars(translate('Privileges to allow delivery of scheduling messages'));
 $btn_ss = htmlspecialchars(translate('Schedule Send'));    $btn_ss_title = htmlspecialchars(translate('Privileges to delegate scheduling decisions'));
 
+if ($can_write_collection || ! $id > 0) {
+  $privileges_row = <<<EOPRIV
+<input type="button" value="$btn_all" class="submit" title="$btn_all_title" onclick="toggle_privileges('default_privileges', 'all', 'form_editor_1');">
+<input type="button" value="$btn_rw" class="submit" title="$btn_rw_title"
+ onclick="toggle_privileges('default_privileges', 'read', 'write-properties', 'write-content', 'bind', 'unbind', 'read-free-busy',
+                            'read-current-user-privilege-set', 'schedule-deliver-invite', 'schedule-deliver-reply', 'schedule-query-freebusy',
+                            'schedule-send-invite', 'schedule-send-reply', 'schedule-send-freebusy' );">
+<input type="button" value="$btn_read" class="submit" title="$btn_read_title"
+ onclick="toggle_privileges('default_privileges', 'read', 'read-free-busy', 'schedule-query-freebusy', 'read-current-user-privilege-set' );">
+<input type="button" value="$btn_fb" class="submit" title="$btn_fb_title"
+ onclick="toggle_privileges('default_privileges', 'read-free-busy', 'schedule-query-freebusy' );">
+<br>$privileges_set
+EOPRIV;
+  $submit_row = '<tr> <th class="right"></th>                   <td class="left" colspan="2">##submit##</td> </tr>';
+} else {
+  $privileges_row = collection_privilege_format_function( $editor->Value('default_privileges') );
+  $privileges_row = '<div id="privileges">' . $privileges_row . '</div>';
+  $submit_row = '';
+}
 
 $id = $editor->Value('collection_id');
 $template = <<<EOTEMPLATE
@@ -338,20 +357,12 @@ label.privilege {
  <tr> <th class="right">$prompt_addressbook:</th>      <td class="left">##is_addressbook.checkbox##</td> </tr>
  <tr> <th class="right">$prompt_privileges:</th><td class="left">##use_default_privs.checkbox## &nbsp; &nbsp; &nbsp;
  <div id="privileges_settings">
-<input type="button" value="$btn_all" class="submit" title="$btn_all_title" onclick="toggle_privileges('default_privileges', 'all', 'form_editor_1');">
-<input type="button" value="$btn_rw" class="submit" title="$btn_rw_title"
- onclick="toggle_privileges('default_privileges', 'read', 'write-properties', 'write-content', 'bind', 'unbind', 'read-free-busy',
-                            'read-current-user-privilege-set', 'schedule-deliver-invite', 'schedule-deliver-reply', 'schedule-query-freebusy',
-                            'schedule-send-invite', 'schedule-send-reply', 'schedule-send-freebusy' );">
-<input type="button" value="$btn_read" class="submit" title="$btn_read_title"
- onclick="toggle_privileges('default_privileges', 'read', 'read-free-busy', 'schedule-query-freebusy', 'read-current-user-privilege-set' );">
-<input type="button" value="$btn_fb" class="submit" title="$btn_fb_title"
- onclick="toggle_privileges('default_privileges', 'read-free-busy', 'schedule-query-freebusy' );">
-<br>$privileges_set</div></td> </tr>
+  $privileges_row
+ </div></td> </tr>
  <tr> <th class="right">$prompt_timezone:</th>         <td class="left">##timezone.select##</td> </tr>
  <tr> <th class="right">$prompt_schedule_transp:</th>  <td class="left">##schedule_transp.select##</td> </tr>
  <tr> <th class="right">$prompt_description:</th>      <td class="left">##description.textarea.78x6##</td> </tr>
- <tr> <th class="right"></th>                   <td class="left" colspan="2">##submit##</td> </tr>
+ $submit_row
 </table>
 </form>
 <script language="javascript">
@@ -497,8 +508,10 @@ EOTEMPLATE;
   $browser->AddColumn( 'target', translate('Target'), '', '<td style="white-space:nowrap;">%s</td>', "'".$c->base_url.'/caldav.php'."' ||COALESCE(d.dav_name,c.dav_name)" );
   $browser->AddColumn( 'expiry', translate('Expires'), '', '', 'TO_CHAR(expires,\'YYYYMMDD"T"HH:MI:SS\')');
   $browser->AddColumn( 'privs', translate('Privileges'), '', '', "privileges_list(privileges)" );
-  $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id=##dav_owner_id##&ticket_id=##URL:ticket_id##&subaction=delete_ticket';
-  $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+  if ($can_write_collection) {
+    $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id=##dav_owner_id##&ticket_id=##URL:ticket_id##&subaction=delete_ticket';
+    $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+  }
 
   $browser->SetOrdering( 'target', 'A' );
 
@@ -527,8 +540,10 @@ EOTEMPLATE;
   $browser->AddColumn( 'bound_as', translate('Bound As'), '', '<td style="white-space:nowrap;">%s</td>', 'b.dav_name' );
   $browser->AddColumn( 'access_ticket_id', translate('Ticket ID'), '', '' );
   $browser->AddColumn( 'privs', translate('Privileges'), '', '', "privileges_list(privileges)" );
-  $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id=##dav_owner_id##&bind_id=##URL:bind_id##&subaction=delete_binding';
-  $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+  if ($can_write_collection) {
+    $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id=##dav_owner_id##&bind_id=##URL:bind_id##&subaction=delete_binding';
+    $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+  }
 
   $browser->SetOrdering( 'target', 'A' );
 

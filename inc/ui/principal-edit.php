@@ -300,7 +300,13 @@ function principal_editor() {
   $prompt_type = translate('Principal Type');
   $prompt_privileges = translate('Privileges granted to All Users');
 
-  $privs_html = build_privileges_html( $editor, 'default_privileges');
+  if ($can_write_principal) {
+    $privs_html = build_privileges_html( $editor, 'default_privileges');
+    $submit_row = '<tr> <th class="right"></th>                   <td class="left" colspan="2">##submit##</td> </tr>';
+  } else {
+    $privs_html = principal_privilege_format_function( $editor->Value('default_privileges') );
+    $submit_row = '';
+  }
 
   $admin_row_entry = '';
   $delete_principal_button = '';
@@ -386,7 +392,7 @@ label.privilege {
  <tr> <th class="right">$prompt_type:</th>        <td class="left">##type_id.select##</td> </tr>
  $admin_row_entry
  <tr> <th class="right" style="white-space:normal;">$prompt_privileges:</th><td class="left">$privs_html</td> </tr>
- <tr> <th class="right"></th>                   <td class="left" colspan="2">##submit##</td> </tr>
+ $submit_row
 </table>
 </form>
 EOTEMPLATE;
@@ -808,8 +814,10 @@ function access_ticket_browser() {
   $browser->AddColumn( 'target', translate('Target'), '', '<td style="white-space:nowrap;">%s</td>', "COALESCE(d.dav_name,c.dav_name)" );
   $browser->AddColumn( 'expires', translate('Expires'), '', '', 'TO_CHAR(expires,\'YYYY-MM-DD HH:MI:SS\')');
   $browser->AddColumn( 'privs', translate('Privileges'), '', '', 'privileges', '', '', 'principal_privilege_format_function' );
-  $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id='.$id.'&ticket_id=##URL:ticket_id##&subaction=delete_ticket';
-  $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+  if ($can_write_principal) {
+    $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id='.$id.'&ticket_id=##URL:ticket_id##&subaction=delete_ticket';
+    $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+  }
 
   $browser->SetOrdering( 'target', 'A' );
 
@@ -846,7 +854,7 @@ function confirm_delete_ticket($confirmation_hash) {
 
 
 function principal_collection_browser() {
-  global $c, $page_elements, $id, $editor;
+  global $c, $page_elements, $id, $editor, $can_write_principal;
 
   $browser = new Browser(translate('Principal Collections'));
 
@@ -858,15 +866,18 @@ function principal_collection_browser() {
   $browser->AddColumn( 'publicly_readable', translate('Public'), 'centre', '', 'CASE WHEN publicly_readable THEN \''.translate('Yes').'\' ELSE \''.translate('No').'\' END' );
   $browser->AddColumn( 'privs', translate('Privileges'), '', '',
           "COALESCE( privileges_list(default_privileges), '[".translate('from principal')."]')" );
-  $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id='.$id.'&dav_name=##URL:dav_name##&subaction=delete_collection';
-  $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+  if ($can_write_principal) {
+    $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id='.$id.'&dav_name=##URL:dav_name##&subaction=delete_collection';
+    $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+  }
 
   $browser->SetOrdering( 'dav_name', 'A' );
 
   $browser->SetJoins( "collection " );
   $browser->SetWhere( 'user_no = '.intval($editor->Value('user_no')) );
 
-  $browser->AddRow( array( 'dav_name' => '<a href="'.$rowurl.'&user_no='.intval($editor->Value('user_no')).'" class="submit">'.translate('Create Collection').'</a>' ));
+  if ($can_write_principal)
+    $browser->AddRow( array( 'dav_name' => '<a href="'.$rowurl.'&user_no='.intval($editor->Value('user_no')).'" class="submit">'.translate('Create Collection').'</a>' ));
 
   if ( $c->enable_row_linking ) {
     $browser->RowFormat( '<tr onMouseover="LinkHref(this,1);" title="'.translate('Click to edit principal details').'" class="r%d">', '</tr>', '#even' );
@@ -899,8 +910,10 @@ function bindings_to_other_browser() {
   $browser->AddColumn( 'dav_name', translate('To Collection'), '', '<td style="white-space:nowrap;">%s</td>', 'c.dav_name' );
   $browser->AddColumn( 'access_ticket_id', translate('Ticket ID'), '', '' );
   $browser->AddColumn( 'privs', translate('Privileges'), '', '', "privileges_list(privileges)" );
-  $delurl = $c->base_url . sprintf('/admin.php?action=edit&t=principal&id=%s&bind_id=##bind_id##&subaction=delete_bind_in', $editor->Value('principal_id'));
-  $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+  if ($can_write_principal) {
+    $delurl = $c->base_url . sprintf('/admin.php?action=edit&t=principal&id=%s&bind_id=##bind_id##&subaction=delete_bind_in', $editor->Value('principal_id'));
+    $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+  }
 
   $browser->SetOrdering( 'target', 'A' );
 
@@ -935,8 +948,10 @@ function bindings_to_us_browser() {
   $browser->AddColumn( 'bound_as', translate('Bound As'), '', '<td style="white-space:nowrap;">%s</td>', 'b.dav_name' );
   $browser->AddColumn( 'access_ticket_id', translate('Ticket ID'), '', '' );
   $browser->AddColumn( 'privs', translate('Privileges'), '', '', "privileges_list(privileges)" );
-  $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id=##principal_id##&bind_id=##bind_id##&subaction=delete_binding';
-  $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+  if ($can_write_principal) {
+    $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id=##principal_id##&bind_id=##bind_id##&subaction=delete_binding';
+    $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+  }
 
   $browser->SetOrdering( 'target', 'A' );
 
