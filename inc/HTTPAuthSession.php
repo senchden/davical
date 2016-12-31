@@ -20,10 +20,22 @@ class HTTPAuthSession {
   */
 
   /**
+  * Username
+  * @var username string
+  */
+  public $username;
+
+  /**
   * User ID number
   * @var user_no int
   */
   public $user_no;
+
+  /**
+  * Principal ID
+  * @var principal_id int
+  */
+  public $principal_id;
 
   /**
   * User e-mail
@@ -38,7 +50,8 @@ class HTTPAuthSession {
   public $fullname;
 
   /**
-  * Group rights
+  * Group rights (not implemented)
+  * @todo
   * @var groups array
   */
   public $groups;
@@ -371,6 +384,7 @@ class HTTPAuthSession {
     $this->user_no  = $principal->user_no();
     $this->principal_id = $principal->principal_id();
     $this->email = $principal->email();
+    $this->fullname = $principal->fullname();
     $this->dav_name = $principal->dav_name();
     $this->principal = $principal;
 

@@ -20,34 +20,40 @@ class PublicSession {
   */
 
   /**
+  * Username
+  * @var username string
+  */
+  public $username;
+
+  /**
   * User ID number
   * @var user_no int
   */
-  var $user_no;
+  public $user_no;
 
   /**
   * Principal ID
   * @var principal_id int
   */
-  var $principal_id;
+  public $principal_id;
 
   /**
   * User e-mail
   * @var email string
   */
-  var $email;
+  public $email;
 
   /**
   * User full name
   * @var fullname string
   */
-  var $fullname;
+  public $fullname;
 
   /**
   * Group rights
   * @var groups array
   */
-  var $groups;
+  public $groups;
   /**#@-*/
 
   /**
@@ -67,13 +73,13 @@ class PublicSession {
     $this->user_no  = $principal->user_no();
     $this->principal_id = $principal->principal_id();
     $this->email = $principal->email();
+    $this->fullname = $principal->fullname();
     $this->dav_name = $principal->dav_name();
     $this->principal = $principal;
 
     if ( function_exists("awl_set_locale") && isset($this->locale) && $this->locale != "" ) {
       awl_set_locale($this->locale);
     }
-
 
     $this->groups = ( isset($c->public_groups) ? $c->public_groups : array() );
     $this->roles = array( 'Public' => true );
