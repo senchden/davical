@@ -6,6 +6,7 @@
 #
 
 use strict;
+my $no_content = 0;
 
 while( <STDIN> ) {
 
@@ -46,6 +47,13 @@ while( <STDIN> ) {
 
   # Fix up any opaquelocktokens to something regular
   s/opaquelocktoken:[[:xdigit:]]{8}-([[:xdigit:]]{4}-){3}[[:xdigit:]]{12}/opaquelocktoken:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/;
+
+  /^HTTP\/1\.1 204 No Content/ && do {
+    $no_content = 1;
+  };
+  /^Content-Length: 0/ && $no_content && do {
+    $_ = "";
+  };
 
   print;
 }
