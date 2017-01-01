@@ -384,7 +384,7 @@ class HTTPAuthSession {
     $this->user_no  = $principal->user_no();
     $this->principal_id = $principal->principal_id();
     $this->email = $principal->email();
-    $this->fullname = $principal->fullname();
+    $this->fullname = $principal->fullname;
     $this->dav_name = $principal->dav_name();
     $this->principal = $principal;
 
