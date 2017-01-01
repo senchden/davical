@@ -11,7 +11,7 @@
 #
 DBNAME=regression
 PGPOOL=inactive
-HOSTNAME=regression
+HOSTNAME=mycaldav
 
 # We need to run the regression tests in the timezone they were written for.
 export PGTZ=Pacific/Auckland

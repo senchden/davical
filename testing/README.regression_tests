@@ -41,7 +41,7 @@ to /etc/hosts and a VirtualHost to Apache with
     RewriteRule ^/\.well-known/(.*)$ /caldav.php/.well-known/$1 [NC,L]
     # let caldav.php handle "anything else"
     RewriteCond %{REQUEST_URI} !^/$
-    RewriteCond %{REQUEST_URI} !\.(php|css|png|gif|js|jpg)
+    RewriteCond %{REQUEST_URI} !\.(php|css|png|gif|js|jpg|ico)
     RewriteRule ^(.*)$ /caldav.php$1  [NC,L]
   </VirtualHost>
 
@@ -60,6 +60,8 @@ former) with
     $c->hide_alarm = true;
     // some freebusy queries will be 404 otherwise
     $c->public_freebusy_url = true;
+    // helps with 1035-GET-mashup
+    $c->get_includes_subcollections = true;
 
     // for ischedule suite; also needs DKIM set up?
     $c->enable_scheduling = true;
