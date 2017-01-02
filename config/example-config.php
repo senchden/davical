@@ -38,15 +38,6 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 // $c->get_includes_subcollections = true;
 
 /**
-* If "hide_TODO" is true, then VTODO requested from someone other than the
-* admin or owner of a calendar will not get an answer. Often these todo are
-* only relevant to the owner, but in some shared calendar situations they
-* might not be in which case you should set this to false.
-* Default: true
-*/
-// $c->hide_TODO = false;
-
-/**
 * If "readonly_webdav_collections" is true, then calendars accessed via WebDAV
 * will be read-only. Any changes to them must be applied via CalDAV.
 *
@@ -64,6 +55,7 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 *                         ADMIN web Interface                              *
 *                                                                          *
 ***************************************************************************/
+
 /**
 * Address displayed on the login page to indicate who you should ask if you
 * have problems logging on. Also for the "From" header of the email sent when
@@ -160,6 +152,86 @@ $c->admin_email ='calendar-admin@example.com';
 //                         );
 
 /**
+* If "hide_TODO" is true, then VTODO requested from someone other than the
+* admin or owner of a calendar will not get an answer. Often these todo are
+* only relevant to the owner, but in some shared calendar situations they
+* might not be in which case you should set this to false.
+* Default: true
+*/
+// $c->hide_TODO = false;
+
+/**
+* External subscription (BIND) minimum refresh interval
+* Required if you want to enable remote binding ( webcal subscriptions )
+* Default: none
+*/
+// $c->external_refresh = 60;
+
+/**
+* The "support_obsolete_free_busy_property" value controls whether,
+* during a PROPFIND, the obsolete Scheduling property "calendar-free-busy-set"
+* is returned. Set the value to true to support the property only if your
+* client requires it, however note that PROPFIND performance may be
+* adversely affected if you do so.
+* Introduced in DAViCal version 1.1.4 in support of Issue #31 Database
+* Performance Improvements.
+* Default: false
+*/
+// $c->support_obsolete_free_busy_property = false;
+
+/**
+* The default locale will be "en_NZ";
+* If you are in a non-English locale, you can set the default_locale
+* configuration to one of the supported locales.
+*
+* Supported Locales (at present, see: "select * from supported_locales ;" for a full list)
+*
+* "de_DE", "en_NZ", "es_AR", "fr_FR", "nl_NL", "ru_RU"
+*
+* If you want locale support you probably know more about configuring it than me, but
+* at this stage it should be noted that all translations are UTF-8, and pages are
+* served as UTF-8, so you will need to ensure that the UTF-8 versions of these locales
+* are supported on your system.
+*
+* People interested in providing new translations are directed to the Wiki:
+*   http://wiki.davical.org/w/Translating_DAViCal
+*/
+// $c->default_locale = "en_NZ";
+
+/**
+* Default will be $_SERVER['SERVER_NAME'];
+* This is used to construct URLs which are passed in the answers to the client.  You may
+* want to force this to a specific domain in responses if your system is accessed by
+* multiple names, otherwise you probably won't need to change it.
+*/
+// $c->domain_name = 'example.com';
+
+/**
+* Many people want this, but it may be a security issue for you, so it is
+* disabled by default.  If you enable it, then confidential / private events
+* will be visible to the 'organizer' or 'attendee' lists.  The reason that
+* this becomes a security issue is that this identification needs to be based
+* on the user's e-mail address.  The user's e-mail address is generally
+* something which they can set, so they could change it to be the address of
+* an attendee of a meeting and then would be able to read the meeting.
+*
+* Without this, the only person who can view/change PRIVATE or CONFIDENTIAL
+* events in a calendar is someone with full administrative rights to the calendar
+* usually the owner.
+*
+* If the only person that devious is your sysadmin then you probably already
+* enabled this option...
+*/
+// $c->allow_get_email_visibility = false;
+
+
+/***************************************************************************
+*                                                                          *
+*                             Scheduling                                   *
+*                                                                          *
+***************************************************************************/
+
+/**
 * If true, then remote scheduling will be enabled.  There is a possibility 
 * of receiving spam events in calendars if enabled, you will at least know
 * what domain the spam came from as domain key signatures are required for
@@ -203,25 +275,6 @@ $c->admin_email ='calendar-admin@example.com';
 * Default: none
 */  
 // $c->schedule_private_key = 'PRIVATE-KEY-BASE-64-DATA';
-
-/*
-* External subscription (BIND) minimum refresh interval
-* Required if you want to enable remote binding ( webcal subscriptions )
-* Default: none
-*/  
-// $c->external_refresh = 60;
-
-/**
-* The "support_obsolete_free_busy_property" value controls whether,
-* during a PROPFIND, the obsolete Scheduling property "calendar-free-busy-set"
-* is returned. Set the value to true to support the property only if your
-* client requires it, however note that PROPFIND performance may be
-* adversely affected if you do so.
-* Introduced in DAViCal version 1.1.4 in support of Issue #31 Database
-* Performance Improvements.
-* Default: false
-*/
-// $c->support_obsolete_free_busy_property = false;
 
 
 /***************************************************************************
@@ -369,57 +422,22 @@ $c->admin_email ='calendar-admin@example.com';
 * Authentication against PAM/system password database using pwauth.
 */
 //$c->authenticate_hook = array('call' => 'PWAUTH_PAM_check',
-//			      'config' => array('path' => '/usr/sbin/pwauth',
-//						'email_base' => 'example.com'));
+//                              'config' => array('path' => '/usr/sbin/pwauth',
+//                              'email_base' => 'example.com'));
 //include('drivers_pwauth_pam.php');
 
 /**
-* The default locale will be "en_NZ";
-* If you are in a non-English locale, you can set the default_locale
-* configuration to one of the supported locales.
-*
-* Supported Locales (at present, see: "select * from supported_locales ;" for a full list)
-*
-* "de_DE", "en_NZ", "es_AR", "fr_FR", "nl_NL", "ru_RU"
-*
-* If you want locale support you probably know more about configuring it than me, but
-* at this stage it should be noted that all translations are UTF-8, and pages are
-* served as UTF-8, so you will need to ensure that the UTF-8 versions of these locales
-* are supported on your system.
-*
-* People interested in providing new translations are directed to the Wiki:
-*   http://wiki.davical.org/w/Translating_DAViCal
+* Authentication against IMAP using the imap_open function.
 */
-// $c->default_locale = "en_NZ";
-
-/**
-* Default will be $_SERVER['SERVER_NAME'];
-* This is used to construct URLs which are passed in the answers to the client.  You may
-* want to force this to a specific domain in responses if your system is accessed by
-* multiple names, otherwise you probably won't need to change it.
-*/
-// $c->domain_name = 'example.com';
-
-/**
-* Many people want this, but it may be a security issue for you, so it is
-* disabled by default.  If you enable it, then confidential / private events
-* will be visible to the 'organizer' or 'attendee' lists.  The reason that
-* this becomes a security issue is that this identification needs to be based
-* on the user's e-mail address.  The user's e-mail address is generally
-* something which they can set, so they could change it to be the address of
-* an attendee of a meeting and then would be able to read the meeting.
-*
-* Without this, the only person who can view/change PRIVATE or CONFIDENTIAL
-* events in a calendar is someone with full administrative rights to the calendar
-* usually the owner.
-*
-* If the only person that devious is your sysadmin then you probably already
-* enabled this option...
-*/
-// $c->allow_get_email_visibility = false;
+//$c->authenticate_hook['call'] = 'IMAP_PAM_check';
+//$c->authenticate_hook['config'] =  array(
+//  'imap_url' => '{localhost:993/imap/ssl/novalidate-cert}',
+//  'email_base' => 'example.com'
+//);
+//include('drivers_imap_pam.php');
 
 
- /***************************************************************************
+/***************************************************************************
 *                                                                          *
 *                         Push Notification Server                         *
 *                                                                          *
@@ -436,9 +454,10 @@ $c->admin_email ='calendar-admin@example.com';
 */
 
 // $c->notifications_server = array( 'host' => $_SERVER['SERVER_NAME'],      // jabber server hostname
-//                                  'jid'  => 'user@example.com',           // user(JID) to login/ publish as                                  'password' => '',                       // password for above account
-//                  //              'debug_jid' => 'otheruser@example.com'  // send a copy of all publishes to this jid
-//                                );
+//                                   'jid'  => 'user@example.com',           // user(JID) to login/ publish as
+//                                   'password' => '',                       // password for above account
+//                   //              'debug_jid' => 'otheruser@example.com'  // send a copy of all publishes to this jid
+//                                 );
 // include ( 'pubsub.php' );
 
 
