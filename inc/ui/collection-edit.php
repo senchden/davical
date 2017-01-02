@@ -217,6 +217,11 @@ $value_dav_name = $c->base_url.'/caldav.php'. ( $editor->Available() ? '##dav_na
 $prompt_load_file = translate('Load From File');
 $prompt_displayname = translate('Displayname');
 $prompt_entries = translate('Items in Collection');
+if ( $entries > 0 && $editor->Value('is_calendar') && isset($c->get_includes_subcollections) && $c->get_includes_subcollections
+  && ( bindec($permissions->priv) & privilege_to_bits( array('urn:ietf:params:xml:ns:caldav:read-free-busy','DAV::read')))) {
+  $entries = '<a href="' . $c->base_url . '/caldav.php' . substr($editor->Value('dav_name'), 0, -1) . '.ics" title="'
+    . translate('Download entire collection as .ics file') . '">' . $entries . '</a>';
+}
 $prompt_public = translate('Publicly Readable');
 $prompt_calendar = translate('Is a Calendar');
 $prompt_addressbook = translate('Is an Addressbook');

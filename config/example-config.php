@@ -30,6 +30,14 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 // $c->system_name = "DAViCal CalDAV Server";
 
 /**
+* The CalDAV specification does not define GET on a collection, but typically this is
+* used as a .ics download for the whole collection. This will also enable a download
+* link in the web interface for calendars with entries.
+* Default: false
+*/
+// $c->get_includes_subcollections = true;
+
+/**
 * If "hide_TODO" is true, then VTODO requested from someone other than the
 * admin or owner of a calendar will not get an answer. Often these todo are
 * only relevant to the owner, but in some shared calendar situations they
