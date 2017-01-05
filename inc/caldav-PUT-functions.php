@@ -716,7 +716,7 @@ function import_addressbook_collection( $vcard_content, $user_no, $path, $caldav
 
   if ( !(isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import) ) $qry->Begin();
   $base_params = array(
-       ':collection_id' => $collection->collection_id,
+       ':collection_id' => $collection_id,
        ':session_user' => $session->user_no,
        ':caldav_type' => 'VCARD'
   );
@@ -802,6 +802,17 @@ EOSQL;
 
     $qry->QDo("SELECT write_sync_change( $collection_id, $sync_change, :dav_name)", array(':dav_name' => $dav_name ) );
 
+    if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Commit();
+  }
+
+  if ( !$appending && count($current_data) > 0 ) {
+    $params = array( ':collection_id' => $collection_id );
+    if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Begin();
+    foreach( $current_data AS $dav_name => $data ) {
+      $params[':dav_name'] = $dav_name;
+      $qry->QDo('DELETE FROM caldav_data WHERE collection_id = :collection_id AND dav_name = :dav_name', $params);
+      $qry->QDo('SELECT write_sync_change(:collection_id, 404, :dav_name)', $params);
+    }
     if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Commit();
   }
 
