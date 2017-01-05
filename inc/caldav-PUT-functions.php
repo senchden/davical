@@ -704,6 +704,15 @@ function import_addressbook_collection( $vcard_content, $user_no, $path, $caldav
     rollback_on_error( $caldav_context, $user_no, $path, sprintf('Error: Collection does not exist at "%s" for user %d', $path, $user_no ));
   }
   $collection = $qry->Fetch();
+  $collection_id = $collection->collection_id;
+
+  // Fetch the current collection data
+  $qry->QDo('SELECT dav_name, caldav_data FROM caldav_data WHERE collection_id=:collection_id', array(
+          ':collection_id' => $collection_id
+      ));
+  $current_data = array();
+  while( $row = $qry->Fetch() )
+    $current_data[$row->dav_name] = $row->caldav_data;
 
   if ( !(isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import) ) $qry->Begin();
   $base_params = array(
@@ -711,18 +720,22 @@ function import_addressbook_collection( $vcard_content, $user_no, $path, $caldav
        ':session_user' => $session->user_no,
        ':caldav_type' => 'VCARD'
   );
-  if ( !$appending ) {
-    if ( !$qry->QDo('DELETE FROM caldav_data WHERE collection_id = :collection_id', $base_params) )
-    rollback_on_error( $caldav_context, $user_no, $collection->collection_id, 'Database error on DELETE of existing rows' );
-  }
 
   $dav_data_insert = <<<EOSQL
 INSERT INTO caldav_data ( user_no, dav_name, dav_etag, caldav_data, caldav_type, logged_user, created, modified, collection_id )
     VALUES( :user_no, :dav_name, :etag, :dav_data, :caldav_type, :session_user, :created, :modified, :collection_id )
 EOSQL;
 
+  $dav_data_update = <<<EOSQL
+UPDATE caldav_data SET user_no=:user_no, caldav_data=:dav_data, dav_etag=:etag, caldav_type=:caldav_type, logged_user=:session_user,
+  modified=current_timestamp WHERE collection_id=:collection_id AND dav_name=:dav_name
+EOSQL;
+
 
   $resources = $addressbook->GetComponents();
+  if ( count($resources) > 0 )
+    $qry->QDo('SELECT new_sync_token(0,'.$collection_id.')');
+
   foreach( $resources AS $k => $resource ) {
     if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Begin();
 
@@ -748,25 +761,46 @@ EOSQL;
 
     $rendered_card = $vcard->Render();
 
+    // We don't allow any of &?\/@%+: in the UID to appear in the path, but anything else is fair game.
+    $dav_name = sprintf( '%s%s.vcf', $path, preg_replace('{[&?\\/@%+:]}','',$uid) );
+
     $dav_data_params = $base_params;
     $dav_data_params[':user_no'] = $user_no;
-    // We don't allow any of &?\/@%+: in the UID to appear in the path, but anything else is fair game.
-    $dav_data_params[':dav_name'] = sprintf( '%s%s.vcf', $path, preg_replace('{[&?\\/@%+:]}','',$uid) );
+    $dav_data_params[':dav_name'] = $dav_name;
     $dav_data_params[':etag'] = md5($rendered_card);
     $dav_data_params[':dav_data'] = $rendered_card;
     $dav_data_params[':modified'] = $last_modified;
     $dav_data_params[':created'] = $created;
 
+    // Do we actually need to do anything?
+    $inserting = true;
+    if ( isset($current_data[$dav_name]) ) {
+      if ( $rendered_card == $current_data[$dav_name] ) {
+        unset($current_data[$dav_name]);
+        continue;
+      }
+      $sync_change = 200;
+      unset($current_data[$dav_name]);
+      $inserting = false;
+    }
+    else
+      $sync_change = 201;
+
     if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Begin();
 
-    if ( !$qry->QDo($dav_data_insert,$dav_data_params) ) rollback_on_error( $caldav_context, $user_no, $path, 'Database error on: '.$dav_data_insert );
+    // Write to the caldav_data table
+    if ( !$qry->QDo( ($inserting ? $dav_data_insert : $dav_data_update), $dav_data_params) )
+      rollback_on_error( $caldav_context, $user_no, $path, 'Database error on:'. ($inserting ? $dav_data_insert : $dav_data_update));
 
-    $qry->QDo('SELECT dav_id FROM caldav_data WHERE dav_name = :dav_name ', array(':dav_name' => $dav_data_params[':dav_name']));
+    // Get the dav_id for this row
+    $qry->QDo('SELECT dav_id FROM caldav_data WHERE dav_name = :dav_name ', array(':dav_name' => $dav_name));
     if ( $qry->rows() == 1 && $row = $qry->Fetch() ) {
       $dav_id = $row->dav_id;
     }
 
-    $vcard->Write( $row->dav_id, false );
+    $vcard->Write( $row->dav_id, !$inserting );
+
+    $qry->QDo("SELECT write_sync_change( $collection_id, $sync_change, :dav_name)", array(':dav_name' => $dav_name ) );
 
     if ( isset($c->skip_bad_event_on_import) && $c->skip_bad_event_on_import ) $qry->Commit();
   }
