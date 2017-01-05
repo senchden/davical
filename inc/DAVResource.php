@@ -665,7 +665,7 @@ EOQRY;
       dbg_error_log( 'ERROR', "Error occurred in:\n%s\n",$xml);
       if ($errno >= 200 && $errno < 300 && count($xml_tags) >= 3) {
           // XML namespace error, but parsing was probably fine: continue and return tags (cf. #9)
-          dbg_error_log( 'ERROR', 'XML namspace error but tags extracted, trying to continue');
+          dbg_error_log( 'ERROR', 'XML namespace error but tags extracted, trying to continue');
       } else {
           return $raw_string;
       }

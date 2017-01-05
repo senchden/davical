@@ -298,6 +298,7 @@ EOSQL;
       return $this->WriteCalendarMember($resource,$create_resource,true,$segment_name,$log_action);
     }
     else if ( $resource instanceof VCard )
+      trace_bug( "Calling undefined function WriteAddressbookMember!? Please report this to the davical project: davical-general@lists.sourceforge.net" );
       return $this->WriteAddressbookMember($resource,$create_resource,$segment_name, $log_action);
 
     return $segment_name;
