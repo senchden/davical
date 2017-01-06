@@ -71,6 +71,7 @@ function SQUID_PAM_check($username, $password ){
         return false;
       }
       CreateHomeCollections($username);
+      CreateDefaultRelationships($username);
     }
     return $principal;
   }

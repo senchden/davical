@@ -361,6 +361,7 @@ EOERRMSG;
       else {
         $principal->Create($usr);
         CreateHomeCollections($username);
+	CreateDefaultRelationships($username);
       }
 
       /**
