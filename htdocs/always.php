@@ -148,22 +148,6 @@ if ( !isset($_SERVER['SERVER_NAME']) ) {
   @dbg_error_log( 'WARN', "Your webserver is not setting the SERVER_NAME parameter. You may need to set \$c->domain_name in your configuration.  Using IP address meanhwhile..." );
 }
 
-/**
-* Calculate the simplest form of reference to this page, excluding the PATH_INFO following the script name.
-*/
-$c->protocol_server_port = sprintf( '%s://%s%s',
-                 (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'? 'https' : 'http'),
-                 $_SERVER['SERVER_NAME'],
-                 (
-                     ( (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on')
-                          && (!isset($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT'] == 80) )
-                     || ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
-                          && (!isset($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT'] == 443) )
-                     ? ''
-                     : ':'.$_SERVER['SERVER_PORT']
-                 ) );
-$c->protocol_server_port_script = $c->protocol_server_port . ($_SERVER['SCRIPT_NAME'] == '/index.php' ? '' : $_SERVER['SCRIPT_NAME']);
-
 
 /**
 * We use @file_exists because things like open_basedir might noisily deny
@@ -195,6 +179,44 @@ else {
 }
 $config_warnings = trim(ob_get_contents());
 ob_end_clean();
+
+/**
+* Override server-detected variables with those from X-Forwarded headers
+*/
+if ( isset($c->trust_x_forwarded) && $c->trust_x_forwarded ) {
+  if ( isset($_SERVER['X-Real-IP']) ) {
+    $_SERVER['REMOTE_ADDR'] = $_SERVER['X-Real-IP'];
+  } elseif ( isset($_SERVER['X-Forwarded-For']) ) {
+    list($_SERVER['REMOTE_ADDR'], $rest) = explode( ',', $_SERVER['X-Forwarded-For']);
+  }
+  if ( isset($_SERVER['X-Forwarded-Proto']) ) {
+    if ($_SERVER['X-Forwarded-Proto'] == 'https') {
+      $_SERVER['HTTPS'] = 'on';
+    } else {
+      $_SERVER['HTTPS'] = 'off';
+    }
+  }
+  if ( isset($_SERVER['X-Forwarded-Port']) ) {
+    $_SERVER['SERVER_PORT'] = $_SERVER['X-Forwarded-Port'];
+  }
+}
+
+/**
+* Calculate the simplest form of reference to this page, excluding the PATH_INFO following the script name.
+*/
+$c->protocol_server_port = sprintf( '%s://%s%s',
+                 (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'? 'https' : 'http'),
+                 $_SERVER['SERVER_NAME'],
+                 (
+                     ( (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS'] != 'on')
+                          && (!isset($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT'] == 80) )
+                     || ( isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on'
+                          && (!isset($_SERVER['SERVER_PORT']) || $_SERVER['SERVER_PORT'] == 443) )
+                     ? ''
+                     : ':'.$_SERVER['SERVER_PORT']
+                 ) );
+$c->protocol_server_port_script = $c->protocol_server_port . ($_SERVER['SCRIPT_NAME'] == '/index.php' ? '' : $_SERVER['SCRIPT_NAME']);
+
 
 if ( !isset($c->page_title) ) $c->page_title = $c->system_name;
 
