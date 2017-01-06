@@ -12,6 +12,8 @@ dbg_error_log("PUT", "method handler");
 
 require_once('DAVResource.php');
 
+include_once('caldav-PUT-functions.php');
+
 if ( ! ini_get('open_basedir') && (isset($c->dbg['ALL']) || (isset($c->dbg['put']) && $c->dbg['put'])) ) {
   $fh = fopen('/var/log/davical/PUT.debug','w');
   if ( $fh ) {
@@ -60,7 +62,6 @@ else {
     if ( ! isset($c->readonly_webdav_collections) || $c->readonly_webdav_collections ) {
       $request->PreconditionFailed(405,'method-not-allowed',translate('You may not PUT to a collection URL'));
     }
-    $request->DoResponse(403,translate('PUT on a collection is only allowed for text/vcard content against an addressbook collection'));
   }
   $dest->NeedPrivilege('DAV::write-content');
 }
@@ -71,10 +72,6 @@ $user_no = $dest->GetProperty('user_no');
 $collection_id = $container->GetProperty('collection_id');
 
 $original_etag = md5($request->raw_post);
-
-
-$qry = new AwlQuery();
-$qry->Begin();
 
 $uid = $vcard->GetPValue('UID');
 if ( empty($uid) ) {
@@ -121,6 +118,25 @@ $params = array(
     ':session_user' => $session->user_no,
     ':modified' => $last_modified
 );
+
+if ($dest->IsCollection()) {
+  if ( $dest->IsPrincipal() || $dest->IsBinding() || !isset($c->readonly_webdav_collections) || $c->readonly_webdav_collections == true ) {
+    $request->DoResponse( 405 ); // Method not allowed
+    return;
+  }
+
+  $appending = (isset($_GET['mode']) && $_GET['mode'] == 'append' );
+
+  import_collection($request->raw_post, $request->user_no, $request->path, true, $appending);
+
+  $request->DoResponse( 200 );
+  return;
+}
+
+
+$qry = new AwlQuery();
+$qry->Begin();
+
 if ( $dest->Exists() ) {
   $sql = 'UPDATE caldav_data SET caldav_data=:dav_data, dav_etag=:etag, logged_user=:session_user,
           modified=:modified, user_no=:user_no, caldav_type=\'VCARD\' WHERE dav_name=:dav_name';
