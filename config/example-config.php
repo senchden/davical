@@ -42,7 +42,7 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 * will be read-only. Any changes to them must be applied via CalDAV.
 *
 * You may want to set this to false during your initial setup to make it
-* easier for people to PUT whole calendars as part of the conversion of
+* easier for people to PUT whole calendars or addressbooks as part of migrating
 * their data. After this, it is recommended to turn it off so that clients
 * which have been misconfigured are readily identifiable.
 * Default: true

@@ -666,9 +666,9 @@ function import_collection( $import_content, $user_no, $path, $caldav_context, $
   }
 
   if ( preg_match( '{^begin:(vcard|vcalendar)}i', $import_content, $matches) ) {
-    if ( $matches[1] == 'VCARD' )
+    if ( strtoupper($matches[1]) == 'VCARD' )
       import_addressbook_collection( $import_content, $user_no, $path, $caldav_context, $appending );
-    elseif ( $matches[1] == 'VCALENDAR' )
+    elseif ( strtoupper($matches[1]) == 'VCALENDAR' )
       import_calendar_collection( $import_content, $user_no, $path, $caldav_context, $appending );
 
     // Uncache anything to do with the collection

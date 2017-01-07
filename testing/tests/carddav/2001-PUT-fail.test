@@ -1,8 +1,8 @@
 #
-# PUT a VCARD record into an addressbook
+# PUT a VCARD record into a non-existing addressbook
 #
 TYPE=PUT
-URL=http://regression.host/caldav.php/user1/addressbook/
+URL=http://regression.host/caldav.php/user1/addressbook1/kelly.vcf
 
 HEADER=User-Agent: DAViCalTester/public
 HEADER=Content-Type: text/vcard; charset=utf-8
@@ -27,7 +27,7 @@ ENDDATA
 QUERY
 SELECT caldav_data.dav_name, caldav_data.dav_etag, fn, n
   FROM caldav_data JOIN addressbook_resource USING(dav_id)
-  WHERE caldav_data.dav_name ~ '/user1/addressbook/'
+  WHERE caldav_data.dav_name ~ '/user1/addressbook1/'
 ENDQUERY
 
 
