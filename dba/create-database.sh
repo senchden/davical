@@ -111,7 +111,7 @@ as a user with full permissions to access the local PostgreSQL database.
 If your PostgreSQL database is non-standard then you will need to set the PGHOST,
 PGPORT and/or PGCLUSTER environment variables before running this script again.
 
-See:  http://wiki.davical.org/w/Install_Errors/No_Database_Rights
+See:  https://wiki.davical.org/index.php/Problems_and_Solutions#No_Database_Rights
 
 EOFAILURE
         exit 1
@@ -143,7 +143,7 @@ libraries are not available.
 Check that your pg_hba.conf allows the davical_dba user to connect to the
 database (and make sure you've reloaded PostgreSQL since changing that).
 
-Also see:  http://wiki.davical.org/w/Install_Errors/No_Perl_YAML
+Also see:  https://wiki.davical.org/index.php/Problems_and_Solutions
 
 EOFAILURE
   exit 1
@@ -184,7 +184,7 @@ rm "${INSTALL_NOTE_FN}"
 cat <<FRIENDLY
 *  The password for the 'admin' user has been set to '${ADMINPW}'
 
-Thanks for trying DAViCal!  Check in /usr/share/doc/davical/examples/ for
-some configuration examples.  For help, visit #davical on irc.oftc.net.
+Thanks for trying DAViCal! Check the configuration in /etc/davical/config.php.
+For help, look at our website and wiki, or visit #davical on irc.oftc.net.
 
 FRIENDLY

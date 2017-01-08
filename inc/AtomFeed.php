@@ -156,7 +156,7 @@ class AtomFeed extends XMLDocument {
     parent::__construct( array( ATOM_XMLNS => null, XHTML_XMLNS => 'xhtml' ) );
     $this->title = 'DAViCal Atom Feed';
     $this->nodes = array( 'id', 'title', 'updated',  // placeholders
-        new XMLElement('generator', 'DAViCal', array('uri' => 'http://www.davical.org/', 'version' => $c->version_string ) )
+        new XMLElement('generator', 'DAViCal', array('uri' => 'https://www.davical.org/', 'version' => $c->version_string ) )
       );
   }
 

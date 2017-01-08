@@ -10,7 +10,7 @@ include("interactive-page.php");
  $content_pagelem11 = translate('Currently this page does nothing. Suggestions or patches to make it do something useful will be gratefully received.');
 
  $heading_pagelem2 = translate('Upgrading DAViCal Versions');
- $content_pagelem21 = translate('The <a href="http://wiki.davical.org/w/Update-davical-database">update-davical-database</a> should be run manually after upgrading the software to a new version of DAViCal.');
+ $content_pagelem21 = translate('The <a href="https://wiki.davical.org/w/Update-davical-database">update-davical-database</a> should be run manually after upgrading the software to a new version of DAViCal.');
  $content_pagelem22 = translate("In due course this program will implement the functionality which is currently contained in that script, but until then I'm afraid you do need to run it.");
 
  $page_elements = array();

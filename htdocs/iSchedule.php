@@ -20,7 +20,7 @@ require_once('iSchedule.php');
 
 $heading_schedule = translate('iSchedule Configuration');
 $content_sched1 = translate('iSchedule allows caldav servers to communicate directly with each other, bypassing the need to send invitations via email, for scheduled events where attendees are using different servers or providers. Additionally it enables freebusy lookups for remote attendees. Events and ToDos received via iSchedule will show up in the users scheduling inbox.');
-$content_sched2 = translate('The <a href="http://wiki.davical.org/w/iSchedule_configuration">iSchedule configuration</a> requires a few DNS entries. DNS SRV record(s) will need to be created for all domains you wish to accept requests for, these are the domain portion of email address on Principal records in DAViCal examples are listed below for domains found in your database. At least 1 public key must also be published if you wish to send requests from this server.');
+$content_sched2 = translate('The <a href="https://wiki.davical.org/w/iSchedule_configuration">iSchedule configuration</a> requires a few DNS entries. DNS SRV record(s) will need to be created for all domains you wish to accept requests for, these are the domain portion of email address on Principal records in DAViCal examples are listed below for domains found in your database. At least 1 public key must also be published if you wish to send requests from this server.');
 
 
  $page_elements = array();

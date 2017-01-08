@@ -11,8 +11,8 @@ include("page-header.php");
    and so really you are well on the road to success!</p>
 <h2>The Dubious News</h2>
 <p>You could try and <a href="setup.php">click here</a> and see if that enlightens you at all.
-   Or rather have a look at the <a href="http://davical.org/installation.php">Installation
-   guide</a> and the <a href="http://wiki.davical.org/w/Main_Page">wiki</a>. Or make some guesses.
+   Or rather have a look at the <a href="https://www.davical.org/installation.php">Installation
+   guide</a> and the <a href="https://wiki.davical.org/index.php/Main_Page">wiki</a>. Or make some guesses.
    Or bug us on IRC or the mailing lists :-)</p>
 <h2>The Really Basic Help</h2>
 <p>The configuration file should look something like this:</p>

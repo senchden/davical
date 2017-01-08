@@ -253,7 +253,7 @@ function check_schema_version() {
 function check_davical_version() {
   global $c;
   if ( ! ini_get('allow_url_fopen') )
-    return new CheckResult( false, translate("Cannot determine upstream version, because PHP has set “<a href=\"http://php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen\"><code>allow_url_fopen</code></a>” to “<code>FALSE</code>”."), 'dep_warning' );
+    return new CheckResult( false, translate("Cannot determine upstream version, because PHP has set “<a href=\"https://secure.php.net/manual/en/filesystem.configuration.php#ini.allow-url-fopen\"><code>allow_url_fopen</code></a>” to “<code>FALSE</code>”."), 'dep_warning' );
   $url = 'https://www.davical.org/current_davical_version?v='.$c->version_string;
   $version_file = @fopen($url, 'r');
   if ( ! $version_file ) return new CheckResult( false, translate("Could not retrieve") . " '$url'", 'dep_warning' );
@@ -342,7 +342,7 @@ function build_dependencies_table( ) {
     $dependencies[translate('PHP LDAP module available')] = 'check_ldap';
   }
 
-  $translated_failure_code = translate('<a href="http://wiki.davical.org/w/Setup_Failure_Codes/%s">Explanation on DAViCal Wiki</a>');
+  $translated_failure_code = translate('<a href="https://wiki.davical.org/w/Setup_Failure_Codes/%s">Explanation on DAViCal Wiki</a>');
 
   $dependencies_table = '';
   $dep_tpl = '<tr class="%s">
@@ -402,7 +402,7 @@ $heading_php_info = translate('PHP Information');
 
 // Translations shared with index.php
 $heading_clients = translate('Configuring Calendar Clients for DAViCal');
-$content_cli1 = translate('The <a href="http://www.davical.org/clients.php">client setup page on the DAViCal website</a> has information on how to configure Evolution, Sunbird, Lightning and Mulberry to use remotely hosted calendars.');
+$content_cli1 = translate('The <a href="https://www.davical.org/clients.php">client setup page on the DAViCal website</a> has information on how to configure Evolution, Sunbird, Lightning and Mulberry to use remotely hosted calendars.');
 $content_cli2 = translate('The administrative interface has no facility for viewing or modifying calendar data.');
 
 // Translations shared with index.php
@@ -412,7 +412,7 @@ $content_config2 = ( $config_warnings == '' ? '' : '<div class="error"><h3 class
              . translate('Your configuration produced PHP errors which should be corrected') . '</h3><pre>'
              . $config_warnings.'</pre></div>'
           );
-$content_config3 = translate('The <a href="http://www.davical.org/installation.php">DAViCal installation page</a> on the DAViCal website has some further information on how to install and configure this application.');
+$content_config3 = translate('The <a href="https://www.davical.org/installation.php">DAViCal installation page</a> on the DAViCal website has some further information on how to install and configure this application.');
 
 
   echo <<<EOBODY

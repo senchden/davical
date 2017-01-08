@@ -25,9 +25,9 @@ if ( isset($_SERVER['SCRIPT_NAME']) ) {
 
 
 $help_menu = new MenuSet('submenu', 'submenu', 'submenu_active');
-$help_menu->AddOption(translate('DAViCal Homepage'),'http://www.davical.org/',translate('The DAViCal Home Page'), false, 6000, true );
-$help_menu->AddOption(translate('DAViCal Wiki'),'http://wiki.davical.org/'.$wiki_help,translate('Visit the DAViCal Wiki'), false, 7000, true );
-$help_menu->AddOption(translate('Request Feature'),'http://davical.uservoice.com/',translate('Go to the DAViCal Feature Requests'), false, 8000, true );
+$help_menu->AddOption(translate('DAViCal Homepage'),'https://www.davical.org/',translate('The DAViCal Home Page'), false, 6000, true );
+$help_menu->AddOption(translate('DAViCal Wiki'),'https://wiki.davical.org/'.$wiki_help,translate('Visit the DAViCal Wiki'), false, 7000, true );
+$help_menu->AddOption(translate('Request Feature'),'https://davical.uservoice.com/',translate('Go to the DAViCal Feature Requests'), false, 8000, true );
 $help_menu->AddOption(translate('Report Bug'),'https://gitlab.com/davical-project/davical/issues',translate('Report a bug in the system'), false, 9000, true );
 
 $user_menu = new MenuSet('submenu', 'submenu', 'submenu_active');

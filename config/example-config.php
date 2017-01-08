@@ -194,7 +194,7 @@ $c->admin_email ='calendar-admin@example.com';
 * are supported on your system.
 *
 * People interested in providing new translations are directed to the Wiki:
-*   http://wiki.davical.org/w/Translating_DAViCal
+*   https://wiki.davical.org/w/Translating_DAViCal
 */
 // $c->default_locale = "en_NZ";
 

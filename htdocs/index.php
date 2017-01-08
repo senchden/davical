@@ -44,13 +44,13 @@ $content_grp3 = translate('Groups may be members of other groups, but complex ne
 
 // Translations shared with setup.php
 $heading_clients = translate('Configuring Calendar Clients for DAViCal');
-$content_cli1 = translate('The <a href="http://www.davical.org/clients.php">client setup page on the DAViCal website</a> has information on how to configure Evolution, Sunbird, Lightning and Mulberry to use remotely hosted calendars.');
+$content_cli1 = translate('The <a href="https://www.davical.org/clients.php">client setup page on the DAViCal website</a> has information on how to configure Evolution, Sunbird, Lightning and Mulberry to use remotely hosted calendars.');
 $content_cli2 = translate('The administrative interface has no facility for viewing or modifying calendar data.');
 
 // Translations shared with setup.php
 $heading_configure = translate('Configuring DAViCal');
 $content_config1 = translate('If you can read this then things must be mostly working already.');
-$content_config3 = translate('The <a href="http://www.davical.org/installation.php">DAViCal installation page</a> on the DAViCal website has some further information on how to install and configure this application.');
+$content_config3 = translate('The <a href="https://www.davical.org/installation.php">DAViCal installation page</a> on the DAViCal website has some further information on how to install and configure this application.');
 
 
   echo <<<EOBODY

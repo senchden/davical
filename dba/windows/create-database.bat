@@ -125,7 +125,7 @@ rem   echo * * * * ERROR * * * *
 rem   echo The database administration utility failed.  This is usually due to the Perl YAML
 rem   echo or the Perl DBD::Pg libraries not being available.
 
-rem   echo See:  http://wiki.davical.org/w/Install_Errors/No_Perl_YAML
+rem   echo See:  https://wiki.davical.org/index.php/Problems_and_Solutions
 
 rem   exit /B 2
 rem )

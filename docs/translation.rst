@@ -3,7 +3,7 @@ Translation
 ***********
 
 DAViCAL uses the standard translation infrastructure of many projects. 
-It is based on ``gettext`` (http://www.gnu.org/software/gettext/).
+It is based on ``gettext`` (https://www.gnu.org/software/gettext/).
 
 Translators
 ===========
@@ -89,7 +89,7 @@ They have created a command line client namend ``tx``::
    Creating skeleton...
    Creating config file...
    Done.
-   $ tx set --auto-remote http://www.transifex.net/projects/p/davical/
+   $ tx set --auto-remote https://www.transifex.net/projects/p/davical/
    Auto configuring local project from remote URL...
    Getting details for project davical
    1 resources found. Configuring...
