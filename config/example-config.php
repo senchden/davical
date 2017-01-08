@@ -329,19 +329,18 @@ $c->admin_email ='calendar-admin@example.com';
 * be a valid function that will be call like this:
 *   call_user_func( $c->authenticate_hook['call'], $username, $password )
 *
-* The login mecanism is made in 2 places:
+* The login mechanism is used in 2 different places:
 *  - for the web interface in: index.php that calls DAViCalSession.php that extends
 *    Session.php (from AWL libraries)
-*  - for the caldav client in: caldav.php that calls BasicAuthSession.php
-* Both Session.php and BasicAuthSession.php check against the
-* authenticate_hook['call'], although for BasicAuthSession.php this will be for
+*  - for the caldav client in: caldav.php that calls HTTPAuthSession.php
+* Both Session.php and HTTPAuthSession.php check against the
+* authenticate_hook['call'], although for HTTPAuthSession.php this will be for
 * each page.  For Session.php this will only occur during login.
 *
 * $c->authenticate_hook['config'] should be set up with any configuration data
-* needed by the authenticate call for the moment used only in awl/inc/AuthPlugins.php
-* and he used to authenticate the user should be at least 'password,user_no'
-* awl/inc/AuthPlugins.php is a sample file not used by showing what could be
-* a hook
+* needed by the authenticate call - see below or in the Wiki for details.
+* If you want to develop your own authentication plugin, have a look at
+* awl/inc/AuthPlugins.php or any of the inc/drivers_*.php files.
 *
 * $c->authenticate_hook['optional'] = true; can be set to try default authentication
 * as well in case the configured hook should report a failure.
@@ -449,6 +448,10 @@ $c->admin_email ='calendar-admin@example.com';
 //include('drivers_ldap.php');
 
 
+/********************************/
+/****** PAM and IMAP hooks ******/
+/********************************/
+
 /**
 * Authentication against PAM using the Squid helper script.
 */
@@ -475,6 +478,39 @@ $c->admin_email ='calendar-admin@example.com';
 //  'email_base' => 'example.com'
 //);
 //include('drivers_imap_pam.php');
+
+/********************************/
+/****** Webserver does Auth *****/
+/********************************/
+
+/** 
+* It is quite common that the webserver can do the authentication for you,
+* and you just want DAViCal to trust the username that the webserver will pass
+* through (in the REMOTE_USER or REDIRECT_REMOTE_USER environment variable).
+* In that case, set server_auth_type (can be an array) to the value provided by
+* the webserver in the AUTH_TYPE environment variable, as well as the two
+* following options as needed.
+*
+* Note that this method does not pull account details from anywhere, so you
+* will first need to create an account in DAViCal for each username that will
+* authenticate in this way - it's just that the password on that account will
+* be ignored and authentication will happen through the authentication method
+* that the webserver is configured with.
+*/
+//$c->authenticate_hook['server_auth_type'] = 'Basic';
+
+/**
+* Uncomment this to use Webserver Auth for CalDAV access in addition to the
+* Admin web pages.
+*/
+//include_once('AuthPlugins.php');
+
+/**
+* If your Webserver Auth method provides a logout URL (traditional Basic Auth
+* does not), you can enter it here so the Logout link in the Admin web pages
+* can point to it.
+*/
+//$c->authenticate_hook['logout'] = '/logout';
 
 
 /***************************************************************************

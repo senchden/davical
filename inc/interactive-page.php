@@ -3,7 +3,15 @@ require_once('MenuSet.php');
 
 
 $home_menu = new MenuSet('submenu', 'submenu', 'submenu_active');
-$home_menu->AddOption(translate('Logout'), $c->base_url.'/index.php?logout', translate('Log out of DAViCal') );
+if ( isset($c->authenticate_hook['server_auth_type']) ) {
+  if ( isset($c->authenticate_hook['logout']) ) {
+    $home_menu->AddOption(translate('Logout'), $c->authenticate_hook['logout'], translate('Log out of DAViCal') );
+  } else {
+    $home_menu->AddOption(translate('Home'), $c->base_url.'/index.php'); // dummy, so the menu gets shown
+  }
+} else {
+  $home_menu->AddOption(translate('Logout'), $c->base_url.'/index.php?logout', translate('Log out of DAViCal') );
+}
 
 $wiki_help = '';
 if ( isset($_SERVER['SCRIPT_NAME']) ) {
