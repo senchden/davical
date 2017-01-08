@@ -10,7 +10,7 @@ if ( isset($c->authenticate_hook['server_auth_type']) ) {
     $home_menu->AddOption(translate('Home'), $c->base_url.'/index.php'); // dummy, so the menu gets shown
   }
 } else {
-  $home_menu->AddOption(translate('Logout'), $c->base_url.'/index.php?logout', translate('Log out of DAViCal') );
+  $home_menu->AddOption(translate('Logout'), $c->base_url.'/index.php?logout&forget', translate('Log out of DAViCal') );
 }
 
 $wiki_help = '';
