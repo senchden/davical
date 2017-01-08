@@ -28,12 +28,25 @@
 // $c->maximum_lock_timeout = 8640000;
 
 /**
-* default = true;
 * If set, DAViCal will store each unique time zone used in any calendar to speed
 * future timezone interpretation.
+* Default = true;
 */
 // $c->save_time_zone_defs = true;
 
+/**
+* If there is some timezone which shows up with a name that is not understood
+* by DAViCal, you can add a translation for it into this list
+*/
+// $c->timezone_translations = array( 'Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London' => 'Europe/London' );
+
+/**
+* It is possible that you have installed DAViCal in a non-standard manner, and
+* DAViCal can't find it's locale files, or you want it to use some different
+* ones that you're writing to submit to the developers (yes please!).
+* Default: ../locale
+*/
+// $c->locale_path = '/path/to/davical/locale/files';
 
 /**
 * Internal variable used to contain arrays of stylesheets or javascripts
@@ -44,6 +57,15 @@
 // $c->scripts = array();
 // $c->stylesheets = array();
 
+/**
+* PostgreSQL supports multiple namespaces (schemas) within a single database,
+* allowing you to have (e.g.) two tables with the same name. This setting
+* allows you to control the search path so that you can have the DAViCal
+* tables in a different schema.
+* Note that there is no support in DAViCal for putting the tables into a
+* non-default schema in the first place.
+*/
+// $c->db_schema = 'schema1,schema2';
 
 /**
 * Internal variable to display page's title
@@ -52,7 +74,6 @@
 // Usually internally assigned, but you may want to set it to something meaningful
 // if you are writing your own pages within the admin interface.
 // $c->page_title = 'DAViCal CalDAV Server';
-
 
 /**
 * Internal array variable to hold error messages to be displayed on top of page

@@ -72,6 +72,16 @@ $c->admin_email ='calendar-admin@example.com';
 // $c->restrict_setup_to_admin = true;
 
 /**
+* Restrict access to the administrative pages to only be available on a
+* particular domain name and port. The default is that any DAViCal instance
+* will have the administrative pages active. When any these settings is enabled,
+* requests for administrative URLs such as index.php, admin.php, setup.php etc
+* will be redirected to 'caldav.php', unless the restrictions are fulfilled.
+*/
+// $c->restrict_admin_domain = 'admin.davical.example.com';
+// $c->restrict_admin_port = '8443';
+
+/**
 * The "enable_row_linking" option controls whether javascript is used
 * to make the entire row clickable in browse lists in the administration
 * pages.  Since this doesn't work in Konqueror you may want to set this
@@ -109,11 +119,24 @@ $c->admin_email ='calendar-admin@example.com';
 // $c->collections_always_exist = false;
 
 /**
-* The name of a user's "home" calendar. This will be created for each
-* new user.
-* Default: 'calendar'
+* The name of a user's "home" calendar and addressbook. These will be created
+* for each new user.
+* Default: 'calendar' / 'addresses'
 */
 // $c->home_calendar_name = 'calendar';
+// $c->home_addressbook_name = 'addresses';
+
+/**
+* If the above options are not suitable for your new users, use this to create
+* a more complex default collection management.
+* Note: if you use this configuration option both $c->home_calendar_name and
+*       $c->home_addressbook_name are ignored!
+* See https://wiki.davical.org/index.php/Configuration/settings/default_collections
+*/
+//$c->default_collections=array(
+//    array('type'=>'addressbook', 'name'=>'addresses', 'displayname'=>'%fn addressbook', 'privileges'=>null),
+//    array('type'=>'calendar', 'name'=>'calendar', 'displayname'=>'%fn calendar', 'privileges'=>null)
+//);
 
 /**
 * An array of groups / permissions which should be automatically added
@@ -161,11 +184,41 @@ $c->admin_email ='calendar-admin@example.com';
 // $c->hide_TODO = false;
 
 /**
+* If true, then VALARM from someone other than the admin or owner of a
+* calendar will not be included in the response. The default is false because
+* the preferred behaviour is to enable/disable the alarms in your CalDAV
+* client software.
+*/
+// $c->hide_alarm = true;
+
+/**
+* If you want to hide older events (in order to save resources, speed up
+* clients, etc.) define the desired time interval in number of days.
+*/
+// $c->hide_older_than = 90;
+
+/**
 * External subscription (BIND) minimum refresh interval
 * Required if you want to enable remote binding ( webcal subscriptions )
 * Default: none
 */
 // $c->external_refresh = 60;
+
+/**
+* If you want to force DAViCal to use HTTP Digest Authentication for CalDAV
+* access. Note that this requires all user passwords to be stored in plain text
+* in the database. It is probably better to configure the webserver to do
+* Digest auth against a separate user database (see below for Webserver Auth).
+*/
+// $c->http_auth_mode = "Digest";
+
+/**
+* Provide freebusy information to any (unauthenticated) user via the
+* freebusy.php URL. Only events marked as PRIVATE will be excluded from the
+* report.
+* Default: false (authentication required)
+*/
+// $c->public_freebusy_url = true;
 
 /**
 * The "support_obsolete_free_busy_property" value controls whether,
@@ -207,6 +260,15 @@ $c->admin_email ='calendar-admin@example.com';
 // $c->domain_name = 'example.com';
 
 /**
+* If this option is set to true, then "@$c->domain_name" is appended to the
+* user login name if it does not contain the @ character. If email addresses
+* are used as user names in Davical, this fixes a problem with MacOS X 10.6
+* Addressbook that cannot login to CardDav account.
+* Default: false
+*/
+// $c->login_append_domain_if_missing = true;
+
+/**
 * Many people want this, but it may be a security issue for you, so it is
 * disabled by default.  If you enable it, then confidential / private events
 * will be visible to the 'organizer' or 'attendee' lists.  The reason that
@@ -230,6 +292,14 @@ $c->admin_email ='calendar-admin@example.com';
 *                             Scheduling                                   *
 *                                                                          *
 ***************************************************************************/
+
+/**
+* If you want to turn off scheduling functions you can set this to 'false' and
+* DAViCal will not advertise the ability to schedule, leaving it to calendar
+* clients to send out and receive scheduling requests.
+* Default: true
+*/
+// $c->enable_auto_schedule = false;
 
 /**
 * If true, then remote scheduling will be enabled.  There is a possibility 
@@ -384,6 +454,8 @@ $c->admin_email ='calendar-admin@example.com';
 //    'passDN'=> 'xxxxxxxx',
 
 //    'protocolVersion' => '3', //Version of LDAP protocol to use
+//    'optReferrals'    => 0,   //whether to automatically follow referrals returned by the LDAP server
+//    'networkTimeout'  => 10,  //timeout in seconds
 //    'baseDNUsers'=> 'dc=tennaxia,dc=net', //where to look at valid user
 //    'filterUsers' => 'objectClass=kolabInetOrgPerson', //filter which must validate a user according to RFC4515, i.e. surrounded by brackets
 //    'baseDNGroups' => 'ou=divisions,dc=tennaxia,dc=net', //where to look for groups
@@ -434,6 +506,7 @@ $c->admin_email ='calendar-admin@example.com';
 //    'baseDNUsers'       => 'dc=DOMAIN,dc=local',
 //    'protocolVersion'   => 3,
 //    'optReferrals'      => 0,
+//    'networkTimeout'    => 10,
 //    'filterUsers'       => '(&(objectcategory=person)(objectclass=user)(givenname=*))',
 //    'mapping_field'     => array("username" => "uid",
 //                                 "fullname" => "cn" ,
