@@ -903,13 +903,138 @@ function confirm_delete_collection($confirmation_hash) {
   return $html;
 }
 
+
+function binding_row_editor() {
+  global $c, $id, $editor, $can_write_principal;
+
+  $bindingrow = new Editor("Bindings", "dav_binding");
+  $bindingrow->SetSubmitName( 'bindingrow' );
+  if ( $can_write_principal && $bindingrow->IsSubmit() ) {
+    if ( substr($_POST['dav_name'], -1) != '/' ) {
+      $_POST['dav_name'] .= '/';
+    }
+
+    $dav_name = $_POST['dav_name'];
+    $parent = '/'.$editor->Value('username').'/';
+    if ( strpos($dav_name, $parent) !== 0 ) {
+      $c->messages[] = translate("Can only bind collections into the current principal's namespace");
+      return $bindingrow;
+    }
+    if ( substr_count($dav_name, '/') != 3 || substr_count($dav_name, '\\') > 0 ) {
+      $c->messages[] = translate("Bound As is invalid");
+      return $bindingrow;
+    }
+    $qry = new AwlQuery('SELECT dav_name FROM collection where dav_name = :dav_name UNION SELECT dav_name FROM dav_binding WHERE dav_name = :dav_name', array( ':dav_name' => $dav_name) );
+    if ( $qry->Exec('dav_name') && $qry->rows() > 0 ) {
+      $c->messages[] = translate('A resource already exists at the destination.');
+      return $bindingrow;
+    }
+
+    if ( empty($_POST['access_ticket_id']) )
+      $_POST['access_ticket_id'] = null;
+    $_POST['dav_owner_id'] = $id;
+    $_POST['parent_container'] = $parent;
+
+    //  external binds shouldn't ever point back to ourselves but they should be a valid http[s] url
+    $href = $_POST['source'];
+    if ( preg_match ( '{^(?:https?://|file:///)([^/]+)(:[0-9]\+)?/.+$}', $href, $matches )
+        && strcasecmp( $matches[0], 'localhost' ) !== 0 && strcasecmp( $matches[0], '127.0.0.1' ) !== 0
+        && strcasecmp( $matches[0], $_SERVER['SERVER_NAME'] ) !== 0 && strcasecmp( $matches[0], $_SERVER['SERVER_ADDR'] ) !== 0
+    ) {
+      $path = '/.external/' . md5($href);
+      $qry->QDo('SELECT collection_id FROM collection WHERE dav_name = :dav_name ', array( ':dav_name' => $path ));
+      if ( $qry->rows() == 1 && ($row = $qry->Fetch()) ) {
+        $dav_id = $row->collection_id;
+      }
+      else {
+        $qry->QDo( 'INSERT INTO collection ( user_no, parent_container, dav_name, dav_etag, dav_displayname,
+                                              is_calendar, is_addressbook, resourcetypes, created )
+                                VALUES( :user_no, :parent_container, :dav_name, :dav_etag, :dav_displayname,
+                                        :is_calendar, :is_addressbook, :resourcetypes, current_timestamp )',
+            array(
+              ':user_no'          => $editor->Value('user_no'),
+              ':parent_container' => '/.external/',
+              ':dav_name'         => $path,
+              ':dav_etag'         => md5( $editor->Value('user_no') . $path ),
+              ':dav_displayname'  => $_POST['dav_displayname'],
+              ':is_calendar'      => 't',
+              ':is_addressbook'   => 'f',
+              ':resourcetypes'    => '<DAV::collection/><urn:ietf:params:xml:ns:caldav:calendar/>'
+            )
+        );
+
+        $qry->QDo('SELECT collection_id FROM collection WHERE dav_name = :dav_name ', array( ':dav_name' => $path ));
+        if ( $qry->rows() != 1 || !($row = $qry->Fetch()) ) {
+          $c->messages[] = translate('Database Error');
+          return $bindingrow;
+        }
+        $dav_id = $row->collection_id;
+      }
+
+      $_POST['bound_source_id'] = $dav_id;
+      $_POST['external_url'] = $href;
+      $_POST['external_type'] = 'calendar';
+    }
+    else {
+      // internal bind
+      require_once('DAVResource.php');
+      $source = new DAVResource( $href );
+      if ( !$source->Exists() || $source->IsPrincipal() || !$source->IsCollection() || $source->dav_name() == '/' ) {
+        $c->messages[] = translate('The BIND Request MUST identify an existing resource.');
+        return $bindingrow;
+      }
+      if ( $source->IsBinding() )
+        $source = new DAVResource( $source->bound_from() );
+      $_POST['bound_source_id'] = $source->collection_id();
+    }
+
+    $c->messages[] = 'Creating new binding for this principal';
+    $bindingrow->SetWhere( "dav_name = '$dav_name'" );
+    $bindingrow->Write();
+  }
+  return $bindingrow;
+}
+
+
+function edit_binding_row( $row_data ) {
+  global $id, $bindingrow;
+
+  if ( isset($row_data->dav_name) ) {
+    $bindingrow->Initialise( $row_data );
+  }
+
+  $form_id = $bindingrow->Id();
+  $form_url = preg_replace( '#&(edit|delete)_[a-z]+=\d+#', '', $_SERVER['REQUEST_URI'] );
+  $source_title = translate('Path to collection you wish to bind, like /user1/calendar/ or https://cal.example.com/user2/cal/');
+  $access_title = translate('optional');
+
+  $template = <<<EOTEMPLATE
+<form method="POST" enctype="multipart/form-data" id="form_$form_id" action="$form_url">
+  <td class="left">&nbsp;<input type="hidden" name="id" value="$id"></td>
+  <td class="left"><input type="text" name="dav_name" value="$row_data->dav_name" size="25"></td>
+  <td class="left"><input type="text" name="dav_displayname" size="20"></td>
+  <td class="left"><input type="text" name="source" size="40" title="$source_title"></td>
+  <td class="left"><input type="text" name="access_ticket_id" size="10" title="$access_title"></td>
+  <td class="left">&nbsp;</td>
+  <td class="center">##submit##</td>
+</form>
+EOTEMPLATE;
+
+  $bindingrow->SetTemplate( $template );
+  $bindingrow->Title("");
+
+  return $bindingrow->Render();
+}
+
+
 function bindings_to_other_browser() {
-  global $c, $page_elements, $id, $editor, $can_write_principal;
+  global $c, $editor, $can_write_principal;
   $browser = new Browser(translate('Bindings to other collections'));
   $browser->AddColumn( 'bind_id', translate('ID'), '', '' );
   $browser->AddHidden( 'b.dav_owner_id' );
   $browser->AddHidden( 'p.principal_id' );
   $browser->AddColumn( 'bound_as', translate('Bound As'), '', '<td style="white-space:nowrap;">%s</td>', 'b.dav_name' );
+  $browser->AddColumn( 'dav_displayname', translate('Display Name'), '', '', 'b.dav_displayname' );
   $browser->AddColumn( 'dav_name', translate('To Collection'), '', '<td style="white-space:nowrap;">%s</td>', 'c.dav_name' );
   $browser->AddColumn( 'access_ticket_id', translate('Ticket ID'), '', '' );
   $browser->AddColumn( 'privs', translate('Privileges'), '', '', "privileges_list(privileges)" );
@@ -918,7 +1043,7 @@ function bindings_to_other_browser() {
     $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
   }
 
-  $browser->SetOrdering( 'target', 'A' );
+  $browser->SetOrdering( 'bound_as', 'A' );
 
   $browser->SetJoins( 'dav_binding b LEFT JOIN collection c ON (bound_source_id=collection_id) LEFT JOIN access_ticket t ON (ticket_id=access_ticket_id) LEFT JOIN principal p USING(user_no)' );
   $browser->SetWhere( 'b.dav_name ~ '.sprintf("'^/%s/'", $editor->Value('username')) );
@@ -926,6 +1051,14 @@ function bindings_to_other_browser() {
   $browser->RowFormat( '<tr class="r%d">', '</tr>', '#even' );
 
   $browser->DoQuery();
+
+  if ( $can_write_principal ) {
+    $extra_row = (object) array( 'bind_id' => -1,
+                                 'dav_name' => '/'.$editor->Value('username').'/boundcalendar/'
+                               );
+    $browser->MatchedRow('bind_id', -1, 'edit_binding_row');
+    $browser->AddRow($extra_row);
+  }
   return $browser;
 }
 
@@ -942,7 +1075,7 @@ function confirm_delete_bind_in($confirmation_hash) {
 
 
 function bindings_to_us_browser() {
-  global $c, $page_elements, $id, $editor, $session;
+  global $c, $editor, $session;
   $browser = new Browser(translate('Bindings to this Principal\'s Collections'));
   $browser->AddColumn( 'bind_id', translate('ID'), '', '' );
   $browser->AddHidden( 'b.dav_owner_id' );
@@ -956,7 +1089,7 @@ function bindings_to_us_browser() {
     $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
   }
 
-  $browser->SetOrdering( 'target', 'A' );
+  $browser->SetOrdering( 'dav_name', 'A' );
 
   $browser->SetJoins( 'dav_binding b LEFT JOIN collection c ON (bound_source_id=collection_id) LEFT JOIN access_ticket t ON (ticket_id=access_ticket_id) LEFT JOIN principal p USING(user_no)' );
   $browser->SetWhere( 'p.principal_id = '.intval($editor->Value('principal_id')) );
@@ -1012,6 +1145,7 @@ if ( isset($id) && $id > 0 ) {
   $page_elements[] = principal_collection_browser();
   if ( isset($delete_collection_confirmation_required) ) $page_elements[] = confirm_delete_collection($delete_collection_confirmation_required);
 
+  $bindingrow = binding_row_editor();
   $page_elements[] = bindings_to_other_browser();
   if ( isset($delete_bind_in_confirmation_required) ) $page_elements[] = confirm_delete_bind_in($delete_bind_in_confirmation_required);
 
