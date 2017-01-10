@@ -380,6 +380,7 @@ function DeconstructURL( $url, $force_script = false ) {
   global $c;
 
   $dav_name = rawurldecode($url);
+  $dav_name = trim($dav_name);
 
   /** Allow a path like .../username/calendar.ics to translate into the calendar URL */
   if ( preg_match( '#^(/[^/]+/[^/]+).ics$#', $dav_name, $matches ) ) {
