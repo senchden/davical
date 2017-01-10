@@ -572,7 +572,7 @@ function group_members_browser() {
   $browser->AddColumn( 'members', translate('Has Members'), '', '', 'has_members_list(principal_id)' );
 
   if ( $can_write_principal ) {
-    $del_link  = '<a href="'.$c->base_url.'/admin.php?action=edit&t=principal&id='.$id.'&delete_member=##principal_id##" class="submit">'.translate('Remove').'</a>';
+    $del_link  = '<a href="'.$c->base_url.'/admin.php?action=edit&t=principal&id='.$id.'&delete_member=##principal_id##" class="submit" title="">'.translate('Remove').'</a>';
     $browser->AddColumn( 'action', translate('Action'), 'center', '', "'$edit_link&nbsp;$del_link'" );
   }
 
@@ -590,7 +590,7 @@ function group_members_browser() {
   $browser->DoQuery();
 
   if ( $can_write_principal ) {
-    $browser->RowFormat( '<tr class="r%d">', '</tr>', '#even' );
+    $browser->ExtraRowFormat( '<tr class="r%d">', '</tr>', '#even' );
     $extra_row = array( 'group_id' => -1 );
     $browser->MatchedRow('group_id', -1, 'edit_group_row');
     $extra_row = (object) $extra_row;
@@ -686,8 +686,8 @@ function principal_grants_browser() {
   $browser->AddColumn( 'members', translate('Has Members'), '', '', 'has_members_list(principal_id)' );
 
   if ( $can_write_principal ) {
-    $del_link  = '<a href="'.$c->base_url.'/admin.php?action=edit&t=principal&id='.$id.'&delete_grant=##to_principal##" class="submit">'.translate('Revoke').'</a>';
-    $edit_link  = '<a href="'.$c->base_url.'/admin.php?action=edit&t=principal&id='.$id.'&edit_grant=##to_principal##" class="submit">'.translate('Edit').'</a>';
+    $del_link  = '<a href="'.$c->base_url.'/admin.php?action=edit&t=principal&id='.$id.'&delete_grant=##to_principal##" class="submit" title="">'.translate('Revoke').'</a>';
+    $edit_link  = '<a href="'.$c->base_url.'/admin.php?action=edit&t=principal&id='.$id.'&edit_grant=##to_principal##" class="submit" title="">'.translate('Edit').'</a>';
     $browser->AddColumn( 'action', translate('Action'), 'center', '', "'$edit_link&nbsp;$del_link'" );
   }
 
@@ -710,7 +710,7 @@ function principal_grants_browser() {
       $browser->MatchedRow('to_principal', $_GET['edit_grant'], 'edit_grant_row_principal');
     }
     else if ( isset($id ) ) {
-      $browser->RowFormat( '<tr class="r%d">', '</tr>', '#even' );
+      $browser->ExtraRowFormat( '<tr class="r%d">', '</tr>', '#even' );
       $extra_row = array( 'to_principal' => -1 );
       $browser->MatchedRow('to_principal', -1, 'edit_grant_row_principal');
       $extra_row = (object) $extra_row;
@@ -867,7 +867,7 @@ function principal_collection_browser() {
           "COALESCE( privileges_list(default_privileges), '[".translate('from principal')."]')" );
   if ($can_write_principal) {
     $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id='.$id.'&dav_name=##URL:dav_name##&subaction=delete_collection';
-    $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
+    $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\" title=\"\">".translate('Delete')."</a>'" );
   }
 
   $browser->SetOrdering( 'dav_name', 'A' );
@@ -875,11 +875,13 @@ function principal_collection_browser() {
   $browser->SetJoins( "collection " );
   $browser->SetWhere( 'user_no = '.intval($editor->Value('user_no')) );
 
-  if ($can_write_principal)
+  if ($can_write_principal) {
+    $browser->ExtraRowFormat( '<tr class="r%d">', '</tr>', '#even' );
     $browser->AddRow( array( 'dav_name' => '<a href="'.$rowurl.'&user_no='.intval($editor->Value('user_no')).'" class="submit">'.translate('Create Collection').'</a>' ));
+  }
 
   if ( $c->enable_row_linking ) {
-    $browser->RowFormat( '<tr onMouseover="LinkHref(this,1);" title="'.translate('Click to edit principal details').'" class="r%d">', '</tr>', '#even' );
+    $browser->RowFormat( '<tr onMouseover="LinkHref(this,1);" title="'.translate('Click to edit collection details').'" class="r%d">', '</tr>', '#even' );
   }
   else {
     $browser->RowFormat( '<tr class="r%d">', '</tr>', '#even' );
@@ -900,7 +902,7 @@ function confirm_delete_collection($confirmation_hash) {
 }
 
 function bindings_to_other_browser() {
-  global $c, $page_elements, $id, $editor;
+  global $c, $page_elements, $id, $editor, $can_write_principal;
   $browser = new Browser(translate('Bindings to other collections'));
   $browser->AddColumn( 'bind_id', translate('ID'), '', '' );
   $browser->AddHidden( 'b.dav_owner_id' );
@@ -938,7 +940,7 @@ function confirm_delete_bind_in($confirmation_hash) {
 
 
 function bindings_to_us_browser() {
-  global $c, $page_elements, $id, $editor;
+  global $c, $page_elements, $id, $editor, $can_write_principal;
   $browser = new Browser(translate('Bindings to this Principal\'s Collections'));
   $browser->AddColumn( 'bind_id', translate('ID'), '', '' );
   $browser->AddHidden( 'b.dav_owner_id' );

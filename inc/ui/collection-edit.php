@@ -475,8 +475,8 @@ EOTEMPLATE;
   $browser->AddColumn( 'members', translate('Has Members'), '', '', 'has_members_list(principal_id)' );
 
   if ( $can_write_collection ) {
-    $del_link  = '<a href="'.$c->base_url.'/admin.php?action=edit&t=collection&id='.$id.'&delete_grant=##to_principal##" class="submit">'.translate('Revoke').'</a>';
-    $edit_link  = '<a href="'.$c->base_url.'/admin.php?action=edit&t=collection&id='.$id.'&edit_grant=##to_principal##" class="submit">'.translate('Edit').'</a>';
+    $del_link  = '<a href="'.$c->base_url.'/admin.php?action=edit&t=collection&id='.$id.'&delete_grant=##to_principal##" class="submit" title="">'.translate('Revoke').'</a>';
+    $edit_link  = '<a href="'.$c->base_url.'/admin.php?action=edit&t=collection&id='.$id.'&edit_grant=##to_principal##" class="submit" title="">'.translate('Edit').'</a>';
     $browser->AddColumn( 'action', translate('Action'), 'center', '', "'$edit_link&nbsp;$del_link'" );
   }
 
@@ -499,6 +499,7 @@ EOTEMPLATE;
       $browser->MatchedRow('to_principal', $_GET['edit_grant'], 'edit_grant_row_collection');
     }
     else {
+      $browser->ExtraRowFormat( '<tr class="r%d">', '</tr>', '#even' );
       $extra_row = array( 'to_principal' => -1 );
       $browser->MatchedRow('to_principal', -1, 'edit_grant_row_collection');
       $extra_row = (object) $extra_row;

@@ -89,7 +89,7 @@ $c->admin_email ='calendar-admin@example.com';
 * administration pages.
 * Default=true
 */
-// $c->enable_row_linking = true;
+// $c->enable_row_linking = false;
 
 /**
 * These should be an array of style sheets with a path specified relative
