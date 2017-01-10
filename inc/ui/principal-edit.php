@@ -809,7 +809,9 @@ function access_ticket_browser() {
 
   $browser = new Browser(translate('Access Tickets'));
 
-  $browser->AddColumn( 'ticket_id', translate('Ticket ID'), '', '' );
+  if ( $can_write_principal ) {
+    $browser->AddColumn( 'ticket_id', translate('Ticket ID'), '', '' );
+  }
   $browser->AddColumn( 'target', translate('Target'), '', '<td style="white-space:nowrap;">%s</td>', "COALESCE(d.dav_name,c.dav_name)" );
   $browser->AddColumn( 'expires', translate('Expires'), '', '', 'TO_CHAR(expires,\'YYYY-MM-DD HH:MI:SS\')');
   $browser->AddColumn( 'privs', translate('Privileges'), '', '', 'privileges', '', '', 'principal_privilege_format_function' );
@@ -940,7 +942,7 @@ function confirm_delete_bind_in($confirmation_hash) {
 
 
 function bindings_to_us_browser() {
-  global $c, $page_elements, $id, $editor, $can_write_principal;
+  global $c, $page_elements, $id, $editor, $session;
   $browser = new Browser(translate('Bindings to this Principal\'s Collections'));
   $browser->AddColumn( 'bind_id', translate('ID'), '', '' );
   $browser->AddHidden( 'b.dav_owner_id' );
@@ -949,7 +951,7 @@ function bindings_to_us_browser() {
   $browser->AddColumn( 'bound_as', translate('Bound As'), '', '<td style="white-space:nowrap;">%s</td>', 'b.dav_name' );
   $browser->AddColumn( 'access_ticket_id', translate('Ticket ID'), '', '' );
   $browser->AddColumn( 'privs', translate('Privileges'), '', '', "privileges_list(privileges)" );
-  if ($can_write_principal) {
+  if ( $session->AllowedTo('Admin') ) {
     $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id=##principal_id##&bind_id=##bind_id##&subaction=delete_binding';
     $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
   }

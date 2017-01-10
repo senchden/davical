@@ -137,13 +137,14 @@ if ( $editor->Available() ) {
   $entryqry->Exec('admin-collection-edit');
   $entries = $entryqry->Fetch();  $entries = $entries->count;
 
-  $externalqry = new AwlQuery( 'SELECT external_url from dav_binding where bound_source_id=:id  limit 1', array(':id' => $editor->Value('collection_id') ) );
-  $externalqry->Exec('external-bind-url');
-  $external = $externalqry->Fetch();  $external_url = $external->external_url;
-  if ( $external_url ) {
-    $external_bind = "\n<tr> <th class='right'>" . translate('External Url') . "</th>         <td class='left'>$external_url</td> </tr>";
-  } else {
-    $external_bind = "";
+  $external_bind = "";
+  if ($can_write_collection) {
+    $externalqry = new AwlQuery( 'SELECT external_url from dav_binding where bound_source_id=:id  limit 1', array(':id' => $editor->Value('collection_id') ) );
+    $externalqry->Exec('external-bind-url');
+    $external = $externalqry->Fetch();  $external_url = $external->external_url;
+    if ( $external_url ) {
+        $external_bind = "\n<tr> <th class='right'>" . translate('External Url') . "</th>         <td class='left'>$external_url</td> </tr>";
+    }
   }
 }
 else {
@@ -510,7 +511,9 @@ EOTEMPLATE;
 
   $browser = new Browser(translate('Access Tickets'));
   $browser->AddHidden( 'dav_owner_id' );
-  $browser->AddColumn( 'ticket_id', translate('Ticket ID'), '', '' );
+  if ($can_write_collection) {
+    $browser->AddColumn( 'ticket_id', translate('Ticket ID'), '', '' );
+  }
   $browser->AddColumn( 'target', translate('Target'), '', '<td style="white-space:nowrap;">%s</td>', "'".$c->base_url.'/caldav.php'."' ||COALESCE(d.dav_name,c.dav_name)" );
   $browser->AddColumn( 'expiry', translate('Expires'), '', '', 'TO_CHAR(expires,\'YYYYMMDD"T"HH:MI:SS\')');
   $browser->AddColumn( 'privs', translate('Privileges'), '', '', "privileges_list(privileges)" );
@@ -546,7 +549,7 @@ EOTEMPLATE;
   $browser->AddColumn( 'bound_as', translate('Bound As'), '', '<td style="white-space:nowrap;">%s</td>', 'b.dav_name' );
   $browser->AddColumn( 'access_ticket_id', translate('Ticket ID'), '', '' );
   $browser->AddColumn( 'privs', translate('Privileges'), '', '', "privileges_list(privileges)" );
-  if ($can_write_collection) {
+  if ( $session->AllowedTo('Admin') ) {
     $delurl = $c->base_url . '/admin.php?action=edit&t=principal&id=##dav_owner_id##&bind_id=##URL:bind_id##&subaction=delete_binding';
     $browser->AddColumn( 'delete', translate('Action'), 'center', '', "'<a class=\"submit\" href=\"$delurl\">".translate('Delete')."</a>'" );
   }
