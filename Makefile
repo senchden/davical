@@ -80,6 +80,7 @@ test:
 clean:
 	rm -f built-docs built-locale
 	rm -rf docs/api locale
+	-rm -rf testing/tests/*/diffs testing/tests/*/results testing/tests/*/initial.dbdump
 	-find . -name "*~" -delete
 	rm -f docs/translation.pdf
 	rm -f davical.spec
