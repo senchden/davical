@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # m42 <p.m42.ribeiro@gmail.com>, 2011
 # m42 <p.m42.ribeiro@gmail.com>, 2015
@@ -10,29 +10,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: DAViCal\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-04 19:01+0100\n"
+"POT-Creation-Date: 2017-01-14 23:06+0100\n"
 "PO-Revision-Date: 2015-02-10 16:51+0000\n"
 "Last-Translator: m42 <p.m42.ribeiro@gmail.com>\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/projects/p/davical/language/pt_PT/)\n"
+"Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_PT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. Translators: this is the formatting of a date with time. See
-#. http://php.net/manual/en/function.strftime.php
-#: htdocs/feed.php:134 htdocs/feed.php:142
+#. Translators: this is the formatting of a date with time. See http://php.net/manual/en/function.strftime.php
 msgid "%F %T"
 msgstr "%F %T"
 
-#. Translators: his is the formatting of just the time. See
-#. http://php.net/manual/en/function.strftime.php
-#: htdocs/feed.php:140
+#. Translators: his is the formatting of just the time. See http://php.net/manual/en/function.strftime.php
 msgid "%T"
 msgstr "%T"
 
-#: inc/ui/principal-edit.php:168
 msgid "*** Default Locale ***"
 msgstr "*** Definições Regionais predefinidas ***"
 
@@ -79,72 +74,64 @@ msgstr "- a actualizar grupos : %s"
 msgid "- updating user records : %s"
 msgstr "- a actualizar registos de utilizador : %s"
 
-#: htdocs/tools.php:90
-msgid ""
-"<b>WARNING: all events in this path will be deleted before inserting allof "
-"the ics file</b>"
+#, php-format
+msgid "<a href=\"https://wiki.davical.org/w/Setup_Failure_Codes/%s\">Explanation on DAViCal Wiki</a>"
+msgstr ""
+
+msgid "<b>WARNING: all events in this path will be deleted before inserting allof the ics file</b>"
 msgstr "<b>AVISO: todos os eventos neste caminho serão apagados antes de inserir o ficheiro ics</b>"
 
-#: htdocs/help.php:18
 #, php-format
 msgid ""
 "<h1>Help</h1>\n"
-"<p>For initial help you should visit the <a href=\"http://www.davical.org/\" target=\"_blank\">DAViCal Home Page</a> or take\n"
-"a look at the <a href=\"http://wiki.davical.org/%s\" target=\"_blank\">DAViCal Wiki</a>.</p>\n"
-"<p>If you can't find the answers there, visit us on <a href=\"http://wikipedia.org/wiki/Internet_Relay_Chat\" target=\"_blank\">IRC</a> in\n"
-"the <b>#davical</b> channel on <a href=\"http://www.oftc.net/\" target=\"_blank\">irc.oftc.net</a>,\n"
-"or send a question to the <a href=\"http://lists.sourceforge.net/mailman/listinfo/davical-general\" target=\"_blank\">DAViCal Users mailing list</a>.</p>\n"
-"<p>The <a href=\"http://sourceforge.net/mailarchive/forum.php?forum_id=8348\" title=\"DAViCal Users Mailing List\" target=\"_blank\">mailing list\n"
+"<p>For initial help you should visit the <a href=\"https://www.davical.org/\" target=\"_blank"
+"\">DAViCal Home Page</a> or take\n"
+"a look at the <a href=\"https://wiki.davical.org/%s\" target=\"_blank\">DAViCal Wiki</a>.</p>\n"
+"<p>If you can't find the answers there, visit us on <a href=\"https://wikipedia.org/wiki/"
+"Internet_Relay_Chat\" target=\"_blank\">IRC</a> in\n"
+"the <b>#davical</b> channel on <a href=\"https://www.oftc.net/\" target=\"_blank\">irc.oftc.net</a>,\n"
+"or send a question to the <a href=\"https://lists.sourceforge.net/mailman/listinfo/davical-general\" "
+"target=\"_blank\">DAViCal Users mailing list</a>.</p>\n"
+"<p>The <a href=\"https://sourceforge.net/p/davical/mailman/davical-general/\" title=\"DAViCal Users "
+"Mailing List\" target=\"_blank\">mailing list\n"
 "archives can be helpful too.</p>"
-msgstr "<h1>Ajuda</h1>\n<p>Para ajuda inicial visite a <a href=\"http://www.davical.org/\" target=\"_blank\">Home Page do DAViCal</a> ou veja \no <a href=\"http://wiki.davical.org/%s\" target=\"_blank\">Wiki DAViCal</a>.</p>\n<p>Se não encontrar aí as respostas, visite o canal <b>#davical</b> do <a href=\"http://wikipedia.org/wiki/Internet_Relay_Chat\" target=\"_blank\">IRC</a> no\nservidor <a href=\"http://www.oftc.net/\" target=\"_blank\">irc.oftc.net</a>,\nou envie uma questão para <a href=\"http://lists.sourceforge.net/mailman/listinfo/davical-general\" target=\"_blank\">Lista de correio dos Utilizadores DAViCal</a>.</p>\n<p>os arquivos da <a href=\"http://sourceforge.net/mailarchive/forum.php?forum_id=8348\" title=\"DAViCal Users Mailing List\" target=\"_blank\">lista de correio</a>\ntambém podem ser úteis.</p>"
+msgstr ""
 
 #, php-format
 msgid ""
-"<h1>Log On Please</h1><p>For access to the %s you should log on withthe "
-"username and password that have been issued to you.</p><p>If you would like "
-"to request access, please e-mail %s.</p>"
-msgstr "<h1>Entre por favor</h1><p>Para aceder ao %s deve entrar com o nome de utilizador e password que lhe foram atribuídos.</p><p>Se necessitar de pedir acesso, envie um e-mail para %s.</p>"
+"<h1>Log On Please</h1><p>For access to the %s you should log on withthe username and password that "
+"have been issued to you.</p><p>If you would like to request access, please e-mail %s.</p>"
+msgstr ""
+"<h1>Entre por favor</h1><p>Para aceder ao %s deve entrar com o nome de utilizador e password que lhe "
+"foram atribuídos.</p><p>Se necessitar de pedir acesso, envie um e-mail para %s.</p>"
 
-#: inc/caldav-PUT-vcard.php:51 inc/caldav-PUT-default.php:49
 msgid "A DAViCal principal collection may only contain collections"
 msgstr "Uma colecção principal do DAViCal só pode conter colecções"
 
-#: inc/caldav-MKCOL.php:190
 msgid "A collection already exists at that location."
 msgstr "Já existe uma colecção nessa localização."
 
-#: inc/caldav-PROPPATCH.php:143
 msgid "A collection may not be both a calendar and an addressbook."
 msgstr "Uma colecção não pode ser ao mesmo tempo um calendário e um livro de endereços."
 
-#: inc/caldav-BIND.php:47
 msgid "A resource already exists at the destination."
 msgstr "Já existe um recurso nesse destino."
 
-#: htdocs/setup.php:319
 msgid "AWL Library version "
 msgstr "Versão da biblioteca AWL "
 
-#: inc/ui/collection-edit.php:503 inc/ui/principal-edit.php:784
 msgid "Access Tickets"
 msgstr "Tickets de acesso"
 
-msgid "Access ticket deleted"
-msgstr "Ticket de acesso apagado"
+msgid "Access ticket deleted."
+msgstr ""
 
-#: inc/ui/collection-edit.php:473 inc/ui/collection-edit.php:510
-#: inc/ui/collection-edit.php:540 inc/ui/principal-edit.php:550
-#: inc/ui/principal-edit.php:665 inc/ui/principal-edit.php:791
-#: inc/ui/principal-edit.php:841 inc/ui/principal-edit.php:882
-#: inc/ui/principal-edit.php:918
 msgid "Action"
 msgstr "Acção"
 
-#: inc/ui/principal-edit.php:285
 msgid "Active"
 msgstr "Activo"
 
-#: inc/ui/principal-edit.php:496
 msgid "Adding new member to this Group Principal"
 msgstr "A acrescentar um novo membro a este Grupo Principal"
 
@@ -152,239 +139,200 @@ msgstr "A acrescentar um novo membro a este Grupo Principal"
 msgid "Admin"
 msgstr "Administrador"
 
-#: inc/interactive-page.php:47 htdocs/index.php:17
 msgid "Administration"
 msgstr "Administração"
 
-#: inc/ui/principal-edit.php:284
+msgid "Administration Functions"
+msgstr "Funções de Administração"
+
 msgid "Administrator"
 msgstr "Administrador"
 
-#: inc/ui/collection-edit.php:230 inc/ui/principal-edit.php:381
 msgid "All"
 msgstr "Todos"
 
-#: inc/ui/principal-edit.php:866
 msgid "All collection data will be unrecoverably deleted."
 msgstr "Todos os dados da colecção serão irremediavelmente apagados"
 
-#: htdocs/tools.php:154
 #, php-format
 msgid "All events of user \"%s\" were deleted and replaced by those from file %s"
 msgstr "Todos os eventos do utilizador \"%s\" foram apagados e substituídos pelos do ficheiro %s"
 
-#: inc/ui/principal-edit.php:447
-msgid ""
-"All of the principal's calendars and events will be unrecoverably deleted."
+msgid "All of the principal's calendars and events will be unrecoverably deleted."
 msgstr "Todos os calendários e eventos do principal serão irremediavelmente apagados."
 
-#: inc/ui/principal-edit.php:9
 msgid "All privileges"
 msgstr "Todos os privilégios"
 
-#: inc/caldav-PROPPATCH.php:331
 msgid "All requested changes were made."
 msgstr "Todas as alterações pedidas foram efectuadas."
 
-#: inc/CalDAVRequest.php:741
-msgid ""
-"Allow free/busy enquiries targeted at the owner of this scheduling inbox"
+msgid "Allow free/busy enquiries targeted at the owner of this scheduling inbox"
 msgstr "Permitir verificação de disponibilidade do dono deste calendário"
 
-#: inc/ui/principal-edit.php:174
 msgid "An \"Administrator\" user has full rights to the whole DAViCal System"
 msgstr "Um utilizador \"Administrador\" tem todas as permissões para todo o sistema DAViCal"
 
-#: htdocs/public.php:51
 msgid "Anonymous users are not allowed to modify calendars"
 msgstr "Utilizadores anónimos não podem alterar calendários"
 
-#: htdocs/public.php:33
 msgid "Anonymous users may only access public calendars"
 msgstr "Utilizadores anónimos têm acesso apenas a calendários públicos"
 
-#: inc/ui/collection-edit.php:31
 msgid "Append"
 msgstr "Acrescentar"
 
-#: htdocs/upgrade.php:45 htdocs/upgrade.php:49
 msgid "Application DB User"
 msgstr "Utilizador da Base de Dados da aplicação"
 
-#: inc/ui/collection-edit.php:416
 msgid "Apply Changes"
 msgstr "Efectuar Mudanças"
 
-#: htdocs/upgrade.php:46 htdocs/upgrade.php:50
 msgid "Apply DB Patches"
 msgstr "Aplicar patches da Base de Dados"
 
-#: htdocs/feed.php:156
 msgid "Attachment"
 msgstr "Anexo"
 
-#: inc/drivers_ldap.php:341 inc/drivers_ldap.php:345
+msgid "Attention: email address not unique, scheduling may not work!"
+msgstr ""
+
 msgid "Authentication server unavailable."
 msgstr "Servidor de autenticação não disponível"
 
-msgid "Binding deleted"
-msgstr "Ligação apagada"
+msgid "Binding deleted."
+msgstr ""
 
-#: inc/ui/principal-edit.php:873
 msgid "Bindings to other collections"
 msgstr "Ligações a outras colecções"
 
-#: inc/ui/collection-edit.php:533
 msgid "Bindings to this Collection"
 msgstr "Ligações a esta colecção"
 
-#: inc/ui/principal-edit.php:909
 msgid "Bindings to this Principal's Collections"
 msgstr "Ligações às colecções deste Principal"
 
-#: inc/autodiscover-handler.php:48
 msgid "Body contains no XML data!"
 msgstr "O corpo não contém dados XML!"
 
-#: inc/ui/collection-edit.php:536 inc/ui/principal-edit.php:877
-#: inc/ui/principal-edit.php:914
 msgid "Bound As"
 msgstr "Ligado Como"
 
-#: inc/interactive-page.php:46
+msgid "Bound As is invalid"
+msgstr ""
+
 msgid "Browse all users"
 msgstr "Percorrer todos os utilizadores"
 
-#: inc/caldav-GET-functions.php:21 inc/DAVResource.php:281
-#: inc/caldav-REPORT.php:117
 msgid "Busy"
 msgstr "Ocupado"
 
-#: inc/ui/collection-edit.php:119 scripts/load_calendar.php:122
 #, php-format
 msgid "Calendar \"%s\" was loaded from file."
 msgstr "O calendário \"%s\" foi carregado a partir do ficheiro."
 
-#: inc/ui/principal-browse.php:5
 msgid "Calendar Principals"
 msgstr "Principais do calendário"
 
-#: inc/ui/collection-edit.php:228
 msgid "Calendar Timezone"
 msgstr "Fuso horário do calendário"
 
-#: inc/ui/principal-edit.php:727
 msgid "Can only add tickets for existing collection paths which you own"
 msgstr "Só é permitido acrescentar tickets a uma colecção da qual seja dono"
 
-#: htdocs/feed.php:165
+msgid "Can only bind collections into the current principal's namespace"
+msgstr ""
+
+msgid ""
+"Cannot determine upstream version, because PHP has set “<a href=\"https://secure.php.net/manual/en/"
+"filesystem.configuration.php#ini.allow-url-fopen\"><code>allow_url_fopen</code></a>” to “<code>FALSE</"
+"code>”."
+msgstr ""
+
 msgid "Categories"
 msgstr "Categorias"
 
-#: inc/ui/principal-edit.php:278
 msgid "Change Password"
 msgstr "Alterar Password"
 
-#: inc/ui/principal-browse.php:42 inc/ui/external-browse.php:21
 msgid "Click to display user details"
 msgstr "Clique para ver detalhes de utilizador"
 
-#: inc/ui/collection-edit.php:482 inc/ui/principal-edit.php:471
-#: inc/ui/principal-edit.php:559 inc/ui/principal-edit.php:674
-#: inc/ui/principal-edit.php:851
+msgid "Click to edit collection details"
+msgstr ""
+
 msgid "Click to edit principal details"
 msgstr "Clique para editar os detalhes do principal"
 
-#: inc/ui/collection-edit.php:4 inc/ui/collection-edit.php:136
-#: inc/ui/principal-edit.php:913
 msgid "Collection"
 msgstr "Colecção"
 
-#: inc/ui/collection-edit.php:460
 msgid "Collection Grants"
 msgstr "Permissões da colecção"
 
-#: inc/ui/collection-edit.php:214
 msgid "Collection ID"
 msgstr "ID da colecção"
 
-msgid "Collection deleted"
-msgstr "Colecção apagada"
+msgid "Collection deleted."
+msgstr ""
 
-#: inc/caldav-MKCOL.php:83
-msgid ""
-"Collections may not be both CalDAV calendars and CardDAV addressbooks at the"
-" same time"
+msgid "Collections may not be both CalDAV calendars and CardDAV addressbooks at the same time"
 msgstr "As colecções não podem ser calendários CalDAV e livros de endereços CardDAV simultaneamente"
 
-#: htdocs/setup.php:393 htdocs/setup.php:395 htdocs/index.php:47
-#: htdocs/setup.php:398 htdocs/index.php:46
 msgid "Configuring Calendar Clients for DAViCal"
 msgstr "A configurar clientes de calendário para o DAViCal"
 
-#: htdocs/setup.php:394 htdocs/setup.php:398 htdocs/index.php:52
-#: htdocs/setup.php:403 htdocs/index.php:51
 msgid "Configuring DAViCal"
 msgstr "A configurar o DAViCal"
 
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: inc/ui/principal-edit.php:900 inc/ui/principal-edit.php:936
 msgid "Confirm Deletion of the Binding"
 msgstr "Confirmar eliminação da ligação"
 
-#: inc/ui/principal-edit.php:865
 msgid "Confirm Deletion of the Collection"
 msgstr "Confirmar eliminação da colecção"
 
-#: inc/ui/principal-edit.php:446
 msgid "Confirm Deletion of the Principal"
 msgstr "Confirmar eliminação do Principal"
 
-#: inc/ui/principal-edit.php:820
 msgid "Confirm Deletion of the Ticket"
 msgstr "Confirmar eliminação do ticket"
 
-#: inc/ui/principal-edit.php:279
 msgid "Confirm Password"
 msgstr "Confirmar Password"
 
 msgid "Confirm the new password."
 msgstr "Confirmar a nova password"
 
-#: htdocs/setup.php:254
+msgid "Connection Parameters"
+msgstr ""
+
 msgid "Could not retrieve"
 msgstr "Não pude recuperar"
 
 msgid "Create"
 msgstr "Criar"
 
-#: inc/ui/principal-edit.php:848
 msgid "Create Collection"
 msgstr "Criar colecção"
 
-#: inc/ui/collection-edit.php:169 inc/ui/principal-edit.php:16
 msgid "Create Events/Collections"
 msgstr "Criar Eventos/Colecções"
 
-#: inc/ui/collection-edit.php:151
 msgid "Create New Collection"
 msgstr "Criar nova colecção"
 
-#: inc/ui/principal-edit.php:255
 msgid "Create New Principal"
 msgstr "Criar novo Principal"
 
-#: inc/interactive-page.php:38
 msgid "Create Principal"
 msgstr "Criar Principal"
 
-#: inc/interactive-page.php:38
 msgid "Create a new principal (i.e. a new user, resource or group)"
 msgstr "Criar um novo principal (i.e. um novo utilizador, recurso ou grupo)"
 
-#: inc/CalDAVRequest.php:727
 msgid "Create a resource or collection"
 msgstr "Criar um recurso ou colecção"
 
@@ -394,208 +342,169 @@ msgstr "Criar uma nova colecção."
 msgid "Creating new Principal record."
 msgstr "Criar um novo registo de principal"
 
-#: inc/ui/principal-edit.php:743
 msgid "Creating new ticket granting privileges to this Principal"
 msgstr "A criar novo ticket para atribuir privilégios a este principal"
 
-#: htdocs/setup.php:318
 msgid "Current DAViCal version "
 msgstr "Versão DAViCal actual "
 
-#: inc/ui/collection-edit.php:216
+msgid ""
+"Currently this page does nothing. Suggestions or patches to make it do something useful will be "
+"gratefully received."
+msgstr ""
+
 msgid "DAV Path"
 msgstr "Caminho DAV"
 
-#: inc/caldav-PROPPATCH.php:237
-msgid ""
-"DAV::resourcetype may only be set to a new value, it may not be removed."
+msgid "DAV::resourcetype may only be set to a new value, it may not be removed."
 msgstr "DAV::resourcetype só pode ser definido para um novo valor, não pode ser removido."
 
-#: inc/page-header.php:4
 msgid "DAViCal CalDAV Server"
 msgstr "Servidor CalDAV DAViCal"
 
-#: htdocs/setup.php:324
+msgid "DAViCal CalDAV Server - Configuration Help"
+msgstr "Servidor CalDAV DAViCal - Ajuda de Configuração"
+
 msgid "DAViCal DB Schema version "
 msgstr "Versão do Schema da Base de Dados do DAViCal"
 
-#: inc/interactive-page.php:20
+msgid "DAViCal Fatal Error"
+msgstr ""
+
 msgid "DAViCal Homepage"
 msgstr "Homepage do DAViCal"
 
-#: inc/interactive-page.php:21
 msgid "DAViCal Wiki"
 msgstr "Wiki do DAViCal"
 
-#: inc/caldav-BIND.php:99
 msgid "DAViCal only allows BIND requests for collections at present."
 msgstr "O DAViCal actualmente apenas permite pedidos BIND para colecções."
 
-#: inc/iSchedule.php:652
 msgid "DKIM signature missing"
 msgstr "Assinatura DKIM em falta"
 
-#: inc/iSchedule.php:663
 msgid "DKIM signature validation failed(DNS ERROR)"
 msgstr "Validação da assinatura DKIM falhou (ERRO DNS)"
 
-#: inc/iSchedule.php:665
 msgid "DKIM signature validation failed(KEY Parse ERROR)"
 msgstr "Validação da assinatura DKIM falhou (ERRO análise CHAVE)"
 
-#: inc/iSchedule.php:667
 msgid "DKIM signature validation failed(KEY Validation ERROR)"
 msgstr "Validação da assinatura DKIM falhou (ERRO validação CHAVE)"
 
-#: inc/iSchedule.php:670
 msgid "DKIM signature validation failed(Signature verification ERROR)"
 msgstr "Validação da assinatura DKIM falhou (ERRO verificação de assinatura)"
 
-#: htdocs/feed.php:78 inc/caldav-GET-functions.php:65
-#: inc/CalDAVRequest.php:696 inc/CalDAVRequest.php:798 inc/caldav-BIND.php:64
-#: inc/caldav-BIND.php:84 inc/caldav-BIND.php:89 inc/caldav-BIND.php:139
 msgid "Database Error"
 msgstr "Erro de Base de Dados"
 
-#: htdocs/upgrade.php:43 htdocs/upgrade.php:47
 msgid "Database Host"
 msgstr "Servidor de Base de Dados"
 
-#: htdocs/upgrade.php:39 htdocs/upgrade.php:43
 msgid "Database Name"
 msgstr "Nome da Base de Dados"
 
-#: htdocs/upgrade.php:47 htdocs/upgrade.php:51
 msgid "Database Owner"
 msgstr "Dono da Base de Dados"
 
-#: htdocs/upgrade.php:41 htdocs/upgrade.php:45
 msgid "Database Password"
 msgstr "Password da Base de Dados"
 
-#: htdocs/upgrade.php:42 htdocs/upgrade.php:46
 msgid "Database Port"
 msgstr "Porto da Base de Dados"
 
-#: htdocs/upgrade.php:40 htdocs/upgrade.php:44
 msgid "Database Username"
 msgstr "Nome de utilizador da Base de Dados"
 
-#: inc/caldav-PUT-functions.php:43 inc/caldav-REPORT-sync-collection.php:63
-#: inc/caldav-REPORT-sync-collection.php:72
-#: inc/caldav-REPORT-sync-collection.php:182
 msgid "Database error"
 msgstr "Erro da Base de Dados"
 
-#: htdocs/setup.php:323
 msgid "Database is Connected"
 msgstr "A Base de Dados está ligada"
 
-#: inc/ui/principal-edit.php:283
 msgid "Date Format Style"
 msgstr "Estilo de formato de data"
 
 msgid "Date Style"
 msgstr "Estilo de data"
 
-#: inc/ui/collection-edit.php:225
 msgid "Default Privileges"
 msgstr "Privilégios predefinidos"
 
 msgid "Default relationships added."
 msgstr "Acrescentados relacionamentos predefinidos"
 
-#: inc/ui/collection-edit.php:510 inc/ui/collection-edit.php:540
-#: inc/ui/principal-edit.php:791 inc/ui/principal-edit.php:841
-#: inc/ui/principal-edit.php:882 inc/ui/principal-edit.php:918
 msgid "Delete"
 msgstr "Eliminar"
 
-#: inc/ui/collection-edit.php:170 inc/ui/principal-edit.php:17
 msgid "Delete Events/Collections"
 msgstr "Eliminar eventos/colecções"
 
-#: inc/ui/principal-edit.php:298
 msgid "Delete Principal"
 msgstr "Eliminar principal"
 
-#: inc/CalDAVRequest.php:728
 msgid "Delete a resource or collection"
 msgstr "Eliminar recurso ou colecção"
 
-#: inc/ui/principal-edit.php:611
 msgid "Deleted a grant from this Principal"
 msgstr "Foi eliminada uma permissão deste principal"
 
-#: inc/ui/principal-edit.php:898 inc/ui/principal-edit.php:934
 msgid "Deleting Binding:"
 msgstr "A eliminar ligação:"
 
-#: inc/ui/principal-edit.php:863
 msgid "Deleting Collection:"
 msgstr "A eliminar colecção:"
 
-#: inc/ui/principal-edit.php:445
 msgid "Deleting Principal:"
 msgstr "A eliminar principal:"
 
-#: inc/ui/principal-edit.php:818
 msgid "Deleting Ticket:"
 msgstr "A eliminar ticket:"
 
-#: inc/CalDAVRequest.php:739
-msgid ""
-"Deliver scheduling invitations from an organiser to this scheduling inbox"
+msgid "Deliver scheduling invitations from an organiser to this scheduling inbox"
 msgstr "Entregar os convites de um organizador a esta caixa de entrada de reuniões"
 
-#: inc/CalDAVRequest.php:740
 msgid "Deliver scheduling replies from an attendee to this scheduling inbox"
 msgstr "Entregar as respostas a convites dos participantes a esta caixa de entrada de reuniões"
 
-#: htdocs/setup.php:375 htdocs/setup.php:377
 msgid "Dependencies"
 msgstr "Dependências"
 
-#: htdocs/setup.php:376 htdocs/setup.php:378
 msgid "Dependency"
 msgstr "Dependência"
 
-#: htdocs/feed.php:176 inc/ui/collection-edit.php:226
 msgid "Description"
 msgstr "Descrição"
 
-#: inc/caldav-MOVE.php:34 inc/caldav-PUT-default.php:52
 msgid "Destination collection does not exist"
 msgstr "A colecção de destino não existe"
 
-#: htdocs/tools.php:94
 msgid "Directory on the server"
 msgstr "Directório no servidor"
 
-#: inc/ui/principal-browse.php:18 inc/ui/collection-edit.php:466
-#: inc/ui/external-browse.php:9 inc/ui/principal-edit.php:281
-#: inc/ui/principal-edit.php:461 inc/ui/principal-edit.php:544
-#: inc/ui/principal-edit.php:658 inc/ui/principal-edit.php:836
 msgid "Display Name"
 msgstr "Nome a apresentar"
 
-#: inc/ui/collection-edit.php:219
 msgid "Displayname"
 msgstr "Nome a apresentar"
 
 msgid "Does the user have the right to perform this role?"
 msgstr "O utilizador tem o direito de executar este papel?"
 
-#: htdocs/iSchedule.php:109 htdocs/iSchedule.php:119
 msgid "Domain"
 msgstr "Domínio"
 
-#: inc/ui/principal-browse.php:19
+msgid "Download entire collection as .ics file"
+msgstr ""
+
 msgid "EMail"
 msgstr "Email"
 
 msgid "EMail OK"
 msgstr "Email OK"
+
+msgid "ERROR"
+msgstr ""
 
 msgid "ERROR: The full name may not be blank."
 msgstr "ERRO: O nome completo não pode ficar em branco."
@@ -606,44 +515,37 @@ msgstr "ERRO: A nova password tem que corresponder à password confirmada."
 msgid "ERROR: There was a database error writing the roles information!"
 msgstr "ERRO: Houve um erro de base de dados ao escrever informação de papéis!"
 
-#: inc/ui/collection-edit.php:472 inc/ui/principal-edit.php:664
 msgid "Edit"
 msgstr "Editar"
 
 msgid "Edit this user record"
 msgstr "Editar este registo de utilizador"
 
-#: inc/ui/principal-edit.php:282
 msgid "Email Address"
 msgstr "Endereço de email"
 
-msgid ""
-"Enter a username, if you know it, and click here, to be e-mailed a temporary"
-" password."
-msgstr "Indique um nome de utilizador, se o souber, e clique aqui, para que lhe seja enviada uma password temporária."
+msgid "Enter a username, if you know it, and click here, to be e-mailed a temporary password."
+msgstr ""
+"Indique um nome de utilizador, se o souber, e clique aqui, para que lhe seja enviada uma password "
+"temporária."
 
 msgid "Enter your username and password then click here to log in."
 msgstr "Indique o seu nome de utilizador e password e clique aqui para entrar."
 
-#: inc/drivers_ldap.php:156 inc/drivers_ldap.php:160
 #, php-format
 msgid "Error NoGroupFound with filter >%s<, attributes >%s< , dn >%s<"
 msgstr "Erro NoGroupFound com o filtro >%s<, atributos >%s< , dn >%s<"
 
-#: inc/drivers_ldap.php:125 inc/drivers_ldap.php:128
 #, php-format
 msgid "Error NoUserFound with filter >%s<, attributes >%s< , dn >%s<"
 msgstr "Erro NoUserFound com filtro >%s<, atributos >%s< , dn >%s<"
 
-#: inc/caldav-MKCOL.php:187
 msgid "Error querying database."
 msgstr "Erro ao consultar a base de dados."
 
-#: inc/caldav-MKCOL.php:210 inc/caldav-MKCOL.php:219 inc/external-fetch.php:38
 msgid "Error writing calendar details to database."
 msgstr "Erro ao escrever os detalhes do calendário na base de dados."
 
-#: inc/caldav-MKCOL.php:215
 msgid "Error writing calendar properties to database."
 msgstr "Erro ao escrever os detalhes do calendário para a base de dados."
 
@@ -653,23 +555,18 @@ msgstr "Europeu"
 msgid "European (d/m/y)"
 msgstr "Europeu(d/m/a)"
 
-#: inc/caldav-MOVE.php:78
 msgid "Existing resource does not match \"If-Match\" header - not accepted."
 msgstr "Recurso existente não corresponde com cabeçalho \"If-Match\" - não aceite."
 
-#: inc/caldav-MOVE.php:81 inc/CalDAVRequest.php:1164
 msgid "Existing resource matches \"If-None-Match\" header - not accepted."
 msgstr "Recurso existente corresponde com cabeçalho \"If-None-Match\" - não aceite."
 
-#: inc/ui/collection-edit.php:507 inc/ui/principal-edit.php:788
 msgid "Expires"
 msgstr "Expira"
 
-#: inc/ui/external-browse.php:4
 msgid "External Calendars"
 msgstr "Calendários Externos"
 
-#: inc/ui/collection-edit.php:145
 msgid "External Url"
 msgstr "Url Externo"
 
@@ -679,100 +576,96 @@ msgstr "Falha"
 msgid "Failed to write collection."
 msgstr "Falhou a escrever colecção."
 
-#: htdocs/feed.php:45
 msgid "Feeds are only supported for calendars at present."
 msgstr "Feeds só são suportadas actualmente para calendários."
 
-#: inc/DAViCalSession.php:167
 msgid "For access to the"
 msgstr "Para acesso ao"
 
-#: inc/caldav-GET.php:64
 msgid "Forbidden"
 msgstr "Proibido"
 
-#: inc/ui/collection-edit.php:233 inc/ui/principal-edit.php:384
 msgid "Free/Busy"
 msgstr "Livre/Ocupado"
 
 msgid "Full Name"
 msgstr "Nome Completo"
 
-#: inc/ui/principal-edit.php:280
 msgid "Fullname"
 msgstr "Nome completo"
 
-#: inc/caldav-GET-functions.php:38
 msgid "GET requests on collections are only supported for calendars."
 msgstr "Pedidos GET a colecções são suportados apenas para calendários."
 
-#: htdocs/setup.php:325
 msgid "GNU gettext support"
 msgstr "Suporte GNU gettext"
 
 msgid "GO!"
 msgstr "OK!"
 
-#: inc/interactive-page.php:22
 msgid "Go to the DAViCal Feature Requests"
 msgstr "Ir para os Pedidos de Funcionalidades do DAViCal"
 
-#: inc/ui/collection-edit.php:413
 msgid "Grant"
 msgstr "Atribuir"
 
-#: inc/ui/principal-edit.php:592
 msgid "Granting new privileges from this Principal"
 msgstr "A atribuir novos privilégios a partir deste Principal"
+
+msgid "Grants specify the access rights to a collection or a principal"
+msgstr ""
 
 #. Translators: in the sense of a group of people
 msgid "Group"
 msgstr "Grupo"
 
-#: inc/ui/principal-edit.php:538
 msgid "Group Members"
 msgstr "Membros do grupo"
 
-#: inc/ui/principal-edit.php:456
 msgid "Group Memberships"
 msgstr "Associação a grupos"
 
-#: inc/ui/principal-browse.php:10
 msgid "Group Principals"
 msgstr "Principais do grupo"
 
-#: inc/ui/principal-browse.php:23 inc/ui/collection-edit.php:468
-#: inc/ui/principal-edit.php:463 inc/ui/principal-edit.php:546
-#: inc/ui/principal-edit.php:660
+msgid "Groups &amp; Grants"
+msgstr ""
+
+msgid "Groups allow those granted rights to be assigned to a set of many principals in one action"
+msgstr ""
+
+msgid "Groups may be members of other groups, but complex nesting will hurt system performance"
+msgstr ""
+
+msgid ""
+"Groups provide an intermediate linking to minimise administration overhead.  They might not have "
+"calendars, and they will not usually log on."
+msgstr ""
+
 msgid "Has Members"
 msgstr "Tem membros"
 
-#: inc/interactive-page.php:48
 msgid "Help"
 msgstr "Ajuda"
 
-#: inc/interactive-page.php:48
 msgid "Help on the current screen"
 msgstr "Ajuda para este écran"
 
 msgid "Help! I've forgotten my password!"
 msgstr "Ajuda! Esqueci-me da minha password!"
 
-#: inc/interactive-page.php:45
+msgid "Here is a list of users (maybe :-)"
+msgstr ""
+
 msgid "Home"
 msgstr "Entrada"
 
 msgid "Home "
 msgstr "Entrada"
 
-#: inc/interactive-page.php:45
 msgid "Home Page"
 msgstr "Página de Entrada"
 
-#: inc/ui/principal-browse.php:14 inc/ui/collection-edit.php:534
-#: inc/ui/external-browse.php:6 inc/ui/principal-edit.php:458
-#: inc/ui/principal-edit.php:540 inc/ui/principal-edit.php:832
-#: inc/ui/principal-edit.php:874 inc/ui/principal-edit.php:910
 msgid "ID"
 msgstr "ID"
 
@@ -786,30 +679,32 @@ msgstr "Formato ISO (AAAA-MM-DD)"
 msgid "Id"
 msgstr "Id"
 
+msgid "If you can read this then things must be mostly working already."
+msgstr "Se conseguir ler isto as coisas já devem estar a funcionar."
+
 msgid "If you have forgotten your password then"
 msgstr "Se se esqueceu da sua password, então"
 
-#: inc/DAViCalSession.php:171
 msgid "If you would like to request access, please e-mail"
 msgstr "Se quiser obter acesso, por favor envie e-mail"
 
-#: htdocs/tools.php:79
 msgid "Import all .ics files of a directory"
 msgstr "Importar todos os ficheiros .ics de um directório"
 
-#: inc/interactive-page.php:36
 msgid "Import calendars and Synchronise LDAP."
 msgstr "Importar calendários e sincronizar LDAP"
 
-#: inc/interactive-page.php:37
+msgid ""
+"In due course this program will implement the functionality which is currently contained in that "
+"script, but until then I'm afraid you do need to run it."
+msgstr ""
+
 msgid "Inactive Principals"
 msgstr "Principais inactivos"
 
-#: inc/caldav-PUT-default.php:45
 msgid "Incorrect content type for addressbook: "
 msgstr "Tipo de conteúdo incorrecto para o livro de endereços: "
 
-#: inc/caldav-PUT-default.php:41
 msgid "Incorrect content type for calendar: "
 msgstr "Tipo de conteúdo incorrecto para o calendário: "
 
@@ -819,23 +714,18 @@ msgstr "Nome de utilizador ou password inválido."
 msgid "Invalid username or password."
 msgstr "Nome de utilizador ou password inválido."
 
-#: inc/ui/principal-browse.php:20 inc/ui/principal-edit.php:462
-#: inc/ui/principal-edit.php:545
 msgid "Is Member of"
 msgstr "É membro de"
 
-#: inc/ui/collection-edit.php:222
 msgid "Is a Calendar"
 msgstr "É um calendário"
 
-#: inc/ui/collection-edit.php:223
 msgid "Is an Addressbook"
 msgstr "É um livro de endereços"
 
 msgid "Is this user active?"
 msgstr "Este utilizador está activo?"
 
-#: inc/ui/collection-edit.php:220
 msgid "Items in Collection"
 msgstr "Items na colecção"
 
@@ -848,89 +738,69 @@ msgstr "Idioma"
 msgid "Last used"
 msgstr "Último usado"
 
-#: inc/interactive-page.php:30 inc/interactive-page.php:39
 msgid "List External Calendars"
 msgstr "Listar Calendários Externos"
 
-#: inc/interactive-page.php:29
 msgid "List Groups"
 msgstr "Listar Grupos"
 
-#: inc/interactive-page.php:28
 msgid "List Resources"
 msgstr "Listar recursos"
 
-#: inc/interactive-page.php:27
 msgid "List Users"
 msgstr "Listar utilizadores"
 
-#: inc/ui/collection-edit.php:218
 msgid "Load From File"
 msgstr "Carregar do ficheiro"
 
-#: inc/ui/principal-edit.php:286
 msgid "Locale"
 msgstr "Definições regionais"
 
-#: htdocs/feed.php:151
 msgid "Location"
 msgstr "Localização"
 
-#: inc/DAViCalSession.php:166
 msgid "Log On Please"
 msgstr "Por favor entrar"
 
-#: inc/interactive-page.php:6
 msgid "Log out of DAViCal"
 msgstr "Sair do DAViCal"
 
-#: inc/interactive-page.php:6
 msgid "Logout"
 msgstr "Sair"
 
-#: inc/ui/principal-edit.php:508
 msgid "Member deleted from this Group Principal"
 msgstr "Membro eliminado deste Principal de Grupo"
 
-msgid ""
-"Most of DAViCal will work but upgrading to PHP 5.2 or later is strongly "
-"recommended."
-msgstr "A maior parte do DAViCal irá funcionar mas é fortemente recomendado actualizar para o PHP 5.2 ou mais recente."
+msgid "Most of DAViCal will work but upgrading to PHP 5.2 or later is strongly recommended."
+msgstr ""
+"A maior parte do DAViCal irá funcionar mas é fortemente recomendado actualizar para o PHP 5.2 ou mais "
+"recente."
 
-#: inc/ui/principal-browse.php:15
 msgid "Name"
 msgstr "Nome"
 
-#: inc/ui/collection-edit.php:215
 msgid "New Collection"
 msgstr "Nova colecção"
 
 msgid "New Password"
 msgstr "Nova password"
 
-#: inc/ui/principal-edit.php:276
 msgid "New Principal"
 msgstr "Novo principal"
 
 #. Translators: not 'Yes'
-#: inc/ui/principal-edit.php:837
 msgid "No"
 msgstr "Não"
 
-#: inc/WritableCollection.php:47 inc/caldav-PUT-functions.php:1230
-#: inc/caldav-PUT-functions.php:1231
 msgid "No calendar content"
 msgstr "Sem conteúdo de calendário"
 
-#: inc/caldav-OPTIONS.php:24
 msgid "No collection found at that location."
 msgstr "Colecção não encontrada nessa localização."
 
-#: inc/CalDAVRequest.php:1135
 msgid "No resource exists at the destination."
 msgstr "Não existe um recurso nesse destino"
 
-#: htdocs/feed.php:126
 msgid "No summary"
 msgstr "Sem sumário"
 
@@ -938,88 +808,71 @@ msgstr "Sem sumário"
 msgid "No."
 msgstr "Núm."
 
-#: htdocs/setup.php:288
 msgid "No. of Collections"
 msgstr "Núm. de colecções"
 
-#: htdocs/setup.php:287
 msgid "No. of Principals"
 msgstr "Núm. de Principais"
 
-#: htdocs/setup.php:289
 msgid "No. of Resources"
 msgstr "Núm. de recursos"
 
-#: inc/caldav-MOVE.php:38
 msgid "Not overwriting existing destination resource"
 msgstr "Não vai sobrescrever recurso de destino existente"
 
 msgid "Opaque"
 msgstr "Opaco"
 
-#: inc/iSchedule.php:656
+msgid "Operation Parameters"
+msgstr ""
+
 msgid "Organizer Missing"
 msgstr "Falta Organizador"
 
-#: inc/ui/collection-edit.php:166 inc/ui/principal-edit.php:13
 msgid "Override a Lock"
 msgstr "Ultrapassar um Lock"
 
-#: htdocs/setup.php:322
 msgid "PDO PostgreSQL drivers"
 msgstr "Drivers PDO PostgreSQL"
 
-#: htdocs/setup.php:327
 msgid "PHP DateTime class"
 msgstr "Classe de PHP DateTime"
 
-#: htdocs/setup.php:336
+msgid "PHP Information"
+msgstr "Informação PHP"
+
 msgid "PHP LDAP module available"
 msgstr "Módulo LDAP de PHP disponível"
 
-#: htdocs/setup.php:329
 msgid "PHP Magic Quotes GPC off"
 msgstr "Magic Quotes do PHP desligado"
 
-#: htdocs/setup.php:330
 msgid "PHP Magic Quotes runtime off"
 msgstr "Magic Quotes do PHP desligado em ambiente de execução"
 
-#: htdocs/setup.php:321
 msgid "PHP PDO module available"
 msgstr "Módulo PDO do PHP disponível"
 
-#: htdocs/setup.php:331
+msgid "PHP XML support"
+msgstr ""
+
 msgid "PHP calendar extension available"
 msgstr "Extensão PHP para calendários disponível"
 
-#: htdocs/setup.php:332
 msgid "PHP curl support"
 msgstr "Suporte curl do PHP"
 
-#: htdocs/setup.php:326
 msgid "PHP iconv support"
 msgstr "Suporte iconv do PHP"
 
-#: htdocs/setup.php:320
 msgid "PHP not using Apache Filter mode"
 msgstr "O PHP não está a usar o modo Apache Filter"
 
-#: inc/external-fetch.php:18 inc/external-fetch.php:46
 msgid "PHP5 curl support is required for external binds"
 msgstr "O suporte curl do PHP5 é necessário para ligações externas"
 
-#: inc/caldav-PUT-default.php:61
-msgid ""
-"PUT on a collection is only allowed for text/calendar content against a "
-"calendar collection"
+msgid "PUT on a collection is only allowed for text/calendar content against a calendar collection"
 msgstr "PUT de conteúdo text/calendar apenas é permitido numa colecção do tipo calendário"
-
-#: inc/caldav-PUT-vcard.php:63
-msgid ""
-"PUT on a collection is only allowed for text/vcard content against an "
-"addressbook collection"
-msgstr "PUT de conteúdo text/vcard apenas é permitido numa colecção do tipo livro de endereços"
 
 msgid "Passed"
 msgstr "Passou"
@@ -1027,9 +880,11 @@ msgstr "Passou"
 msgid "Password"
 msgstr "Password"
 
-#: inc/ui/principal-edit.php:835
 msgid "Path"
 msgstr "Caminho"
+
+msgid "Path to collection you wish to bind, like /user1/calendar/ or https://cal.example.com/user2/cal/"
+msgstr ""
 
 msgid "Person"
 msgstr "Pessoa"
@@ -1049,290 +904,228 @@ msgstr "Confirme por favor a eliminação do principal"
 msgid "Please note the time and advise the administrator of your system."
 msgstr "Por favor tome nota da hora e avise o administrador do seu sistema."
 
-#: inc/ui/principal-edit.php:164 inc/ui/principal-edit.php:252
 msgid "Principal"
 msgstr "Principal"
 
-#: inc/ui/principal-edit.php:830
 msgid "Principal Collections"
 msgstr "Colecções do Principal"
 
-#: inc/ui/principal-edit.php:652
 msgid "Principal Grants"
 msgstr "Atribuições do Principal"
 
-#: inc/ui/principal-edit.php:275
 msgid "Principal ID"
 msgstr "ID do Principal"
 
-#: inc/ui/principal-edit.php:287
 msgid "Principal Type"
 msgstr "Tipo de Principal"
 
-msgid "Principal deleted"
-msgstr "Principal eliminado"
+msgid "Principal deleted."
+msgstr ""
 
-#: inc/ui/collection-edit.php:467 inc/ui/collection-edit.php:508
-#: inc/ui/collection-edit.php:538 inc/ui/principal-edit.php:659
-#: inc/ui/principal-edit.php:789 inc/ui/principal-edit.php:838
-#: inc/ui/principal-edit.php:880 inc/ui/principal-edit.php:916
+msgid "Principals: Users, Resources and Groups"
+msgstr ""
+
 msgid "Privileges"
 msgstr "Privilégios"
 
-#: inc/ui/principal-edit.php:288
 msgid "Privileges granted to All Users"
 msgstr "Privilégios atribuídos para Todos os utilizadores"
 
-#: inc/ui/collection-edit.php:234 inc/ui/principal-edit.php:385
 msgid "Privileges to allow delivery of scheduling messages"
 msgstr "Privilégios para permitir a entrega de mensagens de calendarização"
 
-#: inc/ui/collection-edit.php:235 inc/ui/principal-edit.php:386
 msgid "Privileges to delegate scheduling decisions"
 msgstr "Privilégios para delegar decisões de calendarização"
 
-#: inc/caldav-MKCOL.php:139 inc/caldav-PROPPATCH.php:215
-#: inc/caldav-PROPPATCH.php:267
 msgid "Property is read-only"
 msgstr "A propriedade é só de leitura"
 
 #. Translators: in the sense of being available to all users
-#: inc/ui/principal-edit.php:837
 msgid "Public"
 msgstr "Público"
 
-#: inc/ui/collection-edit.php:221
 msgid "Publicly Readable"
 msgstr "Legível publicamente"
 
-#: inc/caldav-REPORT.php:27
 msgid "REPORT body contains no XML data!"
 msgstr "O corpo do RELATÓRIO não contém dados XML!"
 
-#: inc/autodiscover-handler.php:53 inc/caldav-REPORT.php:32
-#: inc/iSchedule.php:283
 msgid "REPORT body is not valid XML data!"
 msgstr "O corpo do RELATÓRIO não é XML válido!"
 
-#: inc/ui/collection-edit.php:163 inc/ui/collection-edit.php:232
-#: inc/ui/principal-edit.php:10 inc/ui/principal-edit.php:383
 msgid "Read"
 msgstr "Ler"
 
-#: inc/CalDAVRequest.php:733
 msgid "Read ACLs for a resource or collection"
 msgstr "Ler ACLs para um recurso ou colecção"
 
-#: inc/ui/collection-edit.php:167 inc/ui/principal-edit.php:14
 msgid "Read Access Controls"
 msgstr "Ler controlos de acesso"
 
-#: inc/ui/collection-edit.php:168 inc/ui/principal-edit.php:15
 msgid "Read Current User's Access"
 msgstr "Ler acesso do utilizador actual"
 
-#: inc/ui/collection-edit.php:172 inc/ui/principal-edit.php:19
 msgid "Read Free/Busy Information"
 msgstr "Ler informação de livre/ocupado"
 
-#: inc/CalDAVRequest.php:725
 msgid "Read the content of a resource or collection"
 msgstr "Ler o conteúdo de um recurso ou colecção"
 
-#: inc/CalDAVRequest.php:734
-msgid ""
-"Read the details of the current user's access control to this resource."
+msgid "Read the details of the current user's access control to this resource."
 msgstr "Ler os detalhes do controlo de acesso do utilizador actual a este recurso"
 
-#: inc/CalDAVRequest.php:732
 msgid "Read the free/busy information for a calendar collection"
 msgstr "Ler informação de livre/ocupado para uma colecção de calendários"
 
-#: inc/ui/collection-edit.php:231 inc/ui/principal-edit.php:382
 msgid "Read/Write"
 msgstr "Ler/Escrever"
 
-#: inc/ui/external-browse.php:10
 msgid "References"
 msgstr "Referências"
 
-#: inc/ui/principal-edit.php:549
 msgid "Remove"
 msgstr "Remover"
 
-#: inc/CalDAVRequest.php:736
 msgid "Remove a lock"
 msgstr "Remover um lock"
 
-#: inc/ui/external-browse.php:35
 msgid "Remove dangling external calendars"
 msgstr "Remover calendários externos com problemas"
 
-#: inc/interactive-page.php:23
 msgid "Report Bug"
 msgstr "Relatar um bug"
 
-#: inc/interactive-page.php:23
 msgid "Report a bug in the system"
 msgstr "Relatar um bug no sistema"
 
-#: inc/interactive-page.php:22
 msgid "Request Feature"
 msgstr "Pedir Funcionalidade"
 
-#: inc/caldav-PROPFIND.php:29
 msgid "Request body is not valid XML data!"
 msgstr "Corpo do pedido não tem dados XML válidos!"
 
-#. Translators a thing which might be booked: a room, a carpark, a
-#. projector...
+#. Translators a thing which might be booked: a room, a carpark, a projector...
 msgid "Resource"
 msgstr "Recurso"
 
-#: inc/ui/principal-browse.php:9
 msgid "Resource Calendar Principals"
 msgstr "Principais do recurso de calendário"
 
-#: htdocs/feed.php:40 inc/caldav-GET.php:23
 msgid "Resource Not Found."
 msgstr "Recurso não encontrado"
 
-#: inc/caldav-DELETE.php:73
 msgid "Resource has changed on server - not deleted"
 msgstr "Recurso foi alterado no servidor - não foi apagado"
 
-#: inc/caldav-PROPPATCH.php:151
+msgid "Resources do have calendars, but they will not usually log on."
+msgstr ""
+
 msgid "Resources may not be changed to / from collections."
 msgstr "Os recursos não podem ser alterados entre colecções."
 
-#: inc/ui/collection-edit.php:471 inc/ui/principal-edit.php:663
 msgid "Revoke"
 msgstr "Revogar"
 
-#: htdocs/iSchedule.php:111 htdocs/iSchedule.php:121
 msgid "SRV Record"
 msgstr "Registo SRV"
 
-#: inc/ui/collection-edit.php:234 inc/ui/principal-edit.php:385
+#, php-format
+msgid "SRV record for \"%s\" points to wrong domain: \"%s\" instead of \"%s\""
+msgstr ""
+
+#, php-format
+msgid ""
+"SRV record missing for \"%s\" or DNS failure, the domain you are going to send events from should have "
+"an SRV record"
+msgstr ""
+
 msgid "Schedule Deliver"
 msgstr "Entrega de horário"
 
-#: inc/ui/collection-edit.php:235 inc/ui/principal-edit.php:386
 msgid "Schedule Send"
 msgstr "Horário enviado"
 
-#: inc/ui/collection-edit.php:227
 msgid "Schedule Transparency"
 msgstr "Transparência do horário"
 
-#: inc/ui/collection-edit.php:174 inc/ui/principal-edit.php:21
 msgid "Scheduling: Deliver a Reply"
 msgstr "Horários: Entregar uma resposta"
 
-#: inc/ui/collection-edit.php:173 inc/ui/principal-edit.php:20
 msgid "Scheduling: Deliver an Invitation"
 msgstr "Horários: Entregar um convite"
 
-#: inc/ui/collection-edit.php:180 inc/ui/principal-edit.php:27
 msgid "Scheduling: Delivery"
 msgstr "Horários: Entrega"
 
-#: inc/ui/collection-edit.php:175 inc/ui/principal-edit.php:22
 msgid "Scheduling: Query free/busy"
 msgstr "Horários: Verificar informação de livre/ocupado"
 
-#: inc/ui/collection-edit.php:177 inc/ui/principal-edit.php:24
 msgid "Scheduling: Send a Reply"
 msgstr "Horários: Enviar uma resposta"
 
-#: inc/ui/collection-edit.php:176 inc/ui/principal-edit.php:23
 msgid "Scheduling: Send an Invitation"
 msgstr "Horários: Enviar um convite"
 
-#: inc/ui/collection-edit.php:178 inc/ui/principal-edit.php:25
 msgid "Scheduling: Send free/busy"
 msgstr "Horários: Enviar informação de livre/ocupado"
 
-#: inc/ui/collection-edit.php:181 inc/ui/principal-edit.php:28
 msgid "Scheduling: Sending"
 msgstr "Horários: A enviar"
 
-#: inc/CalDAVRequest.php:747
 msgid "Send free/busy enquiries"
 msgstr "Enviar consultas de informação livre/ocupado"
 
-#: inc/CalDAVRequest.php:745
-msgid ""
-"Send scheduling invitations as an organiser from the owner of this "
-"scheduling outbox."
+msgid "Send scheduling invitations as an organiser from the owner of this scheduling outbox."
 msgstr "Enviar convites de horários como organizador, sendo dono desta caixa de saída."
 
-#: inc/CalDAVRequest.php:746
-msgid ""
-"Send scheduling replies as an attendee from the owner of this scheduling "
-"outbox."
+msgid "Send scheduling replies as an attendee from the owner of this scheduling outbox."
 msgstr "Enviar respostas de horários como participante, sendo dono desta caixa de saída."
 
-#: inc/ui/collection-edit.php:233 inc/ui/principal-edit.php:384
 msgid "Set free/busy privileges"
 msgstr "Definir privilégios de livre/ocupado"
 
-#: inc/ui/collection-edit.php:232 inc/ui/principal-edit.php:383
 msgid "Set read privileges"
 msgstr "Definir privilégios de leitura"
 
-#: inc/ui/collection-edit.php:231 inc/ui/principal-edit.php:382
 msgid "Set read+write privileges"
 msgstr "Definir privilégios de leitura+escrita"
 
-#: htdocs/tools.php:89
 msgid ""
-"Set the path to store your ics e.g. 'calendar' will be referenced as "
-"/caldav.php/username/calendar/"
-msgstr "Definir o caminho para guardar o seu ficheiro ics - e.g. 'calendar' será referido como /caldav.php/nome_de_utilizador/calendar/"
+"Set the path to store your ics e.g. 'calendar' will be referenced as /caldav.php/username/calendar/"
+msgstr ""
+"Definir o caminho para guardar o seu ficheiro ics - e.g. 'calendar' será referido como /caldav.php/"
+"nome_de_utilizador/calendar/"
 
-#: htdocs/setup.php:359 inc/interactive-page.php:34 htdocs/setup.php:361
 msgid "Setup"
 msgstr "Configurar"
 
-#: inc/interactive-page.php:34
 msgid "Setup DAViCal"
 msgstr "Configurar DAViCal"
 
-#: inc/ui/collection-edit.php:30
 msgid "Should the uploaded entries be appended to the collection?"
 msgstr "As entradas carregadas devem ser acrescentadas à colecção ?"
 
-#: inc/page-header.php:26
 msgid "Show help on"
 msgstr "Mostrar ajuda sobre"
 
-#: htdocs/setup.php:380 htdocs/setup.php:382
 msgid "Site Statistics"
 msgstr "Estatísticas do site"
 
-#: htdocs/setup.php:298 htdocs/setup.php:310
 msgid "Site Statistics require the database to be available!"
 msgstr "As estatísticas do site exigem que a base de dados esteja disponível!"
 
-#: inc/caldav-PROPPATCH.php:292
 msgid "Some properties were not able to be changed."
 msgstr "Algumas propriedades não puderam ser alteradas."
 
-#: inc/caldav-MKCOL.php:176
 msgid "Some properties were not able to be set."
 msgstr "Algumas propriedades não puderam ser definidas."
 
-#: inc/caldav-MOVE.php:47
 msgid "Source resource does not exist."
 msgstr "Recurso de origem não existe."
 
-#: inc/caldav-MOVE.php:56
-msgid ""
-"Special collections may not contain a calendar or other special collection."
+msgid "Special collections may not contain a calendar or other special collection."
 msgstr "Colecções especiais não podem conter um calendário ou outra colecção especial."
 
-#: inc/ui/collection-edit.php:224
 msgid "Specific Privileges"
 msgstr "Privilégios específicos"
 
@@ -1340,131 +1133,148 @@ msgstr "Privilégios específicos"
 msgid "Stable: %s, We have: %s !"
 msgstr "Estável: %s, Temos: %s !"
 
-#: htdocs/setup.php:377 htdocs/iSchedule.php:31 htdocs/setup.php:379
+msgid "Statistics unavailable"
+msgstr ""
+
 msgid "Status"
 msgstr "Estado"
 
-#: inc/caldav-PUT-functions.php:57
 #, php-format
 msgid "Status: %d, Message: %s, User: %d, Path: %s"
 msgstr "Estado: %d, Mensagem: %s, Utilizador: %d, Caminho: %s"
 
-#: htdocs/tools.php:61 htdocs/tools.php:70 htdocs/tools.php:98
 msgid "Submit"
 msgstr "Submeter"
 
-#: htdocs/setup.php:328
 msgid "Suhosin \"server.strip\" disabled"
 msgstr "\"server.strip\" do suhosin desabilitado"
 
-#: htdocs/tools.php:63
 msgid "Sync LDAP Groups with DAViCal"
 msgstr "Sincronizar Grupos LDAP com o DAViCal"
 
-#: htdocs/tools.php:51
 msgid "Sync LDAP with DAViCal"
 msgstr "Sincronizar LDAP com o DAViCal"
 
-#: inc/ui/collection-edit.php:506 inc/ui/principal-edit.php:787
+#, php-format
+msgid "TXT record corrupt for %s._domainkey.%s or DNS failure"
+msgstr ""
+
+#, php-format
+msgid "TXT record missing for \"%s._domainkey.%s\" or DNS failure, Private RSA key is configured"
+msgstr ""
+
 msgid "Target"
 msgstr "Destino"
 
-#: inc/caldav-BIND.php:38
 msgid "That destination name contains invalid characters."
 msgstr "Esse nome de destino contém caracteres inválidos."
 
-#: inc/caldav-PROPFIND.php:261
 msgid "That resource is not present on this server."
 msgstr "Esse recurso não está presente neste servidor."
 
-#: inc/caldav-BIND.php:95
+msgid ""
+"The <a href=\"https://wiki.davical.org/w/Update-davical-database\">update-davical-database</a> should "
+"be run manually after upgrading the software to a new version of DAViCal."
+msgstr ""
+
+msgid ""
+"The <a href=\"https://wiki.davical.org/w/iSchedule_configuration\">iSchedule configuration</a> "
+"requires a few DNS entries. DNS SRV record(s) will need to be created for all domains you wish to "
+"accept requests for, these are the domain portion of email address on Principal records in DAViCal "
+"examples are listed below for domains found in your database. At least 1 public key must also be "
+"published if you wish to send requests from this server."
+msgstr ""
+
+msgid ""
+"The <a href=\"https://www.davical.org/clients.php\">client setup page on the DAViCal website</a> has "
+"information on how to configure Evolution, Sunbird, Lightning and Mulberry to use remotely hosted "
+"calendars."
+msgstr ""
+
+msgid ""
+"The <a href=\"https://www.davical.org/installation.php\">DAViCal installation page</a> on the DAViCal "
+"website has some further information on how to install and configure this application."
+msgstr ""
+
 msgid "The BIND Request MUST identify an existing resource."
 msgstr "O pedido BIND, TEM QUE identificar um recurso existente."
 
-#: inc/caldav-BIND.php:17
 msgid "The BIND Request-URI MUST identify a collection."
 msgstr "O URI do pedido BIND, TEM QUE identificar uma colecção."
 
-#: inc/caldav-BIND.php:25
 msgid "The BIND method is not allowed at that location."
 msgstr "O método BIND não é permitido nessa localização."
 
-#: inc/caldav-PROPPATCH.php:165
-msgid ""
-"The CalDAV:schedule-calendar-transp property may only be set on calendars."
+msgid "The CalDAV:schedule-calendar-transp property may only be set on calendars."
 msgstr "A propriedade CalDAV:schedule-calendar-transp só pode ser definida em calendários."
 
-#: inc/interactive-page.php:20
 msgid "The DAViCal Home Page"
 msgstr "A Home page do DAViCal"
 
-#: inc/ui/principal-edit.php:821
 msgid "The access ticket will be deleted."
 msgstr "O ticket de acesso será apagado."
 
-#: inc/caldav-REPORT-cardquery.php:201 inc/caldav-REPORT-cardquery.php:260
-msgid ""
-"The addressbook-query report must be run against an addressbook collection"
+msgid "The addressbook-query report must be run against an addressbook collection"
 msgstr "O relatório addressbook-query tem que ser executado sobre uma colecção de livros de endereços"
 
-#: htdocs/tz.php:32
+msgid "The administration of this application should be fairly simple. You can administer:"
+msgstr ""
+
+msgid "The administrative interface has no facility for viewing or modifying calendar data."
+msgstr "A interface administrativa não tem possibilidades de ver ou modificar dados de calendário."
+
 msgid "The application failed to understand that request."
 msgstr "A aplicação não conseguiu entender esse pedido."
 
-#: htdocs/public.php:62 htdocs/feed.php:205 htdocs/caldav.php:152
-#: inc/well-known.php:36 inc/well-known.php:50 inc/well-known.php:61
 msgid "The application program does not understand that request."
 msgstr "O programa não entende esse pedido."
 
-#: inc/ui/principal-edit.php:901 inc/ui/principal-edit.php:937
 msgid "The binding will be deleted."
 msgstr "A ligação será apagada."
 
-#: inc/CalDAVRequest.php:176
 msgid "The calendar path contains illegal characters."
 msgstr "O caminho do calendário contém caracteres ilegais."
 
-#: inc/caldav-PROPPATCH.php:171
 msgid ""
-"The calendar-free-busy-set is superseded by the  schedule-calendar-transp "
-"property of a calendar collection."
-msgstr "A propriedade calendar-free-busy-set é substituída pela propriedade schedule-transp duma colecção de calendário."
+"The calendar-free-busy-set is superseded by the  schedule-calendar-transp property of a calendar "
+"collection."
+msgstr ""
+"A propriedade calendar-free-busy-set é substituída pela propriedade schedule-transp duma colecção de "
+"calendário."
 
-#: inc/caldav-REPORT-calquery.php:307 inc/caldav-REPORT-calquery.php:313
 msgid "The calendar-query report may not be run against that URL."
 msgstr "O relatório calendar-query não pode ser executado nesse URL"
 
-#: inc/caldav-REPORT-calquery.php:304 inc/caldav-REPORT-calquery.php:310
-msgid ""
-"The calendar-query report must be run against a calendar or a scheduling "
-"collection"
+msgid "The calendar-query report must be run against a calendar or a scheduling collection"
 msgstr "O relatório calendar-query tem que ser executado sobre uma colecção de calendário ou horários"
 
 msgid "The collection name may not be blank."
 msgstr "O nome da colecção não pode ficar em branco."
 
-#: inc/caldav-PUT-vcard.php:54
 msgid "The destination collection does not exist"
 msgstr "A colecção de destino não existe"
 
-#: inc/caldav-PROPPATCH.php:107
-msgid ""
-"The displayname may only be set on collections, principals or bindings."
+msgid "The displayname may only be set on collections, principals or bindings."
 msgstr "O nome a mostrar só pode ser definido em colecções, principais ou ligações."
+
+msgid ""
+"The email address identifies principals when processing invitations and freebusy lookups. It should be "
+"set to a unique value."
+msgstr ""
 
 msgid "The email address really should not be blank."
 msgstr "O endereço de email não devia, de facto, ficar em branco."
 
-#: htdocs/tools.php:139
 #, php-format
 msgid "The file \"%s\" is not UTF-8 encoded, please check error for more details"
-msgstr "O ficheiro \"%s\" não está codificado como UTF-8, por favor verifique a mensagem de erro para mais promenores"
+msgstr ""
+"O ficheiro \"%s\" não está codificado como UTF-8, por favor verifique a mensagem de erro para mais "
+"promenores"
 
-msgid ""
-"The file is not UTF-8 encoded, please check the error for more details."
-msgstr "O ficheiro não está codificado em UTF-8, por favor verifique a mensagem de erro para mais detalhes."
+msgid "The file is not UTF-8 encoded, please check the error for more details."
+msgstr ""
+"O ficheiro não está codificado em UTF-8, por favor verifique a mensagem de erro para mais detalhes."
 
-#: inc/ui/principal-edit.php:170
 msgid "The full name for this person, group or other type of principal."
 msgstr "O nome completo desta pessoa, grupo ou outro tipo de principal."
 
@@ -1474,21 +1284,24 @@ msgstr "O nome completo não pode ficar em branco."
 msgid "The name this user can log into the system with."
 msgstr "O nome que este utilizador pode usar para entrar no sistema."
 
-#: htdocs/tools.php:95
 msgid "The path on the server where your .ics files are."
 msgstr "O caminho no servidor onde estão guardados os seus ficheiros .ics."
 
-#: inc/ui/principal-edit.php:169
 msgid "The preferred language for this person."
 msgstr "O idioma preferido para esta pessoa."
 
-#: htdocs/tools.php:145
+msgid "The primary differences between them are as follows:"
+msgstr ""
+
 #, php-format
 msgid "The principal \"%s\" does not exist"
 msgstr "O principal \"%s\" não existe"
 
 msgid "The style of dates used for this person."
 msgstr "O estilo de datas em uso para esta pessoa."
+
+msgid "The types of relationships that are available"
+msgstr ""
 
 msgid "The user's e-mail address."
 msgstr "O endereço de email do utilizador."
@@ -1502,93 +1315,98 @@ msgstr "A password do utilizador para entrar."
 msgid "The username must not be blank, and may not contain a slash"
 msgstr "O nome de utilizador não pode ficar em branco e não pode conter uma barra \"/\""
 
+msgid ""
+"There is no ability to view and / or maintain calendars or events from within this administrative "
+"interface."
+msgstr ""
+
 msgid "There was an error reading from the database."
 msgstr "Ocorreu um erro ao ler da Base de Dados."
 
 msgid "There was an error writing to the database."
 msgstr "Ocorreu um erro ao escrever na Base de Dados."
 
-#: htdocs/tools.php:67
-msgid ""
-"This operation does the following: <ul><li>check valid groups in LDAP "
-"directory</li> <li>check groups in DAViCal</li></ul> then <ul><li>if a group"
-" is present in DAViCal but not in LDAP set as inactive in DAViCal</li> "
-"<li>if a group is present in LDAP but not in DAViCal create the group in "
-"DAViCal</li> <li>if a group in present in LDAP and DAViCal then update "
-"information in DAViCal</li> </ul>"
-msgstr "Esta operação faz o seguinte: <ul><li>verifica grupos válidos no directório LDAP</li> <li>verifica grupos no DAViCal</li></ul> então <ul><li>se um grupo existe no DAViCal mas não no LDAP, marca-o como inactivo no DAViCal</li> <li>se um grupo está presente no LDAP mas não no DAViCal, cria o grupo no DAViCal</li> <li>se um grupo existir no LDAP e no DAViCal, actualiza a informação no DAViCal</li> </ul>"
+msgid "These are the things which may have collections of calendar resources (i.e. calendars)."
+msgstr ""
 
-#: htdocs/tools.php:58
 msgid ""
-"This operation does the following: <ul><li>check valid users in LDAP "
-"directory</li> <li>check users in DAViCal</li></ul> then <ul><li>if a user "
-"is present in DAViCal but not in LDAP set him as inactive in DAViCal</li> "
-"<li>if a user is present in LDAP but not in DAViCal create the user in "
-"DAViCal</li> <li>if a user in present in LDAP and DAViCal then update "
-"information in DAViCal</li> </ul>"
-msgstr "Esta operação faz o seguinte: <ul><li>verifica utilizadores válidos no directório LDAP</li> <li>verifica utilizadores no DAViCal</li></ul> então <ul><li>se um utilizador existe no DAViCal mas não no LDAP, marca-o como inactivo no DAViCal</li> <li>se um utilizador está presente no LDAP mas não no DAViCal, cria o utilizador no DAViCal</li> <li>se um utilizador existir no LDAP e no DAViCal, actualiza a informação no DAViCal</li> </ul>"
+"This operation does the following: <ul><li>check valid groups in LDAP directory</li> <li>check groups "
+"in DAViCal</li></ul> then <ul><li>if a group is present in DAViCal but not in LDAP set as inactive in "
+"DAViCal</li> <li>if a group is present in LDAP but not in DAViCal create the group in DAViCal</li> "
+"<li>if a group in present in LDAP and DAViCal then update information in DAViCal</li> </ul>"
+msgstr ""
+"Esta operação faz o seguinte: <ul><li>verifica grupos válidos no directório LDAP</li> <li>verifica "
+"grupos no DAViCal</li></ul> então <ul><li>se um grupo existe no DAViCal mas não no LDAP, marca-o como "
+"inactivo no DAViCal</li> <li>se um grupo está presente no LDAP mas não no DAViCal, cria o grupo no "
+"DAViCal</li> <li>se um grupo existir no LDAP e no DAViCal, actualiza a informação no DAViCal</li> </ul>"
 
-#: htdocs/setup.php:360 htdocs/setup.php:362
 msgid ""
-"This page primarily checks the environment needed for DAViCal to work "
-"correctly.  Suggestions or patches to make it do more useful stuff will be "
-"gratefully received."
-msgstr "Esta página verifica o ambiente de execução necessário para que o DAViCal trabalhe correctamente. Sugestões ou correcções para que faça coisas mais úteis serão recebidos com gratidão."
+"This operation does the following: <ul><li>check valid users in LDAP directory</li> <li>check users in "
+"DAViCal</li></ul> then <ul><li>if a user is present in DAViCal but not in LDAP set him as inactive in "
+"DAViCal</li> <li>if a user is present in LDAP but not in DAViCal create the user in DAViCal</li> "
+"<li>if a user in present in LDAP and DAViCal then update information in DAViCal</li> </ul>"
+msgstr ""
+"Esta operação faz o seguinte: <ul><li>verifica utilizadores válidos no directório LDAP</li> "
+"<li>verifica utilizadores no DAViCal</li></ul> então <ul><li>se um utilizador existe no DAViCal mas "
+"não no LDAP, marca-o como inactivo no DAViCal</li> <li>se um utilizador está presente no LDAP mas não "
+"no DAViCal, cria o utilizador no DAViCal</li> <li>se um utilizador existir no LDAP e no DAViCal, "
+"actualiza a informação no DAViCal</li> </ul>"
 
-#: htdocs/tools.php:80
 msgid ""
-"This process will import each file in a directory named \"username.ics\" and"
-" create a user and calendar for each file to import."
-msgstr "Este processo irá importar cada ficheiro chamado \"nome_de_utilizador.ics\" ecriar um utilizador e calendário para cada ficheiro."
+"This page primarily checks the environment needed for DAViCal to work correctly.  Suggestions or "
+"patches to make it do more useful stuff will be gratefully received."
+msgstr ""
+"Esta página verifica o ambiente de execução necessário para que o DAViCal trabalhe correctamente. "
+"Sugestões ou correcções para que faça coisas mais úteis serão recebidos com gratidão."
 
-#: htdocs/freebusy.php:53
+msgid ""
+"This process will import each file in a directory named \"username.ics\" and create a user and "
+"calendar for each file to import."
+msgstr ""
+"Este processo irá importar cada ficheiro chamado \"nome_de_utilizador.ics\" ecriar um utilizador e "
+"calendário para cada ficheiro."
+
 msgid "This server only supports the text/calendar format for freebusy URLs"
 msgstr "Este servidor suporta apenas o formato text/calendar para URLs de livre/ocupado"
 
-#: inc/ui/collection-edit.php:505 inc/ui/collection-edit.php:537
-#: inc/ui/principal-edit.php:786 inc/ui/principal-edit.php:879
-#: inc/ui/principal-edit.php:915
 msgid "Ticket ID"
 msgstr "ID de ticket"
 
-#: htdocs/feed.php:134
 msgid "Time"
 msgstr "Tempo"
 
-#: inc/ui/principal-edit.php:878
 msgid "To Collection"
 msgstr "Para a colecção"
 
-#: inc/ui/collection-edit.php:462 inc/ui/principal-edit.php:654
 msgid "To ID"
 msgstr "Para o ID"
 
-#: inc/ui/collection-edit.php:230 inc/ui/principal-edit.php:381
+msgid ""
+"To do that you will need to use a CalDAV capable calendaring application such as Evolution, Sunbird, "
+"Thunderbird (with the Lightning extension) or Mulberry."
+msgstr ""
+
 msgid "Toggle all privileges"
 msgstr "Mudar todos os privilégios"
 
-#: inc/interactive-page.php:36
 msgid "Tools"
 msgstr "Ferramentas"
 
 msgid "Transparent"
 msgstr "Transparente"
 
-#: htdocs/feed.php:161
 msgid "URL"
 msgstr "URL"
 
 msgid "US Format"
 msgstr "Formato EUA"
 
-#: inc/Principal.php:269
 msgid "Unauthenticated User"
 msgstr "Utilizador não autenticado"
 
 msgid "United States of America (m/d/y)"
 msgstr "Estados Unidos da América (m/d/a)"
 
-#: inc/caldav-PROPPATCH.php:147
 msgid "Unsupported resourcetype modification."
 msgstr "Modificação de resourcetype não suportada."
 
@@ -1598,41 +1416,36 @@ msgstr "Actualizar"
 msgid "Updated"
 msgstr "Actualizado"
 
-msgid "Updating Collection record."
-msgstr "A actualizar o registo da colecção."
+msgid "Updating Collection."
+msgstr ""
 
-#: inc/ui/principal-edit.php:494
 msgid "Updating Member of this Group Principal"
 msgstr "A actualizar membro deste Principal de grupo"
 
 msgid "Updating Principal record."
 msgstr "A actualizar o registo de principal"
 
-#: inc/ui/principal-edit.php:590
 msgid "Updating grants by this Principal"
 msgstr "A actualizar permissões de acordo com este principal"
 
-#: inc/interactive-page.php:35
 msgid "Upgrade DAViCal database schema"
 msgstr "Actualizar o schema da Base de Dados do DAViCal"
 
-#: htdocs/upgrade.php:29 inc/interactive-page.php:35 htdocs/upgrade.php:9
-#: htdocs/upgrade.php:33
 msgid "Upgrade Database"
 msgstr "Actualizar Base de Dados"
 
-#: inc/ui/collection-edit.php:27
+msgid "Upgrading DAViCal Versions"
+msgstr ""
+
 msgid "Upload an iCalendar file or VCard file to replace this collection."
 msgstr "Fazer o upload de um ficheiro iCalendar ou vCard para substituir esta colecção."
 
-#: inc/ui/principal-browse.php:8
 msgid "User Calendar Principals"
 msgstr "Principais do calendário de utilizador"
 
 msgid "User Details"
 msgstr "Detalhes de utilizador"
 
-#: inc/interactive-page.php:46
 msgid "User Functions"
 msgstr "Funções de utilizador"
 
@@ -1648,71 +1461,86 @@ msgstr "Utilizador está activo"
 msgid "User record written."
 msgstr "Registo de utilizador escrito."
 
-#: inc/ui/principal-edit.php:277
 msgid "Username"
 msgstr "Nome de utilizador"
 
-#: inc/interactive-page.php:26
+msgid "Users (or Resources or Groups) and the relationships between them"
+msgstr ""
+
+msgid "Users will probably have calendars, and are likely to also log on to the system."
+msgstr ""
+
 msgid "View My Details"
 msgstr "Ver os meus detalhes"
 
-#: inc/interactive-page.php:26
 msgid "View my own principal record"
 msgstr "Ver o meu próprio registo principal"
 
 msgid "View this user record"
 msgstr "Ver o registo deste utilizador"
 
-#: inc/interactive-page.php:21
 msgid "Visit the DAViCal Wiki"
 msgstr "Visitar a Wiki do DAViCal"
+
+msgid "WARNING"
+msgstr ""
 
 #, php-format
 msgid "Want: %s, Currently: %s"
 msgstr "Desejado: %s, Actualmente: %s"
 
 msgid ""
-"Warning: there are no active admin users! You should fix this before logging"
-" out.  Consider using the $c->do_not_sync_from_ldap configuration setting."
-msgstr "Aviso: não há utilizadores administradores activos! Deve corrigir isto antes de sair. Considere usar a definição de configuração $c->do_not_sync_from_ldap."
+"Warning: there are no active admin users! You should fix this before logging out.  Consider using the "
+"$c->do_not_sync_from_ldap configuration setting."
+msgstr ""
+"Aviso: não há utilizadores administradores activos! Deve corrigir isto antes de sair. Considere usar a "
+"definição de configuração $c->do_not_sync_from_ldap."
 
 msgid "When the user's e-mail account was validated."
 msgstr "Quando a conta de email do utilizador foi validada."
 
-#: inc/ui/collection-edit.php:179 inc/ui/principal-edit.php:26
 msgid "Write"
 msgstr "Escrever"
 
-#: inc/CalDAVRequest.php:735
 msgid "Write ACLs for a resource or collection"
 msgstr "Escrever ACLs para um recurso ou colecção"
 
-#: inc/ui/collection-edit.php:171 inc/ui/principal-edit.php:18
 msgid "Write Access Controls"
 msgstr "Escrever controlos de acesso"
 
-#: inc/ui/collection-edit.php:165 inc/ui/principal-edit.php:12
 msgid "Write Data"
 msgstr "Escrever dados"
 
-#: inc/ui/collection-edit.php:164 inc/ui/principal-edit.php:11
 msgid "Write Metadata"
 msgstr "Escrever metadados"
 
-#: inc/CalDAVRequest.php:729
 msgid "Write content"
 msgstr "Escrever conteúdo"
 
-#: inc/CalDAVRequest.php:730
 msgid "Write properties"
 msgstr "Escrever propriedades"
 
-#: inc/ui/principal-edit.php:837
 msgid "Yes"
 msgstr "Sim"
 
 msgid "You are editing"
 msgstr "Está a editar"
+
+#, php-format
+msgid "You are logged on as %s (%s)"
+msgstr "Está logado como %s (%s)"
+
+msgid "You are not allowed to delete bindings for this principal."
+msgstr ""
+
+msgid "You are not allowed to delete collections for this principal."
+msgstr ""
+
+msgid "You are not allowed to delete principals."
+msgstr ""
+
+msgid "You are not allowed to delete tickets for this principal."
+msgstr ""
 
 msgid "You are not authorised to use this function."
 msgstr "Não está autorizado a usar esta função."
@@ -1720,21 +1548,30 @@ msgstr "Não está autorizado a usar esta função."
 msgid "You are viewing"
 msgstr "Está a ver"
 
+msgid ""
+"You can click on any user to see the full detail for that person (or group or resource - but from now "
+"we'll just call them users)."
+msgstr ""
+
+msgid "You do not have permission to modify this collection."
+msgstr ""
+
 msgid "You do not have permission to modify this record."
 msgstr "Não tem permissão para modificar este registo."
 
-#: inc/caldav-PUT-vcard.php:61 inc/caldav-PUT-default.php:59
 msgid "You may not PUT to a collection URL"
 msgstr "Não pode executar um pedido PUT num URL de colecção"
 
 msgid "You must log in to use this system."
 msgstr "Tem que entrar para poder usar este sistema."
 
-#: htdocs/setup.php:396 htdocs/setup.php:401 htdocs/setup.php:406
 msgid "Your configuration produced PHP errors which should be corrected"
 msgstr "A sua configuração criou alguns erros de PHP que devem ser corrigidos"
 
-#: inc/caldav-PROPPATCH.php:195 inc/caldav-PROPPATCH.php:246
+#, php-format
+msgid "and create a DNS TXT record for <b>%s._domainkey.%s</b> that contains:"
+msgstr ""
+
 msgid "calendar-timezone property is only valid for a calendar."
 msgstr "a propriedade calendar-timezone só é válida para um calendário."
 
@@ -1742,343 +1579,155 @@ msgstr "a propriedade calendar-timezone só é válida para um calendário."
 msgid "directory %s is not readable"
 msgstr "o directório %s não é legível"
 
-msgid ""
-"drivers_imap_pam : imap_url parameter not configured in "
-"/etc/davical/*-conf.php"
+msgid "drivers_imap_pam : imap_url parameter not configured in /etc/davical/*-conf.php"
 msgstr "drivers_imap_pam: o parâmetro imap_url não está configurado em /etc/davical/*-conf.php"
 
 msgid "drivers_ldap : Could not start TLS: ldap_start_tls() failed"
 msgstr "drivers_ldap : Impossível inicial TLS: falhou ldap_start_tls()"
 
 #, php-format
-msgid ""
-"drivers_ldap : Failed to bind to host %1$s on port %2$s with bindDN of %3$s"
+msgid "drivers_ldap : Failed to bind to host %1$s on port %2$s with bindDN of %3$s"
 msgstr "drivers_ldap : Falhou a ligação ao servidor %1$s no porto %2$s com o bindDN de %3$s"
 
-msgid ""
-"drivers_ldap : Failed to set LDAP to use protocol version 3, TLS not "
-"supported"
+msgid "drivers_ldap : Failed to set LDAP to use protocol version 3, TLS not supported"
 msgstr "drivers_ldap : Falhou a definição do protocolo versão 3 para o LDAP, TLS não suportado"
 
 msgid ""
-"drivers_ldap : Unable to bind to LDAP - check your configuration for bindDN "
-"and passDN, and that your LDAP server is reachable"
-msgstr "drivers_ldap : Não foi possível ligar ao LDAP - verifique a sua configuração de bindDN e passDN, e que o seu servidor LDAP está acessível"
+"drivers_ldap : Unable to bind to LDAP - check your configuration for bindDN and passDN, and that your "
+"LDAP server is reachable"
+msgstr ""
+"drivers_ldap : Não foi possível ligar ao LDAP - verifique a sua configuração de bindDN e passDN, e que "
+"o seu servidor LDAP está acessível"
 
-#: inc/drivers_ldap.php:58 inc/drivers_ldap.php:60
 #, php-format
 msgid "drivers_ldap : Unable to connect to LDAP with port %s on host %s"
 msgstr "drivers_ldap : Impossível ligar ao LDAP com o porto %s no servidor %s"
 
-msgid ""
-"drivers_ldap : function ldap_connect not defined, check your php_ldap module"
+msgid "drivers_ldap : function ldap_connect not defined, check your php_ldap module"
 msgstr "drivers_ldap : a função ldap_connect não está definida, verifique o seu módulo php_ldap"
 
 #, php-format
 msgid "drivers_pwauth_pam : Unable to find %s file"
 msgstr "drivers_pwauth_pam : Impossível encontrar o ficheiro %s"
 
+msgid "drivers_rimap : imap_url parameter not configured in /etc/davical/*-conf.php"
+msgstr ""
+
 #, php-format
 msgid "drivers_squid_pam : Unable to find %s file"
 msgstr "drivers_squid_pam : Impossível encontrar o ficheiro %s"
 
-#. Translators: this is a colloquial phrase in english (the name of a flower)
-#. and is an option allowing people to log in automatically in future
+#. Translators: this is a colloquial phrase in english (the name of a flower) and is an option allowing people to log in automatically in future
 msgid "forget me not"
 msgstr "lembrar este login"
 
-#: inc/ui/principal-edit.php:839
 msgid "from principal"
 msgstr "a partir do principal"
 
-#: htdocs/iSchedule.php:108 htdocs/iSchedule.php:118
-msgid "iSchedule Domains"
-msgstr "Domínios iSchedule"
-
-#: inc/iSchedule-POST.php:132 inc/iSchedule-POST.php:137
-msgid "invalid request"
-msgstr "pedido inválido"
-
-#: htdocs/tools.php:87
-msgid "path to store your ics"
-msgstr "caminho para guardar o seu ics"
-
-#: inc/iSchedule-POST.php:71
-msgid "recipient must be organizer or attendee of event"
-msgstr "O destinatário deve ser o organizador ou estar presente no evento"
-
-#: inc/iSchedule-POST.php:66
-msgid "sender must be organizer or attendee of event"
-msgstr "O remetente deve ser o organizador ou estar presente no evento"
-
-#: inc/Principal.php:268
-msgid "unauthenticated"
-msgstr "não autenticado"
-
-#: inc/DAViCalSession.php:169
-msgid ""
-"you should log on with the username and password that have been issued to "
-"you."
-msgstr "deve entrar com o nome de utilizador e password que lhe foram atribuídas."
-
-#: htdocs/help.php:8
-msgid "DAViCal CalDAV Server - Configuration Help"
-msgstr "Servidor CalDAV DAViCal - Ajuda de Configuração"
-
-#: htdocs/setup.php:393 htdocs/setup.php:395
-msgid "PHP Information"
-msgstr "Informação PHP"
-
-#: htdocs/setup.php:396 htdocs/index.php:48 htdocs/setup.php:399
-#: htdocs/index.php:47
-msgid ""
-"The <a href=\"http://www.davical.org/clients.php\">client setup page on the "
-"DAViCal website</a> has information on how to configure Evolution, Sunbird, "
-"Lightning and Mulberry to use remotely hosted calendars."
-msgstr "A <a href=\"http://www.davical.org/clients.php\">página de configuração de clientes no site do DAViCal</a> tem informação sobre como configurar o Evolution, Sunbird, Lightning e Mulberry para usar calendário alojados remotamente."
-
-#: htdocs/setup.php:397 htdocs/index.php:49 htdocs/setup.php:400
-#: htdocs/index.php:48
-msgid ""
-"The administrative interface has no facility for viewing or modifying "
-"calendar data."
-msgstr "A interface administrativa não tem possibilidades de ver ou modificar dados de calendário."
-
-#: htdocs/setup.php:399 htdocs/index.php:53 htdocs/setup.php:404
-#: htdocs/index.php:52
-msgid "If you can read this then things must be mostly working already."
-msgstr "Se conseguir ler isto as coisas já devem estar a funcionar."
-
-#: htdocs/setup.php:404
-msgid ""
-"The <a href=\"http://www.davical.org/installation.php\">installation page on"
-" the DAViCal website</a> has some further information on how to install and "
-"configure this application."
-msgstr "A <a href=\"http://www.davical.org/installation.php\">página de instalação no site do DAViCal</a> tem mais algumas informações sobre como instalar e configurar esta aplicação."
-
-#: htdocs/index.php:18
-#, php-format
-msgid "You are logged on as %s (%s)"
-msgstr "Está logado como %s (%s)"
-
-#: htdocs/index.php:20
-msgid "Administration Functions"
-msgstr "Funções de Administração"
-
-#: htdocs/index.php:21
-msgid ""
-"The administration of this application should be fairly simple. You can "
-"administer:"
-msgstr ""
-
-#: htdocs/index.php:22
-msgid "Users (or Resources or Groups) and the relationships between them"
-msgstr ""
-
-#: htdocs/index.php:23
-msgid "The types of relationships that are available"
-msgstr ""
-
-#: htdocs/index.php:24
-msgid ""
-"There is no ability to view and / or maintain calendars or events from "
-"within this administrative interface."
-msgstr ""
-
-#: htdocs/index.php:25
-msgid ""
-"To do that you will need to use a CalDAV capable calendaring application "
-"such as Evolution, Sunbird, Thunderbird (with the Lightning extension) or "
-"Mulberry."
-msgstr ""
-
-#: htdocs/index.php:27
-msgid "Principals: Users, Resources and Groups"
-msgstr ""
-
-#: htdocs/index.php:28
-msgid ""
-"These are the things which may have collections of calendar resources (i.e. "
-"calendars)."
-msgstr ""
-
-#: htdocs/index.php:31
-msgid "Here is a list of users (maybe :-)"
-msgstr ""
-
-#: htdocs/index.php:32
-msgid ""
-"You can click on any user to see the full detail for that person (or group "
-"or resource - but from now we'll just call them users)."
-msgstr ""
-
-#: htdocs/index.php:35 htdocs/index.php:34
-msgid "The primary differences between them are as follows:"
-msgstr ""
-
-#: htdocs/index.php:36 htdocs/index.php:39 htdocs/index.php:35
-#: htdocs/index.php:38
-msgid ""
-"Users will probably have calendars, and are likely to also log on to the "
-"system."
-msgstr ""
-
-#: htdocs/index.php:37 htdocs/index.php:36
-msgid "Resources do have calendars, but they will not usually log on."
-msgstr ""
-
-#: htdocs/index.php:38 htdocs/index.php:37
-msgid ""
-"Groups provide an intermediate linking to minimise administration overhead."
-"  They might not have calendars, and they will not usually log on."
-msgstr ""
-
-#: htdocs/index.php:41 htdocs/index.php:40
-msgid "Groups &amp; Grants"
-msgstr ""
-
-#: htdocs/index.php:42 htdocs/index.php:41
-msgid "Grants specify the access rights to a collection or a principal"
-msgstr ""
-
-#: htdocs/index.php:43 htdocs/index.php:42
-msgid ""
-"Groups allow those granted rights to be assigned to a set of many principals"
-" in one action"
-msgstr ""
-
-#: htdocs/index.php:44 htdocs/index.php:43
-msgid ""
-"Groups may be members of other groups, but complex nesting will hurt system "
-"performance"
-msgstr ""
-
-#: htdocs/index.php:54 htdocs/setup.php:409 htdocs/index.php:53
-msgid ""
-"The <a href=\"http://www.davical.org/installation.php\">DAViCal installation"
-" page</a> on the DAViCal website has some further information on how to "
-"install and configure this application."
-msgstr ""
-
-#: htdocs/iSchedule.php:12
 msgid "iSchedule Configuration"
 msgstr ""
 
-#: htdocs/iSchedule.php:13
-msgid ""
-"iSchedule allows caldav servers to communicate directly with each other, "
-"bypassing the need to send invitations via email, for scheduled events where"
-" attendees are using different servers or providers. Additionally it enables"
-" freebusy lookups for remote attendees. Events and ToDos received via "
-"iSchedule will show up in the users scheduling inbox."
-msgstr ""
+msgid "iSchedule Domains"
+msgstr "Domínios iSchedule"
 
-#: htdocs/iSchedule.php:14
-msgid ""
-"The <a href=\"http://wiki.davical.org/w/iSchedule_configuration\">iSchedule "
-"configuration</a> requires a few DNS entries. DNS SRV record(s) will need to"
-" be created for all domains you wish to accept requests for, these are the "
-"domain portion of email address on Principal records in DAViCal examples are"
-" listed below for domains found in your database. At least 1 public key must"
-" also be published if you wish to send requests from this server."
-msgstr ""
-
-#: htdocs/iSchedule.php:25
-msgid "ERROR"
-msgstr ""
-
-#: htdocs/iSchedule.php:26
-msgid ""
-"scheduling_dkim_domain not set (please check your DAViCal configuration "
-"file)"
-msgstr ""
-
-#: htdocs/iSchedule.php:28
-msgid "WARNING"
-msgstr ""
-
-#: htdocs/iSchedule.php:29
-msgid ""
-"scheduling_dkim_domain does not match server name (please check your DAViCal"
-" configuration file)"
-msgstr ""
-
-#: htdocs/iSchedule.php:56
-#, php-format
-msgid ""
-"SRV record missing for \"%s\" or DNS failure, the domain you are going to "
-"send events from should have an SRV record"
-msgstr ""
-
-#: htdocs/iSchedule.php:58
-#, php-format
-msgid "SRV record for \"%s\" points to wrong domain: \"%s\" instead of \"%s\""
-msgstr ""
-
-#: htdocs/iSchedule.php:63
-#, php-format
-msgid ""
-"TXT record missing for \"%s._domainkey.%s\" or DNS failure, Private RSA key "
-"is configured"
-msgstr ""
-
-#: htdocs/iSchedule.php:66
-msgid "please add the following section to your DAViCal configuration file"
-msgstr ""
-
-#: htdocs/iSchedule.php:69
-#, php-format
-msgid "and create a DNS TXT record for <b>%s._domainkey.%s</b> that contains:"
-msgstr ""
-
-#: htdocs/iSchedule.php:76
-#, php-format
-msgid "TXT record corrupt for %s._domainkey.%s or DNS failure"
-msgstr ""
-
-#: htdocs/iSchedule.php:78
 msgid "iSchedule OK"
 msgstr ""
 
-#: htdocs/setup.php:339
-#, php-format
 msgid ""
-"<a href=\"http://wiki.davical.org/w/Setup_Failure_Codes/%s\">Explanation on "
-"DAViCal Wiki</a>"
+"iSchedule allows caldav servers to communicate directly with each other, bypassing the need to send "
+"invitations via email, for scheduled events where attendees are using different servers or providers. "
+"Additionally it enables freebusy lookups for remote attendees. Events and ToDos received via iSchedule "
+"will show up in the users scheduling inbox."
 msgstr ""
 
-#: htdocs/setup.php:388 htdocs/setup.php:392
-msgid "Statistics unavailable"
+msgid "invalid request"
+msgstr "pedido inválido"
+
+msgid "optional"
 msgstr ""
 
-#: htdocs/upgrade.php:10
-msgid ""
-"Currently this page does nothing. Suggestions or patches to make it do "
-"something useful will be gratefully received."
+msgid "path to store your ics"
+msgstr "caminho para guardar o seu ics"
+
+msgid "please add the following section to your DAViCal configuration file"
 msgstr ""
 
-#: htdocs/upgrade.php:12
-msgid "Upgrading DAViCal Versions"
+msgid "recipient must be organizer or attendee of event"
+msgstr "O destinatário deve ser o organizador ou estar presente no evento"
+
+msgid "scheduling_dkim_domain does not match server name (please check your DAViCal configuration file)"
 msgstr ""
 
-#: htdocs/upgrade.php:13
-msgid ""
-"The <a href=\"http://wiki.davical.org/w/Update-davical-database\">update-"
-"davical-database</a> should be run manually after upgrading the software to "
-"a new version of DAViCal."
+msgid "scheduling_dkim_domain not set (please check your DAViCal configuration file)"
 msgstr ""
 
-#: htdocs/upgrade.php:14
-msgid ""
-"In due course this program will implement the functionality which is "
-"currently contained in that script, but until then I'm afraid you do need to"
-" run it."
-msgstr ""
+msgid "sender must be organizer or attendee of event"
+msgstr "O remetente deve ser o organizador ou estar presente no evento"
 
-#: htdocs/upgrade.php:53
-msgid "Connection Parameters"
-msgstr ""
+msgid "unauthenticated"
+msgstr "não autenticado"
 
-#: htdocs/upgrade.php:54
-msgid "Operation Parameters"
-msgstr ""
+msgid "you should log on with the username and password that have been issued to you."
+msgstr "deve entrar com o nome de utilizador e password que lhe foram atribuídas."
+
+#~ msgid ""
+#~ "<h1>Help</h1>\n"
+#~ "<p>For initial help you should visit the <a href=\"http://www.davical.org/\" target=\"_blank"
+#~ "\">DAViCal Home Page</a> or take\n"
+#~ "a look at the <a href=\"http://wiki.davical.org/%s\" target=\"_blank\">DAViCal Wiki</a>.</p>\n"
+#~ "<p>If you can't find the answers there, visit us on <a href=\"http://wikipedia.org/wiki/"
+#~ "Internet_Relay_Chat\" target=\"_blank\">IRC</a> in\n"
+#~ "the <b>#davical</b> channel on <a href=\"http://www.oftc.net/\" target=\"_blank\">irc.oftc.net</"
+#~ "a>,\n"
+#~ "or send a question to the <a href=\"http://lists.sourceforge.net/mailman/listinfo/davical-general\" "
+#~ "target=\"_blank\">DAViCal Users mailing list</a>.</p>\n"
+#~ "<p>The <a href=\"http://sourceforge.net/mailarchive/forum.php?forum_id=8348\" title=\"DAViCal Users "
+#~ "Mailing List\" target=\"_blank\">mailing list\n"
+#~ "archives can be helpful too.</p>"
+#~ msgstr ""
+#~ "<h1>Ajuda</h1>\n"
+#~ "<p>Para ajuda inicial visite a <a href=\"http://www.davical.org/\" target=\"_blank\">Home Page do "
+#~ "DAViCal</a> ou veja \n"
+#~ "o <a href=\"http://wiki.davical.org/%s\" target=\"_blank\">Wiki DAViCal</a>.</p>\n"
+#~ "<p>Se não encontrar aí as respostas, visite o canal <b>#davical</b> do <a href=\"http://wikipedia."
+#~ "org/wiki/Internet_Relay_Chat\" target=\"_blank\">IRC</a> no\n"
+#~ "servidor <a href=\"http://www.oftc.net/\" target=\"_blank\">irc.oftc.net</a>,\n"
+#~ "ou envie uma questão para <a href=\"http://lists.sourceforge.net/mailman/listinfo/davical-general\" "
+#~ "target=\"_blank\">Lista de correio dos Utilizadores DAViCal</a>.</p>\n"
+#~ "<p>os arquivos da <a href=\"http://sourceforge.net/mailarchive/forum.php?forum_id=8348\" title="
+#~ "\"DAViCal Users Mailing List\" target=\"_blank\">lista de correio</a>\n"
+#~ "também podem ser úteis.</p>"
+
+#~ msgid "Access ticket deleted"
+#~ msgstr "Ticket de acesso apagado"
+
+#~ msgid "Binding deleted"
+#~ msgstr "Ligação apagada"
+
+#~ msgid "Collection deleted"
+#~ msgstr "Colecção apagada"
+
+#~ msgid "PUT on a collection is only allowed for text/vcard content against an addressbook collection"
+#~ msgstr "PUT de conteúdo text/vcard apenas é permitido numa colecção do tipo livro de endereços"
+
+#~ msgid "Principal deleted"
+#~ msgstr "Principal eliminado"
+
+#~ msgid "Updating Collection record."
+#~ msgstr "A actualizar o registo da colecção."
+
+#~ msgid ""
+#~ "The <a href=\"http://www.davical.org/clients.php\">client setup page on the DAViCal website</a> has "
+#~ "information on how to configure Evolution, Sunbird, Lightning and Mulberry to use remotely hosted "
+#~ "calendars."
+#~ msgstr ""
+#~ "A <a href=\"http://www.davical.org/clients.php\">página de configuração de clientes no site do "
+#~ "DAViCal</a> tem informação sobre como configurar o Evolution, Sunbird, Lightning e Mulberry para "
+#~ "usar calendário alojados remotamente."
+
+#~ msgid ""
+#~ "The <a href=\"http://www.davical.org/installation.php\">installation page on the DAViCal website</"
+#~ "a> has some further information on how to install and configure this application."
+#~ msgstr ""
+#~ "A <a href=\"http://www.davical.org/installation.php\">página de instalação no site do DAViCal</a> "
+#~ "tem mais algumas informações sobre como instalar e configurar esta aplicação."

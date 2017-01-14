@@ -69,6 +69,12 @@ To generate a .pot file for translators on has to use the following command:
 
 .. code-block:: bash
 
+  $ ./scripts/po/rebuild-translations.sh
+
+That is based on:
+
+.. code-block:: bash
+
   $ xgettext -f po/pofilelist.txt --keyword=i18n --keyword=translate \
    --add-comments=Translators
   $ sed -i 's.^"Content-Type: text/plain; charset=CHARSET\\n".\
@@ -81,7 +87,7 @@ Accessing the Transifex files
 =============================
 
 Transifex does not have direct repository integration anymore.
-They have created a command line client namend ``tx``::
+They have created a command line client named ``tx``::
 
    $ tx init
    Creating .tx folder...
