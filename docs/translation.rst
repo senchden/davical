@@ -119,3 +119,11 @@ They have created a command line client named ``tx``::
     -> sv: translations/davical.messagespot/sv.po
    Done.
 
+Comparing po files
+==================
+
+Suggested command line tool: ``podiff`` (https://puszcza.gnu.org.ua/projects/podiff).
+
+   $ podiff -d kdiff3 es_AR.po~ es_AR.po
+
+
