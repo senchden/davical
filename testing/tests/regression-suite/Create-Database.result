@@ -9,6 +9,6 @@ NOTE
 ====
 *  The password for the 'admin' user has been set to 'nimda'
 
-Thanks for trying DAViCal!  Check in /usr/share/doc/davical/examples/ for
-some configuration examples.  For help, visit #davical on irc.oftc.net.
+Thanks for trying DAViCal! Check the configuration in /etc/davical/config.php.
+For help, look at our website and wiki, or visit #davical on irc.oftc.net.
 
