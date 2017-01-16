@@ -1,1 +1,1 @@
-    VALUES( 'ru', 'Russian',  'Русский' );
+    VALUES( 'ru_RU', 'Russian',  'Русский' );

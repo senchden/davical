@@ -1,1 +1,1 @@
-    VALUES( 'sv', 'Swedish',  'Svenska' );
+    VALUES( 'sv_SE', 'Swedish',  'Svenska' );

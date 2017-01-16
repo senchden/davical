@@ -1,1 +1,1 @@
-    VALUES( 'ja', 'Japanese',  '日本語' );
+    VALUES( 'ja_JP', 'Japanese',  '日本語' );

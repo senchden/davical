@@ -1,1 +1,1 @@
-    VALUES( 'hu', 'Hungarian',  'Magyar' );
+    VALUES( 'hu_HU', 'Hungarian',  'Magyar' );

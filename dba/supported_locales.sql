@@ -4,7 +4,7 @@ INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
     VALUES( 'ar', 'Arabic',  'العَرَبِية' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
-    VALUES( 'de', 'German',  'Deutsch' );
+    VALUES( 'de_DE', 'German',  'Deutsch' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
   VALUES( 'es_AR', 'Spanish (Argentina)', 'Español (Argentina)' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
@@ -14,32 +14,32 @@ INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
     VALUES( 'es_VE', 'Spanish (Venezuela)', 'Español (Venezuela)' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
-    VALUES( 'et', 'Estonian',  'Eesti' );
+    VALUES( 'et_EE', 'Estonian',  'Eesti' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
-    VALUES( 'fi', 'Finnish',  'Suomi' );
+    VALUES( 'fi_FI', 'Finnish',  'Suomi' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
-    VALUES( 'fr', 'French',  'Français' );
+    VALUES( 'fr_FR', 'French',  'Français' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
-    VALUES( 'hu', 'Hungarian',  'Magyar' );
+    VALUES( 'hu_HU', 'Hungarian',  'Magyar' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
-    VALUES( 'it', 'Italian',  'Italiano' );
+    VALUES( 'it_IT', 'Italian',  'Italiano' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
-    VALUES( 'ja', 'Japanese',  '日本語' );
+    VALUES( 'ja_JP', 'Japanese',  '日本語' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
     VALUES( 'ko_KR', 'Korean (Korea)',  '한국어' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
-    VALUES( 'nb', 'Norwegian',  'Bokmål' );
+    VALUES( 'nb_NO', 'Norwegian',  'Bokmål' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
-    VALUES( 'nl', 'Netherlands',  'Nederlands' );
+    VALUES( 'nl_NL', 'Netherlands',  'Nederlands' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
-    VALUES( 'pl', 'Polish',  'Polski' );
+    VALUES( 'pl_PL', 'Polish',  'Polski' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
     VALUES( 'pt_BR', 'Brazilian Portuguese',  'Brazilian Portuguese' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
     VALUES( 'pt_PT', 'Portuguese',  'Portuguese' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
-    VALUES( 'ru', 'Russian',  'Русский' );
+    VALUES( 'ru_RU', 'Russian',  'Русский' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
     VALUES( 'sk_SK', 'Slovak (Slovakia)',  'Slovenčina' );
 INSERT INTO supported_locales ( locale, locale_name_en, locale_name_locale )
-    VALUES( 'sv', 'Swedish',  'Svenska' );
+    VALUES( 'sv_SE', 'Swedish',  'Svenska' );

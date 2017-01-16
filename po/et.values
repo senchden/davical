@@ -1,1 +1,1 @@
-    VALUES( 'et', 'Estonian',  'Eesti' );
+    VALUES( 'et_EE', 'Estonian',  'Eesti' );

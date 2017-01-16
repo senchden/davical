@@ -1,1 +1,1 @@
-    VALUES( 'nb', 'Norwegian',  'Bokmål' );
+    VALUES( 'nb_NO', 'Norwegian',  'Bokmål' );

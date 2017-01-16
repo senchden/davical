@@ -1,1 +1,1 @@
-    VALUES( 'fr', 'French',  'Français' );
+    VALUES( 'fr_FR', 'French',  'Français' );

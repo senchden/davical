@@ -1,1 +1,1 @@
-    VALUES( 'nl', 'Netherlands',  'Nederlands' );
+    VALUES( 'nl_NL', 'Netherlands',  'Nederlands' );

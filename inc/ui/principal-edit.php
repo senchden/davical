@@ -220,6 +220,9 @@ function principal_editor() {
     if ( isset($_POST['fullname']) && !isset($_POST['displayname']) ) {
       $_POST['displayname'] = $_POST['fullname'];
     }
+    if ( isset($_POST['locale']) ) {
+      awl_set_locale($_POST['locale']); // activate immediately
+    }
     if ( isset($_POST['default_privileges']) ) {
       $privilege_bitpos = array_flip($privilege_names);
       $priv_names = array_keys($_POST['default_privileges']);
