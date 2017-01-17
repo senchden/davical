@@ -471,6 +471,7 @@ $c->admin_email ='calendar-admin@example.com';
 //                             "fullname" => "cn" ,
 //                             "members" =>"memberUid"
 //                             ), //used to create the group based on the ldap properties
+//    'group_member_dnfix' => true, // if your "members" field contains the full DN and needs to be truncated to just the uid
        /** used to set default value for all users, will be overcharged by ldap if defined also in mapping_field **/
 //    'default_value' => array("date_format_type" => "E","locale" => "fr_FR"),
        /** foreach key set start and length in the string provided by ldap

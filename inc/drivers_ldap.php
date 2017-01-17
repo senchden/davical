@@ -453,6 +453,7 @@ function sync_LDAP_groups(){
   if ( sizeof($ldap_groups_tmp) == 0 ) return;
 
   $member_field = $mapping['members'];
+  $dnfix = isset($c->authenticate_hook['config']['group_member_dnfix']) && $c->authenticate_hook['config']['group_member_dnfix'];
 
   foreach($ldap_groups_tmp as $key => $ldap_group){
     $group_mapping = $ldap_group[$mapping['username']];
@@ -527,7 +528,7 @@ function sync_LDAP_groups(){
       Principal::cacheDelete('username', $group);
       $c->messages[] = sprintf(i18n('- adding users %s to group : %s'),join(',',$ldap_groups_info[$group][$mapping['members']]),$group);
       foreach ( $ldap_groups_info[$group][$mapping['members']] as $member ){
-        if ( $member_field == 'uniqueMember' ) {
+        if ( $member_field == 'uniqueMember' || $dnfix ) {
           list( $mem, $rest ) = explode(",", $member );
           $member = str_replace( 'uid=', '', $mem );
         }
@@ -543,7 +544,7 @@ function sync_LDAP_groups(){
     foreach ( $groups_to_update as $group ){
       $db_members = array_values ( $db_group_members[$group] );
       $ldap_members = array_values ( $ldap_groups_info[$group][$member_field] );
-      if ( $member_field == 'uniqueMember' ) {
+      if ( $member_field == 'uniqueMember' || $dnfix ) {
         $ldap_members = fix_unique_member( $ldap_members );
       }
       $add_users = array_diff ( $ldap_members, $db_members );
