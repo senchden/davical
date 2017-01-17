@@ -18,8 +18,8 @@
 # RewriteCond %{REQUEST_URI} !^/$
 # RewriteCond %{REQUEST_URI} !^/davical/$
 
-# # Not if it explicitly specifies a .php program, stylesheet or image
-# RewriteCond %{REQUEST_URI} !\.(php|css|js|png|gif|jpg)
+# # Not if it explicitly specifies a .php program, html page, stylesheet or image
+# RewriteCond %{REQUEST_URI} !\.(php|html|css|js|png|gif|jpg|ico)
 
 # # Everything else gets rewritten to /caldav.php/...
 # RewriteRule ^(.*)$ /caldav.php$1  [NC,L]
