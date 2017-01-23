@@ -49,6 +49,13 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 */
 // $c->readonly_webdav_collections = false;
 
+/**
+* This will allow failure on import of collections to apply only to an
+* individual event that is faulty, rather than failing the whole collection.
+* Default: false (fail whole collection)
+*/
+// $c->skip_bad_event_on_import = true;
+
 
 /***************************************************************************
 *                                                                          *

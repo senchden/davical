@@ -58,6 +58,11 @@
 // $c->stylesheets = array();
 
 /**
+* Where the up.gif and down.gif are located
+* */
+// $c->images = $c->base_url . '/images';
+
+/**
 * PostgreSQL supports multiple namespaces (schemas) within a single database,
 * allowing you to have (e.g.) two tables with the same name. This setting
 * allows you to control the search path so that you can have the DAViCal
@@ -66,6 +71,19 @@
 * non-default schema in the first place.
 */
 // $c->db_schema = 'schema1,schema2';
+
+/**
+* Whether to replace query parameters with appropriately escaped substitutions
+* in AWL, or leave it to the database to "prepare" the query.
+* Default: true (do it in AWL)
+*/
+// $c->expand_pdo_parameters = true;
+
+/**
+* The recursion depth when expanding group memberships to resolve effective
+* permissions. Default: 2
+*/
+// $c->permission_scan_depth = 2;
 
 /**
 * Internal variable to display page's title
