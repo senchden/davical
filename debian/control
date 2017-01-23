@@ -41,6 +41,7 @@ Description: PHP CalDAV and CardDAV Server
 Package: davical-doc
 Section: doc
 Architecture: all
+Multi-Arch: foreign
 Depends: ${misc:Depends}
 Description: PHP CalDAV and CardDAV Server - technical documentation
  The DAViCal CalDAV Server is designed to store CalDAV calendars and
