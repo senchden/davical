@@ -16,4 +16,6 @@ override_dh_auto_build:
 override_dh_installchangelogs:
 	dh_installchangelogs ChangeLog
 	rm debian/davical/usr/share/davical/htdocs/.htaccess || true
+	rm -f debian/davical/usr/share/doc/davical/examples/apache-davical.conf \
+	      debian/davical/usr/share/doc/davical/examples/example-config.php
 

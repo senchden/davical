@@ -21,19 +21,11 @@ Don't forget to restart postgres for the change to take effect!
 
     sudo -u postgres /usr/share/davical/dba/create-database.sh
 
-3. Create an Apache vhost config (e.g. from examples/apache-davical.conf),
+3. Review and activate the default Apache config ('a2ensite davical'),
 or symlink /usr/share/davical/htdocs somewhere below an existing vhost's
 document root.
 
-4. Create /etc/davical/config.php containing at least the lines
-
-    <?php
-      $c->pg_connect[] = 'dbname=davical user=davical_app';
-    ?>
-
-See example-config.php and the other config snippets in the examples
-directory, as well as the DAViCal website and wiki, for a wealth of
-possible customizations.
+4. Customize /etc/davical/config.php if you want.
 
 5. Point your browser to /setup.php (or wherever you symlinked the
 htdocs directory in step 3), log in as user admin with the password

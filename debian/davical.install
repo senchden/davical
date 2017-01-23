@@ -1,4 +1,7 @@
+#! /usr/bin/dh-exec
 dba htdocs inc locale   usr/share/davical
+config/apache-davical.conf => etc/apache2/sites-available/davical.conf
+config/example-config.php  => etc/davical/config.php
 config/*                usr/share/doc/davical/examples
 scripts/*.php           usr/share/davical/scripts
 scripts/davical-cli     usr/share/davical/scripts

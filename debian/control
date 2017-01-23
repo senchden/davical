@@ -6,6 +6,7 @@ Uploaders: Andrew McMillan <awm@debian.org>,
  Florian Schlichting <fsfs@debian.org>
 Standards-Version: 3.9.8
 Build-Depends: debhelper (>= 9),
+ dh-exec,
  libawl-php (>= 0.57-1~), libawl-php (<< 0.58),
  gettext,
  php-apigen,
