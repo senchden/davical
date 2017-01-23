@@ -1,3 +1,172 @@
+2017-01-23 Florian Schlichting <fsfs@debian.org>
+	* Release 1.1.5
+	* Update ChangeLog and CREDITS
+	* Bump davical version to 1.1.5, DB is at 1.3.2
+	* Document remaining config settings for which there are defaults, as
+	  well as the very useful $c->skip_bad_event_on_import
+
+2017-01-17 Florian Schlichting <fsfs@debian.org>
+	* Update regression suite for gratuitous whitespace changes
+	* Unbreak locale selection in admin interface
+	* Update apache-davical.conf adding .well-known rewriting
+	* Fix ldapDriver instantiation
+
+2017-01-17 Marc <github@mleuser.de>
+	* allow admins to manually toggle the uniqueMember fix via config (fix #102)
+
+2017-01-15 Cyril Giraud <cgiraud@free.fr>
+	* Update translations from Transifex (French + some trivial updates in other languages)
+
+2017-01-14 Cyril Giraud <cgiraud@free.fr>
+	* PHP strings extraction with rebulid-translations.sh + tx push -s -t
+
+2017-01-10 Florian Schlichting <fsfs@debian.org>
+	* UI: create internal and external bindings (closes: #90)
+	* creating a DAVResource from "/  " loops a lot
+	* UI: do not show tickets unless user has write access; they are like passwords
+	* UI: use ExtraRowFormat to fix tooltip on action rows / buttons
+	* make clean should also clean regression testing artefacts
+
+2017-01-08 Florian Schlichting <fsfs@debian.org>
+	* Make sure all configuration settings described at
+	  https://wiki.davical.org/index.php/Configuration/settings are
+	  documented in the example config files (cf. #76)
+	* destroy LSID cookie when actively hitting "Logout" (fixes #56, Debian #703138)
+	* remove logout button when the webserver does auth, or use a
+	  configured logout URL (fixes #67, Debian #703130)
+	* updates for bulk addressbook import
+
+2017-01-06 Florian Schlichting <fsfs@debian.org>
+	* support for bulk addressbook import (thanks Jorge López Pérez) - fixes #74
+	* Create configured default relationships in all drivers and internal auth (closes: #75)
+	* add optional support for X-Forwarded-Proto etc (closes: #87)
+	* use https for retrieving current_davical_version (fixes #1)
+
+2017-01-05 Florian Schlichting <fschlich@zedat.fu-berlin.de>
+	* fix a typo, add a debug statement
+	* delete obsolete entries when updating addressbooks as external resources
+
+2017-01-04 Florian Schlichting <fsfs@debian.org>
+	* Add a test case for /user/calendar-proxy-read/ with return=minimal
+	* fix expand-property "group-member-set" on calendar-proxy-write URL (closes: #88)
+	* fix infinite loop when finding delegates (closes #48)
+
+2017-01-02 Florian Schlichting <fsfs@debian.org>
+	* sort example-config.php, add "Scheduling" section and integrate imap_pam_conf_php.txt
+	* provide .ics download link in collection view, document $c->get_includes_subcollections
+
+2017-01-01 Florian Schlichting <fsfs@debian.org>
+	* misc changes to get more tests to pass
+	* Restore-Database.result: error setting plpgsql COMMENT and lots more setval in dump
+	* Update other testsuites for contenttype, PROPPATCH and 204 No Content changes
+	* Apache 2.4.24 doesn't send Content-Length: 0 headers for 204 No Content responses
+	* $principal->fullname is not a method (fixes #101)
+
+2016-12-31 Florian Schlichting <fsfs@debian.org>
+	* document AWL debug logging improvements
+	* $session: document ->username, actually implement ->fullname
+
+2016-12-30 Florian Schlichting <fsfs@debian.org>
+	* Allow deletion of collections, tickets, bindings of principals to
+	  whom you have write access (closes: #47)
+	* do not show edit buttons on admin pages when not allowed to edit
+	* display an error message when not allowed to delete something on the admin page
+	* inc/ui/collection-edit.php: display only privileges applicable for collections
+
+2016-12-29 Florian Schlichting <fsfs@debian.org>
+	* fix remaining apigen errors (duplicate function names etc)
+	* lets have only one function check_for_expansion()
+	* replace RRule with RRule-v2
+	* clean up apigen errors (closes: #85)
+	* drivers_*: brush up apidoc
+	* drivers_rimap: update similar to drivers_imap_pam
+	* migrate away from deprecated auth functions, warn more aggressively
+	* RFC7240: "Prefer: return=minimal"
+
+2016-12-28 Florian Schlichting <fsfs@debian.org>
+	* less "global $foo"
+	* eliminate trailing whitespace, expand tabs
+	* extra line (duplicate)
+
+2016-12-08 Émile Morel <emorel@quarkslab.com>
+	* ldap group import: unset group after import
+
+2016-12-08 Andrew Ruthven <puck@catalyst.net.nz>
+	* Allow updating addressbooks as external resources. (Closes #93)
+
+2016-12-04 Florian Schlichting <fsfs@debian.org>
+	* fix ?add_member when PATH_INFO is not set (closes #96, thanks Thomas Zell!)
+	* CreateDefaultRelationships is not defunct
+
+2016-12-02 Christoph Anton Mitterer <calestyo@scientia.net>
+	* handle failing version check when allow_url_fopen is set to false (closes: #57)
+
+2016-12-02 Florian Schlichting <fsfs@debian.org>
+	* make sure we dont have documentation suggesting that $c->something
+	  can be used without assigning a value
+	* Remove remaining references to $c->local_tzid (fixes #35)
+	* separate rebuild-translations and building locale/
+	* document the setup that will get regression-suite to pass
+	* Set the same default timezone to Database and PHP
+
+2016-11-30 Florian Schlichting <fsfs@debian.org>
+	* freebusy-functions.php: regular debug logging
+	* global $c is not used in this function
+	* DAVPrincipal: delete funny tabs and other unusual whitespace
+	* DAVPrincipal: fix logging labels
+
+2016-10-13 Florian Schlichting <fsfs@debian.org>
+	* replace nonexistant start_here.php link with something helpful
+
+2016-01-21 Frank Steinberg <steinberg@ibr.cs.tu-bs.de>
+	* Fixed some logging labels.
+
+2016-09-14 Florian Schlichting <fsfs@debian.org>
+	* a helpful comment
+	* fix typo
+	* comment in existing email scheduling code
+
+2016-09-14 Benoît Bleuzé <benoit.bleuze@gmail.com>
+	* Handle empty "modified" ldap mapping
+
+2016-07-15 Florian Schlichting <fsfs@debian.org>
+	* davical-cli: add link to wiki page
+
+2016-06-22 Andrew McMillan <andrew@mcmillan.net.nz>
+	* Add /metrics.php to be scraped by Prometheus for monitoring.
+	* Some database changes for server-side attendee handling.
+	* Ignore some local cruft.
+	* Fail better!
+	* Remove array slice reference on method return value.
+	* Sending HTTP headers for TODO seems a bit passive-aggressive!
+	* getCacheInstance() is the canonical way to get a reference to the cache.
+	* Enforce ordering on sample data for more consistent test results.
+	* Regression result changes with calendar-free-busy-set disabled.
+	* Update to regression test results for PROPPATCH bugfix.
+	* Updated regression test results from updates to contenttype
+	* The str_ireplace() function is not always present.
+	* Disabling slow query threshold nag for batch job.
+	* Ensuring we delete vigorously from the cache for DELETE is ++important!
+	* Provide some more useful error details in various PUT failure situations.
+	* Bugs pointed out by PHPStorm.
+
+2016-06-01 Egoitz Aurrekoetxea <egoitz@sarenet.es>
+	* Add scripts/davical-cli, an example of a command-line interface for
+	  administrative tasks in a large-scale multi-domain setup
+
+2016-06-13 Florian Schlichting <fsfs@debian.org>
+	* adapt to AWL function rename get_fields() -> awl_get_fields()
+
+2016-06-01 Florian Schlichting <fsfs@debian.org>
+	* Check for PHP XML support in setup.php (see #91)
+	* always regenerate api docs, remove generated files from git
+
+2016-05-19 Andrew Ruthven <puck@catalyst.net.nz>
+	* Pass in the refresh interval to fetch_external
+
+2016-05-11 Nishanth Aravamudan <nish.aravamudan@canonical.com>
+	* Update to PHP7.0 naming
+
 2016-01-11 Florian Schlichting <fsfs@debian.org>
 	* release 1.1.4
 	* allow BuildDeadPropertyXML to continue on namespace errors (#9)
