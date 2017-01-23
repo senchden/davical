@@ -1,3 +1,22 @@
+davical (1.1.5-1) unstable; urgency=medium
+
+  * New upstream release (closes: #703130, #703138, #703342)
+  * Separate rebuild-translations and building locale/*po files. This should
+    make davical builds reproducible.
+  * Ship davical-cli in /usr/share/davical/scripts
+  * Use secure URIs where possible
+  * Bump years on debian/copyright
+  * Bump dependency on libawl-php to 0.57
+  * Make extra sure that the orig-source tarball does not contain any cruft
+  * Install example configs as /etc/davical/config.php and
+    /etc/apache2/sites-available/davical.conf
+  * Use jdupes to remove duplicate files in davical-doc
+  * Mark davical-doc "Multi-Arch: foreign" as suggested by the Multiarch
+    hinter
+  * Override erroneous lintian errors
+
+ -- Florian Schlichting <fsfs@debian.org>  Mon, 23 Jan 2017 23:04:30 +0100
+
 davical (1.1.4-3) unstable; urgency=medium
 
   * Add missing dependency on php-xml, which is a separate package from PHP 7
