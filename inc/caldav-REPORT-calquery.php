@@ -325,7 +325,7 @@ if ( isset($c->hide_TODO) && ($c->hide_TODO === true || (is_string($c->hide_TODO
 }
 
 if ( isset($c->hide_older_than) && intval($c->hide_older_than > 0) ) {
-  $where .= " AND (CASE WHEN caldav_data.caldav_type<>'VEVENT' OR calendar_item.dtstart IS NULL THEN true ELSE calendar_item.dtstart > (now() - interval '".intval($c->hide_older_than)." days') END) ";
+  $where .= " AND (CASE WHEN caldav_data.caldav_type<>'VEVENT' OR calendar_item.dtstart IS NULL OR calendar_item.rrule IS NOT NULL THEN true ELSE calendar_item.dtstart > (now() - interval '".intval($c->hide_older_than)." days') END) ";
 }
 
 $sql = 'SELECT '.$distinct.' caldav_data.*,calendar_item.*  FROM collection INNER JOIN caldav_data USING(collection_id) INNER JOIN calendar_item USING(dav_id) '. $where;

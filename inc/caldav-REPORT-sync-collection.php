@@ -82,7 +82,7 @@ if ( $sync_token == $new_token ) {
 else {
   $hide_older = '';
   if ( isset($c->hide_older_than) && intval($c->hide_older_than) > 0 )
-    $hide_older = " AND (CASE WHEN caldav_data.caldav_type<>'VEVENT' OR calendar_item.dtstart IS NULL THEN true ELSE calendar_item.dtstart > (now() - interval '".intval($c->hide_older_than)." days') END)";
+    $hide_older = " AND (CASE WHEN caldav_data.caldav_type<>'VEVENT' OR calendar_item.dtstart IS NULL OR calendar_item.rrule IS NOT NULL THEN true ELSE calendar_item.dtstart > (now() - interval '".intval($c->hide_older_than)." days') END)";
 
   $hide_todo = '';
   if ( isset($c->hide_TODO) && ($c->hide_TODO === true || (is_string($c->hide_TODO) && preg_match($c->hide_TODO, $_SERVER['HTTP_USER_AGENT']))) && ! $collection->HavePrivilegeTo('all') )
