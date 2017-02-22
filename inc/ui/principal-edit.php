@@ -612,7 +612,7 @@ function grant_row_editor() {
   if ( isset($_GET['edit_grant']) ) {
     $edit_grant_clause = ' AND to_principal != '.intval($_GET['edit_grant']);
   }
-  $grantrow->SetLookup( 'to_principal', 'SELECT principal_id, displayname FROM dav_principal WHERE principal_id NOT IN (SELECT to_principal FROM grants WHERE by_principal = '.$id.$edit_grant_clause.') ORDER BY fullname' );
+  $grantrow->SetLookup( 'to_principal', 'SELECT principal_id, displayname FROM dav_principal WHERE user_active AND principal_id NOT IN (SELECT to_principal FROM grants WHERE by_principal = '.$id.$edit_grant_clause.') ORDER BY fullname' );
   if ( $can_write_principal ) {
     if ( $grantrow->IsSubmit() ) {
       if ( $grantrow->IsUpdate() )
