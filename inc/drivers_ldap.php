@@ -385,7 +385,7 @@ function LDAP_check($username, $password ){
     return false;
   }
 
-  if ( $mapping['modified'] != "" && in_array($mapping['modified'], $valid)) {
+  if ( $mapping['modified'] != "" && array_key_exists($mapping['modified'], $valid)) {
     $ldap_timestamp = $valid[$mapping['modified']];
   } else {
     $ldap_timestamp = '19700101000000';
@@ -398,7 +398,7 @@ function LDAP_check($username, $password ){
     $$k = substr($ldap_timestamp,$v[0],$v[1]);
 
   $ldap_timestamp = "$Y"."$m"."$d"."$H"."$M"."$S";
-  if ($mapping['modified'] != "" && in_array($mapping['modified'], $valid)) {
+  if ($mapping['modified'] != "" && array_key_exists($mapping['modified'], $valid)) {
     $valid[$mapping['modified']] = "$Y-$m-$d $H:$M:$S";
   }
 
@@ -621,7 +621,7 @@ function sync_LDAP(){
     foreach( $users_to_create as $username ) {
       $principal = new Principal( 'username', $username );
       $valid = $ldap_users_info[$username];
-      if ( $mapping['modified'] != "" && in_array($mapping['modified'], $valid)) {
+      if ( $mapping['modified'] != "" && array_key_exists($mapping['modified'], $valid)) {
         $ldap_timestamp = $valid[$mapping['modified']];
       } else {
         $ldap_timestamp = '19700101000000';
@@ -641,7 +641,7 @@ function sync_LDAP(){
       else if ( empty($ldap_timestamp) ) {
         $ldap_timestamp = date('c');
       }
-      if ( $mapping['modified'] != "" && in_array($mapping['modified'], $valid)) {
+      if ( $mapping['modified'] != "" && array_key_exists($mapping['modified'], $valid)) {
         $valid[$mapping['modified']] = $ldap_timestamp;
       }
 
@@ -676,7 +676,7 @@ function sync_LDAP(){
     foreach ( $users_to_update as $key=> $username ) {
       $principal = new Principal( 'username', $username );
       $valid=$ldap_users_info[$username];
-      if ( $mapping['modified'] != "" && in_array($mapping['modified'], $valid)) {
+      if ( $mapping['modified'] != "" && array_key_exists($mapping['modified'], $valid)) {
         $ldap_timestamp = $valid[$mapping['modified']];
       } else {
         $ldap_timestamp = '19700101000000';
