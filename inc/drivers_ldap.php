@@ -594,6 +594,7 @@ function sync_LDAP(){
   if ( sizeof($ldap_users_tmp) == 0 ) return;
 
   foreach($ldap_users_tmp as $key => $ldap_user){
+    if(!isset($ldap_user[$mapping['username']])) continue;
     $ldap_users_info[$ldap_user[$mapping['username']]] = $ldap_user;
     unset($ldap_users_tmp[$key]);
   }
@@ -652,8 +653,12 @@ function sync_LDAP(){
   $params = array();
   $i = 0;
   $paramstring = '';
-  foreach( $users_to_deactivate AS $v ) {
-    if ( isset($c->do_not_sync_from_ldap) && isset($c->do_not_sync_from_ldap[$v]) ) continue;
+  foreach( $users_to_deactivate as $k => $v ) {
+    if ( isset($c->do_not_sync_from_ldap) && isset($c->do_not_sync_from_ldap[$v]) ) {
+      unset($users_to_deactivate[$k]);
+      $users_nothing_done[] = $v;
+      continue;
+    }
     if ( $i > 0 ) $paramstring .= ',';
     $paramstring .= ':u'.$i.'::text';
     $params[':u'.$i++] = strtolower($v);
