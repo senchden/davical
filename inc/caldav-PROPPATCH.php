@@ -212,7 +212,7 @@ foreach( $setprops AS $k => $setting ) {
     case 'DAV::creationdate':
     case 'DAV::lockdiscovery':
     case 'DAV::supportedlock':
-      add_failure('set', $tag, 'HTTP/1.1 409 Conflict', translate("Property is read-only"), new XMLElement( 'cannot-modify-protected-property'));
+      add_failure('set', $tag, 'HTTP/1.1 409 Conflict', translate("Property is read-only"), 'cannot-modify-protected-property');
       break;
 
     /**
