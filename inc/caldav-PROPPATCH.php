@@ -212,7 +212,7 @@ foreach( $setprops AS $k => $setting ) {
     case 'DAV::creationdate':
     case 'DAV::lockdiscovery':
     case 'DAV::supportedlock':
-      add_failure('set', $tag, 'HTTP/1.1 409 Conflict', translate("Property is read-only"), 'cannot-modify-protected-property');
+      add_failure('set', $tag, 'HTTP/1.1 403 Forbidden', translate("Property is read-only"), 'cannot-modify-protected-property');
       break;
 
     /**
@@ -233,7 +233,7 @@ foreach( $rmprops AS $k => $setting ) {
   switch( $tag ) {
 
     case 'DAV::resourcetype':
-      add_failure('rm', $tag, 'HTTP/1.1 409 Conflict',
+      add_failure('rm', $tag, 'HTTP/1.1 403 Forbidden',
             translate("DAV::resourcetype may only be set to a new value, it may not be removed."), 'cannot-modify-protected-property');
       break;
 
@@ -242,7 +242,7 @@ foreach( $rmprops AS $k => $setting ) {
         $qry->QDo('UPDATE collection SET timezone = NULL WHERE dav_name = :dav_name', array( ':dav_name' => $dav_resource->dav_name()) );
       }
       else {
-        add_failure('rm', $tag, 'HTTP/1.1 409 Conflict',
+        add_failure('rm', $tag, 'HTTP/1.1 403 Forbidden',
               translate("calendar-timezone property is only valid for a calendar."), 'cannot-modify-protected-property');
       }
       break;
