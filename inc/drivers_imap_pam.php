@@ -107,7 +107,7 @@ function IMAP_PAM_check($username, $password ){
         dbg_error_log( "PAM", "Unable to create local principal for '%s'", $username );
         return false;
       }
-      CreateHomeCollections($username);
+      CreateHomeCollections($username, $c->default_timezone);
       CreateDefaultRelationships($username);
     }
     return $principal;

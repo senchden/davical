@@ -240,7 +240,7 @@ function principal_editor() {
     if ( $_POST['type_id'] != 3 && $editor->IsCreate() ) {
       /** We only add the default calendar if it isn't a group, and this is a create action */
       require_once('auth-functions.php');
-      CreateHomeCollections($editor->Value('username'));
+      CreateHomeCollections($editor->Value('username'), $c->default_timezone);
       CreateDefaultRelationships($editor->Value('username'));
     }
     if ( $session->AllowedTo('Admin') ) {

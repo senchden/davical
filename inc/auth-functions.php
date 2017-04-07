@@ -78,7 +78,7 @@ function getPrincipalByID( $principal_id, $use_cache = true ) {
 * Creates some default home collections for the user.
 * @param string $username The username of the user we are creating relationships for.
 */
-function CreateHomeCollections( $username, $defult_timezone = null ) {
+function CreateHomeCollections( $username, $default_timezone = null ) {
   global $session, $c;
 
   if ( !isset($c->default_collections) )
@@ -98,8 +98,8 @@ function CreateHomeCollections( $username, $defult_timezone = null ) {
   $user_fullname = $principal->fullname;  // user fullname
   $user_rfullname = implode(' ', array_reverse(explode(' ', $principal->fullname)));  // user fullname in reverse order
 
-  $sql = 'INSERT INTO collection (user_no, parent_container, dav_name, dav_etag, dav_displayname, is_calendar, is_addressbook, default_privileges, created, modified, resourcetypes) ';
-  $sql .= 'VALUES( :user_no, :parent_container, :collection_path, :dav_etag, :displayname, :is_calendar, :is_addressbook, :privileges::BIT(24), current_timestamp, current_timestamp, :resourcetypes );';
+  $sql = 'INSERT INTO collection (user_no, parent_container, dav_name, dav_etag, dav_displayname, is_calendar, is_addressbook, default_privileges, created, modified, resourcetypes, timezone ) ';
+  $sql .= 'VALUES( :user_no, :parent_container, :collection_path, :dav_etag, :displayname, :is_calendar, :is_addressbook, :privileges::BIT(24), current_timestamp, current_timestamp, :resourcetypes, :timezone );';
 
   foreach( $c->default_collections as $v ) {
     if ( $v['type'] == 'calendar' || $v['type']=='addressbook' ) {
@@ -123,6 +123,7 @@ function CreateHomeCollections( $username, $defult_timezone = null ) {
           $params[':is_calendar'] = ( $v['type']=='calendar' ? true : false );
           $params[':is_addressbook'] = ( $v['type']=='addressbook' ? true : false );
           $params[':privileges'] = ( !isset($v['privileges']) || $v['privileges']===null ? null : privilege_to_bits($v['privileges']) );
+          $params[':timezone'] = ( ( !isset($v['timezone']) || empty($v['timezone']) ) && $v['type']=='calendar' ? $default_timezone : $v['timezone'] );
 
           $qry = new AwlQuery( $sql, $params );
           if ( $qry->Exec() ) {
@@ -290,7 +291,7 @@ function UpdateUserFromExternal( &$usr ) {
     $qry = new AwlQuery( 'INSERT INTO principal( type_id, user_no, displayname, default_privileges) SELECT 1, user_no, fullname, :privs::INT::BIT(24) FROM usr WHERE username=(text(:username))',
                           array( ':privs' => privilege_to_bits($c->default_privileges), ':username' => $usr->username) );
     $qry->Exec('Login',__LINE__,__FILE__);
-    CreateHomeCalendar($usr->username);
+    CreateHomeCollections($usr->username, $c->default_timezone);
     CreateDefaultRelationships($usr->username);
   }
   else if ( $usr->fullname != $old->{'fullname'} ) {

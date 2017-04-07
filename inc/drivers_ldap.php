@@ -312,7 +312,7 @@ function sync_user_from_LDAP( Principal &$principal, $mapping, $ldap_values ) {
   }
   else {
     $principal->Create($fields_to_set);
-    CreateHomeCollections($principal->username());
+    CreateHomeCollections($principal->username(), $c->default_timezone);
     CreateDefaultRelationships($principal->username());
   }
 }
