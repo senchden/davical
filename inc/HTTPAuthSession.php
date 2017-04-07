@@ -100,7 +100,11 @@ class HTTPAuthSession {
     header('Content-type: text/plain; ; charset="utf-8"' );
     header( $auth_header );
     echo 'Please log in for access to this system.';
-    dbg_error_log( "HTTPAuth", ":Session: User is not authorised: %s ", $_SERVER['REMOTE_ADDR'] );
+    if ( isset($_SERVER['PHP_AUTH_USER']) ) {
+      dbg_error_log( "ERROR", "authentication failure for user '%s' from host [%s]", $_SERVER['PHP_AUTH_USER'], $_SERVER['REMOTE_ADDR'] );
+    } else {
+      dbg_error_log( "HTTPAuth", ":Session: User is not authorised: %s ", $_SERVER['REMOTE_ADDR'] );
+    }
     @ob_flush();   exit(0);
   }
 
