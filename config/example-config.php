@@ -467,14 +467,14 @@ $c->admin_email ='calendar-admin@example.com';
 //    'filterUsers' => 'objectClass=kolabInetOrgPerson', //filter which must validate a user according to RFC4515, i.e. surrounded by brackets
 //    'baseDNGroups' => 'ou=divisions,dc=tennaxia,dc=net', //where to look for groups
 //    'filterGroups' => 'objectClass=groupOfUniqueNames', //filter with same rules as filterUsers
-       /** /!\ "username" should be set and "updated" must be set **/
+       /** /!\ "username" should be set and "modified" must be set **/
 //    'mapping_field' => array("username" => "uid",
-//                             "updated" => "modifyTimestamp",
+//                             "modified" => "modifyTimestamp",
 //                             "fullname" => "cn" ,
 //                             "email" =>"mail"
 //                             ), //used to create the user based on his ldap properties
 //    'group_mapping_field' => array("username" => "cn",
-//                             "updated" => "modifyTimestamp",
+//                             "modified" => "modifyTimestamp",
 //                             "fullname" => "cn" ,
 //                             "members" =>"memberUid"
 //                             ), //used to create the group based on the ldap properties
