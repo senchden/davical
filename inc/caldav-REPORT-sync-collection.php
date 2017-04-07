@@ -86,7 +86,7 @@ else {
 
   $hide_todo = '';
   if ( isset($c->hide_TODO) && ($c->hide_TODO === true || (is_string($c->hide_TODO) && preg_match($c->hide_TODO, $_SERVER['HTTP_USER_AGENT']))) && ! $collection->HavePrivilegeTo('all') )
-    $hide_todo = " AND caldav_data.caldav_type NOT IN ('VTODO') ";
+    $hide_todo = " AND (caldav_data.caldav_type NOT IN ('VTODO') OR caldav_data.caldav_type IS NULL) ";
 
   if ( $sync_token == 0 ) {
     $sql = <<<EOSQL
