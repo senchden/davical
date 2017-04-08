@@ -20,6 +20,10 @@ $where = "";
 foreach( $searches AS $k => $search ) {
   $qry_props = $search->GetPath('/DAV::property-search/DAV::prop/*');  // There may be many
   $match     = $search->GetPath('/DAV::property-search/DAV::match');   // There may only be one
+  if ( empty($match) or !is_object($match[0]) ) {
+    dbg_error_log("ERROR", "Unable to extract a match clause from '%s'", $search->RenderContent() );
+    continue;
+  }
   dbg_log_array( "principal", "MATCH", $match, true );
   $match = $match[0]->GetContent();
   $subwhere = "";
