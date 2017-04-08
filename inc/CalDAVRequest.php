@@ -1149,7 +1149,7 @@ EOSQL;
         * entity exists, the server MUST NOT perform the requested method, and
         * MUST return a 412 (Precondition Failed) response.
         */
-        $this->PreconditionFailed(412,'if-match',sprintf('Existing resource ETag of <<%s>> does not match <<%s>>', $dest_etag, $this->etag_if_match) );
+        $this->PreconditionFailed(412,'if-match',sprintf('Existing resource ETag of %s does not match %s', $dest_etag, $this->etag_if_match) );
       }
       else if ( isset($this->etag_none_match) && $this->etag_none_match != ''
                    && ($this->etag_none_match == $dest_etag || $this->etag_none_match == '*') ) {
