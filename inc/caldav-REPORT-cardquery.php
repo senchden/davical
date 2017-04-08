@@ -151,7 +151,7 @@ function SqlFilterCardDAV( $filter, $components, $property = null, $parameter = 
           $search = $search.'%';
           break;
         case 'ends-with':
-          $search = $search.'%';
+          $search = '%'.$search;
           break;
         case 'contains':
         default:
