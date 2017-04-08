@@ -38,7 +38,7 @@ function early_exception_handler($e) {
   foreach( $trace AS $k => $v ) {
     printf( "%s[%d] %s%s%s()\n", $v['file'], $v['line'], (isset($v['class'])?$v['class']:''), (isset($v['type'])?$v['type']:''), (isset($v['function'])?$v['function']:'') );
   }
-
+  error_log("PHP Early Exception: [".$e->getCode()."] ".$e->getmessage()." at ".$e->getFile().":".$e->getLine());
 }
 set_exception_handler('early_exception_handler');
 
