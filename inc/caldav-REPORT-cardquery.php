@@ -51,7 +51,6 @@ if ( count($qry_filters) == 0 ) {
   $qry_filters = false;
 }
 
-$qry_limit = -1; // everything
 $qry_filters_combination='OR';
 if ( is_array($qry_filters) ) {
   $filters_parent = $xmltree->GetPath('/urn:ietf:params:xml:ns:carddav:addressbook-query/urn:ietf:params:xml:ns:carddav:filter');
@@ -60,11 +59,12 @@ if ( is_array($qry_filters) ) {
   if ( $filters_parent->GetAttribute("test") == 'allof' ) {
     $qry_filters_combination='AND';
   }
+}
 
-  $limits = $xmltree->GetPath('/urn:ietf:params:xml:ns:carddav:addressbook-query/urn:ietf:params:xml:ns:carddav:limit/urn:ietf:params:xml:ns:carddav:nresults');
-  if ( count($limits) == 1) {
-    $qry_limit = intval($limits[0]->GetContent());
-  }
+$qry_limit = -1; // everything
+$limits = $xmltree->GetPath('/urn:ietf:params:xml:ns:carddav:addressbook-query/urn:ietf:params:xml:ns:carddav:limit/urn:ietf:params:xml:ns:carddav:nresults');
+if ( count($limits) == 1) {
+  $qry_limit = intval($limits[0]->GetContent());
 }
 
 /**
