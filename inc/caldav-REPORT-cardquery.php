@@ -109,13 +109,20 @@ function SqlFilterCardDAV( $filter, $components, $property = null, $parameter = 
   $sql = "";
   $params = array();
 
+  // a prop-filter without an actual filter rule means we simply need to ensure the property exists
+  if ( !is_object($filter) ) {
+    if ( empty($property) ) return false;
+    $sql .= $property . ' IS NOT NULL';
+    return array( 'sql' => $sql, 'params' => $params );
+  }
+
   $tag = $filter->GetNSTag();
   dbg_error_log("cardquery", "Processing $tag into SQL - %d, '%s', %d\n", count($components), $property, isset($parameter) );
 
   $not_defined = "";
   switch( $tag ) {
     case 'urn:ietf:params:xml:ns:carddav:is-not-defined':
-      $sql .= $property . 'IS NULL';
+      $sql .= $property . ' IS NULL';
       break;
 
     case 'urn:ietf:params:xml:ns:carddav:text-match':
