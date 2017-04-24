@@ -212,6 +212,13 @@ $c->admin_email ='calendar-admin@example.com';
 // $c->external_refresh = 60;
 
 /**
+* External subscription (BIND) user agent string
+* Required if your remote calendar only delivers to known user agents.
+* Default: none
+*/
+// $c->external_ua_string = '';
+
+/**
 * If you want to force DAViCal to use HTTP Digest Authentication for CalDAV
 * access. Note that this requires all user passwords to be stored in plain text
 * in the database. It is probably better to configure the webserver to do
