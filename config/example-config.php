@@ -391,7 +391,7 @@ $c->admin_email ='calendar-admin@example.com';
  */
 
 /* Unset X-Real-IP, as it's not controlled by the reverse proxy. */
-// unset( $_SERVER['X-Real-IP'] );
+// unset( $_SERVER['HTTP_X_REAL_IP'] );
 // $c->trust_x_forwarded = true;
 
 /* Set all values manually. */
