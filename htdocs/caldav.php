@@ -154,7 +154,7 @@ try {
   }
 
 } catch (Exception $e) {
-  trace_bug('DAViCal Fatal Error');
+  trace_bug( 'DAViCal Fatal Error: ['.$e->getCode().'] '.$e->getmessage().' at '.$e->getFile().':'.$e->getLine() );
   $request->DoResponse( 500, translate('DAViCal Fatal Error') );
 }
 
