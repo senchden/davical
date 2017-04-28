@@ -2,8 +2,8 @@ HTTP/1.1 207 Multi-Status
 Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
-ETag: "6224e345c323da0dfc00689c21171119"
-Content-Length: 2254
+ETag: "e6d93b26332f9761d7f7c0b312b67203"
+Content-Length: 2290
 Content-Type: text/xml; charset="utf-8"
 
 <?xml version="1.0" encoding="utf-8" ?>
@@ -71,6 +71,7 @@ Content-Type: text/xml; charset="utf-8"
    <prop>
     <getcontenttype>httpd/unix-directory</getcontenttype>
     <resourcetype>
+     <principal/>
      <collection/>
      <C2:calendar-proxy-read/>
     </resourcetype>
@@ -90,6 +91,7 @@ Content-Type: text/xml; charset="utf-8"
    <prop>
     <getcontenttype>httpd/unix-directory</getcontenttype>
     <resourcetype>
+     <principal/>
      <collection/>
      <C2:calendar-proxy-write/>
     </resourcetype>

@@ -84,7 +84,7 @@ function add_proxy_response( $which, $parent_path ) {
   $collection->created = date('Ymd\THis');
   $collection->dav_etag = md5($c->system_name . $collection->dav_name . implode($proxy_group) );
   $collection->proxy_for = $proxy_group;
-  $collection->resourcetypes  = sprintf('<DAV::collection/><http://calendarserver.org/ns/:calendar-proxy-%s/>', $which);
+  $collection->resourcetypes  = sprintf('<DAV::principal/><DAV::collection/><http://calendarserver.org/ns/:calendar-proxy-%s/>', $which);
   $collection->in_freebusy_set = 'f';
   $collection->schedule_transp = 'transp';
   $collection->timezone        = null;
