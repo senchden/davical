@@ -212,6 +212,9 @@ foreach( $setprops AS $k => $setting ) {
     case 'DAV::creationdate':
     case 'DAV::lockdiscovery':
     case 'DAV::supportedlock':
+    case 'DAV::group-membership':
+    case 'http://calendarserver.org/ns/:calendar-proxy-read-for':
+    case 'http://calendarserver.org/ns/:calendar-proxy-write-for':
       add_failure('set', $tag, 'HTTP/1.1 403 Forbidden', translate("Property is read-only"), 'cannot-modify-protected-property');
       break;
 
@@ -264,6 +267,9 @@ foreach( $rmprops AS $k => $setting ) {
     case 'DAV::displayname':
     case 'DAV::lockdiscovery':
     case 'DAV::supportedlock':
+    case 'DAV::group-membership':
+    case 'http://calendarserver.org/ns/:calendar-proxy-read-for':
+    case 'http://calendarserver.org/ns/:calendar-proxy-write-for':
       add_failure('rm', $tag, 'HTTP/1.1 409 Conflict', translate("Property is read-only"));
       dbg_error_log( 'PROPPATCH', ' RMProperty %s is read only and cannot be removed', $tag);
       break;
