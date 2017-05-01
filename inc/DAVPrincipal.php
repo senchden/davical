@@ -501,6 +501,10 @@ class DAVPrincipal extends Principal
 
       case 'http://calendarserver.org/ns/:group-membership':
       case 'DAV::group-membership':
+        if ( $request->IsProxyRequest() ) {
+          /* the calendar-proxy-{read,write} pseudo-principal should not be a member of any group */
+          return false;
+        }
         $reply->DAVElement( $prop, 'group-membership', $reply->href($this->GroupMembership()) );
         break;
 
