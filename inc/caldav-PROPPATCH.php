@@ -224,7 +224,13 @@ foreach( $setprops AS $k => $setting ) {
     default:
       $qry->QDo('SELECT set_dav_property( :dav_name, :user_no::integer, :tag::text, :value::text)',
             array( ':dav_name' => $dav_resource->dav_name(), ':user_no' => $request->user_no, ':tag' => $tag, ':value' => $content) );
-      $success[$tag] = 1;
+      $result = $qry->Fetch();
+      if ( $result->set_dav_property ) {
+        $success[$tag] = 1;
+      } else {
+        dbg_error_log("ERROR", "failed to set_dav_property %s on %s to '%s'", $tag, $dav_resource->dav_name(), $content);
+        add_failure('set', $tag, 'HTTP/1.1 403 Forbidden');
+      }
       break;
   }
 }
