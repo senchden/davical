@@ -27,7 +27,7 @@ if ( ! ini_get('open_basedir') && (isset($c->dbg['ALL']) || isset($c->dbg['post'
 function handle_freebusy_request( $ic ) {
   global $c, $session, $request, $ical;
 
-  $request->NeedPrivilege('CALDAV:schedule-send-freebusy');
+  $request->NeedPrivilege('urn:ietf:params:xml:ns:caldav:schedule-send-freebusy');
   $reply = new XMLDocument( array("DAV:" => "", "urn:ietf:params:xml:ns:caldav" => "C" ) );
   $responses = array();
 
@@ -131,7 +131,7 @@ function handle_freebusy_request( $ic ) {
 function handle_cancel_request( $ic ) {
   global $c, $session, $request;
 
-  $request->NeedPrivilege('CALDAV:schedule-send-reply');
+  $request->NeedPrivilege('urn:ietf:params:xml:ns:caldav:schedule-send-reply');
 
   $reply = new XMLDocument( array("DAV:" => "", "urn:ietf:params:xml:ns:caldav" => "C" ) );
 
@@ -153,7 +153,7 @@ switch ( $method ) {
     if ( $first->GetType() == 'VFREEBUSY' )
       handle_freebusy_request( $first );
     elseif ( $first->GetType() == 'VEVENT' ) {
-      $request->NeedPrivilege('CALDAV:schedule-send-invite');
+      $request->NeedPrivilege('urn:ietf:params:xml:ns:caldav:schedule-send-invite');
       handle_schedule_request( $ical );
     }
     else {
@@ -162,7 +162,7 @@ switch ( $method ) {
     break;
   case 'REPLY':
     dbg_error_log('POST', 'Handling iTIP "REPLY" with "%s" component.', $first->GetType() );
-    $request->NeedPrivilege('CALDAV:schedule-send-reply');
+    $request->NeedPrivilege('urn:ietf:params:xml:ns:caldav:schedule-send-reply');
     handle_schedule_reply ( $ical );
     break;
 
