@@ -367,6 +367,11 @@ function ConstructURL( $partial_path, $force_script = false ) {
     $url = str_replace( 'caldav.php/caldav.php', 'caldav.php', $url );  // Ensure we don't double any 'caldav.php/'
   }
 
+  // don't put the script name in special URLs, these would not be valid resources
+  $url = str_replace('/principals/users/caldav.php/', '/principals/users/', $url );
+  $url = str_replace('/principals/resources/caldav.php/', '/principals/resources/', $url );
+  $url = str_replace('/__uids__/caldav.php/', '/__uids__/', $url );
+
   return $url;
 }
 
