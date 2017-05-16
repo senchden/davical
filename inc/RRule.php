@@ -72,7 +72,9 @@ class RepeatRuleTimeZone extends DateTimeZone {
 
 /**
  * Provide a useful way of dealing with RFC5545 duration strings of the form
- * ^-?P(\dW)|((\dD)?(T(\dH)?(\dM)?(\dS)?)?)$
+ * ^(-?)P(?:(\d+W)|(?:(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S?)?)?))$
+ * This doesn't fully implement the RFC, as it allows PT10H10S - which should
+ * be invalid as no minutes are present.
  */
 class Rfc5545Duration {
   private $epoch_seconds = null;
@@ -115,7 +117,7 @@ class Rfc5545Duration {
    */
   function asSeconds() {
     if ( !isset($this->epoch_seconds) ) {
-      if ( preg_match('{^(-?)P(\d+W)|(?:(\d+)D?(?:T(\d+)H?(\d+)M?(\d+)S?)?)$}i', $this->as_text, $matches) ) {
+      if ( preg_match('{^(-?)P(?:(\d+W)|(?:(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S?)?)?))$}i', $this->as_text, $matches) ) {
         // @printf("%s - %s - %s - %s - %s - %s\n", $matches[1], $matches[2], $matches[3], $matches[4], $matches[5], $matches[6]);
         $this->secs = 0;
         if ( !empty($matches[2]) ) {
