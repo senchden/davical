@@ -61,7 +61,7 @@ class DAViCalSession extends Session
   */
   function __construct( $sid='' ) {
     $this->principal_id = null;
-    $this->Session($sid);
+    parent::__construct($sid);
   }
 
 
