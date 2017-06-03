@@ -44,7 +44,7 @@ if ( isset($fb_user) ) $_SERVER['PATH_INFO'] = '/'.$fb_user.'/';
 require_once("CalDAVRequest.php");
 $request = new CalDAVRequest(array("allow_by_email" => 1));
 $path_match = '^'.$request->path;
-if ( preg_match( '{^/(\S+@[a-z0-9][a-z0-9-]*[.][a-z0-9.-]+)[/?]+?$}i', $request->path, $matches ) ) {
+if ( preg_match( '{^/(\S+@[a-z0-9][a-z0-9-]*[.][a-z0-9.-]+)/?$}i', $request->path, $matches ) ) {
   $principal = new Principal('email',$matches[1]);
   $path_match = '^'.$principal->dav_name();
 }
