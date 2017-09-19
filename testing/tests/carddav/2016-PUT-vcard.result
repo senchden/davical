@@ -20,15 +20,15 @@ Content-Type: text/plain; charset="utf-8"
               url: >NULL<
           version: >3.0<
 
-           box_no: >NULL<
-          country: >NULL<
-         locality: >NULL<
-         postcode: >NULL<
-         property: >NULL<
-           region: >NULL<
-   street_address: >NULL<
-             type: >NULL<
-          unit_no: >NULL<
+           box_no: ><
+          country: >DE<
+         locality: >Musterhausen<
+         postcode: >12345<
+         property: >ITEM1.ADR;TYPE=WORK;TYPE=pref:;;Musterweg 1a;Musterhausen;;12345;DE<
+           region: ><
+   street_address: >Musterweg 1a<
+             type: >WORK~|~pref<
+          unit_no: ><
 
               tel: >+49 172 1234567<
              type: >CELL<

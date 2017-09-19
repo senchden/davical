@@ -2,7 +2,7 @@ HTTP/1.1 207 Multi-Status
 Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
-ETag: "ae6b5e0b9194d560b5b73b951f256b6e"
+ETag: "9f39c7aaec936d59b52abd670cd6039e"
 Content-Length: 12634
 Content-Type: text/xml; charset="utf-8"
 
@@ -255,7 +255,7 @@ Content-Type: text/xml; charset="utf-8"
   <propstat>
    <prop>
     <displayname>User 1 Inbox</displayname>
-    <C:getctag>"435712d0457c874316eb9cdd41cf92bc"</C:getctag>
+    <C:getctag>"a8dfd49637017ded49d3a8dbb315c51f"</C:getctag>
     <C1:supported-calendar-component-set>
      <C1:comp name="VEVENT"/>
      <C1:comp name="VTODO"/>

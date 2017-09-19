@@ -28,7 +28,7 @@ end:vcard
 ENDDATA
 
 QUERY
-SELECT caldav_data.caldav_data, caldav_data.dav_id FROM caldav_data WHERE caldav_data.dav_name ~ '/user1/addressbook/donald_kelly.vcf'
+SELECT caldav_data.dav_id FROM caldav_data WHERE caldav_data.dav_name ~ '/user1/addressbook/donald_kelly.vcf'
 ENDQUERY
 
 QUERY

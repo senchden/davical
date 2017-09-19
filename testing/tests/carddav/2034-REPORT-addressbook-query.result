@@ -6,7 +6,6 @@
    <prop>
     <VC:address-data>BEGIN:VCARD
 VERSION:3.0
-REV:2010-03-29T09:23:34Z
 UID:pas-id-4BB0719600000000
 X-SKYPE;X-EVOLUTION-UI-SLOT=1;TYPE=HOME:karora__
 X-JABBER;X-EVOLUTION-UI-SLOT=3;TYPE=HOME:karora@irc.oftc.net
@@ -38,6 +37,7 @@ ROLE:Geek
 ORG:dotCal;;Porirua
 TITLE:Chief Technology Officer
 URL:http://andrew.mcmillan.net.nz/
+REV:20100329T092334Z
 END:VCARD
 </VC:address-data>
    </prop>

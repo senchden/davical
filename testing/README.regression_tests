@@ -62,6 +62,8 @@ former) with
     $c->public_freebusy_url = true;
     // helps with 1035-GET-mashup
     $c->get_includes_subcollections = true;
+    // helps with 1036-REPORT-sync-initial-bound
+    $c->hide_TODO = false;
 
     // for ischedule suite; also needs DKIM set up?
     $c->enable_scheduling = true;

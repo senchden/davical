@@ -48,6 +48,7 @@ QUERY
 SELECT fn
   FROM caldav_data JOIN addressbook_resource USING(dav_id)
   WHERE caldav_data.dav_name ~ '/user1/addresses/'
+  ORDER BY fn
 ENDQUERY
 
 

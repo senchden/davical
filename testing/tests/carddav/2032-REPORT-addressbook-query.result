@@ -6,11 +6,11 @@
    <prop>
     <getcontenttype>text/vcard</getcontenttype>
     <resourcetype/>
-    <getcontentlength>1286</getcontentlength>
+    <getcontentlength>1282</getcontentlength>
     <displayname>User 1</displayname>
     <getlastmodified>Dow, 01 Jan 2000 00:00:00 GMT</getlastmodified>
     <creationdate>yyyymmddThhmmssZ</creationdate>
-    <getetag>"24bae2a7f81c0a79413a656c06d8326b"</getetag>
+    <getetag>"a81fa8394d866e6037ea426554663e4c"</getetag>
     <getcontentlanguage/>
     <supportedlock>
      <lockentry>

@@ -3,7 +3,7 @@ Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
 ETag: "a fine looking etag"
-Content-Length: 2330
+Content-Length: 2326
 Content-Type: text/xml; charset="utf-8"
 
 <?xml version="1.0" encoding="utf-8" ?>
@@ -15,7 +15,6 @@ Content-Type: text/xml; charset="utf-8"
     <get?tag>"deadbeefcafef00ddeadbeefcafefeed"<.get?tag>
     <VC:address-data>BEGIN:VCARD
 VERSION:3.0
-REV:2010-03-29T09:23:34Z
 UID:excellent-looking-uid-string
 X-SKYPE;X-EVOLUTION-UI-SLOT=1;TYPE=HOME:karora__
 X-JABBER;X-EVOLUTION-UI-SLOT=3;TYPE=HOME:karora@irc.oftc.net
@@ -47,6 +46,7 @@ ROLE:Geek
 ORG:dotCal;;Porirua
 TITLE:Chief Technology Officer
 URL:http://andrew.mcmillan.net.nz/
+REV:YYYYMMDDTHHMMSSZ
 END:VCARD
 </VC:address-data>
    </prop>

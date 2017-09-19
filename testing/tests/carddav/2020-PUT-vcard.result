@@ -18,15 +18,25 @@ Content-Type: text/plain; charset="utf-8"
               url: >NULL<
           version: >3.0<
 
-           box_no: >NULL<
-          country: >NULL<
-         locality: >NULL<
-         postcode: >NULL<
-         property: >NULL<
-           region: >NULL<
-   street_address: >NULL<
-             type: >NULL<
-          unit_no: >NULL<
+           box_no: ><
+          country: >Deutschland<
+         locality: >Hamburg<
+         postcode: >20357<
+         property: >ITEM1.ADR;TYPE=WORK;TYPE=pref:;;abcStraße 58;Hamburg;;20357;Deutschland<
+           region: ><
+   street_address: >abcStraße 58<
+             type: >WORK~|~pref<
+          unit_no: ><
+
+           box_no: ><
+          country: >Deutschland<
+         locality: >Hamburg<
+         postcode: >22761<
+         property: >ITEM2.ADR;TYPE=HOME:;;Gayens Weg 9;Hamburg;;22761;Deutschland<
+           region: ><
+   street_address: >Gayens Weg 9<
+             type: >HOME<
+          unit_no: ><
 
               tel: >17799999978200<
              type: >CELL<

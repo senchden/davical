@@ -2,8 +2,8 @@ HTTP/1.1 207 Multi-Status
 Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
-ETag: "865f338c7ec05fb2917fb187a06b38a6"
-Content-Length: 1037
+ETag: "e7e83dc9ce42ab1d44defc985025bf9c"
+Content-Length: 1034
 Content-Type: text/xml; charset="utf-8"
 
 <?xml version="1.0" encoding="utf-8" ?>
@@ -12,7 +12,7 @@ Content-Type: text/xml; charset="utf-8"
   <href>/caldav.php/user1/anotherone/86203AFD481A6C42892013E6E0C4845D039A2543AKEXBE02.telecom.tcnz.net.ics</href>
   <propstat>
    <prop>
-    <getetag>"621885941033781f3462950c9bc2844b"</getetag>
+    <getetag>"58c4e3803714261cd1184d939b0a0645"</getetag>
     <C:calendar-data>BEGIN:VCALENDAR
 PRODID:-//davical.org//NONSGML AWL Calendar//EN
 VERSION:2.0
@@ -22,8 +22,7 @@ UID:86203AFD481A6C42892013E6E0C4845D039A2543@AKEXBE02.telecom.tcnz.net
 DTSTAMP:20061005T230724Z
 DTSTART:20070120T093000
 SUMMARY:
- Reminder for Mark for Absolom Livasathan's PGP WF Services cost  reques
- t
+ Reminder for Mark for Absolom Livasathan's PGP WF Services cost  request
 DESCRIPTION:
  From Absolom.Livasathan@example.com Fri Oct  6 12:00:02 2006\n
 ORGANIZER;CN=Absolom Livasathan:Absolom.Livasathan@example.com

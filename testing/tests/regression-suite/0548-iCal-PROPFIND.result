@@ -4,7 +4,7 @@ HTTP/1.1 207 Multi-Status
 Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
-ETag: "aec265205859386bcdf4b58ce5820905"
+ETag: "e76e5a37264c0b44f88f8456c27a7aaa"
 Content-Length: 27747
 Content-Type: text/xml; charset="utf-8"
 
@@ -569,7 +569,7 @@ Content-Type: text/xml; charset="utf-8"
      </privilege>
     </current-user-privilege-set>
     <displayname>User 1 Inbox</displayname>
-    <C:getctag>"435712d0457c874316eb9cdd41cf92bc"</C:getctag>
+    <C:getctag>"a8dfd49637017ded49d3a8dbb315c51f"</C:getctag>
     <owner>
      <href>/caldav.php/user1/</href>
     </owner>

@@ -9,22 +9,6 @@ Content-Length: 0
 Content-Type: text/plain; charset="utf-8"
 
 
-      caldav_data: >BEGIN:VCARD
-FN:Donald Kelly
-N:Kelly;Donald;;;
-ORG:Esposo Designs Ltd
-ADR:;;25 Rintoul St;Newtown;Wellington;;New Zealand
-EMAIL;TYPE=internet:donald@example.co.nz
-TITLE:Proprietor
-TEL;TYPE=work:+64 4 347 4747
-TEL;TYPE=cell:+64 2 1234-4321
-X-MOZILLA-HTML:TRUE
-URL:www.example.co.nz
-VERSION:2.1
-UID:09e62b3e-656d-c4c4-a5f9-b73422a2f8eb
-REV:20130927T145926Z
-END:VCARD
-<
            dav_id: >1636<
 
         caladruri: >NULL<

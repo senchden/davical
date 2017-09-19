@@ -102,16 +102,15 @@ TEL;TYPE=X-EVOLUTION-TELEX:+49 38 288 228 82
 TEL;TYPE=X-EVOLUTION-TELEX:+49 7722 88 28 282
 TEL;TYPE=MAIN:+49 6237 623 723 84 76
 TEL;TYPE=MAIN:+49 9324 32 479 234234
-TEL;=-EVOLUTION-CALLBACK:+49 8383 73 723
+TEL;X-EVOLUTION-CALLBACK:+49 8383 73 723
 TEL;TYPE=MODEM:+49 8383 73 723
-TEL;=-EVOLUTION-TTYTDD:+49 7373 73
-TEL;=-EVOLUTION-TTYTDD:+49 8378 33
+TEL;X-EVOLUTION-TTYTDD:+49 7373 73
+TEL;X-EVOLUTION-TTYTDD:+49 8378 33
 ADR;TYPE=WORK;CHARSET=utf-8:
  ;Uni Harburg\, -;Innstraße 71;Hamburg-Harburg;Hamburg;21373;Deutschland
- 
-ADR;TYPE=HOME;CHARSET=utf-8:;;Weisestraße 13\\r;Irgendwo;;33443
+ADR;TYPE=HOME;CHARSET=utf-8:;;Weisestraße 13;Irgendwo;;33443
 ADR;TYPE=X-OTHER:;;Nirgendwo
-ORG:Uni Harburg\;\;\;033
+ORG:Uni Harburg;;;033
 X-ROOM;TYPE=WORK:033
 LABEL;TYPE=WORK:1. Stock\, links
 LABEL;TYPE=WORK:oder rechts
@@ -143,9 +142,9 @@ END:VCARD
           country: >NULL<
          locality: >Irgendwo<
          postcode: >33443<
-         property: >ADR;TYPE=HOME;CHARSET=utf-8:;;Weisestraße 13\\r;Irgendwo;;33443<
+         property: >ADR;TYPE=HOME;CHARSET=utf-8:;;Weisestraße 13;Irgendwo;;33443<
            region: ><
-   street_address: >Weisestraße 13\r<
+   street_address: >Weisestraße 13<
              type: >HOME<
           unit_no: ><
 
@@ -170,14 +169,11 @@ END:VCARD
              type: >X-OTHER<
           unit_no: ><
 
-              tel: >+49 8383 73 723<
-             type: >voice<
+              tel: >+49 8373 6262<
+             type: >VOICE<
 
-              tel: >+49 7373 73<
-             type: >voice<
-
-              tel: >+49 8378 33<
-             type: >voice<
+              tel: >+49 7272 72<
+             type: >VOICE<
 
               tel: >+49 8292 38 383<
              type: >CAR,VOICE<
@@ -232,6 +228,15 @@ END:VCARD
 
               tel: >+49 7722 88 28 282<
              type: >X-EVOLUTION-TELEX<
+
+              tel: >+49 8383 73 723<
+             type: >voice<
+
+              tel: >+49 7373 73<
+             type: >voice<
+
+              tel: >+49 8378 33<
+             type: >voice<
 
             email: >hadi@telekom-d.de<
              type: >INTERNET<
