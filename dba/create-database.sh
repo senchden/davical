@@ -133,7 +133,7 @@ psql -qXAt ${PSQLOPTS} ${DBA} -f "${DBADIR}/davical.sql" "${DBNAME}" 2>&1
 
 #
 # Set permissions for the application DB user on the database
-if ! ${DBADIR}/update-davical-database ${DBAOPTS} --dbname "${DBNAME}" --appuser "${AWL_APPUSER}" --nopatch --owner "${AWL_DBAUSER}" ; then
+if ! ${DBADIR}/update-davical-database ${DBAOPTS} --dbuser "${AWL_DBAUSER}" --dbname "${DBNAME}" --appuser "${AWL_APPUSER}" --nopatch --owner "${AWL_DBAUSER}" ; then
         cat <<EOFAILURE
 * * * * ERROR * * * *
 The database administration utility failed.  This may be due to database
