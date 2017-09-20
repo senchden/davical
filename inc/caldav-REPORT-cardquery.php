@@ -163,7 +163,7 @@ function SqlFilterCardDAV( $filter, $components, $property = null, $parameter = 
       $params[$pname] = $search;
 
       $negate = $filter->GetAttribute("negate-condition");
-      $negate = ( (isset($negate) && strtolower($negate) ) == "yes" ) ? "NOT " : "";
+      $negate = ( isset($negate) && strtolower($negate) == "yes" ) ? "NOT " : "";
       dbg_error_log("cardquery", " text-match: (%s%s %s '%s') ", $negate, $property, $comparison, $search );
       $sql .= sprintf( "(%s%s %s $pname)", $negate, $property, $comparison );
       break;
