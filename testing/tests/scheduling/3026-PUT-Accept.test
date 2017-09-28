@@ -57,7 +57,8 @@ ENDDATA
 
 QUERY
 SELECT caldav_data.user_no, caldav_data.dav_name,
-       caldav_type, logged_user, caldav_data.caldav_data AS "vcalendar",
+       caldav_type, logged_user,
+       regexp_replace(caldav_data,'DTSTAMP:[0-9T]{15}Z','DTSTAMP:looks good') AS vcalendar,
        summary
 FROM caldav_data JOIN calendar_item USING(dav_name) LEFT JOIN timezones ON (tz_id=tzid)
 WHERE calendar_item.uid = 'E1A13F04-iCal-schedule'
