@@ -1,5 +1,5 @@
 #
-# PUT an event with attendees
+# PUT an event with attendees (organizer postpones meeting)
 #
 TYPE=PUT
 URL=http://regression.host/caldav.php/manager1/home/E1A13F04-iCal-schedule.ics

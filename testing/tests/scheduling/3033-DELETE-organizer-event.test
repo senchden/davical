@@ -21,6 +21,7 @@ ENDDOSQL
 # Query to confirm we got rid of it. There should be two now:
 #   - An event in the manager's calendar, with a PARTSTART=DECLINED for user 1
 #   - An iTIP message in the managers's inbox.
+#   FIXME: this is not what .result looks like...
 QUERY
 SELECT calendar_item.dav_name,
        caldav_data.caldav_data

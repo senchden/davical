@@ -1292,7 +1292,6 @@ function write_attendees( $dav_id, vCalendar $ical ) {
 * @param string $etag An etag unique for this event
 * @param string $put_action_type INSERT or UPDATE depending on what we are to do
 * @param boolean $caldav_context True, if we are responding via CalDAV, false for other ways of calling this
-* @param string Either 'INSERT' or 'UPDATE': the type of action we are doing
 * @param boolean $log_action Whether to log the fact that we are writing this into an action log (if configured)
 * @param string $weak_etag An etag that is NOT modified on ATTENDEE changes for this event
 *
