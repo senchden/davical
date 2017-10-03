@@ -1,4 +1,4 @@
-The database is version 9.6 currently at revision 1.3.2.
+The database is version 10.0 currently at revision 1.3.2.
 No patches were applied.
 Supported locales updated.
 Updated view: dav_principal.sql applied.

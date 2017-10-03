@@ -897,21 +897,37 @@ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 -- Expanded group memberships out to some depth
 CREATE or REPLACE FUNCTION expand_memberships( INT8, INT ) RETURNS SETOF INT8 AS $$
-  SELECT group_id FROM group_member WHERE member_id = $1
-      UNION
-  SELECT expanded.g_id FROM (SELECT CASE WHEN $2 > 0 THEN expand_memberships( group_id, $2 - 1) END AS g_id
-                               FROM group_member WHERE member_id = $1) AS expanded
-                       WHERE expanded.g_id IS NOT NULL;
-$$ LANGUAGE sql STABLE STRICT;
+BEGIN
+  IF $2 > 0 THEN
+    RETURN QUERY
+      SELECT group_id FROM group_member WHERE member_id = $1
+        UNION
+      SELECT expanded.g_id FROM (SELECT expand_memberships( group_id, $2 - 1) AS g_id
+                                 FROM group_member WHERE member_id = $1) AS expanded
+                            WHERE expanded.g_id IS NOT NULL;
+  ELSE
+    RETURN QUERY
+      SELECT group_id FROM group_member WHERE member_id = $1;
+  END IF;
+END
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 -- Expanded group members out to some depth
 CREATE or REPLACE FUNCTION expand_members( INT8, INT ) RETURNS SETOF INT8 AS $$
-  SELECT member_id FROM group_member WHERE group_id = $1
-      UNION
-  SELECT expanded.m_id FROM (SELECT CASE WHEN $2 > 0 THEN expand_members( member_id, $2 - 1) END AS m_id
-                               FROM group_member WHERE group_id = $1) AS expanded
-                       WHERE expanded.m_id IS NOT NULL;
-$$ LANGUAGE sql STABLE STRICT;
+BEGIN
+  IF $2 > 0 THEN
+    RETURN QUERY
+      SELECT member_id FROM group_member WHERE group_id = $1
+        UNION
+      SELECT expanded.m_id FROM (SELECT expand_members( member_id, $2 - 1) AS m_id
+                                 FROM group_member WHERE group_id = $1) AS expanded
+                            WHERE expanded.m_id IS NOT NULL;
+  ELSE
+    RETURN QUERY
+      SELECT member_id FROM group_member WHERE group_id = $1;
+  END IF;
+END
+$$ LANGUAGE plpgsql IMMUTABLE STRICT;
 
 
 
