@@ -50,7 +50,7 @@ function handle_freebusy_request( $ic ) {
   }
   dbg_error_log( "POST", "Responding with free/busy for %d attendees", count($attendees) );
 
-  if ($c->enable_attendee_group_resolution) {
+  if (isset($c->enable_attendee_group_resolution) && $c->enable_attendee_group_resolution) {
     $new_attendees = array();
     foreach( $attendees AS $attendee ) {
       $v = $attendee->Value();

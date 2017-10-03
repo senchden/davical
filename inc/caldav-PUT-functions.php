@@ -510,7 +510,7 @@ function do_scheduling_requests( vCalendar $resource, $create, $old_data = null 
     return do_scheduling_reply($resource,$organizer);
   }
 
-  if ($c->enable_attendee_group_resolution) {
+  if (isset($c->enable_attendee_group_resolution) && $c->enable_attendee_group_resolution) {
     $mail_domain = preg_replace( '/^.*@/i', '', $c->admin_email );
     $attendees = $resource->GetAttendees();
     $new_attendees = array();
