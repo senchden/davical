@@ -35,7 +35,7 @@ TRANSP:OPAQUE
 SUMMARY:Meeting with User1
 DTSTART;TZID=Pacific/Auckland:20111019T130000
 DTSTAMP:looks good
-ORGANIZER;CN="Manager 1":mailto:manager1@example.net
+ORGANIZER;CN=Manager 1:mailto:manager1@example.net
 SEQUENCE:6
 ATTENDEE;CN=Manager 1;CUTYPE=INDIVIDUAL;PARTSTAT=ACCEPTED:
  mailto:manager1@example.net
@@ -52,7 +52,6 @@ VERSION:2.0
 PRODID:-//Apple Inc.//iCal 4.0.4//EN
 CALSCALE:GREGORIAN
 METHOD:REPLY
-REQUEST-STATUS:2.0
 BEGIN:VEVENT
 UID:E1A13F04-iCal-schedule
 DTEND:20111019T010000Z
@@ -60,9 +59,10 @@ ATTENDEE;CN=user1@example.net;CUTYPE=INDIVIDUAL;EMAIL=user1@example.net;
  PARTSTAT=NEEDS-ACTION;ROLE=REQ-PARTICIPANT;RSVP=TRUE;SCHEDULE-STATUS=1.2
  :mailto:user1@example.net
 DTSTART:20111019T000000Z
-ORGANIZER;CN="Manager 1":mailto:manager1@example.net
+ORGANIZER;CN=Manager 1:mailto:manager1@example.net
 SEQUENCE:7
 DTSTAMP:looks good
+REQUEST-STATUS:2.0
 END:VEVENT
 END:VCALENDAR
 <

@@ -5,7 +5,7 @@ TYPE=PUT
 URL=http://regression.host/user1/home/E1A13F04-iCal-schedule.ics
 
 HEADER=User-Agent: DAVKit/4.0.3 (732.2); CalendarStore/4.0.4 (997.7); iCal/4.0.4 (1395.7); Mac OS X/10.6.8 (10K549)
-HEADER=If-Match: "905cdcc0d1a76ef63ef8d238575c3856"
+HEADER=If-Match: "46e5c5b3530da1b0d6fd8a08bb38a3b3"
 HEADER=Content-Type: text/calendar
 
 # REPLACE=#<creationdate>\d{8}T\d{6}</creationdate>#<creationdate>YYYYMMDDThhmmss</creationdate>#

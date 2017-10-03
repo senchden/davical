@@ -5,7 +5,7 @@ TYPE=PUT
 URL=http://regression.host/caldav.php/manager1/home/E1A13F04-iCal-schedule.ics
 HEADER=Content-Type: text/calendar
 HEADER=DAVKit/4.0.3 (732.2); CalendarStore/4.0.4 (997.7); iCal/4.0.4 (1395.7); Mac OS X/10.6.8 (10K549)
-HEADER=If-Match: "d60f8959edc5eee6e949a2e5b81dd746"
+HEADER=If-Match: "517bc78e1fcb5805dd4ca7e65ad04367"
 HEAD
 
 AUTH=manager1:manager1

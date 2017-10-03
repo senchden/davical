@@ -49,7 +49,7 @@ TRANSP:OPAQUE
 SUMMARY:Meeting with User1
 DTSTART;TZID=Pacific/Auckland:20111019T100000
 DTSTAMP:20111018T200107Z
-ORGANIZER;CN="Manager 1":mailto:manager1@example.net
+ORGANIZER;CN=Manager 1:mailto:manager1@example.net
 SEQUENCE:5
 END:VEVENT
 END:VCALENDAR
