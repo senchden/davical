@@ -558,6 +558,29 @@ class DAVPrincipal extends Principal
         $reply->CalDAVElement($prop, 'calendar-user-address-set', $reply->href($this->user_address_set));
         break;
 
+      case 'urn:ietf:params:xml:ns:caldav:calendar-user-type':
+        /**
+         * See https://tools.ietf.org/html/rfc6638#section-2.4.2
+         * and https://tools.ietf.org/html/rfc5545#section-3.2.3
+         */
+        $type = 'UNKNOWN';
+        if ( isset($this->type_id) ) {
+          switch ( $this->type_id ) {
+            case 1:
+              $type = 'INDIVIDUAL';
+              break;
+            case 2:
+              $type = 'RESOURCE';
+              break;
+            case 3:
+              $type = 'GROUP';
+              break;
+            // 'ROOM' type is not supported yet
+          }
+        }
+        $reply->CalDAVElement($prop, 'calendar-user-type', $type);
+        break;
+
       case 'DAV::owner':
         // After a careful reading of RFC3744 we see that this must be the principal-URL of the owner
         $reply->DAVElement( $prop, 'owner', $reply->href( $this->url ) );
