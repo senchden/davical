@@ -2,8 +2,8 @@ HTTP/1.1 207 Multi-Status
 Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
-ETag: "85e4975129afbf7f39b54da55ef16eb4"
-Content-Length: 3886
+ETag: "f6e8d22dc569423eeccf6d1fabc6a5ed"
+Content-Length: 4078
 Content-Type: text/xml; charset="utf-8"
 
 <?xml version="1.0" encoding="utf-8" ?>
@@ -16,6 +16,7 @@ Content-Type: text/xml; charset="utf-8"
      <href>mailto:user1@example.net</href>
      <href>/caldav.php/user1/</href>
     </C:calendar-user-address-set>
+    <C:calendar-user-type>INDIVIDUAL</C:calendar-user-type>
     <displayname>User 1</displayname>
     <principal-URL>
      <href>/caldav.php/user1/</href>
@@ -26,7 +27,6 @@ Content-Type: text/xml; charset="utf-8"
   <propstat>
    <prop>
     <C1:email-address-set/>
-    <C:calendar-user-type/>
     <C1:last-name/>
     <C1:first-name/>
     <C1:record-type/>
@@ -42,6 +42,7 @@ Content-Type: text/xml; charset="utf-8"
      <href>mailto:user2@example.net</href>
      <href>/caldav.php/user2/</href>
     </C:calendar-user-address-set>
+    <C:calendar-user-type>INDIVIDUAL</C:calendar-user-type>
     <displayname>User 2</displayname>
     <principal-URL>
      <href>/caldav.php/user2/</href>
@@ -52,7 +53,6 @@ Content-Type: text/xml; charset="utf-8"
   <propstat>
    <prop>
     <C1:email-address-set/>
-    <C:calendar-user-type/>
     <C1:last-name/>
     <C1:first-name/>
     <C1:record-type/>
@@ -68,6 +68,7 @@ Content-Type: text/xml; charset="utf-8"
      <href>mailto:user3@example.net</href>
      <href>/caldav.php/user3/</href>
     </C:calendar-user-address-set>
+    <C:calendar-user-type>INDIVIDUAL</C:calendar-user-type>
     <displayname>User 3</displayname>
     <principal-URL>
      <href>/caldav.php/user3/</href>
@@ -78,7 +79,6 @@ Content-Type: text/xml; charset="utf-8"
   <propstat>
    <prop>
     <C1:email-address-set/>
-    <C:calendar-user-type/>
     <C1:last-name/>
     <C1:first-name/>
     <C1:record-type/>
@@ -94,6 +94,7 @@ Content-Type: text/xml; charset="utf-8"
      <href>mailto:user4@example.net</href>
      <href>/caldav.php/user4/</href>
     </C:calendar-user-address-set>
+    <C:calendar-user-type>INDIVIDUAL</C:calendar-user-type>
     <displayname>User 4</displayname>
     <principal-URL>
      <href>/caldav.php/user4/</href>
@@ -104,7 +105,6 @@ Content-Type: text/xml; charset="utf-8"
   <propstat>
    <prop>
     <C1:email-address-set/>
-    <C:calendar-user-type/>
     <C1:last-name/>
     <C1:first-name/>
     <C1:record-type/>
@@ -120,6 +120,7 @@ Content-Type: text/xml; charset="utf-8"
      <href>mailto:user5@example.net</href>
      <href>/caldav.php/user5/</href>
     </C:calendar-user-address-set>
+    <C:calendar-user-type>INDIVIDUAL</C:calendar-user-type>
     <displayname>User 5</displayname>
     <principal-URL>
      <href>/caldav.php/user5/</href>
@@ -130,7 +131,6 @@ Content-Type: text/xml; charset="utf-8"
   <propstat>
    <prop>
     <C1:email-address-set/>
-    <C:calendar-user-type/>
     <C1:last-name/>
     <C1:first-name/>
     <C1:record-type/>
@@ -146,6 +146,7 @@ Content-Type: text/xml; charset="utf-8"
      <href>mailto:user6@example.net</href>
      <href>/caldav.php/User%20Six/</href>
     </C:calendar-user-address-set>
+    <C:calendar-user-type>INDIVIDUAL</C:calendar-user-type>
     <displayname>User 6</displayname>
     <principal-URL>
      <href>/caldav.php/User%20Six/</href>
@@ -156,7 +157,6 @@ Content-Type: text/xml; charset="utf-8"
   <propstat>
    <prop>
     <C1:email-address-set/>
-    <C:calendar-user-type/>
     <C1:last-name/>
     <C1:first-name/>
     <C1:record-type/>
