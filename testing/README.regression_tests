@@ -39,6 +39,11 @@ to /etc/hosts and a VirtualHost to Apache with
     RewriteEngine On
     # Redirect /.well-known URLs
     RewriteRule ^/\.well-known/(.*)$ /caldav.php/.well-known/$1 [NC,L]
+    # and other special URLs
+    RewriteRule ^/principals/users/(.*)$ /caldav.php/$1 [NC,L]
+    RewriteRule ^/principals/resources/(.*)$ /caldav.php/$1 [NC,L]
+    RewriteRule ^/calendars/__uids__/(.*)$ /caldav.php/$1 [NC,L]
+    RewriteRule ^/addressbooks/__uids__/(.*)$ /caldav.php/$1 [NC,L]
     # let caldav.php handle "anything else"
     RewriteCond %{REQUEST_URI} !^/$
     RewriteCond %{REQUEST_URI} !\.(php|css|png|gif|js|jpg|ico)

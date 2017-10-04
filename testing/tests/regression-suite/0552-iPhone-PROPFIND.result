@@ -2,8 +2,8 @@ HTTP/1.1 207 Multi-Status
 Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
-ETag: "9c0097968135b1bb539cee7121158c9c"
-Content-Length: 995
+ETag: "e9fc2a56ba9302e5bd7406ee47a4d69a"
+Content-Length: 1025
 Content-Type: text/xml; charset="utf-8"
 
 <?xml version="1.0" encoding="utf-8" ?>
@@ -13,20 +13,20 @@ Content-Type: text/xml; charset="utf-8"
   <propstat>
    <prop>
     <C:calendar-home-set>
-     <href>/caldav.php/user1/</href>
+     <href>/principals/users/user1/</href>
     </C:calendar-home-set>
     <C:calendar-user-address-set>
      <href>mailto:user1@example.net</href>
-     <href>/caldav.php/user1/</href>
+     <href>/principals/users/user1/</href>
     </C:calendar-user-address-set>
     <C:schedule-inbox-URL>
-     <href>/caldav.php/user1/.in/</href>
+     <href>/principals/users/user1/.in/</href>
     </C:schedule-inbox-URL>
     <C:schedule-outbox-URL>
-     <href>/caldav.php/user1/.out/</href>
+     <href>/principals/users/user1/.out/</href>
     </C:schedule-outbox-URL>
     <A:dropbox-home-URL>
-     <href>/caldav.php/user1/.drop/</href>
+     <href>/principals/users/user1/.drop/</href>
     </A:dropbox-home-URL>
     <displayname>User 1</displayname>
    </prop>
