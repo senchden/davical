@@ -93,8 +93,10 @@ $qry->QDo( $sql, $params );
 
 $qry->QDo("SELECT write_sync_change( $collection_id, $response_code, :dav_name)", array(':dav_name' => $dest->bound_from() ) );
 
-$qry = new AwlQuery('COMMIT');
-if ( !$qry->Exec('move') ) rollback(500);
+if ( !$qry->Exec('COMMIT') ) {
+    $qry->Rollback();
+    $response_code = 500;
+}
 
 // Uncache anything to do with the collection
 $cache = getCacheInstance();
