@@ -26,8 +26,8 @@ my $force_owner = "";
 my $config_file = "config/administration.yml";
 
 my $dbadir = $0;
-$dbadir =~ s#/[^/]*$##;
-my $patchdir = $dbadir . "/patches";
+$dbadir =~ s#[^/]*$##;
+my $patchdir = $dbadir . "patches";
 
 #
 # We look in a few places for the config file.  First relative to
@@ -35,7 +35,7 @@ my $patchdir = $dbadir . "/patches";
 # start to look in absolute locations.  Then we give up :-)
 if ( ! -f $config_file ) {
   $config_file = $0;
-  $config_file =~ s{[^/]+/update-[a-z]+-database}{config/administration.yml};
+  $config_file =~ s{update-[a-z]+-database}{../config/administration.yml};
 }
 if ( ! -f $config_file ) {
   $config_file = "/etc/davical/administration.yml";
