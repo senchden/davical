@@ -1,14 +1,14 @@
 Source: davical
 Section: web
-Priority: extra
+Priority: optional
 Maintainer: Davical Development Team <davical-devel@lists.sourceforge.net>
 Uploaders: Andrew McMillan <awm@debian.org>,
  Florian Schlichting <fsfs@debian.org>
-Standards-Version: 3.9.8
+Standards-Version: 4.1.1
 Build-Depends: debhelper (>= 9),
  dh-exec,
  jdupes,
- libawl-php (>= 0.57-1~), libawl-php (<< 0.58),
+ libawl-php (>= 0.58-1~), libawl-php (<< 0.59),
  gettext,
  php-apigen,
  php-cli | php5-cli,
@@ -20,7 +20,7 @@ Homepage: https://www.davical.org/
 Package: davical
 Architecture: all
 Depends: ${misc:Depends}, ${perl:Depends},
- libawl-php (>= 0.57-1~), libawl-php (<< 0.58),
+ libawl-php (>= 0.58-1~), libawl-php (<< 0.59),
  libdbd-pg-perl,
  libyaml-perl,
  php | php5,

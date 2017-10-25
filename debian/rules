@@ -1,11 +1,11 @@
 #!/usr/bin/make -f
 
-VERSION=$(shell dpkg-parsechangelog | sed -rne 's,^Version: ([^-]+).*,\1,p')
+include /usr/share/dpkg/pkg-info.mk
 
 get-orig-source:
 	make clean
 	git clean -idx
-	tar cJf ../davical_$(VERSION).orig.tar.xz --exclude-vcs --exclude=.gitattributes --exclude=debian .
+	tar cJf ../davical_$(DEB_VERSION_UPSTREAM).orig.tar.xz --exclude-vcs --exclude=.gitattributes --exclude=debian .
 
 %:
 	dh $@

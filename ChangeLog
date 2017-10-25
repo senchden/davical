@@ -1,3 +1,109 @@
+2017-10-09 Florian Schlichting <fsfs@debian.org>
+	* 'perl update-davical-database' did not find the intended config file / patchdir
+
+2017-10-04 Florian Schlichting <fsfs@debian.org>
+	* testsuite: support /principals/users/ and similar special URLs
+	* testsuite: update for calendar-user-type support
+	* Update scheduling test-suite: consistent linebreaks, unnecessary quoting, etags
+	* fix confusing comments
+	* fix "PHP Warning:  preg_match(): No ending delimiter '.' found"
+	* add a log entry for login failures (fix #105)
+	* PUT: actually propagate database error to client (fix: #127)
+	* Update caldav_functions.sql for Postgresql 10
+	* fix "PHP Notice: Undefined property" warnings
+
+2017-10-03 Pierre GIRAUD <pierre.giraud@dalibo.com>
+	* Add support for calendar-user-type
+
+2016-01-21 Frank Steinberg <steinberg@ibr.cs.tu-bs.de>
+	* Resolve attendee group names to lists of individual users. Configurable by $c->enable_attendee_group_resolution (from !21)
+
+2017-09-21 Florian Schlichting <fsfs@debian.org>
+	* update tests for changed etags, unstable REV/UID or sort order, improved property parsing
+	* dav_test: all files and I/O are UTF-8
+	* create-database.sh: call update-davical-database with --dbuser instead of just --owner (see #124)
+	* Card search invalid when negate-condition="no" (fixes #126)
+
+2017-05-12 Florian Schlichting <fsfs@debian.org>
+	* POST: Fix namespace for caldav scheduling privileges
+
+2017-05-11 Florian Schlichting <fsfs@debian.org>
+	* dont put caldav.php in special URLs
+
+2017-05-01 Florian Schlichting <fsfs@debian.org>
+	* log failed attempts to set_dav_property
+	* group memberships for the calendar-proxy-{read,write} pseudo-principal are always empty
+	* PROPPATCH: reject protected properties group-membership, calendar-proxy-{read,write}-for
+
+2017-04-29 Florian Schlichting <fsfs@debian.org>
+	* caldav-proxy 5.2: calendar-proxy-read/write are themselves principal resources
+	* do not advertise ?add_member on a principal
+
+2017-06-03 Florian Schlichting <fsfs@debian.org>
+	* Revert "Support http://.../freebusy.php?foo@example.com"
+
+2017-05-29 Florian Schlichting <fsfs@debian.org>
+	* use new AWL class constructor (fixes: #119)
+
+2017-05-17 Florian Schlichting <fsfs@debian.org>
+	* CalDAVRequest: make content-type match non-greedy
+
+2017-05-17 Andrew Ruthven <puck@catalyst.net.nz>
+	* Improve parsing of RFC5545 durations
+
+2017-05-16 Andrew Ruthven <puck@catalyst.net.nz>
+	* Support http://.../freebusy.php?foo@example.com
+
+2017-04-28 Florian Schlichting <fsfs@debian.org>
+	* caldav: leave some info about the exception we are catching
+
+2017-04-25 Florian Schlichting <fsfs@debian.org>
+	* fix config example as well
+
+2017-04-24 Florian Schlichting <fsfs@debian.org>
+	* Merge branch 'server-array-upper' into 'master'
+
+2017-04-24 Jan Losinski <losinskij@gmail.com>
+	* Set the user agent string for external calendars
+
+2017-04-09 Florian Schlichting <fsfs@debian.org>
+	* cardquery: query limit can be used independently of any query filter
+
+2017-04-08 Florian Schlichting <fsfs@debian.org>
+	* cardquery: typo, ends-with has wildcard in front
+	* cardquery: a prop-filter without an actual filter rule means we simply need to ensure the property exists
+
+2017-04-13 Jan Losinski <losinski@wh2.tu-dresden.de>
+	* Convert array keys for $_SERVER to uppercase
+
+2017-04-08 Florian Schlichting <fsfs@debian.org>
+	* dont send early exceptions to the client only, leave a trace in the error log too
+	* log an error instead of crashing on principal-property-search REPORT without a proper match clause (fix #114)
+	* do not output unescaped XML special characters in if-match error message (fixes: #113)
+
+2017-03-01 Rik Theys <Rik.Theys@esat.kuleuven.be>
+	* Fix modified mapping (fix #108)
+
+2017-04-07 Florian Schlichting <fsfs@debian.org>
+	* drivers_ldap says "updated" has been replaced with "modified", so update example config accordingly
+
+2017-02-22 Scott Balneaves <sbalneav@alburg.net>
+	* Only list active principals in grant selection
+
+2017-02-10 Scott Balneaves <sbalneav@alburg.net>
+	* modify hide_older_than logic to allow through recurring events (fixes #103, !36)
+
+2017-04-07 Florian Schlichting <fsfs@debian.org>
+	* fix sync of deleted events when hide_todo is set (fixes #100)
+	* Update testsuite for changes related to #112 (4cf6628)
+
+2017-03-29 Florian Schlichting <fsfs@debian.org>
+	* cannot-modify-protected-property should be used with 403 Forbidden, not 409 Conflict
+	* do not put two sets of angle brackets around cannot-modify-protected-property error tag (fixes #112)
+
+2017-03-27 Florian Schlichting <fsfs@debian.org>
+	* Fix display of deactivated users after LDAP sync to not include those in $c->do_not_sync_from_ldap
+
 2017-01-23 Florian Schlichting <fsfs@debian.org>
 	* Release 1.1.5
 	* Update ChangeLog and CREDITS
