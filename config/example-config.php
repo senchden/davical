@@ -205,6 +205,21 @@ $c->admin_email ='calendar-admin@example.com';
 // $c->hide_older_than = 90;
 
 /**
+* Hide bound collections from certain clients
+* If you want to use iOS (which does not support delegation) in combination
+* with other software which does supports degation, you can use this option
+* to tailor a working solution: bind all collections you want to see on iOS
+* (emulation of delegation) and then hide these collections from other clients
+* with real delegation support.
+* Default: false/not set: always show bound collections
+* If set to true: never show bound collections
+* If set to an array: hide if any header => regex tuple matches
+* Example: Hide bound collections from clients which send a User-Agent header
+* matching regex1 OR an X-Client header matching regex2
+*/
+// $c->hide_bound = array( 'User-Agent'=>'#regex1#', 'X-Client'=>'#regex2#');
+
+/**
 * External subscription (BIND) minimum refresh interval
 * Required if you want to enable remote binding ( webcal subscriptions )
 * Default: none
@@ -299,6 +314,19 @@ $c->admin_email ='calendar-admin@example.com';
 * enabled this option...
 */
 // $c->allow_get_email_visibility = false;
+
+/**
+* Disable calendar-proxy-{read,write} on PROPFIND
+* This can be useful if clients are known to not use this information,
+* as it is very expensive to compute (especially on servers with lots of
+* users who share their collections) and most clients will never use it,
+* or ask for it explicitly using an expand-property REPORT, which is not
+* affected by this option.
+* Default: false/unset (always show)
+* If set to true: never show
+* If set to an array: hide if any header => regex tuple matches
+*/
+// $c->disable_caldav_proxy_propfind_collections = array( 'User-Agent'=>'#regex1#', 'X-Client'=>'#regex2#');
 
 /**
 * EXPERIMENTAL:
