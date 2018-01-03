@@ -285,7 +285,7 @@ class DAVResource
             $this->resource->url = null;
           }
           else {
-            if ( strtoupper($this->resource->class)=='CONFIDENTIAL' && !$this->HavePrivilegeTo('all') && $session->user_no != $this->resource->user_no ) {
+            if ( isset($this->resource->class) && strtoupper($this->resource->class)=='CONFIDENTIAL' && !$this->HavePrivilegeTo('all') && $session->user_no != $this->resource->user_no ) {
               $vcal = new iCalComponent($this->resource->caldav_data);
               $confidential = $vcal->CloneConfidential();
               $this->resource->caldav_data = $confidential->Render();

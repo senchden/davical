@@ -293,7 +293,6 @@ class Principal {
   /**
   * Work out the username, based on elements of the path.
   * @param string $path The path to be used.
-  * @param array $options The request options, controlling whether e-mail paths are allowed.
   */
   private function usernameFromPath( $path ) {
     global $session, $c;
