@@ -925,6 +925,7 @@ EOQRY;
       'DAV::principal-property-search' => '',
       'DAV::principal-search-property-set' => '',
       'DAV::expand-property' => '',
+      'DAV::principal-match' => '',
       'DAV::sync-collection' => ''
     );
 
