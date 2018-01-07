@@ -2,8 +2,8 @@ HTTP/1.1 207 Multi-Status
 Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
-ETag: "12c268350747ee0076940f61be140827"
-Content-Length: 6090
+ETag: "e8e214ead69e04c9895f54796a53e3ab"
+Content-Length: 5449
 Content-Type: text/xml; charset="utf-8"
 
 <?xml version="1.0" encoding="utf-8" ?>
@@ -130,15 +130,10 @@ Content-Type: text/xml; charset="utf-8"
      <collection/>
      <C:calendar-proxy-read/>
     </resourcetype>
-    <group-membership>
-     <href>/caldav.php/assistant1/</href>
+    <group-member-set>
      <href>/caldav.php/teamclient1/</href>
-     <href>/caldav.php/user1/</href>
-     <href>/caldav.php/user1/calendar-proxy-read/</href>
-     <href>/caldav.php/assistant1/calendar-proxy-read/</href>
-     <href>/caldav.php/resource1/calendar-proxy-read/</href>
-     <href>/caldav.php/resource2/calendar-proxy-read/</href>
-    </group-membership>
+    </group-member-set>
+    <group-membership/>
     <C:calendar-proxy-read-for>
      <href>/caldav.php/user1/</href>
      <href>/caldav.php/assistant1/</href>
@@ -152,7 +147,6 @@ Content-Type: text/xml; charset="utf-8"
   <propstat>
    <prop>
     <C1:calendar-description/>
-    <group-member-set/>
    </prop>
    <status>HTTP/1.1 404 Not Found</status>
   </propstat>
@@ -168,15 +162,10 @@ Content-Type: text/xml; charset="utf-8"
      <collection/>
      <C:calendar-proxy-write/>
     </resourcetype>
-    <group-membership>
+    <group-member-set>
      <href>/caldav.php/assistant1/</href>
-     <href>/caldav.php/teamclient1/</href>
-     <href>/caldav.php/user1/</href>
-     <href>/caldav.php/user1/calendar-proxy-read/</href>
-     <href>/caldav.php/assistant1/calendar-proxy-read/</href>
-     <href>/caldav.php/resource1/calendar-proxy-read/</href>
-     <href>/caldav.php/resource2/calendar-proxy-read/</href>
-    </group-membership>
+    </group-member-set>
+    <group-membership/>
     <C:calendar-proxy-read-for>
      <href>/caldav.php/user1/</href>
      <href>/caldav.php/assistant1/</href>
@@ -190,7 +179,6 @@ Content-Type: text/xml; charset="utf-8"
   <propstat>
    <prop>
     <C1:calendar-description/>
-    <group-member-set/>
    </prop>
    <status>HTTP/1.1 404 Not Found</status>
   </propstat>

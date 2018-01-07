@@ -114,6 +114,11 @@ class DAVResource
   private $_is_proxy_request;
 
   /**
+  * @var The type of proxy collection this resource is or is in: read or write
+  */
+  private $proxy_type;
+
+  /**
   * @var An array of the methods we support on this resource.
   */
   private $supported_methods;
@@ -1707,6 +1712,30 @@ EOQRY;
         // ProxyFor is an already constructed URL
         $this->FetchPrincipal();
         $reply->CalendarserverElement($prop, 'calendar-proxy-'.$proxy_type.'-for', $reply->href( $this->principal->ProxyFor($proxy_type) ) );
+        break;
+
+      case 'http://calendarserver.org/ns/:group-member-set':
+      case 'DAV::group-member-set':
+        if ( $this->_is_proxy_request ) {
+          $this->FetchPrincipal();
+          if ( $this->proxy_type == 'read' ) {
+            $reply->DAVElement( $prop, 'group-member-set', $reply->href( $this->principal->ReadProxyGroup() ) );
+          } else {
+            $reply->DAVElement( $prop, 'group-member-set', $reply->href( $this->principal->WriteProxyGroup() ) );
+          }
+        } else {
+          return false; // leave this to DAVPrincipal
+        }
+        break;
+
+      case 'http://calendarserver.org/ns/:group-membership':
+      case 'DAV::group-membership':
+        if ( $this->_is_proxy_request ) {
+          /* the calendar-proxy-{read,write} pseudo-principal should not be a member of any group */
+          $reply->NSElement($prop, $tag );
+        } else {
+          return false; // leave this to DAVPrincipal
+        }
         break;
 
       case 'DAV::current-user-privilege-set':

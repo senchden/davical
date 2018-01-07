@@ -2,7 +2,7 @@ HTTP/1.1 207 Multi-Status
 Date: Dow, 01 Jan 2000 00:00:00 GMT
 DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
 DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
-ETag: "6fd0a85fe582ad2af132724a7566be48"
+ETag: "68b03f180d5f9046907a86251de16246"
 Content-Length: 1055
 Content-Type: text/xml; charset="utf-8"
 
@@ -22,6 +22,7 @@ Content-Type: text/xml; charset="utf-8"
     <group-member-set>
      <href>/caldav.php/teamclient1/</href>
     </group-member-set>
+    <group-membership/>
     <C:calendar-proxy-read-for>
      <href>/caldav.php/user1/</href>
      <href>/caldav.php/assistant1/</href>
@@ -35,7 +36,6 @@ Content-Type: text/xml; charset="utf-8"
   <propstat>
    <prop>
     <C1:calendar-description/>
-    <group-membership/>
    </prop>
    <status>HTTP/1.1 404 Not Found</status>
   </propstat>
