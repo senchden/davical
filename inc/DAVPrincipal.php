@@ -220,7 +220,7 @@ class DAVPrincipal extends Principal
       }
     }
 
-    $sql = 'SELECT principal_id, username, pprivs(:request_principal::int8,principal_id,:scan_depth::int) FROM principal JOIN usr USING(user_no) WHERE usr.active=true AND principal_id IN (SELECT * from grants_proxy_access_from_p(:request_principal,:scan_depth))';
+    $sql = 'SELECT principal_id, username, pprivs(principal_id,:request_principal::int8,:scan_depth::int) FROM principal JOIN usr USING(user_no) WHERE usr.active=true AND principal_id IN (SELECT * from grants_proxy_access_from_p(:request_principal,:scan_depth))';
     $qry = new AwlQuery($sql, $params ); // reuse $params assigned for earlier query
     if ( $qry->Exec('DAVPrincipal') && $qry->rows() > 0 ) {
       while( $relationship = $qry->Fetch() ) {
