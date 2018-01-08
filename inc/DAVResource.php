@@ -265,6 +265,8 @@ class DAVResource
       }
       else if ( $this->_is_proxy_request ) {
         $this->resourcetypes  = $this->collection->resourcetypes;
+        preg_match( '#^/[^/]+/calendar-proxy-(read|write)/?[^/]*$#', $this->dav_name, $matches );
+        $this->proxy_type = $matches[1];
       }
       if ( isset($this->collection->dav_displayname) ) $this->collection->displayname = $this->collection->dav_displayname;
     }
@@ -1100,6 +1102,18 @@ EOQRY;
   */
   function IsCalendar() {
     return $this->_is_collection && $this->_is_calendar;
+  }
+
+
+  /**
+  * Checks whether this resource is a proxy collection
+  * @param string $type The type of proxy collection, 'read', 'write' or 'any'
+  */
+  function IsProxyCollection( $type = 'any' ) {
+    if ( $this->_is_proxy_request ) {
+      return ($type == 'any' || $type == $this->proxy_type);
+    }
+    return false;
   }
 
 
