@@ -1,0 +1,29 @@
+#
+# iCal looking for matching principals for auto-completion of user input
+#
+TYPE=REPORT
+URL=http://regression.host/caldav.php/
+HEADER=Content-Type: text/xml
+HEADER=User-Agent: Mac+OS+X/10.13.2 (17C88) CalendarAgent/399.2.2
+HEAD
+
+AUTH=manager1:manager1
+
+BEGINDATA
+<?xml version="1.0" encoding="UTF-8"?>
+<A:principal-property-search xmlns:A="DAV:" type="INDIVIDUAL" test="anyof">
+  <A:property-search>
+    <A:prop>
+      <A:displayname/>
+    </A:prop>
+    <A:match match-type="starts-with">user</A:match>
+  </A:property-search>
+  <A:prop>
+    <A:principal-URL/>
+    <B:calendar-user-address-set xmlns:B="urn:ietf:params:xml:ns:caldav"/>
+    <B:calendar-user-type xmlns:B="urn:ietf:params:xml:ns:caldav"/>
+    <C:record-type xmlns:C="http://calendarserver.org/ns/"/>
+    <A:displayname/>
+  </A:prop>
+</A:principal-property-search>
+ENDDATA

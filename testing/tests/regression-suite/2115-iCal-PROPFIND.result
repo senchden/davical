@@ -1,0 +1,56 @@
+HTTP/1.1 207 Multi-Status
+Date: Dow, 01 Jan 2000 00:00:00 GMT
+DAV: 1, 2, 3, access-control, calendar-access, calendar-schedule
+DAV: extended-mkcol, bind, addressbook, calendar-auto-schedule, calendar-proxy
+ETag: "d63bb46d253188d2f7399a84d21e07b9"
+Content-Length: 1086
+Content-Type: text/xml; charset="utf-8"
+
+<?xml version="1.0" encoding="utf-8" ?>
+<multistatus xmlns="DAV:">
+ <response>
+  <href>/caldav.php/manager1/</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/manager1/home/</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/manager1/addresses/</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/manager1/calendar-proxy-read/</href>
+  <propstat>
+   <prop>
+    <group-member-set>
+     <href>/caldav.php/teamclient1/</href>
+     <href>/caldav.php/user2/</href>
+     <href>/caldav.php/user3/</href>
+    </group-member-set>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/manager1/calendar-proxy-write/</href>
+  <propstat>
+   <prop>
+    <group-member-set>
+     <href>/caldav.php/user1/</href>
+    </group-member-set>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+</multistatus>

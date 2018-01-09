@@ -1,0 +1,21 @@
+#
+# a final PROPFIND to confirm the changes
+#
+TYPE=PROPFIND
+URL=http://regression.host/caldav.php/manager1/
+HEADER=Content-Type: text/xml
+HEADER=User-Agent: Mac+OS+X/10.13.2 (17C88) CalendarAgent/399.2.2
+HEADER=Depth: 1
+HEADER=Prefer: return=minimal
+HEAD
+
+AUTH=manager1:manager1
+
+BEGINDATA
+<?xml version="1.0" encoding="UTF-8"?>
+<A:propfind xmlns:A="DAV:">
+  <A:prop>
+    <A:group-member-set/>
+  </A:prop>
+</A:propfind>
+ENDDATA

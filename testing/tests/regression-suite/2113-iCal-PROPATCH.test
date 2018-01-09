@@ -1,0 +1,15 @@
+#
+# iCal adding 3 delegates for manager1 with read privileges
+#
+TYPE=PROPPATCH
+URL=http://regression.host/caldav.php/manager1/calendar-proxy-read/
+HEADER=Content-Type: text/xml
+HEADER=User-Agent: Mac+OS+X/10.13.2 (17C88) CalendarAgent/399.2.2
+HEAD
+
+AUTH=manager1:manager1
+
+BEGINDATA
+<?xml version="1.0" encoding="UTF-8"?>
+<A:propertyupdate xmlns:A="DAV:"><A:set><A:prop><A:group-member-set><A:href>/caldav.php/teamclient1/</A:href><A:href>/caldav.php/user1/</A:href><A:href>/caldav.php/user2/</A:href><A:href>/caldav.php/user3/</A:href></A:group-member-set></A:prop></A:set></A:propertyupdate>
+ENDDATA

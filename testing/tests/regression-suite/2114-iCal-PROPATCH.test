@@ -1,0 +1,17 @@
+#
+# iCal adding _only_ user1 to calendar-proxy-write
+# this should remove user1 from calendar-proxy-read as well as (existing)
+# assistant1 from calendar-proxy-write
+#
+TYPE=PROPPATCH
+URL=http://regression.host/caldav.php/manager1/calendar-proxy-write/
+HEADER=Content-Type: text/xml
+HEADER=User-Agent: Mac+OS+X/10.13.2 (17C88) CalendarAgent/399.2.2
+HEAD
+
+AUTH=manager1:manager1
+
+BEGINDATA
+<?xml version="1.0" encoding="UTF-8"?>
+<A:propertyupdate xmlns:A="DAV:"><A:set><A:prop><A:group-member-set><A:href>/caldav.php/user1/</A:href></A:group-member-set></A:prop></A:set></A:propertyupdate>
+ENDDATA
