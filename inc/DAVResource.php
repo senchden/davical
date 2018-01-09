@@ -111,7 +111,7 @@ class DAVResource
   /**
   * @var True if this resource is, or is in, a proxy collection
   */
-  private $_is_proxy_request;
+  private $_is_proxy_resource;
 
   /**
   * @var The type of proxy collection this resource is or is in: read or write
@@ -171,7 +171,7 @@ class DAVResource
     $this->_is_binding       = false;
     $this->_is_external      = false;
     $this->_is_addressbook   = false;
-    $this->_is_proxy_request = false;
+    $this->_is_proxy_resource = false;
     if ( isset($parameters) && is_object($parameters) ) {
       $this->FromRow($parameters);
     }
@@ -264,11 +264,11 @@ class DAVResource
 
       $this->_is_calendar      = ($this->collection->is_calendar == 't');
       $this->_is_addressbook   = ($this->collection->is_addressbook == 't');
-      $this->_is_proxy_request = ($this->collection->type == 'proxy');
+      $this->_is_proxy_resource = ($this->collection->type == 'proxy');
       if ( $this->_is_principal && !isset($this->resourcetypes) ) {
         $this->resourcetypes   = '<DAV::collection/><DAV::principal/>';
       }
-      else if ( $this->_is_proxy_request ) {
+      else if ( $this->_is_proxy_resource ) {
         $this->resourcetypes  = $this->collection->resourcetypes;
         preg_match( '#^/[^/]+/calendar-proxy-(read|write)/?[^/]*$#', $this->dav_name, $matches );
         $this->proxy_type = $matches[1];
@@ -407,7 +407,7 @@ EOSQL;
     }
     else if ( preg_match( '#^(/([^/]+)/calendar-proxy-(read|write))/?[^/]*$#', $this->dav_name, $matches ) ) {
       $this->collection->type = 'proxy';
-      $this->_is_proxy_request = true;
+      $this->_is_proxy_resource = true;
       $this->proxy_type = $matches[3];
       $this->collection->dav_name = $this->dav_name;
       $this->collection->dav_displayname = sprintf( '%s proxy %s', $matches[2], $matches[3] );
@@ -1115,7 +1115,7 @@ EOQRY;
   * @param string $type The type of proxy collection, 'read', 'write' or 'any'
   */
   function IsProxyCollection( $type = 'any' ) {
-    if ( $this->_is_proxy_request ) {
+    if ( $this->_is_proxy_resource ) {
       return ($type == 'any' || $type == $this->proxy_type);
     }
     return false;
@@ -1716,7 +1716,7 @@ EOQRY;
 
       case 'http://calendarserver.org/ns/:group-member-set':
       case 'DAV::group-member-set':
-        if ( $this->_is_proxy_request ) {
+        if ( $this->_is_proxy_resource ) {
           $this->FetchPrincipal();
           if ( $this->proxy_type == 'read' ) {
             $reply->DAVElement( $prop, 'group-member-set', $reply->href( $this->principal->ReadProxyGroup() ) );
@@ -1730,7 +1730,7 @@ EOQRY;
 
       case 'http://calendarserver.org/ns/:group-membership':
       case 'DAV::group-membership':
-        if ( $this->_is_proxy_request ) {
+        if ( $this->_is_proxy_resource ) {
           /* the calendar-proxy-{read,write} pseudo-principal should not be a member of any group */
           $reply->NSElement($prop, $tag );
         } else {
