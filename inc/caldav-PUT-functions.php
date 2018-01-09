@@ -1215,6 +1215,7 @@ function write_alarms( $dav_id, vComponent $ical ) {
       if ( !preg_match('{^-?P(:?\d+W)?(:?\d+D)?(:?T(:?\d+H)?(:?\d+M)?(:?\d+S)?)?$}', $duration ) ) continue;
       $minus = (substr($duration,0,1) == '-');
       $related_trigger = trim(preg_replace( '#[PT-]#', ' ', $duration ));
+      if ($related_trigger == '') $related_trigger = '0 seconds';
       if ( $minus ) {
         $related_trigger = preg_replace( '{(\d+[WDHMS])}', '-$1 ', $related_trigger );
       }
