@@ -430,9 +430,7 @@ function LDAP_check($username, $password ){
 function fix_unique_member($list) {
   $fixed_list = array();
   foreach ( $list as $member ){
-    list( $mem, $rest ) = explode(",", $member );
-    $member = str_replace( 'uid=', '', $mem );
-    array_unshift( $fixed_list, $member );
+    array_unshift( $fixed_list, ldap_explode_dn($member,1)[0]);
   }
   return $fixed_list;
 }
@@ -529,8 +527,7 @@ function sync_LDAP_groups(){
       $c->messages[] = sprintf(i18n('- adding users %s to group : %s'),join(',',$ldap_groups_info[$group][$mapping['members']]),$group);
       foreach ( $ldap_groups_info[$group][$mapping['members']] as $member ){
         if ( $member_field == 'uniqueMember' || $dnfix ) {
-          list( $mem, $rest ) = explode(",", $member );
-          $member = str_replace( 'uid=', '', $mem );
+          $member = ldap_explode_dn($member,1)[0];
         }
         $qry = new AwlQuery( "INSERT INTO group_member SELECT g.principal_id AS group_id,u.principal_id AS member_id FROM dav_principal g, dav_principal u WHERE g.username=:group AND u.username=:member;",array (':group'=>$group,':member'=>$member) );
         $qry->Exec('sync_LDAP_groups',__LINE__,__FILE__);
