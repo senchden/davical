@@ -598,11 +598,11 @@ function sync_LDAP(){
     $ldap_users_info[$ldap_user[$mapping['username']]] = $ldap_user;
     unset($ldap_users_tmp[$key]);
   }
-  $qry = new AwlQuery( "SELECT username, user_no, modified as updated FROM dav_principal where type_id=1");
+  $qry = new AwlQuery( "SELECT username, user_no, modified as updated , user_active FROM dav_principal where type_id=1");
   $qry->Exec('sync_LDAP',__LINE__,__FILE__);
   while($db_user = $qry->Fetch()) {
     $db_users[] = $db_user->username;
-    $db_users_info[$db_user->username] = array('user_no' => $db_user->user_no, 'updated' => $db_user->updated);
+    $db_users_info[$db_user->username] = array('user_no' => $db_user->user_no, 'updated' => $db_user->updated, 'user_active' => $db_user->user_active);
   }
 
   // all users from ldap
@@ -695,8 +695,9 @@ function sync_LDAP(){
       $valid[$mapping['modified']] = "$Y-$m-$d $H:$M:$S";
 
       $db_timestamp = substr(strtr($db_users_info[$username]['updated'], array(':' => '',' '=>'','-'=>'')),0,14);
-      if ( $ldap_timestamp > $db_timestamp ) {
-        sync_user_from_LDAP($principal, $mapping, $valid );
+      if ( $ldap_timestamp > $db_timestamp || !$db_users_info[$username]['user_active']) {
+        $principal->user_active = true;
+        sync_user_from_LDAP($principal, $mapping, $valid);
       }
       else {
         unset($users_to_update[$key]);
