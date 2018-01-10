@@ -139,7 +139,8 @@ class WritableCollection extends DAVResource {
     else {
       $dtend = 'NULL';
       if ( $first->GetPValue('DURATION') != '' AND $dtstart != '' ) {
-        $duration = preg_replace( '#[PT]#', ' ', $first->GetPValue('DURATION') );
+        $duration = preg_replace( '#[PT]#', '', $first->GetPValue('DURATION') );
+        if ($duration == '') $duration = '0 seconds';
         $dtend = '(:dtstart::timestamp with time zone + :duration::interval)';
         $calitem_params[':duration'] = $duration;
       }
@@ -343,6 +344,7 @@ EOSQL;
           if ( !preg_match('{^-?P(:?\d+W)?(:?\d+D)?(:?T(:?\d+H)?(:?\d+M)?(:?\d+S)?)?$}', $duration ) ) continue;
           $minus = (substr($duration,0,1) == '-');
           $related_trigger = trim(preg_replace( '#[PT-]#', ' ', $duration ));
+          if ($related_trigger == '') $related_trigger = '0 seconds';
           if ( $minus ) {
             $related_trigger = preg_replace( '{(\d+[WDHMS])}', '-$1 ', $related_trigger );
           }
