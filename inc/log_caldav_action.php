@@ -24,17 +24,20 @@
 * @param string $dav_name The DAV path of the item, relative to the DAViCal base path
 */
 function log_caldav_action( $action_type, $uid, $user_no, $collection_id, $dav_name ) {
-  global $c;
 
-  $logline = sprintf( '%s %s %s %s %s %s', gmdate('Ymd\THis\Z'), $action_type, $uid, $user_no, $collection_id, $dav_name );
-  if ( !isset($c->action_log_name) ) {
-    error_log( $logline );
-    return;
-  }
+  $logline = sprintf( '%s, %s, %s, %s, %s', $action_type, $uid, $user_no, $collection_id, $dav_name );
 
-  $logline .= "\n";
+  openlog('davical', LOG_PID, LOG_LOCAL0);
+  syslog(LOG_INFO, $logline);
+  closelog();
 
-  $logfile = fopen( $c->action_log_name, "a+" );
-  fwrite( $logfile, $logline );
-  fclose($logfile);
+}
+function post_commit_action( $action_type, $uid, $user_no, $collection_id, $dav_name ) {
+
+  $logline = sprintf( '%s, %s, %s, %s, %s', $action_type, $uid, $user_no, $collection_id, $dav_name );
+
+  openlog('davical', LOG_PID, LOG_LOCAL0);
+  syslog(LOG_INFO, $logline);
+  closelog();
+
 }
