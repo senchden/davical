@@ -10,7 +10,7 @@ Build-Depends: debhelper (>= 9),
  jdupes,
  libawl-php (>= 0.58-1~), libawl-php (<< 0.59),
  gettext,
- php-apigen,
+ doxygen,
  php-cli | php5-cli,
  rst2pdf
 Vcs-git: https://gitlab.com/davical-project/davical.git
