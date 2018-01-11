@@ -89,14 +89,14 @@ else {
   $myLock = $cache->acquireLock('collection-'.$dav_resource->parent_path());
 
   $collection_id = $dav_resource->GetProperty('collection_id');
+  if ( function_exists('log_caldav_action') ) {
+    log_caldav_action( 'DELETE', $dav_resource->GetProperty('uid'), $dav_resource->GetProperty('user_no'), $collection_id, $request->path );
+  }
   $params = array( ':dav_id' => $dav_resource->resource_id() );
   if ( $qry->QDo("DELETE FROM property WHERE dav_name = (SELECT dav_name FROM caldav_data WHERE dav_id = :dav_id)", $params )
     && $qry->QDo("DELETE FROM locks WHERE dav_name = (SELECT dav_name FROM caldav_data WHERE dav_id = :dav_id)", $params )
     && $qry->QDo("SELECT write_sync_change(collection_id, 404, caldav_data.dav_name) FROM caldav_data WHERE dav_id = :dav_id", $params )
     && $qry->QDo("DELETE FROM caldav_data WHERE dav_id = :dav_id", $params ) ) {
-    if ( function_exists('log_caldav_action') ) {
-      log_caldav_action( 'DELETE', $dav_resource->GetProperty('uid'), $dav_resource->GetProperty('user_no'), $collection_id, $request->path );
-    }
 
     $qry->Commit();
     @dbg_error_log( "DELETE", "DELETE: User: %d, ETag: %s, Path: %s", $session->user_no, $request->etag_if_match, $request->path);
