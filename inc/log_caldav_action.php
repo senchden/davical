@@ -25,7 +25,14 @@
 */
 function log_caldav_action( $action_type, $uid, $user_no, $collection_id, $dav_name ) {
 
-  $logline = sprintf( '%s, %s, %s, %s, %s', $action_type, $uid, $user_no, $collection_id, $dav_name );
+  $summary = '';
+  if ($uid === NULL) { $uid = basename($dav_name, '.ics'); } // in case of DELETE
+
+  $sql = 'SELECT summary FROM calendar_item WHERE uid=?';
+  $qry = new AwlQuery($sql, $uid);
+  if($qry->Exec('log_caldav_action', __LINE__, __FILE__) && $qry->rows() > 0 && $row = $qry->Fetch()) { $summary = $row->summary; }
+
+  $logline = sprintf( '%s, %s, %s, %s, %s, %s', $action_type, $uid, $user_no, $collection_id, $dav_name, $summary );
 
   openlog('davical', LOG_PID, LOG_LOCAL0);
   syslog(LOG_INFO, $logline);
@@ -34,7 +41,14 @@ function log_caldav_action( $action_type, $uid, $user_no, $collection_id, $dav_n
 }
 function post_commit_action( $action_type, $uid, $user_no, $collection_id, $dav_name ) {
 
-  $logline = sprintf( '%s, %s, %s, %s, %s', $action_type, $uid, $user_no, $collection_id, $dav_name );
+  $summary = '';
+  if ($uid === NULL) { $uid = basename($dav_name, '.ics'); } // in case of DELETE
+
+  $sql = 'SELECT summary FROM calendar_item WHERE uid=?';
+  $qry = new AwlQuery($sql, $uid);
+  if($qry->Exec('log_caldav_action', __LINE__, __FILE__) && $qry->rows() > 0 && $row = $qry->Fetch()) { $summary = $row->summary; }
+
+  $logline = sprintf( '%s, %s, %s, %s, %s, %s', $action_type, $uid, $user_no, $collection_id, $dav_name, $summary );
 
   openlog('davical', LOG_PID, LOG_LOCAL0);
   syslog(LOG_INFO, $logline);
