@@ -49,7 +49,7 @@ function fetch_external ( $bind_id, $min_age = '1 hour', $ua_string )
   $sql = 'SELECT collection.*, collection.dav_name AS path, dav_binding.external_url AS external_url FROM dav_binding LEFT JOIN collection ON (collection.collection_id=bound_source_id) WHERE bind_id = :bind_id';
   $params = array( ':bind_id' => $bind_id );
   if ( strlen ( $min_age ) > 2 ) {
-    $sql .= ' AND collection.modified + interval :interval < NOW()';
+    $sql .= ' AND ( collection.modified + interval :interval < NOW() OR collection.modified is NULL )';
     $params[':interval'] = $min_age;
   }
   $sql .= ' ORDER BY modified DESC LIMIT 1';
@@ -111,7 +111,7 @@ function update_external ( $request )
     dbg_error_log("external", "external resource cannot be fetched without curl, please install curl");
     return ;
   }
-  $sql = 'SELECT bind_id, external_url as url from dav_binding LEFT JOIN collection ON (collection.collection_id=bound_source_id) WHERE dav_binding.dav_name = :dav_name AND collection.modified + interval :interval < NOW()';
+  $sql = 'SELECT bind_id, external_url as url from dav_binding LEFT JOIN collection ON (collection.collection_id=bound_source_id) WHERE dav_binding.dav_name = :dav_name AND ( collection.modified + interval :interval < NOW() OR collection.modified is NULL )';
   $qry = new AwlQuery( $sql, array ( ':dav_name' => $request->dav_name(), ':interval' => $c->external_refresh . ' minutes' ) );
   dbg_error_log("external", "checking if external resource needs update");
   if ( $qry->Exec('DAVResource') && $qry->rows() > 0 && $row = $qry->Fetch() ) {
