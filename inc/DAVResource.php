@@ -1533,7 +1533,7 @@ EOQRY;
   * Return an array which is an expansion of the DAV::allprop
   */
   function DAV_AllProperties() {
-    if ( isset($this->dead_properties) ) $this->FetchDeadProperties();
+    if ( !isset($this->dead_properties) ) $this->FetchDeadProperties();
     $allprop = array_merge( (isset($this->dead_properties)?$this->dead_properties:array()),
       (isset($include_properties)?$include_properties:array()),
       array(
