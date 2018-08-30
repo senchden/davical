@@ -1842,7 +1842,7 @@ EOQRY;
 
       case 'urn:ietf:params:xml:ns:carddav:max-resource-size':
         if ( ! $this->_is_collection || !$this->_is_addressbook ) return false;
-        $reply->NSElement($prop, $tag, '' );
+        $reply->NSElement($prop, $tag, $c->carddav_max_resource_size );
         break;
 
       case 'urn:ietf:params:xml:ns:carddav:supported-address-data':

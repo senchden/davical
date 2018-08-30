@@ -83,6 +83,7 @@ $c->permission_scan_depth = 2;
 $c->expand_pdo_parameters = true;
 $c->home_calendar_name    = 'calendar';
 $c->home_addressbook_name = 'addresses';
+$c->carddav_max_resource_size = 6550000;
 $c->enable_row_linking = true;
 $c->enable_scheduling = false;
 $c->http_auth_mode = 'Basic';
