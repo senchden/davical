@@ -895,6 +895,9 @@ msgstr ""
 msgid "Passed"
 msgstr ""
 
+msgid "Passed: %s"
+msgstr ""
+
 msgid "Password"
 msgstr "Hasło"
 

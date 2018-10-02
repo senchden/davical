@@ -894,6 +894,9 @@ msgstr "Colocar em uma coleção só é permitido para texto / conteúdo do cale
 msgid "Passed"
 msgstr "Passou"
 
+msgid "Passed: %s"
+msgstr "Passou: %s"
+
 msgid "Password"
 msgstr "Senha"
 

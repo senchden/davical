@@ -894,6 +894,9 @@ msgstr "PUT žiadosť na zostavu je možné len na text/calendar obsah zostavy k
 msgid "Passed"
 msgstr "Prešlo"
 
+msgid "Passed: %s"
+msgstr "Prešlo: %s"
+
 msgid "Password"
 msgstr "Heslo"
 

@@ -900,6 +900,9 @@ msgstr "PUT-Anfrage an eine Collection ist nur mit text/calendar-Inhalt an eine 
 msgid "Passed"
 msgstr "Erfolgreich"
 
+msgid "Passed: %s"
+msgstr "Erfolgreich: %s"
+
 msgid "Password"
 msgstr "Passwort"
 
