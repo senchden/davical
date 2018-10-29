@@ -1,0 +1,22 @@
+<?php
+  $c->pg_connect[] = 'dbname=regression user=davical_app';
+
+  // use strict result ordering for regression testing only
+  $c->strict_result_ordering = true;
+  // PUT: 405 Method Not Allowed
+  $c->readonly_webdav_collections = false;
+  // fix ETag differences (CRLF) in 0218-Moz-REPORT and later
+  $c->hide_alarm = true;
+  // some freebusy queries will be 404 otherwise
+  $c->public_freebusy_url = true;
+  // helps with 1035-GET-mashup
+  $c->get_includes_subcollections = true;
+  // helps with 1036-REPORT-sync-initial-bound
+  $c->hide_TODO = false;
+
+  // for ischedule suite; also needs DKIM set up?
+  $c->enable_scheduling = true;
+
+  // enable for debugging, as needed
+  //$c->dbg['ALL'] = 1;
+?>

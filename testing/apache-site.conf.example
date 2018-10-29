@@ -1,0 +1,28 @@
+Listen 127.0.1.1:80
+<VirtualHost 127.0.1.1:80>
+  ServerName regression
+  ServerAlias myempty mycaldav
+  DocumentRoot /path/to/davical/htdocs
+  CustomLog ${APACHE_LOG_DIR}/regression-access.log combined
+  ErrorLog  ${APACHE_LOG_DIR}/regression-error.log
+
+  Alias /davical /path/to/davical/htdocs
+  <Directory /path/to/davical/htdocs>
+    Require all granted
+    DirectoryIndex index.php index.html
+    php_value include_path /path/to/awl/inc:/path/to/davical/testing
+  </Directory>
+
+  RewriteEngine On
+  # Redirect /.well-known URLs
+  RewriteRule ^/\.well-known/(.*)$ /caldav.php/.well-known/$1 [NC,L]
+  # and other special URLs
+  RewriteRule ^/principals/users/(.*)$ /caldav.php/$1 [NC,L]
+  RewriteRule ^/principals/resources/(.*)$ /caldav.php/$1 [NC,L]
+  RewriteRule ^/calendars/__uids__/(.*)$ /caldav.php/$1 [NC,L]
+  RewriteRule ^/addressbooks/__uids__/(.*)$ /caldav.php/$1 [NC,L]
+  # let caldav.php handle "anything else"
+  RewriteCond %{REQUEST_URI} !^/$
+  RewriteCond %{REQUEST_URI} !\.(php|css|png|gif|js|jpg|ico)
+  RewriteRule ^(.*)$ /caldav.php$1  [NC,L]
+</VirtualHost>
