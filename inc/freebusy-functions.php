@@ -34,7 +34,8 @@ function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null 
   $sql = 'SELECT caldav_data.caldav_data, calendar_item.rrule, calendar_item.transp, calendar_item.status, ';
   $sql .= "to_char(calendar_item.dtstart at time zone 'GMT',".AWLDatabase::SqlUTCFormat.') AS start, ';
   $sql .= "to_char(calendar_item.dtend at time zone 'GMT',".AWLDatabase::SqlUTCFormat.') AS finish, ';
-  $sql .= "calendar_item.class, calendar_item.dav_id ";
+  $sql .= "calendar_item.class, calendar_item.dav_id, ";
+  $sql .= "collection.timezone AS collection_tzid ";
   $sql .= 'FROM caldav_data INNER JOIN calendar_item USING(dav_id,user_no,dav_name,collection_id) ';
   $sql .= 'INNER JOIN collection USING(collection_id)';
   $sql .= $where;
@@ -53,6 +54,7 @@ function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null 
       $ics = new vComponent($calendar_object->caldav_data);
       $expanded = expand_event_instances($ics, $range_start, $range_end);
       $expansion = $expanded->GetComponents( array('VEVENT'=>true,'VTODO'=>true,'VJOURNAL'=>true) );
+      $collection_tzid = $calendar_object->collection_tzid;
       dbg_error_log( "freebusy", "===================   $calendar_object->dav_id   ======================== %s -> %s, %s %s", $calendar_object->start, $calendar_object->finish, $calendar_object->class, $extra );
       $dtstart_type = 'DTSTART';
       foreach( $expansion AS $k => $v ) {
@@ -62,7 +64,13 @@ function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null 
             $dtstart_type = 'DUE';
             $start_date = $v->GetProperty($dtstart_type);
         }
-        $start_date = new RepeatRuleDateTime($start_date);
+
+        if ($start_date->GetParameterValue('VALUE') == 'DATE' && isset($collection_tzid)) {
+            $start_date = new RepeatRuleDateTime($start_date->Value()."T000000", new RepeatRuleTimeZone($collection_tzid));
+        } else {
+            $start_date = new RepeatRuleDateTime($start_date);
+        }
+
         $duration = $v->GetProperty('DURATION');
         $duration = ( !isset($duration) ? 'P1D' : $duration->Value());
         $end_date = clone($start_date);
