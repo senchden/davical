@@ -65,8 +65,11 @@ function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null 
             $start_date = $v->GetProperty($dtstart_type);
         }
 
+        // Floating dtstarts (either VALUE=DATE or with no TZID) can default to the collection's tzid, if one is set
         if ($start_date->GetParameterValue('VALUE') == 'DATE' && isset($collection_tzid)) {
             $start_date = new RepeatRuleDateTime($start_date->Value()."T000000", new RepeatRuleTimeZone($collection_tzid));
+        } else if ($start_date->GetParameterValue('TZID') === null && isset($collection_tzid)) {
+            $start_date = new RepeatRuleDateTime($start_date->Value(), new RepeatRuleTimeZone($collection_tzid));
         } else {
             $start_date = new RepeatRuleDateTime($start_date);
         }
