@@ -152,7 +152,8 @@ initialise_regression() {
   check_result "${TEST}"
 
   TEST="Upgrade-Database"
-  ../dba/update-davical-database ${DBAOPTS} --dbname=${DBNAME} --nopatch --appuser davical_app --owner davical_dba >"${RESULTS}/${TEST}" 2>&1
+  ../dba/update-davical-database ${DBAOPTS} --dbname=${DBNAME} --nopatch --appuser davical_app --owner davical_dba >"${RESULTS}/${TEST}" \
+    | sed -r 's/is version [.0-9]+/is version XX/'2>&1
   check_result "${TEST}"
 
   if [ -f "${REGRESSION}/sample-data.sql" ]; then
@@ -162,7 +163,8 @@ initialise_regression() {
   fi
 
   TEST="Really-Upgrade-Database"
-  ../dba/update-davical-database ${DBAOPTS} --dbname=${DBNAME} --appuser davical_app --owner davical_dba >"${RESULTS}/${TEST}" 2>&1
+  ../dba/update-davical-database ${DBAOPTS} --dbname=${DBNAME} --appuser davical_app --owner davical_dba \
+    | sed -r 's/is version [.0-9]+/is version XX/' >"${RESULTS}/${TEST}" 2>&1
   check_result "${TEST}"
 
 }
