@@ -17,7 +17,7 @@ HOSTNAME=mycaldav
 export PGTZ=Pacific/Auckland
 #export TZ=Pacific/Auckland
 
-ALLSUITES="regression-suite binding carddav scheduling timezone"
+ALLSUITES=${ALLSUITES:-"regression-suite binding carddav scheduling timezone"}
 
 # who wants meld if they can have xxdiff? Go on, override it in regression.conf
 MELD=meld
