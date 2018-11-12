@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<multistatus xmlns="DAV:" xmlns:C="urn:ietf:params:xml:ns:caldav">
+<multistatus xmlns="DAV:" xmlns:A="http://apple.com/ns/ical/" xmlns:C="urn:ietf:params:xml:ns:caldav" xmlns:D="urn:org:davical">
  <response>
   <href>/caldav.php/user1/home/</href>
   <propstat>
    <prop>
+    <A:calendar-color>#0252D4FF</A:calendar-color>
+    <A:calendar-order>1</A:calendar-order>
+    <C:schedule-default-calendar-URL>
+     <href>/caldav.php/user1/home/</href>
+    </C:schedule-default-calendar-URL>
+    <D:outer>
+     <D:middle>
+      <D:inner>inside</D:inner>
+      <D:inner>inside2</D:inner>
+     </D:middle>
+    </D:outer>
     <getcontenttype>httpd/unix-directory</getcontenttype>
     <resourcetype>
      <collection/>
