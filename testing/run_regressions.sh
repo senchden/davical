@@ -140,7 +140,16 @@ restore_database() {
 
 dump_database() {
   TEST="Dump-Database"
-  pg_dump -Fp $PSQLOPTS ${DBNAME} > "${REGRESSION}/initial.dbdump" 2>&1
+  pg_dump -Fp $PSQLOPTS ${DBNAME} \
+    | grep -v -E '(CREATE\ EXTENSION|COMMENT\ ON)' \
+    > "${REGRESSION}/initial.dbdump" 2>&1
+
+  # This is ugly, for the COPY into dav_binding to work on Pg >= 9.6 (possibly earlier)
+  # we need to ensure that the schema that collection is in is within our search path
+  # since the function real_path_exists is called on each insert into dav_binding and
+  # it doesn't specify the schema for 'collection', therefore the copy fails.
+  schema=$(grep "CREATE TABLE .*.collection" "${REGRESSION}/initial.dbdump" | sed -r 's/CREATE TABLE (.*?)\.collection \(/\1/')
+  sed -i "s/SELECT pg_catalog.set_config('search_path', '', false);/SELECT pg_catalog.set_config('search_path', '$schema', false);/" "${REGRESSION}/initial.dbdump"
 }
 
 
