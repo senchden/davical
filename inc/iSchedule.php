@@ -34,17 +34,19 @@ class iSchedule
   private $failOnError = true;
   private $subdomainsOK = true;
   private $remote_public_key ;
-  private $required_headers = Array ( 'host',  // draft 01 section 7.1 required headers
+  private $required_headers = Array ( 'ischedule-version',  // draft 05 section 7.1 required headers
                                       'originator',
                                       'recipient',
                                       'content-type' );
-  private $disallowed_headers = Array ( 'connection',  // draft 01 section 7.1 disallowed headers
+  private $disallowed_headers = Array ( 'cache-control',  // draft 05 section 7.1 disallowed headers
+                                        'connection',
+                                        'host',
                                         'keep-alive',
                                         'dkim-signature',
                                         'proxy-authenticate',
                                         'proxy-authorization',
                                         'te',
-                                        'trailers',
+                                        'trailer',
                                         'transfer-encoding',
                                         'upgrade' );
 
