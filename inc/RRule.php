@@ -305,6 +305,18 @@ class RepeatRuleDateTime extends DateTime {
     return $this;
   }
 
+  public static function withFallbackTzid( $date, $fallback_tzid ) {
+    // Floating times or dates (either VALUE=DATE or with no TZID) can default to the collection's tzid, if one is set
+
+    if ($date->GetParameterValue('VALUE') == 'DATE' && isset($fallback_tzid)) {
+      return new RepeatRuleDateTime($date->Value()."T000000", new RepeatRuleTimeZone($fallback_tzid));
+    } else if ($date->GetParameterValue('TZID') === null && isset($fallback_tzid)) {
+      return new RepeatRuleDateTime($date->Value(), new RepeatRuleTimeZone($fallback_tzid));
+    } else {
+      return new RepeatRuleDateTime($date);
+    }
+  }
+
 
   public function __toString() {
     return (string)parent::format(self::$Format) . ' ' . parent::getTimeZone()->getName();
