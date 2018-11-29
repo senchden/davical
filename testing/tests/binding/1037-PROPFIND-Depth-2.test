@@ -20,3 +20,4 @@ BEGINDATA
 </D:propfind>
 ENDDATA
 
+REPLACE=_<C:getctag>"[0-9a-f]+"</C:getctag>_<C:getctag>"XX"</C:getctag>_

@@ -13,7 +13,7 @@
   <href>/caldav.php/user1/</href>
   <propstat>
    <prop>
-    <C:getctag>"e2844dd8af3d725bf3bc60f5ffb271de"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -22,7 +22,7 @@
   <href>/caldav.php/user1/home/</href>
   <propstat>
    <prop>
-    <C:getctag>"7e1c9a5e005cb3192ef305837033e271"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -31,7 +31,7 @@
   <href>/caldav.php/user1/addresses/</href>
   <propstat>
    <prop>
-    <C:getctag>"24c9e15e52afc47c225b757e7bee1f9d"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -40,7 +40,7 @@
   <href>/caldav.php/user1/created/</href>
   <propstat>
    <prop>
-    <C:getctag>"bac273dae96780a3c8ed0c032266322c"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -49,7 +49,7 @@
   <href>/caldav.php/user1/.in/</href>
   <propstat>
    <prop>
-    <C:getctag>"a8dfd49637017ded49d3a8dbb315c51f"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -58,7 +58,7 @@
   <href>/caldav.php/user1/.out/</href>
   <propstat>
    <prop>
-    <C:getctag>"1"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -67,7 +67,7 @@
   <href>/caldav.php/user1/6E20BB7C-EFD9-4F0F-9BDC-5335E04D47E0/</href>
   <propstat>
    <prop>
-    <C:getctag>"ac192d10783fff90598af2facc8259df"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -76,7 +76,7 @@
   <href>/caldav.php/user1/VTODO-EFD9-4F0F-9BDC-5335E04D47E0/</href>
   <propstat>
    <prop>
-    <C:getctag>"9ea60de39e80e2cff4216448984a5ee7"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -85,7 +85,7 @@
   <href>/caldav.php/user1/SOHO%20collection/</href>
   <propstat>
    <prop>
-    <C:getctag>"ef070277779ceec24677ad0a7e54e0af"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -94,7 +94,7 @@
   <href>/caldav.php/user1/collection/</href>
   <propstat>
    <prop>
-    <C:getctag>"e0fcc6a901645df3e00a290dc8a02387"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -103,7 +103,7 @@
   <href>/caldav.php/user1/anotherone/</href>
   <propstat>
    <prop>
-    <C:getctag>"d28a7507a92f6f6b368c87a65808155e"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -112,7 +112,7 @@
   <href>/caldav.php/user4/</href>
   <propstat>
    <prop>
-    <C:getctag>"b3be0ab4edeb183646203b994f8d6869"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -121,7 +121,7 @@
   <href>/caldav.php/user4/user2/</href>
   <propstat>
    <prop>
-    <C:getctag>"b644b2983f30cb7ae5ab28db464b601e"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -130,7 +130,7 @@
   <href>/caldav.php/user4/user1/</href>
   <propstat>
    <prop>
-    <C:getctag>"7e1c9a5e005cb3192ef305837033e271"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -139,7 +139,7 @@
   <href>/caldav.php/user4/home/</href>
   <propstat>
    <prop>
-    <C:getctag>"bef9dce8ea6e7a3f286f644b9680db9e"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -148,7 +148,7 @@
   <href>/caldav.php/user4/addresses/</href>
   <propstat>
    <prop>
-    <C:getctag>"3f02ebe3d7929b091e3d8ccfde2f3bc6"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -157,7 +157,7 @@
   <href>/caldav.php/user4/nz_holidays/</href>
   <propstat>
    <prop>
-    <C:getctag>"ebeec1c6ec8a3b619af611adbced5ca9"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -166,7 +166,7 @@
   <href>/caldav.php/user4/us_holidays/</href>
   <propstat>
    <prop>
-    <C:getctag>"5a8c44444986c4726b7ea9af4e654cc2"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -175,7 +175,7 @@
   <href>/caldav.php/user4/.out/</href>
   <propstat>
    <prop>
-    <C:getctag>"1"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -184,7 +184,7 @@
   <href>/caldav.php/user4/base/</href>
   <propstat>
    <prop>
-    <C:getctag>"ae93907cb03bc025b8e733eb61f3a09e"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -193,7 +193,7 @@
   <href>/caldav.php/user4/calendar-proxy-read/</href>
   <propstat>
    <prop>
-    <C:getctag>"ce203d86180ffe895ef680221aa4050c"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -202,7 +202,7 @@
   <href>/caldav.php/user4/calendar-proxy-write/</href>
   <propstat>
    <prop>
-    <C:getctag>"31965770b06ebd0def7b1afe08ba2a39"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -211,7 +211,7 @@
   <href>/caldav.php/resource1/</href>
   <propstat>
    <prop>
-    <C:getctag>"c8ebc60237eb353a52e7278c96e50a74"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -220,7 +220,7 @@
   <href>/caldav.php/resource1/home/</href>
   <propstat>
    <prop>
-    <C:getctag>"38acb5a3ae5617edc98ddce6f5ffaa38"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -229,7 +229,7 @@
   <href>/caldav.php/resource1/addresses/</href>
   <propstat>
    <prop>
-    <C:getctag>"0f01ceea381503f677cedeea5758c902"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -238,7 +238,7 @@
   <href>/caldav.php/resource1/mozilla/</href>
   <propstat>
    <prop>
-    <C:getctag>"3d7629c721375907f4cf757fedc2293d"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -247,7 +247,7 @@
   <href>/caldav.php/resource2/</href>
   <propstat>
    <prop>
-    <C:getctag>"22a1e83f9f1b185fee3c792c15015af0"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -256,7 +256,7 @@
   <href>/caldav.php/resource2/home/</href>
   <propstat>
    <prop>
-    <C:getctag>"699c4f2bdb1bc22c2175ea779fd97479"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -265,7 +265,7 @@
   <href>/caldav.php/resource2/addresses/</href>
   <propstat>
    <prop>
-    <C:getctag>"dc821452bd61ee969b231eab2f4aa761"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
@@ -274,7 +274,7 @@
   <href>/caldav.php/resource2/mulberry/</href>
   <propstat>
    <prop>
-    <C:getctag>"dd73d59d29f256fa22836cde6d629ffd"</C:getctag>
+    <C:getctag>"XX"</C:getctag>
    </prop>
    <status>HTTP/1.1 200 OK</status>
   </propstat>
