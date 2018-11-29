@@ -12,7 +12,7 @@ $c->dbg = array();
 require_once("RRule.php");
 require_once('AwlQuery.php');
 
-@header("Content-Type: text/plain");
+@header("Content-Type: text/plain; charset=UTF-8");
 
 echo <<<EOTXT
 Testing the RRule v2 Library
