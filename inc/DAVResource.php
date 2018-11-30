@@ -1534,7 +1534,7 @@ EOQRY;
   */
   function DAV_AllProperties() {
     if ( !isset($this->dead_properties) ) $this->FetchDeadProperties();
-    $allprop = array_merge( (isset($this->dead_properties)?$this->dead_properties:array()),
+    $allprop = array_merge( (isset($this->dead_properties)?array_keys($this->dead_properties):array()),
       (isset($include_properties)?$include_properties:array()),
       array(
         'DAV::getcontenttype', 'DAV::resourcetype', 'DAV::getcontentlength', 'DAV::displayname', 'DAV::getlastmodified',

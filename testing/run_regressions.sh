@@ -12,6 +12,7 @@
 DBNAME=regression
 PGPOOL=inactive
 HOSTNAME=mycaldav
+REPORTFILE=report.xml
 
 # We need to run the regression tests in the timezone they were written for.
 export PGTZ=Pacific/Auckland
@@ -49,6 +50,7 @@ ACCEPT_ALL=${2:-""}
 
 # psql ${PSQLOPTS} -l
 
+. ./regression_reporting.sh
 
 check_result() {
   TEST="$1"
@@ -59,6 +61,7 @@ check_result() {
   diff --text -u "${REGRESSION}/${TEST}.result" "${RESULTS}/${TEST}" >"${REGRESSION}/diffs/${TEST}"
 
   if [ -s "${REGRESSION}/diffs/${TEST}" ] ; then
+    report_test_failure
     if [ -z "$SKIPDIFF" ]; then
        echo "======================================="
        echo "Displaying diff for test ${TEST}"
@@ -75,7 +78,7 @@ check_result() {
       cp "${RESULTS}/${TEST}" "${REGRESSION}/${TEST}.result"
     elif [ "${ACCEPT}" = "x" ]; then
       echo "./dav_test --dsn '${DSN}' ${WEBHOST} ${ALTHOST} --suite '${SUITE}' --case '${TEST}' --debug"
-      exit
+      if [ -z "$IS_CI" ]; then exit 2; fi
     elif [ "${ACCEPT}" = "v" ]; then
       echo "Showing test $REGRESSION/${TEST}.test"
       cat "$REGRESSION/${TEST}.test"
@@ -107,6 +110,7 @@ check_result() {
       return 1
     fi
   else
+    report_test_success
     echo "Test ${TEST} passed OK!"
   fi
   return 0
@@ -184,6 +188,8 @@ run_regression_suite() {
   mkdir -p "${RESULTS}"
   mkdir -p "${REGRESSION}/diffs"
 
+  report_suite_setup
+
   if [ -f "${REGRESSION}/initial.dbdump" ]; then
     restore_database
   else
@@ -217,12 +223,16 @@ run_regression_suite() {
 
     TCOUNT="$(( ${TCOUNT} + 1 ))"
   done
+
+  report_suite_counts
 }
 
 
 
 TSTART="`date +%s`"
 TCOUNT=0
+
+setup_report
 
 if [ "${SUITE}" = "all" ]; then
   for SUITE in ${ALLSUITES} ; do
@@ -241,3 +251,5 @@ fi
 TFINISH="`date +%s`"
 
 echo "Regression test run took $(( ${TFINISH} - ${TSTART} )) seconds for ${TCOUNT} tests."
+
+exit_based_on_reported_failures
