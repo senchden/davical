@@ -22,3 +22,5 @@ BEGINDATA
 ENDDATA
 
 #  <current-user-privilege-set/>
+
+REPLACE=_resources/\d+_resources/XX_
