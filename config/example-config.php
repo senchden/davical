@@ -172,6 +172,17 @@ $c->admin_email ='calendar-admin@example.com';
 // $c->home_addressbook_name = 'addresses';
 
 /**
+* Sets a numeric value indicating the maximum size in octets (bytes) of a resource
+* that the server is willing to accept when an address object resource is stored
+* in an address book collection (e.g. contacts with image attachments).
+* Note that not all clients respect that property and that DAViCal won't deny creating
+* or updating a resource that is larger than the specified limit if the client willingly or
+* unwillingly ignores that property. Currently (late 2018) we only know of iOS devices to handle it properly.
+* Default: 6550000
+*/
+// $c->carddav_max_resource_size = 6550000;
+
+/**
 * If the above options are not suitable for your new users, use this to create
 * a more complex default collection management.
 * Note: if you use this configuration option both $c->home_calendar_name and
