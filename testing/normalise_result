@@ -54,6 +54,9 @@ while( <STDIN> ) {
   /^Content-Length: 0/ && $no_content && do {
     $_ = "";
   };
+  /^Content-Type: / && $no_content && do {
+    $_ = "";
+  };
 
   print;
 }
