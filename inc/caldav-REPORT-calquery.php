@@ -183,7 +183,7 @@ function SqlFilterFragment( $filter, $components, $property = null, $parameter =
         $subfilter = $v->GetContent();
         if ( is_array( $subfilter ) ) {
           $success = SqlFilterFragment( $subfilter, $components, $property, $parameter );
-          if ( $success === false ) continue; else {
+          if ( $success === false ) continue 2; else {
             $sql .= $success['sql'];
             $params = array_merge( $params, $success['params'] );
           }
@@ -220,12 +220,12 @@ function SqlFilterFragment( $filter, $components, $property = null, $parameter =
             $need_post_filter = true;
             unset($subproperty);
             dbg_error_log("calquery", "Could not handle 'prop-filter' on %s in SQL", $propertyname );
-            continue;
+            continue 3;
         }
         if ( isset($subproperty) ) {
           $subfilter = $v->GetContent();
           $success = SqlFilterFragment( $subfilter, $components, $subproperty, $parameter );
-          if ( $success === false ) continue; else {
+          if ( $success === false ) continue 2; else {
             $sql .= $success['sql'];
             $params = array_merge( $params, $success['params'] );
           }
@@ -238,7 +238,7 @@ function SqlFilterFragment( $filter, $components, $property = null, $parameter =
         $parameter = $v->GetAttribute("name");
         $subfilter = $v->GetContent();
         $success = SqlFilterFragment( $subfilter, $components, $property, $parameter );
-        if ( $success === false ) continue; else {
+        if ( $success === false ) continue 2; else {
           $sql .= $success['sql'];
           $params = array_merge( $params, $success['params'] );
         }

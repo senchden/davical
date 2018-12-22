@@ -640,7 +640,7 @@ function do_scheduling_requests( vCalendar $resource, $create, $old_data = null 
         $response = '5.2';  // No scheduling support for user
       }
       else {
-        if ($attendee_is_new || !$row) {
+        if ($attendee_is_new || !isset($row)) {
           $this_schedule_request = clone($schedule_request);
           $this_resource = clone($resource);
         } else {
