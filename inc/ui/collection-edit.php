@@ -190,7 +190,7 @@ $privilege_xlate = array(
 * @param dbrow $row The row object we read from the database.
 * @return string The formatted privileges.
 */
-function collection_privilege_format_function( $value, $column, $row ) {
+function collection_privilege_format_function( $value, $column = NULL, $row = NULL ) {
   global $privilege_xlate;
 
   $privs = bits_to_privilege($value, 'calendar');
