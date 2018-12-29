@@ -13,11 +13,15 @@ get-orig-source:
 override_dh_auto_build:
 	make all
 
-override_dh_installchangelogs:
-	dh_installchangelogs ChangeLog
+override_dh_install:
+	dh_install
 	rm debian/davical/usr/share/davical/htdocs/.htaccess || true
 	rm -f debian/davical/usr/share/doc/davical/examples/apache-davical.conf \
 	      debian/davical/usr/share/doc/davical/examples/example-config.php
+	sed -i -e '1s|^#!/usr/bin/env perl|#!/usr/bin/perl|' debian/davical/usr/share/davical/dba/update-davical-database
+
+override_dh_installchangelogs:
+	dh_installchangelogs ChangeLog
 
 override_dh_installdocs:
 	dh_installdocs
