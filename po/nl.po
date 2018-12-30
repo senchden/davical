@@ -894,6 +894,9 @@ msgstr "PUT in een collectie is enkel toegestaan voor het type text/calendar teg
 msgid "Passed"
 msgstr "Geslaagd"
 
+msgid "Passed: %s"
+msgstr "Geslaagd: %s"
+
 msgid "Password"
 msgstr "Wachtwoord"
 

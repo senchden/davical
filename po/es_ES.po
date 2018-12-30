@@ -893,6 +893,9 @@ msgstr "El método PUT con contenido de tipo text/calendar sólo se permite en u
 msgid "Passed"
 msgstr "Aceptado"
 
+msgid "Passed: %s"
+msgstr "Aceptado: %s"
+
 msgid "Password"
 msgstr "Contraseña"
 

@@ -892,6 +892,9 @@ msgstr "PUT solo se permite para una colección si el contenido es text/calendar
 msgid "Passed"
 msgstr "Aceptado"
 
+msgid "Passed: %s"
+msgstr "Aceptado: %s"
+
 msgid "Password"
 msgstr "Clave de Acceso"
 

@@ -893,6 +893,9 @@ msgstr ""
 msgid "Passed"
 msgstr "Pasado"
 
+msgid "Passed: %s"
+msgstr "Pasado: %s"
+
 msgid "Password"
 msgstr "Contraseña"
 
