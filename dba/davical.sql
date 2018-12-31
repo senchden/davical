@@ -167,8 +167,8 @@ CREATE TABLE calendar_item (
   completed TIMESTAMP WITH TIME ZONE,
   dav_id INT8 UNIQUE,
   collection_id INT8 REFERENCES collection(collection_id) ON UPDATE CASCADE ON DELETE CASCADE DEFERRABLE,
-  first_instance_start TIMESTAMP WITHOUT TIME ZONE DEFAULT NULL,
-  last_instance_end    TIMESTAMP WITHOUT TIME ZONE DEFAULT NULL,
+  first_instance_start TIMESTAMP WITH TIME ZONE DEFAULT NULL,
+  last_instance_end    TIMESTAMP WITH TIME ZONE DEFAULT NULL,
   
   -- Cascade updates / deletes from the caldav_data table
   CONSTRAINT caldav_exists FOREIGN KEY ( user_no, dav_name )
@@ -489,4 +489,4 @@ CREATE SEQUENCE metrics_count_delticket;
 CREATE SEQUENCE metrics_count_bind;
 CREATE SEQUENCE metrics_count_unknown;
 
-SELECT new_db_revision(1,3,2, 'Luty' );
+SELECT new_db_revision(1,3,3, 'Marzec' );
