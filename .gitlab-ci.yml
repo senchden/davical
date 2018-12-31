@@ -67,5 +67,5 @@ test:
     - a2enmod rewrite
     - apache2ctl start
     - useradd testrunner
-    - cd testing && su testrunner -c 'IS_CI=yes ALLSUITES="regression-suite binding carddav" ./run_regressions.sh all x'
+    - cd testing && su testrunner -c 'IS_CI=yes ALLSUITES="regression-suite binding carddav scheduling" ./run_regressions.sh all x'
   
