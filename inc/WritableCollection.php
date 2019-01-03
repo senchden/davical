@@ -219,16 +219,23 @@ class WritableCollection extends DAVResource {
     $calitem_params[':due'] = $first->GetPValue('DUE');
     $calitem_params[':percent_complete'] = $first->GetPValue('PERCENT-COMPLETE');
     $calitem_params[':status'] = $first->GetPValue('STATUS');
+
+    $range = getVCalendarRange($vcal, $this->timezone_name());
+    $calitem_params[':first_instance_start'] = isset($range->from) ? $range->from->UTC() : null;
+    $calitem_params[':last_instance_end'] = isset($range->until) ? $range->until->UTC() : null;
+
     if ( $create_resource ) {
       $sql = <<<EOSQL
 INSERT INTO calendar_item (user_no, dav_name, dav_id, dav_etag, uid, dtstamp,
                 dtstart, dtend, summary, location, class, transp,
                 description, rrule, tz_id, last_modified, url, priority,
-                created, due, percent_complete, status, collection_id )
+                created, due, percent_complete, status, collection_id,
+                first_instance_start, last_instance_end )
    VALUES ( :user_no, :dav_name, currval('dav_id_seq'), :etag, :uid, :dtstamp,
                 :dtstart, $dtend, :summary, :location, :class, :transp,
                 :description, :rrule, :tzid, :modified, :url, :priority,
-                :created, :due, :percent_complete, :status, $collection_id )
+                :created, :due, :percent_complete, :status, $collection_id,
+                :first_instance_start, :last_instance_end)
 EOSQL;
       $sync_change = 201;
     }
@@ -237,7 +244,8 @@ EOSQL;
 UPDATE calendar_item SET dav_etag=:etag, uid=:uid, dtstamp=:dtstamp,
                 dtstart=:dtstart, dtend=$dtend, summary=:summary, location=:location, class=:class, transp=:transp,
                 description=:description, rrule=:rrule, tz_id=:tzid, last_modified=:modified, url=:url, priority=:priority,
-                created=:created, due=:due, percent_complete=:percent_complete, status=:status
+                created=:created, due=:due, percent_complete=:percent_complete, status=:status,
+                first_instance_start=:first_instance_start, last_instance_end=:last_instance_end
        WHERE user_no=:user_no AND dav_name=:dav_name
 EOSQL;
       $sync_change = 200;

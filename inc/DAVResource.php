@@ -1288,6 +1288,15 @@ EOQRY;
 
 
   /**
+   * Returns the name of the timezone for this collection, or the collection containing this resource
+   */
+  function timezone_name() {
+      if ( !isset($this->collection) ) $this->FetchCollection();
+      return $this->collection->timezone;
+  }
+
+
+  /**
   * Returns the database row for this resource
   */
   function resource() {
