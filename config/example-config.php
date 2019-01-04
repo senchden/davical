@@ -25,6 +25,7 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 /**
 * "system_name" is used to specify the authentication realm of the server, as
 * well as being used as a name to display in various places.
+*
 * Default: DAViCal CalDAV Server
 */
 // $c->system_name = "DAViCal CalDAV Server";
@@ -33,6 +34,7 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 * The CalDAV specification does not define GET on a collection, but typically this is
 * used as a .ics download for the whole collection. This will also enable a download
 * link in the web interface for calendars with entries.
+*
 * Default: false
 */
 // $c->get_includes_subcollections = true;
@@ -45,6 +47,7 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 * easier for people to PUT whole calendars or addressbooks as part of migrating
 * their data. After this, it is recommended to turn it off so that clients
 * which have been misconfigured are readily identifiable.
+*
 * Default: true
 */
 // $c->readonly_webdav_collections = false;
@@ -52,6 +55,7 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 /**
 * This will allow failure on import of collections to apply only to an
 * individual event that is faulty, rather than failing the whole collection.
+*
 * Default: false (fail whole collection)
 */
 // $c->skip_bad_event_on_import = true;
@@ -74,6 +78,7 @@ $c->admin_email ='calendar-admin@example.com';
 /**
 * Set this to 'true' in order to restrict the /setup.php page (which contains
 * the entire phpinfo() output) to 'Administrator' users.
+*
 * Default: false
 */
 // $c->restrict_setup_to_admin = true;
@@ -94,7 +99,8 @@ $c->admin_email ='calendar-admin@example.com';
 * pages.  Since this doesn't work in Konqueror you may want to set this
 * to false if you expect people to be using Konqueror with the DAViCal
 * administration pages.
-* Default=true
+*
+* Default: true
 */
 // $c->enable_row_linking = false;
 
@@ -159,6 +165,7 @@ $c->admin_email ='calendar-admin@example.com';
 * default (true) if people will be using Evolution or Sunbird /
 * Lightning against this because that software does not support the
 * creation of calendar collections.
+*
 * Default: true
 */
 // $c->collections_always_exist = false;
@@ -166,7 +173,10 @@ $c->admin_email ='calendar-admin@example.com';
 /**
 * The name of a user's "home" calendar and addressbook. These will be created
 * for each new user.
-* Default: 'calendar' / 'addresses'
+*
+* Defaults:
+*   home_calendar_name:    'calendar'
+*   home_addressbook_name: 'addresses'
 */
 // $c->home_calendar_name = 'calendar';
 // $c->home_addressbook_name = 'addresses';
@@ -178,6 +188,7 @@ $c->admin_email ='calendar-admin@example.com';
 * Note that not all clients respect that property and that DAViCal won't deny creating
 * or updating a resource that is larger than the specified limit if the client willingly or
 * unwillingly ignores that property. Currently (late 2018) we only know of iOS devices to handle it properly.
+*
 * Default: 6550000
 */
 // $c->carddav_max_resource_size = 6550000;
@@ -202,6 +213,7 @@ $c->admin_email ='calendar-admin@example.com';
 *   array( 9 => 'R', 4 => 'A' )
 * to create a 'read' relationship to user_no 9 and an 'all' relation
 * with user_no 4.
+*
 * Default: none
 */
 // $c->default_relationships = array();
@@ -222,6 +234,7 @@ $c->admin_email ='calendar-admin@example.com';
 /**
 * An array of fields on the usr record which should be set to specific
 * values when the users are created.
+*
 * Default: none
 */
 // $c->template_usr = array( 'active' => true,
@@ -235,6 +248,7 @@ $c->admin_email ='calendar-admin@example.com';
 * admin or owner of a calendar will not get an answer. Often these todo are
 * only relevant to the owner, but in some shared calendar situations they
 * might not be in which case you should set this to false.
+*
 * Default: true
 */
 // $c->hide_TODO = false;
@@ -260,7 +274,9 @@ $c->admin_email ='calendar-admin@example.com';
 * to tailor a working solution: bind all collections you want to see on iOS
 * (emulation of delegation) and then hide these collections from other clients
 * with real delegation support.
+*
 * Default: false/not set: always show bound collections
+*
 * If set to true: never show bound collections
 * If set to an array: hide if any header => regex tuple matches
 * Example: Hide bound collections from clients which send a User-Agent header
@@ -271,6 +287,7 @@ $c->admin_email ='calendar-admin@example.com';
 /**
 * External subscription (BIND) minimum refresh interval
 * Required if you want to enable remote binding ( webcal subscriptions )
+*
 * Default: none
 */
 // $c->external_refresh = 60;
@@ -278,6 +295,7 @@ $c->admin_email ='calendar-admin@example.com';
 /**
 * External subscription (BIND) user agent string
 * Required if your remote calendar only delivers to known user agents.
+*
 * Default: none
 */
 // $c->external_ua_string = '';
@@ -294,6 +312,7 @@ $c->admin_email ='calendar-admin@example.com';
 * Provide freebusy information to any (unauthenticated) user via the
 * freebusy.php URL. Only events marked as PRIVATE will be excluded from the
 * report.
+*
 * Default: false (authentication required)
 */
 // $c->public_freebusy_url = true;
@@ -306,6 +325,7 @@ $c->admin_email ='calendar-admin@example.com';
 * adversely affected if you do so.
 * Introduced in DAViCal version 1.1.4 in support of Issue #31 Database
 * Performance Improvements.
+*
 * Default: false
 */
 // $c->support_obsolete_free_busy_property = false;
@@ -330,10 +350,11 @@ $c->admin_email ='calendar-admin@example.com';
 // $c->default_locale = "en_NZ";
 
 /**
-* Default will be $_SERVER['SERVER_NAME'];
 * This is used to construct URLs which are passed in the answers to the client.  You may
 * want to force this to a specific domain in responses if your system is accessed by
 * multiple names, otherwise you probably won't need to change it.
+*
+* Default: $_SERVER['SERVER_NAME']
 */
 // $c->domain_name = 'example.com';
 
@@ -342,6 +363,7 @@ $c->admin_email ='calendar-admin@example.com';
 * user login name if it does not contain the @ character. If email addresses
 * are used as user names in Davical, this fixes a problem with MacOS X 10.6
 * Addressbook that cannot login to CardDav account.
+*
 * Default: false
 */
 // $c->login_append_domain_if_missing = true;
@@ -361,6 +383,8 @@ $c->admin_email ='calendar-admin@example.com';
 *
 * If the only person that devious is your sysadmin then you probably already
 * enabled this option...
+*
+* Default: false
 */
 // $c->allow_get_email_visibility = false;
 
@@ -371,7 +395,10 @@ $c->admin_email ='calendar-admin@example.com';
 * users who share their collections) and most clients will never use it,
 * or ask for it explicitly using an expand-property REPORT, which is not
 * affected by this option.
-* Default: false/unset (always show)
+*
+* Default: false/unset
+*
+* If set to false (or unset): always show
 * If set to true: never show
 * If set to an array: hide if any header => regex tuple matches
 */
@@ -382,7 +409,9 @@ $c->admin_email ='calendar-admin@example.com';
 * If true, names of groups (prefixed with "@") given as an event attendee
 * will get resolved to a list of members of that group. Note that CalDAV
 * clients might get confused by this server behavior until they get
-* synced again. Default: false.
+* synced again.
+*
+* Default: false.
 */
 // $c->enable_attendee_group_resolution = true;
 
@@ -397,6 +426,7 @@ $c->admin_email ='calendar-admin@example.com';
 * If you want to turn off scheduling functions you can set this to 'false' and
 * DAViCal will not advertise the ability to schedule, leaving it to calendar
 * clients to send out and receive scheduling requests.
+*
 * Default: true
 */
 // $c->enable_auto_schedule = false;
@@ -418,6 +448,7 @@ $c->admin_email ='calendar-admin@example.com';
 * DNS TXT record for signing outbound requests
 * example:
 * cal._domainkey.example.com. 86400 IN   TXT     "k=rsa\; t=s\; p=PUBKEY"
+*
 * Default: false
 */
 // $c->enable_scheduling = true;
@@ -427,6 +458,7 @@ $c->admin_email ='calendar-admin@example.com';
 * is the domain with the public key in a TXT record as shown above.
 *
 * TODO: enable domain/signing by per user keys, patches welcome.
+*
 * Default: none
 */
 // $c->scheduling_dkim_domain = '';
@@ -435,6 +467,7 @@ $c->admin_email ='calendar-admin@example.com';
 * Domain Key selector to use when signing outbound scheduling requests.
 *
 * TODO: enable selectors/signing by per user keys, patches welcome.
+*
 * Default: 'cal'
 */
 // $c->scheduling_dkim_selector = 'cal';
@@ -442,6 +475,7 @@ $c->admin_email ='calendar-admin@example.com';
 /*
 * Domain Key private key 
 * Required if you want to enable outbound remote server scheduling
+*
 * Default: none
 */  
 // $c->schedule_private_key = 'PRIVATE-KEY-BASE-64-DATA';
@@ -462,19 +496,21 @@ $c->admin_email ='calendar-admin@example.com';
 * X-Forwarded-Proto and X-Forwarded-Port headers. You can instruct DAViCal to
 * attempt to "do the right thing" and use the content of these headers instead,
 * when they are available.
+*
 * CAUTION: Malicious clients can spoof these headers. When you enable this, you
 * need to make sure your reverse proxy erases any pre-existing values of all
 * these headers, and that no untrusted requests can reach DAViCal without
 * passing the proxy server.
+*
 * Default: false
- */
+*/
 // $c->trust_x_forwarded = true;
 
 /**
 * Instead or in addition to the above, you can compute, override or unset the
 * relevant variables. This is a catch-all for non-standard or advanced
 * environments.
- */
+*/
 
 /* Unset X-Real-IP, as it's not controlled by the reverse proxy. */
 // unset( $_SERVER['HTTP_X_REAL_IP'] );
