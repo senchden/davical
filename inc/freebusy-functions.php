@@ -20,7 +20,10 @@ function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null 
   }
   $params = array( ':path_match' => $path_match, ':start' => $range_start->UTC(), ':end' => $range_end->UTC() );
   $where = ' WHERE caldav_data.dav_name ~ :path_match ';
-  $where .= 'AND rrule_event_overlaps( dtstart, dtend, rrule, :start, :end) ';
+  $where .= "AND (";
+  $where .= "  (calendar_item.first_instance_start <= :end AND (:start <= calendar_item.last_instance_end OR calendar_item.last_instance_end IS NULL)) ";
+  $where .= "  OR (calendar_item.first_instance_start IS NULL AND rrule_event_overlaps( dtstart, dtend, rrule, :start, :end)) ";
+  $where .= ") ";
   $where .= "AND caldav_data.caldav_type IN ( 'VEVENT', 'VTODO' ) ";
   $where .= "AND (calendar_item.transp != 'TRANSPARENT' OR calendar_item.transp IS NULL) ";
   $where .= "AND (calendar_item.status != 'CANCELLED' OR calendar_item.status IS NULL) ";
@@ -66,13 +69,7 @@ function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null 
         }
 
         // Floating dtstarts (either VALUE=DATE or with no TZID) can default to the collection's tzid, if one is set
-        if ($start_date->GetParameterValue('VALUE') == 'DATE' && isset($collection_tzid)) {
-            $start_date = new RepeatRuleDateTime($start_date->Value()."T000000", new RepeatRuleTimeZone($collection_tzid));
-        } else if ($start_date->GetParameterValue('TZID') === null && isset($collection_tzid)) {
-            $start_date = new RepeatRuleDateTime($start_date->Value(), new RepeatRuleTimeZone($collection_tzid));
-        } else {
-            $start_date = new RepeatRuleDateTime($start_date);
-        }
+        $start_date = RepeatRuleDateTime::withFallbackTzid( $start_date, $collection_tzid );
 
         $duration = $v->GetProperty('DURATION');
         $duration = ( !isset($duration) ? 'P1D' : $duration->Value());

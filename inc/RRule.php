@@ -305,6 +305,18 @@ class RepeatRuleDateTime extends DateTime {
     return $this;
   }
 
+  public static function withFallbackTzid( $date, $fallback_tzid ) {
+    // Floating times or dates (either VALUE=DATE or with no TZID) can default to the collection's tzid, if one is set
+
+    if ($date->GetParameterValue('VALUE') == 'DATE' && isset($fallback_tzid)) {
+      return new RepeatRuleDateTime($date->Value()."T000000", new RepeatRuleTimeZone($fallback_tzid));
+    } else if ($date->GetParameterValue('TZID') === null && isset($fallback_tzid)) {
+      return new RepeatRuleDateTime($date->Value(), new RepeatRuleTimeZone($fallback_tzid));
+    } else {
+      return new RepeatRuleDateTime($date);
+    }
+  }
+
 
   public function __toString() {
     return (string)parent::format(self::$Format) . ' ' . parent::getTimeZone()->getName();
@@ -1144,7 +1156,7 @@ function rdate_expand( $dtstart, $property, $component, $range_end = null, $is_d
 *
 * @return array An array keyed on the UTC dates, referring to the component
 */
-function rrule_expand( $dtstart, $property, $component, $range_end, $is_date=null, $return_floating_times=false ) {
+function rrule_expand( $dtstart, $property, $component, $range_end, $is_date=null, $return_floating_times=false, $fallback_tzid=null ) {
   $expansion = array();
 
   $recur = $component->GetProperty($property);
@@ -1153,7 +1165,7 @@ function rrule_expand( $dtstart, $property, $component, $range_end, $is_date=nul
 
   $this_start = $component->GetProperty('DTSTART');
   if ( isset($this_start) ) {
-    $this_start = new RepeatRuleDateTime($this_start);
+    $this_start = RepeatRuleDateTime::withFallbackTzid($this_start, $fallback_tzid);
   }
   else {
     $this_start = clone($dtstart);
@@ -1406,12 +1418,12 @@ function expand_event_instances( vComponent $vResource, $range_start = null, $ra
  * @throws Exception (1) When DTSTART is not present but the RFC says MUST and (2) when we get an unsupported component
  * @return RepeatRuleDateRange
  */
-function getComponentRange(vComponent $comp) {
+function getComponentRange(vComponent $comp, string $fallback_tzid = null) {
   $dtstart_prop = $comp->GetProperty('DTSTART');
   $duration_prop = $comp->GetProperty('DURATION');
   if ( isset($duration_prop) ) {
     if ( !isset($dtstart_prop) ) throw new Exception('Invalid '.$comp->GetType().' containing DURATION without DTSTART', 0);
-    $dtstart = new RepeatRuleDateTime($dtstart_prop);
+    $dtstart = RepeatRuleDateTime::withFallbackTzid($dtstart_prop, $fallback_tzid);
     $dtend = clone($dtstart);
     $dtend->modify(new Rfc5545Duration($duration_prop->Value()));
   }
@@ -1435,17 +1447,17 @@ function getComponentRange(vComponent $comp) {
     }
 
     if ( isset($dtstart_prop) )
-      $dtstart = new RepeatRuleDateTime($dtstart_prop);
+      $dtstart = RepeatRuleDateTime::withFallbackTzid($dtstart_prop, $fallback_tzid);
     else
       $dtstart = null;
 
     if ( isset($dtend_prop) )
-      $dtend = new RepeatRuleDateTime($dtend_prop);
+      $dtend = RepeatRuleDateTime::withFallbackTzid($dtend_prop, $fallback_tzid);
     else
       $dtend = null;
 
     if ( isset($completed_prop) ) {
-      $completed = new RepeatRuleDateTime($completed_prop);
+      $completed = RepeatRuleDateTime::withFallbackTzid($completed_prop, $fallback_tzid);
       if ( !isset($dtstart) || (isset($dtstart) && $completed < $dtstart) ) $dtstart = $completed;
       if ( !isset($dtend) || (isset($dtend) && $completed > $dtend) ) $dtend = $completed;
     }
@@ -1461,7 +1473,7 @@ function getComponentRange(vComponent $comp) {
 * @param object $vResource A vComponent which is a VCALENDAR containing components needing expansion
 * @return RepeatRuleDateRange Representing the range of time covered by the event.
 */
-function getVCalendarRange( $vResource ) {
+function getVCalendarRange( $vResource, string $fallback_tzid = null ) {
   $components = $vResource->GetComponents();
 
   $dtstart = null;
@@ -1471,7 +1483,7 @@ function getVCalendarRange( $vResource ) {
   $has_repeats = false;
   foreach( $components AS $k => $comp ) {
     if ( $comp->GetType() == 'VTIMEZONE' ) continue;
-    $range = getComponentRange($comp);
+    $range = getComponentRange($comp, $fallback_tzid);
     $dtstart = $range->from;
     if ( !isset($dtstart) ) continue;
     $duration = $range->getDuration();
@@ -1490,7 +1502,7 @@ function getVCalendarRange( $vResource ) {
         $range_end   = new RepeatRuleDateTime();
         $range_end->modify('+150 years');
       }
-      $instances += rrule_expand($dtstart, 'RRULE', $comp, $range_end);
+      $instances += rrule_expand($dtstart, 'RRULE', $comp, $range_end, null, false, $fallback_tzid);
       $instances += rdate_expand($dtstart, 'RDATE', $comp, $range_end);
       foreach ( rdate_expand($dtstart, 'EXDATE', $comp, $range_end) AS $k => $v ) {
         unset($instances[$k]);

@@ -1215,6 +1215,10 @@ EOSQL;
     $calitem_params[':percent_complete'] = $first->GetPValue('PERCENT-COMPLETE');
     $calitem_params[':status'] = $first->GetPValue('STATUS');
 
+    // Intentionally not populating first_instance_start and last_instance_end
+    // here, As they may depend on the default tzid of the collection, which as
+    // I understand it hasn't yet been set
+
     if ( $inserting ) {
       $created = $first->GetPValue('CREATED');
       if ( $created == '00001231T000000Z' ) $created = '20001231T000000Z';
@@ -1596,7 +1600,11 @@ function write_resource( DAVResource $resource, $caldav_data, DAVResource $colle
   $calitem_params[':percent_complete'] = $first->GetPValue('PERCENT-COMPLETE');
   $calitem_params[':status'] = $first->GetPValue('STATUS');
 
-  // force re-render the object (to get the same representation for all attendiees)
+  $range = getVCalendarRange($vcal, $resource->timezone_name());
+  $calitem_params[':first_instance_start'] = isset($range->from) ? $range->from->UTC() : null;
+  $calitem_params[':last_instance_end'] = isset($range->until) ? $range->until->UTC() : null;
+
+  // force re-render the object (to get the same representation for all attendees)
   $vcal->Render(null, true);
 
   if ( !$collection->IsSchedulingCollection() ) {
@@ -1632,11 +1640,13 @@ function write_resource( DAVResource $resource, $caldav_data, DAVResource $colle
 INSERT INTO calendar_item (user_no, dav_name, dav_id, dav_etag, uid, dtstamp,
                 dtstart, dtend, summary, location, class, transp,
                 description, rrule, tz_id, last_modified, url, priority,
-                created, due, percent_complete, status, collection_id )
+                created, due, percent_complete, status, collection_id,
+                first_instance_start, last_instance_end )
    VALUES ( :user_no, :dav_name, :dav_id, :etag, :uid, :dtstamp,
                 :dtstart, $dtend, :summary, :location, :class, :transp,
                 :description, :rrule, :tzid, :modified, :url, :priority,
-                :created, :due, :percent_complete, :status, :collection_id )
+                :created, :due, :percent_complete, :status, $collection_id,
+                :first_instance_start, :last_instance_end)
 EOSQL;
     $sync_change = 201;
     $calitem_params[':collection_id'] = $collection_id;
@@ -1650,7 +1660,8 @@ UPDATE calendar_item SET dav_etag=:etag, uid=:uid, dtstamp=:dtstamp,
                 dtstart=:dtstart, dtend=$dtend, summary=:summary, location=:location,
                 class=:class, transp=:transp, description=:description, rrule=:rrule,
                 tz_id=:tzid, last_modified=:modified, url=:url, priority=:priority,
-                due=:due, percent_complete=:percent_complete, status=:status
+                due=:due, percent_complete=:percent_complete, status=:status,
+                first_instance_start=:first_instance_start, last_instance_end=:last_instance_end
        WHERE dav_id=:dav_id
 EOSQL;
     $sync_change = 200;

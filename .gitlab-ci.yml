@@ -29,6 +29,7 @@ test:
   artifacts:
     paths:
       - testing/report.xml
+      - apache2_log/*
     reports:
       junit: testing/report.xml
     when:
@@ -68,4 +69,5 @@ test:
     - apache2ctl start
     - useradd testrunner
     - cd testing && su testrunner -c 'IS_CI=yes ALLSUITES="regression-suite binding carddav scheduling" ./run_regressions.sh all x'
-  
+  after_script:
+    - cp -r /var/log/apache2 apache2_log
