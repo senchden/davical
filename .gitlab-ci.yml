@@ -5,7 +5,7 @@ build:
   script:
     - apt-get -y update
     - bash -c 'mkdir -p /usr/share/man/man{0..10}'
-    - apt-get -y install build-essential devscripts fakeroot dh-exec jdupes rst2pdf doxygen graphviz php7.0 # todo build-dep instead, change this task's image to plain debian
+    - apt-get -y install build-essential devscripts fakeroot dh-exec jdupes rst2pdf doxygen graphviz # todo build-dep instead, change this task's image to plain debian
     - mv debian/changelog debian/changelog.old
     - >
       cat
