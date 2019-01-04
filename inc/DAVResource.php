@@ -148,8 +148,11 @@ class DAVResource
   * @param mixed $parameters If null, an empty Resourced is created.
   *     If it is an object then it is expected to be a record that was
   *     read elsewhere.
+  * @param object $prefetched_collection If provided, the internal collection
+  * field of the resource is populated with the given data, so it does not need
+  * to be queried again later
   */
-  function __construct( $parameters = null ) {
+  function __construct( $parameters = null, DAVResource $prefetched_collection = null ) {
     $this->exists        = null;
     $this->bound_from    = null;
     $this->dav_name      = null;
@@ -172,6 +175,11 @@ class DAVResource
     $this->_is_external      = false;
     $this->_is_addressbook   = false;
     $this->_is_proxy_resource = false;
+
+    if ( isset($prefetched_collection) ) {
+      $this->collection = $prefetched_collection;
+    }
+
     if ( isset($parameters) && is_object($parameters) ) {
       $this->FromRow($parameters);
     }
