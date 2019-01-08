@@ -275,6 +275,8 @@ foreach( $setprops AS $k => $setting ) {
 
         $qry->QDo('UPDATE collection SET timezone = :tzid WHERE dav_name = :dav_name',
                                        array( ':tzid' => $tzid, ':dav_name' => $dav_resource->dav_name()) );
+        require_once("instance_range.php");
+        update_instance_ranges($dav_resource->dav_name());
       }
       else {
         add_failure('set', $tag, 'HTTP/1.1 409 Conflict', translate("calendar-timezone property is only valid for a calendar."));
@@ -389,6 +391,8 @@ foreach( $rmprops AS $k => $setting ) {
     case 'urn:ietf:params:xml:ns:caldav:calendar-timezone':
       if ( $dav_resource->IsCollection() && $dav_resource->IsCalendar() && ! $dav_resource->IsBinding() ) {
         $qry->QDo('UPDATE collection SET timezone = NULL WHERE dav_name = :dav_name', array( ':dav_name' => $dav_resource->dav_name()) );
+        require_once("instance_range.php");
+        update_instance_ranges($dav_resource->dav_name());
       }
       else {
         add_failure('rm', $tag, 'HTTP/1.1 403 Forbidden',

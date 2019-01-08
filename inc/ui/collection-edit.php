@@ -91,7 +91,14 @@ if ( $can_write_collection && $editor->IsSubmit() ) {
   }
   else {
     $c->messages[] = i18n("Updating Collection.");
+
+    // We need to know whether to update_instance_ranges, which is an expensive
+    // operation we should only do if the collection timezone has been updated
+    $tzqry = new AwlQuery( "SELECT timezone FROM collection WHERE collection_id=:id", [ ":id" => $id ] );
+    $tzqry->Exec('collection-edit',__LINE__,__FILE__);
+    $old_tz = $tzqry->Fetch()->timezone;
   }
+
   if ( !$editor->Write() ) {
     $c->messages[] = i18n("Failed to write collection.");
     if ( $id > 0 ) $editor->GetRecord();
@@ -121,6 +128,13 @@ if ( $can_write_collection && $editor->IsSubmit() ) {
       $c->messages[] =  i18n('The file is not UTF-8 encoded, please check the error for more details.');
     }
   }
+
+  if ($editor->IsCreate() || $old_tz != $_POST['timezone']) {
+    dbg_error_log('collection-edit', 'Need to update instance ranges, this will take a while...');
+    require_once("instance_range.php");
+    update_instance_ranges($editor->Value('dav_name'));
+  }
+
   // Uncache anything to do with the collection
   $cache = getCacheInstance();
   $cache->delete( 'collection-'.$editor->Value('dav_name'), null );
