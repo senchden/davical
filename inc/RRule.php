@@ -1157,6 +1157,7 @@ function rdate_expand( $dtstart, $property, $component, $range_end = null, $is_d
 * @return array An array keyed on the UTC dates, referring to the component
 */
 function rrule_expand( $dtstart, $property, $component, $range_end, $is_date=null, $return_floating_times=false, $fallback_tzid=null ) {
+  global $c;
   $expansion = array();
 
   $recur = $component->GetProperty($property);
@@ -1176,11 +1177,15 @@ function rrule_expand( $dtstart, $property, $component, $range_end, $is_date=nul
   if ( DEBUG_RRULE ) printf( "RRULE: %s (floating: %s)\n", $recur, ($return_floating_times?"yes":"no") );
   $rule = new RepeatRule( $this_start, $recur, $is_date, $return_floating_times );
   $i = 0;
-  $result_limit = 1000;
+
+  if ( !isset($c->rrule_expansion_limit) ) $c->rrule_expansion_limit = 5000;
   while( $date = $rule->next($return_floating_times) ) {
 //    if ( DEBUG_RRULE ) printf( "[%3d] %s\n", $i, $date->UTC() );
     $expansion[$date->FloatOrUTC($return_floating_times)] = $component;
-    if ( $i++ >= $result_limit || $date > $range_end ) break;
+    if ( $date > $range_end ) break;
+    if ( $i++ >= $c->rrule_expansion_limit ) {
+      dbg_error_log( 'ERROR', "Hit rrule expansion limit of ".$c->rrule_expansion_limit." - increase rrule_expansion_limit in config to avoid events missing from freebusy" );
+    }
   }
 //  if ( DEBUG_RRULE ) print_r( $expansion );
   return $expansion;
