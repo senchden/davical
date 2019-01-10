@@ -26,7 +26,12 @@ function update_instance_ranges(string $collection_dav_name) {
   );
 
   while( $row = $qry->Fetch() ) {
-    $range = getVCalendarRange(new vCalendar($row->caldav_data), $row->timezone);
+    try {
+      $range = getVCalendarRange(new vCalendar($row->caldav_data), $row->timezone);
+    } catch (Exception $e) {
+      dbg_error_log('instance_range','Error parsing calendar item, skipping update');
+      continue;
+    }
 
     $new_start = isset($range->from)  ? $range->from->UTC()  : null;
     $new_end   = isset($range->until) ? $range->until->UTC() : null;
