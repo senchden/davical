@@ -1260,6 +1260,8 @@ function expand_event_instances( vComponent $vResource, $range_start = null, $ra
       }
       else {
         unset($instances[$recur_utc]);
+        // This is a single instance of a recurring event, it can not in itself produce extra instances due to RRULE etc
+        continue;
       }
     }
     else if ( DEBUG_RRULE ) {
