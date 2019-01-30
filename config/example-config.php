@@ -624,8 +624,9 @@ $c->admin_email ='calendar-admin@example.com';
 //
 //    );
 //
-//  /* If there is some user you do not want to sync from LDAP, put their username in this list */
+//  /* If there is some user/group you do not want to sync from LDAP, put their username in these lists */
 //  $c->do_not_sync_from_ldap = array( 'admin' => true );
+//  $c->do_not_sync_group_from_ldap = array( 'teamclient1' => true );
 //
 //include('drivers_ldap.php');
 
@@ -652,8 +653,9 @@ $c->admin_email ='calendar-admin@example.com';
 //    'format_updated'    => array('Y' => array(0,4),'m' => array(4,2),'d'=> array(6,2),'H' => array(8,2),'M'=>array(10,2),'S' => array(12,2))
 //    );
 //
-//  /* If there is some user you do not want to sync from LDAP, put their username in this list */
+//  /* If there is some user/group you do not want to sync from LDAP, put their username in these lists */
 //  $c->do_not_sync_from_ldap = array( 'admin' => true );
+//  $c->do_not_sync_group_from_ldap = array( 'teamclient1' => true );
 //
 //include('drivers_ldap.php');
 
