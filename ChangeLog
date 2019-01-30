@@ -1,3 +1,130 @@
+2019-01-30 Florian Schlichting <fsfs@debian.org>
+	* add users to new groups in the "update groups" step
+	* honour do_not_sync_group_from_ldap when creating groups, correctly display all results
+	* honour do_not_sync_from_ldap when creating users, correctly display all results
+	* do_not_sync_from_ldap for groups (fixes #158)
+	* make the Admin role inheritable (fix #140)
+	* turn PHP7+ type hint into phpdoc (fixes #185)
+
+2019-01-30 Andrew Ruthven <puck@catalyst.net.nz>
+	* Sure bet to ensure we use a higher version number than Debian
+	* Provide example of how to enable audit logging
+
+2019-01-28 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* RRule Expansion: Do not emit recurrences for instances with RRULEs
+	* Fix bugs in expansion of events with overridden instances
+	* Increase, and make configurable, the limit for rrule expansion
+
+2018-01-11 Nomad Arton <pch13@myzel.net>
+	* Make log_caldav_action log calendar_item summary
+	* Make log_caldav_action log to syslog
+	* Move log_caldav_action() so that it is called before the DELETE
+
+2019-01-10 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* Swallow errors when updating instance ranges on TZ changes
+
+2019-01-08 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* Update instance range columns when a collection's timezone changes
+
+2019-01-05 Andrew Ruthven <puck@catalyst.net.nz>
+	* meh, I give up on php for now
+	* The pipeline showed 7.3 as being available, ah well.
+	* Specific PHP version...
+	* Package build wants dot for graphs, and to run php
+	* Need to use sprintf!
+	* Make the default settings stand out more
+
+2019-01-04 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* Fix excessive SQL queries in calendar-sync REPORT
+
+2019-01-03 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* Fix tests after freebusy query changes
+	* Use first_instance_start / last_instance_end to filter freebusy queries
+	* Populate first_instance_start and last_instance_end on resource write
+	* Handle default timezones in getVCalendarRange
+
+2018-12-31 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* Make the recurrence range columns in the database tz-aware
+
+2018-11-27 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* Pull the freebusy floating-time handling into a function
+
+2019-01-03 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* Keep Apache logs as CI artifacts for debugging failures
+
+2018-12-31 Florian Schlichting <fsfs@debian.org>
+	* checkpoint scheduling test results and add them to CI runner (fixes: #170)
+
+2017-09-29 Florian Schlichting <fsfs@debian.org>
+	* mask unstable DTSTAMP in scheduling tests
+
+2018-12-29 Florian Schlichting <fsfs@debian.org>
+	* provide defaults for unused function parameters (fixes #155)
+	* Debian: use system perl in dba/update-davical-database
+	* Update debian/watch to changed Gitlab directory layout
+
+2018-12-22 Florian Schlichting <fsfs@debian.org>
+	* fix to more uses of continue inside switch discovered by CI
+	* properly check if $row has been unset (fixes #141)
+	* Test: max-resource-size is no longer infinity
+	* Apache 2.4.35 stops sending Content-Type headers for 204 No Content responses
+	* call fetch_external with external_ua_string (fixes #164)
+
+2018-10-02 Andrew Ruthven <puck@catalyst.net.nz>
+	* Remove use of $old_attendees
+
+2018-10-30 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* Add Gitlab CI
+
+2018-11-13 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* Fix returning dead properties in an allprop PROPFIND
+
+2018-11-30 Andrew Ruthven <puck@catalyst.net.nz>
+	* Ignore the id in our test comparision
+	* Explicitly set the Charset to use, and look for the usual format.
+	* Exclude the ctags from the test
+	* Atually, options aren't supported on the end of REPLACE
+
+2018-11-12 Andrew Ruthven <puck@catalyst.net.nz>
+	* Make the tests more interesting by using ctag
+	* Add tests for: Fix Fatal PHP Error if Depth is more than 1.
+	* Fix Fatal PHP Error if Depth is more than 1.
+	* Allow over riding the value of ALLSUITES
+	* This looks like an acceptable change
+	* Allow database dumps to be restored in test suite.
+	* Ignore the PostgreSQL version for tests
+
+2018-11-09 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* Guess the timezone of non-all-day floating events in freebusy
+
+2018-10-29 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* Guess the timezone of VALUE=DATE events in freebusy
+
+2018-10-02 Andrew Ruthven <puck@catalyst.net.nz>
+	* Add trivial translations of Passed: %s, using what is already present for Passed.
+	* If DAViCal or AWL versions pass, show the running version.
+	* Test that max-resource-size is infinity.
+	* Fix a typo of this.
+
+2018-08-30 “Paul <“p.kallnbach@gorilla-computing.de”>
+	* Introduce new global variable to control maximum size of carddav resources.
+
+2018-05-22 Paul Kallnbach <p.kallnbach@gorilla-computing.de>
+	* increase maximum resource size to infinity
+
+2018-04-25 wmbr <w-m-b-r@t-online.de>
+	* Fix a typo in DAV_AllProperties which caused dead properties to be omitted
+
+2018-03-21 Till Schäfer <till2.schaefer@tu-dortmund.de>
+	* replace php4 style constructors with __construct
+
+2018-02-21 Antoine <ahuret@skilld.fr>
+	* Allow user to define awl_appuser and awl_dbauser on create-database script
+
+2018-01-13 Florian Schlichting <fsfs@debian.org>
+	* external fetch: improve error reporting
+	* external fetch: handle initial NULL of collection.modified
+
 2018-01-11 Florian Schlichting <fsfs@debian.org>
 	* switch to doxygen for api docs
 	* put the most important debug options in a more visible place

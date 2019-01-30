@@ -1,3 +1,14 @@
+davical (1.1.8-1) unstable; urgency=medium
+
+  * New upstream release
+  * Update debian/watch to changed Gitlab directory layout
+  * Use system perl in dba/update-davical-database
+  * Bump dependency on AWL to 0.60
+  * Update copyright years
+  * Declare compliance with Debian Policy 4.3.0
+
+ -- Florian Schlichting <fsfs@debian.org>  Wed, 30 Jan 2019 22:52:41 +0100
+
 davical (1.1.7-1) unstable; urgency=medium
 
   * New upstream release
