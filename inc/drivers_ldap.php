@@ -621,9 +621,12 @@ function sync_LDAP(){
 
   // creation of all users;
   if ( sizeof($users_to_create) ) {
-    $c->messages[] = sprintf(i18n('- creating record for users :  %s'),join(', ',$users_to_create));
-
-    foreach( $users_to_create as $username ) {
+    foreach( $users_to_create as $k => $username ) {
+      if ( isset($c->do_not_sync_from_ldap) && isset($c->do_not_sync_from_ldap[$username]) ) {
+        unset( $users_to_create[$k] );
+        $users_nothing_done[] = $username;
+        continue;
+      }
       $principal = new Principal( 'username', $username );
       $valid = $ldap_users_info[$username];
       if ( $mapping['modified'] != "" && array_key_exists($mapping['modified'], $valid)) {
@@ -652,6 +655,7 @@ function sync_LDAP(){
 
       sync_user_from_LDAP( $principal, $mapping, $valid );
     }
+    $c->messages[] = sprintf( i18n('- creating record for users :  %s'), join(', ',$users_to_create) );
   }
 
   // deactivating all users
@@ -711,10 +715,11 @@ function sync_LDAP(){
     }
     if ( sizeof($users_to_update) )
       $c->messages[] = sprintf(i18n('- updating user records : %s'),join(', ',$users_to_update));
-    if ( sizeof($users_nothing_done) )
-      $c->messages[] = sprintf(i18n('- nothing done on : %s'),join(', ', $users_nothing_done));
   }
+  if ( sizeof($users_nothing_done) )
+    $c->messages[] = sprintf( i18n('- nothing done on : %s'), join(', ',$users_nothing_done) );
 
+  // check for remaining admins
   $admins = 0;
   $qry = new AwlQuery( "SELECT count(*) AS admins FROM usr JOIN role_member USING ( user_no ) JOIN roles USING (role_no) WHERE usr.active=TRUE AND role_name='Admin'");
   $qry->Exec('sync_LDAP',__LINE__,__FILE__);
