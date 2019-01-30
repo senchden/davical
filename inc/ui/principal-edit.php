@@ -454,7 +454,7 @@ EOTEMPLATE;
 * @param dbrow $row The row object we read from the database.
 * @return string The formatted privileges.
 */
-function principal_privilege_format_function( $value, $column, $row ) {
+function principal_privilege_format_function( $value, $column = NULL, $row = NULL ) {
   global $privilege_xlate;
 
   $privs = bits_to_privilege($value,'*');

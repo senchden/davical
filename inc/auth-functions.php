@@ -231,6 +231,9 @@ function UpdateCollectionTimezones( $username, $new_timezone=null ) {
   if ( empty($new_timezone) ) return;
   $qry = new AwlQuery('UPDATE collection SET timezone=? WHERE dav_name LIKE ? AND is_calendar', '/'.$username.'/%', $new_timezone);
   $qry->Exec();
+
+  require_once("instance_range.php");
+  update_instance_ranges($dav_resource->dav_name());
 }
 
 /**

@@ -25,6 +25,7 @@ random_crap
 testing/tests/x-*
 testing/tests/local
 testing/timing.stats*
+testing/report.xml
 .sync-cache
 .buildpath
 .cvsignore

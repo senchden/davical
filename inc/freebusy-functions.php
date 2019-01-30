@@ -20,7 +20,10 @@ function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null 
   }
   $params = array( ':path_match' => $path_match, ':start' => $range_start->UTC(), ':end' => $range_end->UTC() );
   $where = ' WHERE caldav_data.dav_name ~ :path_match ';
-  $where .= 'AND rrule_event_overlaps( dtstart, dtend, rrule, :start, :end) ';
+  $where .= "AND (";
+  $where .= "  (calendar_item.first_instance_start <= :end AND (:start <= calendar_item.last_instance_end OR calendar_item.last_instance_end IS NULL)) ";
+  $where .= "  OR (calendar_item.first_instance_start IS NULL AND rrule_event_overlaps( dtstart, dtend, rrule, :start, :end)) ";
+  $where .= ") ";
   $where .= "AND caldav_data.caldav_type IN ( 'VEVENT', 'VTODO' ) ";
   $where .= "AND (calendar_item.transp != 'TRANSPARENT' OR calendar_item.transp IS NULL) ";
   $where .= "AND (calendar_item.status != 'CANCELLED' OR calendar_item.status IS NULL) ";
@@ -34,7 +37,8 @@ function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null 
   $sql = 'SELECT caldav_data.caldav_data, calendar_item.rrule, calendar_item.transp, calendar_item.status, ';
   $sql .= "to_char(calendar_item.dtstart at time zone 'GMT',".AWLDatabase::SqlUTCFormat.') AS start, ';
   $sql .= "to_char(calendar_item.dtend at time zone 'GMT',".AWLDatabase::SqlUTCFormat.') AS finish, ';
-  $sql .= "calendar_item.class, calendar_item.dav_id ";
+  $sql .= "calendar_item.class, calendar_item.dav_id, ";
+  $sql .= "collection.timezone AS collection_tzid ";
   $sql .= 'FROM caldav_data INNER JOIN calendar_item USING(dav_id,user_no,dav_name,collection_id) ';
   $sql .= 'INNER JOIN collection USING(collection_id)';
   $sql .= $where;
@@ -53,6 +57,7 @@ function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null 
       $ics = new vComponent($calendar_object->caldav_data);
       $expanded = expand_event_instances($ics, $range_start, $range_end);
       $expansion = $expanded->GetComponents( array('VEVENT'=>true,'VTODO'=>true,'VJOURNAL'=>true) );
+      $collection_tzid = $calendar_object->collection_tzid;
       dbg_error_log( "freebusy", "===================   $calendar_object->dav_id   ======================== %s -> %s, %s %s", $calendar_object->start, $calendar_object->finish, $calendar_object->class, $extra );
       $dtstart_type = 'DTSTART';
       foreach( $expansion AS $k => $v ) {
@@ -62,7 +67,10 @@ function get_freebusy( $path_match, $range_start, $range_end, $bin_privs = null 
             $dtstart_type = 'DUE';
             $start_date = $v->GetProperty($dtstart_type);
         }
-        $start_date = new RepeatRuleDateTime($start_date);
+
+        // Floating dtstarts (either VALUE=DATE or with no TZID) can default to the collection's tzid, if one is set
+        $start_date = RepeatRuleDateTime::withFallbackTzid( $start_date, $collection_tzid );
+
         $duration = $v->GetProperty('DURATION');
         $duration = ( !isset($duration) ? 'P1D' : $duration->Value());
         $end_date = clone($start_date);

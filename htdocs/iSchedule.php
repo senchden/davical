@@ -69,7 +69,7 @@ function checkiSchedule () {
   $s->remote_selector = $c->scheduling_dkim_selector;
   if (!$s->getTxt()) {
     if (isset($c->schedule_private_key))
-      $ret .= '<p>' . translate('TXT record missing for "%s._domainkey.%s" or DNS failure, Private RSA key is configured', $s->remote_selector, $s->domain) . '</p>';
+      $ret .= '<p>' . sprintf(translate('TXT record missing for "%s._domainkey.%s" or DNS failure, Private RSA key is configured'), $s->remote_selector, $s->domain) . '</p>';
     else {
       $keys = generateKeys();
       $config = '<p>' . translate('please add the following section to your DAViCal configuration file') . '<pre>$c->schedule_private_key = &lt;&lt;&lt;ENDOFKEY' . "\n";

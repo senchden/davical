@@ -893,6 +893,9 @@ msgstr "PUT de conteúdo text/calendar apenas é permitido numa colecção do ti
 msgid "Passed"
 msgstr "Passou"
 
+msgid "Passed: %s"
+msgstr "Passou: %s"
+
 msgid "Password"
 msgstr "Password"
 

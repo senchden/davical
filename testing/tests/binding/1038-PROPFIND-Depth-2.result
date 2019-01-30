@@ -1,0 +1,6495 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<multistatus xmlns="DAV:" xmlns:C="http://calendarserver.org/ns/">
+ <response>
+  <href>/caldav.php/user4/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"b3be0ab4edeb183646203b994f8d6869"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user2/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"b644b2983f30cb7ae5ab28db464b601e"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user2/33169d69-2969-4a96-a3e1-2e312b7614e6.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user2/047871e3-6b70-4178-9af8-0ceb50f7b092.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user2/9429a973-2b13-4b1a-be09-948d75425c45.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user2/7d729xc0-0895-012d-124e-002421a2359e.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user2/bd262d20-1cdb-012d-1264-002421a2359e.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user2/56f0e0e0-f742-012d-680c-002421a2359e.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user2/thiswillworkfine.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user2/thiswillalsobegood.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user2/70399cd7-50a4-4be4-a665-af593e19a7fd.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"7e1c9a5e005cb3192ef305837033e271"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/3F4CF6227300FD062D9EF3CDFB30D32D-0.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/20061101T073004Z.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/4aaf8f37-f232-4c8e-a72e-e171d4c4fe54.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/9d050be7-8a02-4355-8ed3-02a9fc5f473f.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/fbd57454-d966-4a14-8341-abe1edb1ae66.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/2178279a-aec2-471f-832d-1f6df6203f2f.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/917b9e47-b748-4550-a566-657fbe672447.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/0575d895-a006-4ed8-9be6-0d1b6b6b1f96.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/b1679f77-673d-4f46-b3eb-2420e1bba301.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/e70576e9-c1e0-431e-a507-0386fd82f223.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/e6eb5bc9-f7f9-4a0a-94e8-8e90eefc7d08.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/71e2ae82-7870-11db-c6d6-f6927c144649.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/da81c0ee-7871-11db-c6d6-f6927c144649.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/AAA9318E-37D9-4319-8626-95ECD3D3B243.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/70D23799-4A68-4905-AB9F-4D47BA693CFD.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/0544-gzip-PUT.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/0545-deflate-PUT.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/DAYPARTY-77C6-4FB7-BDD3-6882E2F1BE74.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/MICROPARTY-77C6-4FB7-BDD3-6882E2F1BE74.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/user1/PUT-eastern-time.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"bef9dce8ea6e7a3f286f644b9680db9e"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-25397773.546.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-752176592.682.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1211065846.551.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1288241059.115.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-589255590.706.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1353942805.140.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-639274358.130.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1052165538.720.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-130822969.932.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-723679733.90.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1123041440.757.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1686153385.653.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-822103046.270.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1582464105.706.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-367014638.77.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1632032952.718.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1759353555.1036.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-647789764.670.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-571584239.862.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1512015300.907.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2114344132.965.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1424963174.253.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-334227107.122.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-680720714.1001.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-550940693.954.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2066319147.664.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-429195916.943.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-744514207.96.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-142621045.201.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1989318571.454.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-724373582.591.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-481358493.847.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2065263089.283.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1665923076.160.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1110641771.1024.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1321212322.195.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-959318604.221.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1408713853.418.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1077060236.504.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1451704381.591.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1204424718.88.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1282397005.581.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-829569168.688.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1193972627.889.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1947424919.1052.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1040913699.828.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1294476626.829.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1055008174.109.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1396751201.1020.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-342324400.1065.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1811699916.176.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-208850055.487.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1710734567.933.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1176148155.421.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1532096742.930.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1625124712.125.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1541763920.239.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1653269400.152.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1192146868.794.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1022004810.636.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-269370179.1064.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1560165065.218.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-881600230.996.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1959579499.495.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1675852008.229.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2012437282.982.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-532086566.634.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2096827521.784.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1371307975.524.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-29501553.142.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-305027183.821.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-356065993.882.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-519951890.512.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1623898273.769.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-677943530.1035.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-621613832.230.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1320911446.836.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-247737881.1034.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-145382464.740.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-817273620.913.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-734047853.574.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1896176446.680.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-45118192.951.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1465969358.564.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-252164306.653.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1225211214.949.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1571060348.340.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-545492870.973.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-268989763.356.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-223550567.539.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1931226847.404.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-824353234.758.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1241596503.111.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1325946143.757.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1171510238.661.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-758088585.406.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1063781651.118.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-98921073.921.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1016508863.138.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1082241187.489.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1654956090.979.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1955799109.1003.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-396989560.1072.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1757099750.216.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1399279554.704.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1379725410.1001.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1528853965.493.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1208863622.915.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1268251613.1081.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1316417293.928.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1032814688.266.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-275695243.1018.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1909409644.470.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-93108450.1057.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1685650426.600.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2036447089.264.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1531501876.687.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-400061712.176.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-40588559.687.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1344187686.193.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-186613018.608.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1833164074.354.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-589387468.739.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1081550300.938.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1271651172.235.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1439209644.459.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1881284871.807.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-624141615.157.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-672191901.245.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1541138818.1074.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1269048507.300.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-768755480.671.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-19706228.125.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1677882372.178.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-631336277.241.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1659060362.673.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-547039492.851.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1099949027.1055.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-211720587.187.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-548731495.147.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-347215494.1039.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1762813400.161.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1077249209.370.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1201928610.547.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1138025243.527.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1944568617.286.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2074581994.559.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1539789441.581.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1240533661.810.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-125650352.185.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-738458230.642.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1734853127.483.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-6240027.699.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-668555287.189.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-863120668.565.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1780424263.776.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1364406704.107.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-810745804.721.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-765934596.461.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-396229364.599.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2131935622.105.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1118149605.948.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2065957537.505.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1880312065.986.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1530393784.511.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1692819609.723.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-267268802.802.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-183271552.699.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1564156755.83.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1045090772.930.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1753025426.982.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1139684300.385.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1782181593.838.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-446662745.838.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-232329512.1034.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-388918578.878.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-100829294.645.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-30418358.476.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2074841085.871.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-234836881.818.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1433402917.322.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1046517717.351.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-415496577.724.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-58675341.127.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1804357297.335.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-701998803.821.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-979542311.1045.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1369467354.953.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-862236580.979.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-814721216.280.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1672206794.625.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-936783626.511.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-896129370.1018.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1744515772.739.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-102081386.996.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2105180231.827.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-340383776.896.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-769882015.651.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-508293985.968.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1741929750.230.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1006121415.248.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-703065367.617.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1949515845.984.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1650816570.794.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-849984507.747.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-552750671.427.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-79234141.608.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-164963697.408.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1846504379.590.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-159554538.440.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-585548585.458.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1099622629.520.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-591358863.211.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-129716648.746.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1459780733.285.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1471533825.612.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1869628571.468.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-2016497045.275.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2039685585.970.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-633146427.453.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2117633683.908.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-265144908.324.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-697479598.608.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1065457646.865.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1571145881.916.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-719251466.178.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-2081735588.967.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-2123856648.160.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1653920106.332.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1681129373.546.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1403092089.280.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1712337319.1054.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-490134801.711.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-36373198.842.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1780538774.1017.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-872967326.863.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-702492225.521.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1595089298.730.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-917472477.1048.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1750177958.774.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-379281985.366.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-209808238.453.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-253794414.697.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-425860506.92.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1317643479.828.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-937139402.898.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1932174917.273.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1395173834.699.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1730801416.165.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-406853360.634.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-376020341.793.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1989686502.594.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-499949909.792.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-579646873.861.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-628821013.246.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1595290417.661.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1783404419.679.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-199912874.835.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-125820789.94.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-928524085.416.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2044288932.529.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1738019068.315.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1755621387.662.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2129031911.882.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-957569344.845.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-236679345.661.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1772890621.111.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1823278872.713.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1656896074.730.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1365613586.755.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-857676503.741.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-646296168.758.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1069926005.477.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1604341089.409.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-226448206.799.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-534221956.209.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2074181858.934.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1135103303.297.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-387454150.1052.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1595454741.811.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-218275606.213.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1579630913.793.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-370516235.812.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1027531016.315.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1254693944.298.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-363124201.106.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-774247267.873.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-99027505.748.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-845126012.339.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1682153210.364.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1912083550.790.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-2122625345.144.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1391827491.880.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-557438505.213.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1893863902.247.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1750028846.678.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-531478213.970.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-731296952.678.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-998404549.722.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1290881671.256.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-434321803.401.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1366801637.899.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1775039090.967.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-657456592.1036.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1964974121.664.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1536422870.705.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1313050303.342.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-95576125.1061.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1695335249.803.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1658848585.634.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1348102428.775.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1273950378.671.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-50908146.556.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-530242634.686.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1345435026.420.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1810768863.741.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1505368998.256.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-207492094.170.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-43161913.1070.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1881242561.783.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1868356274.192.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-662090617.196.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-903236501.352.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-8461016.195.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-915657925.108.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1034179453.1025.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1564831085.1069.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1650360155.265.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1363807535.433.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1900080537.713.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-705074019.733.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1753896417.1014.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-673839817.290.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-375156206.1070.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-995462243.318.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-876798833.981.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1802748548.853.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-897641360.629.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-679398215.853.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1690704588.1077.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-989953154.387.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-293245651.612.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-829920097.578.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1459440544.810.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-606835123.359.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1090755342.393.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-40337687.1050.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/KOrganizer-1422474157.849.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-1332396888.870.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/home/libkcal-929822560.1022.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/addresses/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"3f02ebe3d7929b091e3d8ccfde2f3bc6"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"ebeec1c6ec8a3b619af611adbced5ca9"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20081226-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090101-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20081225-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090410-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090206-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090413-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090425-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090601-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20091026-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090102-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20091226-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20091228-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20100101-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20100607-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20100402-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20100405-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20110422-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20110425-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20120406-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20120409-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20130329-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20130401-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20140418-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20140421-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20150403-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20150406-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20160325-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20160328-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20081201-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20081201-2-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090126-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090119-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090119-2-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090202-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090309-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090323-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20091023-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20091102-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20091113-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20090928-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20100308-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20100322-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20110314-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20110321-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20120312-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20120326-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20130311-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20130325-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20140310-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20140324-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20150309-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20150323-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20160314-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/nz_holidays/20160321-1-all-publicholidays-dol.govt.nz.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"5a8c44444986c4726b7ea9af4e654cc2"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/64E660BA-86DB-43CD-A067-194149D28471-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/64874200-9494-415C-9FA8-B86F739FFB13-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/468CB2B3-342D-4D1D-B152-F52608E6CB4C-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/01253561-2B9B-4341-88F5-29A572BB3E75-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/8EE35D87-548A-4495-BE91-07303C510724-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/5D55021E-0C17-49BD-BE73-29F472A75FAD-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/183A097B-7D44-4C66-9569-AA520E7CB8DC-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/EDF531F8-7E53-4604-9F72-16BCD40CD7D2-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/95DAFE6C-E465-40C1-8FAD-4EAB11CAD26B-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/E8C35314-F61A-4649-A4C3-E4F24B2BA454-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/0EF392B7-5203-432C-B41B-BB7AFC5CBA6A-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/BCC001F2-681A-4D72-9631-ACCE8EA480A0-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/F35052B2-D44B-43F8-9F2C-95149FD385FF-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/8FF1DB95-BC31-48B3-94A8-A519ED090EF7-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/AB045233-7D93-490A-AEDC-70710D207055-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/D2B79EA9-E22C-4F27-BB84-750584839575-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/B14BF09D-1745-4F98-89D3-98410ACFD9C9-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/B5F73538-5A2E-4518-86F8-4AC2415447BB-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/E1C2F367-726B-4BBC-A6F0-37E31EDA74F0-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/467631C8-F6B4-419C-878F-082B8774CC6C-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/20432B95-74EB-4A97-B6AA-CF307DE25236-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/AB7564F8-DEC3-4A9B-B228-595138D8F83E-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/70F1BEC8-058E-4CA0-A401-9D0AA6D10C25-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/3DDCAA37-8FC9-4602-8161-062DA284C25A-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/4D1563A6-B1B6-4FC3-B68D-C5BC32117935-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/8711F720-D78C-4AE3-86CC-4BE1C6A04944-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/7B660B80-30F0-42CC-A32A-4FEE2ECC6515-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/8B7568AE-0F91-48DA-88EE-210E402147BF-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/349DCD34-83E1-42EF-81C7-C051E5B6FAC8-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/B7DA1215-2500-41A6-A40E-706ADD5FFC1E-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/7D553648-4460-4618-977E-12B8DB4516BF-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/4006A01A-8E57-497A-8061-C504817DEC29-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/DE7C6F7A-EA80-42C8-A05B-89341A373CA2-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/64A2DCF3-5A6B-4EF4-A520-BA01CBC97617-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/5155D737-F8AA-4522-8703-D51B4A30AF9C-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/E44DD94F-150A-4B6E-8692-A53437147FCF-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/DEACF954-F452-4AC2-BB9C-437533BF49A6-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/9C3C643D-D138-4AA9-9AB4-F77443E70837-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/79FC38CA-5D7B-45B9-839B-27B5C8C3A514-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/75F65F7C-5D88-45B2-9D95-18F7C8AFEB86-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/7D9E7675-0B5B-4E43-B918-235CD5A9248E-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/DF4DAEB8-7248-4F1F-BA4E-EA8B5BDF5D0C-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/E238FE0B-4E32-43D6-965F-ACC28CC43B21-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/3BBE9587-1A13-4DF6-8671-08511BC92786-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/9672014B-DAE5-42AF-B83E-91CE92CE1278-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/95C333C1-CEAE-45F0-B448-B8F9F5B768A2-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/5485295A-60A8-4CBF-9574-CE838633DD95-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/7896BE9D-72E8-4C38-9BC7-203830C6429B-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/57B0B83E-0913-4853-B784-C072F9F990DF-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/6E846799-408D-4D86-B3DF-D9946CCDB194-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/35EE647D-6E48-4233-B0C4-CCC497684C92-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/555C0D00-991F-48C5-A68B-7E3CBD5780FA-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/73C40DD3-C7C0-42BB-95F5-22B1FCE2F240-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/910ED267-B8DF-4CA7-B867-0ED1A5FD3F23-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/C15CE396-EAA3-49FB-B79F-79AF3D6E5069-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/us_holidays/698F4B6B-C5B9-4AF6-9E38-DF171C8448A5-7CFA95A3-9734-46AF-A4DC-5FB544AD96AF.ics</href>
+  <propstat>
+   <prop/>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+  <propstat>
+   <prop>
+    <C:getctag/>
+   </prop>
+   <status>HTTP/1.1 404 Not Found</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/.out/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"1"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/base/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"ae93907cb03bc025b8e733eb61f3a09e"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/base/user1/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"7e1c9a5e005cb3192ef305837033e271"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/base/user2/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"b644b2983f30cb7ae5ab28db464b601e"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/base/calendar/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"5723e68d4eaef520f2b18370874914f1"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/base/newcalendar/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"cb0b91b58d99fd869355038c35be73a0"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/calendar-proxy-read/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"ce203d86180ffe895ef680221aa4050c"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+ <response>
+  <href>/caldav.php/user4/calendar-proxy-write/</href>
+  <propstat>
+   <prop>
+    <C:getctag>"31965770b06ebd0def7b1afe08ba2a39"</C:getctag>
+   </prop>
+   <status>HTTP/1.1 200 OK</status>
+  </propstat>
+ </response>
+</multistatus>

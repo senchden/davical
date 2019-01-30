@@ -374,7 +374,7 @@ QUERY
 SELECT something, or, other FROM table ...
 ENDQUERY
 
-REPLACE=/pattern/replacement/options
+REPLACE=/pattern/replacement/
 =================================================
 
 URL      The URL to request from.

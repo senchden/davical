@@ -218,7 +218,7 @@ function doItipOrganizerCancel( vCalendar $vcal ) {
   global $request;
 
   $attendees = $vcal->GetAttendees();
-  if ( count($attendees) == 0 && count($old_attendees) == 0 ) {
+  if ( count($attendees) == 0 ) {
     dbg_error_log( 'schedule', 'Event has no attendees - no scheduling required.', count($attendees) );
     return true;
   }

@@ -83,6 +83,7 @@ $c->permission_scan_depth = 2;
 $c->expand_pdo_parameters = true;
 $c->home_calendar_name    = 'calendar';
 $c->home_addressbook_name = 'addresses';
+$c->carddav_max_resource_size = 6550000;
 $c->enable_row_linking = true;
 $c->enable_scheduling = false;
 $c->http_auth_mode = 'Basic';
@@ -244,8 +245,8 @@ if ( function_exists('awl_set_locale') ) {
 *
 */
 $c->code_version = 0;
-$c->want_awl_version = '0.58';
-$c->version_string = '1.1.6'; // The actual version # is replaced into that during the build /release process
+$c->want_awl_version = '0.59';
+$c->version_string = '1.1.7'; // The actual version # is replaced into that during the build /release process
 if ( isset($c->version_string) && preg_match( '/(\d+)\.(\d+)\.(\d+)(.*)/', $c->version_string, $matches) ) {
   $c->code_major = $matches[1];
   $c->code_minor = $matches[2];

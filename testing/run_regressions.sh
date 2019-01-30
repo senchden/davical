@@ -12,12 +12,13 @@
 DBNAME=regression
 PGPOOL=inactive
 HOSTNAME=mycaldav
+REPORTFILE=report.xml
 
 # We need to run the regression tests in the timezone they were written for.
 export PGTZ=Pacific/Auckland
 #export TZ=Pacific/Auckland
 
-ALLSUITES="regression-suite binding carddav scheduling timezone"
+ALLSUITES=${ALLSUITES:-"regression-suite binding carddav scheduling timezone"}
 
 # who wants meld if they can have xxdiff? Go on, override it in regression.conf
 MELD=meld
@@ -49,6 +50,7 @@ ACCEPT_ALL=${2:-""}
 
 # psql ${PSQLOPTS} -l
 
+. ./regression_reporting.sh
 
 check_result() {
   TEST="$1"
@@ -59,6 +61,7 @@ check_result() {
   diff --text -u "${REGRESSION}/${TEST}.result" "${RESULTS}/${TEST}" >"${REGRESSION}/diffs/${TEST}"
 
   if [ -s "${REGRESSION}/diffs/${TEST}" ] ; then
+    report_test_failure
     if [ -z "$SKIPDIFF" ]; then
        echo "======================================="
        echo "Displaying diff for test ${TEST}"
@@ -75,7 +78,7 @@ check_result() {
       cp "${RESULTS}/${TEST}" "${REGRESSION}/${TEST}.result"
     elif [ "${ACCEPT}" = "x" ]; then
       echo "./dav_test --dsn '${DSN}' ${WEBHOST} ${ALTHOST} --suite '${SUITE}' --case '${TEST}' --debug"
-      exit
+      if [ -z "$IS_CI" ]; then exit 2; fi
     elif [ "${ACCEPT}" = "v" ]; then
       echo "Showing test $REGRESSION/${TEST}.test"
       cat "$REGRESSION/${TEST}.test"
@@ -107,6 +110,7 @@ check_result() {
       return 1
     fi
   else
+    report_test_success
     echo "Test ${TEST} passed OK!"
   fi
   return 0
@@ -140,7 +144,16 @@ restore_database() {
 
 dump_database() {
   TEST="Dump-Database"
-  pg_dump -Fp $PSQLOPTS ${DBNAME} > "${REGRESSION}/initial.dbdump" 2>&1
+  pg_dump -Fp $PSQLOPTS ${DBNAME} \
+    | grep -v -E '(CREATE\ EXTENSION|COMMENT\ ON)' \
+    > "${REGRESSION}/initial.dbdump" 2>&1
+
+  # This is ugly, for the COPY into dav_binding to work on Pg >= 9.6 (possibly earlier)
+  # we need to ensure that the schema that collection is in is within our search path
+  # since the function real_path_exists is called on each insert into dav_binding and
+  # it doesn't specify the schema for 'collection', therefore the copy fails.
+  schema=$(grep "CREATE TABLE .*.collection" "${REGRESSION}/initial.dbdump" | sed -r 's/CREATE TABLE (.*?)\.collection \(/\1/')
+  sed -i "s/SELECT pg_catalog.set_config('search_path', '', false);/SELECT pg_catalog.set_config('search_path', '$schema', false);/" "${REGRESSION}/initial.dbdump"
 }
 
 
@@ -152,7 +165,8 @@ initialise_regression() {
   check_result "${TEST}"
 
   TEST="Upgrade-Database"
-  ../dba/update-davical-database ${DBAOPTS} --dbname=${DBNAME} --nopatch --appuser davical_app --owner davical_dba >"${RESULTS}/${TEST}" 2>&1
+  ../dba/update-davical-database ${DBAOPTS} --dbname=${DBNAME} --nopatch --appuser davical_app --owner davical_dba >"${RESULTS}/${TEST}" \
+    | sed -r 's/is version [.0-9]+/is version XX/'2>&1
   check_result "${TEST}"
 
   if [ -f "${REGRESSION}/sample-data.sql" ]; then
@@ -162,7 +176,8 @@ initialise_regression() {
   fi
 
   TEST="Really-Upgrade-Database"
-  ../dba/update-davical-database ${DBAOPTS} --dbname=${DBNAME} --appuser davical_app --owner davical_dba >"${RESULTS}/${TEST}" 2>&1
+  ../dba/update-davical-database ${DBAOPTS} --dbname=${DBNAME} --appuser davical_app --owner davical_dba \
+    | sed -r 's/is version [.0-9]+/is version XX/' >"${RESULTS}/${TEST}" 2>&1
   check_result "${TEST}"
 
 }
@@ -172,6 +187,8 @@ run_regression_suite() {
   RESULTS="${REGRESSION}/results"
   mkdir -p "${RESULTS}"
   mkdir -p "${REGRESSION}/diffs"
+
+  report_suite_setup
 
   if [ -f "${REGRESSION}/initial.dbdump" ]; then
     restore_database
@@ -206,12 +223,16 @@ run_regression_suite() {
 
     TCOUNT="$(( ${TCOUNT} + 1 ))"
   done
+
+  report_suite_counts
 }
 
 
 
 TSTART="`date +%s`"
 TCOUNT=0
+
+setup_report
 
 if [ "${SUITE}" = "all" ]; then
   for SUITE in ${ALLSUITES} ; do
@@ -230,3 +251,5 @@ fi
 TFINISH="`date +%s`"
 
 echo "Regression test run took $(( ${TFINISH} - ${TSTART} )) seconds for ${TCOUNT} tests."
+
+exit_based_on_reported_failures

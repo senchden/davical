@@ -894,6 +894,9 @@ msgstr "PUT på en samling er bare tillatt for tekst-/kalenderinnhold i en kalen
 msgid "Passed"
 msgstr "Godkjent"
 
+msgid "Passed: %s"
+msgstr "Godkjent: %s"
+
 msgid "Password"
 msgstr "Passord"
 

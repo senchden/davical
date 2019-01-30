@@ -148,8 +148,11 @@ class DAVResource
   * @param mixed $parameters If null, an empty Resourced is created.
   *     If it is an object then it is expected to be a record that was
   *     read elsewhere.
+  * @param object $prefetched_collection If provided, the internal collection
+  * field of the resource is populated with the given data, so it does not need
+  * to be queried again later
   */
-  function __construct( $parameters = null ) {
+  function __construct( $parameters = null, DAVResource $prefetched_collection = null ) {
     $this->exists        = null;
     $this->bound_from    = null;
     $this->dav_name      = null;
@@ -172,6 +175,11 @@ class DAVResource
     $this->_is_external      = false;
     $this->_is_addressbook   = false;
     $this->_is_proxy_resource = false;
+
+    if ( isset($prefetched_collection) ) {
+      $this->collection = $prefetched_collection;
+    }
+
     if ( isset($parameters) && is_object($parameters) ) {
       $this->FromRow($parameters);
     }
@@ -1288,6 +1296,15 @@ EOQRY;
 
 
   /**
+   * Returns the name of the timezone for this collection, or the collection containing this resource
+   */
+  function timezone_name() {
+      if ( !isset($this->collection) ) $this->FetchCollection();
+      return $this->collection->timezone;
+  }
+
+
+  /**
   * Returns the database row for this resource
   */
   function resource() {
@@ -1533,8 +1550,8 @@ EOQRY;
   * Return an array which is an expansion of the DAV::allprop
   */
   function DAV_AllProperties() {
-    if ( isset($this->dead_properties) ) $this->FetchDeadProperties();
-    $allprop = array_merge( (isset($this->dead_properties)?$this->dead_properties:array()),
+    if ( !isset($this->dead_properties) ) $this->FetchDeadProperties();
+    $allprop = array_merge( (isset($this->dead_properties)?array_keys($this->dead_properties):array()),
       (isset($include_properties)?$include_properties:array()),
       array(
         'DAV::getcontenttype', 'DAV::resourcetype', 'DAV::getcontentlength', 'DAV::displayname', 'DAV::getlastmodified',
@@ -1842,7 +1859,7 @@ EOQRY;
 
       case 'urn:ietf:params:xml:ns:carddav:max-resource-size':
         if ( ! $this->_is_collection || !$this->_is_addressbook ) return false;
-        $reply->NSElement($prop, $tag, 65500 );
+        $reply->NSElement($prop, $tag, $c->carddav_max_resource_size );
         break;
 
       case 'urn:ietf:params:xml:ns:carddav:supported-address-data':

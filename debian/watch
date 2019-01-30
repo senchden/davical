@@ -1,2 +1,2 @@
 version=3
-https://gitlab.com/davical-project/davical/tags \/davical-project\/davical\/repository\/r([\d.]*)\/archive.tar.gz
+https://gitlab.com/davical-project/davical/tags?sort=updated_desc \/davical-project\/davical\/-\/archive\/r([\d.]+)\/davical-r[\d.]+\.tar\.gz

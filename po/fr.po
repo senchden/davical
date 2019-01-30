@@ -896,6 +896,9 @@ msgstr "Mise à jour d'une collection agenda autorisée uniquement pour un conte
 msgid "Passed"
 msgstr "Passé"
 
+msgid "Passed: %s"
+msgstr "Passé: %s"
+
 msgid "Password"
 msgstr "Mot de passe"
 

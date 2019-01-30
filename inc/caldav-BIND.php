@@ -82,7 +82,7 @@ if ( preg_match ( '{^(?:https?://|file:///)([^/]+)(:[0-9]\+)?/.+$}', $href, $mat
     $qry = new AwlQuery( 'SELECT bind_id from dav_binding where dav_name = :dav_name', array( ':dav_name' => $destination_path ) );
     if ( ! $qry->Exec('BIND',__LINE__,__FILE__) || $qry->rows() != 1 || !($row = $qry->Fetch()) )
       $request->DoResponse(500,translate('Database Error'));
-    fetch_external ( $row->bind_id, '' );
+    fetch_external ( $row->bind_id, '', $c->external_ua_string );
     $request->DoResponse(201);
   }
   else {

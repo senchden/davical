@@ -133,8 +133,7 @@ function process_ace( $grantor, $by_principal, $by_collection, $ace ) {
       if ( privilege_to_bits('all') != $privileges ) {
         $request->PreconditionFailed(403, 'no-protected-ace-conflict', 'Owner must always have all permissions' );
       }
-      continue;  // and then we ignore it, since it's protected
-      break;
+      break;  // and then we ignore it, since it's protected
 
     case 'DAV::unauthenticated':
       $request->PreconditionFailed(403, 'allowed-principal', 'May not set privileges for unauthenticated users' );
@@ -175,7 +174,7 @@ function process_ace( $grantor, $by_principal, $by_collection, $ace ) {
 
     case 'DAV::authenticated':
       $principal_type = 'authenticated';
-      if ( bindec($grantor->GetProperty('default_privileges')) == $privileges ) continue; // There is no change, so skip it
+      if ( bindec($grantor->GetProperty('default_privileges')) == $privileges ) break; // There is no change, so skip it
       $sqlparms = array( ':privileges' => $privileges );
       if ( isset($by_collection) ) {
         $sql = 'UPDATE collection SET default_privileges=:privileges::INT::BIT(24) WHERE collection_id=:by_collection';

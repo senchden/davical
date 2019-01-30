@@ -144,7 +144,7 @@ EOSQL;
         else if ( $object->sync_status == 201 && $first_status == 404 ) {
           // ... Delete ... Create ... is indicated as a create, but don't forget we started with a delete
           array_pop($responses);
-          $dav_resource = new DAVResource($object);
+          $dav_resource = new DAVResource($object, $collection);
           $resultset = $dav_resource->GetPropStat($proplist,$reply);
           array_unshift($resultset, new XMLElement( 'href', ConstructURL($object->dav_name)));
           $responses[] = new XMLElement( 'response', $resultset );
@@ -167,7 +167,7 @@ EOSQL;
           $first_status = 404;
         }
         else {
-          $dav_resource = new DAVResource($object);
+          $dav_resource = new DAVResource($object, $collection);
           $resultset = $dav_resource->GetPropStat($proplist,$reply);
           array_unshift($resultset, new XMLElement( 'href', ConstructURL($object->dav_name)));
           $first_status = $object->sync_status;

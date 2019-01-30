@@ -268,6 +268,8 @@ function check_davical_version() {
     else {
       $result->setDescription( sprintf(i18n('Want: %s, Currently: %s'), $current_version, $c->version_string) );
     }
+  } else {
+      $result->setDescription( sprintf(i18n('Passed: %s'), $c->version_string) );
   }
   return $result;
 }
@@ -282,6 +284,8 @@ function check_awl_version() {
   if ( ! $result->getOK() ) {
     $result->setDescription( sprintf(i18n('Want: %s, Currently: %s'), $c->want_awl_version, awl_version()) );
     if ( $c->want_awl_version < awl_version() ) $result->setClass('dep_warning');
+  } else {
+    $result->setDescription( sprintf(i18n('Passed: %s'), $c->want_awl_version) );
   }
   return $result;
 
