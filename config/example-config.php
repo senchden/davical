@@ -768,3 +768,16 @@ $c->admin_email ='calendar-admin@example.com';
 //  $c->metrics_collectors = array('127.0.0.1');  // Restrict access to only this IP address
 //  $c->metrics_require_user = 'metricsuser';     // Restrict access to only connections authenticating as this user
 
+/***************************************************************************
+*                                                                          *
+*                               Audit Logging                              *
+*                                                                          *
+***************************************************************************/
+/* To enable audit logging to syslog you can uncomment the following line.
+*
+* This file is suitable for basic auditing, if you want/need more comprehensive
+* logging then see:
+*   http://wiki.davical.org/index.php/Configuration/hooks/log_caldav_action
+*/
+//include('log_caldav_action.php');
+
