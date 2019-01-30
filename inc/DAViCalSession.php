@@ -98,6 +98,15 @@ class DAViCalSession extends Session
         $this->roles[$role->role_name] = 1;
       }
     }
+    // inherit the Admin role
+    $sql = 'SELECT role_name FROM (((group_member JOIN dav_principal first_dav_principal ON group_member.group_id=first_dav_principal.principal_id) JOIN role_member ON first_dav_principal.user_no=role_member.user_no) JOIN roles ON roles.role_no=role_member.role_no) JOIN dav_principal second_dav_principal ON group_member.member_id=second_dav_principal.principal_id WHERE second_dav_principal.user_no = '.$this->user_no;
+    $qry = new AwlQuery( $sql );
+    if ( $qry->Exec('DAViCalSession') && $qry->rows() > 0 ) {
+      while( $role = $qry->Fetch() ) {
+        if($role->role_name=='Admin')
+          $this->roles['Admin'] = 1;
+      }
+    }
   }
 
 
