@@ -1232,6 +1232,26 @@ function expand_event_instances( vComponent $vResource, $range_start = null, $ra
   $is_date = false;
   $has_repeats = false;
   $dtstart_type = 'DTSTART';
+
+  $components_prefix = [];
+  $components_base_events = [];
+  $components_override_events = [];
+
+  foreach ($components AS $k => $comp) {
+    if ( $comp->GetType() != 'VEVENT' && $comp->GetType() != 'VTODO' && $comp->GetType() != 'VJOURNAL' ) {
+      // Other types of component (such as VTIMEZONE) go first
+      $components_prefix[] = $comp;
+    } else if ($comp->GetProperty('RECURRENCE-ID') === null) {
+      // This is the base event, we need to handle it first
+      $components_base_events[] = $comp;
+    } else {
+      // This is an override of an event instance, handle it last
+      $components_override_events[] = $comp;
+    }
+  }
+
+  $components = array_merge($components_prefix, $components_base_events, $components_override_events);
+
   foreach( $components AS $k => $comp ) {
     if ( $comp->GetType() != 'VEVENT' && $comp->GetType() != 'VTODO' && $comp->GetType() != 'VJOURNAL' ) {
       continue;
@@ -1378,36 +1398,43 @@ function expand_event_instances( vComponent $vResource, $range_start = null, $ra
     $p = $comp->GetProperty('RECURRENCE-ID');
     if ( isset($p) && $p->Value() != '') {
       $recurrence_id = $p->Value();
-      if ( !isset($new_components[$recurrence_id]) ) {
-        // The component we're replacing is outside the range.  Unless the replacement
-        // is *in* the range we will move along to the next one.
-        $dtstart_prop = $comp->GetProperty($dtstart_type);
-        if ( !isset($dtstart_prop) ) continue;  // No start: no expansion.  Note that we consider 'DUE' to be a start if DTSTART is missing
-        $dtstart = new RepeatRuleDateTime( $dtstart_prop );
-        $is_date = $dtstart->isDate();
-        if ( $return_floating_times ) $dtstart->setAsFloat();
-        $dtstart = $dtstart->FloatOrUTC($return_floating_times);
-        if ( $dtstart > $end_utc ) continue; // Start after end of range, skip it
 
-        $end_type = ($comp->GetType() == 'VTODO' ? 'DUE' : 'DTEND');
-        $duration = $comp->GetProperty('DURATION');
-        if ( !isset($duration) || $duration->Value() == '' ) {
-          $instance_end = $comp->GetProperty($end_type);
-          if ( isset($instance_end) ) {
-            $dtend = new RepeatRuleDateTime( $instance_end );
-            if ( $return_floating_times ) $dtend->setAsFloat();
-            $dtend = $dtend->FloatOrUTC($return_floating_times);
-          }
-          else {
-            $dtend = $dtstart  + ($is_date ? $dtstart + 86400 : 0 );
-          }
+
+      $dtstart_prop = $comp->GetProperty('DTSTART');
+      if ( !isset($dtstart_prop) && $comp->GetType() != 'VTODO' ) {
+        $dtstart_prop = $comp->GetProperty('DUE');
+      }
+
+      if ( !isset($new_components[$recurrence_id]) && !isset($dtstart_prop) ) continue;  // No start: no expansion.  Note that we consider 'DUE' to be a start if DTSTART is missing
+      $dtstart_rrdt = new RepeatRuleDateTime( $dtstart_prop );
+      $is_date = $dtstart_rrdt->isDate();
+      if ( $return_floating_times ) $dtstart_rrdt->setAsFloat();
+      $dtstart = $dtstart_rrdt->FloatOrUTC($return_floating_times);
+      if ( !isset($new_components[$recurrence_id]) && $dtstart > $end_utc ) continue; // Start after end of range, skip it
+
+      $end_type = ($comp->GetType() == 'VTODO' ? 'DUE' : 'DTEND');
+      $duration = $comp->GetProperty('DURATION');
+
+      if ( !isset($duration) || $duration->Value() == '' ) {
+        $instance_end = $comp->GetProperty($end_type);
+        if ( isset($instance_end) ) {
+          $dtend_rrdt = new RepeatRuleDateTime( $instance_end );
+          if ( $return_floating_times ) $dtend_rrdt->setAsFloat();
+          $dtend = $dtend_rrdt->FloatOrUTC($return_floating_times);
+
+          $comp->AddProperty('DURATION', Rfc5545Duration::fromTwoDates($dtstart_rrdt, $dtend_rrdt) );
         }
         else {
-          $duration = new Rfc5545Duration($duration->Value());
-          $dtend = $dtstart + $duration->asSeconds();
+          $dtend = $dtstart  + ($is_date ? $dtstart + 86400 : 0 );
         }
-        if ( $dtend < $start_utc ) continue; // End before start of range: skip that too.
       }
+      else {
+        $duration = new Rfc5545Duration($duration->Value());
+        $dtend = $dtstart + $duration->asSeconds();
+      }
+
+      if ( !isset($new_components[$recurrence_id]) && $dtend < $start_utc ) continue; // End before start of range: skip that too.
+
       if ( DEBUG_RRULE ) printf( "Replacing overridden instance at %s\n", $recurrence_id);
       $new_components[$recurrence_id] = $comp;
     }
