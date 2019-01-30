@@ -9,7 +9,7 @@ build:
     - mv debian/changelog debian/changelog.old
     - >
       cat
-      <(echo "davical ($(cat VERSION)~git$(date +"%Y%m%d")-$(git rev-parse --short $CI_COMMIT_SHA)) unstable; urgency=medium")
+      <(echo "davical ($(cat VERSION)-99~git$(date +"%Y%m%d")-$(git rev-parse --short $CI_COMMIT_SHA)) unstable; urgency=medium")
       <(echo "")
       <(echo "  * Build on CI")
       <(echo "")
