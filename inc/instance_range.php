@@ -3,7 +3,11 @@
 require_once("RRule.php");
 require_once("vCalendar.php");
 
-function update_instance_ranges(string $collection_dav_name) {
+/**
+* Update instance range columns when a collection's timezone changes
+* @param string $collection_dav_name The collection to process
+*/
+function update_instance_ranges($collection_dav_name) {
   // This can take a while, since vCalendar parsing is very slow, and we're
   // going to parse every event in the collection!
   //
