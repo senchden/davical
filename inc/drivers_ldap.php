@@ -529,15 +529,8 @@ function sync_LDAP_groups(){
       $qry = new AwlQuery( "UPDATE dav_principal set type_id = 3 WHERE username=:group ",array(':group'=>$group) );
       $qry->Exec('sync_LDAP',__LINE__,__FILE__);
       Principal::cacheDelete('username', $group);
-      $c->messages[] = sprintf(i18n('- adding users %s to group : %s'),join(',',$ldap_groups_info[$group][$member_field]),$group);
-      foreach ( $ldap_groups_info[$group][$member_field] as $member ){
-        if ( $member_field == 'uniqueMember' || $dnfix ) {
-          $member = ldap_explode_dn($member,1)[0];
-        }
-        $qry = new AwlQuery( "INSERT INTO group_member SELECT g.principal_id AS group_id,u.principal_id AS member_id FROM dav_principal g, dav_principal u WHERE g.username=:group AND u.username=:member;",array (':group'=>$group,':member'=>$member) );
-        $qry->Exec('sync_LDAP_groups',__LINE__,__FILE__);
-        Principal::cacheDelete('username', $member);
-      }
+      // mark group for updating, so users get synced
+      $groups_to_update[] = $group;
     }
     $c->messages[] = sprintf( i18n('- creating groups : %s'), join(', ',$groups_to_create) );
   }
