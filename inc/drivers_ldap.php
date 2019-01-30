@@ -482,9 +482,14 @@ function sync_LDAP_groups(){
   $groups_to_update = array_intersect($db_groups,$ldap_groups);
 
   if ( sizeof ( $groups_to_create ) ){
-    $c->messages[] = sprintf(i18n('- creating groups : %s'),join(', ',$groups_to_create));
     $validUserFields = awl_get_fields('usr');
     foreach ( $groups_to_create as $k => $group ){
+      if ( isset($c->do_not_sync_group_from_ldap) && isset($c->do_not_sync_group_from_ldap[$group]) ){
+        unset($groups_to_create[$k]);
+        $groups_nothing_done[] = $group;
+        continue;
+      }
+
       $user = (object) array();
 
       if ( isset($c->authenticate_hook['config']['default_value']) && is_array($c->authenticate_hook['config']['default_value']) ) {
@@ -524,8 +529,8 @@ function sync_LDAP_groups(){
       $qry = new AwlQuery( "UPDATE dav_principal set type_id = 3 WHERE username=:group ",array(':group'=>$group) );
       $qry->Exec('sync_LDAP',__LINE__,__FILE__);
       Principal::cacheDelete('username', $group);
-      $c->messages[] = sprintf(i18n('- adding users %s to group : %s'),join(',',$ldap_groups_info[$group][$mapping['members']]),$group);
-      foreach ( $ldap_groups_info[$group][$mapping['members']] as $member ){
+      $c->messages[] = sprintf(i18n('- adding users %s to group : %s'),join(',',$ldap_groups_info[$group][$member_field]),$group);
+      foreach ( $ldap_groups_info[$group][$member_field] as $member ){
         if ( $member_field == 'uniqueMember' || $dnfix ) {
           $member = ldap_explode_dn($member,1)[0];
         }
@@ -534,6 +539,7 @@ function sync_LDAP_groups(){
         Principal::cacheDelete('username', $member);
       }
     }
+    $c->messages[] = sprintf( i18n('- creating groups : %s'), join(', ',$groups_to_create) );
   }
 
   if ( sizeof ( $groups_to_update ) ){
@@ -578,9 +584,9 @@ function sync_LDAP_groups(){
     }
     if ( sizeof($groups_to_deactivate) )
       $c->messages[] = sprintf(i18n('- deactivated groups : %s'), join(', ',$groups_to_deactivate));
-    if ( sizeof($groups_nothing_done) )
-      $c->messages[] = sprintf(i18n('- nothing done on : %s'), join(', ', $groups_nothing_done));
   }
+  if ( sizeof($groups_nothing_done) )
+    $c->messages[] = sprintf( i18n('- nothing done on : %s'), join(', ',$groups_nothing_done) );
 
 }
 
