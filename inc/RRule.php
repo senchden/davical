@@ -1449,10 +1449,11 @@ function expand_event_instances( vComponent $vResource, $range_start = null, $ra
 /**
  * Return a date range for this component.
  * @param vComponent $comp
+ * @param string $fallback_tzid Default timezone to use, if any
  * @throws Exception (1) When DTSTART is not present but the RFC says MUST and (2) when we get an unsupported component
  * @return RepeatRuleDateRange
  */
-function getComponentRange(vComponent $comp, string $fallback_tzid = null) {
+function getComponentRange(vComponent $comp, $fallback_tzid = null) {
   $dtstart_prop = $comp->GetProperty('DTSTART');
   $duration_prop = $comp->GetProperty('DURATION');
   if ( isset($duration_prop) ) {
@@ -1505,9 +1506,10 @@ function getComponentRange(vComponent $comp, string $fallback_tzid = null) {
 * @todo: This should probably be made part of the VCalendar object when we move the RRule.php into AWL.
 *
 * @param object $vResource A vComponent which is a VCALENDAR containing components needing expansion
+* @param string $fallback_tzid Default timezone to use, if any
 * @return RepeatRuleDateRange Representing the range of time covered by the event.
 */
-function getVCalendarRange( $vResource, string $fallback_tzid = null ) {
+function getVCalendarRange( $vResource, $fallback_tzid = null ) {
   $components = $vResource->GetComponents();
 
   $dtstart = null;
