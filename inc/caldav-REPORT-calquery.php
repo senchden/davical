@@ -328,7 +328,7 @@ if ( isset($c->hide_older_than) && intval($c->hide_older_than > 0) ) {
   $where .= " AND (CASE WHEN caldav_data.caldav_type<>'VEVENT' OR calendar_item.dtstart IS NULL OR calendar_item.rrule IS NOT NULL THEN true ELSE calendar_item.dtstart > (now() - interval '".intval($c->hide_older_than)." days') END) ";
 }
 
-$sql = 'SELECT '.$distinct.' caldav_data.*,calendar_item.*  FROM collection INNER JOIN caldav_data USING(collection_id) INNER JOIN calendar_item USING(dav_id) '. $where;
+$sql = 'SELECT '.$distinct.' caldav_data.*,calendar_item.*,collection.timezone AS collection_tzid FROM collection INNER JOIN caldav_data USING(collection_id) INNER JOIN calendar_item USING(dav_id) '. $where;
 if ( isset($c->strict_result_ordering) && $c->strict_result_ordering ) $sql .= " ORDER BY caldav_data.dav_id";
 $qry = new AwlQuery( $sql, $params );
 if ( $qry->Exec("calquery",__LINE__,__FILE__) && $qry->rows() > 0 ) {
@@ -340,10 +340,10 @@ if ( $qry->Exec("calquery",__LINE__,__FILE__) && $qry->rows() > 0 ) {
         }
         if ( $need_expansion ) {
           $vResource = new vComponent($dav_object->caldav_data);
-          $expanded = getVCalendarRange($vResource);
+          $expanded = getVCalendarRange($vResource, $dav_object->collection_tzid);
           if ( !$expanded->overlaps($range_filter) ) continue;
 
-          $expanded = expand_event_instances($vResource, $expand_range_start, $expand_range_end, $expand_as_floating );
+          $expanded = expand_event_instances($vResource, $expand_range_start, $expand_range_end, $expand_as_floating , $dav_object->collection_tzid);
 
           if ( $expanded->ComponentCount() == 0 ) continue;
           if ( $need_expansion ) $dav_object->caldav_data = $expanded->Render();

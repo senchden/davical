@@ -1203,7 +1203,7 @@ function rrule_expand( $dtstart, $property, $component, $range_end, $is_date=nul
 *
 * @return vComponent The original vComponent, with the instances of the internal components expanded.
 */
-function expand_event_instances( vComponent $vResource, $range_start = null, $range_end = null, $return_floating_times=false ) {
+function expand_event_instances( vComponent $vResource, $range_start = null, $range_end = null, $return_floating_times=false, $fallback_tzid=null ) {
     global $c;
     $components = $vResource->GetComponents();
 
@@ -1302,7 +1302,7 @@ function expand_event_instances( vComponent $vResource, $range_start = null, $ra
       }
       print "\n";
     }
-    $instances += rrule_expand($dtstart, 'RRULE', $comp, $range_end, null, $return_floating_times);
+    $instances += rrule_expand($dtstart, 'RRULE', $comp, $range_end, null, $return_floating_times, $fallback_tzid);
     if ( DEBUG_RRULE ) {
       print( "After rrule_expand");
       foreach( $instances AS $k => $v ) {
