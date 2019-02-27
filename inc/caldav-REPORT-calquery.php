@@ -125,24 +125,42 @@ function SqlFilterFragment( $filter, $components, $property = null, $parameter =
         */
         $start_column = ($components[sizeof($components)-1] == 'VTODO' ? "due" : 'dtend');     // The column we compare against the START attribute
         $finish_column = 'dtstart';  // The column we compare against the END attribute
+
         $start = $v->GetAttribute("start");
         $finish = $v->GetAttribute("end");
-        $start_sql = $finish_sql = '';
-        if ( isset($start) ) {
+
+        if ( isset($start) )
           $params[':time_range_start'] = $start;
-          $start_sql .= ' (('.$start_column.' IS NULL AND '.$finish_column.' > :time_range_start) OR '.$start_column.' > :time_range_start) ';
-        }
-        if ( isset($finish) ) {
+
+        if ( isset($finish) )
           $params[':time_range_end'] = $finish;
-          $finish_sql = ' '.$finish_column.' < :time_range_end ';
+
+
+        $legacy_start_cond = "($start_column IS NULL AND $finish_column > :time_range_start) OR $start_column > :time_range_start";
+        $legacy_end_cond = "$finish_column < :time_range_end";
+
+        $new_start_cond = "last_instance_end IS NULL OR last_instance_end >= :time_range_start";
+        $new_end_cond = "first_instance_start <= :time_range_end";
+
+        if (!isset($start) && !isset($end)) {
+          $legacy_cond = "true";
+          $new_cond = "true";
+        } else if (!isset($start) && isset($end)) {
+          $legacy_cond = $legacy_end_cond;
+          $new_cond = $new_end_cond;
+        } else if (isset($start) && !isset($end)) {
+          $legacy_cond = $legacy_start_cond;
+          $new_cond = $new_start_cond;
+        } else if (isset($start) && isset($end)) {
+          $legacy_cond = "($legacy_end_cond) AND ($legacy_start_cond)";
+          $new_cond = "($new_end_cond) AND ($new_start_cond)";
         }
-        if ( isset($start) || isset($finish) ) {
-          $sql .= ' AND (rrule IS NOT NULL OR '.$finish_column.' IS NULL OR (';
-          if ( isset($start) ) $sql .= $start_sql;
-          if ( isset($start) && isset($finish) ) $sql .= ' AND ';
-          if ( isset($finish) ) $sql .= $finish_sql;
-          $sql .= '))';
-        }
+
+        $sql .= " AND (
+(first_instance_start IS NULL AND rrule IS NOT NULL OR $finish_column IS NULL OR ($legacy_cond))
+OR (first_instance_start IS NOT NULL AND ($new_cond))
+) ";
+
         @dbg_error_log('calquery', 'filter-sql: %s', $sql);
         @dbg_error_log('calquery', 'time-range-start: %s,  time-range-end: %s, ', $params[':time_range_start'], $params[':time_range_end']);
         $range_filter = new RepeatRuleDateRange((empty($start) ? null : new RepeatRuleDateTime($start)),
