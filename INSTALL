@@ -78,7 +78,7 @@ a number of years.
 
 The following other software is also needed:
   Apache: 1.3.x or 2.x.x
-  PHP: 5.1 or greater (along with the PDO and PostgreSQL extensions)
+  PHP: 5.4 or greater (along with the PDO and PostgreSQL extensions)
   PostgreSQL: 8.2 or greater
 
 The PostgreSQL database may be installed on a server other
