@@ -882,8 +882,8 @@ msgstr "Soporte PHP iconv"
 msgid "PHP not using Apache Filter mode"
 msgstr "PHP sin usar el modo filtro de Apache"
 
-msgid "PHP5 curl support is required for external binds"
-msgstr "El soporte cURL para PHP5 se necesita para binds externos"
+msgid "PHP curl support is required for external binds"
+msgstr "El soporte cURL para PHP se necesita para binds externos"
 
 msgid ""
 "PUT on a collection is only allowed for text/calendar content against a "

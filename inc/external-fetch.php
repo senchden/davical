@@ -15,7 +15,7 @@ function create_external ( $path,$is_calendar,$is_addressbook )
   global $request;
   if ( ! function_exists ( "curl_init" ) ) {
     dbg_error_log("external", "external resource cannot be fetched without curl, please install curl");
-    $request->DoResponse( 503, translate('PHP5 curl support is required for external binds') );
+    $request->DoResponse( 503, translate('PHP curl support is required for external binds') );
     return ;
   }
   $resourcetypes = '<DAV::collection/>';

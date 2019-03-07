@@ -883,7 +883,7 @@ msgstr "Støtte for PHP iconv"
 msgid "PHP not using Apache Filter mode"
 msgstr "PHP er ikke satt til å bruke Apache Filter-modus."
 
-msgid "PHP5 curl support is required for external binds"
+msgid "PHP curl support is required for external binds"
 msgstr ""
 
 msgid ""

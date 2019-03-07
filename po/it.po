@@ -880,7 +880,7 @@ msgstr ""
 msgid "PHP not using Apache Filter mode"
 msgstr ""
 
-msgid "PHP5 curl support is required for external binds"
+msgid "PHP curl support is required for external binds"
 msgstr ""
 
 msgid ""
