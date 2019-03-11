@@ -884,7 +884,7 @@ msgid "PHP not using Apache Filter mode"
 msgstr "PHP nepoužíva mód Apache filtra"
 
 msgid "PHP curl support is required for external binds"
-msgstr "Pre externé spojenia sa vyžaduje podpora PHP5 curl"
+msgstr "Pre externé spojenia sa vyžaduje podpora PHP curl"
 
 msgid ""
 "PUT on a collection is only allowed for text/calendar content against a "

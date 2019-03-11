@@ -43,7 +43,7 @@ function fetch_external ( $bind_id, $min_age = '1 hour', $ua_string )
 {
   if ( ! function_exists ( "curl_init" ) ) {
     dbg_error_log("external", "external resource cannot be fetched without curl, please install curl");
-    $request->DoResponse( 503, translate('PHP5 curl support is required for external binds') );
+    $request->DoResponse( 503, translate('PHP curl support is required for external binds') );
     return ;
   }
   $sql = 'SELECT collection.*, collection.dav_name AS path, dav_binding.external_url AS external_url FROM dav_binding LEFT JOIN collection ON (collection.collection_id=bound_source_id) WHERE bind_id = :bind_id';
