@@ -1645,7 +1645,7 @@ INSERT INTO calendar_item (user_no, dav_name, dav_id, dav_etag, uid, dtstamp,
    VALUES ( :user_no, :dav_name, :dav_id, :etag, :uid, :dtstamp,
                 :dtstart, $dtend, :summary, :location, :class, :transp,
                 :description, :rrule, :tzid, :modified, :url, :priority,
-                :created, :due, :percent_complete, :status, $collection_id,
+                :created, :due, :percent_complete, :status, :collection_id,
                 :first_instance_start, :last_instance_end)
 EOSQL;
     $sync_change = 201;
