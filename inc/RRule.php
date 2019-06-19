@@ -1477,6 +1477,7 @@ function getComponentRange(vComponent $comp, $fallback_tzid = null) {
         if ( !isset($dtstart_prop) )
           $dtstart_prop = $comp->GetProperty('DTSTAMP');
         $dtend_prop = $dtstart_prop;
+        break;
       default:
         throw new Exception('getComponentRange cannot handle "'.$comp->GetType().'" components', 0);
     }
