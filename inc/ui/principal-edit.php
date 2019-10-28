@@ -1,4 +1,5 @@
 <?php
+require_once("csrf_tokens.php");
 
 param_to_global('id', 'int', 'old_id', 'principal_id' );
 
@@ -181,6 +182,13 @@ function principal_editor() {
   $editor->AddAttribute( 'email', 'title', translate("The email address identifies principals when processing invitations and freebusy lookups. It should be set to a unique value.") );
   $editor->SetWhere( 'principal_id='.$id );
 
+  if($_SERVER['REQUEST_METHOD'] === "POST" && !verifyCsrfPost()) {
+      $c->messages[] = i18n("A valid CSRF token must be provided");
+      $can_write_principal = false;
+  }
+
+  $csrf_field = getCsrfField();
+
   $editor->AddField('is_admin', 'EXISTS( SELECT 1 FROM role_member WHERE role_no = 1 AND role_member.user_no = dav_principal.user_no )' );
   $editor->AddAttribute('is_admin', 'title', translate('An "Administrator" user has full rights to the whole DAViCal System'));
 
@@ -237,7 +245,7 @@ function principal_editor() {
       $c->messages[] = i18n("Updating Principal record.");
     }
     $editor->Write();
-    if ( $_POST['type_id'] != 3 && $editor->IsCreate() ) {
+      if ( $_POST['type_id'] != 3 && $editor->IsCreate() ) {
       /** We only add the default calendar if it isn't a group, and this is a create action */
       require_once('auth-functions.php');
       CreateHomeCollections($editor->Value('username'));
@@ -396,6 +404,7 @@ label.privilege {
  <tr> <th class="right" style="white-space:normal;">$prompt_privileges:</th><td class="left">$privs_html</td> </tr>
  $submit_row
 </table>
+ $csrf_field 
 </form>
 EOTEMPLATE;
 
@@ -545,9 +554,11 @@ function edit_group_row( $row_data ) {
   global $id, $grouprow;
 
   $form_url = preg_replace( '#&(edit|delete)_group=\d+#', '', $_SERVER['REQUEST_URI'] );
+  $csrf_field = getCsrfField();
 
   $template = <<<EOTEMPLATE
 <form method="POST" enctype="multipart/form-data" id="add_group" action="$form_url">
+  $csrf_field
   <td class="left"><input type="hidden" name="id" value="$id"></td>
   <td class="left" colspan="3">##member_id.select## &nbsp; ##Add.submit##</td>
   <td class="center"></td>
@@ -660,8 +671,11 @@ function edit_grant_row_principal( $row_data ) {
   $form_id = $grantrow->Id();
   $form_url = preg_replace( '#&(edit|delete)_grant=\d+#', '', $_SERVER['REQUEST_URI'] );
 
+  $csrf_field = getCsrfField();
+
   $template = <<<EOTEMPLATE
 <form method="POST" enctype="multipart/form-data" id="form_$form_id" action="$form_url">
+  $csrf_field
   <td class="left" colspan="2"><input type="hidden" name="id" value="$id"><input type="hidden" name="orig_to_id" value="$orig_to_id">##to_principal.select##</td>
   <td class="left" colspan="2">$privs_html</td>
   <td class="center">##submit##</td>
@@ -788,9 +802,11 @@ function edit_ticket_row( $row_data ) {
   $form_id = $ticketrow->Id();
   $ticket_id = $row_data->ticket_id;
   $form_url = preg_replace( '#&(edit|delete)_[a-z]+=\d+#', '', $_SERVER['REQUEST_URI'] );
+  $csrf_field = getCsrfField();
 
   $template = <<<EOTEMPLATE
 <form method="POST" enctype="multipart/form-data" id="form_$form_id" action="$form_url">
+  $csrf_field
   <td class="left">$ticket_id<input type="hidden" name="id" value="$id"><input type="hidden" name="ticket_id" value="$ticket_id"></td>
   <td class="left"><input type="text" name="target" value="$row_data->target"></td>
   <td class="left"><input type="text" name="expires" value="$row_data->expires" size="10"></td>
@@ -1011,8 +1027,11 @@ function edit_binding_row( $row_data ) {
   $source_title = translate('Path to collection you wish to bind, like /user1/calendar/ or https://cal.example.com/user2/cal/');
   $access_title = translate('optional');
 
+  $csrf_field = getCsrfField();
+
   $template = <<<EOTEMPLATE
 <form method="POST" enctype="multipart/form-data" id="form_$form_id" action="$form_url">
+  $csrf_field
   <td class="left">&nbsp;<input type="hidden" name="id" value="$id"></td>
   <td class="left"><input type="text" name="dav_name" value="$row_data->dav_name" size="25"></td>
   <td class="left"><input type="text" name="dav_displayname" size="20"></td>

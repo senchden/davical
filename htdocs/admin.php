@@ -1,4 +1,5 @@
 <?php
+
 require_once('./always.php');
 require_once('classEditor.php');
 require_once('classBrowser.php');
@@ -25,7 +26,12 @@ require_once('interactive-page.php');
 $page_elements = array();
 $code_file = sprintf( 'ui/%s-%s.php', $component, $action );
 if ( ! @include_once( $code_file ) ) {
-  $c->messages[] = sprintf('No page found to %s %s%s%s', $action, ($action == 'browse' ? '' : 'a '), $component, ($action == 'browse' ? 's' : ''));
+  $c->messages[] = sprintf(
+      'No page found to %s %s%s%s',
+      htmlspecialchars($action),
+      ($action == 'browse' ? '' : 'a '), $component,
+      ($action == 'browse' ? 's' : '')
+  );
   include('page-header.php');
   include('page-footer.php');
   @ob_flush(); exit(0);
