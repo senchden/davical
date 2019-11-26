@@ -1645,7 +1645,7 @@ INSERT INTO calendar_item (user_no, dav_name, dav_id, dav_etag, uid, dtstamp,
    VALUES ( :user_no, :dav_name, :dav_id, :etag, :uid, :dtstamp,
                 :dtstart, $dtend, :summary, :location, :class, :transp,
                 :description, :rrule, :tzid, :modified, :url, :priority,
-                :created, :due, :percent_complete, :status, $collection_id,
+                :created, :due, :percent_complete, :status, :collection_id,
                 :first_instance_start, :last_instance_end)
 EOSQL;
     $sync_change = 201;
@@ -1683,7 +1683,8 @@ EOSQL;
     rollback_on_error( $caldav_context, $user_no, $path);
     return false;
   }
-  $qry->QDo("SELECT write_sync_change( $collection_id, $sync_change, :dav_name)", array(':dav_name' => $path ) );
+  $qry->QDo("SELECT write_sync_change( :collection_id, $sync_change, :dav_name)",
+     array(':collection_id' => $collection_id, ':dav_name' => $path ) );
   $qry->Commit();
 
   if ( function_exists('post_commit_action') ) {
