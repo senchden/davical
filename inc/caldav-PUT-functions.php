@@ -1684,7 +1684,7 @@ EOSQL;
     return false;
   }
   $qry->QDo("SELECT write_sync_change( :collection_id, $sync_change, :dav_name)",
-     array(':collection_id' => $collection_id, :dav_name' => $path ) );
+     array(':collection_id' => $collection_id, ':dav_name' => $path ) );
   $qry->Commit();
 
   if ( function_exists('post_commit_action') ) {
