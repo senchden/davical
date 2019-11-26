@@ -1683,7 +1683,8 @@ EOSQL;
     rollback_on_error( $caldav_context, $user_no, $path);
     return false;
   }
-  $qry->QDo("SELECT write_sync_change( $collection_id, $sync_change, :dav_name)", array(':dav_name' => $path ) );
+  $qry->QDo("SELECT write_sync_change( :collection_id, $sync_change, :dav_name)",
+     array(':collection_id' => $collection_id, :dav_name' => $path ) );
   $qry->Commit();
 
   if ( function_exists('post_commit_action') ) {
