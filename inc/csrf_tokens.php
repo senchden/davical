@@ -107,7 +107,7 @@ function verifyCsrf($csrf_token) {
         return hash_equals($current_csrf, $csrf_token);
     }
 
-    return false;
+    return $current_csrf === $csrf_token;
 }
 
 /**
