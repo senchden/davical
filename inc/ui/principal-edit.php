@@ -245,7 +245,7 @@ function principal_editor() {
       $c->messages[] = i18n("Updating Principal record.");
     }
     $editor->Write();
-      if ( $_POST['type_id'] != 3 && $editor->IsCreate() ) {
+    if ( $_POST['type_id'] != 3 && $editor->IsCreate() ) {
       /** We only add the default calendar if it isn't a group, and this is a create action */
       require_once('auth-functions.php');
       CreateHomeCollections($editor->Value('username'));
