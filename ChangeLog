@@ -1,3 +1,34 @@
+2019-11-29 Niels van Gijzen <niels.van.gijzen@gmail.com>
+	* Correct reflected cross-site scripting (XSS) vulnerability
+	* Correct persistent XSS vulnerability in user/group/resource details
+	* Correct persistent XSS vulnerability in user/group/resource list
+	* Add token to address cross-site request forgery (CSRF) vulnerability
+
+2019-11-26 Andrew Ruthven <puck@catalyst.net.nz>
+	* More syntax errors with collection_id
+
+2019-03-28 Cyprian Guerra <cyprian.guerra@gmail.com>
+	* Fix syntax of collection_id parameter
+
+2019-06-19 Milan Crha <mcrha@redhat.com>
+	* Add missing 'break' to rrule.php
+
+2019-03-11 Florian Schlichting <fsfs@debian.org>
+	* More PHP curl message corrections
+
+2019-03-06 Andrew Ruthven <puck@catalyst.net.nz>
+	* Specify PHP curl, not PHP5
+
+2019-03-05 Jamie McClymont <jamie.mcclymont@gmail.com>
+	* Update minimum PHP version requirement
+
+2019-02-27 Jamie McClymont <jamiemcclymont@catalyst.net.nz>
+	* Make range-based calendar queries use the new first_instance_start/last_instance_end columns
+	* Make calquery expansion aware of the calendar default timezone
+
+2019-02-12 Florian Schlichting <fsfs@debian.org>
+	* Fix more PHP7+ type hints for PHP5 compatibility (fixes #197)
+
 2019-01-30 Florian Schlichting <fsfs@debian.org>
 	* add users to new groups in the "update groups" step
 	* honour do_not_sync_group_from_ldap when creating groups, correctly display all results
