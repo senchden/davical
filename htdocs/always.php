@@ -45,7 +45,7 @@ function clean_get() {
 if(isset($_POST)) array_walk($_POST, 'filter_post');
 $_GET = clean_get();
 $_SERVER['REQUEST_URI'] = str_replace("&amp;", "&", htmlspecialchars($_SERVER['REQUEST_URI']));
-$_SERVER['HTTP_REFERER'] = htmlspecialchars($_SERVER['HTTP_REFERER']);
+$_SERVER['HTTP_REFERER'] = htmlspecialchars(@$_SERVER['HTTP_REFERER']);
 
 
 
