@@ -66,6 +66,12 @@ if ( isset($privsql) ) {
   $can_write_collection = ($session->AllowedTo('Admin') || (bindec($permissions->priv) & privilege_to_bits('DAV::bind')) );
 }
 
+// Verify CSRF token
+if($_SERVER['REQUEST_METHOD'] === "POST" && !verifyCsrfPost()) {
+    $c->messages[] = i18n("A valid CSRF token must be provided");
+    $can_write_collection = false;
+}
+
 dbg_error_log('collection-edit', "Can write collection: %s", ($can_write_collection? 'yes' : 'no') );
 
 $pwstars = '@@@@@@@@@@';
