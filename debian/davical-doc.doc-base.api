@@ -8,5 +8,5 @@ Abstract: Technical documentation for DAViCal
  documentation details the classes and methods in die DAViCal programs.
 
 Format: HTML
-Index: /usr/share/doc/davical-doc/api/index.html
-Files: /usr/share/doc/davical-doc/api/*.html
+Index: /usr/share/doc/davical/api/index.html
+Files: /usr/share/doc/davical/api/*.html

@@ -1,3 +1,17 @@
+davical (1.1.9.2-1) unstable; urgency=medium
+
+  * New upstream release (closes: #934106)
+    + fixes CVE-2019-18345 CVE-2019-18346 CVE-2019-18347 (closes: #946343)
+  * Drop dependency on rst2pdf to clear the blocker for testing migration
+  * Use debian-compat dependency, level 12
+  * Put API documentation into davical directory (instead of davical-doc), as
+    has been suggested by policy for a while
+  * Fix capitalization on Vcs- fields
+  * Declare compliance with Debian Policy 4.4.1
+  * Add a basic upstream metadata file, as suggested by the Debian Janitor
+
+ -- Florian Schlichting <fsfs@debian.org>  Thu, 12 Dec 2019 00:20:46 +0800
+
 davical (1.1.8-1) unstable; urgency=medium
 
   * New upstream release

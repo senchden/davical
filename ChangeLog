@@ -1,3 +1,10 @@
+2019-12-06 Florian Schlichting <fsfs@debian.org>
+	* use foreach() instead of deprecated each() (fixes #190)
+	* HTTP_REFERER will usually be unset for caldav requests, prevent "Undefined index" warnings
+
+2019-12-06 Niels van Gijzen <niels.van.gijzen@gmail.com>
+	* Fix CSRF not being checked in collection-edit.php
+
 2019-11-29 Niels van Gijzen <niels.van.gijzen@gmail.com>
 	* Correct reflected cross-site scripting (XSS) vulnerability
 	* Correct persistent XSS vulnerability in user/group/resource details
