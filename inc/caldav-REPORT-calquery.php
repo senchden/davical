@@ -10,7 +10,7 @@ $qry_content = $xmltree->GetContent('urn:ietf:params:xml:ns:caldav:calendar-quer
 $properties = array();
 $include_properties = array();
 $need_expansion = false;
-while (list($idx, $qqq) = each($qry_content))
+foreach ($qry_content as $idx => $qqq)
 {
   $proptype = $qry_content[$idx]->GetNSTag();
   switch( $proptype ) {
