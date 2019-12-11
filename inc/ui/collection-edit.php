@@ -1,5 +1,4 @@
 <?php
-require_once("csrf_tokens.php");
 
 // Editor component for collections
 $editor = new Editor(translate('Collection'), 'collection');
@@ -64,12 +63,6 @@ if ( isset($privsql) ) {
   $privqry->Exec('admin-collection-edit',__LINE__,__FILE__);
   $permissions = $privqry->Fetch();
   $can_write_collection = ($session->AllowedTo('Admin') || (bindec($permissions->priv) & privilege_to_bits('DAV::bind')) );
-}
-
-// Verify CSRF token
-if($_SERVER['REQUEST_METHOD'] === "POST" && !verifyCsrfPost()) {
-    $c->messages[] = i18n("A valid CSRF token must be provided");
-    $can_write_collection = false;
 }
 
 dbg_error_log('collection-edit', "Can write collection: %s", ($can_write_collection? 'yes' : 'no') );
@@ -280,7 +273,6 @@ EOPRIV;
   $submit_row = '';
 }
 
-$csrf_field = getCsrfField();
 $id = $editor->Value('collection_id');
 $template = <<<EOTEMPLATE
 ##form##
@@ -392,7 +384,6 @@ label.privilege {
  <tr> <th class="right">$prompt_description:</th>      <td class="left">##description.textarea.78x6##</td> </tr>
  $submit_row
 </table>
-$csrf_field
 </form>
 <script language="javascript">
 toggle_enabled('fld_is_calendar','=fld_timezone','=fld_schedule_transp','!fld_is_addressbook');
@@ -462,11 +453,9 @@ if ( $editor->Available() ) {
     $orig_to_id = $row_data->to_principal;
     $form_id = $grantrow->Id();
     $form_url = preg_replace( '#&(edit|delete)_grant=\d+#', '', $_SERVER['REQUEST_URI'] );
-    $csrf_field = getCsrfField();
 
     $template = <<<EOTEMPLATE
 <form method="POST" enctype="multipart/form-data" id="form_$form_id" action="$form_url">
-  $csrf_field
   <td class="left" colspan="2"><input type="hidden" name="id" value="$id"><input type="hidden" name="orig_to_id" value="$orig_to_id">##to_principal.select##</td>
   <td class="left" colspan="2">
 <input type="button" value="$btn_all" class="submit" title="$btn_all_title" onclick="toggle_privileges('grant_privileges', 'all', 'form_$form_id');">

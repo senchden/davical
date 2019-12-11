@@ -20,9 +20,6 @@ if ( isset($_SERVER['SCRIPT_NAME']) ) {
   if ( $wiki_help == 'admin' ) {
     $wiki_help .= '/' . $_GET['t'] . '/' . $_GET['action'];
   }
-
-  $wiki_help = htmlspecialchars($wiki_help);
-
   $wiki_help = 'w/Help/'.$wiki_help;
 }
 

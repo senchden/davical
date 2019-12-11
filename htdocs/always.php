@@ -8,47 +8,6 @@
 
 if ( preg_match('{/always.php$}', $_SERVER['SCRIPT_NAME'] ) ) header('Location: index.php');
 
-// XSS Protection
-function filter_post(&$val, $index) {
-    if(in_array($index, ["newpass1", "newpass2"])) return;
-
-    switch (gettype($val)) {
-        case "string":
-            $val = htmlspecialchars($val);
-            break;
-
-        case "array":
-            array_walk_recursive($val, function(&$v) {
-                if (gettype($v) == "string") {
-                    $v = htmlspecialchars($v);
-                }
-            });
-            break;
-    }
-}
-
-function clean_get() {
-    $temp = [];
-
-    foreach($_GET as $key => $value) {
-        // XSS is possible in both key and values
-        $k = htmlspecialchars($key);
-        $v = htmlspecialchars($value);
-        $temp[$k] = $v;
-    }
-
-    return $temp;
-}
-
-// Before anything else is executed we filter all the user input, a lot of code in this project
-// relies on variables that are easily manipulated by the user. These lines and functions filter all those variables.
-if(isset($_POST)) array_walk($_POST, 'filter_post');
-$_GET = clean_get();
-$_SERVER['REQUEST_URI'] = str_replace("&amp;", "&", htmlspecialchars($_SERVER['REQUEST_URI']));
-$_SERVER['HTTP_REFERER'] = htmlspecialchars(@$_SERVER['HTTP_REFERER']);
-
-
-
 // Ensure the configuration starts out as an empty object.
 $c = (object) array();
 $c->script_start_time = microtime(true);
