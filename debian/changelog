@@ -1,3 +1,11 @@
+davical (1.1.5-1+deb9u1) stretch-security; urgency=high
+
+  * Fix three cross-site scripting and cross-site request forgery
+    vulnerabilities in the web administration front-end:
+    CVE-2019-18345 CVE-2019-18346 CVE-2019-18347 (closes: #946343)
+
+ -- Florian Schlichting <fsfs@debian.org>  Fri, 13 Dec 2019 07:59:08 +0800
+
 davical (1.1.5-1) unstable; urgency=medium
 
   * New upstream release (closes: #703130, #703138, #703342)
