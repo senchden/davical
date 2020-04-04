@@ -33,9 +33,6 @@ i18n('Edit this user record');
 i18n('You are viewing');
 i18n('You are editing');
 
-# Translators: this is a colloquial phrase in english (the name of a flower) and is an option allowing people to log in automatically in future
-i18n("forget me not");
-
 // Date format types
 i18n('European');
 i18n('US Format');
