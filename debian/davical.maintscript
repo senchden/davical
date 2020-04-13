@@ -1,0 +1,1 @@
+rm_conffile /etc/davical/.keep/keepme 1.1.4-1~ davical

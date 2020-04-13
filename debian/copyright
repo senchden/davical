@@ -7,7 +7,7 @@ Files: *
 Copyright: 2006 - 2013, Andrew McMillan <andrew@mcmillan.net.nz>
  2006 - 2008, Catalyst IT Ltd
  2008 - 2013, Morphoss Ltd
- 2007 - 2019, Davical contributors (see CREDITS for details)
+ 2007 - 2020, Davical contributors (see CREDITS for details)
 License: GPL-2+
 
 Files: dba/caldav_functions.sql htdocs/public.php htdocs/tools.php
@@ -18,7 +18,7 @@ Files: dba/caldav_functions.sql htdocs/public.php htdocs/tools.php
 Copyright: 2006 - 2013, Andrew McMillan <andrew@mcmillan.net.nz>
  2006 - 2008, Catalyst IT Ltd
  2008 - 2013, Morphoss Ltd
- 2007 - 2019, Davical contributors (see CREDITS for details)
+ 2007 - 2020, Davical contributors (see CREDITS for details)
 License: GPL-2
 
 Files: htdocs/tz.php inc/CalDAVRequest.php inc/iSchedule-POST.php
@@ -28,14 +28,14 @@ Files: htdocs/tz.php inc/CalDAVRequest.php inc/iSchedule-POST.php
 Copyright: 2006 - 2013, Andrew McMillan <andrew@mcmillan.net.nz>
  2006 - 2008, Catalyst IT Ltd
  2008 - 2013, Morphoss Ltd
- 2007 - 2019, Davical contributors (see CREDITS for details)
+ 2007 - 2020, Davical contributors (see CREDITS for details)
 License: GPL-3+
 
 Files: inc/caldav-client-v2.php
 Copyright: 2006 - 2013, Andrew McMillan <andrew@mcmillan.net.nz>
  2006 - 2008, Catalyst IT Ltd
  2008 - 2013, Morphoss Ltd
- 2007 - 2019, Davical contributors (see CREDITS for details)
+ 2007 - 2020, Davical contributors (see CREDITS for details)
 License: LGPL-3+
 
 Files: inc/check_UTF8.php
@@ -93,7 +93,7 @@ License: 3-clause-bsd
 
 Files: debian/*
 Copyright: 2006-2012, Andrew McMillan <awm@debian.org>
- 2014-2019, Florian Schlichting <fsfs@debian.org>
+ 2014-2020, Florian Schlichting <fsfs@debian.org>
 License: GPL-2+
 
 License: GPL-2+
