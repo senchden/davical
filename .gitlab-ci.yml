@@ -1,4 +1,4 @@
-image: php:apache-stretch
+image: php:apache-buster
 
 build:
   stage: build
@@ -50,6 +50,7 @@ test:
     - docker-php-ext-install -j$(nproc) pdo_pgsql
     - docker-php-ext-install -j$(nproc) calendar
     - echo '127.0.1.1  regression mycaldav myempty' >> /etc/hosts
+    - rm /etc/apache2/ports.conf /etc/apache2/sites-enabled/000-default.conf && touch /etc/apache2/ports.conf
     - cp testing/apache-site.conf.example /etc/apache2/sites-enabled/davical-regression.conf
     - sed -i 's/\/path\/to/\/usr\/share/g' /etc/apache2/sites-enabled/davical-regression.conf
     - mkdir /usr/share/davical/testing/
@@ -58,13 +59,13 @@ test:
     - cp testing/regression-conf.php.example /etc/davical/regression-conf.php
     - ln -s /etc/davical/regression-conf.php /etc/davical/mycaldav-conf.php
     - ln -s /etc/davical/regression-conf.php /etc/davical/myempty-conf.php
-    - sed -i '/peer/d' /etc/postgresql/9.6/main/pg_hba.conf
-    - echo 'local  all  all  trust' >> /etc/postgresql/9.6/main/pg_hba.conf
-    - pg_ctlcluster 9.6 main start
+    - sed -i '/peer/d' /etc/postgresql/11/main/pg_hba.conf
+    - echo 'local  all  all  trust' >> /etc/postgresql/11/main/pg_hba.conf
+    - pg_ctlcluster 11 main start
     - su postgres -c 'createuser davical_dba --createdb --createrole --superuser'
     - su postgres -c 'createuser davical_app --superuser'
     - su postgres -c 'createuser testrunner --superuser'
-    - pg_ctlcluster 9.6 main restart
+    - pg_ctlcluster 11 main restart
     - a2enmod rewrite
     - apache2ctl start
     - useradd testrunner
