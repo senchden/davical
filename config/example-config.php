@@ -113,6 +113,14 @@ $c->admin_email ='calendar-admin@example.com';
 // $c->local_styles = array();
 // $c->print_styles = array();
 
+/**
+* Allow users to see all accounts listed, or only their account and
+* the accounts they have a relationship to in the web interface. 
+* Admins will still be able to see all accounts.
+* Default: true
+*/
+// $c->list_everyone = false;
+
 
 /***************************************************************************
 *                                                                          *

@@ -615,7 +615,7 @@ function group_members_browser() {
 
 
 function grant_row_editor() {
-  global $c, $id, $editor, $can_write_principal, $privilege_names;
+  global $c, $id, $editor, $can_write_principal, $privilege_names, $session;
 
   $grantrow = new Editor("Grants", "grants");
   $grantrow->SetSubmitName( 'savegrantrow' );
@@ -623,7 +623,13 @@ function grant_row_editor() {
   if ( isset($_GET['edit_grant']) ) {
     $edit_grant_clause = ' AND to_principal != '.intval($_GET['edit_grant']);
   }
-  $grantrow->SetLookup( 'to_principal', 'SELECT principal_id, displayname FROM dav_principal WHERE user_active AND principal_id NOT IN (SELECT to_principal FROM grants WHERE by_principal = '.$id.$edit_grant_clause.') ORDER BY fullname' );
+  $limit_grantrow = '';
+  if ( ! $c->list_everyone ) {
+    if ( ! $session->AllowedTo( "Admin" ) ) {
+      $limit_grantrow = 'AND (principal_id = \''.$session->principal_id.'\' or principal_id in (select member_id from group_member where group_id in (select group_id from group_member where member_id = \''.$session->principal_id.'\')) or principal_id in (select group_id from group_member where member_id = \''.$session->principal_id.'\'))';
+    }
+  }
+  $grantrow->SetLookup( 'to_principal', 'SELECT principal_id, displayname FROM dav_principal WHERE user_active AND principal_id NOT IN (SELECT to_principal FROM grants WHERE by_principal = '.$id.$edit_grant_clause.') '.$limit_grantrow.' ORDER BY fullname' );
   if ( $can_write_principal ) {
     if ( $grantrow->IsSubmit() ) {
       if ( $grantrow->IsUpdate() )

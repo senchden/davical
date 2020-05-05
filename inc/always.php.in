@@ -134,6 +134,7 @@ $c->locale_path = '../locale';
 $c->base_url = preg_replace('#/[^/]+\.php.*$#', '', $_SERVER['SCRIPT_NAME']);
 $c->base_directory = preg_replace('#/[^/]*$#', '', $_SERVER['DOCUMENT_ROOT']);
 $c->default_privileges = array('read-free-busy', 'schedule-deliver');
+$c->list_everyone = true;
 
 $c->enable_auto_schedule = true;
 
