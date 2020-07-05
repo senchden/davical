@@ -1,3 +1,10 @@
+davical (1.1.9.3-1.1) unstable; urgency=high
+
+  * Non-maintainer upload.
+  * Stop using rst2pdf that might not be in bullseye. (Closes: #962653)
+
+ -- Adrian Bunk <bunk@debian.org>  Sun, 05 Jul 2020 12:34:48 +0300
+
 davical (1.1.9.3-1) unstable; urgency=medium
 
   * New upstream release to support AWL 0.61
