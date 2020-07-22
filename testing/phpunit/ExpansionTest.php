@@ -88,6 +88,22 @@ END:VEVENT
 END:VCALENDAR
 ");
 
+$count_cal = new vCalendar("BEGIN:VCALENDAR
+PRODID:-//Mozilla.org/NONSGML Mozilla Calendar V1.1//EN
+VERSION:2.0
+BEGIN:VEVENT
+CREATED:20190117T001216Z
+LAST-MODIFIED:20190117T001233Z
+DTSTAMP:20190117T001233Z
+UID:dae6404d-1ce0-42d0-af3b-0d303034197b
+SUMMARY:New Event
+RRULE:FREQ=WEEKLY;COUNT=4;BYDAY=MO,TU,WE,TH
+DTSTART;TZID=Pacific/Auckland:20190121T130000
+DTEND;TZID=Pacific/Auckland:20190121T140000
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR");
+
 /**
  * A simplified model of get_freebusy, which works off of a passed-in vCalendar
  * rather than making SQL queries
@@ -150,4 +166,14 @@ final class ExpansionTest extends TestCase
       get_freebusyish($tuesday_renamed_cal_order_swapped)
     );
   }
+
+  public function testCalWithCount() {
+    global $count_cal;
+
+    self::assertEquals(
+      self::expected_freebusyish_for_base,
+      get_freebusyish($count_cal)
+    );
+  }
+
 }

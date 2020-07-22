@@ -816,12 +816,12 @@ class RepeatRule {
         if ( !isset($this->instances[$position]) || $instance != $this->instances[$position] ) {
           $got_more = true;
           $position++;
-          $this->instances[$position] = $instance;
-          if ( DEBUG_RRULE ) printf( "Added date %s into position %d in current set\n", $instance->format('c'), $position );
-          if ( isset($this->count) && ($position + 1) >= $this->count ) {
+          if ( isset($this->count) && $position >= $this->count ) {
             $this->finished = true;
             return;
           }
+          $this->instances[$position] = $instance;
+          if ( DEBUG_RRULE ) printf( "Added date %s into position %d in current set\n", $instance->format('c'), $position );
         }
       }
     }
