@@ -93,7 +93,7 @@ END:VCALENDAR
  * rather than making SQL queries
  */
 function get_freebusyish(vCalendar $cal) {
-  $expansion = expand_event_instances($cal)->GetComponents(['VEVENT' => true]);
+  $expansion = expand_event_instances($cal, new RepeatRuleDateTime('2019-01-01 00:00:00'))->GetComponents(['VEVENT' => true]);
 
   $result = array();
 
