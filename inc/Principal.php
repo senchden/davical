@@ -202,7 +202,7 @@ class Principal {
       $sql .= '0::BIT(24) AS privileges ';
       $params = array( );
     }
-    $sql .= 'FROM dav_principal WHERE ';
+    $sql .= 'FROM dav_principal LEFT JOIN usr_emails USING (user_no) WHERE ';
     switch ( $type ) {
       case 'username':
         $sql .= 'lower(username)=lower(text(:param))';
@@ -215,7 +215,7 @@ class Principal {
         break;
       case 'email':
         $this->by_email = true;
-        $sql .= 'lower(email)=lower(:param)';
+        $sql .= 'lower(usr_emails.email)=lower(:param)';
         break;
     }
     $params[':param'] = $value;
@@ -529,11 +529,22 @@ class Principal {
       $update_list = array();
     }
     $sql_params = array();
+    $email = "";
     foreach( self::updateableFields() AS $k ) {
       if ( !isset($field_values->{$k}) && !isset($this->{$k}) ) continue;
 
+
       $param_name = ':'.$k;
+
+      // special case email, it now goes in a different table, this is taken
+      // as being the primary email address for the principal.
+      if ( $k == 'email' ) {
+          $email = (isset($field_values->{$k}) ? $field_values->{$k} : $this->{$k});
+          continue;
+      }
+
       $sql_params[$param_name] = (isset($field_values->{$k}) ? $field_values->{$k} : $this->{$k});
+
       if ( $k  ==  'default_privileges' ) {
         $sql_params[$param_name] = sprintf('%024s',$sql_params[$param_name]);
         $param_name = 'cast('.$param_name.' as text)::BIT(24)';
@@ -580,9 +591,27 @@ class Principal {
     $qry = new AwlQuery($sql, $sql_params);
     if ( $qry->Exec('Principal',__FILE__,__LINE__) ) {
       $this->unCache();
+
       $new_principal = new Principal('username', $sql_params[':username']);
       foreach( $new_principal AS $k => $v ) {
         $this->{$k} = $v;
+      }
+    }
+
+    // email
+    if ($email != "") {
+      $sql_params[':email'] = $email;
+      $sql_params[':user_no'] = $this->user_no;
+
+      if ( $inserting ) {
+        $sql = 'INSERT INTO usr_emails (user_no, email) VALUES (:user_no, :email)';
+      } else {
+        $sql = 'UPDATE usr_emails SET email = :email WHERE user_no = :user_no AND main = true';
+      }
+
+      $qry = new AwlQuery($sql, $sql_params);
+      if ( $qry->Exec('Principal',__FILE__,__LINE__) ) {
+        $this->{email} = $email;
       }
     }
   }
@@ -617,5 +646,18 @@ class Principal {
       $value = '/'.$value.'/';
     }
     $cache->delete('principal-'.$value, null);
+  }
+
+  /**
+  * Find if an email address is associated with this principle.
+  * @return boolean True if found.
+  */
+  protected function searchEmails( $email ) {
+    $qry = new AwlQuery('SELECT * FROM usr_emails WHERE user_no = :user_no, email = :email',
+        array(':user_no' => $this->user_no(), ':email' => $email) );
+
+    if ( $qry->Exec('Principal') ) {
+      return $qry->Rows;
+    }
   }
 }

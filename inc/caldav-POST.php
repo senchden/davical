@@ -64,7 +64,39 @@ function handle_freebusy_request( $ic ) {
       }
       if ($localname) {
         dbg_error_log( 'POST', 'try to resolve local attendee %s', $localname);
-        $qry = new AwlQuery('SELECT fullname, email FROM usr WHERE user_no = (SELECT user_no FROM principal WHERE type_id = 1 AND user_no = (SELECT user_no FROM usr WHERE lower(username) = (text(:username)))) UNION SELECT fullname, email FROM usr WHERE user_no IN (SELECT user_no FROM principal WHERE principal_id IN (SELECT member_id FROM group_member WHERE group_id = (SELECT principal_id FROM principal WHERE type_id = 3 AND user_no = (SELECT user_no FROM usr WHERE lower(username) = (text(:username))))))', array(':username' => strtolower($localname)));
+        $qry = new AwlQuery('    SELECT fullname, email
+                                 FROM usr
+                                 WHERE user_no = (
+                                     SELECT user_no
+                                     FROM principal
+                                     WHERE type_id = 1
+                                       AND user_no = (
+                                           SELECT user_no
+                                           FROM usr
+                                       WHERE lower(username) = (text(:username))
+                                   )
+                                 )
+                             UNION
+                                 SELECT fullname, email
+                                 FROM usr
+                                 WHERE user_no IN (
+                                     SELECT user_no
+                                     FROM principal
+                                     WHERE principal_id IN (
+                                         SELECT member_id
+                                         FROM group_member
+                                         WHERE group_id = (
+                                             SELECT principal_id
+                                             FROM principal
+                                             WHERE type_id = 3
+                                               AND user_no = (
+                                                   SELECT user_no
+                                                   FROM usr
+                                                   WHERE lower(username) = (text(:username))
+                                               )
+                                         )
+                                     )
+                                 )', array(':username' => strtolower($localname)));
         if ( $qry->Exec('POST',__LINE__,__FILE__) && $qry->rows() >= 1 ) {
           dbg_error_log( 'POST', 'resolved local name %s to %d individual attendees', $localname, $qry->rows());
           while ($row = $qry->Fetch()) {

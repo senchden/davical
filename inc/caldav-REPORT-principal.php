@@ -28,6 +28,7 @@ foreach( $searches AS $k => $search ) {
   dbg_log_array( "principal", "MATCH", $match, true );
   $match = $match[0]->GetContent();
   $subwhere = "";
+  $from_extra = "";
   foreach( $qry_props AS $k1 => $v1 ) {
     if ( $subwhere != "" ) $subwhere .= " OR ";
     switch( $v1->GetNSTag() ) {
@@ -39,7 +40,8 @@ foreach( $searches AS $k => $search ) {
       case 'urn:ietf:params:xml:ns:caldav:calendar-user-address-set':
         $match = preg_replace('{^.*/caldav.php/([^/]+)(/.*)?$}', '\\1', $match);
         $match = preg_replace('{^mailto:}', '', $match);
-        $subwhere .= ' (email ILIKE :user_address_match OR username ILIKE :user_address_match) ';
+        $subwhere .= ' (usr_emails.email ILIKE :user_address_match OR username ILIKE :user_address_match) ';
+        $from_extra = " LEFT JOIN usr_emails USING (user_no) ";
         $params[':user_address_match'] = '%'.$match.'%';
         break;
 
@@ -62,7 +64,7 @@ foreach( $searches AS $k => $search ) {
   }
 }
 if ( $where != "" ) $where = "WHERE $where";
-$sql = "SELECT * FROM dav_principal $where ORDER BY principal_id LIMIT 100";
+$sql = "SELECT * FROM dav_principal $from_extra $where ORDER BY principal_id LIMIT 100";
 $qry = new AwlQuery($sql, $params);
 
 
