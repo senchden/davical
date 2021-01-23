@@ -24,7 +24,7 @@ if ( !isset($principal_type) || $principal_type == 3 ) {
 }
 
 $browser->SetOrdering( 'username', 'A' );
-$browser->SetJoins( "dav_principal " );
+$browser->SetJoins( "dav_principal LEFT JOIN usr_emails ON (dav_principal.user_no = usr_emails.user_no AND usr_emails.main = true)" );
 
 if ( isset($principal_active) && $principal_active == 'f' )
   $browser->SetWhere( 'NOT user_active' );

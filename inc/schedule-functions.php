@@ -99,7 +99,7 @@ function doItipAttendeeReply( vCalendar $resource, $partstat ) {
   $attendees = $vcal->GetAttendees();
   foreach( $attendees AS $v ) {
     $email = preg_replace( '/^mailto:/i', '', $v->Value() );
-    if ( $email == $request->principal->email() ) {
+    if ( $request->principal->searchEmails($email) ) {
       $attendee = $v;
       break;
     }

@@ -41,6 +41,7 @@ $delete_principal_confirmation_required = null;
 $delete_ticket_confirmation_required = null;
 $delete_bind_in_confirmation_required = null;
 $delete_binding_confirmation_required = null;
+$delete_email_confirmation_required = null;
 
 function handle_subaction( $subaction ) {
   global $session, $c, $id, $editor;
@@ -49,6 +50,7 @@ function handle_subaction( $subaction ) {
   global $delete_ticket_confirmation_required;
   global $delete_bind_in_confirmation_required;
   global $delete_binding_confirmation_required;
+  global $delete_email_confirmation_required;
   global $can_write_principal;
 
   dbg_error_log('admin-principal-edit',':handle_action: Action %s', $subaction );
@@ -164,6 +166,33 @@ function handle_subaction( $subaction ) {
       }
       break;
 
+# This isn't used because the classEditor handles deleting, but there is no confirmation. Which is better?
+#    case 'delete_email':
+#      dbg_error_log('admin-principal-edit',':handle_action: Deleting email "%s" for principal %d', $_GET['email'], $id );
+#      if ($can_write_principal) {
+#        if ( $session->CheckConfirmationHash('GET', 'confirm') ) {
+#          dbg_error_log('admin-principal-edit',':handle_action: Allowed to delete email "%s" for principal %d', $_GET['email'], $id );
+#          $qry = new AwlQuery('DELETE FROM usr_emails WHERE user_no=? AND email=?;', $id, $_GET['email'] );
+#          if ( $qry->Exec() ) {
+#            $c->messages[] = i18n('Email deleted.');
+#            return true;
+#          }
+#          else {
+#            $c->messages[] = i18n('There was an error writing to the database.');
+#            return false;
+#          }
+#        }
+#        else {
+#          $c->messages[] = i18n('Please confirm deletion of email - see below');
+#          $delete_email_confirmation_required = $session->BuildConfirmationHash('GET', 'confirm');
+#          return false;
+#        }
+#      }
+#      else {
+#        $c->messages[] = i18n('You are not allowed to delete emails for this principal.');
+#      }
+#      break;
+      
       default:
       return false;
   }
@@ -179,7 +208,6 @@ function principal_editor() {
   $editor->SetLookup( 'locale', 'SELECT \'\', \''.translate("*** Default Locale ***").'\' UNION SELECT locale, locale_name_locale FROM supported_locales ORDER BY 1 ASC' );
   $editor->AddAttribute( 'locale', 'title', translate("The preferred language for this person.") );
   $editor->AddAttribute( 'fullname', 'title', translate("The full name for this person, group or other type of principal.") );
-  $editor->AddAttribute( 'email', 'title', translate("The email address identifies principals when processing invitations and freebusy lookups. It should be set to a unique value.") );
   $editor->SetWhere( 'principal_id='.$id );
 
   if($_SERVER['REQUEST_METHOD'] === "POST" && !verifyCsrfPost()) {
@@ -302,7 +330,6 @@ function principal_editor() {
   $prompt_password_2 = translate('Confirm Password');
   $prompt_fullname = translate('Fullname');
   $prompt_displayname = translate('Display Name');
-  $prompt_email = translate('Email Address');
   $prompt_date_format = translate('Date Format Style');
   $prompt_admin = translate('Administrator');
   $prompt_active = translate('Active');
@@ -325,14 +352,6 @@ function principal_editor() {
     $admin_row_entry .= ' <tr> <th class="right">'.$prompt_active.':</th><td class="left">##user_active.checkbox##</td> </tr>';
     if ( isset($id) )
       $delete_principal_button = '<a href="'.$c->base_url . '/admin.php?action=edit&t=principal&subaction=delete_principal&id='.$id.'" class="submit">' . translate("Delete Principal") . '</a>';
-  }
-
-  $email_unique = '';
-  $qry = new AwlQuery('SELECT user_no FROM usr WHERE lower(usr.email) = lower(:email)',
-                        array( ':email' => $editor->Value('email') ));
-  $qry->Exec('principal-edit', __LINE__, __FILE__);
-  if ($qry->rows() > 1 ) {
-      $email_unique = ' <b style="color:red;">' . translate('Attention: email address not unique, scheduling may not work!') . '</b>';
   }
 
   $id = $editor->Value('principal_id');
@@ -396,7 +415,6 @@ label.privilege {
  <tr> <th class="right">$prompt_password_1:</th>  <td class="left">##newpass1.password.$pwstars##</td> </tr>
  <tr> <th class="right">$prompt_password_2:</th>  <td class="left">##newpass2.password.$pwstars##</td> </tr>
  <tr> <th class="right">$prompt_fullname:</th>    <td class="left">##fullname.input.50##</td> </tr>
- <tr> <th class="right">$prompt_email:</th>       <td class="left">##email.input.50##$email_unique</td> </tr>
  <tr> <th class="right">$prompt_locale:</th>      <td class="left">##locale.select##</td> </tr>
  <tr> <th class="right">$prompt_date_format:</th> <td class="left">##date_format_type.select##</td> </tr>
  <tr> <th class="right">$prompt_type:</th>        <td class="left">##type_id.select##</td> </tr>
@@ -487,6 +505,121 @@ function confirm_delete_principal($confirmation_hash, $displayname ) {
   return $html;
 }
 
+function email_row_editor() {
+  global $c, $id, $editor, $can_write_principal, $email;
+
+  $emailrow = new Editor("Email Addresses", "usr_emails");
+  $emailrow->SetSubmitName( 'saveemailrow' );
+  $edit_email_clause = '';
+  if ( $can_write_principal ) {
+    if ( $emailrow->IsSubmit() ) {
+
+      $_POST['user_no'] = $id;
+      $email = $_POST['email'];
+      $orig_email = $_POST['orig_email'];
+      $emailrow->SetWhere( 'user_no='.$id.' AND email=\''.$orig_email.'\'');
+      $emailrow->Assign('email', $email);
+      $emailrow->Assign('main', $_POST['main']);
+      $emailrow->Write( );
+      unset($_GET['email']);
+    }
+    elseif ( isset($_GET['delete_email']) ) {
+      $qry = new AwlQuery("DELETE FROM usr_emails WHERE user_no=:user_no AND email = :email",
+                            array( ':user_no' => $id, ':email' => $_GET['delete_email'] ));
+      $qry->Exec('email-delete');
+      $c->messages[] = translate('Deleted an email from this Principal');
+    }
+  }
+  return $emailrow;
+}
+
+
+function edit_email_row_email( $row_data ) {
+  global $id, $emailrow;
+
+  $email = $row_data->email;
+  if ( ! empty($email) ) {
+    $emailrow->SetRecord( $row_data );
+  }
+  else {
+    $emailrow->Initialise( $row_data );
+  }
+
+  $form_id = $emailrow->Id();
+  $form_url = preg_replace( '#&(edit|delete)_email=\d+#', '', $_SERVER['REQUEST_URI'] );
+
+  $csrf_field = getCsrfField();
+
+  $template = <<<EOTEMPLATE
+<form method="POST" enctype="multipart/form-data" id="form_$form_id" action="$form_url">
+  $csrf_field
+  <td class="left"><input type="hidden" name="id" value="$id"><input type="hidden" name="orig_email" value="$email">
+     <input type="text" name="email" value="$row_data->email"></d>
+  <td class="center">##main.checkbox##</td>
+  <td class="center">##submit##</td>
+</form>
+
+EOTEMPLATE;
+
+  $emailrow->SetTemplate( $template );
+  $emailrow->Title("");
+
+  return $emailrow->Render();
+}
+
+function format_boolean($col_val, $field, $row) {
+  if ($col_val == 0 || $col_val == '') {
+    return Translate('No');
+  } else if ($col_val == '1') {
+    return Translate('Yes');
+  }
+
+  return $col_val;
+}
+
+function email_browser() {
+  global $c, $id, $editor, $can_write_principal;
+  $browser = new Browser(translate('Email Addresses'));
+
+  $browser->AddColumn( 'email', translate('Email'), '', '##email_link##' );
+  $rowurl = $c->base_url . '/admin.php?action=edit&t=principal&id='.$id.'&edit_email=';
+  $browser->AddHidden( 'email_link', "'<a href=\"$rowurl' || email || '\">' || email || '</a>'" );
+  $browser->AddColumn( 'main', translate('Primary'), 'center', '', '', '', '', 'format_boolean');
+
+  if ( $can_write_principal ) {
+    $del_link  = '<a href="'.$c->base_url.'/admin.php?action=edit&t=principal&id='.$id.'&delete_email=##email##" class="submit" title="">'.translate('Delete').'</a>';
+    $edit_link  = '<a href="'.$c->base_url.'/admin.php?action=edit&t=principal&id='.$id.'&edit_email=##email##" class="submit" title="">'.translate('Edit').'</a>';
+    $browser->AddColumn( 'action', translate('Action'), 'center', '', "'$edit_link&nbsp;$del_link'" );
+  }
+
+  $browser->SetOrdering( 'email', 'A' );
+
+  $browser->SetJoins( "usr_emails " );
+  $browser->SetWhere( 'user_no = '.$id );
+
+  if ( $c->enable_row_linking ) {
+    $browser->RowFormat( '<tr onMouseover="LinkHref(this,1);" title="'.translate('Click to edit email').'" class="r%d">', '</tr>', '#even' );
+  }
+  else {
+    $browser->RowFormat( '<tr class="r%d">', '</tr>', '#even' );
+  }
+  $browser->DoQuery();
+
+
+  if ( $can_write_principal ) {
+    if ( isset($_GET['edit_email']) ) {
+      $browser->MatchedRow('email', $_GET['edit_email'], 'edit_email_row_email');
+    }
+    else if ( isset($id ) ) {
+      $browser->ExtraRowFormat( '<tr class="r%d">', '</tr>', '#even' );
+      $extra_row = array( 'email' => "" );
+      $browser->MatchedRow('email', "", 'edit_email_row_email');
+      $extra_row = (object) $extra_row;
+      $browser->AddRow($extra_row);
+    }
+  }
+  return $browser;
+}
 
 
 function group_memberships_browser() {
@@ -736,7 +869,6 @@ function principal_grants_browser() {
   }
   return $browser;
 }
-
 
 function ticket_row_editor() {
   global $c, $id, $editor, $can_write_principal, $privilege_names;
@@ -1150,6 +1282,10 @@ if ( isset($id) && $id > 0 ) {
   if ( isset($delete_principal_confirmation_required) )
     $page_elements[] = confirm_delete_principal($delete_principal_confirmation_required, $editor->Value('displayname'));
 
+
+  $emailrow = email_row_editor();
+  $page_elements[] = email_browser();
+  if ( isset($delete_email_confirmation_required) ) $page_elements[] = confirm_delete_email($delete_email_confirmation_required);
 
   $page_elements[] = group_memberships_browser();
   if ( $editor->Value('type_id') == 3 ) {

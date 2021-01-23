@@ -1,11 +1,11 @@
--- Define an updateable view for dav_principal which conbines the AWL usr
+-- Define an updateable view for dav_principal which combines the AWL usr
 -- record 1:1 with the principal table
 
 
 DROP VIEW IF EXISTS dav_principal CASCADE;
 CREATE OR REPLACE VIEW dav_principal AS
   SELECT user_no, usr.active AS user_active, joined AS created, updated AS modified,
-         username, password, fullname, email,
+         username, password, fullname,
          email_ok, date_format_type, locale,
          principal_id, type_id, displayname, default_privileges,
          TRUE AS is_principal,
@@ -19,7 +19,7 @@ CREATE OR REPLACE VIEW dav_principal AS
 CREATE or REPLACE RULE dav_principal_insert AS ON INSERT TO dav_principal
 DO INSTEAD
 (
-  INSERT INTO usr ( user_no, active, joined, updated, username, password, fullname, email, email_ok, date_format_type, locale )
+  INSERT INTO usr ( user_no, active, joined, updated, username, password, fullname, email_ok, date_format_type, locale )
     VALUES(
       COALESCE( NEW.user_no, nextval('usr_user_no_seq')),
       COALESCE( NEW.user_active, TRUE),
@@ -27,7 +27,7 @@ DO INSTEAD
       COALESCE( NEW.modified, current_timestamp),
       NEW.username, NEW.password,
       COALESCE( NEW.fullname, NEW.displayname ),
-      NEW.email, NEW.email_ok,
+      NEW.email_ok,
       COALESCE( NEW.date_format_type, 'E'),
       NEW.locale
     );
@@ -53,7 +53,6 @@ DO INSTEAD
       username=NEW.username,
       password=NEW.password,
       fullname=NEW.fullname,
-      email=NEW.email,
       email_ok=NEW.email_ok,
       date_format_type=NEW.date_format_type,
       locale=NEW.locale
