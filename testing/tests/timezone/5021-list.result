@@ -31,6 +31,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Africa/Asmara</local-name>
  </summary>
  <summary>
+  <tzid>Africa/Asmera</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Africa/Asmera</local-name>
+ </summary>
+ <summary>
   <tzid>Africa/Bamako</tzid>
   <last-modified>all good</last-modified>
   <local-name>Africa/Bamako</local-name>
@@ -251,6 +256,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Africa/Sao_Tome</local-name>
  </summary>
  <summary>
+  <tzid>Africa/Timbuktu</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Africa/Timbuktu</local-name>
+ </summary>
+ <summary>
   <tzid>Africa/Tripoli</tzid>
   <last-modified>all good</last-modified>
   <local-name>Africa/Tripoli</local-name>
@@ -299,6 +309,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>America/Argentina/Catamarca</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Argentina/Catamarca</local-name>
+ </summary>
+ <summary>
+  <tzid>America/Argentina/ComodRivadavia</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Argentina/ComodRivadavia</local-name>
  </summary>
  <summary>
   <tzid>America/Argentina/Cordoba</tzid>
@@ -366,6 +381,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>America/Atikokan</local-name>
  </summary>
  <summary>
+  <tzid>America/Atka</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Atka</local-name>
+ </summary>
+ <summary>
   <tzid>America/Bahia</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Bahia</local-name>
@@ -411,9 +431,9 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>America/Boise</local-name>
  </summary>
  <summary>
-  <tzid>America/Brasilia</tzid>
+  <tzid>America/Buenos_Aires</tzid>
   <last-modified>all good</last-modified>
-  <local-name>America/Brasilia</local-name>
+  <local-name>America/Buenos_Aires</local-name>
  </summary>
  <summary>
   <tzid>America/Cambridge_Bay</tzid>
@@ -436,6 +456,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>America/Caracas</local-name>
  </summary>
  <summary>
+  <tzid>America/Catamarca</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Catamarca</local-name>
+ </summary>
+ <summary>
   <tzid>America/Cayenne</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Cayenne</local-name>
@@ -454,6 +479,16 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>America/Chihuahua</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Chihuahua</local-name>
+ </summary>
+ <summary>
+  <tzid>America/Coral_Harbour</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Coral_Harbour</local-name>
+ </summary>
+ <summary>
+  <tzid>America/Cordoba</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Cordoba</local-name>
  </summary>
  <summary>
   <tzid>America/Costa_Rica</tzid>
@@ -521,9 +556,24 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>America/El_Salvador</local-name>
  </summary>
  <summary>
+  <tzid>America/Ensenada</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Ensenada</local-name>
+ </summary>
+ <summary>
   <tzid>America/Fortaleza</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Fortaleza</local-name>
+ </summary>
+ <summary>
+  <tzid>America/Fort_Nelson</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Fort_Nelson</local-name>
+ </summary>
+ <summary>
+  <tzid>America/Fort_Wayne</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Fort_Wayne</local-name>
  </summary>
  <summary>
   <tzid>America/Glace_Bay</tzid>
@@ -606,6 +656,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>America/Indiana/Petersburg</local-name>
  </summary>
  <summary>
+  <tzid>America/Indianapolis</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Indianapolis</local-name>
+ </summary>
+ <summary>
   <tzid>America/Indiana/Tell_City</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Indiana/Tell_City</local-name>
@@ -641,6 +696,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>America/Jamaica</local-name>
  </summary>
  <summary>
+  <tzid>America/Jujuy</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Jujuy</local-name>
+ </summary>
+ <summary>
   <tzid>America/Juneau</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Juneau</local-name>
@@ -654,6 +714,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>America/Kentucky/Monticello</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Kentucky/Monticello</local-name>
+ </summary>
+ <summary>
+  <tzid>America/Knox_IN</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Knox_IN</local-name>
  </summary>
  <summary>
   <tzid>America/Kralendijk</tzid>
@@ -674,6 +739,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>America/Los_Angeles</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Los_Angeles</local-name>
+ </summary>
+ <summary>
+  <tzid>America/Louisville</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Louisville</local-name>
  </summary>
  <summary>
   <tzid>America/Lower_Princes</tzid>
@@ -714,6 +784,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>America/Mazatlan</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Mazatlan</local-name>
+ </summary>
+ <summary>
+  <tzid>America/Mendoza</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Mendoza</local-name>
  </summary>
  <summary>
   <tzid>America/Menominee</tzid>
@@ -806,6 +881,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>America/North_Dakota/New_Salem</local-name>
  </summary>
  <summary>
+  <tzid>America/Nuuk</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Nuuk</local-name>
+ </summary>
+ <summary>
   <tzid>America/Ojinaga</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Ojinaga</local-name>
@@ -836,6 +916,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>America/Port-au-Prince</local-name>
  </summary>
  <summary>
+  <tzid>America/Porto_Acre</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Porto_Acre</local-name>
+ </summary>
+ <summary>
   <tzid>America/Port_of_Spain</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Port_of_Spain</local-name>
@@ -849,6 +934,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>America/Puerto_Rico</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Puerto_Rico</local-name>
+ </summary>
+ <summary>
+  <tzid>America/Punta_Arenas</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Punta_Arenas</local-name>
  </summary>
  <summary>
   <tzid>America/Rainy_River</tzid>
@@ -879,6 +969,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>America/Rio_Branco</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Rio_Branco</local-name>
+ </summary>
+ <summary>
+  <tzid>America/Rosario</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Rosario</local-name>
  </summary>
  <summary>
   <tzid>America/Santa_Isabel</tzid>
@@ -991,6 +1086,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>America/Vancouver</local-name>
  </summary>
  <summary>
+  <tzid>America/Virgin</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>America/Virgin</local-name>
+ </summary>
+ <summary>
   <tzid>America/Whitehorse</tzid>
   <last-modified>all good</last-modified>
   <local-name>America/Whitehorse</local-name>
@@ -1061,6 +1161,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Antarctica/Syowa</local-name>
  </summary>
  <summary>
+  <tzid>Antarctica/Troll</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Antarctica/Troll</local-name>
+ </summary>
+ <summary>
   <tzid>Antarctica/Vostok</tzid>
   <last-modified>all good</last-modified>
   <local-name>Antarctica/Vostok</local-name>
@@ -1106,6 +1211,16 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Asia/Ashgabat</local-name>
  </summary>
  <summary>
+  <tzid>Asia/Ashkhabad</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Ashkhabad</local-name>
+ </summary>
+ <summary>
+  <tzid>Asia/Atyrau</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Atyrau</local-name>
+ </summary>
+ <summary>
   <tzid>Asia/Baghdad</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Baghdad</local-name>
@@ -1126,6 +1241,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Asia/Bangkok</local-name>
  </summary>
  <summary>
+  <tzid>Asia/Barnaul</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Barnaul</local-name>
+ </summary>
+ <summary>
   <tzid>Asia/Beirut</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Beirut</local-name>
@@ -1141,6 +1261,16 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Asia/Brunei</local-name>
  </summary>
  <summary>
+  <tzid>Asia/Calcutta</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Calcutta</local-name>
+ </summary>
+ <summary>
+  <tzid>Asia/Chita</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Chita</local-name>
+ </summary>
+ <summary>
   <tzid>Asia/Choibalsan</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Choibalsan</local-name>
@@ -1151,9 +1281,19 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Asia/Chongqing</local-name>
  </summary>
  <summary>
+  <tzid>Asia/Chungking</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Chungking</local-name>
+ </summary>
+ <summary>
   <tzid>Asia/Colombo</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Colombo</local-name>
+ </summary>
+ <summary>
+  <tzid>Asia/Dacca</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Dacca</local-name>
  </summary>
  <summary>
   <tzid>Asia/Damascus</tzid>
@@ -1179,6 +1319,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>Asia/Dushanbe</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Dushanbe</local-name>
+ </summary>
+ <summary>
+  <tzid>Asia/Famagusta</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Famagusta</local-name>
  </summary>
  <summary>
   <tzid>Asia/Gaza</tzid>
@@ -1261,6 +1406,16 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Asia/Kathmandu</local-name>
  </summary>
  <summary>
+  <tzid>Asia/Katmandu</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Katmandu</local-name>
+ </summary>
+ <summary>
+  <tzid>Asia/Khandyga</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Khandyga</local-name>
+ </summary>
+ <summary>
   <tzid>Asia/Kolkata</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Kolkata</local-name>
@@ -1284,6 +1439,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>Asia/Kuwait</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Kuwait</local-name>
+ </summary>
+ <summary>
+  <tzid>Asia/Macao</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Macao</local-name>
  </summary>
  <summary>
   <tzid>Asia/Macau</tzid>
@@ -1356,6 +1516,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Asia/Qatar</local-name>
  </summary>
  <summary>
+  <tzid>Asia/Qostanay</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Qostanay</local-name>
+ </summary>
+ <summary>
   <tzid>Asia/Qyzylorda</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Qyzylorda</local-name>
@@ -1369,6 +1534,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>Asia/Riyadh</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Riyadh</local-name>
+ </summary>
+ <summary>
+  <tzid>Asia/Saigon</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Saigon</local-name>
  </summary>
  <summary>
   <tzid>Asia/Sakhalin</tzid>
@@ -1396,6 +1566,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Asia/Singapore</local-name>
  </summary>
  <summary>
+  <tzid>Asia/Srednekolymsk</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Srednekolymsk</local-name>
+ </summary>
+ <summary>
   <tzid>Asia/Taipei</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Taipei</local-name>
@@ -1416,6 +1591,16 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Asia/Tehran</local-name>
  </summary>
  <summary>
+  <tzid>Asia/Tel_Aviv</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Tel_Aviv</local-name>
+ </summary>
+ <summary>
+  <tzid>Asia/Thimbu</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Thimbu</local-name>
+ </summary>
+ <summary>
   <tzid>Asia/Thimphu</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Thimphu</local-name>
@@ -1426,14 +1611,34 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Asia/Tokyo</local-name>
  </summary>
  <summary>
+  <tzid>Asia/Tomsk</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Tomsk</local-name>
+ </summary>
+ <summary>
+  <tzid>Asia/Ujung_Pandang</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Ujung_Pandang</local-name>
+ </summary>
+ <summary>
   <tzid>Asia/Ulaanbaatar</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Ulaanbaatar</local-name>
  </summary>
  <summary>
+  <tzid>Asia/Ulan_Bator</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Ulan_Bator</local-name>
+ </summary>
+ <summary>
   <tzid>Asia/Urumqi</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Urumqi</local-name>
+ </summary>
+ <summary>
+  <tzid>Asia/Ust-Nera</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Ust-Nera</local-name>
  </summary>
  <summary>
   <tzid>Asia/Vientiane</tzid>
@@ -1449,6 +1654,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>Asia/Yakutsk</tzid>
   <last-modified>all good</last-modified>
   <local-name>Asia/Yakutsk</local-name>
+ </summary>
+ <summary>
+  <tzid>Asia/Yangon</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Asia/Yangon</local-name>
  </summary>
  <summary>
   <tzid>Asia/Yekaterinburg</tzid>
@@ -1481,9 +1691,19 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Atlantic/Cape_Verde</local-name>
  </summary>
  <summary>
+  <tzid>Atlantic/Faeroe</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Atlantic/Faeroe</local-name>
+ </summary>
+ <summary>
   <tzid>Atlantic/Faroe</tzid>
   <last-modified>all good</last-modified>
   <local-name>Atlantic/Faroe</local-name>
+ </summary>
+ <summary>
+  <tzid>Atlantic/Jan_Mayen</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Atlantic/Jan_Mayen</local-name>
  </summary>
  <summary>
   <tzid>Atlantic/Madeira</tzid>
@@ -1511,6 +1731,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Atlantic/St_Helena</local-name>
  </summary>
  <summary>
+  <tzid>Australia/ACT</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Australia/ACT</local-name>
+ </summary>
+ <summary>
   <tzid>Australia/Adelaide</tzid>
   <last-modified>all good</last-modified>
   <local-name>Australia/Adelaide</local-name>
@@ -1524,6 +1749,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>Australia/Broken_Hill</tzid>
   <last-modified>all good</last-modified>
   <local-name>Australia/Broken_Hill</local-name>
+ </summary>
+ <summary>
+  <tzid>Australia/Canberra</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Australia/Canberra</local-name>
  </summary>
  <summary>
   <tzid>Australia/Currie</tzid>
@@ -1546,6 +1776,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Australia/Hobart</local-name>
  </summary>
  <summary>
+  <tzid>Australia/LHI</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Australia/LHI</local-name>
+ </summary>
+ <summary>
   <tzid>Australia/Lindeman</tzid>
   <last-modified>all good</last-modified>
   <local-name>Australia/Lindeman</local-name>
@@ -1561,14 +1796,339 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Australia/Melbourne</local-name>
  </summary>
  <summary>
+  <tzid>Australia/North</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Australia/North</local-name>
+ </summary>
+ <summary>
+  <tzid>Australia/NSW</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Australia/NSW</local-name>
+ </summary>
+ <summary>
   <tzid>Australia/Perth</tzid>
   <last-modified>all good</last-modified>
   <local-name>Australia/Perth</local-name>
  </summary>
  <summary>
+  <tzid>Australia/Queensland</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Australia/Queensland</local-name>
+ </summary>
+ <summary>
+  <tzid>Australia/South</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Australia/South</local-name>
+ </summary>
+ <summary>
   <tzid>Australia/Sydney</tzid>
   <last-modified>all good</last-modified>
   <local-name>Australia/Sydney</local-name>
+ </summary>
+ <summary>
+  <tzid>Australia/Tasmania</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Australia/Tasmania</local-name>
+ </summary>
+ <summary>
+  <tzid>Australia/Victoria</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Australia/Victoria</local-name>
+ </summary>
+ <summary>
+  <tzid>Australia/West</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Australia/West</local-name>
+ </summary>
+ <summary>
+  <tzid>Australia/Yancowinna</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Australia/Yancowinna</local-name>
+ </summary>
+ <summary>
+  <tzid>Brazil/Acre</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Brazil/Acre</local-name>
+ </summary>
+ <summary>
+  <tzid>Brazil/DeNoronha</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Brazil/DeNoronha</local-name>
+ </summary>
+ <summary>
+  <tzid>Brazil/East</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Brazil/East</local-name>
+ </summary>
+ <summary>
+  <tzid>Brazil/West</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Brazil/West</local-name>
+ </summary>
+ <summary>
+  <tzid>Canada/Atlantic</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Canada/Atlantic</local-name>
+ </summary>
+ <summary>
+  <tzid>Canada/Central</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Canada/Central</local-name>
+ </summary>
+ <summary>
+  <tzid>Canada/Eastern</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Canada/Eastern</local-name>
+ </summary>
+ <summary>
+  <tzid>Canada/Mountain</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Canada/Mountain</local-name>
+ </summary>
+ <summary>
+  <tzid>Canada/Newfoundland</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Canada/Newfoundland</local-name>
+ </summary>
+ <summary>
+  <tzid>Canada/Pacific</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Canada/Pacific</local-name>
+ </summary>
+ <summary>
+  <tzid>Canada/Saskatchewan</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Canada/Saskatchewan</local-name>
+ </summary>
+ <summary>
+  <tzid>Canada/Yukon</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Canada/Yukon</local-name>
+ </summary>
+ <summary>
+  <tzid>CET</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>CET</local-name>
+ </summary>
+ <summary>
+  <tzid>Chile/Continental</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Chile/Continental</local-name>
+ </summary>
+ <summary>
+  <tzid>Chile/EasterIsland</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Chile/EasterIsland</local-name>
+ </summary>
+ <summary>
+  <tzid>CST6CDT</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>CST6CDT</local-name>
+ </summary>
+ <summary>
+  <tzid>Cuba</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Cuba</local-name>
+ </summary>
+ <summary>
+  <tzid>EET</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>EET</local-name>
+ </summary>
+ <summary>
+  <tzid>Egypt</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Egypt</local-name>
+ </summary>
+ <summary>
+  <tzid>Eire</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Eire</local-name>
+ </summary>
+ <summary>
+  <tzid>EST</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>EST</local-name>
+ </summary>
+ <summary>
+  <tzid>EST5EDT</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>EST5EDT</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+0</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+0</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-0</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-0</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT0</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT0</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+1</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+1</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-1</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-1</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+10</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+10</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-10</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-10</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+11</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+11</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-11</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-11</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+12</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+12</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-12</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-12</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-13</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-13</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-14</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-14</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+2</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+2</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-2</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-2</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+3</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+3</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-3</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-3</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+4</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+4</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-4</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-4</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+5</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+5</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-5</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-5</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+6</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+6</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-6</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-6</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+7</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+7</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-7</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-7</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+8</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+8</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-8</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-8</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT+9</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT+9</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/GMT-9</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/GMT-9</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/Greenwich</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/Greenwich</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/UCT</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/UCT</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/Universal</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/Universal</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/UTC</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/UTC</local-name>
+ </summary>
+ <summary>
+  <tzid>Etc/Zulu</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Etc/Zulu</local-name>
  </summary>
  <summary>
   <tzid>Europe/Amsterdam</tzid>
@@ -1581,9 +2141,19 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Europe/Andorra</local-name>
  </summary>
  <summary>
+  <tzid>Europe/Astrakhan</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Europe/Astrakhan</local-name>
+ </summary>
+ <summary>
   <tzid>Europe/Athens</tzid>
   <last-modified>all good</last-modified>
   <local-name>Europe/Athens</local-name>
+ </summary>
+ <summary>
+  <tzid>Europe/Belfast</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Europe/Belfast</local-name>
  </summary>
  <summary>
   <tzid>Europe/Belgrade</tzid>
@@ -1614,6 +2184,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>Europe/Budapest</tzid>
   <last-modified>all good</last-modified>
   <local-name>Europe/Budapest</local-name>
+ </summary>
+ <summary>
+  <tzid>Europe/Busingen</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Europe/Busingen</local-name>
  </summary>
  <summary>
   <tzid>Europe/Chisinau</tzid>
@@ -1669,6 +2244,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>Europe/Kiev</tzid>
   <last-modified>all good</last-modified>
   <local-name>Europe/Kiev</local-name>
+ </summary>
+ <summary>
+  <tzid>Europe/Kirov</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Europe/Kirov</local-name>
  </summary>
  <summary>
   <tzid>Europe/Lisbon</tzid>
@@ -1771,6 +2351,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Europe/Sarajevo</local-name>
  </summary>
  <summary>
+  <tzid>Europe/Saratov</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Europe/Saratov</local-name>
+ </summary>
+ <summary>
   <tzid>Europe/Simferopol</tzid>
   <last-modified>all good</last-modified>
   <local-name>Europe/Simferopol</local-name>
@@ -1799,6 +2384,16 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>Europe/Tirane</tzid>
   <last-modified>all good</last-modified>
   <local-name>Europe/Tirane</local-name>
+ </summary>
+ <summary>
+  <tzid>Europe/Tiraspol</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Europe/Tiraspol</local-name>
+ </summary>
+ <summary>
+  <tzid>Europe/Ulyanovsk</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Europe/Ulyanovsk</local-name>
  </summary>
  <summary>
   <tzid>Europe/Uzhgorod</tzid>
@@ -1849,6 +2444,56 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>Europe/Zurich</tzid>
   <last-modified>all good</last-modified>
   <local-name>Europe/Zurich</local-name>
+ </summary>
+ <summary>
+  <tzid>GB</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>GB</local-name>
+ </summary>
+ <summary>
+  <tzid>GB-Eire</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>GB-Eire</local-name>
+ </summary>
+ <summary>
+  <tzid>GMT</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>GMT</local-name>
+ </summary>
+ <summary>
+  <tzid>GMT+0</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>GMT+0</local-name>
+ </summary>
+ <summary>
+  <tzid>GMT-0</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>GMT-0</local-name>
+ </summary>
+ <summary>
+  <tzid>GMT0</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>GMT0</local-name>
+ </summary>
+ <summary>
+  <tzid>Greenwich</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Greenwich</local-name>
+ </summary>
+ <summary>
+  <tzid>Hongkong</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Hongkong</local-name>
+ </summary>
+ <summary>
+  <tzid>HST</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>HST</local-name>
+ </summary>
+ <summary>
+  <tzid>Iceland</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Iceland</local-name>
  </summary>
  <summary>
   <tzid>Indian/Antananarivo</tzid>
@@ -1906,6 +2551,81 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Indian/Reunion</local-name>
  </summary>
  <summary>
+  <tzid>Iran</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Iran</local-name>
+ </summary>
+ <summary>
+  <tzid>Israel</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Israel</local-name>
+ </summary>
+ <summary>
+  <tzid>Jamaica</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Jamaica</local-name>
+ </summary>
+ <summary>
+  <tzid>Japan</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Japan</local-name>
+ </summary>
+ <summary>
+  <tzid>Kwajalein</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Kwajalein</local-name>
+ </summary>
+ <summary>
+  <tzid>Libya</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Libya</local-name>
+ </summary>
+ <summary>
+  <tzid>MET</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>MET</local-name>
+ </summary>
+ <summary>
+  <tzid>Mexico/BajaNorte</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Mexico/BajaNorte</local-name>
+ </summary>
+ <summary>
+  <tzid>Mexico/BajaSur</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Mexico/BajaSur</local-name>
+ </summary>
+ <summary>
+  <tzid>Mexico/General</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Mexico/General</local-name>
+ </summary>
+ <summary>
+  <tzid>MST</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>MST</local-name>
+ </summary>
+ <summary>
+  <tzid>MST7MDT</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>MST7MDT</local-name>
+ </summary>
+ <summary>
+  <tzid>Navajo</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Navajo</local-name>
+ </summary>
+ <summary>
+  <tzid>NZ</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>NZ</local-name>
+ </summary>
+ <summary>
+  <tzid>NZ-CHAT</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>NZ-CHAT</local-name>
+ </summary>
+ <summary>
   <tzid>Pacific/Apia</tzid>
   <last-modified>all good</last-modified>
   <local-name>Pacific/Apia</local-name>
@@ -1914,6 +2634,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>Pacific/Auckland</tzid>
   <last-modified>all good</last-modified>
   <local-name>Pacific/Auckland</local-name>
+ </summary>
+ <summary>
+  <tzid>Pacific/Bougainville</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Pacific/Bougainville</local-name>
  </summary>
  <summary>
   <tzid>Pacific/Chatham</tzid>
@@ -2056,6 +2781,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Pacific/Pohnpei</local-name>
  </summary>
  <summary>
+  <tzid>Pacific/Ponape</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Pacific/Ponape</local-name>
+ </summary>
+ <summary>
   <tzid>Pacific/Port_Moresby</tzid>
   <last-modified>all good</last-modified>
   <local-name>Pacific/Port_Moresby</local-name>
@@ -2069,6 +2799,11 @@ Content-Type: application/xml; charset="utf-8"
   <tzid>Pacific/Saipan</tzid>
   <last-modified>all good</last-modified>
   <local-name>Pacific/Saipan</local-name>
+ </summary>
+ <summary>
+  <tzid>Pacific/Samoa</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Pacific/Samoa</local-name>
  </summary>
  <summary>
   <tzid>Pacific/Tahiti</tzid>
@@ -2086,6 +2821,11 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Pacific/Tongatapu</local-name>
  </summary>
  <summary>
+  <tzid>Pacific/Truk</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Pacific/Truk</local-name>
+ </summary>
+ <summary>
   <tzid>Pacific/Wake</tzid>
   <last-modified>all good</last-modified>
   <local-name>Pacific/Wake</local-name>
@@ -2096,13 +2836,138 @@ Content-Type: application/xml; charset="utf-8"
   <local-name>Pacific/Wallis</local-name>
  </summary>
  <summary>
-  <tzid>zones.h</tzid>
+  <tzid>Pacific/Yap</tzid>
   <last-modified>all good</last-modified>
-  <local-name>zones.h</local-name>
+  <local-name>Pacific/Yap</local-name>
  </summary>
  <summary>
-  <tzid>zones.tab</tzid>
+  <tzid>Poland</tzid>
   <last-modified>all good</last-modified>
-  <local-name>zones.tab</local-name>
+  <local-name>Poland</local-name>
+ </summary>
+ <summary>
+  <tzid>Portugal</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Portugal</local-name>
+ </summary>
+ <summary>
+  <tzid>PRC</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>PRC</local-name>
+ </summary>
+ <summary>
+  <tzid>PST8PDT</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>PST8PDT</local-name>
+ </summary>
+ <summary>
+  <tzid>ROC</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>ROC</local-name>
+ </summary>
+ <summary>
+  <tzid>ROK</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>ROK</local-name>
+ </summary>
+ <summary>
+  <tzid>Singapore</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Singapore</local-name>
+ </summary>
+ <summary>
+  <tzid>Turkey</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Turkey</local-name>
+ </summary>
+ <summary>
+  <tzid>UCT</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>UCT</local-name>
+ </summary>
+ <summary>
+  <tzid>Universal</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Universal</local-name>
+ </summary>
+ <summary>
+  <tzid>US/Alaska</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>US/Alaska</local-name>
+ </summary>
+ <summary>
+  <tzid>US/Aleutian</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>US/Aleutian</local-name>
+ </summary>
+ <summary>
+  <tzid>US/Arizona</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>US/Arizona</local-name>
+ </summary>
+ <summary>
+  <tzid>US/Central</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>US/Central</local-name>
+ </summary>
+ <summary>
+  <tzid>US/Eastern</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>US/Eastern</local-name>
+ </summary>
+ <summary>
+  <tzid>US/East-Indiana</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>US/East-Indiana</local-name>
+ </summary>
+ <summary>
+  <tzid>US/Hawaii</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>US/Hawaii</local-name>
+ </summary>
+ <summary>
+  <tzid>US/Indiana-Starke</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>US/Indiana-Starke</local-name>
+ </summary>
+ <summary>
+  <tzid>US/Michigan</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>US/Michigan</local-name>
+ </summary>
+ <summary>
+  <tzid>US/Mountain</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>US/Mountain</local-name>
+ </summary>
+ <summary>
+  <tzid>US/Pacific</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>US/Pacific</local-name>
+ </summary>
+ <summary>
+  <tzid>US/Samoa</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>US/Samoa</local-name>
+ </summary>
+ <summary>
+  <tzid>UTC</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>UTC</local-name>
+ </summary>
+ <summary>
+  <tzid>WET</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>WET</local-name>
+ </summary>
+ <summary>
+  <tzid>W-SU</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>W-SU</local-name>
+ </summary>
+ <summary>
+  <tzid>Zulu</tzid>
+  <last-modified>all good</last-modified>
+  <local-name>Zulu</local-name>
  </summary>
 </timezone-list>
