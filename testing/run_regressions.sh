@@ -70,7 +70,7 @@ check_result() {
        echo "======================================="
     fi
     if [ "${ACCEPT_ALL}" = "" ] ; then
-      read -p "[${TEST}] Accept new result [e/s/r/v/f/m/x/y/w/N]? " ACCEPT
+      read -p "[${TEST}] Accept new result [e/s/r/v/f/m/x/y/w/N/?]? " ACCEPT
     else
       ACCEPT=${ACCEPT_ALL}
     fi
@@ -108,6 +108,23 @@ check_result() {
     elif [ "${ACCEPT}" = "r" ]; then
       echo "Rerunning test ${TEST}"
       return 1
+    elif [ "${ACCEPT}" = "?" ]; then
+      cat <<EOF
+Options:
+
+  e = edit test (vi)
+  f = show full details of test and result
+  m = side-by-side 'meld'
+  N = run next test (default)
+  r = re-run test
+  s = side-by-side diff of actual and expected result
+  v = show test
+  w = colourized wdiff
+  x = print command for running test in debug mode and exit testing
+  y = make new result the expected result
+
+EOF
+      return 3
     fi
   else
     report_test_success

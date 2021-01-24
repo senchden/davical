@@ -119,6 +119,7 @@ the options being
   e = edit test (vi)
   r = re-run test
   N = run next test
+  ? = Show options
 
 This should allow for convenient updating of tests and expected results.
 
