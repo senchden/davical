@@ -197,6 +197,7 @@ else if ( file_exists($c->tzsource) ) {
     while( false !== ($fn = readdir($d)) ) {
       if ( substr($fn,0,1) == '.' ) continue;
       if ( substr($fn,0,14) == 'primary-source' ) continue;
+      if ( substr($fn,0,5) == 'zones' ) continue;
       $fn = $dirname.'/'.$fn;
       if ( is_dir($fn) ) {
         $result = array_merge($result,recursive_files($fn));
