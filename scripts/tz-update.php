@@ -161,7 +161,7 @@ if ( empty($c->tzsource) ) $c->tzsource = '../zonedb/vtimezones';
 if ( preg_match('{^http}', $c->tzsource ) ) {
 
   $changesince = null;
-  $qry = new AwlQuery("SELECT tzid, to_char(last_modified,'YYYY-MM-DD\"T\"HH24:MI:SS\"Z\"') AS last_modified FROM timezones");
+  $qry = new AwlQuery("SELECT tzid, to_char(last_modified,'YYYY-MM-DD\"T\"HH24:MI:SS\"Z\"') AS last_modified FROM timezones ORDER BY tzid");
   $current_zones = array();
   if ( $qry->Exec('tz/updatecheck',__LINE__,__FILE__) && $qry->rows() > 0 ) {
     while( $row = $qry->Fetch() )
@@ -194,7 +194,7 @@ else if ( file_exists($c->tzsource) ) {
   function recursive_files( $dirname ) {
     $d = opendir($dirname);
     $result = array();
-    while( $fn = readdir($d) ) {
+    while( false !== ($fn = readdir($d)) ) {
       if ( substr($fn,0,1) == '.' ) continue;
       if ( substr($fn,0,14) == 'primary-source' ) continue;
       $fn = $dirname.'/'.$fn;
@@ -205,6 +205,7 @@ else if ( file_exists($c->tzsource) ) {
         $result[] = $fn;
       }
     }
+    sort($result, SORT_STRING);
     return $result;
   }
 
