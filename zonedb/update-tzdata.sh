@@ -1,9 +1,9 @@
 #!/bin/sh
 
-wget --continue 'ftp://ftp.iana.org/tz/tz*.tar.gz'
+set -e
 
-TZCODEFILE="`readlink tzcode-latest.tar.gz`"
-TZDATAFILE="`readlink tzdata-latest.tar.gz`"
+TZCODEFILE="tzcode-latest.tar.gz"
+TZDATAFILE="tzdata-latest.tar.gz"
 
 # if [ ! -f $TZCODEFILE ]; then
   (
@@ -21,5 +21,6 @@ TZDATAFILE="`readlink tzdata-latest.tar.gz`"
   )
 # fi
 
+# From: https://github.com/libical/vzic
 vzic --pure --olson-dir tzdata --output-dir vtimezones
 echo "Olson `echo $TZDATAFILE | cut -f1 -d.`" >vtimezones/primary-source
