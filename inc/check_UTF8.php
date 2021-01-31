@@ -67,7 +67,7 @@ function utf8ToUnicode(&$str)
 
   $len = strlen($str);
   for($i = 0; $i < $len; $i++) {
-    $in = ord($str{$i});
+    $in = ord($str[$i]);
     if (0 == $mState) {
       // When mState is zero we expect either a US-ASCII character or a
       // multi-octet sequence.
