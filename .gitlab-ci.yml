@@ -124,6 +124,31 @@ test_bullseye:
     - cp -r /var/log/apache2 apache2_log
 
 
+build_buster_latestphp:
+  stage: testall
+  image: php:apache-buster
+  script:
+    - apt-get -y update
+    - bash -c 'mkdir -p /usr/share/man/man{0..10}'
+    - apt-get -y install build-essential devscripts fakeroot dh-exec jdupes doxygen graphviz
+    - mv debian/changelog debian/changelog.old
+    - >
+      cat
+      <(echo "davical ($(cat VERSION)-99~git$(date +"%Y%m%d")-$(git rev-parse --short $CI_COMMIT_SHA)) unstable; urgency=medium")
+      <(echo "")
+      <(echo "  * Build on CI")
+      <(echo "")
+      <(echo " -- ${GITLAB_USER_NAME} <${GITLAB_USER_EMAIL}>  $(date -R)")
+      <(echo "")
+      debian/changelog.old
+      >debian/changelog
+    - rm debian/changelog.old
+    - debuild --prepend-path=/usr/local/bin -us -uc -b -d
+    - 'mv ../davical_*_all.deb ./davical.deb'
+  artifacts:
+    paths:
+      - '*.deb'
+
 test_buster:
   stage: testall
   image: php:apache-buster
