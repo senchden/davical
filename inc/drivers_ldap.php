@@ -180,14 +180,16 @@ class ldapDriver
   }
 
   /**
-    * Returns the result of the LDAP query
+    * Actually look up a user in the LDAP directory
+    * (this is the LDAP part of LDAP_check() below)
     *
     * @param string $filter The filter used to search entries
     * @param array $attributes Attributes to be returned
+    * @param string $username username to check
     * @param string $passwd password to check
     * @return array Contains selected attributes from all entries corresponding to the given filter
     */
-  function requestUser( $filter, $attributes=NULL, $username, $passwd) {
+  function requestUser( $filter, $attributes, $username, $passwd) {
     global $c;
 
     $entry=NULL;

@@ -13,7 +13,7 @@ function log_setup_error($errno , $errstr , $errfile , $errline) {
   error_log('DAViCal setup.php: Informational: '.$errfile.'('.$errline.'): ['.$errno.'] '.$errstr);
 }
 
-function catch_setup_errors($errno , $errstr , $errfile , $errline , $errcontext ) {
+function catch_setup_errors($errno , $errstr , $errfile , $errline , $errcontext = null ) {
   if ( $errno == 2 ) {
     // A working installation will regularly fail to include_once() for several files as it searches for the location
     log_setup_error($errno , $errstr , $errfile , $errline);
