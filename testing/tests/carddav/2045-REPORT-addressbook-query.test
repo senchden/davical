@@ -1,0 +1,40 @@
+#
+# Request a REPORT
+#
+# param-filter should filter on parameter value, allof says all
+# filters must match.
+#
+TYPE=REPORT
+URL=http://regression.host/caldav.php/user1/addressbook/
+
+HEADER=Accept: text/xml,application/xml
+HEADER=Content-Type: text/xml
+HEADER=Depth: 1
+
+# HEAD
+
+BEGINDATA
+<?xml version="1.0"?>
+<C:addressbook-query xmlns:D="DAV:" xmlns:C="urn:ietf:params:xml:ns:carddav" xmlns:CS="http://calendarserver.org/ns/">
+ <D:prop>
+  <D:getetag/>
+  <C:address-data>
+    <C:prop name="VERSION"/>
+    <C:prop name="FN"/>
+    <C:prop name="TEL"/>
+  </C:address-data>
+ </D:prop>
+ <C:prop-filter name="TEL" test="allof">
+  <C:param-filter name="TYPE">
+   <C:text-match match-type="equals">WORK</C:text-match>
+  </C:param-filter>
+  <C:param-filter name="TYPE">
+   <C:text-match match-type="equals">HOME</C:text-match>
+  </C:param-filter>
+ </C:prop-filter>
+</C:addressbook-query>
+ENDDATA
+
+REPLACE=_<getetag>"[0-9a-f]+"</getetag>_<getetag>some valid etag</getetag>_
+REPLACE=/^REV:.*$/REV:date/
+REPLACE=/^UID:.*$/UID:a nice UID/
