@@ -2,8 +2,9 @@
 # Request a REPORT
 #
 # param-filter should filter on parameter value. With a negated
-# null value we shouldn't return any vCards with the prop value
-# but with param value.
+# null value we should return all vCards with the property that
+# matches the prop-filter type, and there there is a parameter
+# of TYPE set.
 #
 TYPE=REPORT
 URL=http://regression.host/caldav.php/user1/addressbook/
