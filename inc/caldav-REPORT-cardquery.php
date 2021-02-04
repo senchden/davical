@@ -277,7 +277,8 @@ if ( ! $target_collection->IsAddressbook() ) {
 */
 
 $params = array();
-$where = ' WHERE caldav_data.collection_id = ' . $target_collection->resource_id();
+$where_collection = ' WHERE caldav_data.collection_id = ' . $target_collection->resource_id();
+$where = '';
 if ( is_array($qry_filters) ) {
   dbg_log_array( 'cardquery', 'qry_filters', $qry_filters, true );
 
@@ -318,7 +319,7 @@ if ( $need_post_filter && ( $qry_filters_combination == 'OR' )) {
   $post_filters = $qry_filters;
 }
 
-$sql = 'SELECT * FROM caldav_data INNER JOIN addressbook_resource USING(dav_id)'. $where;
+$sql = 'SELECT * FROM caldav_data INNER JOIN addressbook_resource USING(dav_id)'. $where_collection . $where;
 if ( isset($c->strict_result_ordering) && $c->strict_result_ordering ) $sql .= " ORDER BY dav_id";
 $qry = new AwlQuery( $sql, $params );
 if ( $qry->Exec("cardquery",__LINE__,__FILE__) && $qry->rows() > 0 ) {
