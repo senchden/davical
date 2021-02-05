@@ -73,7 +73,8 @@ test:
     - useradd testrunner
     - cd testing && su testrunner -c 'IS_CI=yes ALLSUITES="regression-suite binding carddav scheduling" ./run_regressions.sh all x'
   after_script:
-    - cp -r /var/log/apache2 apache2_log
+    - mkdir -p apache2_log
+    - cp -r /var/log/apache2 apache2_log/test
 
 
 test_bullseye:
@@ -121,7 +122,8 @@ test_bullseye:
     - useradd testrunner
     - cd testing && su testrunner -c 'IS_CI=yes ALLSUITES="regression-suite binding carddav scheduling" ./run_regressions.sh all x'
   after_script:
-    - cp -r /var/log/apache2 apache2_log
+    - mkdir -p apache2_log
+    - cp -r /var/log/apache2 apache2_log/test_bullseye
 
 
 build_buster_latestphp:
@@ -149,7 +151,7 @@ build_buster_latestphp:
     paths:
       - '*.deb'
 
-test_buster:
+test_buster_latestphp:
   stage: testall
   image: php:apache-buster
   artifacts:
@@ -197,10 +199,11 @@ test_buster:
     - useradd testrunner
     - cd testing && su testrunner -c 'IS_CI=yes ALLSUITES="regression-suite binding carddav scheduling" ./run_regressions.sh all x'
   after_script:
-    - cp -r /var/log/apache2 apache2_log
+    - mkdir -p apache2_log
+    - cp -r /var/log/apache2 apache2_log/test_buster_latestphp
 
 
-test_stretch:
+test_stretch_latestphp:
   stage: testall
   image: php:apache-stretch
   artifacts:
@@ -247,4 +250,5 @@ test_stretch:
     - useradd testrunner
     - cd testing && su testrunner -c 'IS_CI=yes ALLSUITES="regression-suite binding carddav scheduling" ./run_regressions.sh all x'
   after_script:
-    - cp -r /var/log/apache2 apache2_log
+    - mkdir -p apache2_log
+    - cp -r /var/log/apache2 apache2_log/test_stretch_latestphp
