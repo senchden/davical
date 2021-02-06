@@ -58,7 +58,7 @@ test:
     - mkdir /usr/share/davical/testing/
     - cp testing/*.php /usr/share/davical/testing/
     - rm /etc/davical/config.php
-    - cp testing/regression-conf.php.example /etc/davical/regression-conf.php
+    - cat testing/regression-conf.php.example | sed 's.//$c->dbg.$c->dbg.' > /etc/davical/regression-conf.php
     - ln -s /etc/davical/regression-conf.php /etc/davical/mycaldav-conf.php
     - ln -s /etc/davical/regression-conf.php /etc/davical/myempty-conf.php
     - sed -i '/peer/d' /etc/postgresql/13/main/pg_hba.conf
