@@ -78,6 +78,7 @@ test:
   after_script:
     - mkdir -p apache2_log
     - cp -r /var/log/apache2 apache2_log/test
+    - bzip2 apache2_log/test/*
     - mkdir -p davical_log
     - cp -r /var/log/davical davical_log/test
 
@@ -132,6 +133,7 @@ test_bullseye:
   after_script:
     - mkdir -p apache2_log
     - cp -r /var/log/apache2 apache2_log/test_bullseye
+    - bzip2 apache2_log/test_bullseye/*
     - mkdir -p davical_log
     - cp -r /var/log/davical davical_log/test_bullseye
 
@@ -214,6 +216,7 @@ test_buster_latestphp:
   after_script:
     - mkdir -p apache2_log
     - cp -r /var/log/apache2 apache2_log/test_buster_latestphp
+    - bzip2 apache2_log/test_buster_latestphp/*
     - mkdir -p davical_log
     - cp -r /var/log/davical davical_log/test_buster_latestphp
 
@@ -270,5 +273,6 @@ test_stretch_latestphp:
   after_script:
     - mkdir -p apache2_log
     - cp -r /var/log/apache2 apache2_log/test_stretch_latestphp
+    - bzip2 apache2_log/test_stretch_latestphp/*
     - mkdir -p davical_log
     - cp -r /var/log/davical davical_log/test_stretch_latestphp
