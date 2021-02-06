@@ -19,7 +19,12 @@ BEGINDATA
 <CARDDAV:addressbook-query xmlns:DAV="DAV:" xmlns:CARDDAV="urn:ietf:params:xml:ns:carddav" xmlns:CS="http://calendarserver.org/ns/">
  <DAV:prop>
   <DAV:getetag/>
-  <CARDDAV:address-data/>
+  <CARDDAV:address-data>
+    <CARDDAV:prop name="VERSION"/>
+    <CARDDAV:prop name="FN"/>
+    <CARDDAV:prop name="EMAIL"/>
+    <CARDDAV:prop name="IMPP"/>
+  </CARDDAV:address-data>
  </DAV:prop>
  <CARDDAV:filter test="allof">
   <CARDDAV:prop-filter name="EMAIL" test="anyof"/>
