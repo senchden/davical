@@ -35,6 +35,7 @@ test:
     paths:
       - testing/report.xml
       - apache2_log/*
+      - davical_log/*
     reports:
       junit: testing/report.xml
     when:
@@ -61,6 +62,8 @@ test:
     - cat testing/regression-conf.php.example | sed 's.//$c->dbg.$c->dbg.' > /etc/davical/regression-conf.php
     - ln -s /etc/davical/regression-conf.php /etc/davical/mycaldav-conf.php
     - ln -s /etc/davical/regression-conf.php /etc/davical/myempty-conf.php
+    - mkdir -p /var/log/davical
+    - chown www-data /var/log/davical
     - sed -i '/peer/d' /etc/postgresql/13/main/pg_hba.conf
     - echo 'local  all  all  trust' >> /etc/postgresql/13/main/pg_hba.conf
     - pg_ctlcluster 13 main start
@@ -75,6 +78,8 @@ test:
   after_script:
     - mkdir -p apache2_log
     - cp -r /var/log/apache2 apache2_log/test
+    - mkdir -p davical_log
+    - cp -r /var/log/davical davical_log/test
 
 
 test_bullseye:
@@ -84,6 +89,7 @@ test_bullseye:
     paths:
       - testing/report.xml
       - apache2_log/*
+      - davical_log/*
     reports:
       junit: testing/report.xml
     when:
@@ -110,6 +116,8 @@ test_bullseye:
     - cat testing/regression-conf.php.example | sed 's.//$c->dbg.$c->dbg.' > /etc/davical/regression-conf.php
     - ln -s /etc/davical/regression-conf.php /etc/davical/mycaldav-conf.php
     - ln -s /etc/davical/regression-conf.php /etc/davical/myempty-conf.php
+    - mkdir -p /var/log/davical
+    - chown www-data /var/log/davical
     - sed -i '/peer/d' /etc/postgresql/13/main/pg_hba.conf
     - echo 'local  all  all  trust' >> /etc/postgresql/13/main/pg_hba.conf
     - pg_ctlcluster 13 main start
@@ -124,6 +132,8 @@ test_bullseye:
   after_script:
     - mkdir -p apache2_log
     - cp -r /var/log/apache2 apache2_log/test_bullseye
+    - mkdir -p davical_log
+    - cp -r /var/log/davical davical_log/test_bullseye
 
 
 build_buster_latestphp:
@@ -158,6 +168,7 @@ test_buster_latestphp:
     paths:
       - testing/report.xml
       - apache2_log/*
+      - davical_log/*
     reports:
       junit: testing/report.xml
     when:
@@ -187,6 +198,8 @@ test_buster_latestphp:
     - cat testing/regression-conf.php.example | sed 's.//$c->dbg.$c->dbg.' > /etc/davical/regression-conf.php
     - ln -s /etc/davical/regression-conf.php /etc/davical/mycaldav-conf.php
     - ln -s /etc/davical/regression-conf.php /etc/davical/myempty-conf.php
+    - mkdir -p /var/log/davical
+    - chown www-data /var/log/davical
     - sed -i '/peer/d' /etc/postgresql/11/main/pg_hba.conf
     - echo 'local  all  all  trust' >> /etc/postgresql/11/main/pg_hba.conf
     - pg_ctlcluster 11 main start
@@ -201,6 +214,8 @@ test_buster_latestphp:
   after_script:
     - mkdir -p apache2_log
     - cp -r /var/log/apache2 apache2_log/test_buster_latestphp
+    - mkdir -p davical_log
+    - cp -r /var/log/davical davical_log/test_buster_latestphp
 
 
 test_stretch_latestphp:
@@ -210,6 +225,7 @@ test_stretch_latestphp:
     paths:
       - testing/report.xml
       - apache2_log/*
+      - davical_log/*
     reports:
       junit: testing/report.xml
     when:
@@ -238,6 +254,8 @@ test_stretch_latestphp:
     - cat testing/regression-conf.php.example | sed 's.//$c->dbg.$c->dbg.' > /etc/davical/regression-conf.php
     - ln -s /etc/davical/regression-conf.php /etc/davical/mycaldav-conf.php
     - ln -s /etc/davical/regression-conf.php /etc/davical/myempty-conf.php
+    - mkdir -p /var/log/davical
+    - chown www-data /var/log/davical
     - sed -i '/peer/d' /etc/postgresql/9.6/main/pg_hba.conf
     - echo 'local  all  all  trust' >> /etc/postgresql/9.6/main/pg_hba.conf
     - pg_ctlcluster 9.6 main start
@@ -252,3 +270,5 @@ test_stretch_latestphp:
   after_script:
     - mkdir -p apache2_log
     - cp -r /var/log/apache2 apache2_log/test_stretch_latestphp
+    - mkdir -p davical_log
+    - cp -r /var/log/davical davical_log/test_stretch_latestphp
