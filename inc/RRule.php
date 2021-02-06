@@ -1184,7 +1184,7 @@ function rrule_expand( $dtstart, $property, $component, $range_end, $is_date=nul
     $expansion[$date->FloatOrUTC($return_floating_times)] = $component;
     if ( $date > $range_end ) break;
     if ( $i++ >= $c->rrule_expansion_limit ) {
-      dbg_error_log( 'ERROR', "Hit rrule expansion limit of ".$c->rrule_expansion_limit." - increase rrule_expansion_limit in config to avoid events missing from freebusy" );
+      dbg_error_log( 'ERROR', "Hit rrule expansion limit of ".$c->rrule_expansion_limit." on %s %s - increase rrule_expansion_limit in config to avoid events missing from freebusy", $component->GetType(), $component->GetProperty('UID'));
     }
   }
 //  if ( DEBUG_RRULE ) print_r( $expansion );
