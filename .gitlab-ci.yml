@@ -83,16 +83,20 @@ test:
     - cp -r /var/log/davical davical_log/test
 
 
-test_bullseye:
+test_bullseye_carddavclientinterop:
   stage: testall
   image: debian:bullseye
   artifacts:
     paths:
       - testing/report.xml
+      - carddavclient-master/testreports/unit/results.html
       - apache2_log/*
       - davical_log/*
+      - carddavclient-master/testreports/interop/*
     reports:
-      junit: testing/report.xml
+      junit:
+        - testing/report.xml
+        - carddavclient-master/testreports/unit/results.html
     when:
       always
   script:
@@ -102,7 +106,7 @@ test_bullseye:
     - echo "en_NZ.UTF-8 UTF-8" >> /etc/locale.gen
     - locale-gen
     - echo "LANG=en_NZ.UTF-8" > /etc/default/locale
-    - apt-get -y install libdbd-pg-perl libyaml-perl php php-cli php-pgsql php-xml postgresql-client postgresql libapache2-mod-php curl xmlstarlet
+    - apt-get -y install libdbd-pg-perl libyaml-perl php php-cli php-pgsql php-xml postgresql-client postgresql libapache2-mod-php curl xmlstarlet composer phpunit
     - curl 'https://gitlab.com/davical-project/awl/-/archive/master/awl-master.tar.gz' | tar zxf -
     - mv awl-master /usr/share/awl/
     - chown -R www-data /usr/share/awl/
@@ -130,6 +134,13 @@ test_bullseye:
     - apache2ctl start
     - useradd testrunner
     - cd testing && su testrunner -c 'IS_CI=yes ALLSUITES="regression-suite binding carddav scheduling" ./run_regressions.sh all x'
+    - cd ..
+    - curl https://codeload.github.com/mstilkerich/carddavclient/tar.gz/master | tar zxf -
+    - cd carddavclient-master
+    - composer install
+    - echo '<?php declare(strict_types=1); namespace MStilkerich\Tests\CardDavClient\Interop; use MStilkerich\CardDavClient\{Account,AddressbookCollection,Config}; final class AccountData { public const ACCOUNTS = [ "Davical" => [ "username" => "user3", "password" => "user3", "discoveryUri" => "http://regression", "syncAllowExtraChanges" => false, "featureSet" => TestInfrastructureSrv::SRVFEATS_DAVICAL, ], ]; public const ADDRESSBOOKS = [ "Davical_0" => [ "account" => "Davical", "url" => "http://regression/caldav.php/user3/addresses/", "displayname" => "user3 addresses", ], ]; }' > tests/interop/AccountData.php
+    - mkdir -p testreports/interop
+    - phpunit -c tests/interop/phpunit.xml --no-coverage
   after_script:
     - mkdir -p apache2_log
     - cp -r /var/log/apache2 apache2_log/test_bullseye
