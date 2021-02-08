@@ -33,6 +33,14 @@ $can_write_principal = ($session->AllowedTo('Admin') || ($session->principal_id 
 if ( !$can_write_principal && $id > 0 ) {
   $target_principal = new Principal('principal_id', $id);
   $can_write_principal = $session->HavePrivilegeTo('DAV::write', $target_principal->dav_name());
+  if ( ! $c->list_everyone ) {
+    $can_read_principal = $session->HavePrivilegeTo('DAV::read', $target_principal->dav_name());
+    if ( ! $can_read_principal ) {
+      dbg_error_log( 'LOG WARNING', 'Access to "%s" by user "%s" rejected.', $target_principal->dav_name(), $session->username );
+      header('Location: index.php');
+      @ob_flush(); exit(0);
+    }
+  }
 }
 
 

@@ -64,6 +64,14 @@ if ( isset($privsql) ) {
   $privqry->Exec('admin-collection-edit',__LINE__,__FILE__);
   $permissions = $privqry->Fetch();
   $can_write_collection = ($session->AllowedTo('Admin') || (bindec($permissions->priv) & privilege_to_bits('DAV::bind')) );
+  if ( ! $c->list_everyone ) {
+    $can_read_collection = ($session->AllowedTo('Admin') || (bindec($permissions->priv) & privilege_to_bits('DAV::read')) );
+    if ( ! $can_read_collection ) {
+      dbg_error_log( 'LOG WARNING', 'Access to id "%s"/"%s" by user "%s" rejected.', $id, $collection_name, $session->username );
+      header('Location: index.php');
+      @ob_flush(); exit(0);
+    }
+  }
 }
 
 // Verify CSRF token

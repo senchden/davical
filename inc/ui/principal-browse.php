@@ -35,15 +35,8 @@ if ( isset($principal_type) ) {
   $browser->AndWhere( 'type_id = '.$principal_type );
 }
 
-if ( ! $c->list_everyone ) {
-  if ( ! $session->AllowedTo( "Admin" ) ) { 
-    if ( isset($principal_type) && ( $principal_type == 1 || $principal_type == 2 ) ) {
-      $browser->AndWhere( '(principal_id = \''.$session->principal_id.'\' or principal_id in (select member_id from group_member where group_id in (select group_id from group_member where member_id = \''.$session->principal_id.'\')))' );
-    }
-    if ( isset($principal_type) && $principal_type == 3 ) {
-      $browser->AndWhere( '(principal_id = \''.$session->principal_id.'\' or principal_id in (select group_id from group_member where member_id = \''.$session->principal_id.'\'))' );
-    }
-  }
+if ( ! $c->list_everyone && ! $session->AllowedTo( "Admin" ) ) { 
+  $browser->AndWhere( '(pprivs('.$session->principal_id.',dav_principal.principal_id,'.$c->permission_scan_depth.') & 1::BIT(24))::INT4::BOOLEAN' );
 }
 
 $c->page_title = $browser->Title();

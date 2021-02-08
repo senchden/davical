@@ -114,8 +114,11 @@ $c->admin_email ='calendar-admin@example.com';
 // $c->print_styles = array();
 
 /**
-* Allow users to see all accounts listed, or only their account and
-* the accounts they have a relationship to in the web interface. 
+* Allow users to see all accounts on the server in the web interface, or only
+* their account and the accounts they have a relationship with. If set to
+* false, users need the READ privilege to display another principal and their
+* collections, and they need to be in the same group with another principal to
+* find them in a drop-down list for granting privileges.
 * Admins will still be able to see all accounts.
 * Default: true
 */
