@@ -660,7 +660,7 @@ class Principal {
   * @return boolean True if found.
   */
   public function searchEmails( $email ) {
-    if ( $self->email == $email ) {
+    if ( $this->email == $email ) {
       return 1;
     }
 
