@@ -193,7 +193,7 @@ class Principal {
       }
     }
 
-    $sql = 'SELECT *, ';
+    $sql = 'SELECT *, (SELECT email FROM usr_emails WHERE main = \'t\' AND user_no = dav_principal.user_no) AS email, ';
     if ( isset($session->principal_id) && $session->principal_id !== false ) {
       $sql .= 'pprivs(:session_principal::int8,principal_id,:scan_depth::int) AS privileges ';
       $params = array( ':session_principal' => $session->principal_id, ':scan_depth' => $c->permission_scan_depth );
@@ -202,22 +202,25 @@ class Principal {
       $sql .= '0::BIT(24) AS privileges ';
       $params = array( );
     }
-    $sql .= 'FROM dav_principal LEFT JOIN usr_emails USING (user_no) WHERE ';
+    $sql_from = 'dav_principal';
+    $sql_where = '';
     switch ( $type ) {
       case 'username':
-        $sql .= 'lower(username)=lower(text(:param))';
+        $sql_where .= 'lower(username)=lower(text(:param))';
         break;
       case 'user_no':
-        $sql .= 'user_no=:param';
+        $sql_where .= 'user_no=:param';
         break;
       case 'principal_id':
-        $sql .= 'principal_id=:param';
+        $sql_where .= 'principal_id=:param';
         break;
       case 'email':
         $this->by_email = true;
-        $sql .= 'lower(usr_emails.email)=lower(:param)';
+        $sql_from .= ' LEFT JOIN usr_emails USING (user_no)';
+        $sql_where .= 'lower(usr_emails.email)=lower(:param)';
         break;
     }
+    $sql .= "FROM $sql_from WHERE $sql_where";
     $params[':param'] = $value;
 
     $qry = new AwlQuery( $sql, $params );
@@ -226,7 +229,11 @@ class Principal {
       if ( isset($session->principal_id) ) {
         self::$byId[$row->principal_id]   = $row->username;
         self::$byUserno[$row->user_no]    = $row->username;
-        self::$byEmail[$row->email]       = $row->username;
+
+        if ($this->by_email) {
+          self::$byEmail[$row->email]       = $row->username;
+        }
+
         if ( !isset($this->cacheNs) ) {
           $this->cacheNs = 'principal-'.$row->dav_name;
           $this->cacheKey = 'p-'.$session->principal_id;
