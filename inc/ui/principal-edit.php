@@ -602,8 +602,8 @@ function email_browser() {
 
   $browser->SetOrdering( 'email', 'A' );
 
-  $browser->SetJoins( "usr_emails " );
-  $browser->SetWhere( 'user_no = '.$id );
+  $browser->SetJoins( "usr_emails LEFT JOIN dav_principal USING(user_no)" );
+  $browser->SetWhere( 'principal_id = '.$id );
 
   if ( $c->enable_row_linking ) {
     $browser->RowFormat( '<tr onMouseover="LinkHref(this,1);" title="'.translate('Click to edit email').'" class="r%d">', '</tr>', '#even' );

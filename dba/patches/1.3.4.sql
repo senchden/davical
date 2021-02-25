@@ -27,7 +27,7 @@ INSERT INTO usr_emails (user_no, email)
     SELECT user_no, email FROM usr WHERE email IS NOT NULL AND email <> '';
 
 ALTER TABLE usr
-    DROP COLUMN email;
+    DROP COLUMN email CASCADE;
 
 -- http://blogs.transparent.com/polish/names-of-the-months-and-their-meaning/
 SELECT new_db_revision(1,3,4, 'Kwiecień' );

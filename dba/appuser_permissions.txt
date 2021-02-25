@@ -26,6 +26,7 @@ GRANT SELECT,INSERT,UPDATE,DELETE
   ON freebusy_ticket
   ON usr
   ON usr_setting
+  ON usr_emails
   ON roles
   ON role_member
   ON session
