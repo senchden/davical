@@ -659,12 +659,12 @@ class Principal {
   * Find if an email address is associated with this principle.
   * @return boolean True if found.
   */
-  protected function searchEmails( $email ) {
-    $qry = new AwlQuery('SELECT * FROM usr_emails WHERE user_no = :user_no, email = :email',
+  public function searchEmails( $email ) {
+    $qry = new AwlQuery('SELECT * FROM usr_emails WHERE user_no = :user_no AND lower(email) = lower(:email)',
         array(':user_no' => $this->user_no(), ':email' => $email) );
 
     if ( $qry->Exec('Principal') ) {
-      return $qry->Rows;
+      return $qry->rows() == 1;
     }
   }
 }
