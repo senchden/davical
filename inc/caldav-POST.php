@@ -117,15 +117,40 @@ function handle_freebusy_request( $ic ) {
 
     /** @todo Refactor this so we only do one query here and loop through the results */
     $params = array( ':session_principal' => $session->principal_id, ':scan_depth' => $c->permission_scan_depth, ':email' => $attendee_email );
-    $qry = new AwlQuery('SELECT pprivs(:session_principal::int8,principal_id,:scan_depth::int) AS p, username FROM usr JOIN principal USING(user_no) WHERE lower(usr.email) = lower(:email)', $params );
+    $qry = new AwlQuery('
+      SELECT
+        pprivs(:session_principal::int8,principal_id,:scan_depth::int) AS p,
+        username
+      FROM usr
+        JOIN principal USING (user_no)
+        JOIN usr_emails USING (user_no)
+      WHERE lower(usr_emails.email) = lower(:email)
+      ', $params
+    );
     if ( !$qry->Exec('POST',__LINE__,__FILE__) ) $request->DoResponse( 501, 'Database error');
     if ( $qry->rows() > 1 ) {
       // Unlikely, but if we get more than one result we'll do an exact match instead.
-      if ( !$qry->QDo('SELECT pprivs(:session_principal::int8,principal_id,:scan_depth::int) AS p, username FROM usr JOIN principal USING(user_no) WHERE usr.email = :email', $params ) )
+      if ( !$qry->QDo('
+        SELECT
+          pprivs(:session_principal::int8,principal_id,:scan_depth::int) AS p,
+          username
+        FROM usr
+          JOIN principal USING (user_no)
+          JOIN usr_emails USING (user_no)
+        WHERE usr_emails.email = :email ', $params ) )
         $request->DoResponse( 501, 'Database error');
       if ( $qry->rows() == 0 ) {
         /** Sigh... Go back to the original case-insensitive match */
-        $qry->QDo('SELECT pprivs(:session_principal::int8,principal_id,:scan_depth::int) AS p, username FROM usr JOIN principal USING(user_no) WHERE lower(usr.email) = lower(:email)', $params );
+        $qry->QDo('
+          SELECT
+            pprivs(:session_principal::int8,principal_id,:scan_depth::int) AS p,
+            username
+          FROM usr
+            JOIN principal USING (user_no)
+            JOIN usr_emails USING (user_no)
+          WHERE lower(usr_emails.email) = lower(:email)
+          ', $params
+        );
       }
     }
 
