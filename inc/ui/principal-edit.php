@@ -529,7 +529,7 @@ function email_row_editor() {
       $emailrow->Assign('email', $email);
       $emailrow->Assign('main', $_POST['main']);
       $emailrow->Write( );
-      unset($_GET['email']);
+      unset($_GET['edit_email']);
     }
     elseif ( isset($_GET['delete_email']) ) {
       $qry = new AwlQuery("DELETE FROM usr_emails WHERE user_no=:user_no AND email = :email",
