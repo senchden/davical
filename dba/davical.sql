@@ -439,6 +439,22 @@ CREATE TABLE calendar_attendee (
   PRIMARY KEY ( dav_id, attendee )
 );
 
+CREATE TABLE usr_emails (
+  user_no  INTEGER NOT NULL REFERENCES usr(user_no) ON UPDATE CASCADE ON DELETE CASCADE,
+  email    VARCHAR,
+  main     boolean DEFAULT true,
+  UNIQUE (email)
+);
+
+-- Ensure that a principal only has one primary email address.
+CREATE UNIQUE INDEX usr_emails_primary
+  ON usr_emails
+  USING btree
+  (user_no)
+  WHERE main = true;
+
+ALTER TABLE usr
+  DROP COLUMN email CASCADE;
 
 CREATE or REPLACE FUNCTION real_path_exists( TEXT ) RETURNS BOOLEAN AS $$
 DECLARE
@@ -489,4 +505,4 @@ CREATE SEQUENCE metrics_count_delticket;
 CREATE SEQUENCE metrics_count_bind;
 CREATE SEQUENCE metrics_count_unknown;
 
-SELECT new_db_revision(1,3,3, 'Marzec' );
+SELECT new_db_revision(1,3,4, 'Kwiecie<C5><84>' );
