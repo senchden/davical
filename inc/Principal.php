@@ -660,6 +660,10 @@ class Principal {
   * @return boolean True if found.
   */
   public function searchEmails( $email ) {
+    if ( $self->email == $email ) {
+      return 1;
+    }
+
     $qry = new AwlQuery('SELECT * FROM usr_emails WHERE user_no = :user_no AND lower(email) = lower(:email)',
         array(':user_no' => $this->user_no(), ':email' => $email) );
 
