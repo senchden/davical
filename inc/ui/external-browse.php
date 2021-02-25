@@ -1,6 +1,10 @@
 <?php
 param_to_global( 'external_active', '([tf])', 'active' );
 
+if ( !$session->AllowedTo("Admin" ) ) {
+  @ob_flush(); exit(0);
+}
+
 $browser = new Browser(translate('External Calendars'));
 
 $browser->AddColumn( 'collection_id', translate('ID'), 'right', '##collection_link##' );

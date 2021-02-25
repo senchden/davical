@@ -64,6 +64,14 @@ if ( isset($privsql) ) {
   $privqry->Exec('admin-collection-edit',__LINE__,__FILE__);
   $permissions = $privqry->Fetch();
   $can_write_collection = ($session->AllowedTo('Admin') || (bindec($permissions->priv) & privilege_to_bits('DAV::bind')) );
+  if ( ! $c->list_everyone ) {
+    $can_read_collection = ($session->AllowedTo('Admin') || (bindec($permissions->priv) & privilege_to_bits('DAV::read')) );
+    if ( ! $can_read_collection ) {
+      dbg_error_log( 'LOG WARNING', 'Access to id "%s"/"%s" by user "%s" rejected.', $id, $collection_name, $session->username );
+      header('Location: index.php');
+      @ob_flush(); exit(0);
+    }
+  }
 }
 
 // Verify CSRF token
@@ -416,7 +424,13 @@ if ( $editor->Available() ) {
 
   $grantrow = new Editor("Grants", "grants");
   $grantrow->SetSubmitName( 'savegrantrow' );
-  $grantrow->SetLookup( 'to_principal', 'SELECT principal_id, displayname FROM dav_principal WHERE principal_id NOT IN (SELECT member_id FROM group_member WHERE group_id = '.$id.') ORDER BY displayname' );
+  $limit_grantrow = '';
+  if ( ! $c->list_everyone ) {
+    if ( ! $session->AllowedTo( "Admin" ) ) {
+      $limit_grantrow = 'AND (principal_id = \''.$session->principal_id.'\' or principal_id in (select member_id from group_member where group_id in (select group_id from group_member where member_id = \''.$session->principal_id.'\')) or principal_id in (select group_id from group_member where member_id = \''.$session->principal_id.'\'))';
+    }
+  }
+  $grantrow->SetLookup( 'to_principal', 'SELECT principal_id, displayname FROM dav_principal WHERE principal_id NOT IN (SELECT member_id FROM group_member WHERE group_id = '.$id.') '.$limit_grantrow.' ORDER BY displayname' );
   if ( $can_write_collection ) {
     if ( $grantrow->IsSubmit() ) {
       $_POST['by_collection'] = $id;

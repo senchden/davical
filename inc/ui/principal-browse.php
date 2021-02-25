@@ -35,6 +35,9 @@ if ( isset($principal_type) ) {
   $browser->AndWhere( 'type_id = '.$principal_type );
 }
 
+if ( ! $c->list_everyone && ! $session->AllowedTo( "Admin" ) ) { 
+  $browser->AndWhere( '(pprivs('.$session->principal_id.',dav_principal.principal_id,'.$c->permission_scan_depth.') & 1::BIT(24))::INT4::BOOLEAN' );
+}
 
 $c->page_title = $browser->Title();
 

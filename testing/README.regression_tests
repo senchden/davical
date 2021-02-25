@@ -124,6 +124,36 @@ the options being
 This should allow for convenient updating of tests and expected results.
 
 
+TEST SUITES
+-----------
+
+binding
+
+  Test binding locations under a principal.
+
+carddav
+
+  CardDAV related tests.
+ 
+ischedule
+
+  Scheduling extensions.
+
+regression-suite
+
+  Bulk of the regression tests.
+
+scheduling
+
+  Scheduling extensions.
+
+timezone
+
+  Timezone tests. To run these you need to have run:
+    ../zondedb/update-tzdata.sh
+  which in turn needs a binary called vzic. You build this from:
+    https://github.com/libical/vzic
+
 WRITING TESTS
 -------------
 
