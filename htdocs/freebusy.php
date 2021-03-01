@@ -46,6 +46,11 @@ $request = new CalDAVRequest(array("allow_by_email" => 1));
 $path_match = '^'.$request->path;
 if ( preg_match( '{^/(\S+@[a-z0-9][a-z0-9-]*[.][a-z0-9.-]+)/?$}i', $request->path, $matches ) ) {
   $principal = new Principal('email',$matches[1]);
+ 
+  if ( !$principal->Exists() ) {
+    $request->DoResponse( 404, translate('No user found matching') . ' ' . $matches[1] . "\n" );
+  }
+
   $path_match = '^'.$principal->dav_name();
 }
 
