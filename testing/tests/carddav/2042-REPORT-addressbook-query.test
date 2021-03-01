@@ -3,8 +3,17 @@
 #
 # param-filter should filter on parameter value. With a negated
 # null value we should return all vCards with the property that
-# matches the prop-filter type, and there there is a parameter
+# matches the prop-filter type, and where there is a parameter
 # of TYPE set.
+#
+# NOTE: This test does not do what one would think it does!
+# Testing if a parameter is-defined (is not NULL) is the default case
+# and can be achieved with just an empty param-filter, like
+#   <C:param-filter name="TYPE"/>
+# However searching for an empty string within another string (as
+# opposed to testing whether they are equal) should always succeed, and
+# negating that will always fail, hence this test should return no
+# results.
 #
 TYPE=REPORT
 URL=http://regression.host/caldav.php/user1/addressbook/
