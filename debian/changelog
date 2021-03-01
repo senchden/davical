@@ -1,3 +1,15 @@
+davical (1.1.10-1) unstable; urgency=medium
+
+  * New upstream release (closes: #703388)
+  * Depend on AWL 0.62
+  * Bump debhelper compat to level 13 (no changes necessary)
+  * Bump d/watch to version 4 (no changes necessary)
+  * Update copyright years
+  * Add Rules-Requires-Root: no
+  * Declare compliance with Debian Policy 4.5.1
+
+ -- Florian Schlichting <fsfs@debian.org>  Mon, 01 Mar 2021 21:24:31 +0800
+
 davical (1.1.9.3-1.1) unstable; urgency=high
 
   * Non-maintainer upload.

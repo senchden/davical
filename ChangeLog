@@ -1,3 +1,98 @@
+2021-03-01 Florian Schlichting <fsfs@debian.org>
+	* release davical 1.1.10
+	* Update carddav/2042-REPORT-addressbook-query together with df6ff3a in AWL
+
+2021-03-01 Andrew Ruthven <puck@catalyst.net.nz>
+	* Add a regression test for new invalid user result from FreeBusy
+	* Return a nicer error message if no user is found for Free/Busy via email
+
+2021-02-09 Florian Schlichting <fsfs@debian.org>
+	* Listing External Calendars is part of the Administration menu and should be restricted to admins
+	* tighten $c->list_everyone to look for DAV::read privilege and actually block access to principals and collections
+
+2020-05-05 Klaus M Pfeiffer <kmp+gitlab@kmp.or.at>
+	* add feature list_everyone (fixes #59)
+
+2021-02-08 Florian Schlichting <fsfs@debian.org>
+	* CI: run interop tests from carddavclient by Michael Stilkerich <ms@mike2k.de>
+	* Add tests for AWLs "Fix param-filter that checks if a parameter is defined"
+	* Add test for AWLs "Fix param-filter for multi-value parameters with TYPE=T1,T2 format" and update 2044 accordingly
+	* Add tests for AWLs "Fix GetProperties: Select properties with group prefix"
+	* Add tests for AWLs "Fix: GetProperties must treat property names as case-insensitive"
+
+2021-02-07 Andrew Ruthven <puck@catalyst.net.nz>
+	* Only return the fields that we need for the test
+
+2021-02-06 Andrew Ruthven <puck@catalyst.net.nz>
+	* CI: Compress the Apache log files
+	* CI: Ensure DAViCal can write to log files
+	* CI: Turn on debug logging for all the test runs
+	* Include the UID of the card which caused us to hit the RRULE limit
+	* Enable debug logging in CI
+	* Only return what we're testing, makes it easier to understand regressions
+	* Add test for anyof
+
+2021-02-05 Florian Schlichting <fsfs@debian.org>
+	* CI: do not clobber apache logs
+	* update 2038-REPORT-addressbook-query after AWL's param-filter: fix a typo / explode multivalue commit
+
+2021-02-04 Florian Schlichting <fsfs@debian.org>
+	* correct test results after AWL merges of mstilkerich/awl-fix_abookquery_paramnotdef and mstilkerich/awl-fix_support_anyof_propfilter
+	* add two more reports testing an allof prop-filter and an anyof text-match prop-filter
+	* cardquery: ensure restriction to target collection remains in force even when we find that we need a post_filter step and thus throw away the SQL
+	* add a REPORT for a property with multiple values, not all of which match the is-not-defined filter (carddavclient's ParamNotDefinedSome test)
+	* add 4 VCARDs from carddavclient AddressbookQueryTest
+
+2021-02-04 Andrew Ruthven <puck@catalyst.net.nz>
+	* Correctly exclude cards where TYPE is not set on TEL records.
+	* Fix the test result and hopefully make the description clearer
+	* I always get whitespace changes
+	* Add a bit more info about various suites, and how to time timezone
+
+2021-02-03 Florian Schlichting <fsfs@debian.org>
+	* fix PHP8 deprecation warnings: "Required parameter X follows optional parameter Y"
+
+2021-01-31 Jan Hicken <jan.hicken@posteo.de>
+	* Add default value for errcontext variable in error handler function
+	* Use brackets instead of curly braces for string offset access
+
+2021-02-03 Florian Schlichting <fsfs@debian.org>
+	* CI: add build_buster_latestphp
+
+2021-02-02 Florian Schlichting <fsfs@debian.org>
+	* CI: build and test on Debian unstable, then several stable releases relevant to our users
+	* Normalize "100 Continue" headers
+
+2021-01-24 Andrew Ruthven <andrew@etc.gen.nz>
+	* Test case for awl-fix_abookquery_negated_propnotdef
+
+2021-02-01 Andrew Ruthven <puck@catalyst.net.nz>
+	* Test case for negated values in awl-fix_abookquery_paramtextmatch
+
+2020-07-22 Piotr Filip <6465816-piotrfilip@users.noreply.gitlab.com>
+	* fix: events with recurrence rule are sometimes counted one too many times in freebusy
+	* test: remove dependency on the current date
+
+2021-01-25 Andrew Ruthven <andrew@etc.gen.nz>
+	* Update test results with new timezone data
+
+2021-01-24 Andrew Ruthven <andrew@etc.gen.nz>
+	* Ignore zones.h and zones.tab
+	* To start with there are no timezones in a fresh database
+	* Make the runs deterministic
+	* Fix up update-tzdata.sh so it'll run
+	* Test case for awl-fix_abookquery_negated_propnotdef
+	* Test case for awl-fix_abookquery_paramtextmatch
+	* Test case for awl-fix_abookquery_paramtextmatch
+	* Add help option for regression tests
+	* Update some more results based on current regression tests
+
+2021-01-23 Andrew Ruthven <puck@catalyst.net.nz>
+	* Add test secondary (or more) properties
+
+2020-04-14 Florian Schlichting <fsfs@debian.org>
+	* gitlab-ci: use latest Debian stable (fixes #221)
+
 2020-04-04 Florian Schlichting <fsfs@debian.org>
 	* LSID logins were removed from AWL, drop related bits in davical
 
