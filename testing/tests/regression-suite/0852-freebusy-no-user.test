@@ -1,0 +1,6 @@
+#
+# Request a freebusy report by URL for an invalid email address
+#
+TYPE=GET
+URL=http://regression.host/freebusy.php/user1@non-existant-email-address.com
+HEAD
