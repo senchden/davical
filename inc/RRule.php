@@ -879,8 +879,12 @@ class RepeatRule {
     foreach( $instances AS $k => $instance ) {
       foreach( $this->bymonthday AS $k => $monthday ) {
         $expanded = $this->date_mask( clone($instance), null, null, $monthday, null, null, null);
-        if ( DEBUG_RRULE ) printf( "Expanded BYMONTHDAY $monthday into date %s from %s\n", $expanded->format('c'), $instance->format('c') );
-        $this->current_set[] = $expanded;
+        if ($monthday == -1 || $expanded->format('d') == $monthday) {
+          if ( DEBUG_RRULE ) printf( "Expanded BYMONTHDAY $monthday into date %s from %s\n", $expanded->format('c'), $instance->format('c') );
+          $this->current_set[] = $expanded;
+        } else {
+          if ( DEBUG_RRULE ) printf( "Expanded BYMONTHDAY $monthday into date %s from %s, which is not the same day of month, skipping.\n", $expanded->format('c'), $instance->format('c') );
+        }
       }
     }
   }

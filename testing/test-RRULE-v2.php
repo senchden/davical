@@ -91,6 +91,7 @@ $tests = array(
   , new RRuleTest( "Time zone 4", "20000404T010000", "FREQ=YEARLY;BYDAY=1SU;BYMONTH=4;COUNT=15" )
   , new RRuleTest( "Six Working Days", "20110905", "FREQ=DAILY;BYDAY=MO,TU,WE,TH,FR;COUNT=6" )
   , new RRuleTest( "Six Working Days", "20110905", "FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR;COUNT=6" )
+  , new RRuleTest( "31st of each month", "20110831", "RRULE:FREQ=MONTHLY;BYMONTHDAY=31;COUNT=12" )
 );
 
 foreach( $tests AS $k => $test ) {
@@ -101,6 +102,8 @@ foreach( $tests AS $k => $test ) {
   $sql_result = $test->SQLTest();
   if ( $php_result == $sql_result ) {
     printf( 'PHP & SQL results are identical (-: P: %6.4lf  & S: %6.4lf'."\n", $test->PHP_time, $test->SQL_time);
+    echo "PHP Result:\n$php_result\n\n";
+    echo "SQL Result:\n$sql_result\n\n";
   }
   else {
     printf( 'PHP & SQL results differ :-( P: %6.4lf  & S: %6.4lf'."\n", $test->PHP_time, $test->SQL_time);
