@@ -10,7 +10,7 @@ if ( preg_match('{/always.php$}', $_SERVER['SCRIPT_NAME'] ) ) header('Location: 
 
 // XSS Protection
 function filter_post(&$val, $index) {
-    if(in_array($index, ["newpass1", "newpass2"])) return;
+    if(in_array($index, ["newpass1", "newpass2", "password"])) return;
 
     switch (gettype($val)) {
         case "string":
