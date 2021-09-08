@@ -179,7 +179,7 @@ function handle_subaction( $subaction ) {
 }
 
 function principal_editor() {
-  global $c, $id, $can_write_principal, $session;
+  global $c, $id, $can_write_principal, $session, $privilege_names;
   $editor = new Editor(translate('Principal'), 'dav_principal');
 
   $editor->SetLookup( 'date_format_type', "SELECT 'E', 'European' UNION SELECT 'U', 'US Format' UNION SELECT 'I', 'ISO Format'" );
